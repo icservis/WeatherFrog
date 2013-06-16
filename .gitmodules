@@ -1,0 +1,21 @@
+[submodule "Submodules/MMDrawerController"]
+	path = Submodules/MMDrawerController
+	url = https://github.com/mutualmobile/MMDrawerController.git
+[submodule "Submodules/AFNetworking"]
+	path = Submodules/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
+[submodule "Submodules/Reachability"]
+	path = Submodules/Reachability
+	url = https://github.com/tonymillion/Reachability.git
+[submodule "Submodules/CocoaLumberjack"]
+	path = Submodules/CocoaLumberjack
+	url = https://github.com/robbiehanson/CocoaLumberjack
+[submodule "Submodules/MBProgressHUD"]
+	path = Submodules/MBProgressHUD
+	url = https://github.com/jdg/MBProgressHUD.git
+[submodule "Submodules/KissXML"]
+	path = Submodules/KissXML
+	url = https://github.com/robbiehanson/KissXML.git
+[submodule "Submodules/MagicalRecord"]
+	path = Submodules/MagicalRecord
+	url = https://github.com/magicalpanda/MagicalRecord.git
