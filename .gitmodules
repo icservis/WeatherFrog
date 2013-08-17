@@ -19,3 +19,6 @@
 [submodule "Submodules/MagicalRecord"]
 	path = Submodules/MagicalRecord
 	url = https://github.com/magicalpanda/MagicalRecord.git
+[submodule "Submodules/AFKissXMLRequestOperation"]
+	path = Submodules/AFKissXMLRequestOperation
+	url = https://github.com/AFNetworking/AFKissXMLRequestOperation.git
