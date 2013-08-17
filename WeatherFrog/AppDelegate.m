@@ -88,7 +88,7 @@
     
 }
 
-#pragma mark - internet reachability
+#pragma mark - Internet reachability
 
 -(void)checkNetworkStatus:(NSNotification *)notice
 {
@@ -142,7 +142,7 @@
     return hostActive;
 }
 
-#pragma mark - locales
+#pragma mark - iser locale
 
 - (NSString*)localeCountryCode
 {
@@ -228,6 +228,8 @@
     }
 }
 
+#pragma mark - Facebook session
+
 - (void)openSession
 {
     DDLogInfo(@"openSession");
@@ -246,6 +248,36 @@
     [FBSession.activeSession closeAndClearTokenInformation];
     _session = nil;
     _fbUser = nil;
+}
+
+#pragma mark - Application version
+
+- (NSString*)appVersion
+{
+    NSString *myVersion, *versText;
+    
+    myVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    if (myVersion) {
+        versText = [NSString stringWithFormat:@"%@", myVersion];
+    }
+    return versText;
+}
+
+- (NSString*)appVersionBuild
+{
+    NSString *myVersion, *buildNum, *versText;
+    
+    myVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    buildNum = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+    if (myVersion) {
+        if (buildNum)
+            versText = [NSString stringWithFormat:@"%@ (%@)", myVersion, buildNum];
+        else
+            versText = [NSString stringWithFormat:@"%@", myVersion];
+    }
+    else if (buildNum)
+        versText = [NSString stringWithFormat:@"%@", buildNum];
+    return versText;
 }
 
 @end

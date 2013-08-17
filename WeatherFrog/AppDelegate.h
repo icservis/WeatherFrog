@@ -18,11 +18,28 @@ static NSString* const FbSessionClosedNotification = @"FBSESSION_CLOSED_NOTIFICA
 @property (strong, nonatomic) FBSession* session;
 @property (strong, nonatomic) NSDictionary<FBGraphUser>* fbUser;
 
+/**
+ Reachability status variables.
+ */
 - (BOOL)isInternetActive;
 - (BOOL)isHostActive;
-- (NSString*)localeCountryCode;
-- (NSString*)localeLanguageCode;
+
+/**
+ Facebook status variables.
+ */
 - (void)openSession;
 - (void)closeSession;
+
+/**
+ User locale.
+ */
+- (NSString*)localeCountryCode;
+- (NSString*)localeLanguageCode;
+
+/**
+ Application version.
+ */
+- (NSString*)appVersion;
+- (NSString*)appVersionBuild;
 
 @end

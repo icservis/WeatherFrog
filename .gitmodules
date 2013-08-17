@@ -1,6 +1,3 @@
-[submodule "Submodules/MMDrawerController"]
-	path = Submodules/MMDrawerController
-	url = https://github.com/mutualmobile/MMDrawerController.git
 [submodule "Submodules/AFNetworking"]
 	path = Submodules/AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
@@ -25,3 +22,6 @@
 [submodule "Submodules/Libraries"]
 	path = Submodules/Libraries
 	url = https://icservis@github.com/icservis/Libraries.git
+[submodule "Submodules/SWRevealViewController"]
+	path = Submodules/SWRevealViewController
+	url = https://github.com/John-Lluch/SWRevealViewController.git

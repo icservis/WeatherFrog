@@ -12,6 +12,22 @@
 		84089894176E104500F45397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089893176E104500F45397 /* QuartzCore.framework */; };
 		84089896176E105700F45397 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089895176E105700F45397 /* CoreLocation.framework */; };
 		84089898176E106500F45397 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089897176E106500F45397 /* CoreImage.framework */; };
+		847B914A17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
+		847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
+		847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */; };
+		847B914F17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */; };
+		847B915217BFB30E00AD76E7 /* ForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915117BFB30E00AD76E7 /* ForecastViewController.m */; };
+		847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915117BFB30E00AD76E7 /* ForecastViewController.m */; };
+		847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915517BFB43800AD76E7 /* MenuViewController.m */; };
+		847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915517BFB43800AD76E7 /* MenuViewController.m */; };
+		847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915D17BFB9F000AD76E7 /* FbUserCell.m */; };
+		847B915F17BFB9F000AD76E7 /* FbUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915D17BFB9F000AD76E7 /* FbUserCell.m */; };
+		847B916217BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
+		847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
+		847B916617BFCEC200AD76E7 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916517BFCEC200AD76E7 /* Location.m */; };
+		847B916717BFCEC200AD76E7 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916517BFCEC200AD76E7 /* Location.m */; };
+		847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
+		847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
 		848A54DE176E09A1009B3F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DD176E09A1009B3F85 /* Foundation.framework */; };
 		848A54E0176E09A1009B3F85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DF176E09A1009B3F85 /* CoreGraphics.framework */; };
 		848A54E2176E09A1009B3F85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54E1176E09A1009B3F85 /* UIKit.framework */; };
@@ -184,6 +200,22 @@
 		84089893176E104500F45397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84089895176E105700F45397 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84089897176E106500F45397 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		847B914817BFA6D600AD76E7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		847B914917BFA6D600AD76E7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		847B914C17BFB2FE00AD76E7 /* LocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorViewController.h; sourceTree = "<group>"; };
+		847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocatorViewController.m; sourceTree = "<group>"; };
+		847B915017BFB30E00AD76E7 /* ForecastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastViewController.h; sourceTree = "<group>"; };
+		847B915117BFB30E00AD76E7 /* ForecastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastViewController.m; sourceTree = "<group>"; };
+		847B915417BFB43800AD76E7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		847B915517BFB43800AD76E7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		847B915C17BFB9F000AD76E7 /* FbUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbUserCell.h; sourceTree = "<group>"; };
+		847B915D17BFB9F000AD76E7 /* FbUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FbUserCell.m; sourceTree = "<group>"; };
+		847B916017BFC56E00AD76E7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		847B916117BFC56E00AD76E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		847B916417BFCEC200AD76E7 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		847B916517BFCEC200AD76E7 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		847B916817BFCF1C00AD76E7 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		847B916917BFCF1C00AD76E7 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		848A54DA176E09A1009B3F85 /* WeatherFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848A54DD176E09A1009B3F85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		848A54DF176E09A1009B3F85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -383,6 +415,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847B914717BFA6D600AD76E7 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				847B914817BFA6D600AD76E7 /* SWRevealViewController.h */,
+				847B914917BFA6D600AD76E7 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			path = Submodules/SWRevealViewController/SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		848A54D1176E09A1009B3F85 = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +520,7 @@
 		84DE48AB17BF7560005AB3B8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				847B914717BFA6D600AD76E7 /* SWRevealViewController */,
 				84DE49FB17BF7702005AB3B8 /* Reachability */,
 				84DE49F617BF76E6005AB3B8 /* MBProgressHUD */,
 				84DE498217BF76CB005AB3B8 /* MagicalRecord */,
@@ -913,6 +956,8 @@
 			isa = PBXGroup;
 			children = (
 				84DE4A1617BF86CF005AB3B8 /* Model.xcdatamodeld */,
+				847B916417BFCEC200AD76E7 /* Location.h */,
+				847B916517BFCEC200AD76E7 /* Location.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -920,6 +965,10 @@
 		84DE4A1417BF8403005AB3B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				847B915C17BFB9F000AD76E7 /* FbUserCell.h */,
+				847B915D17BFB9F000AD76E7 /* FbUserCell.m */,
+				847B916817BFCF1C00AD76E7 /* LocationCell.h */,
+				847B916917BFCF1C00AD76E7 /* LocationCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -927,6 +976,14 @@
 		84DE4A1517BF840C005AB3B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				847B915417BFB43800AD76E7 /* MenuViewController.h */,
+				847B915517BFB43800AD76E7 /* MenuViewController.m */,
+				847B914C17BFB2FE00AD76E7 /* LocatorViewController.h */,
+				847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */,
+				847B915017BFB30E00AD76E7 /* ForecastViewController.h */,
+				847B915117BFB30E00AD76E7 /* ForecastViewController.m */,
+				847B916017BFC56E00AD76E7 /* SettingsViewController.h */,
+				847B916117BFC56E00AD76E7 /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1045,9 +1102,11 @@
 			files = (
 				84DE49D217BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
 				84DE49E417BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,
+				847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
 				84DE491017BF7659005AB3B8 /* DDLog.m in Sources */,
 				84DE49E617BF76CB005AB3B8 /* MagicalRecord+ErrorHandling.m in Sources */,
 				84DE49D817BF76CB005AB3B8 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
+				847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,
 				84DE49E217BF76CB005AB3B8 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				84DE49C617BF76CB005AB3B8 /* NSObject+MagicalDataImport.m in Sources */,
 				84DE49F417BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
@@ -1057,6 +1116,7 @@
 				84DE48CA17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
 				84DE48F317BF764A005AB3B8 /* DDXMLDocument.m in Sources */,
 				84DE497A17BF767D005AB3B8 /* LumberjackFormatter.m in Sources */,
+				847B914A17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */,
 				84DE48EF17BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */,
 				84DE48CC17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
 				84DE497217BF767D005AB3B8 /* NSString+validation.m in Sources */,
@@ -1072,15 +1132,20 @@
 				84DE48D417BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE496E17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				84DE49E017BF76CB005AB3B8 /* NSPersistentStore+MagicalRecord.m in Sources */,
+				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
 				84DE49DA17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				84DE49F017BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
+				847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				84DE49C217BF76CB005AB3B8 /* NSEntityDescription+MagicalDataImport.m in Sources */,
+				847B916617BFCEC200AD76E7 /* Location.m in Sources */,
 				84DE49C817BF76CB005AB3B8 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				84DE49E817BF76CB005AB3B8 /* MagicalRecord+iCloud.m in Sources */,
 				84DE497E17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
 				84DE490E17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
 				84DE48DC17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */,
+				847B915217BFB30E00AD76E7 /* ForecastViewController.m in Sources */,
+				847B916217BFC56E00AD76E7 /* SettingsViewController.m in Sources */,
 				84DE48D617BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */,
 				84DE49CA17BF76CB005AB3B8 /* NSString+MagicalDataImport.m in Sources */,
 				848A54EA176E09A1009B3F85 /* main.m in Sources */,
@@ -1116,11 +1181,13 @@
 				84DE491117BF7659005AB3B8 /* DDLog.m in Sources */,
 				84DE49E917BF76CB005AB3B8 /* MagicalRecord+iCloud.m in Sources */,
 				84DE497B17BF767D005AB3B8 /* LumberjackFormatter.m in Sources */,
+				847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				84DE48D517BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE48D917BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE48D717BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */,
 				84DE49F517BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
 				84DE49F117BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
+				847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */,
 				84DE49CB17BF76CB005AB3B8 /* NSString+MagicalDataImport.m in Sources */,
 				84DE49E517BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,
 				84DE48CD17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
@@ -1130,6 +1197,7 @@
 				84DE49EF17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84DE49BF17BF76CB005AB3B8 /* MagicalImportFunctions.m in Sources */,
 				84DE49EB17BF76CB005AB3B8 /* MagicalRecord+Options.m in Sources */,
+				847B914F17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,
 				84DE49C317BF76CB005AB3B8 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				84DE49C517BF76CB005AB3B8 /* NSNumber+MagicalDataImport.m in Sources */,
 				84DE49E317BF76CB005AB3B8 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
@@ -1144,14 +1212,17 @@
 				84DE49DB17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				84DE48CB17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
 				84DE491717BF7659005AB3B8 /* DispatchQueueLogFormatter.m in Sources */,
+				847B915F17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				84DE48F617BF764A005AB3B8 /* DDXMLElement.m in Sources */,
 				84DE49D917BF76CB005AB3B8 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				84DE491317BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
+				847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
 				84DE48D117BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				848A550F176E09A2009B3F85 /* WeatherFrogTests.m in Sources */,
 				84DE49C717BF76CB005AB3B8 /* NSObject+MagicalDataImport.m in Sources */,
 				84DE48F017BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */,
 				84DE49E117BF76CB005AB3B8 /* NSPersistentStore+MagicalRecord.m in Sources */,
+				847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */,
 				84DE49D317BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
 				84DE497917BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
 				84DE497317BF767D005AB3B8 /* NSString+validation.m in Sources */,
@@ -1167,11 +1238,13 @@
 				84DE496F17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				84DE48DD17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */,
 				84DE49CD17BF76CB005AB3B8 /* NSManagedObject+MagicalAggregation.m in Sources */,
+				847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */,
 				84DE490B17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
 				84DE49C917BF76CB005AB3B8 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				84DE49CF17BF76CB005AB3B8 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				84DE497717BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
 				84DE48C917BF7601005AB3B8 /* AFHTTPClient.m in Sources */,
+				847B916717BFCEC200AD76E7 /* Location.m in Sources */,
 				84DE49E717BF76CB005AB3B8 /* MagicalRecord+ErrorHandling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
