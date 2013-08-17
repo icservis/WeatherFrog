@@ -22,3 +22,6 @@
 [submodule "Submodules/AFKissXMLRequestOperation"]
 	path = Submodules/AFKissXMLRequestOperation
 	url = https://github.com/AFNetworking/AFKissXMLRequestOperation.git
+[submodule "Submodules/Libraries"]
+	path = Submodules/Libraries
+	url = https://icservis@github.com/icservis/Libraries.git
