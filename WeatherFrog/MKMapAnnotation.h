@@ -16,5 +16,7 @@
 
 - (id)initWithPlacemark:(CLPlacemark*)placemark;
 - (void)updateWithPlacemark:(CLPlacemark*)placemark;
+- (id)initWithLocation:(CLLocation *)location;
+- (void)updateWithLocation:(CLLocation *)location;
 
 @end

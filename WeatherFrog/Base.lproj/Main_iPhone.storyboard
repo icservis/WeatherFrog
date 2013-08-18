@@ -60,6 +60,12 @@
                                             <action selector="trackingButtonTapped:" destination="K5O-4J-gBf" id="QjM-Ho-oDb"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iE5-FS-rmP"/>
+                                    <barButtonItem title="Map" id="Myb-A9-8Xl">
+                                        <connections>
+                                            <action selector="mapButtonTapped:" destination="K5O-4J-gBf" id="sVa-19-1gt"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -86,6 +92,7 @@
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon" id="klB-SE-4kR"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapButton" destination="Myb-A9-8Xl" id="pUe-ri-Hvz"/>
                         <outlet property="mapView" destination="hPQ-7v-JD7" id="cch-h5-6Lm"/>
                         <outlet property="revealButtonItem" destination="klB-SE-4kR" id="MWJ-Dh-gQ0"/>
                         <outlet property="searchBar" destination="Ozx-Gh-eye" id="1dH-ai-S8W"/>

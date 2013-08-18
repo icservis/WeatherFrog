@@ -21,6 +21,8 @@
 @synthesize title = _title;
 @synthesize subtitle = _subtitle;
 
+#pragma mark - Placemark
+
 - (id)initWithPlacemark:(CLPlacemark *)placemark
 {
     if (self = [super init]) {
@@ -38,11 +40,6 @@
     self.subtitle = [self formatSubtitle:placemark];
 }
 
-- (void)setCoordinate:(CLLocationCoordinate2D)coordinate
-{
-    DDLogVerbose(@"coordinate: %.5f, %.5f", coordinate.latitude, coordinate.longitude);
-    _coordinate = coordinate;
-}
 
 - (NSString*)formatTitle:(CLPlacemark*)placemark
 {
@@ -68,6 +65,25 @@
 - (NSString*)formatSubtitle:(CLPlacemark*)placemark
 {
     return [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.country];
+}
+
+#pragma mark - Location
+
+- (id)initWithLocation:(CLLocation *)location
+{
+    if (self = [super init]) {
+        self.coordinate = location.coordinate;
+        self.title = NSLocalizedString(@"Placemark", nil);
+        self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
+    }
+    return self;
+}
+
+- (void)updateWithLocation:(CLLocation *)location
+{
+    self.coordinate = location.coordinate;
+    self.title = NSLocalizedString(@"Placemark", nil);
+    self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
 }
 
 @end

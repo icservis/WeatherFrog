@@ -18,20 +18,22 @@ static float const LongTapDuration = 1.2;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* trackingButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* mapButton;
 @property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
-@property (nonatomic) BOOL trackingEnabled;
+@property (nonatomic) MKUserTrackingMode trackingMode;
+@property (nonatomic) MKMapType mapType;
 
 @property (nonatomic, strong) UITapGestureRecognizer* tapGestureRecognizer;
 @property (nonatomic, strong) UIPanGestureRecognizer* panGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer* longPressGestureRecognizer;
 
 - (IBAction)trackingButtonTapped:(id)sender;
+- (IBAction)mapButtonTapped:(id)sender;
 
 @end
 
 @implementation LocatorViewController {
-    NSMutableArray* recentLocations;
     CLGeocoder* geocoder;
 }
 
@@ -54,10 +56,10 @@ static float const LongTapDuration = 1.2;
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
     self.title = NSLocalizedString(@"Locator", nil);
-    self.trackingEnabled = NO;
     
-    // recent locations
-    recentLocations = [[NSMutableArray alloc] init];
+    // Map defaults
+    self.trackingMode = MKUserTrackingModeNone;
+    self.mapType = MKMapTypeStandard;
     
     // CLGeocoder
     if (geocoder == nil) {
@@ -102,17 +104,37 @@ static float const LongTapDuration = 1.2;
 
 #pragma mark - Tracking
 
-- (void)setTrackingEnabled:(BOOL)trackingEnabled
+- (void)setTrackingMode:(MKUserTrackingMode)trackingMode
 {
-    if (trackingEnabled == NO) {
-        _trackingEnabled = NO;
-        _trackingButton.title = NSLocalizedString(@"Tracking OFF", nil);
-    } else {
-        _trackingEnabled = YES;
+    _trackingMode = trackingMode;
+    if (self.mapView.userTrackingMode != _trackingMode) {
+        [self.mapView setUserTrackingMode:_trackingMode];
+    }
+    
+    if (trackingMode == MKUserTrackingModeFollowWithHeading) {
+        _trackingButton.title = NSLocalizedString(@"Heading ON", nil);
+    } else if (trackingMode == MKUserTrackingModeFollow) {
         _trackingButton.title = NSLocalizedString(@"Tracking ON", nil);
-        
-        CLLocation* currentLocation = [[self appDelegate] currentLocation];
-        [self mapView:self.mapView setRegionWithLocation:currentLocation];
+    } else {
+        _trackingButton.title = NSLocalizedString(@"Tracking OFF", nil);
+    }
+}
+
+#pragma maik - Map type
+
+- (void)setMapType:(MKMapType)mapType
+{
+    _mapType = mapType;
+    [self.mapView setMapType:_mapType];
+    
+    if (mapType == MKMapTypeStandard) {
+        self.mapButton.title = NSLocalizedString(@"Standard", nil);
+    }
+    if (mapType == MKMapTypeHybrid) {
+        self.mapButton.title = NSLocalizedString(@"Hybrid", nil);
+    }
+    if (mapType == MKMapTypeSatellite) {
+        self.mapButton.title = NSLocalizedString(@"Satellite", nil);
     }
 }
 
@@ -121,7 +143,27 @@ static float const LongTapDuration = 1.2;
 - (IBAction)trackingButtonTapped:(id)sender
 {
     DDLogInfo(@"trackingButtonTapped");
-    self.trackingEnabled = !self.trackingEnabled;
+    
+    if (_trackingMode == MKUserTrackingModeNone) {
+        self.trackingMode = MKUserTrackingModeFollow;
+    } else if (_trackingMode == MKUserTrackingModeFollow) {
+        self.trackingMode = MKUserTrackingModeFollowWithHeading;
+    } else {
+        self.trackingMode = MKUserTrackingModeNone;
+    }
+}
+
+- (IBAction)mapButtonTapped:(id)sender
+{
+    DDLogInfo(@"mapButtonTapped");
+    
+    if (_mapType == MKMapTypeStandard) {
+        self.mapType = MKMapTypeHybrid;
+    } else if (self.mapType == MKMapTypeHybrid) {
+        self.mapType = MKMapTypeSatellite;
+    } else {
+        self.mapType = MKMapTypeStandard;
+    }
 }
 
 - (IBAction)showLocation:(id)sender
@@ -158,12 +200,10 @@ static float const LongTapDuration = 1.2;
             if ([placemarks count] > 0) {
                 
                 CLPlacemark* placemark = placemarks[0];
-                DDLogInfo(@"placemark found: %@", [placemark description]);
-                [recentLocations addObject:placemark];
 
                 [self mapView:self.mapView setRegionWithPlacemark:placemark];
                 [self mapView:self.mapView searchAnnotation:placemark];
-                self.trackingEnabled = NO;
+                self.trackingMode = MKUserTrackingModeNone;
                 
             }
         }];
@@ -184,6 +224,23 @@ static float const LongTapDuration = 1.2;
     
     if (searchAnnotation == nil) {
         searchAnnotation = [[MKMapAnnotation alloc] initWithPlacemark:placemark];
+        [mapView addAnnotation:searchAnnotation];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView searchAnnotationNotDetermined:(CLLocation*)location
+{
+    MKMapAnnotation* searchAnnotation = nil;
+    
+    for (id<MKAnnotation> annotation in [mapView annotations]) {
+        if ([annotation isKindOfClass:[MKMapAnnotation class]]) {
+            searchAnnotation = (MKMapAnnotation*)annotation;
+            [searchAnnotation updateWithLocation:location];
+        }
+    }
+    
+    if (searchAnnotation == nil) {
+        searchAnnotation = [[MKMapAnnotation alloc] initWithLocation:location];
         [mapView addAnnotation:searchAnnotation];
     }
 }
@@ -224,17 +281,27 @@ static float const LongTapDuration = 1.2;
 {
     if (newState == MKAnnotationViewDragStateEnding) {
         
+        MKMapAnnotation* annotation = annotationView.annotation;
+        CLLocation* location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+        [self mapView:self.mapView searchAnnotationNotDetermined:location];
+        
         if ([[self appDelegate] isInternetActive]) {
-            MKMapAnnotation* annotation = annotationView.annotation;
-            CLLocation* location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
             [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
                 if ([placemarks count] > 0) {
                     CLPlacemark* placemark = placemarks[0];
-                    [annotation updateWithPlacemark:placemark];
+                    [self mapView:self.mapView searchAnnotation:placemark];
                 }
             }];
         }
     }
+}
+
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
+{
+    if (mode != _trackingMode) {
+        self.trackingMode = mode;
+    }
+    
 }
 
 #pragma mark - UISearchBarDelegate
@@ -292,7 +359,6 @@ static float const LongTapDuration = 1.2;
 
 - (void)handleLongPress:(UIGestureRecognizer *)recognizer
 {
-    DDLogVerbose(@"recognizer: %@",[recognizer description]);
     static CGPoint lastTouchPoint;
     
     CGPoint touchPoint = [recognizer locationInView:self.mapView];
@@ -307,33 +373,21 @@ static float const LongTapDuration = 1.2;
         [self. searchBar resignFirstResponder];
         lastTouchPoint = touchPoint;
         CLLocation* location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-            if ([placemarks count] > 0) {
-                CLPlacemark* placemark = placemarks[0];
-                [self mapView:self.mapView searchAnnotation:placemark];
-            }
-        }];
-    }
-    
-}
-
-- (void)handleTapFrom:(UIGestureRecognizer *)recognizer {
-    // You don't want to dismiss the keyboard if a tap is detected within the bounds of the search bar...
-    CGPoint touchPoint = [recognizer locationInView:self.view];
-    if (!CGRectContainsPoint(self.searchBar.frame, touchPoint)) {
-        [self. searchBar resignFirstResponder];
+        [self mapView:self.mapView searchAnnotationNotDetermined:location];
+        
+        if ([[self appDelegate] isInternetActive]) {
+            [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+                if ([placemarks count] > 0) {
+                    CLPlacemark* placemark = placemarks[0];
+                    [self mapView:self.mapView searchAnnotation:placemark];
+                }
+            }];
+        }
     }
 }
 
-- (void)handlePanFrom:(UIGestureRecognizer *)recognizer {
-    // It's not likely the user will pan in the search bar, but we can capture that too.
-    CGPoint touchPoint = [recognizer locationInView:self.view];
-    if (!CGRectContainsPoint(self.searchBar.frame, touchPoint)) {
-       [self. searchBar resignFirstResponder];
-    }
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
     // Return YES to prevent this gesture from interfering with, say, a pan on a map or table view, or a tap on a button in the tool bar.
     return YES;
 }
@@ -342,16 +396,12 @@ static float const LongTapDuration = 1.2;
 
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
-    if (self.trackingEnabled) {
-        NSDictionary* userInfo = notification.userInfo;
-        CLLocation* currentLocation = [userInfo objectForKey:@"currentLocation"];
-        [self mapView:self.mapView setRegionWithLocation:currentLocation];
-    }
+    DDLogInfo(@"notification: %@", [notification description]);
 }
 
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
-    
+    DDLogInfo(@"notification: %@", [notification description]);
 }
 
 @end
