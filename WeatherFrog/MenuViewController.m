@@ -12,8 +12,6 @@
 
 @interface MenuViewController ()
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
-
 @property (nonatomic, weak) IBOutlet UILabel* applicationNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* applicationVersionLabel;
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
@@ -42,6 +40,11 @@
 #else
     self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDeleagte] appVersion]];
 #endif
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,6 +165,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if (indexPath.section == 0) {
