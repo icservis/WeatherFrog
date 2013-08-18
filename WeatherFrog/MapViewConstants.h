@@ -11,7 +11,7 @@
 
 static double const kMapCenterLatitude = 48.15952f;
 static double const kMapCenterLongitude = 17.12769f;
-static float const kMapRadius = 10000.0f;
+static float const kMapRadiusMultiplier = 1000.0f;
 
 
 

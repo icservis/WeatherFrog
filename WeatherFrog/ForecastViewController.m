@@ -47,8 +47,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _locationTextView.text = nil;
-    _geocoderTextView.text = nil;
+    _locationTextView.text = [[[self appDelegate] currentLocation] description];
+    _geocoderTextView.text = [[[self appDelegate] currentPlacemark] description];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +59,7 @@
 
 #pragma mark - Shared objects
 
-- (AppDelegate*)appDeleagte
+- (AppDelegate*)appDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }

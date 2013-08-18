@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocatorViewController : UIViewController
+@interface LocatorViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate>
 
 @end

@@ -25,6 +25,8 @@
     #import "Lumberjack.h"
     #import "Reachability.h"
 
+    #import "MapViewConstants.h"
+
     #import "NSString+ISO8601Date.h"
     #import "NSDate+ISO8601Date.h"
     #import "NSString+URLEncoding.h"
@@ -36,7 +38,7 @@
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wunused-variable"
     #ifdef DEBUG
-    static int ddLogLevel = LOG_LEVEL_VERBOSE;
+    static int ddLogLevel = LOG_LEVEL_INFO;
     #else
     static int ddLogLevel = LOG_LEVEL_OFF;
     #endif

@@ -12,6 +12,9 @@
 		84089894176E104500F45397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089893176E104500F45397 /* QuartzCore.framework */; };
 		84089896176E105700F45397 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089895176E105700F45397 /* CoreLocation.framework */; };
 		84089898176E106500F45397 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089897176E106500F45397 /* CoreImage.framework */; };
+		845DEDFD17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
+		845DEDFE17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
+		845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */; };
 		847B914A17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
 		847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
 		847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */; };
@@ -200,6 +203,8 @@
 		84089893176E104500F45397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84089895176E105700F45397 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84089897176E106500F45397 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapAnnotation.h; sourceTree = "<group>"; };
+		845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapAnnotation.m; sourceTree = "<group>"; };
 		847B914817BFA6D600AD76E7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		847B914917BFA6D600AD76E7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		847B914C17BFB2FE00AD76E7 /* LocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorViewController.h; sourceTree = "<group>"; };
@@ -958,6 +963,8 @@
 				84DE4A1617BF86CF005AB3B8 /* Model.xcdatamodeld */,
 				847B916417BFCEC200AD76E7 /* Location.h */,
 				847B916517BFCEC200AD76E7 /* Location.m */,
+				845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */,
+				845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1090,6 +1097,7 @@
 			files = (
 				84DE491917BF7659005AB3B8 /* README.txt in Resources */,
 				848A550D176E09A2009B3F85 /* InfoPlist.strings in Resources */,
+				845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,6 +1133,7 @@
 				84DE48D217BF7601005AB3B8 /* AFPropertyListRequestOperation.m in Sources */,
 				84DE49CE17BF76CB005AB3B8 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				84DE49DE17BF76CB005AB3B8 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
+				845DEDFD17C0DA8400561B7B /* MKMapAnnotation.m in Sources */,
 				84DE497017BF767D005AB3B8 /* NSString+URLEncoding.m in Sources */,
 				84DE49CC17BF76CB005AB3B8 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				84DE48CE17BF7601005AB3B8 /* AFJSONRequestOperation.m in Sources */,
@@ -1220,6 +1229,7 @@
 				84DE48D117BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				848A550F176E09A2009B3F85 /* WeatherFrogTests.m in Sources */,
 				84DE49C717BF76CB005AB3B8 /* NSObject+MagicalDataImport.m in Sources */,
+				845DEDFE17C0DA8400561B7B /* MKMapAnnotation.m in Sources */,
 				84DE48F017BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */,
 				84DE49E117BF76CB005AB3B8 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */,
