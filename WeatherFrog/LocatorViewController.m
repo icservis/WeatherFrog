@@ -11,6 +11,9 @@
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
 
+static double const PointHysteresis = 10.0;
+static float const LongTapDuration = 1.2;
+
 @interface LocatorViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
@@ -18,6 +21,10 @@
 @property (nonatomic, weak) IBOutlet MKMapView* mapView;
 @property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
 @property (nonatomic) BOOL trackingEnabled;
+
+@property (nonatomic, strong) UITapGestureRecognizer* tapGestureRecognizer;
+@property (nonatomic, strong) UIPanGestureRecognizer* panGestureRecognizer;
+@property (nonatomic, strong) UILongPressGestureRecognizer* longPressGestureRecognizer;
 
 - (IBAction)trackingButtonTapped:(id)sender;
 
@@ -57,13 +64,27 @@
         geocoder = [[CLGeocoder alloc] init];
     }
     
+    //Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
+    
+    // UIGestureRecognizer
+    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.delegate = self;
+    longPress.minimumPressDuration = LongTapDuration;
+    self.longPressGestureRecognizer = longPress;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.mapView addGestureRecognizer:self.longPressGestureRecognizer];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.mapView removeGestureRecognizer:self.longPressGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,42 +188,52 @@
     }
 }
 
+
+
 #pragma mark - MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    DDLogVerbose(@"annotation: %@", [annotation description]);
     if ([annotation isKindOfClass:[MKMapAnnotation class]]) {
         
-        static NSString *identifier = @"PurplePin";
-        MKPinAnnotationView* annotationViewPin = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        if (annotationViewPin == nil) {
-            annotationViewPin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-            annotationViewPin.enabled = YES;
-            annotationViewPin.selected = YES;
-            annotationViewPin.pinColor = MKPinAnnotationColorPurple;
-            annotationViewPin.canShowCallout = YES;
-            annotationViewPin.animatesDrop = YES;
-            annotationViewPin.draggable = YES;
+        static NSString* identifier = @"PurplePin";
+        MKPinAnnotationView* annotationPinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationPinView == nil) {
+            annotationPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            annotationPinView.pinColor = MKPinAnnotationColorPurple;
+            annotationPinView.canShowCallout = YES;
+            annotationPinView.animatesDrop = YES;
+            [annotationPinView setDraggable:YES];
             
             UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
             [locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
-            annotationViewPin.leftCalloutAccessoryView = locationButton;
+            annotationPinView.leftCalloutAccessoryView = locationButton;
             
         } else {
-            annotationViewPin.annotation = annotation;
+            annotationPinView.annotation = annotation;
         }
-        return annotationViewPin;
         
-    } else {
-        
-        return nil;
+        return annotationPinView;
     }
+    
+    return nil;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
     if (newState == MKAnnotationViewDragStateEnding) {
         
+        if ([[self appDelegate] isInternetActive]) {
+            MKMapAnnotation* annotation = annotationView.annotation;
+            CLLocation* location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+            [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+                if ([placemarks count] > 0) {
+                    CLPlacemark* placemark = placemarks[0];
+                    [annotation updateWithPlacemark:placemark];
+                }
+            }];
+        }
     }
 }
 
@@ -255,6 +286,56 @@
 - (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
 {
     DDLogInfo(@"searchBarResultsListButtonClicked");
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (void)handleLongPress:(UIGestureRecognizer *)recognizer
+{
+    DDLogVerbose(@"recognizer: %@",[recognizer description]);
+    static CGPoint lastTouchPoint;
+    
+    CGPoint touchPoint = [recognizer locationInView:self.mapView];
+    CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    if (abs(touchPoint.x-lastTouchPoint.x) < PointHysteresis && abs(touchPoint.y-lastTouchPoint.y) < PointHysteresis) {
+        
+        DDLogInfo(@"Distace under limit");
+        
+    } else {
+        
+        [self. searchBar resignFirstResponder];
+        lastTouchPoint = touchPoint;
+        CLLocation* location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            if ([placemarks count] > 0) {
+                CLPlacemark* placemark = placemarks[0];
+                [self mapView:self.mapView searchAnnotation:placemark];
+            }
+        }];
+    }
+    
+}
+
+- (void)handleTapFrom:(UIGestureRecognizer *)recognizer {
+    // You don't want to dismiss the keyboard if a tap is detected within the bounds of the search bar...
+    CGPoint touchPoint = [recognizer locationInView:self.view];
+    if (!CGRectContainsPoint(self.searchBar.frame, touchPoint)) {
+        [self. searchBar resignFirstResponder];
+    }
+}
+
+- (void)handlePanFrom:(UIGestureRecognizer *)recognizer {
+    // It's not likely the user will pan in the search bar, but we can capture that too.
+    CGPoint touchPoint = [recognizer locationInView:self.view];
+    if (!CGRectContainsPoint(self.searchBar.frame, touchPoint)) {
+       [self. searchBar resignFirstResponder];
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    // Return YES to prevent this gesture from interfering with, say, a pan on a map or table view, or a tap on a button in the tool bar.
+    return YES;
 }
 
 #pragma mark - Notifications

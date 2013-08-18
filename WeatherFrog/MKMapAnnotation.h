@@ -10,9 +10,9 @@
 
 @interface MKMapAnnotation : NSObject<MKAnnotation>
 
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, readwrite, assign) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString* title;
+@property (nonatomic, readonly, copy) NSString* subtitle;
 
 - (id)initWithPlacemark:(CLPlacemark*)placemark;
 - (void)updateWithPlacemark:(CLPlacemark*)placemark;

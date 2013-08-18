@@ -48,7 +48,7 @@
                                     <constraint firstAttribute="height" constant="415" id="zit-yy-TVb"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="delegate" destination="K5O-4J-gBf" id="2Ez-hu-Kqb"/>
+                                    <outlet property="delegate" destination="K5O-4J-gBf" id="UKT-5W-QIJ"/>
                                 </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4k-5o-sS7">
@@ -86,7 +86,7 @@
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon" id="klB-SE-4kR"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="hPQ-7v-JD7" id="mXJ-5A-SF6"/>
+                        <outlet property="mapView" destination="hPQ-7v-JD7" id="cch-h5-6Lm"/>
                         <outlet property="revealButtonItem" destination="klB-SE-4kR" id="MWJ-Dh-gQ0"/>
                         <outlet property="searchBar" destination="Ozx-Gh-eye" id="1dH-ai-S8W"/>
                         <outlet property="searchDisplayController" destination="tds-Fm-TYS" id="o0d-t9-QJw"/>
