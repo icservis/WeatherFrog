@@ -45,4 +45,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Shared objects
+
+- (AppDelegate*)appDeleagte
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
 @end

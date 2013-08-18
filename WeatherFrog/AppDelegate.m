@@ -14,6 +14,8 @@
     Reachability* hostReachable;
     BOOL internetActive;
     BOOL hostActive;
+    CLLocationManager* locationManager;
+    CLGeocoder* geocoder;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -45,6 +47,19 @@
         [self openSession];
     }
     
+    // CLLocation
+    if (locationManager == nil) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        locationManager.distanceFilter = 500;
+        locationManager.delegate = self;
+    }
+    
+    // CLGeocoder
+    if (geocoder == nil) {
+        geocoder = [[CLGeocoder alloc] init];
+    }
+
     return YES;
 }
 							
@@ -52,6 +67,13 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    if ([CLLocationManager locationServicesEnabled] == YES) {
+        [locationManager startMonitoringSignificantLocationChanges];
+    } else {
+        [locationManager stopUpdatingLocation];
+        [locationManager stopMonitoringSignificantLocationChanges];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -70,6 +92,19 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    if ([CLLocationManager locationServicesEnabled] == YES) {
+        
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+            [locationManager startUpdatingLocation];
+        } else {
+            [locationManager startMonitoringSignificantLocationChanges];
+        }
+        
+    } else {
+        [locationManager stopUpdatingLocation];
+        [locationManager stopMonitoringSignificantLocationChanges];
+    }
     
     [FBAppEvents activateApp];
     [FBSession.activeSession handleDidBecomeActive];
@@ -279,5 +314,44 @@
         versText = [NSString stringWithFormat:@"%@", buildNum];
     return versText;
 }
+
+#pragma mark - CLocationDelegete
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    DDLogInfo(@"status: %i", status);
+    if (status != kCLAuthorizationStatusAuthorized) {
+        [locationManager stopUpdatingLocation];
+        [locationManager stopMonitoringSignificantLocationChanges];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation* lastLocation = [locations lastObject];
+    NSDate* eventDate = lastLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    CLLocationAccuracy accuracy = lastLocation.horizontalAccuracy;
+    
+    if (abs(howRecent) < 15.0 && accuracy < kCLLocationAccuracyHundredMeters) {
+        _currentLocation = lastLocation;
+        [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
+        DDLogVerbose(@"location: %@", [_currentLocation description]);
+        
+        if (internetActive) {
+            [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+                if ([placemarks count] > 0) {
+                    _currentPlacemark = placemarks[0];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
+                    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
+                }
+            }];
+        }
+    }
+    
+    
+    
+}
+
 
 @end
