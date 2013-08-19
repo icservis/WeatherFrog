@@ -31,7 +31,7 @@
     } else if ([self.placemark.name length] > 0) {
         return self.placemark.name;
     } else {
-        return NSLocalizedString(@"No location", nil);
+        return NSLocalizedString(@"Placemark", nil);
     }
 }
 
@@ -53,7 +53,7 @@
         
     } else {
         return [NSString stringWithFormat:
-                @"Lat: %.8f, Lng: %.8f",
+                @"@ %.5f, %.5f",
                 [self.latitude doubleValue],
                 [self.longitude doubleValue]];
     }

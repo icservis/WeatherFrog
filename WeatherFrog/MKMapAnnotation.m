@@ -43,7 +43,7 @@
 
 - (NSString*)formatTitle:(CLPlacemark*)placemark
 {
-    if (placemark.name == nil) {
+    if (placemark.name == nil || [placemark.name length] == 0) {
         
         if (placemark.addressDictionary != nil) {
             NSArray* formattedAddress = [placemark.addressDictionary objectForKey:@"FormattedAddressLines"];
