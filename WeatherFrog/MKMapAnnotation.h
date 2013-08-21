@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString* title;
 @property (nonatomic, readonly, copy) NSString* subtitle;
+@property (nonatomic, readonly) BOOL hasPlacemark;
 
 - (id)initWithPlacemark:(CLPlacemark*)placemark;
 - (void)updateWithPlacemark:(CLPlacemark*)placemark;

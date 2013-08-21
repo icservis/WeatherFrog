@@ -7,13 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "Forecast.h"
 #import "ForecastViewController.h"
 #import "MenuViewController.h"
+#import "YrApiService.h"
+#import "GoogleApiService.h"
+
+@class Forecast;
 
 @interface ForecastViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
-@property (nonatomic, weak) IBOutlet UITextView* locationTextView;
 @property (nonatomic, weak) IBOutlet UITextView* geocoderTextView;
 
 @end
@@ -37,8 +41,10 @@
     self.title = NSLocalizedString(@"Forecast", nil);
     
     [self.revealButtonItem setTarget: self.revealViewController];
-    [self.revealButtonItem setAction: @selector( revealToggle: )];
+    [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
@@ -47,14 +53,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _locationTextView.text = [[[self appDelegate] currentLocation] description];
-    _geocoderTextView.text = [[[self appDelegate] currentPlacemark] description];
+    
+    [self performForecastWithPlacemark:_selectedPlacemark];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    _forecasts = nil;
+    _selectedPlacemark = nil;
+    _currentPlacemark = nil;
 }
 
 #pragma mark - Shared objects
@@ -64,22 +73,42 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
+#pragma mark - Setters and Getters
+
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
+    _selectedPlacemark = selectedPlacemark;
+    
+}
+
+#pragma mark - Forecast
+
+- (void)performForecastWithPlacemark:(CLPlacemark*)placemark
+{
+    _geocoderTextView.text = [placemark description];
+    
+    [[YrApiService sharedService] forecastWithLocation:placemark.location success:^(Forecast *forecast) {
+        DDLogVerbose(@"forecast: %@", [forecast description]);
+    } failure:^{
+        DDLogError(@"error");
+    }];
+}
+
 #pragma mark - Notifications
 
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
     DDLogInfo(@"notification: %@", [notification description]);
-    NSDictionary* userInfo = notification.userInfo;
-    CLLocation* currentLocation = [userInfo objectForKey:@"currentLocation"];
-    _locationTextView.text = [currentLocation description];
 }
 
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
     DDLogInfo(@"notification: %@", [notification description]);
     NSDictionary* userInfo = notification.userInfo;
-    CLLocation* currentPlacemark = [userInfo objectForKey:@"currentPlacemark"];
-    _geocoderTextView.text = [currentPlacemark description];
+    CLPlacemark* currentPlacemark = [userInfo objectForKey:@"currentPlacemark"];
+    
+    _currentPlacemark = currentPlacemark;
 }
 
 @end

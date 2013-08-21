@@ -40,6 +40,10 @@
 #else
     self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDeleagte] appVersion]];
 #endif
+    
+    //Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,6 +55,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    _locatorViewController = nil;
+    _forecastViewController = nil;
+    _currentPlacemark = nil;
+    _selectedPlacemark = nil;
 }
 
 #pragma mark - Navigation
@@ -72,6 +80,18 @@
             UIViewController* frontViewController = [[(UINavigationController*)dvc viewControllers] objectAtIndex:0];
             [nc setViewControllers: @[ frontViewController ] animated: YES];
             [rvc setFrontViewPosition: FrontViewPositionLeft animated: YES];
+            
+            if ([segue.identifier isEqualToString:@"showLocator"]) {
+                LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
+                locatorViewController.selectedPlacemark = _selectedPlacemark;
+                _locatorViewController = locatorViewController;
+            }
+            
+            if ([segue.identifier isEqualToString:@"showForecast"]) {
+                ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
+                forecastViewController.selectedPlacemark = _selectedPlacemark;
+                _forecastViewController = forecastViewController;
+            }
         };
     }
     
@@ -80,6 +100,8 @@
         SettingsViewController* settingsViewController = [[settingsNavController viewControllers] objectAtIndex:0];
         settingsViewController.delegate = self;
     }
+    
+    
 }
 
 #pragma mark - Shared objects
@@ -89,6 +111,7 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
+
 #pragma mark - SettingsViewControllerDelegate
 
 - (void)closeSettingsViewController:(UIViewController *)controller
@@ -96,6 +119,15 @@
     [self dismissViewControllerAnimated:YES completion:^{
         DDLogInfo(@"controller: %@", [controller description]);
     }];
+}
+
+#pragma mark - Setters and Getters
+
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
+    _selectedPlacemark = selectedPlacemark;
+    
 }
 
 #pragma mark - UITableViewdataSource
@@ -173,10 +205,26 @@
         if (indexPath.row == 0) {
             [self performSegueWithIdentifier:@"showLocator" sender:cell];
         } else if (indexPath.row ==1) {
+            _selectedPlacemark = _currentPlacemark;
             [self performSegueWithIdentifier:@"showForecast" sender:cell];
         }
         
     }
+}
+
+#pragma mark - Notifications
+
+- (void)locationManagerUpdate:(NSNotification*)notification
+{
+    DDLogInfo(@"notification: %@", [notification description]);
+}
+
+- (void)reverseGeocoderUpdate:(NSNotification*)notification
+{
+    DDLogInfo(@"notification: %@", [notification description]);
+    NSDictionary* userInfo = notification.userInfo;
+    CLPlacemark* currentPlacemark = [userInfo objectForKey:@"currentPlacemark"];
+    _currentPlacemark = currentPlacemark;
 }
 
 @end

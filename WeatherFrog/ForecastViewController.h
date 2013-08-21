@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class Forecast;
+
+@protocol ForecastViewControllerDelegate <NSObject>
+
+@end
+
 @interface ForecastViewController : UIViewController
+
+@property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSArray* forecasts;
+@property (nonatomic, strong) CLPlacemark* currentPlacemark;
+@property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
 @end

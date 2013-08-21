@@ -10,6 +10,7 @@
 #import "LocatorViewController.h"
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
+#import "Location.h"
 
 static double const PointHysteresis = 10.0;
 static float const LongTapDuration = 1.2;
@@ -23,9 +24,6 @@ static float const LongTapDuration = 1.2;
 @property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
 @property (nonatomic) MKUserTrackingMode trackingMode;
 @property (nonatomic) MKMapType mapType;
-
-@property (nonatomic, strong) UITapGestureRecognizer* tapGestureRecognizer;
-@property (nonatomic, strong) UIPanGestureRecognizer* panGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer* longPressGestureRecognizer;
 
 - (IBAction)trackingButtonTapped:(id)sender;
@@ -55,6 +53,8 @@ static float const LongTapDuration = 1.2;
     [self.revealButtonItem setAction: @selector( revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
+    self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
+    
     self.title = NSLocalizedString(@"Locator", nil);
     
     // Map defaults
@@ -65,10 +65,6 @@ static float const LongTapDuration = 1.2;
     if (geocoder == nil) {
         geocoder = [[CLGeocoder alloc] init];
     }
-    
-    //Notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
     
     // UIGestureRecognizer
     UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -83,6 +79,17 @@ static float const LongTapDuration = 1.2;
     [self.mapView addGestureRecognizer:self.longPressGestureRecognizer];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (_selectedPlacemark != nil) {
+        [self mapView:self.mapView setRegionWithPlacemark:_selectedPlacemark];
+        [self mapView:self.mapView searchAnnotation:_selectedPlacemark];
+        self.trackingMode = MKUserTrackingModeNone;
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -93,6 +100,10 @@ static float const LongTapDuration = 1.2;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    _selectedPlacemark = nil;
+    _selectedLocation = nil;
+    _longPressGestureRecognizer = nil;
+    geocoder = nil;
 }
 
 #pragma mark - Shared objects
@@ -102,7 +113,14 @@ static float const LongTapDuration = 1.2;
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
-#pragma mark - Tracking
+#pragma mark - Setters and Getters
+
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
+    _selectedPlacemark = selectedPlacemark;
+    
+}
 
 - (void)setTrackingMode:(MKUserTrackingMode)trackingMode
 {
@@ -119,8 +137,6 @@ static float const LongTapDuration = 1.2;
         _trackingButton.title = NSLocalizedString(@"Tracking OFF", nil);
     }
 }
-
-#pragma maik - Map type
 
 - (void)setMapType:(MKMapType)mapType
 {
@@ -166,9 +182,13 @@ static float const LongTapDuration = 1.2;
     }
 }
 
-- (IBAction)showLocation:(id)sender
+- (IBAction)showForecast:(id)sender
 {
     DDLogInfo(@"sender: %@", [sender description]);
+    
+    SWRevealViewController* rvc = self.revealViewController;
+    MenuViewController* menuViewController = (MenuViewController*)rvc.rearViewController;
+    [menuViewController performSegueWithIdentifier:@"showForecast" sender:nil];
 }
 
 #pragma mark - MKMapView
@@ -200,7 +220,6 @@ static float const LongTapDuration = 1.2;
             if ([placemarks count] > 0) {
                 
                 CLPlacemark* placemark = placemarks[0];
-
                 [self mapView:self.mapView setRegionWithPlacemark:placemark];
                 [self mapView:self.mapView searchAnnotation:placemark];
                 self.trackingMode = MKUserTrackingModeNone;
@@ -216,7 +235,7 @@ static float const LongTapDuration = 1.2;
     MKMapAnnotation* searchAnnotation = nil;
     
     for (id<MKAnnotation> annotation in [mapView annotations]) {
-        if ([annotation isKindOfClass:[MKMapAnnotation class]]) {
+        if ([annotation isKindOfClass:[MKMapAnnotation class]]) { 
             searchAnnotation = (MKMapAnnotation*)annotation;
             [searchAnnotation updateWithPlacemark:placemark];
         }
@@ -226,6 +245,13 @@ static float const LongTapDuration = 1.2;
         searchAnnotation = [[MKMapAnnotation alloc] initWithPlacemark:placemark];
         [mapView addAnnotation:searchAnnotation];
     }
+    
+    _selectedLocation = placemark.location;
+    _selectedPlacemark = placemark;
+    
+    SWRevealViewController* rvc = self.revealViewController;
+    MenuViewController* menuViewController = (MenuViewController*)rvc.rearViewController;
+    menuViewController.selectedPlacemark = placemark;
 }
 
 - (void)mapView:(MKMapView *)mapView searchAnnotationNotDetermined:(CLLocation*)location
@@ -243,6 +269,9 @@ static float const LongTapDuration = 1.2;
         searchAnnotation = [[MKMapAnnotation alloc] initWithLocation:location];
         [mapView addAnnotation:searchAnnotation];
     }
+    
+    _selectedLocation = location;
+    _selectedPlacemark = nil;
 }
 
 
@@ -263,12 +292,25 @@ static float const LongTapDuration = 1.2;
             annotationPinView.animatesDrop = YES;
             [annotationPinView setDraggable:YES];
             
-            UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-            [locationButton addTarget:self action:@selector(showLocation:) forControlEvents:UIControlEventTouchUpInside];
-            annotationPinView.leftCalloutAccessoryView = locationButton;
-            
         } else {
             annotationPinView.annotation = annotation;
+        }
+        
+        BOOL hasPlacemark = NO;
+        if ([annotation isKindOfClass:[MKMapAnnotation class]]) {
+            MKMapAnnotation* mapAnnotation = (MKMapAnnotation*)annotation;
+            hasPlacemark = mapAnnotation.hasPlacemark;
+        }
+        if ([annotation isKindOfClass:[Location class]]) {
+            hasPlacemark = YES;
+        }
+        
+        if (hasPlacemark == YES) {
+            UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+            [locationButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
+            annotationPinView.leftCalloutAccessoryView = locationButton;
+        } else {
+            annotationPinView.leftCalloutAccessoryView = nil;
         }
         
         return annotationPinView;
@@ -390,18 +432,6 @@ static float const LongTapDuration = 1.2;
 {
     // Return YES to prevent this gesture from interfering with, say, a pan on a map or table view, or a tap on a button in the tool bar.
     return YES;
-}
-
-#pragma mark - Notifications
-
-- (void)locationManagerUpdate:(NSNotification*)notification
-{
-    DDLogInfo(@"notification: %@", [notification description]);
-}
-
-- (void)reverseGeocoderUpdate:(NSNotification*)notification
-{
-    DDLogInfo(@"notification: %@", [notification description]);
 }
 
 @end

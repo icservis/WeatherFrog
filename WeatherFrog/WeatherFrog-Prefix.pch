@@ -51,8 +51,5 @@
 
     #define kAPIHost @"weatherfrog.info"
     #define kAPIBaseUrl @"http://api.weatherfrog.info/1/"
-    #define kAPIWeatherUrl @"http://api.yr.no/weatherapi/"
-    #define kAPIGeonamesUrl @"http://api.geonames.org/"
-    #define kAPIElevatorUrl @"http://maps.googleapis.com/maps/api/"
 
 #endif

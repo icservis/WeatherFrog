@@ -12,6 +12,7 @@
 
 @property (nonatomic, readwrite, copy) NSString* title;
 @property (nonatomic, readwrite, copy) NSString* subtitle;
+@property (nonatomic, readwrite) BOOL hasPlacemark;
 
 @end
 
@@ -29,6 +30,7 @@
         self.coordinate = placemark.location.coordinate;
         self.title = [self formatTitle:placemark];
         self.subtitle = [self formatSubtitle:placemark];
+        self.hasPlacemark = YES;
     }
     return self;
 }
@@ -38,6 +40,7 @@
     self.coordinate = placemark.location.coordinate;
     self.title = [self formatTitle:placemark];
     self.subtitle = [self formatSubtitle:placemark];
+    self.hasPlacemark = YES;
 }
 
 
@@ -75,6 +78,7 @@
         self.coordinate = location.coordinate;
         self.title = NSLocalizedString(@"Placemark", nil);
         self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
+        self.hasPlacemark = NO;
     }
     return self;
 }
@@ -84,6 +88,7 @@
     self.coordinate = location.coordinate;
     self.title = NSLocalizedString(@"Placemark", nil);
     self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
+    self.hasPlacemark = NO;
 }
 
 @end

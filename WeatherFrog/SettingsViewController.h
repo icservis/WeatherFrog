@@ -16,6 +16,6 @@
 
 @interface SettingsViewController : UITableViewController
 
-@property (nonatomic, weak) id<SettingsViewControllerDelegate>delegate;
+@property (nonatomic, weak) id<SettingsViewControllerDelegate> delegate;
 
 @end
