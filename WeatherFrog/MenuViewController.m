@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MenuViewController.h"
-#import "LocationCell.h"
 #import "Forecast.h"
 #import "Location.h"
 
@@ -53,7 +52,7 @@
     [self.forecastButton setTitle:NSLocalizedString(@"Current location", nil) forState:UIControlStateNormal];
     
     // NSFetchedResultsController
-    self.fetchedResultsController = [Location fetchAllSortedBy:@"timestamp" ascending:YES withPredicate:nil groupBy:@"name" delegate:self];
+    self.fetchedResultsController = [Location fetchAllSortedBy:@"timestamp" ascending:YES withPredicate:nil groupBy:@"isMarked" delegate:self];
     
     // Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
@@ -156,6 +155,7 @@
     
     LocationCell* cell = (LocationCell*)[tableView dequeueReusableCellWithIdentifier:LocationCellIdentifier forIndexPath:indexPath];
     cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.delegate = self;
     
     return cell;
 }
@@ -163,7 +163,15 @@
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return sectionInfo.name;
+    
+    NSString* sectionInfoName = sectionInfo.name;
+    
+    BOOL isMarked = [sectionInfoName boolValue];
+    if (isMarked) {
+        return NSLocalizedString(@"Stored locations", nil);
+    } else {
+        return NSLocalizedString(@"Last locations", nil);
+    }
 }
 
 #pragma mark - UITableviewDelegate
@@ -177,6 +185,11 @@
     
     self.selectedPlacemark = location.placemark;
     [self performSegueWithIdentifier:@"showForecast" sender:cell];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 #pragma mark - Notifications
@@ -251,6 +264,17 @@
     [self dismissViewControllerAnimated:YES completion:^{
         DDLogInfo(@"controller: %@", [controller description]);
     }];
+}
+
+#pragma mark - LocationCellDelegate
+
+- (void)reloadTableViewCell:(UITableViewCell *)cell
+{
+    DDLogInfo(@"cell: %@", [cell description]);
+    LocationCell* locationCell = (LocationCell*)cell;
+    NSIndexPath* indexpath = [self.tableView indexPathForCell:locationCell];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

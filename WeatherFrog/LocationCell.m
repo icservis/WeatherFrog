@@ -13,6 +13,9 @@
 
 @property (nonatomic, weak) IBOutlet UILabel* title;
 @property (nonatomic, weak) IBOutlet UILabel* subTitle;
+@property (nonatomic, weak) IBOutlet UIButton* markButton;
+
+- (IBAction)markButtonTapped:(id)sender;
 
 @end
 
@@ -36,8 +39,29 @@
 
 - (void)setLocation:(Location *)location
 {
+    _location = location;
     _title.text = [location.placemark title];
     _subTitle.text = [location.placemark subTitle];
+    
+    if ([location.isMarked boolValue]) {
+        self.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        self.accessoryType = UITableViewCellAccessoryNone;
+    }
+}
+
+- (IBAction)markButtonTapped:(id)sender
+{
+    DDLogVerbose(@"location: %@", [self.location description]);
+    if ([self.location.isMarked boolValue]) {
+        self.location.isMarked = [NSNumber numberWithBool:NO];
+    } else {
+        self.location.isMarked = [NSNumber numberWithBool:YES];
+    }
+    self.location.timestamp = [NSDate date];
+    DDLogInfo(@"Location: %@", [self.location description]);
+    
+    [self.delegate reloadTableViewCell:self];
 }
 
 @end

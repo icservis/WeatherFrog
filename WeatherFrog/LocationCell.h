@@ -10,8 +10,15 @@
 
 @class Location;
 
+@protocol LocationCellDelegate <NSObject>
+
+- (void)reloadTableViewCell:(UITableViewCell*)cell;
+
+@end
+
 @interface LocationCell : UITableViewCell
 
 @property (nonatomic, strong) Location* location;
+@property (nonatomic, weak) id <LocationCellDelegate> delegate;
 
 @end

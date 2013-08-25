@@ -22,6 +22,8 @@
     location.altitude = [NSNumber numberWithFloat:altitude];
     location.timezone = timezone;
     location.placemark = placemark;
+    location.timestamp = [NSDate date];
+    location.isMarked = [NSNumber numberWithBool:NO];
     
     DDLogInfo(@"Location: %@", [location description]);
     
@@ -87,7 +89,7 @@
 
 - (NSString*)description
 {
-    return [NSString stringWithFormat:@"name: %@, timestamp: %@, latitude: %.5f, longitude: %.5f, altitude: %.0f, placemark: %@", self.name, [NSString stringWithDate:self.timestamp], [self.latitude floatValue], [self.longitude floatValue], [self.altitude floatValue], [self.placemark description]];
+    return [NSString stringWithFormat:@"name: %@, timestamp: %@, latitude: %.5f, longitude: %.5f, altitude: %.0f, placemark: %@, isMarked: %@", self.name, [NSString stringWithDate:self.timestamp], [self.latitude floatValue], [self.longitude floatValue], [self.altitude floatValue], [self.placemark description], self.isMarked];
 }
 
 @end
