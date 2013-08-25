@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Forecast+Fetch.h"
 #import "Location+Store.h"
+#import "GoogleApiService.h"
 
 @implementation Forecast (Fetch)
 
@@ -71,17 +72,24 @@
         forecast.validTill = [NSDate dateWithTimeIntervalSinceNow:86400];
         forecast.timestamp = [NSDate date];
         
-        [Location locationforForecast:forecast];
+        if (force == NO) {
+            [Location locationforForecast:forecast];
+        }
         
         AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if ([appDelegate isHostActive]) {
+            
+            
+            
+            
+            
             
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                 // Do a taks in the background
                 
                 NSInteger cycles = 100;
                 for (int i=0;i<cycles;i++) {
-                    [NSThread sleepForTimeInterval:0.1f];
+                    [NSThread sleepForTimeInterval:0.01f];
                     float pgs = (float)i/(float)cycles;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         // Finish in main queue

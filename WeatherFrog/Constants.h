@@ -12,7 +12,7 @@
 
 #pragma mark - Forecast
 
-static float const kForecastAccuracy = 5500.0f;
+static float const kForecastAccuracy = 2500.0f;
 static int const kForecastValidity = 3600;
 static float const kGeocoderAccuracy = 250.0f;
 

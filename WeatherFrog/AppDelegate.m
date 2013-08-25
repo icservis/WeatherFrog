@@ -339,6 +339,11 @@
     CLLocationAccuracy accuracy = lastLocation.horizontalAccuracy;
     
     if (abs(howRecent) < 15.0 && accuracy < kCLLocationAccuracyHundredMeters) {
+        
+        if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < kForecastAccuracy) {
+            return;
+        }
+        
         _currentLocation = lastLocation;
         [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
         DDLogVerbose(@"location: %@", [_currentLocation description]);
