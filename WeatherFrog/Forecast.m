@@ -2,7 +2,7 @@
 //  Forecast.m
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 21.08.13.
+//  Created by Libor Kučera on 24.08.13.
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
@@ -16,11 +16,12 @@
 @dynamic altitude;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic timestamp;
-@dynamic validTill;
 @dynamic placemark;
+@dynamic timestamp;
 @dynamic timezone;
-@dynamic weather;
+@dynamic validTill;
+@dynamic name;
 @dynamic astro;
+@dynamic weather;
 
 @end

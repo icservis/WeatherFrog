@@ -13,12 +13,8 @@
 #import "ForecastViewController.h"
 
 
-@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate>
+@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) LocatorViewController* locatorViewController;
-@property (nonatomic, strong) ForecastViewController* forecastViewController;
-
-@property (nonatomic, strong) CLPlacemark* currentPlacemark;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
 @end

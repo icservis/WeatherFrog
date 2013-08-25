@@ -36,8 +36,8 @@
 
 - (void)setLocation:(Location *)location
 {
-    _title.text = location.title;
-    _subTitle.text = location.subtitle;
+    _title.text = [location.placemark title];
+    _subTitle.text = [location.placemark subTitle];
 }
 
 @end

@@ -9,12 +9,20 @@
 #import "AppDelegate.h"
 #import "MenuViewController.h"
 #import "LocationCell.h"
+#import "Forecast.h"
+#import "Location.h"
 
 @interface MenuViewController ()
 
 @property (nonatomic, weak) IBOutlet UILabel* applicationNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* applicationVersionLabel;
+@property (nonatomic, weak) IBOutlet UIButton* locatorButton;
+@property (nonatomic, weak) IBOutlet UIButton* forecastButton;
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
+
+- (IBAction)locatorButtonTapped:(id)sender;
+- (IBAction)forecastButtonTapped:(id)sender;
 
 @end
 
@@ -36,12 +44,18 @@
     
     self.applicationNameLabel.text = NSLocalizedString(@"WeatherFrog", nil);
 #ifdef DEBUG
-    self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDeleagte] appVersionBuild]];
+    self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDelegate] appVersionBuild]];
 #else
     self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDeleagte] appVersion]];
 #endif
     
-    //Notifications
+    [self.locatorButton setTitle:NSLocalizedString(@"Locator", nil) forState:UIControlStateNormal];
+    [self.forecastButton setTitle:NSLocalizedString(@"Current location", nil) forState:UIControlStateNormal];
+    
+    // NSFetchedResultsController
+    self.fetchedResultsController = [Location fetchAllSortedBy:@"timestamp" ascending:YES withPredicate:nil groupBy:@"name" delegate:self];
+    
+    // Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
 }
@@ -55,10 +69,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    _locatorViewController = nil;
-    _forecastViewController = nil;
-    _currentPlacemark = nil;
-    _selectedPlacemark = nil;
+    
+    self.selectedPlacemark = nil;
 }
 
 #pragma mark - Navigation
@@ -84,13 +96,11 @@
             if ([segue.identifier isEqualToString:@"showLocator"]) {
                 LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
                 locatorViewController.selectedPlacemark = _selectedPlacemark;
-                _locatorViewController = locatorViewController;
             }
             
             if ([segue.identifier isEqualToString:@"showForecast"]) {
                 ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
                 forecastViewController.selectedPlacemark = _selectedPlacemark;
-                _forecastViewController = forecastViewController;
             }
         };
     }
@@ -100,54 +110,39 @@
         SettingsViewController* settingsViewController = [[settingsNavController viewControllers] objectAtIndex:0];
         settingsViewController.delegate = self;
     }
-    
-    
 }
 
 #pragma mark - Shared objects
 
-- (AppDelegate*)appDeleagte
+- (AppDelegate*)appDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
+#pragma mark - IBActions
 
-#pragma mark - SettingsViewControllerDelegate
-
-- (void)closeSettingsViewController:(UIViewController *)controller
+- (IBAction)locatorButtonTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        DDLogInfo(@"controller: %@", [controller description]);
-    }];
+    [self performSegueWithIdentifier:@"showLocator" sender:self];
 }
 
-#pragma mark - Setters and Getters
-
-- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+- (IBAction)forecastButtonTapped:(id)sender
 {
-    DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
-    _selectedPlacemark = selectedPlacemark;
-    
+    self.selectedPlacemark = [[self appDelegate] currentPlacemark];
+    [self performSegueWithIdentifier:@"showForecast" sender:self];
 }
 
 #pragma mark - UITableViewdataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 2;
-    } else if (section == 1) {
-        return  0;
-    } else if (section == 2) {
-        return  0;
-    }
-    
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+	return [sectionInfo numberOfObjects];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,40 +152,18 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    static NSString *LocationCellIdentifier = @"LocationCell";
+    static NSString* LocationCellIdentifier = @"LocationCell";
     
-    if (indexPath.section == 0) {
-        
-        UITableViewCell* cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = NSLocalizedString(@"Locator", nil);
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = NSLocalizedString(@"Current location", nil);
-        }
-        
-        return cell;
-        
-    } else {
-        LocationCell* cell = (LocationCell*)[tableView dequeueReusableCellWithIdentifier:LocationCellIdentifier forIndexPath:indexPath];
-        return cell;
-    }
+    LocationCell* cell = (LocationCell*)[tableView dequeueReusableCellWithIdentifier:LocationCellIdentifier forIndexPath:indexPath];
+    cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    return nil;
+    return cell;
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return nil;
-    } else if (section == 1) {
-        return NSLocalizedString(@"Recent Places", nil);
-    } else if (section == 2) {
-        return NSLocalizedString(@"Saved Places", nil);
-    }
-    
-    return 0;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return sectionInfo.name;
 }
 
 #pragma mark - UITableviewDelegate
@@ -198,33 +171,86 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
-        
-        if (indexPath.row == 0) {
-            [self performSegueWithIdentifier:@"showLocator" sender:cell];
-        } else if (indexPath.row ==1) {
-            _selectedPlacemark = _currentPlacemark;
-            [self performSegueWithIdentifier:@"showForecast" sender:cell];
-        }
-        
-    }
+    LocationCell* cell = (LocationCell*)[tableView cellForRowAtIndexPath:indexPath];
+    Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    self.selectedPlacemark = location.placemark;
+    [self performSegueWithIdentifier:@"showForecast" sender:cell];
 }
 
 #pragma mark - Notifications
 
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
-    DDLogInfo(@"notification: %@", [notification description]);
+    DDLogVerbose(@"notification: %@", [notification description]);
 }
 
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
-    DDLogInfo(@"notification: %@", [notification description]);
-    NSDictionary* userInfo = notification.userInfo;
-    CLPlacemark* currentPlacemark = [userInfo objectForKey:@"currentPlacemark"];
-    _currentPlacemark = currentPlacemark;
+    DDLogVerbose(@"notification: %@", [notification description]);
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+		   atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch(type)
+	{
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+						  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+						  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+	   atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+	  newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.tableView;
+	
+    switch(type)
+	{
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+							 withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+							 withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+							 withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+							 withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+#pragma mark - SettingsViewControllerDelegate
+
+- (void)closeSettingsViewController:(UIViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        DDLogInfo(@"controller: %@", [controller description]);
+    }];
 }
 
 @end

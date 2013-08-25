@@ -43,16 +43,22 @@
 		848A5505176E09A2009B3F85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54E1176E09A1009B3F85 /* UIKit.framework */; };
 		848A550D176E09A2009B3F85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 848A550B176E09A2009B3F85 /* InfoPlist.strings */; };
 		848A550F176E09A2009B3F85 /* WeatherFrogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A550E176E09A2009B3F85 /* WeatherFrogTests.m */; };
-		848CC82E17C2B05E00EE02BD /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC82D17C2B05E00EE02BD /* Location.m */; };
-		848CC82F17C2B05E00EE02BD /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC82D17C2B05E00EE02BD /* Location.m */; };
 		848CC83A17C2BA2300EE02BD /* GoogleApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC83917C2BA2300EE02BD /* GoogleApiService.m */; };
 		848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC83917C2BA2300EE02BD /* GoogleApiService.m */; };
+		84905CFC17C890E400402857 /* Forecast+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFB17C890E400402857 /* Forecast+Fetch.m */; };
+		84905CFD17C890E400402857 /* Forecast+Fetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFB17C890E400402857 /* Forecast+Fetch.m */; };
+		84905D0017C89F3300402857 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFF17C89F3300402857 /* Forecast.m */; };
+		84905D0117C89F3300402857 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFF17C89F3300402857 /* Forecast.m */; };
+		84905D0517C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84905D0617C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84905D0917C8E7E600402857 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0817C8E7E600402857 /* Location.m */; };
+		84905D0A17C8E7E600402857 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0817C8E7E600402857 /* Location.m */; };
+		84905D0D17C9381B00402857 /* Location+Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0C17C9381B00402857 /* Location+Store.m */; };
+		84905D0E17C9381B00402857 /* Location+Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0C17C9381B00402857 /* Location+Store.m */; };
 		84BEAEE617C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEE717C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEED17C55E09008B828E /* YrApiService.m */; };
 		84BEAEEF17C55E09008B828E /* YrApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEED17C55E09008B828E /* YrApiService.m */; };
-		84BEAEF617C5642B008B828E /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEF517C5642B008B828E /* Forecast.m */; };
-		84BEAEF717C5642B008B828E /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEF517C5642B008B828E /* Forecast.m */; };
 		84BEAEFA17C56DB6008B828E /* Astro.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEF917C56DB6008B828E /* Astro.m */; };
 		84BEAEFB17C56DB6008B828E /* Astro.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEF917C56DB6008B828E /* Astro.m */; };
 		84DE48AD17BF757E005AB3B8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE48AC17BF757E005AB3B8 /* Security.framework */; };
@@ -247,16 +253,22 @@
 		848A550A176E09A2009B3F85 /* WeatherFrogTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeatherFrogTests-Info.plist"; sourceTree = "<group>"; };
 		848A550C176E09A2009B3F85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		848A550E176E09A2009B3F85 /* WeatherFrogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrogTests.m; sourceTree = "<group>"; };
-		848CC82C17C2B05E00EE02BD /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		848CC82D17C2B05E00EE02BD /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		848CC83817C2BA2300EE02BD /* GoogleApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleApiService.h; sourceTree = "<group>"; };
 		848CC83917C2BA2300EE02BD /* GoogleApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleApiService.m; sourceTree = "<group>"; };
+		84905CFA17C890E400402857 /* Forecast+Fetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+Fetch.h"; sourceTree = "<group>"; };
+		84905CFB17C890E400402857 /* Forecast+Fetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+Fetch.m"; sourceTree = "<group>"; };
+		84905CFE17C89F3300402857 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecast.h; sourceTree = "<group>"; };
+		84905CFF17C89F3300402857 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecast.m; sourceTree = "<group>"; };
+		84905D0317C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLPlacemark+MKAnnotationDelegate.h"; path = "CLPlacemark/CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
+		84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLPlacemark+MKAnnotationDelegate.m"; path = "CLPlacemark/CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
+		84905D0717C8E7E600402857 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		84905D0817C8E7E600402857 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		84905D0B17C9381B00402857 /* Location+Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Store.h"; sourceTree = "<group>"; };
+		84905D0C17C9381B00402857 /* Location+Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Store.m"; sourceTree = "<group>"; };
 		84BEAEE417C52EA1008B828E /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		84BEAEE517C52EA1008B828E /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		84BEAEEC17C55E09008B828E /* YrApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YrApiService.h; sourceTree = "<group>"; };
 		84BEAEED17C55E09008B828E /* YrApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YrApiService.m; sourceTree = "<group>"; };
-		84BEAEF417C5642B008B828E /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecast.h; sourceTree = "<group>"; };
-		84BEAEF517C5642B008B828E /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecast.m; sourceTree = "<group>"; };
 		84BEAEF817C56DB6008B828E /* Astro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Astro.h; sourceTree = "<group>"; };
 		84BEAEF917C56DB6008B828E /* Astro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Astro.m; sourceTree = "<group>"; };
 		84DE48AC17BF757E005AB3B8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -542,6 +554,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84905D0217C8B40300402857 /* CLPlacemark */ = {
+			isa = PBXGroup;
+			children = (
+				84905D0317C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.h */,
+				84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */,
+			);
+			name = CLPlacemark;
+			sourceTree = "<group>";
+		};
 		84DE48AB17BF7560005AB3B8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +703,7 @@
 		84DE494417BF767D005AB3B8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				84905D0217C8B40300402857 /* CLPlacemark */,
 				84DE494517BF767D005AB3B8 /* NSDate */,
 				84DE494917BF767D005AB3B8 /* NSString */,
 				84DE495317BF767D005AB3B8 /* UIImage */,
@@ -985,14 +1007,18 @@
 			isa = PBXGroup;
 			children = (
 				84DE4A1617BF86CF005AB3B8 /* Model.xcdatamodeld */,
+				84905D0717C8E7E600402857 /* Location.h */,
+				84905D0817C8E7E600402857 /* Location.m */,
+				84905D0B17C9381B00402857 /* Location+Store.h */,
+				84905D0C17C9381B00402857 /* Location+Store.m */,
+				84905CFE17C89F3300402857 /* Forecast.h */,
+				84905CFF17C89F3300402857 /* Forecast.m */,
 				84BEAEF817C56DB6008B828E /* Astro.h */,
 				84BEAEF917C56DB6008B828E /* Astro.m */,
-				84BEAEF417C5642B008B828E /* Forecast.h */,
-				84BEAEF517C5642B008B828E /* Forecast.m */,
+				84905CFA17C890E400402857 /* Forecast+Fetch.h */,
+				84905CFB17C890E400402857 /* Forecast+Fetch.m */,
 				84BEAEE417C52EA1008B828E /* Weather.h */,
 				84BEAEE517C52EA1008B828E /* Weather.m */,
-				848CC82C17C2B05E00EE02BD /* Location.h */,
-				848CC82D17C2B05E00EE02BD /* Location.m */,
 				845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */,
 				845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */,
 			);
@@ -1138,7 +1164,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BEAEF617C5642B008B828E /* Forecast.m in Sources */,
 				84DE49D217BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
 				84DE49E417BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,
 				847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
@@ -1161,7 +1186,6 @@
 				84DE497217BF767D005AB3B8 /* NSString+validation.m in Sources */,
 				84DE490C17BF7659005AB3B8 /* DDASLLogger.m in Sources */,
 				84DE491417BF7659005AB3B8 /* ContextFilterLogFormatter.m in Sources */,
-				848CC82E17C2B05E00EE02BD /* Location.m in Sources */,
 				84DE48D217BF7601005AB3B8 /* AFPropertyListRequestOperation.m in Sources */,
 				84DE49CE17BF76CB005AB3B8 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				84DE49DE17BF76CB005AB3B8 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
@@ -1174,10 +1198,13 @@
 				84DE48D417BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE496E17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				84DE49E017BF76CB005AB3B8 /* NSPersistentStore+MagicalRecord.m in Sources */,
+				84905D0517C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
 				84DE49DA17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
+				84905D0017C89F3300402857 /* Forecast.m in Sources */,
 				84DE49F017BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
+				84905D0917C8E7E600402857 /* Location.m in Sources */,
 				847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				84DE49C217BF76CB005AB3B8 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				84DE49C817BF76CB005AB3B8 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
@@ -1195,11 +1222,13 @@
 				84DE497817BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
 				84DE49EC17BF76CB005AB3B8 /* MagicalRecord+Setup.m in Sources */,
 				84DE49C017BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
+				84905CFC17C890E400402857 /* Forecast+Fetch.m in Sources */,
 				84DE49EE17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */,
 				84BEAEE617C52EA1008B828E /* Weather.m in Sources */,
 				84DE497417BF767D005AB3B8 /* UIImage+fixOrientation.m in Sources */,
 				84DE49BE17BF76CB005AB3B8 /* MagicalImportFunctions.m in Sources */,
+				84905D0D17C9381B00402857 /* Location+Store.m in Sources */,
 				84DE48D017BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				84DE491217BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
 				84DE48F717BF764A005AB3B8 /* DDXMLNode.m in Sources */,
@@ -1221,7 +1250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848CC82F17C2B05E00EE02BD /* Location.m in Sources */,
+				84905D0117C89F3300402857 /* Forecast.m in Sources */,
 				84DE49ED17BF76CB005AB3B8 /* MagicalRecord+Setup.m in Sources */,
 				84DE491117BF7659005AB3B8 /* DDLog.m in Sources */,
 				84DE49E917BF76CB005AB3B8 /* MagicalRecord+iCloud.m in Sources */,
@@ -1236,12 +1265,14 @@
 				84DE49CB17BF76CB005AB3B8 /* NSString+MagicalDataImport.m in Sources */,
 				84DE49E517BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,
 				84DE48CD17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
+				84905D0A17C8E7E600402857 /* Location.m in Sources */,
 				84DE49D117BF76CB005AB3B8 /* NSManagedObject+MagicalFinders.m in Sources */,
 				84DE490F17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
 				84DE48F417BF764A005AB3B8 /* DDXMLDocument.m in Sources */,
 				84DE49EF17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84DE49BF17BF76CB005AB3B8 /* MagicalImportFunctions.m in Sources */,
 				84DE49EB17BF76CB005AB3B8 /* MagicalRecord+Options.m in Sources */,
+				84905D0E17C9381B00402857 /* Location+Store.m in Sources */,
 				847B914F17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,
 				84DE49C317BF76CB005AB3B8 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				84DE49C517BF76CB005AB3B8 /* NSNumber+MagicalDataImport.m in Sources */,
@@ -1272,12 +1303,13 @@
 				84DE49D317BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
 				84BEAEE717C52EA1008B828E /* Weather.m in Sources */,
 				84DE497917BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
+				84905D0617C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84DE497317BF767D005AB3B8 /* NSString+validation.m in Sources */,
 				84DE48CF17BF7601005AB3B8 /* AFJSONRequestOperation.m in Sources */,
 				84DE49DD17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				84DE491517BF7659005AB3B8 /* ContextFilterLogFormatter.m in Sources */,
+				84905CFD17C890E400402857 /* Forecast+Fetch.m in Sources */,
 				84DE4A1917BF86CF005AB3B8 /* Model.xcdatamodeld in Sources */,
-				84BEAEF717C5642B008B828E /* Forecast.m in Sources */,
 				84BEAEFB17C56DB6008B828E /* Astro.m in Sources */,
 				84DE497F17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
 				84DE49C117BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,

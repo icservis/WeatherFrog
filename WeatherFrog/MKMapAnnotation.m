@@ -28,8 +28,8 @@
 {
     if (self = [super init]) {
         self.coordinate = placemark.location.coordinate;
-        self.title = [self formatTitle:placemark];
-        self.subtitle = [self formatSubtitle:placemark];
+        self.title = [placemark title];
+        self.subtitle = [placemark subTitle];
         self.hasPlacemark = YES;
     }
     return self;
@@ -38,36 +38,9 @@
 - (void)updateWithPlacemark:(CLPlacemark*)placemark
 {
     self.coordinate = placemark.location.coordinate;
-    self.title = [self formatTitle:placemark];
-    self.subtitle = [self formatSubtitle:placemark];
+    self.title = [placemark title];
+    self.subtitle = [placemark subTitle];
     self.hasPlacemark = YES;
-}
-
-
-- (NSString*)formatTitle:(CLPlacemark*)placemark
-{
-    if (placemark.name == nil || [placemark.name length] == 0) {
-        
-        if (placemark.addressDictionary != nil) {
-            NSArray* formattedAddress = [placemark.addressDictionary objectForKey:@"FormattedAddressLines"];
-            if ([formattedAddress isKindOfClass:[NSArray class]]) {
-                return formattedAddress[0];
-            } else {
-                return [placemark.addressDictionary objectForKey:@"SubLocality"];
-            }
-
-        } else {
-            return [NSString stringWithFormat:@"@ %.5f, %.5f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude];
-        }
-        
-    } else {
-        return placemark.name;
-    }
-}
-
-- (NSString*)formatSubtitle:(CLPlacemark*)placemark
-{
-    return [NSString stringWithFormat:@"%@, %@", placemark.locality, placemark.country];
 }
 
 #pragma mark - Location

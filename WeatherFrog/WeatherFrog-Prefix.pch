@@ -30,6 +30,7 @@
     #import "NSString+ISO8601Date.h"
     #import "NSDate+ISO8601Date.h"
     #import "NSString+URLEncoding.h"
+    #import "CLPlacemark+MKAnnotationDelegate.h"
 
     #import <Social/Social.h>
     #import <Accounts/Accounts.h>
