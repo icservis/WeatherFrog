@@ -6,8 +6,18 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
-#ifndef WeatherFrog_MapViewConstants_h
-#define WeatherFrog_MapViewConstants_h
+#ifndef WeatherFrog_Constants_h
+#define WeatherFrog_Constants_h
+
+
+#pragma mark - Forecast
+
+static float const kForecastAccuracy = 5500.0f;
+static int const kForecastValidity = 3600;
+static float const kGeocoderAccuracy = 250.0f;
+
+
+#pragma mark - MapView
 
 static double const kMapCenterLatitude = 48.15952f;
 static double const kMapCenterLongitude = 17.12769f;

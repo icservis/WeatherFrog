@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "Location+Store.h"
 #import "Forecast.h"
 #import "Forecast+Fetch.h"
@@ -15,6 +16,7 @@
 + (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark
 {
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    
     Location* location = [Location createInContext:currentContext];
     location.name = name;
     location.latitude = [NSNumber numberWithDouble:coordinate.latitude];
@@ -34,9 +36,10 @@
 {
     DDLogInfo(@"forecast: %@", [forecast description]);
     
-    Location* foundLocation;
+    Location* location;
     
-    NSArray* locations = [Location findAll];
+    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    NSArray* locations = [Location findAllInContext:currentContext];
     
     if (locations != nil) {
         
@@ -66,25 +69,25 @@
             CLLocation* nearestLocationLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([nearestLocation.latitude doubleValue], [nearestLocation.longitude doubleValue]) altitude:[nearestLocation.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:nearestLocation.timestamp];
             CLLocationDistance nearestLocationDistance = [nearestLocationLocation distanceFromLocation:forecastLocation];
             
-            if (nearestLocationDistance < 1000) {
-                foundLocation = nearestLocation;
+            if (nearestLocationDistance < kGeocoderAccuracy) {
+                location = nearestLocation;
             }
         }
     }
     
-    if (foundLocation == nil) {
+    if (location == nil) {
         
         NSString* name = (forecast.name) ? forecast.name : [forecast.placemark title];
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]);
         CLLocationDistance altitude = [forecast.altitude floatValue];
         NSTimeZone* timezone = forecast.timezone;
         
-        foundLocation = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
+        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
     }
     
-    DDLogInfo(@"Location: %@", [foundLocation description]);
+    DDLogInfo(@"Location: %@", [location description]);
     
-    return foundLocation;
+    return location;
 }
 
 - (NSString*)description

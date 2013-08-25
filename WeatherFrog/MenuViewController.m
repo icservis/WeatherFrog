@@ -10,6 +10,7 @@
 #import "MenuViewController.h"
 #import "Forecast.h"
 #import "Location.h"
+#import "Location+Store.h"
 
 @interface MenuViewController ()
 
@@ -52,7 +53,20 @@
     [self.forecastButton setTitle:NSLocalizedString(@"Current location", nil) forState:UIControlStateNormal];
     
     // NSFetchedResultsController
-    self.fetchedResultsController = [Location fetchAllSortedBy:@"timestamp" ascending:YES withPredicate:nil groupBy:@"isMarked" delegate:self];
+    
+    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    NSFetchRequest* fetchRequest = [Location requestAllInContext:currentContext];
+    NSSortDescriptor* isMarkedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isMarked" ascending:NO];
+    NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+    NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController* fetchedResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:currentContext sectionNameKeyPath:@"isMarked" cacheName:@"Root"];
+    fetchedResultController.delegate = self;
+    
+    self.fetchedResultsController = fetchedResultController;
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
     
     // Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
@@ -99,6 +113,13 @@
             
             if ([segue.identifier isEqualToString:@"showForecast"]) {
                 ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
+                if ([sender isKindOfClass:[UIButton class]]) {
+                    // sendet is ForecastButton
+                    forecastViewController.useSelectedLocationInsteadCurrenLocation = NO;
+                } else {
+                    // sender is LocationCell
+                    forecastViewController.useSelectedLocationInsteadCurrenLocation = YES;
+                }
                 forecastViewController.selectedPlacemark = _selectedPlacemark;
             }
         };
@@ -128,7 +149,7 @@
 - (IBAction)forecastButtonTapped:(id)sender
 {
     self.selectedPlacemark = [[self appDelegate] currentPlacemark];
-    [self performSegueWithIdentifier:@"showForecast" sender:self];
+    [self performSegueWithIdentifier:@"showForecast" sender:sender];
 }
 
 #pragma mark - UITableViewdataSource
@@ -187,9 +208,25 @@
     [self performSegueWithIdentifier:@"showForecast" sender:cell];
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+		Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		[location deleteEntity];
+    }
     
+    if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Delete the row from the data source
+        CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
+		[Location locationWithName:[currentPlacemark title] coordinate:currentPlacemark.location.coordinate altitude:currentPlacemark.location.altitude timezone:[NSTimeZone localTimeZone] placemark:currentPlacemark];
+    }
 }
 
 #pragma mark - Notifications

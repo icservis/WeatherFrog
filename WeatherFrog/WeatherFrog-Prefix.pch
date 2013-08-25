@@ -25,7 +25,7 @@
     #import "Lumberjack.h"
     #import "Reachability.h"
 
-    #import "MapViewConstants.h"
+    #import "Constants.h"
 
     #import "NSString+ISO8601Date.h"
     #import "NSDate+ISO8601Date.h"

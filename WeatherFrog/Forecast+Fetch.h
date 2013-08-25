@@ -10,7 +10,6 @@
 
 @interface Forecast (Fetch)
 
-+ (void)fetchWithPlacemark:(CLPlacemark*)placemark success:(void (^)(Forecast* forecast))success failure:(void (^)(NSError *error))failure progress:(void (^)(float progress))failure;
-- (BOOL)isValidForLocation:(CLLocation*)location accuracy:(CLLocationDistance)accuracy validity:(NSTimeInterval)validity;
++ (void)fetchWithPlacemark:(CLPlacemark*)placemark forceUpdate:(BOOL)force success:(void (^)(Forecast* forecast))success failure:(void (^)(NSError *error))failure progress:(void (^)(float progress))failure;
 
 @end

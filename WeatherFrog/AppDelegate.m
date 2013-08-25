@@ -351,27 +351,22 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
                     DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
                     
-                    if ([_currentForecast isValidForLocation:_currentLocation accuracy:kForecastAccuracy validity:kForecastValidity] == NO) {
+                    [Forecast fetchWithPlacemark:_currentPlacemark forceUpdate:YES success:^(Forecast *forecast) {
                         
-                        [Forecast fetchWithPlacemark:_currentPlacemark success:^(Forecast *forecast) {
-                            
-                            _currentForecast = forecast;
-                            [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
-                            DDLogVerbose(@"forecast: %@", [_currentForecast description]);
-                            
-                        } failure:^(NSError *error) {
-                            
-                            DDLogError(@"Error: %@", [error description]);
-                        } progress:^(float progress) {
-                            [[NSNotificationCenter defaultCenter] postNotificationName:ForecastProgressNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithFloat:progress], @"forecastProgress", nil]];
-                            //DDLogVerbose(@"progress: %.2f", progress);
-                        }];
-                        
-                    } else {
-                        
+                        _currentForecast = forecast;
                         [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
                         DDLogVerbose(@"forecast: %@", [_currentForecast description]);
-                    }
+                        
+                    } failure:^(NSError *error) {
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:ForecastErrorNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:error, @"forecastError", nil]];
+                        DDLogError(@"Error: %@", [error description]);
+                        
+                    } progress:^(float progress) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:ForecastProgressNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithFloat:progress], @"forecastProgress", nil]];
+                        //DDLogVerbose(@"progress: %.2f", progress);
+                    }];
+                    
                 }
             }];
         }

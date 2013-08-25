@@ -13,13 +13,11 @@
 static NSString* const ReachabilityNotification = @"REACHABILITY_NOTIFICATION";
 static NSString* const LocationManagerUpdateNotification = @"LOCATION_MANAGER_UPDATE_NOTIFICATION";
 static NSString* const ReverseGeocoderUpdateNotification = @"REVERSE_GEOCODER_UPDATE_NOTIFICATION";
+static NSString* const ForecastErrorNotification = @"FORECAST_Error_NOTIFICATION";
 static NSString* const ForecastProgressNotification = @"FORECAST_PROGRESS_NOTIFICATION";
 static NSString* const ForecastUpdateNotification = @"FORECAST_UPDATE_NOTIFICATION";
 static NSString* const FbSessionOpenedNotification = @"FBSESSION_OPENED_NOTIFICATION";
 static NSString* const FbSessionClosedNotification = @"FBSESSION_CLOSED_NOTIFICATION";
-
-static float const kForecastAccuracy = 1000.0f;
-static int const kForecastValidity = 3600;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 

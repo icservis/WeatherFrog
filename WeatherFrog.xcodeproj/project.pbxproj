@@ -401,7 +401,7 @@
 		84DE49F817BF76FA005AB3B8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Submodules/Reachability/Reachability.m; sourceTree = "<group>"; };
 		84DE49FC17BF77FA005AB3B8 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		84DE49FE17BF786A005AB3B8 /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lumberjack.h; sourceTree = "<group>"; };
-		84DE49FF17BF786A005AB3B8 /* MapViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewConstants.h; sourceTree = "<group>"; };
+		84DE49FF17BF786A005AB3B8 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		84DE4A0617BF790C005AB3B8 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84DE4A0917BF7942005AB3B8 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		84DE4A0B17BF79FE005AB3B8 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -985,7 +985,7 @@
 			isa = PBXGroup;
 			children = (
 				84DE49FE17BF786A005AB3B8 /* Lumberjack.h */,
-				84DE49FF17BF786A005AB3B8 /* MapViewConstants.h */,
+				84DE49FF17BF786A005AB3B8 /* Constants.h */,
 				848A54EC176E09A1009B3F85 /* AppDelegate.h */,
 				848A54ED176E09A1009B3F85 /* AppDelegate.m */,
 			);

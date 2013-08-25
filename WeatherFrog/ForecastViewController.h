@@ -19,5 +19,6 @@
 @property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 @property (nonatomic, strong) Forecast* selectedForecast;
+@property (nonatomic) BOOL useSelectedLocationInsteadCurrenLocation;
 
 @end

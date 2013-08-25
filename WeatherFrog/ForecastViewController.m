@@ -24,7 +24,6 @@
 @property (nonatomic, weak) IBOutlet UILabel* statusInfo;
 @property (nonatomic, weak) IBOutlet UIProgressView* progressBar;
 @property (nonatomic, weak) IBOutlet UITextView* textView;
-@property (nonatomic) BOOL observerCurrentLocation;
 
 @end
 
@@ -50,7 +49,7 @@
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    self.observerCurrentLocation = YES;
+    //self.observeCurrentLocation = YES;
     
     self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
     
@@ -58,6 +57,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastUpdate:) name:ForecastUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastProgress:) name:ForecastProgressNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastError:) name:ForecastErrorNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,7 +70,13 @@
         if (lastForecast != nil) {
             [self displayForecast:lastForecast];
         } else {
-            [self displayDefaultScreen];
+            if (self.selectedPlacemark == nil) {
+                [self displayDefaultScreen];
+            }
+            else {
+                [self displayLoadingScreen];
+                [self fetchForecastWith:_selectedPlacemark forceUpdate:NO];
+            }
         }
         
     } else {
@@ -91,6 +97,11 @@
     _selectedPlacemark = nil;
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
 #pragma mark - Shared objects
 
 - (AppDelegate*)appDelegate
@@ -100,27 +111,23 @@
 
 #pragma mark - Setters and Getters
 
-- (void)setObserverCurrentLocation:(BOOL)observerCurrentLocation
+- (void)setUseSelectedLocationInsteadCurrenLocation:(BOOL)useSelectedLocationInsteadCurrenLocation
 {
-    if (_observerCurrentLocation == YES) {
-        
-        
-    } else {
-        
-        
-    }
-    _observerCurrentLocation = observerCurrentLocation;
+    DDLogInfo(@"useSelectedLocationInsteadCurrenLocation: %d", useSelectedLocationInsteadCurrenLocation);
+    _useSelectedLocationInsteadCurrenLocation = useSelectedLocationInsteadCurrenLocation;
 }
-
 
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
     DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
+    [self displayLoadingScreen];
+    [self fetchForecastWith:_selectedPlacemark forceUpdate:NO];
 }
 
 - (void)setSelectedForecast:(Forecast *)selectedForecast
 {
+    DDLogInfo(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     [self displayForecast:_selectedForecast];
 }
@@ -129,28 +136,42 @@
 
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
-    DDLogInfo(@"notification: %@", [notification description]);
+    DDLogVerbose(@"notification: %@", [notification description]);
 }
 
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
-    DDLogInfo(@"notification: %@", [notification description]);
-    //[self displayDefaultScreen];
+    DDLogVerbose(@"notification: %@", [notification description]);
+    NSDictionary* userInfo = notification.userInfo;
+    if (_useSelectedLocationInsteadCurrenLocation == NO) {
+        self.selectedPlacemark = [userInfo objectForKey:@"currentPlacemark"];
+    }
 }
 
 - (void)forecastUpdate:(NSNotification*)notification
 {
-    DDLogInfo(@"notification: %@", [notification description]);
+    DDLogVerbose(@"notification: %@", [notification description]);
     NSDictionary* userInfo = notification.userInfo;
-    self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
+    if (_useSelectedLocationInsteadCurrenLocation == NO) {
+        self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
+    }
 }
 
 - (void)forecastProgress:(NSNotification*)notification
 {
     NSDictionary* userInfo = notification.userInfo;
-    [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
+    if (_useSelectedLocationInsteadCurrenLocation == NO) {
+        [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
+    }
 }
 
+- (void)forecastError:(NSNotification*)notification
+{
+    NSDictionary* userInfo = notification.userInfo;
+    if (_useSelectedLocationInsteadCurrenLocation == NO) {
+        [self updateProgressWithError:[userInfo objectForKey:@"forecastError"]];
+    }
+}
 
 #pragma mark - User Inreface
 
@@ -172,9 +193,17 @@
     self.textView.text = nil;
 }
 
+- (void)displayLoadingScreen
+{
+    DDLogInfo(@"defaultScreen");
+    self.placemarkTitle.text = [_selectedPlacemark title];
+    self.statusInfo.text = NSLocalizedString(@"Fetchning forecast…", nil);
+    [self.progressBar setProgress:0.0f animated:YES];
+    self.textView.text = nil;
+}
+
 - (void)updateProgress:(NSNumber*)progressNumber
 {
-    //DDLogVerbose(@"progress: %@", progressNumber);
     float progress = [progressNumber floatValue];
     self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
     [self.progressBar setProgress:progress animated:YES];
@@ -185,6 +214,46 @@
     DDLogError(@"Error: %@", [error description]);
     self.statusInfo.text = [error description];
     [self.progressBar setProgress:0.0f animated:YES];
+}
+
+- (void)fetchForecastWith:(CLPlacemark*)placemark forceUpdate:(BOOL)force
+{
+    DDLogInfo(@"placemark: %@", [placemark description]);
+    [Forecast fetchWithPlacemark:placemark forceUpdate:force success:^(Forecast *forecast) {
+        
+        self.selectedForecast = forecast;
+        
+    } failure:^(NSError *error) {
+        
+        DDLogError(@"Error: %@", [error description]);
+        [self updateProgressWithError:error];
+        
+    } progress:^(float progress) {
+        
+        [self updateProgress:[NSNumber numberWithFloat:progress]];
+        
+    }];
+}
+
+#pragma mark - UIEvent
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake) {
+        if (_selectedPlacemark != nil) {
+            [self displayLoadingScreen];
+            [self fetchForecastWith:_selectedPlacemark forceUpdate:YES];
+        }
+    }
+}
+
+- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake) {
+        if (_selectedForecast != nil) {
+            [self displayForecast:_selectedForecast];
+        }
+    }
 }
 
 @end
