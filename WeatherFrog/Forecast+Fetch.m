@@ -10,6 +10,7 @@
 #import "Forecast+Fetch.h"
 #import "Location+Store.h"
 #import "GoogleApiService.h"
+#import "Sequencer.h"
 
 @implementation Forecast (Fetch)
 
@@ -79,7 +80,20 @@
         AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if ([appDelegate isHostActive]) {
             
+            Sequencer *sequencer = [[Sequencer alloc] init];
             
+            if (placemark.location.altitude == 0) {
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]);
+                
+                [sequencer enqueueStep:^(id result, SequencerCompletion completion) {
+                    [[GoogleApiService sharedService] elevationWithCoordinate:coordinate success:^(float elevation) {
+                        forecast.altitude = [NSNumber numberWithFloat:elevation];
+                        completion(nil);
+                    } failure:^{
+                        completion(nil);
+                    }];
+                }];
+            }
             
             
             

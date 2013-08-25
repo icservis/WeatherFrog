@@ -25,3 +25,6 @@
 [submodule "Submodules/SWRevealViewController"]
 	path = Submodules/SWRevealViewController
 	url = https://github.com/John-Lluch/SWRevealViewController.git
+[submodule "Submodules/Sequencer"]
+	path = Submodules/Sequencer
+	url = https://github.com/berzniz/Sequencer.git

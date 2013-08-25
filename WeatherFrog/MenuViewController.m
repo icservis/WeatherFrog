@@ -55,7 +55,8 @@
     // NSFetchedResultsController
     
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
-    NSFetchRequest* fetchRequest = [Location requestAllInContext:currentContext];
+    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"isMarked = 1 OR timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-3600]];
+    NSFetchRequest* fetchRequest = [Location requestAllWithPredicate:findPredicate inContext:currentContext];
     NSSortDescriptor* isMarkedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isMarked" ascending:NO];
     NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
     NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];

@@ -55,6 +55,8 @@
 		84905D0A17C8E7E600402857 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0817C8E7E600402857 /* Location.m */; };
 		84905D0D17C9381B00402857 /* Location+Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0C17C9381B00402857 /* Location+Store.m */; };
 		84905D0E17C9381B00402857 /* Location+Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0C17C9381B00402857 /* Location+Store.m */; };
+		84905D1217CAAD1200402857 /* Sequencer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D1117CAAD1200402857 /* Sequencer.m */; };
+		84905D1317CAAD1200402857 /* Sequencer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D1117CAAD1200402857 /* Sequencer.m */; };
 		84BEAEE617C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEE717C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEED17C55E09008B828E /* YrApiService.m */; };
@@ -265,6 +267,8 @@
 		84905D0817C8E7E600402857 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		84905D0B17C9381B00402857 /* Location+Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Location+Store.h"; sourceTree = "<group>"; };
 		84905D0C17C9381B00402857 /* Location+Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Location+Store.m"; sourceTree = "<group>"; };
+		84905D1017CAAD1200402857 /* Sequencer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequencer.h; sourceTree = "<group>"; };
+		84905D1117CAAD1200402857 /* Sequencer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequencer.m; sourceTree = "<group>"; };
 		84BEAEE417C52EA1008B828E /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		84BEAEE517C52EA1008B828E /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		84BEAEEC17C55E09008B828E /* YrApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YrApiService.h; sourceTree = "<group>"; };
@@ -563,9 +567,20 @@
 			name = CLPlacemark;
 			sourceTree = "<group>";
 		};
+		84905D0F17CAAD1200402857 /* Sequencer */ = {
+			isa = PBXGroup;
+			children = (
+				84905D1017CAAD1200402857 /* Sequencer.h */,
+				84905D1117CAAD1200402857 /* Sequencer.m */,
+			);
+			name = Sequencer;
+			path = Submodules/Sequencer/Sequencer;
+			sourceTree = "<group>";
+		};
 		84DE48AB17BF7560005AB3B8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				84905D0F17CAAD1200402857 /* Sequencer */,
 				847B914717BFA6D600AD76E7 /* SWRevealViewController */,
 				84DE49FB17BF7702005AB3B8 /* Reachability */,
 				84DE49F617BF76E6005AB3B8 /* MBProgressHUD */,
@@ -1165,6 +1180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84DE49D217BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
+				84905D1217CAAD1200402857 /* Sequencer.m in Sources */,
 				84DE49E417BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,
 				847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
 				84DE491017BF7659005AB3B8 /* DDLog.m in Sources */,
@@ -1315,6 +1331,7 @@
 				84DE49C117BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				84DE49FA17BF76FA005AB3B8 /* Reachability.m in Sources */,
 				84DE497517BF767D005AB3B8 /* UIImage+fixOrientation.m in Sources */,
+				84905D1317CAAD1200402857 /* Sequencer.m in Sources */,
 				84DE490D17BF7659005AB3B8 /* DDASLLogger.m in Sources */,
 				84DE496F17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				84BEAEEF17C55E09008B828E /* YrApiService.m in Sources */,
