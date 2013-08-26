@@ -15,5 +15,6 @@
 + (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark;
 
 + (Location*)locationforForecast:(Forecast*)forecast;
++ (Location*)locationforPlacemark:(CLPlacemark*)placemark;
 
 @end

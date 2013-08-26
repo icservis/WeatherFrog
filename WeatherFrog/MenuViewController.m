@@ -150,6 +150,7 @@
 - (IBAction)forecastButtonTapped:(id)sender
 {
     self.selectedPlacemark = [[self appDelegate] currentPlacemark];
+    [Location locationforPlacemark:_selectedPlacemark];
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
 }
 

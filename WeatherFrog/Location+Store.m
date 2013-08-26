@@ -36,6 +36,46 @@
 {
     DDLogInfo(@"forecast: %@", [forecast description]);
     
+    CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
+    
+    Location* location = [Location nearestLocationWith:forecastLocation];
+    
+    if (location == nil) {
+        
+        NSString* name = (forecast.name) ? forecast.name : [forecast.placemark title];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]);
+        CLLocationDistance altitude = [forecast.altitude floatValue];
+        NSTimeZone* timezone = forecast.timezone;
+        
+        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
+    }
+    
+    DDLogInfo(@"Location: %@", [location description]);
+    
+    return location;
+}
+
++ (Location*)locationforPlacemark:(CLPlacemark*)placemark
+{
+    Location* location = [Location nearestLocationWith:placemark.location];
+    
+    if (location == nil) {
+        
+        NSString* name = [placemark title];
+        CLLocationCoordinate2D coordinate = placemark.location.coordinate;
+        CLLocationDistance altitude = placemark.location.altitude;
+        NSTimeZone* timezone = [NSTimeZone localTimeZone];
+        
+        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
+    }
+    
+    DDLogInfo(@"Location: %@", [location description]);
+    
+    return location;
+}
+
++ (Location*)nearestLocationWith:(CLLocation*)selectedLocation
+{
     Location* location;
     
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
@@ -43,16 +83,14 @@
     
     if (locations != nil) {
         
-        CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
-        
         NSArray* sortedLocations;
         sortedLocations = [locations sortedArrayUsingComparator:^NSComparisonResult(Location* a, Location* b) {
             
             CLLocation* locationFirst = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([a.latitude doubleValue], [a.longitude doubleValue]) altitude:[a.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:a.timestamp];
-            CLLocationDistance first = [locationFirst distanceFromLocation:forecastLocation];
+            CLLocationDistance first = [locationFirst distanceFromLocation:selectedLocation];
             
             CLLocation* locationSecond = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([b.latitude doubleValue], [b.longitude doubleValue]) altitude:[b.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:b.timestamp];
-            CLLocationDistance second = [locationSecond distanceFromLocation:forecastLocation];
+            CLLocationDistance second = [locationSecond distanceFromLocation:selectedLocation];
             
             if (first < second) {
                 return NSOrderedAscending;
@@ -67,25 +105,13 @@
         if (sortedLocations.count > 0) {
             Location* nearestLocation = sortedLocations[0];
             CLLocation* nearestLocationLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([nearestLocation.latitude doubleValue], [nearestLocation.longitude doubleValue]) altitude:[nearestLocation.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:nearestLocation.timestamp];
-            CLLocationDistance nearestLocationDistance = [nearestLocationLocation distanceFromLocation:forecastLocation];
+            CLLocationDistance nearestLocationDistance = [nearestLocationLocation distanceFromLocation:selectedLocation];
             
             if (nearestLocationDistance < kGeocoderAccuracy) {
                 location = nearestLocation;
             }
         }
     }
-    
-    if (location == nil) {
-        
-        NSString* name = (forecast.name) ? forecast.name : [forecast.placemark title];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]);
-        CLLocationDistance altitude = [forecast.altitude floatValue];
-        NSTimeZone* timezone = forecast.timezone;
-        
-        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
-    }
-    
-    DDLogInfo(@"Location: %@", [location description]);
     
     return location;
 }
