@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Forecast+Fetch.h"
+#import "Forecast+Additions.h"
 #import "Location+Store.h"
 #import "ForecastViewController.h"
 #import "MenuViewController.h"
@@ -75,7 +75,7 @@
             }
             else {
                 [self displayLoadingScreen];
-                [self fetchForecastWith:_selectedPlacemark forceUpdate:NO];
+                [self forecast:_selectedPlacemark forceUpdate:NO];
             }
         }
         
@@ -122,7 +122,7 @@
     DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
     [self displayLoadingScreen];
-    [self fetchForecastWith:_selectedPlacemark forceUpdate:NO];
+    [self forecast:_selectedPlacemark forceUpdate:NO];
 }
 
 - (void)setSelectedForecast:(Forecast *)selectedForecast
@@ -216,23 +216,13 @@
     [self.progressBar setProgress:0.0f animated:YES];
 }
 
-- (void)fetchForecastWith:(CLPlacemark*)placemark forceUpdate:(BOOL)force
+- (void)forecast:(CLPlacemark*)placemark forceUpdate:(BOOL)force
 {
     DDLogInfo(@"placemark: %@", [placemark description]);
-    [Forecast fetchWithPlacemark:placemark forceUpdate:force success:^(Forecast *forecast) {
-        
-        self.selectedForecast = forecast;
-        
-    } failure:^(NSError *error) {
-        
-        DDLogError(@"Error: %@", [error description]);
-        [self updateProgressWithError:error];
-        
-    } progress:^(float progress) {
-        
-        [self updateProgress:[NSNumber numberWithFloat:progress]];
-        
-    }];
+    
+    ForecastManager* forecastManager = [ForecastManager sharedInstance];
+    forecastManager.delegate = self;
+    [forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
 }
 
 #pragma mark - UIEvent
@@ -242,7 +232,7 @@
     if (motion == UIEventSubtypeMotionShake) {
         if (_selectedPlacemark != nil) {
             [self displayLoadingScreen];
-            [self fetchForecastWith:_selectedPlacemark forceUpdate:YES];
+            [self forecast:_selectedPlacemark forceUpdate:YES];
         }
     }
 }
@@ -254,6 +244,24 @@
             [self displayForecast:_selectedForecast];
         }
     }
+}
+
+#pragma mark - ForecastManagerDelegate
+
+- (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast
+{
+    self.selectedForecast = forecast;
+}
+
+- (void)forecastManager:(id)manager didFailProcessingForecast:(Forecast *)forecast error:(NSError *)error
+{
+    DDLogError(@"Error: %@", [error description]);
+    [self updateProgressWithError:error];
+}
+
+- (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress
+{
+    [self updateProgress:[NSNumber numberWithFloat:progress]];
 }
 
 @end

@@ -115,10 +115,10 @@
             if ([segue.identifier isEqualToString:@"showForecast"]) {
                 ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
                 if ([sender isKindOfClass:[UIButton class]]) {
-                    // sendet is ForecastButton
+                    // sender is ForecastButton = automatic update
                     forecastViewController.useSelectedLocationInsteadCurrenLocation = NO;
                 } else {
-                    // sender is LocationCell
+                    // other sender
                     forecastViewController.useSelectedLocationInsteadCurrenLocation = YES;
                 }
                 forecastViewController.selectedPlacemark = _selectedPlacemark;
@@ -140,6 +140,15 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
+#pragma mark - Setters and Getters
+
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    _selectedPlacemark = selectedPlacemark;
+    [Location locationforPlacemark:_selectedPlacemark];
+    [self performSegueWithIdentifier:@"showForecast" sender:nil];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)locatorButtonTapped:(id)sender
@@ -149,9 +158,12 @@
 
 - (IBAction)forecastButtonTapped:(id)sender
 {
-    self.selectedPlacemark = [[self appDelegate] currentPlacemark];
+    _selectedPlacemark = [[self appDelegate] currentPlacemark];
     [Location locationforPlacemark:_selectedPlacemark];
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
+    /*
+    self.selectedPlacemark = [[self appDelegate] currentPlacemark];
+     */
 }
 
 #pragma mark - UITableViewdataSource
@@ -203,11 +215,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    LocationCell* cell = (LocationCell*)[tableView cellForRowAtIndexPath:indexPath];
     Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
     self.selectedPlacemark = location.placemark;
-    [self performSegueWithIdentifier:@"showForecast" sender:cell];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

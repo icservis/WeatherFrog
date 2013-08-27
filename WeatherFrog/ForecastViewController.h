@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForecastManager.h"
 
 @class Forecast;
 
@@ -14,7 +15,7 @@
 
 @end
 
-@interface ForecastViewController : UIViewController
+@interface ForecastViewController : UIViewController <ForecastManagerDelegate>
 
 @property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;

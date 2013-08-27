@@ -188,7 +188,7 @@ static float const LongTapDuration = 1.2;
     
     SWRevealViewController* rvc = self.revealViewController;
     MenuViewController* menuViewController = (MenuViewController*)rvc.rearViewController;
-    [menuViewController performSegueWithIdentifier:@"showForecast" sender:nil];
+    menuViewController.selectedPlacemark = _selectedPlacemark;
 }
 
 #pragma mark - MKMapView
@@ -248,10 +248,6 @@ static float const LongTapDuration = 1.2;
     
     _selectedLocation = placemark.location;
     _selectedPlacemark = placemark;
-    
-    SWRevealViewController* rvc = self.revealViewController;
-    MenuViewController* menuViewController = (MenuViewController*)rvc.rearViewController;
-    menuViewController.selectedPlacemark = placemark;
 }
 
 - (void)mapView:(MKMapView *)mapView searchAnnotationNotDetermined:(CLLocation*)location

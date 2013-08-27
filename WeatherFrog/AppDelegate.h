@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForecastManager.h"
 
 @class Forecast;
 
@@ -19,7 +20,7 @@ static NSString* const ForecastUpdateNotification = @"FORECAST_UPDATE_NOTIFICATI
 static NSString* const FbSessionOpenedNotification = @"FBSESSION_OPENED_NOTIFICATION";
 static NSString* const FbSessionClosedNotification = @"FBSESSION_CLOSED_NOTIFICATION";
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, ForecastManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) FBSession* session;

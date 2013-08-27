@@ -8,8 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Location+Store.h"
-#import "Forecast.h"
-#import "Forecast+Fetch.h"
+#import "Forecast+Additions.h"
 
 @implementation Location (Store)
 

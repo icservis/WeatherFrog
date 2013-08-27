@@ -15,6 +15,7 @@
 static float const kForecastAccuracy = 2500.0f;
 static int const kForecastValidity = 3600;
 static float const kGeocoderAccuracy = 250.0f;
+static int const kForecastHoursCount = 9*24;
 
 
 #pragma mark - MapView
