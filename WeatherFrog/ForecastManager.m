@@ -88,6 +88,7 @@
     self.astroData = nil;
     
     Forecast* forecast;
+    self.progress = 0.0f;
     self.status = ForecastStatusActive;
     
     if (force == NO) {
@@ -160,6 +161,9 @@
 - (void)fetchElevation
 {
     [[GoogleApiService sharedService] elevationWithCoordinate:self.coordinate success:^(float elevation) {
+        
+        self.progress = 0.2f;
+        self.status = ForecastStatusFechingElevation;
         self.altitude = elevation;
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingElevation:)]) {
             [self.delegate forecastManager:self didFinishFetchingElevation:elevation];
@@ -175,6 +179,8 @@
 {
     [[GoogleApiService sharedService] timezoneWithCoordinate:self.coordinate success:^(NSString *timezoneName) {
         
+        self.progress = 0.4f;
+        self.status = ForecastStatusFechingTimezone;
         self.timezone = [NSTimeZone timeZoneWithName:timezoneName];
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingTimezone:)]) {
             [self.delegate forecastManager:self didFinishFetchingTimezone:self.timezone];
@@ -192,6 +198,8 @@
     
     [[YrApiService sharedService] solarDatatWithLocation:location success:^(NSArray *solarData) {
         
+        self.progress = 0.6f;
+        self.status = ForecastStatusParsingSolarData;
         self.astroData = solarData;
         [self fetchWeatherData];
         
@@ -206,6 +214,8 @@
     
     [[YrApiService sharedService] weatherDatatWithLocation:location success:^(NSArray *weatherData) {
         
+        self.progress = 0.8f;
+        self.status = ForecastStatusParsingWeatherData;
         self.weatherData = weatherData;
         [self completedForecast];
         
@@ -267,6 +277,8 @@
         
     } completion:^(BOOL success, NSError *error) {
         
+        self.progress = 1.0f;
+        self.status = ForecastStatusCompleted;
         if (error == nil) {
             
             DDLogVerbose(@"Forecast saved: %@", [forecast description]);
@@ -283,6 +295,7 @@
 - (void)loadedForecast:(Forecast*)forecast
 {
     DDLogError(@"Forecast loaded: %@", [forecast description]);
+    self.progress = 1.0f;
     self.status = ForecastStatusLoaded;
     [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
 }
@@ -290,6 +303,7 @@
 - (void)failedForecastWithError:(NSError*)error
 {
     DDLogError(@"Forecast failed: %@", [error description]);
+    self.progress = 1.0f;
     self.status = ForecastStatusFailed;
     [self.delegate forecastManager:self didFailProcessingForecast:nil error:error];
 }
