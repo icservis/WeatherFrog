@@ -21,15 +21,15 @@
 @property (nonatomic, readwrite) ForecastStatus status;
 @property (nonatomic, readwrite) float progress;
 
-@property (atomic, strong) NSString* name;
-@property (atomic, strong) CLPlacemark* placemark;
-@property (atomic) CLLocationCoordinate2D coordinate;
-@property (atomic) CLLocationDistance altitude;
-@property (atomic, strong) NSTimeZone* timezone;
-@property (atomic, strong) NSDate* timestamp;
-@property (atomic, strong) NSDate* validTill;
-@property (atomic, strong) NSArray* weatherData;
-@property (atomic, strong) NSArray* astroData;
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) CLPlacemark* placemark;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationDistance altitude;
+@property (nonatomic, strong) NSTimeZone* timezone;
+@property (nonatomic, strong) NSDate* timestamp;
+@property (nonatomic, strong) NSDate* validTill;
+@property (nonatomic, strong) NSArray* weatherData;
+@property (nonatomic, strong) NSArray* astroData;
 
 @end
 
@@ -71,7 +71,7 @@
     self.altitude = placemark.location.altitude;
     self.timezone = timezone;
     self.timestamp = [NSDate date];
-    self.validTill = [NSDate dateWithTimeIntervalSinceNow:86400];
+    self.validTill = [NSDate dateWithTimeIntervalSinceNow:3*86400];
     self.weatherData = nil;
     self.astroData = nil;
     
@@ -187,7 +187,7 @@
     CLLocation* location = [[CLLocation alloc] initWithCoordinate:self.coordinate altitude:self.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:self.timestamp];
     
     self.status = ForecastStatusFetchingSolarData;
-    [[YrApiService sharedService] solarDatatWithLocation:location success:^(NSArray *solarData) {
+    [[YrApiService sharedService] astroDatatWithLocation:location success:^(NSArray *solarData) {
         
         self.progress = 0.6f;
         self.status = ForecastStatusFetchedSolarData;
@@ -224,18 +224,24 @@
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
     
     Forecast* forecast = [Forecast createInContext:currentContext];
-    forecast.name = _name;
-    forecast.latitude = [NSNumber numberWithDouble:_coordinate.latitude];
-    forecast.longitude = [NSNumber numberWithDouble:_coordinate.longitude];
-    forecast.altitude = [NSNumber numberWithFloat:_altitude];
-    forecast.timezone = _timezone;
-    forecast.validTill = _validTill;
-    forecast.timestamp = _timestamp;
+    forecast.name = self.name;
+    forecast.placemark = self.placemark;
+    forecast.latitude = [NSNumber numberWithDouble:self.coordinate.latitude];
+    forecast.longitude = [NSNumber numberWithDouble:self.coordinate.longitude];
+    forecast.altitude = [NSNumber numberWithFloat:self.altitude];
+    forecast.timezone = self.timezone;
+    forecast.timestamp = self.timestamp;
+    
+    WeatherDictionary* lastWeatherData = [self.weatherData lastObject];
+    if ([self.validTill compare:lastWeatherData.timestamp] == NSOrderedAscending) {
+        forecast.validTill = lastWeatherData.timestamp;
+    }
     
     self.status = ForecastStatusSaving;
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-        
-        for (NSDictionary<WeatherProtocol>* weatherDict in _weatherData) {
+
+        for (WeatherDictionary* weatherDict in self.weatherData) {
+            
             Weather* weather = [Weather createInContext:currentContext];
             weather.temperature = weatherDict.temperature;
             weather.windDirection = weatherDict.windDirection;
@@ -248,18 +254,26 @@
             weather.lowClouds = weatherDict.lowClouds;
             weather.mediumClouds = weatherDict.mediumClouds;
             weather.highClouds = weatherDict.highClouds;
-            weather.precipitation = weatherDict.precipitation;
+            weather.precipitation1h = weatherDict.precipitation1h;
+            weather.precipitation2h = weatherDict.precipitation2h;
+            weather.precipitation3h = weatherDict.precipitation3h;
+            weather.precipitation6h = weatherDict.precipitation6h;
             weather.timestamp = weatherDict.timestamp;
-            weather.isNight = weatherDict.isNight;
-            weather.symbol = weatherDict.symbol;
+            weather.symbol1h = weatherDict.symbol1h;
+            weather.symbol2h = weatherDict.symbol2h;
+            weather.symbol3h = weatherDict.symbol3h;
+            weather.symbol6h = weatherDict.symbol6h;
             weather.created = weatherDict.created;
             weather.validTill = weatherDict.validTill;
+            weather.created = weatherDict.created;
+            weather.isNight = [NSNumber numberWithBool:[self isTimestampNight:weatherDict.timestamp forAstroData:self.astroData]];
             weather.forecast = [forecast inContext:localContext];
         }
         
         self.progress = 0.95f;
         
-        for (NSDictionary<AstroProtocol>* astroDict in _astroData) {
+        for (AstroDictionary* astroDict in self.astroData) {
+            
             Astro* astro = [Astro createInContext:currentContext];
             astro.sunRise = astroDict.sunRise;
             astro.sunSet = astroDict.sunSet;
@@ -284,6 +298,7 @@
             [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
             
         } else {
+            
             [self failedForecastWithError:error];
         }
         
@@ -304,6 +319,45 @@
     self.progress = 1.0f;
     self.status = ForecastStatusFailed;
     [self.delegate forecastManager:self didFailProcessingForecast:nil error:error];
+}
+
+#pragma mark - support functions
+
+- (BOOL)isTimestampNight:(NSDate*)timestamp forAstroData:(NSArray*)astroData
+{
+    BOOL _isNight = NO;
+    static Astro* _foundAstro = nil;
+    
+    NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:timestamp];
+    [components setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [components setHour:0];
+    [components setMinute:0];
+    [components setSecond:0];
+    NSDate* date = [calendar dateFromComponents:components];
+    
+    if (_foundAstro == nil || [_foundAstro.date compare:date] != NSOrderedSame) {
+        
+        [astroData enumerateObjectsUsingBlock:^(Astro* astro, NSUInteger idx, BOOL *stop) {
+            if ([astro.date isEqual:date]) {
+                _foundAstro = astro;
+                DDLogVerbose(@"foundAstro: %@", [_foundAstro description]);
+                *stop = YES;
+            }
+        }];
+    }
+
+    if (_foundAstro != nil) {
+        
+        if ([timestamp compare:_foundAstro.sunRise] == NSOrderedAscending || [timestamp compare:_foundAstro.sunSet] == NSOrderedDescending || [_foundAstro.sunNeverRise isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            _isNight = YES;
+            DDLogVerbose(@"night: %@", [timestamp description]);
+        } else {
+            DDLogVerbose(@"day: %@", [timestamp description]);
+        }
+    }
+    
+    return _isNight;
 }
 
 @end

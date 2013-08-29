@@ -44,9 +44,15 @@
         <attribute name="isNight" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lowClouds" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="mediumClouds" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="precipitation" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitation1h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitation2h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitation3h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitation6h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="symbol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="symbol1h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="symbol2h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="symbol3h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="symbol6h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="validTill" optional="YES" attributeType="Date" syncable="YES"/>

@@ -21,10 +21,16 @@
 @synthesize lowClouds;
 @synthesize mediumClouds;
 @synthesize highClouds;
-@synthesize precipitation;
+@synthesize precipitation1h;
+@synthesize precipitation2h;
+@synthesize precipitation3h;
+@synthesize precipitation6h;
 @synthesize timestamp;
 @synthesize isNight;
-@synthesize symbol;
+@synthesize symbol1h;
+@synthesize symbol2h;
+@synthesize symbol3h;
+@synthesize symbol6h;
 @synthesize created;
 @synthesize validTill;
 

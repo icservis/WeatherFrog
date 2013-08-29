@@ -21,10 +21,16 @@
 @property (nonatomic, retain) NSNumber * lowClouds;
 @property (nonatomic, retain) NSNumber * mediumClouds;
 @property (nonatomic, retain) NSNumber * highClouds;
-@property (nonatomic, retain) NSNumber * precipitation;
+@property (nonatomic, retain) NSNumber * precipitation1h;
+@property (nonatomic, retain) NSNumber * precipitation2h;
+@property (nonatomic, retain) NSNumber * precipitation3h;
+@property (nonatomic, retain) NSNumber * precipitation6h;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSNumber * isNight;
-@property (nonatomic, retain) NSString * symbol;
+@property (nonatomic, retain) NSNumber * symbol1h;
+@property (nonatomic, retain) NSNumber * symbol2h;
+@property (nonatomic, retain) NSNumber * symbol3h;
+@property (nonatomic, retain) NSNumber * symbol6h;
 @property (nonatomic, retain) NSDate * created;
 @property (nonatomic, retain) NSDate * validTill;
 

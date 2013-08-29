@@ -16,6 +16,6 @@ static NSString* const kYrAPIUrl = @"http://api.yr.no/weatherapi";
 
 - (void)weatherDatatWithLocation:(CLLocation*)location success:(void (^)(NSArray* weatherData))success failure:(void (^)(NSError* error))failure;
 
-- (void)solarDatatWithLocation:(CLLocation*)location success:(void (^)(NSArray* solarData))success failure:(void (^)(NSError* error))failure;
+- (void)astroDatatWithLocation:(CLLocation*)location success:(void (^)(NSArray* solarData))success failure:(void (^)(NSError* error))failure;
 
 @end

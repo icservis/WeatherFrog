@@ -145,7 +145,7 @@
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
     _selectedPlacemark = selectedPlacemark;
-    [Location locationforPlacemark:_selectedPlacemark];
+    [Location locationforPlacemark:_selectedPlacemark withTimezone:nil];
     [self performSegueWithIdentifier:@"showForecast" sender:nil];
 }
 
@@ -159,7 +159,7 @@
 - (IBAction)forecastButtonTapped:(id)sender
 {
     _selectedPlacemark = [[self appDelegate] currentPlacemark];
-    [Location locationforPlacemark:_selectedPlacemark];
+    [Location locationforPlacemark:_selectedPlacemark withTimezone:[NSTimeZone localTimeZone]];
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
 }
 

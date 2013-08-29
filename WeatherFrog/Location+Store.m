@@ -33,8 +33,6 @@
 
 + (Location*)locationforForecast:(Forecast*)forecast
 {
-    DDLogInfo(@"forecast: %@", [forecast description]);
-    
     CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
     
     Location* location = [Location nearestLocationWith:forecastLocation];
@@ -54,7 +52,7 @@
     return location;
 }
 
-+ (Location*)locationforPlacemark:(CLPlacemark*)placemark
++ (Location*)locationforPlacemark:(CLPlacemark*)placemark withTimezone:(NSTimeZone*)timezone
 {
     Location* location = [Location nearestLocationWith:placemark.location];
     
@@ -63,7 +61,6 @@
         NSString* name = [placemark title];
         CLLocationCoordinate2D coordinate = placemark.location.coordinate;
         CLLocationDistance altitude = placemark.location.altitude;
-        NSTimeZone* timezone = [NSTimeZone localTimeZone];
         
         location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
     }

@@ -358,7 +358,6 @@
                     ForecastManager* forecastManager = [[ForecastManager alloc] init];
                     forecastManager.delegate = self;
                     [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
-                    
                 }
             }];
         }
