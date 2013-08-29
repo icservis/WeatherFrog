@@ -13,7 +13,19 @@
 #import "AstroDictionary.h"
 #import "WeatherDictionary.h"
 
+@interface YrApiService ()
+
+@property (nonatomic, strong) NSDateFormatter* gmtDateFormatter;
+@property (nonatomic, strong) NSDateFormatter* gmtDateTimeFormatter;
+
+@end
+
 @implementation YrApiService
+
+@synthesize gmtDateFormatter = _gmtDateFormatter;
+@synthesize gmtDateTimeFormatter = _gmtDateTimeFormatter;
+
+#pragma mark - intitialization
 
 + (YrApiService *)sharedService {
     
@@ -25,6 +37,30 @@
     
     return _sharedService;
 }
+
+#pragma mark - setters and getters
+
+-(NSDateFormatter*)gmtDateFormatter
+{
+    if (_gmtDateFormatter == nil) {
+        _gmtDateFormatter = [[NSDateFormatter alloc] init];
+        [_gmtDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+        [_gmtDateFormatter setDateFormat:@"yyyy-MM-dd"];
+    }
+    return _gmtDateFormatter;
+}
+
+-(NSDateFormatter*)gmtDateTimeFormatter
+{
+    if (_gmtDateTimeFormatter == nil) {
+        _gmtDateTimeFormatter = [[NSDateFormatter alloc] init];
+        [_gmtDateTimeFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+        [_gmtDateTimeFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    }
+    return _gmtDateTimeFormatter;
+}
+
+#pragma mark - fetching data
 
 - (void)weatherDatatWithLocation:(CLLocation*)location success:(void (^)(NSArray* weatherData))success failure:(void (^)(NSError* error))failure
 {
@@ -93,7 +129,56 @@
                 
                 for (DDXMLElement* node in nodes) {
                     AstroDictionary* astro = [AstroDictionary new];
-                    astro.date = [NSDate date];
+                    
+                    NSString* date = [[node attributeForName:@"date"] stringValue];
+                    astro.date = [self.gmtDateFormatter dateFromString:date];
+                    
+                    for (DDXMLElement *location in [node elementsForName:@"location"]) {
+                        // locations loop
+                        
+                        // SUN
+                        for (DDXMLElement* sun in [location elementsForName:@"sun"]) {
+                            
+                            NSString* sunRise = [[sun attributeForName:@"rise"] stringValue];
+                            astro.sunRise = [self.gmtDateTimeFormatter dateFromString:sunRise];
+                            
+                            NSString* sunSet = [[sun attributeForName:@"set"] stringValue];
+                            astro.sunSet = [self.gmtDateTimeFormatter dateFromString:sunSet];
+                            
+                            BOOL neverRise = [[[sun attributeForName:@"never_rise"] stringValue] boolValue];
+                            astro.sunNeverRise = [NSNumber numberWithBool:neverRise];
+                            
+                            BOOL neverSet = [[[sun attributeForName:@"never_set"] stringValue] boolValue];
+                            astro.sunNeverSet = [NSNumber numberWithBool:neverSet];
+                            
+                            float dayLength = [[[sun attributeForName:@"daylength"] stringValue] boolValue];
+                            astro.dayLength = [NSNumber numberWithFloat:dayLength];
+                            
+                            for (DDXMLElement* noon in [sun elementsForName:@"noon"]) {
+                                float noonAltitude = [[[noon attributeForName:@"altitude"] stringValue] floatValue];
+                                astro.noonAltitude = [NSNumber numberWithFloat:noonAltitude];
+                                break;
+                            }
+                            
+                            break;
+                        }
+                        
+                        // MOON
+                        for (DDXMLElement* moon in [location elementsForName:@"moon"]) {
+                            
+                            NSString* moonRise = [[moon attributeForName:@"rise"] stringValue];
+                            astro.moonRise = [self.gmtDateTimeFormatter dateFromString:moonRise];
+                            
+                            NSString* moonSet = [[moon attributeForName:@"set"] stringValue];
+                            astro.moonSet = [self.gmtDateTimeFormatter dateFromString:moonSet];
+                            
+                            NSString* moonPhase = [[moon attributeForName:@"phase"] stringValue];
+                            astro.moonPhase = moonPhase;
+                            
+                            break;
+                        }
+                    }
+                    DDLogVerbose(@"astro: %@", [astro description]);
                     [astroData addObject:astro];
                 }
                 
@@ -119,6 +204,6 @@
     
     [operation start];
     
-}
+}       
 
 @end

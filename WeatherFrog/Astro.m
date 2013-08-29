@@ -14,6 +14,9 @@
 
 @dynamic sunRise;
 @dynamic sunSet;
+@dynamic sunNeverRise;
+@dynamic sunNeverSet;
+@dynamic dayLength;
 @dynamic noonAltitude;
 @dynamic moonPhase;
 @dynamic moonRise;

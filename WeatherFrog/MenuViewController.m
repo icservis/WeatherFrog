@@ -161,9 +161,6 @@
     _selectedPlacemark = [[self appDelegate] currentPlacemark];
     [Location locationforPlacemark:_selectedPlacemark];
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
-    /*
-    self.selectedPlacemark = [[self appDelegate] currentPlacemark];
-     */
 }
 
 #pragma mark - UITableViewdataSource

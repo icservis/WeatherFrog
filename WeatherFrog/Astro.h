@@ -15,6 +15,9 @@
 
 @property (nonatomic, retain) NSDate * sunRise;
 @property (nonatomic, retain) NSDate * sunSet;
+@property (nonatomic, retain) NSNumber * sunNeverRise;
+@property (nonatomic, retain) NSNumber * sunNeverSet;
+@property (nonatomic, retain) NSNumber * dayLength;
 @property (nonatomic, retain) NSNumber * noonAltitude;
 @property (nonatomic, retain) NSString * moonPhase;
 @property (nonatomic, retain) NSDate * moonRise;
