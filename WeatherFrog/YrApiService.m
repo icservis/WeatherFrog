@@ -45,7 +45,7 @@
                 NSMutableArray* weatherData = [NSMutableArray array];
                 
                 for (DDXMLElement* node in nodes) {
-                    NSMutableDictionary<WeatherProtocol> * weather = [WeatherDictionary new];
+                    WeatherDictionary* weather = [WeatherDictionary new];
                     weather.timestamp = [NSDate date];
                     [weatherData addObject:weather];
                 }
@@ -92,7 +92,7 @@
                 NSMutableArray* astroData = [NSMutableArray array];
                 
                 for (DDXMLElement* node in nodes) {
-                    NSMutableDictionary<AstroProtocol> * astro = [AstroDictionary new];
+                    AstroDictionary* astro = [AstroDictionary new];
                     astro.date = [NSDate date];
                     [astroData addObject:astro];
                 }

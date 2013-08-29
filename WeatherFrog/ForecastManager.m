@@ -45,21 +45,9 @@
 @synthesize weatherData = _weatherData;
 @synthesize astroData = _astroData;
 
-+ (ForecastManager*)sharedInstance
-{
-    static ForecastManager* _sharedService = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedService = [[self alloc] init];
-    });
-    
-    return _sharedService;
-}
-
 - (void)setStatus:(ForecastStatus)status
 {
     _status = status;
-    [[NSNotificationCenter defaultCenter] postNotificationName:ForecastManagerStatusChangedNotification object:self userInfo:nil];
     if ([self.delegate respondsToSelector:@selector(forecastManager:changingStatusForecast:)]) {
         [self.delegate forecastManager:self changingStatusForecast:status];
     }
@@ -160,10 +148,11 @@
 
 - (void)fetchElevation
 {
+    self.status = ForecastStatusFetchingElevation;
     [[GoogleApiService sharedService] elevationWithCoordinate:self.coordinate success:^(float elevation) {
         
         self.progress = 0.2f;
-        self.status = ForecastStatusFechingElevation;
+        self.status = ForecastStatusFetchedElevation;
         self.altitude = elevation;
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingElevation:)]) {
             [self.delegate forecastManager:self didFinishFetchingElevation:elevation];
@@ -177,10 +166,11 @@
 
 - (void)fetchTimeZone
 {
+    self.status = ForecastStatusFetchingTimezone;
     [[GoogleApiService sharedService] timezoneWithCoordinate:self.coordinate success:^(NSString *timezoneName) {
         
         self.progress = 0.4f;
-        self.status = ForecastStatusFechingTimezone;
+        self.status = ForecastStatusFetchedTimezone;
         self.timezone = [NSTimeZone timeZoneWithName:timezoneName];
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingTimezone:)]) {
             [self.delegate forecastManager:self didFinishFetchingTimezone:self.timezone];
@@ -196,10 +186,11 @@
 {
     CLLocation* location = [[CLLocation alloc] initWithCoordinate:self.coordinate altitude:self.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:self.timestamp];
     
+    self.status = ForecastStatusFetchingSolarData;
     [[YrApiService sharedService] solarDatatWithLocation:location success:^(NSArray *solarData) {
         
         self.progress = 0.6f;
-        self.status = ForecastStatusParsingSolarData;
+        self.status = ForecastStatusFetchedSolarData;
         self.astroData = solarData;
         [self fetchWeatherData];
         
@@ -212,14 +203,16 @@
 {
     CLLocation* location = [[CLLocation alloc] initWithCoordinate:self.coordinate altitude:self.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:self.timestamp];
     
+    self.status = ForecastStatusFetchingWeatherData;
     [[YrApiService sharedService] weatherDatatWithLocation:location success:^(NSArray *weatherData) {
         
         self.progress = 0.8f;
-        self.status = ForecastStatusParsingWeatherData;
+        self.status = ForecastStatusFetchedWeatherData;
         self.weatherData = weatherData;
         [self completedForecast];
         
     } failure:^(NSError *error) {
+        self.progress = 1.0f;
         [self failedForecastWithError:error];
     }];
 }
@@ -239,6 +232,7 @@
     forecast.validTill = _validTill;
     forecast.timestamp = _timestamp;
     
+    self.status = ForecastStatusSaving;
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
         
         for (NSDictionary<WeatherProtocol>* weatherDict in _weatherData) {
@@ -263,10 +257,15 @@
             weather.forecast = [forecast inContext:localContext];
         }
         
+        self.progress = 0.95f;
+        
         for (NSDictionary<AstroProtocol>* astroDict in _astroData) {
             Astro* astro = [Astro createInContext:currentContext];
             astro.sunRise = astroDict.sunRise;
             astro.sunSet = astroDict.sunSet;
+            astro.sunNeverRise = astroDict.sunNeverRise;
+            astro.sunNeverSet = astroDict.sunNeverSet;
+            astro.dayLength = astroDict.dayLength;
             astro.noonAltitude = astroDict.noonAltitude;
             astro.moonPhase = astroDict.moonPhase;
             astro.moonRise = astroDict.moonRise;
@@ -278,7 +277,6 @@
     } completion:^(BOOL success, NSError *error) {
         
         self.progress = 1.0f;
-        self.status = ForecastStatusCompleted;
         if (error == nil) {
             
             DDLogVerbose(@"Forecast saved: %@", [forecast description]);

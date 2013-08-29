@@ -11,20 +11,21 @@
 typedef enum {
     ForecastStatusIdle = 0,
     ForecastStatusActive = 1,
-    ForecastStatusFechingElevation = 2,
-    ForecastStatusFechingTimezone = 3,
-    ForecastStatusFechingSolarData = 4,
-    ForecastStatusParsingSolarData = 5,
-    ForecastStatusFechingWeatherData = 6,
-    ForecastStatusParsingWeatherData = 7,
-    ForecastStatusCompleted = 8,
-    ForecastStatusFailed = 9,
-    ForecastStatusLoaded = 10
+    ForecastStatusFetchingElevation = 2,
+    ForecastStatusFetchedElevation = 3,
+    ForecastStatusFetchingTimezone = 4,
+    ForecastStatusFetchedTimezone = 5,
+    ForecastStatusFetchingSolarData = 6,
+    ForecastStatusFetchedSolarData = 7,
+    ForecastStatusFetchingWeatherData = 8,
+    ForecastStatusFetchedWeatherData = 9,
+    ForecastStatusSaving = 10,
+    ForecastStatusCompleted = 11,
+    ForecastStatusFailed = 12,
+    ForecastStatusLoaded = 13
 } ForecastStatus;
 
 @class Forecast;
-
-static NSString* const ForecastManagerStatusChangedNotification = @"FORECASTMANAGER_STATUS_CHANGED_NOTIFICATION";
 
 @protocol ForecastManagerDelegate <NSObject>
 
@@ -49,7 +50,6 @@ static NSString* const ForecastManagerStatusChangedNotification = @"FORECASTMANA
 @property (nonatomic, readonly) ForecastStatus status;
 @property (nonatomic, readonly) float progress;
 
-+ (ForecastManager*)sharedInstance;
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force;
 
 @end

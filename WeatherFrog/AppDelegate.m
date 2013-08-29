@@ -355,7 +355,7 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
                     DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
                     
-                    ForecastManager* forecastManager = [ForecastManager sharedInstance];
+                    ForecastManager* forecastManager = [[ForecastManager alloc] init];
                     forecastManager.delegate = self;
                     [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
                     

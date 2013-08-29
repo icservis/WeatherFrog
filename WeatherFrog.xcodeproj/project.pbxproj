@@ -470,19 +470,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		843C230C17CEA41B00F1DBBF /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */,
-				843C230D17CEA83100F1DBBF /* WeatherDictionary.h */,
-				843C230E17CEA83100F1DBBF /* WeatherDictionary.m */,
-				843C230B17CEA3CF00F1DBBF /* AstroProtocal.h */,
-				843C231117CEA8CC00F1DBBF /* AstroDictionary.h */,
-				843C231217CEA8CC00F1DBBF /* AstroDictionary.m */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		847B914717BFA6D600AD76E7 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,7 +535,6 @@
 				84DE4A1517BF840C005AB3B8 /* Controllers */,
 				84DE4A1317BF83FC005AB3B8 /* Models */,
 				84DE4A1417BF8403005AB3B8 /* Views */,
-				843C230C17CEA41B00F1DBBF /* Protocols */,
 				848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */,
 				848A54F2176E09A2009B3F85 /* Main_iPad.storyboard */,
 				848A54FB176E09A2009B3F85 /* Images.xcassets */,
@@ -1038,6 +1024,12 @@
 		84DE4A1217BF83F3005AB3B8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */,
+				843C230D17CEA83100F1DBBF /* WeatherDictionary.h */,
+				843C230E17CEA83100F1DBBF /* WeatherDictionary.m */,
+				843C230B17CEA3CF00F1DBBF /* AstroProtocal.h */,
+				843C231117CEA8CC00F1DBBF /* AstroDictionary.h */,
+				843C231217CEA8CC00F1DBBF /* AstroDictionary.m */,
 				848CC83817C2BA2300EE02BD /* GoogleApiService.h */,
 				848CC83917C2BA2300EE02BD /* GoogleApiService.m */,
 				84BEAEEC17C55E09008B828E /* YrApiService.h */,

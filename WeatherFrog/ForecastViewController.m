@@ -173,7 +173,7 @@
     }
 }
 
-#pragma mark - User Inreface
+#pragma mark - User Interface
 
 - (void)displayForecast:(Forecast*)forecast
 {
@@ -216,15 +216,6 @@
     [self.progressBar setProgress:0.0f animated:YES];
 }
 
-- (void)forecast:(CLPlacemark*)placemark forceUpdate:(BOOL)force
-{
-    DDLogInfo(@"placemark: %@", [placemark description]);
-    
-    ForecastManager* forecastManager = [ForecastManager sharedInstance];
-    forecastManager.delegate = self;
-    [forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
-}
-
 #pragma mark - UIEvent
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -244,6 +235,17 @@
             [self displayForecast:_selectedForecast];
         }
     }
+}
+
+#pragma mark - ForecastManager
+
+- (void)forecast:(CLPlacemark*)placemark forceUpdate:(BOOL)force
+{
+    DDLogInfo(@"placemark: %@", [placemark description]);
+    
+    ForecastManager* forecastManager = [[ForecastManager alloc] init];
+    forecastManager.delegate = self;
+    [forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
 }
 
 #pragma mark - ForecastManagerDelegate
