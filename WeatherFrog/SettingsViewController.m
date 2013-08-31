@@ -39,6 +39,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbSessionStateOpened:) name:FbSessionOpenedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbSessionStateClosed:) name:FbSessionClosedNotification object:nil];
     
+    [[UserDefaultsManager sharedDefaults] dictionaryForKey:DefaultsDisplayMode];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,14 +79,12 @@
     } else if (section == 1) {
         return 2;
     } else if (section == 2) {
-        return 6;
+        return 3;
     } else if (section == 3) {
         return 2;
     } else if (section == 4) {
-        return 1;
-    } else if (section == 5) {
         return 2;
-    } else if (section == 6) {
+    } else if (section == 5) {
         return 5;
     }
     return 0;
@@ -107,82 +106,97 @@
     } else {
         
         UITableViewCell* cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
         
         if (indexPath.section == 1) {
             
             if (indexPath.row == 0) {
                 cell.textLabel.text = NSLocalizedString(@"Fetch Forecast in Background", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.detailTextLabel.text = nil;
+                if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
             } else if (indexPath.row == 1) {
                 cell.textLabel.text = NSLocalizedString(@"Share Location and Forecast", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.detailTextLabel.text = nil;
+                if ([[UserDefaultsManager sharedDefaults] shareLocationAndForecast]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
             }
             
         } else if (indexPath.section == 2) {
             
             if (indexPath.row == 0) {
-                cell.textLabel.text = NSLocalizedString(@"PortraitView", nil);
+                cell.textLabel.text = NSLocalizedString(@"Display Mode", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults displayMode] forKey:DefaultsDisplayMode];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 1) {
-                cell.textLabel.text = NSLocalizedString(@"Background Images", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else if (indexPath.row == 2) {
-                cell.textLabel.text = NSLocalizedString(@"Select Background", nil);
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            } else if (indexPath.row == 3) {
-                cell.textLabel.text = NSLocalizedString(@"Background Rotation", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else if (indexPath.row == 4) {
                 cell.textLabel.text = NSLocalizedString(@"Sound Effects", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            } else if (indexPath.row == 5) {
+                cell.detailTextLabel.text = nil;
+                if ([[UserDefaultsManager sharedDefaults] soundEffects]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+            } else if (indexPath.row == 2) {
                 cell.textLabel.text = NSLocalizedString(@"On Screen Help", nil);
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.detailTextLabel.text = nil;
+                if ([[UserDefaultsManager sharedDefaults] onScreenHelp]) {
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
             }
             
         } else if (indexPath.section == 3) {
             
             if (indexPath.row == 0) {
                 cell.textLabel.text = NSLocalizedString(@"Accuracy", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults locationGeocoderAccuracy] forKey:DefaultsLocationGeocoderAccuracy];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 1) {
                 cell.textLabel.text = NSLocalizedString(@"Timeout", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults locationGeocoderTimeout] forKey:DefaultsLocationGeocoderTimeout];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             
         } else if (indexPath.section == 4) {
             
             if (indexPath.row == 0) {
-                cell.textLabel.text = NSLocalizedString(@"Pan & Zoom", nil);
+                cell.textLabel.text = NSLocalizedString(@"Accuracy", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastAccuracy] forKey:DefaultsForecastAccuracy];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 1) {
+                cell.textLabel.text = NSLocalizedString(@"Validity", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastValidity] forKey:DefaultsForecastValidity];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             
         } else if (indexPath.section == 5) {
             
             if (indexPath.row == 0) {
-                cell.textLabel.text = NSLocalizedString(@"Accuracy", nil);
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            } else if (indexPath.row == 1) {
-                cell.textLabel.text = NSLocalizedString(@"Validity", nil);
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            
-        } else if (indexPath.section == 6) {
-            
-            if (indexPath.row == 0) {
                 cell.textLabel.text = NSLocalizedString(@"Temperature", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastUnitTemperature] forKey:DefaultsForecastUnitTemperature];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 1) {
                 cell.textLabel.text = NSLocalizedString(@"Wind Speed", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastUnitWindspeed] forKey:DefaultsForecastUnitWindspeed];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 2) {
                 cell.textLabel.text = NSLocalizedString(@"Precipitation", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastUnitPrecipitation] forKey:DefaultsForecastUnitPrecipitation];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 3) {
                 cell.textLabel.text = NSLocalizedString(@"Pressure", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastUnitPressure] forKey:DefaultsForecastUnitPressure];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 4) {
                 cell.textLabel.text = NSLocalizedString(@"Altitude", nil);
+                cell.detailTextLabel.text = [sharedDefaults titleForValue:[sharedDefaults forecastUnitAltitude] forKey:DefaultsForecastUnitAltitude];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }
@@ -204,10 +218,8 @@
     } else if (section == 3) {
         return NSLocalizedString(@"Location Geocoder", nil);
     } else if (section == 4) {
-        return NSLocalizedString(@"Map Engine", nil);
-    } else if (section == 5) {
         return NSLocalizedString(@"Forecast Precision", nil);
-    } else if (section == 6) {
+    } else if (section == 5) {
         return NSLocalizedString(@"Forecast Units", nil);
     }
     return nil;
@@ -234,8 +246,76 @@
         } else {
             [[self appDelegate] closeSession];
         }
-        
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        
+        if (indexPath.row == 0) {
+            // fetch in Background
+            BOOL fetchForecastInBackground = [[UserDefaultsManager sharedDefaults] fetchForecastInBackground];
+            [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:!fetchForecastInBackground];
+        } else if (indexPath.row == 1) {
+             // share location and Forecast
+            BOOL shareLocationAndForecast = [[UserDefaultsManager sharedDefaults] shareLocationAndForecast];
+            [[UserDefaultsManager sharedDefaults] setShareLocationAndForecast:!shareLocationAndForecast];
+        }
+        
+    } else if (indexPath.section == 2) {
+        
+        if (indexPath.row == 0) {
+            // display mode
+            [self performSegueWithIdentifier:@"showElement" sender:DefaultsDisplayMode];
+        } else if (indexPath.row == 1) {
+            //sound effects
+            BOOL soundEffects = [[UserDefaultsManager sharedDefaults] soundEffects];
+            [[UserDefaultsManager sharedDefaults] setSoundEffects:!soundEffects];
+        } else if (indexPath.row == 2) {
+            /// on screen help
+            BOOL onScreenHelp = [[UserDefaultsManager sharedDefaults] onScreenHelp];
+            [[UserDefaultsManager sharedDefaults] setOnScreenHelp:!onScreenHelp];
+        }
+        
+    } else if (indexPath.section == 3) {
+        
+        if (indexPath.row == 0) {
+            // geocoder accuracy
+            [self performSegueWithIdentifier:@"showElement" sender:DefaultsLocationGeocoderAccuracy];
+        } else if (indexPath.row == 1) {
+            // deocoder timeout
+            [self performSegueWithIdentifier:@"showElement" sender:DefaultsLocationGeocoderTimeout];
+        }
+        
+    } else if (indexPath.section == 4) {
+        
+        if (indexPath.row == 0) {
+            // forecast accuracy
+            [self performSegueWithIdentifier:@"showElement" sender:DefaultsForecastAccuracy];
+        } else if (indexPath.row == 1) {
+            // forecast validity
+            [self performSegueWithIdentifier:@"showElement" sender:DefaultsForecastValidity];
+        }
+        
+    } else if (indexPath.section == 5) {
+        
+        if (indexPath.row == 0) {
+            // forecast unit temperature
+        } else if (indexPath.row == 1) {
+            // forecast unit windspeed
+        } else if (indexPath.row == 2) {
+            // forecast unit precipitation
+        } else if (indexPath.row == 3) {
+            // forecast unit pressure
+        } else if (indexPath.row == 4) {
+            // forecast unit altitude
+        }
+    }
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - NSnotification
@@ -250,16 +330,74 @@
     [self.tableView reloadData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showElement"]) {
+        
+        NSString* elementIdentifier = (NSString*)sender;
+        SettingsElementViewController* settingsElementViewController = (SettingsElementViewController*)segue.destinationViewController;
+        settingsElementViewController.delegate = self;
+        settingsElementViewController.identifier = elementIdentifier;
+        settingsElementViewController.title = [[UserDefaultsManager sharedDefaults] elementTitleForKey:elementIdentifier];
+        settingsElementViewController.titles = [[UserDefaultsManager sharedDefaults] titlesForKey:elementIdentifier];
+        settingsElementViewController.values = [[UserDefaultsManager sharedDefaults] valuesForKey:elementIdentifier];
+        
+        if ([elementIdentifier isEqualToString:DefaultsDisplayMode]) {
+            settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] displayMode];
+        }
+        
+        if ([elementIdentifier isEqualToString:DefaultsLocationGeocoderAccuracy]) {
+            settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] locationGeocoderAccuracy];
+        }
+        
+        if ([elementIdentifier isEqualToString:DefaultsLocationGeocoderTimeout]) {
+            settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] locationGeocoderTimeout];
+        }
+        
+        if ([elementIdentifier isEqualToString:DefaultsForecastAccuracy]) {
+            settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
+        }
+        
+        if ([elementIdentifier isEqualToString:DefaultsForecastValidity]) {
+            settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] forecastValidity];
+        }
+    }
 }
 
- */
+#pragma mark - SettingsElementViewControllerDelegate
+
+- (void)closeSettingsElementViewController:(UITableViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)settingsViewController:(UITableViewController *)controller didUpdatedElement:(NSString *)element value:(id)value
+{
+    if ([element isEqualToString:DefaultsDisplayMode]) {
+        [[UserDefaultsManager sharedDefaults] setDisplayMode:value];
+    }
+    
+    if ([element isEqualToString:DefaultsLocationGeocoderAccuracy]) {
+        [[UserDefaultsManager sharedDefaults] setLocationGeocoderAccuracy:value];
+    }
+    
+    if ([element isEqualToString:DefaultsLocationGeocoderTimeout]) {
+        [[UserDefaultsManager sharedDefaults] setLocationGeocoderTimeout:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastAccuracy]) {
+        [[UserDefaultsManager sharedDefaults] setForecastAccuracy:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastValidity]) {
+        [[UserDefaultsManager sharedDefaults] setForecastValidity:value];
+    }
+    
+    [self.tableView reloadData];
+}
 
 @end

@@ -26,6 +26,7 @@
     #import "Reachability.h"
 
     #import "Constants.h"
+    #import "UserDefaultsManager.h"
 
     #import "NSString+ISO8601Date.h"
     #import "NSDate+ISO8601Date.h"

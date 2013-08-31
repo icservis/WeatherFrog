@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Features</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Fetch Forecast in Background</string>
+			<key>Key</key>
+			<string>FETCH_FORECAST_IN_BACKGROUND</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Share Location and Forecast</string>
+			<key>Key</key>
+			<string>SHARE_LOCATION_AND_FORECAST</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Application Options</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Display Mode</string>
+			<key>Key</key>
+			<string>DISPLAY_MODE</string>
+			<key>DefaultValue</key>
+			<string>GRAPHIC</string>
+			<key>Titles</key>
+			<array>
+				<string>Graphic</string>
+				<string>Expert</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>GRAPHIC</string>
+				<string>EXPERT</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Sound Effects</string>
+			<key>Key</key>
+			<string>SOUND_EFFECTS</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>On Screen Help</string>
+			<key>Key</key>
+			<string>ON_SCREEN_HELP</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Location Geocoder</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Accuracy</string>
+			<key>Key</key>
+			<string>LOCATION_GEOCODER_ACCURACY</string>
+			<key>DefaultValue</key>
+			<integer>2500</integer>
+			<key>Titles</key>
+			<array>
+				<string>25 m</string>
+				<string>250 m</string>
+				<string>2500 m</string>
+				<string>25 km</string>
+				<string>250 km</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>25</integer>
+				<integer>250</integer>
+				<integer>2500</integer>
+				<integer>25000</integer>
+				<integer>250000</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Timeout</string>
+			<key>Key</key>
+			<string>LOCATION_GEOCODER_TIMEOUT</string>
+			<key>DefaultValue</key>
+			<integer>60</integer>
+			<key>Titles</key>
+			<array>
+				<string>30 sec</string>
+				<string>60 sec</string>
+				<string>120 sec</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>30</integer>
+				<integer>60</integer>
+				<integer>120</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Forecast Precision</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Accuracy</string>
+			<key>Key</key>
+			<string>FORECAST_ACCURACY</string>
+			<key>DefaultValue</key>
+			<integer>9000</integer>
+			<key>Titles</key>
+			<array>
+				<string>1 km</string>
+				<string>3 km</string>
+				<string>9 km</string>
+				<string>25 km</string>
+				<string>250 km</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>1000</integer>
+				<integer>3000</integer>
+				<integer>9000</integer>
+				<integer>25000</integer>
+				<integer>250000</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Validity</string>
+			<key>Key</key>
+			<string>FORECAST_VALIDITY</string>
+			<key>DefaultValue</key>
+			<integer>259200</integer>
+			<key>Titles</key>
+			<array>
+				<string>1 day</string>
+				<string>3 days</string>
+				<string>9 days</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<integer>86400</integer>
+				<integer>259200</integer>
+				<integer>777600</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Forecast Units</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

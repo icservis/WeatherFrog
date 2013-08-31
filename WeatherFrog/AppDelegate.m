@@ -41,6 +41,7 @@
     [hostReachable startNotifier];
     
     [MagicalRecord setupCoreDataStack];
+    [UserDefaultsManager sharedDefaults];
     [self customizeUIKit];
     
     // Facebook

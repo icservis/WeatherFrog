@@ -12,6 +12,12 @@
 		84089894176E104500F45397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089893176E104500F45397 /* QuartzCore.framework */; };
 		84089896176E105700F45397 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089895176E105700F45397 /* CoreLocation.framework */; };
 		84089898176E106500F45397 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089897176E106500F45397 /* CoreImage.framework */; };
+		841EFAD217D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
+		841EFAD317D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
+		841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
+		841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
+		841EFADA17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */; };
+		841EFADB17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */; };
 		843C230F17CEA83100F1DBBF /* WeatherDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C230E17CEA83100F1DBBF /* WeatherDictionary.m */; };
 		843C231017CEA83100F1DBBF /* WeatherDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C230E17CEA83100F1DBBF /* WeatherDictionary.m */; };
 		843C231317CEA8CC00F1DBBF /* AstroDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C231217CEA8CC00F1DBBF /* AstroDictionary.m */; };
@@ -227,6 +233,11 @@
 		84089893176E104500F45397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84089895176E105700F45397 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84089897176E106500F45397 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		841EFAD117D25571009EF860 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		841EFAD417D26D94009EF860 /* UserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsManager.h; sourceTree = "<group>"; };
+		841EFAD517D26D94009EF860 /* UserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsManager.m; sourceTree = "<group>"; };
+		841EFAD817D2A7EF009EF860 /* SettingsElementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsElementViewController.h; sourceTree = "<group>"; };
+		841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsElementViewController.m; sourceTree = "<group>"; };
 		843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherProtocol.h; sourceTree = "<group>"; };
 		843C230B17CEA3CF00F1DBBF /* AstroProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstroProtocal.h; sourceTree = "<group>"; };
 		843C230D17CEA83100F1DBBF /* WeatherDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDictionary.h; sourceTree = "<group>"; };
@@ -550,6 +561,7 @@
 				848A54E6176E09A1009B3F85 /* InfoPlist.strings */,
 				848A54E9176E09A1009B3F85 /* main.m */,
 				848A54EB176E09A1009B3F85 /* WeatherFrog-Prefix.pch */,
+				841EFAD117D25571009EF860 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1013,10 +1025,10 @@
 		84DE4A1117BF83EB005AB3B8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				84DE49FE17BF786A005AB3B8 /* Lumberjack.h */,
-				84DE49FF17BF786A005AB3B8 /* Constants.h */,
 				848A54EC176E09A1009B3F85 /* AppDelegate.h */,
 				848A54ED176E09A1009B3F85 /* AppDelegate.m */,
+				84DE49FE17BF786A005AB3B8 /* Lumberjack.h */,
+				84DE49FF17BF786A005AB3B8 /* Constants.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1024,20 +1036,22 @@
 		84DE4A1217BF83F3005AB3B8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				843D1B6917CD32EA0094AEB4 /* ForecastManager.h */,
+				843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */,
+				848CC83817C2BA2300EE02BD /* GoogleApiService.h */,
+				848CC83917C2BA2300EE02BD /* GoogleApiService.m */,
+				84BEAEEC17C55E09008B828E /* YrApiService.h */,
+				84BEAEED17C55E09008B828E /* YrApiService.m */,
 				843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */,
 				843C230D17CEA83100F1DBBF /* WeatherDictionary.h */,
 				843C230E17CEA83100F1DBBF /* WeatherDictionary.m */,
 				843C230B17CEA3CF00F1DBBF /* AstroProtocal.h */,
 				843C231117CEA8CC00F1DBBF /* AstroDictionary.h */,
 				843C231217CEA8CC00F1DBBF /* AstroDictionary.m */,
-				848CC83817C2BA2300EE02BD /* GoogleApiService.h */,
-				848CC83917C2BA2300EE02BD /* GoogleApiService.m */,
-				84BEAEEC17C55E09008B828E /* YrApiService.h */,
-				84BEAEED17C55E09008B828E /* YrApiService.m */,
-				843D1B6917CD32EA0094AEB4 /* ForecastManager.h */,
-				843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */,
 				845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */,
 				845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */,
+				841EFAD417D26D94009EF860 /* UserDefaultsManager.h */,
+				841EFAD517D26D94009EF860 /* UserDefaultsManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1084,6 +1098,8 @@
 				847B915117BFB30E00AD76E7 /* ForecastViewController.m */,
 				847B916017BFC56E00AD76E7 /* SettingsViewController.h */,
 				847B916117BFC56E00AD76E7 /* SettingsViewController.m */,
+				841EFAD817D2A7EF009EF860 /* SettingsElementViewController.h */,
+				841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1180,6 +1196,7 @@
 				848A54FC176E09A2009B3F85 /* Images.xcassets in Resources */,
 				848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */,
 				848A54E8176E09A1009B3F85 /* InfoPlist.strings in Resources */,
+				841EFAD217D25571009EF860 /* Settings.bundle in Resources */,
 				84DE491817BF7659005AB3B8 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1188,6 +1205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841EFAD317D25571009EF860 /* Settings.bundle in Resources */,
 				84DE491917BF7659005AB3B8 /* README.txt in Resources */,
 				848A550D176E09A2009B3F85 /* InfoPlist.strings in Resources */,
 				845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */,
@@ -1263,6 +1281,7 @@
 				84DE49F917BF76FA005AB3B8 /* Reachability.m in Sources */,
 				84DE497817BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
 				84DE49EC17BF76CB005AB3B8 /* MagicalRecord+Setup.m in Sources */,
+				841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */,
 				84DE49C017BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				84DE49EE17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */,
@@ -1278,6 +1297,7 @@
 				84DE48F517BF764A005AB3B8 /* DDXMLElement.m in Sources */,
 				84DE490A17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
 				84DE49D617BF76CB005AB3B8 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
+				841EFADA17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */,
 				84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE49D017BF76CB005AB3B8 /* NSManagedObject+MagicalFinders.m in Sources */,
 				84DE49EA17BF76CB005AB3B8 /* MagicalRecord+Options.m in Sources */,
@@ -1299,6 +1319,7 @@
 				847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				84DE48D517BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE48D917BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
+				841EFADB17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */,
 				84DE48D717BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */,
 				84DE49F517BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
 				84DE49F117BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
@@ -1370,6 +1391,7 @@
 				84DE49C917BF76CB005AB3B8 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				84DE49CF17BF76CB005AB3B8 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */,
+				841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */,
 				84DE497717BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
 				84DE48C917BF7601005AB3B8 /* AFHTTPClient.m in Sources */,
 				84DE49E717BF76CB005AB3B8 /* MagicalRecord+ErrorHandling.m in Sources */,

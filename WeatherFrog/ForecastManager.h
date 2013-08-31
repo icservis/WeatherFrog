@@ -9,20 +9,20 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    ForecastStatusIdle = 0,
-    ForecastStatusActive = 1,
-    ForecastStatusFetchingElevation = 2,
-    ForecastStatusFetchedElevation = 3,
-    ForecastStatusFetchingTimezone = 4,
-    ForecastStatusFetchedTimezone = 5,
-    ForecastStatusFetchingSolarData = 6,
-    ForecastStatusFetchedSolarData = 7,
-    ForecastStatusFetchingWeatherData = 8,
-    ForecastStatusFetchedWeatherData = 9,
-    ForecastStatusSaving = 10,
-    ForecastStatusCompleted = 11,
-    ForecastStatusFailed = 12,
-    ForecastStatusLoaded = 13
+    ForecastStatusIdle,
+    ForecastStatusActive,
+    ForecastStatusFetchingElevation,
+    ForecastStatusFetchedElevation,
+    ForecastStatusFetchingTimezone,
+    ForecastStatusFetchedTimezone,
+    ForecastStatusFetchingSolarData,
+    ForecastStatusFetchedSolarData,
+    ForecastStatusFetchingWeatherData,
+    ForecastStatusFetchedWeatherData,
+    ForecastStatusSaving,
+    ForecastStatusCompleted,
+    ForecastStatusFailed,
+    ForecastStatusLoaded
 } ForecastStatus;
 
 @class Forecast;
