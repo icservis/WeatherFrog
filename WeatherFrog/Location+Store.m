@@ -26,7 +26,7 @@
     location.timestamp = [NSDate date];
     location.isMarked = [NSNumber numberWithBool:NO];
     
-    DDLogInfo(@"Location: %@", [location description]);
+    DDLogVerbose(@"Location: %@", [location description]);
     
     return location;
 }
@@ -47,7 +47,7 @@
         location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
     }
     
-    DDLogInfo(@"Location: %@", [location description]);
+    DDLogVerbose(@"Location: %@", [location description]);
     
     return location;
 }
@@ -65,7 +65,7 @@
         location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
     }
     
-    DDLogInfo(@"Location: %@", [location description]);
+    DDLogVerbose(@"Location: %@", [location description]);
     
     return location;
 }

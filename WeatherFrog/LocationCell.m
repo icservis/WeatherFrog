@@ -52,14 +52,12 @@
 
 - (IBAction)markButtonTapped:(id)sender
 {
-    DDLogVerbose(@"location: %@", [self.location description]);
     if ([self.location.isMarked boolValue]) {
         self.location.isMarked = [NSNumber numberWithBool:NO];
     } else {
         self.location.isMarked = [NSNumber numberWithBool:YES];
     }
     self.location.timestamp = [NSDate date];
-    DDLogInfo(@"Location: %@", [self.location description]);
     
     [self.delegate reloadTableViewCell:self];
 }

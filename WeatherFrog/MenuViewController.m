@@ -72,6 +72,7 @@
     // Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localNotificationReceived:) name:ApplicationReceivedLocalNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -249,6 +250,13 @@
     DDLogVerbose(@"notification: %@", [notification description]);
 }
 
+- (void)localNotificationReceived:(NSNotification*)notification
+{
+    DDLogVerbose(@"notification: %@", [notification description]);
+    
+    [self forecastButtonTapped:self.forecastButton];
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate methods
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
@@ -315,7 +323,6 @@
 
 - (void)reloadTableViewCell:(UITableViewCell *)cell
 {
-    DDLogInfo(@"cell: %@", [cell description]);
     LocationCell* locationCell = (LocationCell*)cell;
     NSIndexPath* indexpath = [self.tableView indexPathForCell:locationCell];
     

@@ -129,7 +129,9 @@
 {
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
-    [self displayForecast:_selectedForecast];
+    if ([self isViewLoaded]) {
+        [self displayForecast:_selectedForecast];
+    }
 }
 
 #pragma mark - Notifications
@@ -142,10 +144,6 @@
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
-    NSDictionary* userInfo = notification.userInfo;
-    if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        self.selectedPlacemark = [userInfo objectForKey:@"currentPlacemark"];
-    }
 }
 
 - (void)forecastUpdate:(NSNotification*)notification
@@ -241,8 +239,8 @@
 
 - (void)forecast:(CLPlacemark*)placemark forceUpdate:(BOOL)force
 {
+    DDLogInfo(@"forceUpdate: %d", force);
     DDLogVerbose(@"placemark: %@", [placemark description]);
-    
     ForecastManager* forecastManager = [[ForecastManager alloc] init];
     forecastManager.delegate = self;
     [forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
@@ -252,6 +250,7 @@
 
 - (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast
 {
+    DDLogInfo(@"didFinishProcessingForecast");
     self.selectedForecast = forecast;
 }
 

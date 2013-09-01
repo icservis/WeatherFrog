@@ -63,6 +63,8 @@
 
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force
 {
+    DDLogInfo(@"force: %d", force);
+    DDLogVerbose(@"forecastWithPlacemark: %@, timezone: %@, force: %d", [placemark description], [timezone description], force);
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
     
     self.name = [placemark title];
@@ -294,7 +296,7 @@
         self.progress = 1.0f;
         if (error == nil) {
             
-            DDLogVerbose(@"Forecast saved: %@", [forecast description]);
+            DDLogInfo(@"Forecast saved");
             self.status = ForecastStatusCompleted;
             [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
             
@@ -308,7 +310,7 @@
 
 - (void)loadedForecast:(Forecast*)forecast
 {
-    DDLogVerbose(@"Forecast loaded: %@", [forecast description]);
+    DDLogInfo(@"Forecast loaded");
     self.progress = 1.0f;
     self.status = ForecastStatusLoaded;
     [self.delegate forecastManager:self didFinishProcessingForecast:forecast];

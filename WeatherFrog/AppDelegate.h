@@ -19,6 +19,7 @@ static NSString* const ForecastProgressNotification = @"FORECAST_PROGRESS_NOTIFI
 static NSString* const ForecastUpdateNotification = @"FORECAST_UPDATE_NOTIFICATION";
 static NSString* const FbSessionOpenedNotification = @"FBSESSION_OPENED_NOTIFICATION";
 static NSString* const FbSessionClosedNotification = @"FBSESSION_CLOSED_NOTIFICATION";
+static NSString* const ApplicationReceivedLocalNotification = @"APPLICATION_RECEIVED_LOCAL_NOTIFICATION";
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, ForecastManagerDelegate>
 

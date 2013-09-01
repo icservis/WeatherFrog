@@ -63,6 +63,13 @@
     if (geocoder == nil) {
         geocoder = [[CLGeocoder alloc] init];
     }
+    
+    if (launchOptions != nil) {
+        if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil) {
+            DDLogVerbose(@"Launched from Local notification %@", [[launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] description]);
+            //DO NOTHING, App will start to required controller and state
+        }
+    }
 
     return YES;
 }
@@ -140,19 +147,19 @@
     {
         case NotReachable:
         {
-            DDLogInfo(@"The internet is down.");
+            DDLogVerbose(@"The internet is down.");
             internetActive = NO;
             break;
         }
         case ReachableViaWiFi:
         {
-            DDLogInfo(@"The internet is working via WIFI.");
+            DDLogVerbose(@"The internet is working via WIFI.");
             internetActive = YES;
             break;
         }
         case ReachableViaWWAN:
         {
-            DDLogInfo(@"The internet is working via WWAN.");
+            DDLogVerbose(@"The internet is working via WWAN.");
             internetActive = YES;
             break;
         }
@@ -160,11 +167,11 @@
     
     if (hostStatus == ReachableViaWiFi || hostStatus == ReachableViaWWAN) {
         
-        DDLogInfo(@"Host is Active");
+        DDLogVerbose(@"Host is Active");
         hostActive = YES;
         
     } else {
-        DDLogInfo(@"Host is not Reachable");
+        DDLogVerbose(@"Host is not Reachable");
         hostActive = NO;
     }
     
@@ -182,7 +189,7 @@
     return hostActive;
 }
 
-#pragma mark - iser locale
+#pragma mark - user locale
 
 - (NSString*)localeCountryCode
 {
@@ -320,6 +327,15 @@
     return versText;
 }
 
+#pragma mark - UIApplicationDelegate
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    DDLogVerbose(@"didReceiveLocalNotification: %@", [notification description]);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ApplicationReceivedLocalNotification object:self userInfo:notification.userInfo];
+}
+
 #pragma mark - CLLocationDelegete
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -373,6 +389,21 @@
     _currentForecast = forecast;
     [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
     DDLogVerbose(@"forecast: %@", [_currentForecast description]);
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
+        UIApplication* app = [UIApplication sharedApplication];
+        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+        if (notifyAlarm) {
+            notifyAlarm.fireDate = alertTime;
+            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+            notifyAlarm.repeatInterval = 0;
+            NSString* alertBody = NSLocalizedString(@"New forecast", nil);
+            
+            notifyAlarm.alertBody = alertBody;
+            [app scheduleLocalNotification:notifyAlarm];
+        }
+    }
 }
 
 - (void)forecastManager:(id)manager didFailProcessingForecast:(Forecast *)forecast error:(NSError *)error
