@@ -12,18 +12,13 @@
 
 #pragma mark - Forecast
 
-static float const kForecastAccuracy = 2500.0f;
-static int const kForecastValidity = 3600;
-static float const kGeocoderAccuracy = 250.0f;
-static int const kForecastHoursCount = 9*24;
-
+static int const kAstroFeedHoursCount = 30*24;
 
 #pragma mark - MapView
 
 static double const kMapCenterLatitude = 48.15952f;
 static double const kMapCenterLongitude = 17.12769f;
 static float const kMapRadiusMultiplier = 1000.0f;
-
 
 
 #endif

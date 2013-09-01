@@ -248,7 +248,7 @@
 
 - (void)astroDatatWithLocation:(CLLocation *)location success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
-    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sunrise/1.0/?lat=%f;lon=%f;from=%@;to=%@", kYrAPIUrl, location.coordinate.latitude, location.coordinate.longitude, [NSString stringWithISODateOnly:[NSDate date]], [NSString stringWithISODateOnly:[NSDate dateWithTimeIntervalSinceNow:kForecastHoursCount*3600]]]];
+    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/sunrise/1.0/?lat=%f;lon=%f;from=%@;to=%@", kYrAPIUrl, location.coordinate.latitude, location.coordinate.longitude, [NSString stringWithISODateOnly:[NSDate date]], [NSString stringWithISODateOnly:[NSDate dateWithTimeIntervalSinceNow:kAstroFeedHoursCount*3600]]]];
     DDLogVerbose(@"url: %@", [apiURL absoluteString]);
     NSURLRequest* request = [NSURLRequest requestWithURL:apiURL];
     

@@ -103,7 +103,8 @@
             CLLocation* nearestLocationLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([nearestLocation.latitude doubleValue], [nearestLocation.longitude doubleValue]) altitude:[nearestLocation.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:nearestLocation.timestamp];
             CLLocationDistance nearestLocationDistance = [nearestLocationLocation distanceFromLocation:selectedLocation];
             
-            if (nearestLocationDistance < kGeocoderAccuracy) {
+            NSNumber* locationGeocoderAccuracy = [[UserDefaultsManager sharedDefaults] locationGeocoderAccuracy];
+            if (nearestLocationDistance < [locationGeocoderAccuracy floatValue]) {
                 location = nearestLocation;
             }
         }

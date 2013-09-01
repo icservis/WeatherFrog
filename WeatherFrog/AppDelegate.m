@@ -340,7 +340,8 @@
     
     if (abs(howRecent) < 15.0 && accuracy < kCLLocationAccuracyHundredMeters) {
         
-        if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < kForecastAccuracy) {
+        NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
+        if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < [forecastAccuracy floatValue]) {
             return;
         }
         

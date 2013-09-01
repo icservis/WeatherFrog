@@ -92,7 +92,8 @@
             for (Forecast* forecast in forecasts) {
                 CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
                 
-                if ([forecastLocation distanceFromLocation:placemarkLocation] <= kForecastAccuracy) {
+                NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
+                if ([forecastLocation distanceFromLocation:placemarkLocation] <= [forecastAccuracy floatValue]) {
                     [availableForecasts addObject:forecast];
                 }
             }

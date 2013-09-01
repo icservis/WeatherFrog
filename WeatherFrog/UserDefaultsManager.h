@@ -42,10 +42,11 @@ static NSString* const DefaultsForecastUnitAltitude = @"FORECAST_UNIT_ALTITUDE";
 
 + (UserDefaultsManager *)sharedDefaults;
 
-- (NSDictionary*)dictionaryForKey:(NSString*)key;
+- (NSArray*)elementsSections;
 - (NSString*)elementTitleForKey:(NSString*)key;
+- (id)elementValueForKey:(NSString*)key;
+- (NSString*)titleOfValue:(id)value forKey:(NSString*)key;
 - (NSArray*)titlesForKey:(NSString*)key;
 - (NSArray*)valuesForKey:(NSString*)key;
-- (NSString*)titleForValue:(id)value forKey:(NSString*)key;
 
 @end

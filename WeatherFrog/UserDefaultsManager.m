@@ -36,7 +36,7 @@
     if (_standardDefaults == nil) {
         _standardDefaults = [NSUserDefaults standardUserDefaults];
         
-        NSArray* preferenceArray = [self preferenceArray];
+        NSArray* preferenceArray = [self elementsList];
         NSMutableDictionary* registerableDictionary = [NSMutableDictionary dictionary];
         
         for (int i = 0; i < [preferenceArray count]; i++)  {
@@ -292,27 +292,56 @@
     return _forecastUnitAltitude;
 }
 
-#pragma mark - Containers
+#pragma mark - Helpers
 
-- (NSDictionary*)dictionaryForKey:(NSString*)key
+- (NSArray*)elementsList
 {
-    __block NSDictionary* dict = nil;
-    [[self preferenceArray] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
-        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
-            
-            NSArray* titlesArray = [element objectForKey:@"Titles"];
-            NSArray* valuesArray = [element objectForKey:@"Values"];
-            dict = [NSDictionary dictionaryWithObjects:valuesArray forKeys:titlesArray];
-            *stop = YES;
+    NSString* mainBundlePath = [[NSBundle mainBundle] bundlePath];
+    NSString* settingsPropertyListPath = [mainBundlePath stringByAppendingPathComponent:@"Settings.bundle/Root.plist"];
+    NSDictionary* settingsPropertyList = [NSDictionary dictionaryWithContentsOfFile:settingsPropertyListPath];
+    
+    return [settingsPropertyList objectForKey:@"PreferenceSpecifiers"];
+}
+
+- (NSArray*)elementsSections
+{
+    NSMutableDictionary* section;
+    NSMutableArray* sections = [NSMutableArray array];
+    NSArray* elementsList = [self elementsList];
+    if (elementsList != nil && elementsList.count > 0) {
+        NSDictionary* firstElement = elementsList[0];
+        if (![[firstElement objectForKey:@"Type"] isEqualToString:@"PSGroupSpecifier"]) {
+            section = [NSMutableDictionary dictionary];
+            [section setObject:@"" forKey:@"Title"];
+            [section setObject:[NSMutableArray array] forKey:@"Elements"];
+            [sections addObject:section];
         }
-    }];
-    return dict;
+    }
+    for (NSDictionary* element in elementsList) {
+        
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSGroupSpecifier"]) {
+            // new section
+            section = [NSMutableDictionary dictionary];
+            [section setObject:[element objectForKey:@"Title"] forKey:@"Title"];
+            [section setObject:[NSMutableArray array] forKey:@"Elements"];
+            [sections addObject:section];
+            
+        } else {
+            // member of current section
+            section = [sections lastObject];
+            NSMutableArray* elements = [section objectForKey:@"Elements"];
+            [elements addObject:element];
+            
+        }
+    }
+    DDLogVerbose(@"sections: %@", [sections description]);
+    return sections;
 }
 
 - (NSString*)elementTitleForKey:(NSString*)key
 {
     __block NSString* title = nil;
-    [[self preferenceArray] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
+    [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
             
             title = [element objectForKey:@"Title"];
@@ -322,42 +351,42 @@
     return title;
 }
 
-- (NSArray*)valuesForKey:(NSString *)key
+- (id)elementValueForKey:(NSString*)key
 {
-    __block NSArray* array = nil;
-    [[self preferenceArray] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
-        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
-            
-            array = [element objectForKey:@"Values"];
-            *stop = YES;
-        }
-    }];
-    return array;
+    if ([key isEqualToString:DefaultsDisplayMode]) {
+        return [self displayMode];
+    }
+    if ([key isEqualToString:DefaultsLocationGeocoderAccuracy]) {
+        return [self locationGeocoderAccuracy];
+    }
+    if ([key isEqualToString:DefaultsLocationGeocoderTimeout]) {
+        return [self locationGeocoderTimeout];
+    }
+    if ([key isEqualToString:DefaultsForecastAccuracy]) {
+        return [self forecastAccuracy];
+    }
+    if ([key isEqualToString:DefaultsForecastValidity]) {
+        return [self forecastValidity];
+    }
+    if ([key isEqualToString:DefaultsForecastUnitTemperature]) {
+        return [self forecastUnitTemperature];
+    }
+    if ([key isEqualToString:DefaultsForecastUnitWindspeed]) {
+        return [self forecastUnitWindspeed];
+    }
+    if ([key isEqualToString:DefaultsForecastUnitPrecipitation]) {
+        return [self forecastUnitPrecipitation];
+    }
+    if ([key isEqualToString:DefaultsForecastUnitPressure]) {
+        return [self forecastUnitPressure];
+    }
+    if ([key isEqualToString:DefaultsForecastUnitAltitude]) {
+        return [self forecastUnitAltitude];
+    }
+    return nil;
 }
 
-- (NSArray*)titlesForKey:(NSString*)key
-{
-    __block NSArray* array = nil;
-    [[self preferenceArray] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
-        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
-            
-            array = [element objectForKey:@"Titles"];
-            *stop = YES;
-        }
-    }];
-    return array;
-}
-
-- (NSArray*)preferenceArray
-{
-    NSString* mainBundlePath = [[NSBundle mainBundle] bundlePath];
-    NSString* settingsPropertyListPath = [mainBundlePath stringByAppendingPathComponent:@"Settings.bundle/Root.plist"];
-    NSDictionary* settingsPropertyList = [NSDictionary dictionaryWithContentsOfFile:settingsPropertyListPath];
-    
-    return [settingsPropertyList objectForKey:@"PreferenceSpecifiers"];
-}
-
-- (NSString*)titleForValue:(id)value forKey:(NSString*)key
+- (NSString*)titleOfValue:(id)value forKey:(NSString*)key
 {
     NSArray* titles = [self titlesForKey:key];
     NSArray* values = [self valuesForKey:key];
@@ -373,6 +402,32 @@
     } else {
         return key;
     }
+}
+
+- (NSArray*)valuesForKey:(NSString *)key
+{
+    __block NSArray* array = nil;
+    [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
+            
+            array = [element objectForKey:@"Values"];
+            *stop = YES;
+        }
+    }];
+    return array;
+}
+
+- (NSArray*)titlesForKey:(NSString*)key
+{
+    __block NSArray* array = nil;
+    [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
+            
+            array = [element objectForKey:@"Titles"];
+            *stop = YES;
+        }
+    }];
+    return array;
 }
 
 @end
