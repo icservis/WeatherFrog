@@ -308,7 +308,7 @@
 
 - (void)loadedForecast:(Forecast*)forecast
 {
-    DDLogError(@"Forecast loaded: %@", [forecast description]);
+    DDLogVerbose(@"Forecast loaded: %@", [forecast description]);
     self.progress = 1.0f;
     self.status = ForecastStatusLoaded;
     [self.delegate forecastManager:self didFinishProcessingForecast:forecast];

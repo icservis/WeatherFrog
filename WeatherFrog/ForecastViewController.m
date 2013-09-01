@@ -113,13 +113,13 @@
 
 - (void)setUseSelectedLocationInsteadCurrenLocation:(BOOL)useSelectedLocationInsteadCurrenLocation
 {
-    DDLogInfo(@"useSelectedLocationInsteadCurrenLocation: %d", useSelectedLocationInsteadCurrenLocation);
+    DDLogVerbose(@"useSelectedLocationInsteadCurrenLocation: %d", useSelectedLocationInsteadCurrenLocation);
     _useSelectedLocationInsteadCurrenLocation = useSelectedLocationInsteadCurrenLocation;
 }
 
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
-    DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
+    DDLogVerbose(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
     [self displayLoadingScreen];
     [self forecast:_selectedPlacemark forceUpdate:NO];
@@ -127,7 +127,7 @@
 
 - (void)setSelectedForecast:(Forecast *)selectedForecast
 {
-    DDLogInfo(@"setSelectedForecast: %@", [selectedForecast description]);
+    DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     [self displayForecast:_selectedForecast];
 }
@@ -177,7 +177,7 @@
 
 - (void)displayForecast:(Forecast*)forecast
 {
-    DDLogInfo(@"forecast: %@", [forecast description]);
+    DDLogInfo(@"displayForecast");
     self.placemarkTitle.text = forecast.name;
     self.statusInfo.text = [NSString stringWithDate:forecast.timestamp];
     [self.progressBar setProgress:1.0f animated:YES];
@@ -186,7 +186,7 @@
 
 - (void)displayDefaultScreen
 {
-    DDLogInfo(@"defaultScreen");
+    DDLogInfo(@"displayDefaultScreen");
     self.placemarkTitle.text = NSLocalizedString(@"Location not determined", nil);
     self.statusInfo.text = nil;
     [self.progressBar setProgress:0.0f animated:YES];
@@ -195,7 +195,7 @@
 
 - (void)displayLoadingScreen
 {
-    DDLogInfo(@"defaultScreen");
+    DDLogInfo(@"displayLoadingScreen");
     self.placemarkTitle.text = [_selectedPlacemark title];
     self.statusInfo.text = NSLocalizedString(@"Fetchning forecast…", nil);
     [self.progressBar setProgress:0.0f animated:YES];
@@ -241,7 +241,7 @@
 
 - (void)forecast:(CLPlacemark*)placemark forceUpdate:(BOOL)force
 {
-    DDLogInfo(@"placemark: %@", [placemark description]);
+    DDLogVerbose(@"placemark: %@", [placemark description]);
     
     ForecastManager* forecastManager = [[ForecastManager alloc] init];
     forecastManager.delegate = self;
