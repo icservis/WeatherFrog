@@ -88,6 +88,23 @@
     return _shareLocationAndForecast;
 }
 
+#pragma mark - Notifications
+
+@synthesize notifications = _notifications;
+
+- (void)setNotifications:(NSNumber *)notifications
+{
+    _notifications = notifications;
+    [self.standardDefaults setValue:notifications forKey:DefaultsNotifications];
+    [self.standardDefaults synchronize];
+}
+
+- (NSNumber*)notifications
+{
+    _notifications = [self.standardDefaults valueForKey:DefaultsNotifications];
+    return _notifications;
+}
+
 #pragma mark - Display Mode
 
 @synthesize displayMode = _displayMode;
@@ -342,7 +359,7 @@
 {
     __block NSString* title = nil;
     [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
-        if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
+        if ([[element objectForKey:@"Key"] isEqualToString:key]) {
             
             title = [element objectForKey:@"Title"];
             *stop = YES;
@@ -353,6 +370,9 @@
 
 - (id)elementValueForKey:(NSString*)key
 {
+    if ([key isEqualToString:DefaultsNotifications]) {
+        return [self notifications];
+    }
     if ([key isEqualToString:DefaultsDisplayMode]) {
         return [self displayMode];
     }
@@ -386,7 +406,7 @@
     return nil;
 }
 
-- (NSString*)titleOfValue:(id)value forKey:(NSString*)key
+- (NSString*)titleOfMultiValue:(id)value forKey:(NSString*)key
 {
     NSArray* titles = [self titlesForKey:key];
     NSArray* values = [self valuesForKey:key];
@@ -402,6 +422,27 @@
     } else {
         return key;
     }
+}
+
+- (NSString*)titleOfSliderValue:(id)value forKey:(NSString*)key
+{
+    DDLogVerbose(@"%@", [[self elementValueForKey:key] description]);
+    
+    NSUInteger idx = [[self elementValueForKey:key] integerValue];
+    NSMutableArray* titles = [NSMutableArray array];
+    
+    if ([key isEqualToString:DefaultsNotifications]) {
+        [titles addObject:NSLocalizedString(@"None", nil)];
+        [titles addObject:NSLocalizedString(@"Low", nil)];
+        [titles addObject:NSLocalizedString(@"Middle", nil)];
+        [titles addObject:NSLocalizedString(@"High", nil)];
+        [titles addObject:NSLocalizedString(@"All", nil)];
+    }
+    
+    if (titles[idx] != nil) {
+        return (NSString*)titles[idx];
+    }
+    return [NSString stringWithFormat:@"%@: %i", NSLocalizedString(@"Level", nil), idx];
 }
 
 - (NSArray*)valuesForKey:(NSString *)key
@@ -428,6 +469,32 @@
         }
     }];
     return array;
+}
+
+- (NSNumber*)minValueForKey:(NSString *)key
+{
+    __block NSNumber* minValue = nil;
+    [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
+            
+            minValue = [element objectForKey:@"MinimumValue"];
+            *stop = YES;
+        }
+    }];
+    return minValue;
+}
+
+- (NSNumber*)maxValueForKey:(NSString *)key
+{
+    __block NSNumber* maxValue = nil;
+    [[self elementsList] enumerateObjectsUsingBlock:^(NSDictionary* element, NSUInteger idx, BOOL *stop) {
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"] && [[element objectForKey:@"Key"] isEqualToString:key]) {
+            
+            maxValue = [element objectForKey:@"MaximumValue"];
+            *stop = YES;
+        }
+    }];
+    return maxValue;
 }
 
 @end

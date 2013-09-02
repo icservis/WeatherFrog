@@ -10,6 +10,7 @@
 
 static NSString* const DefaultsFetchForecastInBackground = @"FETCH_FORECAST_IN_BACKGROUND";
 static NSString* const DefaultsShareLocationAndForecast = @"SHARE_LOCATION_AND_FORECAST";
+static NSString* const DefaultsNotifications = @"NOTIFICATIONS";
 static NSString* const DefaultsDisplayMode = @"DISPLAY_MODE";
 static NSString* const DefaultsSoundEffects = @"SOUND_EFFECTS";
 static NSString* const DefaultsOnScreenHelp = @"ON_SCREEN_HELP";
@@ -27,6 +28,7 @@ static NSString* const DefaultsForecastUnitAltitude = @"FORECAST_UNIT_ALTITUDE";
 
 @property (nonatomic) BOOL fetchForecastInBackground;
 @property (nonatomic) BOOL shareLocationAndForecast;
+@property (nonatomic, strong) NSNumber* notifications;
 @property (nonatomic, strong) NSString* displayMode;
 @property (nonatomic) BOOL soundEffects;
 @property (nonatomic) BOOL onScreenHelp;
@@ -45,8 +47,11 @@ static NSString* const DefaultsForecastUnitAltitude = @"FORECAST_UNIT_ALTITUDE";
 - (NSArray*)elementsSections;
 - (NSString*)elementTitleForKey:(NSString*)key;
 - (id)elementValueForKey:(NSString*)key;
-- (NSString*)titleOfValue:(id)value forKey:(NSString*)key;
+- (NSString*)titleOfMultiValue:(id)value forKey:(NSString*)key;
+- (NSString*)titleOfSliderValue:(id)value forKey:(NSString*)key;
 - (NSArray*)titlesForKey:(NSString*)key;
 - (NSArray*)valuesForKey:(NSString*)key;
+- (NSNumber*)minValueForKey:(NSString *)key;
+- (NSNumber*)maxValueForKey:(NSString *)key;
 
 @end

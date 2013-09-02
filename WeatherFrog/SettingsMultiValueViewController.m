@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
-#import "SettingsElementViewController.h"
+#import "SettingsMultiValueViewController.h"
 
-@interface SettingsElementViewController ()
+@interface SettingsMultiValueViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButton;
 
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation SettingsElementViewController
+@implementation SettingsMultiValueViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,7 +48,7 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [self.delegate closeSettingsElementViewController:self];
+    [self.delegate closeSettingsMultiValueViewController:self];
 }
 
 #pragma mark - Table view data source
@@ -89,7 +89,7 @@
     self.value = self.values[indexPath.row];
     [self.tableView reloadData];
     
-    [self.delegate settingsViewController:self didUpdatedElement:self.identifier value:self.value];
+    [self.delegate settingsMultiValueViewController:self didUpdatedMultiValue:self.identifier value:self.value];
 }
 
 @end

@@ -354,17 +354,18 @@
                     </navigationItem>
                     <connections>
                         <outlet property="closeButon" destination="AcB-c6-NKa" id="lqN-gz-JCO"/>
-                        <segue destination="lXC-vq-EV1" kind="push" identifier="showElement" id="TmH-Hp-nSn"/>
+                        <segue destination="lXC-vq-EV1" kind="push" identifier="showMultiValue" id="TmH-Hp-nSn"/>
+                        <segue destination="hDL-2t-d8J" kind="push" identifier="showSlider" id="Kl5-eh-uY8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIa-Lg-BWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266" y="900"/>
         </scene>
-        <!--Settings Element View Controller - Element-->
+        <!--Settings Multi Value View Controller - MultiValue-->
         <scene sceneID="yM5-RG-GVd">
             <objects>
-                <tableViewController id="lXC-vq-EV1" customClass="SettingsElementViewController" sceneMemberID="viewController">
+                <tableViewController id="lXC-vq-EV1" customClass="SettingsMultiValueViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o09-BE-RyK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,7 +394,7 @@
                             <outlet property="delegate" destination="lXC-vq-EV1" id="jRb-C8-LiK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Element" id="Ome-qe-968">
+                    <navigationItem key="navigationItem" title="MultiValue" id="Ome-qe-968">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ODE-EJ-ZtK">
                             <connections>
                                 <action selector="closeButtonTapped:" destination="lXC-vq-EV1" id="13W-rp-Wgt"/>
@@ -407,6 +408,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvw-Rk-iqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1792" y="900"/>
+        </scene>
+        <!--Settings Slider View Controller - Slider-->
+        <scene sceneID="PYK-QY-fWF">
+            <objects>
+                <viewController id="hDL-2t-d8J" customClass="SettingsSliderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="scG-ix-Ze2"/>
+                        <viewControllerLayoutGuide type="bottom" id="xdB-hd-PAw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lVq-zg-ZPa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="AYE-jO-rcA">
+                                <rect key="frame" x="18" y="150" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="hDL-2t-d8J" eventType="valueChanged" id="CLz-xe-pY6"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP3-Co-W51">
+                                <rect key="frame" x="20" y="99" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Slider" id="o2b-Wr-49P">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RV4-gn-hJV">
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="hDL-2t-d8J" id="oVL-xd-hcH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="closeButton" destination="RV4-gn-hJV" id="nX8-ee-GEC"/>
+                        <outlet property="notificationsLabel" destination="kP3-Co-W51" id="8al-ba-wSG"/>
+                        <outlet property="notificationsSlider" destination="AYE-jO-rcA" id="hRK-WZ-6Ab"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOS-pg-X5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792" y="1639"/>
         </scene>
         <!--Forecast View Controller - Forecast-->
         <scene sceneID="t9T-Bf-7rg">

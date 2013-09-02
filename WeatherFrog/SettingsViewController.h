@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsElementViewController.h"
+#import "SettingsMultiValueViewController.h"
+#import "SettingsSliderViewController.h"
 
 @protocol SettingsViewControllerDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface SettingsViewController : UITableViewController <SettingsElementViewControllerDelegate>
+@interface SettingsViewController : UITableViewController <SettingsMultiValueViewControllerDelegate, SettingsSliderViewControllerDelegate>
 
 @property (nonatomic, weak) id<SettingsViewControllerDelegate> delegate;
 

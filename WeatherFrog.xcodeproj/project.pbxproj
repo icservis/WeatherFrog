@@ -16,8 +16,8 @@
 		841EFAD317D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
 		841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
 		841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
-		841EFADA17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */; };
-		841EFADB17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */; };
+		841EFADA17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsMultiValueViewController.m */; };
+		841EFADB17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD917D2A7EF009EF860 /* SettingsMultiValueViewController.m */; };
 		843C230F17CEA83100F1DBBF /* WeatherDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C230E17CEA83100F1DBBF /* WeatherDictionary.m */; };
 		843C231017CEA83100F1DBBF /* WeatherDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C230E17CEA83100F1DBBF /* WeatherDictionary.m */; };
 		843C231317CEA8CC00F1DBBF /* AstroDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 843C231217CEA8CC00F1DBBF /* AstroDictionary.m */; };
@@ -26,6 +26,8 @@
 		843D1B6C17CD32EA0094AEB4 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */; };
 		843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
 		843D1B7017CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
+		8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
+		8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
 		845DEDFD17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
 		845DEDFE17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
 		845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */; };
@@ -236,8 +238,8 @@
 		841EFAD117D25571009EF860 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		841EFAD417D26D94009EF860 /* UserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsManager.h; sourceTree = "<group>"; };
 		841EFAD517D26D94009EF860 /* UserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsManager.m; sourceTree = "<group>"; };
-		841EFAD817D2A7EF009EF860 /* SettingsElementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsElementViewController.h; sourceTree = "<group>"; };
-		841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsElementViewController.m; sourceTree = "<group>"; };
+		841EFAD817D2A7EF009EF860 /* SettingsMultiValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMultiValueViewController.h; sourceTree = "<group>"; };
+		841EFAD917D2A7EF009EF860 /* SettingsMultiValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMultiValueViewController.m; sourceTree = "<group>"; };
 		843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherProtocol.h; sourceTree = "<group>"; };
 		843C230B17CEA3CF00F1DBBF /* AstroProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AstroProtocal.h; sourceTree = "<group>"; };
 		843C230D17CEA83100F1DBBF /* WeatherDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDictionary.h; sourceTree = "<group>"; };
@@ -248,6 +250,8 @@
 		843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastManager.m; sourceTree = "<group>"; };
 		843D1B6D17CD3A600094AEB4 /* Forecast+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+Additions.h"; sourceTree = "<group>"; };
 		843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+Additions.m"; sourceTree = "<group>"; };
+		8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderViewController.h; sourceTree = "<group>"; };
+		8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderViewController.m; sourceTree = "<group>"; };
 		845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapAnnotation.h; sourceTree = "<group>"; };
 		845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapAnnotation.m; sourceTree = "<group>"; };
 		847B914817BFA6D600AD76E7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -1098,8 +1102,10 @@
 				847B915117BFB30E00AD76E7 /* ForecastViewController.m */,
 				847B916017BFC56E00AD76E7 /* SettingsViewController.h */,
 				847B916117BFC56E00AD76E7 /* SettingsViewController.m */,
-				841EFAD817D2A7EF009EF860 /* SettingsElementViewController.h */,
-				841EFAD917D2A7EF009EF860 /* SettingsElementViewController.m */,
+				841EFAD817D2A7EF009EF860 /* SettingsMultiValueViewController.h */,
+				841EFAD917D2A7EF009EF860 /* SettingsMultiValueViewController.m */,
+				8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */,
+				8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1243,6 +1249,7 @@
 				84DE497217BF767D005AB3B8 /* NSString+validation.m in Sources */,
 				84DE490C17BF7659005AB3B8 /* DDASLLogger.m in Sources */,
 				84DE491417BF7659005AB3B8 /* ContextFilterLogFormatter.m in Sources */,
+				8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
 				84DE48D217BF7601005AB3B8 /* AFPropertyListRequestOperation.m in Sources */,
 				84DE49CE17BF76CB005AB3B8 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				84DE49DE17BF76CB005AB3B8 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
@@ -1297,7 +1304,7 @@
 				84DE48F517BF764A005AB3B8 /* DDXMLElement.m in Sources */,
 				84DE490A17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
 				84DE49D617BF76CB005AB3B8 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
-				841EFADA17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */,
+				841EFADA17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */,
 				84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE49D017BF76CB005AB3B8 /* NSManagedObject+MagicalFinders.m in Sources */,
 				84DE49EA17BF76CB005AB3B8 /* MagicalRecord+Options.m in Sources */,
@@ -1319,7 +1326,7 @@
 				847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				84DE48D517BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE48D917BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
-				841EFADB17D2A7EF009EF860 /* SettingsElementViewController.m in Sources */,
+				841EFADB17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */,
 				84DE48D717BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */,
 				84DE49F517BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
 				84DE49F117BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
@@ -1351,6 +1358,7 @@
 				84DE48F217BF764A005AB3B8 /* NSString+DDXML.m in Sources */,
 				84DE49D717BF76CB005AB3B8 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				84DE49DB17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
+				8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
 				84DE48CB17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
 				84DE491717BF7659005AB3B8 /* DispatchQueueLogFormatter.m in Sources */,
 				847B915F17BFB9F000AD76E7 /* FbUserCell.m in Sources */,

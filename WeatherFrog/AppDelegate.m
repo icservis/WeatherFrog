@@ -391,17 +391,25 @@
     DDLogVerbose(@"forecast: %@", [_currentForecast description]);
     
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
-        UIApplication* app = [UIApplication sharedApplication];
-        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-        if (notifyAlarm) {
-            notifyAlarm.fireDate = alertTime;
-            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-            notifyAlarm.repeatInterval = 0;
-            NSString* alertBody = NSLocalizedString(@"New forecast", nil);
+        
+        UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
+        NSNumber* notifications = [sharedDefaults notifications];
+        NSUInteger notificationLevel = [notifications integerValue];
+        
+        if (notificationLevel > 0) {
             
-            notifyAlarm.alertBody = alertBody;
-            [app scheduleLocalNotification:notifyAlarm];
+            NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
+            UIApplication* app = [UIApplication sharedApplication];
+            UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+            if (notifyAlarm) {
+                notifyAlarm.fireDate = alertTime;
+                notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+                notifyAlarm.repeatInterval = 0;
+                NSString* alertBody = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Notification level", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications]];
+                
+                notifyAlarm.alertBody = alertBody;
+                [app scheduleLocalNotification:notifyAlarm];
+            }
         }
     }
 }

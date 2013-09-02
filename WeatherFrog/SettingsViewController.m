@@ -40,6 +40,7 @@
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbSessionStateOpened:) name:FbSessionOpenedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fbSessionStateClosed:) name:FbSessionClosedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,34 +136,43 @@
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"]) {
             
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsDisplayMode]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults displayMode] forKey:DefaultsDisplayMode];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults displayMode] forKey:DefaultsDisplayMode];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsLocationGeocoderAccuracy]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults locationGeocoderAccuracy] forKey:DefaultsLocationGeocoderAccuracy];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults locationGeocoderAccuracy] forKey:DefaultsLocationGeocoderAccuracy];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsLocationGeocoderTimeout]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults locationGeocoderTimeout] forKey:DefaultsLocationGeocoderTimeout];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults locationGeocoderTimeout] forKey:DefaultsLocationGeocoderTimeout];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastAccuracy]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastAccuracy] forKey:DefaultsForecastAccuracy];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastAccuracy] forKey:DefaultsForecastAccuracy];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastValidity]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastValidity] forKey:DefaultsForecastValidity];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastValidity] forKey:DefaultsForecastValidity];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastUnitTemperature]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastUnitTemperature] forKey:DefaultsForecastUnitTemperature];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastUnitTemperature] forKey:DefaultsForecastUnitTemperature];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastUnitWindspeed]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastUnitWindspeed] forKey:DefaultsForecastUnitWindspeed];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastUnitWindspeed] forKey:DefaultsForecastUnitWindspeed];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastUnitPrecipitation]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastUnitPrecipitation] forKey:DefaultsForecastUnitPrecipitation];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastUnitPrecipitation] forKey:DefaultsForecastUnitPrecipitation];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastUnitPressure]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastUnitPressure] forKey:DefaultsForecastUnitPressure];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastUnitPressure] forKey:DefaultsForecastUnitPressure];
             }
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsForecastUnitAltitude]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfValue:[sharedDefaults forecastUnitAltitude] forKey:DefaultsForecastUnitAltitude];
+                cell.detailTextLabel.text = [sharedDefaults titleOfMultiValue:[sharedDefaults forecastUnitAltitude] forKey:DefaultsForecastUnitAltitude];
+            }
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"]) {
+            
+            if ([[element objectForKey:@"Key"] isEqualToString:DefaultsNotifications]) {
+                cell.detailTextLabel.text = [sharedDefaults titleOfSliderValue:[sharedDefaults notifications] forKey:DefaultsNotifications];
             }
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -250,10 +260,13 @@
         
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSMultiValueSpecifier"]) {
             
-            [self performSegueWithIdentifier:@"showElement" sender:[element objectForKey:@"Key"]];
+            [self performSegueWithIdentifier:@"showMultiValue" sender:[element objectForKey:@"Key"]];
         }
         
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"]) {
+            
+            [self performSegueWithIdentifier:@"showSlider" sender:[element objectForKey:@"Key"]];
+        }
     }
 }
 
@@ -269,55 +282,110 @@
     [self.tableView reloadData];
 }
 
+- (void)defaultsChanged:(NSNotification*)notification
+{
+    DDLogVerbose(@"notification: %@", [notification description]);
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"showElement"]) {
+    if ([segue.identifier isEqualToString:@"showMultiValue"]) {
         
         NSString* elementIdentifier = (NSString*)sender;
-        SettingsElementViewController* settingsElementViewController = (SettingsElementViewController*)segue.destinationViewController;
-        settingsElementViewController.delegate = self;
-        settingsElementViewController.identifier = elementIdentifier;
-        settingsElementViewController.title = [[UserDefaultsManager sharedDefaults] elementTitleForKey:elementIdentifier];
-        settingsElementViewController.titles = [[UserDefaultsManager sharedDefaults] titlesForKey:elementIdentifier];
-        settingsElementViewController.value = [[UserDefaultsManager sharedDefaults] elementValueForKey:elementIdentifier];
-        settingsElementViewController.values = [[UserDefaultsManager sharedDefaults] valuesForKey:elementIdentifier];
+        SettingsMultiValueViewController* settingsMultiValueViewController = (SettingsMultiValueViewController*)segue.destinationViewController;
+        settingsMultiValueViewController.delegate = self;
+        settingsMultiValueViewController.identifier = elementIdentifier;
+        settingsMultiValueViewController.title = [[UserDefaultsManager sharedDefaults] elementTitleForKey:elementIdentifier];
+        settingsMultiValueViewController.titles = [[UserDefaultsManager sharedDefaults] titlesForKey:elementIdentifier];
+        settingsMultiValueViewController.value = [[UserDefaultsManager sharedDefaults] elementValueForKey:elementIdentifier];
+        settingsMultiValueViewController.values = [[UserDefaultsManager sharedDefaults] valuesForKey:elementIdentifier];
+    }
+    
+    if ([segue.identifier isEqualToString:@"showSlider"]) {
+        
+        NSString* elementIdentifier = (NSString*)sender;
+        SettingsSliderViewController* settingsSliderViewController = (SettingsSliderViewController*)segue.destinationViewController;
+        settingsSliderViewController.delegate = self;
+        settingsSliderViewController.identifier = elementIdentifier;
+        settingsSliderViewController.title = [[UserDefaultsManager sharedDefaults] elementTitleForKey:elementIdentifier];
+        settingsSliderViewController.value = [[UserDefaultsManager sharedDefaults] elementValueForKey:elementIdentifier];
+        settingsSliderViewController.minValue = [[UserDefaultsManager sharedDefaults] minValueForKey:elementIdentifier];
+        settingsSliderViewController.maxValue = [[UserDefaultsManager sharedDefaults] maxValueForKey:elementIdentifier];
     }
 }
 
-#pragma mark - SettingsElementViewControllerDelegate
+#pragma mark - SettingsMultiValueViewControllerDelegate
 
-- (void)closeSettingsElementViewController:(UITableViewController *)controller
+- (void)closeSettingsMultiValueViewController:(UITableViewController *)controller
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)settingsViewController:(UITableViewController *)controller didUpdatedElement:(NSString *)element value:(id)value
+- (void)settingsMultiValueViewController:(UITableViewController *)controller didUpdatedMultiValue:(NSString *)element value:(id)value
 {
+    UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
+    
     if ([element isEqualToString:DefaultsDisplayMode]) {
-        [[UserDefaultsManager sharedDefaults] setDisplayMode:value];
+        [sharedDefaults setDisplayMode:value];
     }
     
     if ([element isEqualToString:DefaultsLocationGeocoderAccuracy]) {
-        [[UserDefaultsManager sharedDefaults] setLocationGeocoderAccuracy:value];
+        [sharedDefaults setLocationGeocoderAccuracy:value];
     }
     
     if ([element isEqualToString:DefaultsLocationGeocoderTimeout]) {
-        [[UserDefaultsManager sharedDefaults] setLocationGeocoderTimeout:value];
+        [sharedDefaults setLocationGeocoderTimeout:value];
     }
     
     if ([element isEqualToString:DefaultsForecastAccuracy]) {
-        [[UserDefaultsManager sharedDefaults] setForecastAccuracy:value];
+        [sharedDefaults setForecastAccuracy:value];
     }
     
     if ([element isEqualToString:DefaultsForecastValidity]) {
-        [[UserDefaultsManager sharedDefaults] setForecastValidity:value];
+        [sharedDefaults setForecastValidity:value];
     }
     
-    [self.tableView reloadData];
+    if ([element isEqualToString:DefaultsForecastUnitTemperature]) {
+        [sharedDefaults setForecastUnitTemperature:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastUnitWindspeed]) {
+        [sharedDefaults setForecastUnitWindspeed:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastUnitPrecipitation]) {
+        [sharedDefaults setForecastUnitPrecipitation:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastUnitPressure]) {
+        [sharedDefaults setForecastUnitPressure:value];
+    }
+    
+    if ([element isEqualToString:DefaultsForecastUnitAltitude]) {
+        [sharedDefaults setForecastUnitAltitude:value];
+    }
+}
+
+#pragma mark - SettingsSliderViewControllerDelegate
+
+- (void)closeSettingsSliderViewController:(UITableViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)settingsSliderController:(UITableViewController *)controller didUpdatedSlider:(NSString *)element value:(id)value
+{
+    UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
+    
+    if ([element isEqualToString:DefaultsNotifications]) {
+        [sharedDefaults setNotifications:value];
+    }
 }
 
 @end
