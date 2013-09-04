@@ -172,10 +172,17 @@
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"]) {
             
             if ([[element objectForKey:@"Key"] isEqualToString:DefaultsNotifications]) {
-                cell.detailTextLabel.text = [sharedDefaults titleOfSliderValue:[sharedDefaults notifications] forKey:DefaultsNotifications];
+                
+                BOOL determiningValue = [sharedDefaults fetchForecastInBackground];
+                
+                if (determiningValue == NO) {
+                    cell.detailTextLabel.text = NSLocalizedString(@"Disabled", nil);
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                } else {
+                    cell.detailTextLabel.text = [sharedDefaults titleOfSliderValue:[sharedDefaults notifications] forKey:DefaultsNotifications];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
             }
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
         return cell;
@@ -264,8 +271,10 @@
         }
         
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSSliderSpecifier"]) {
-            
-            [self performSegueWithIdentifier:@"showSlider" sender:[element objectForKey:@"Key"]];
+                        
+            if ([sharedDefaults fetchForecastInBackground] == YES) {
+                [self performSegueWithIdentifier:@"showSlider" sender:[element objectForKey:@"Key"]];
+            }
         }
     }
 }
