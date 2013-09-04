@@ -371,7 +371,7 @@
                     _currentPlacemark = placemarks[0];
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
-                    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
+                    DDLogInfo(@"placemark: %@", [_currentPlacemark description]);
                     
                     UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
                     if (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground]) {
