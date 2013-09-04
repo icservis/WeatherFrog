@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AFNetworkActivityIndicatorManager.h"
 #import "LocatorViewController.h"
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
@@ -215,8 +216,9 @@ static float const LongTapDuration = 1.2;
     DDLogInfo(@"searchText: %@", [text description]);
     
     if ([[self appDelegate] isInternetActive]) {
-        
+        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
         [geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             if ([placemarks count] > 0) {
                 
                 CLPlacemark* placemark = placemarks[0];
@@ -324,7 +326,9 @@ static float const LongTapDuration = 1.2;
         [self mapView:self.mapView searchAnnotationNotDetermined:location];
         
         if ([[self appDelegate] isInternetActive]) {
+            [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
             [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+                [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                 if ([placemarks count] > 0) {
                     CLPlacemark* placemark = placemarks[0];
                     [self mapView:self.mapView searchAnnotation:placemark];
@@ -414,7 +418,9 @@ static float const LongTapDuration = 1.2;
         [self mapView:self.mapView searchAnnotationNotDetermined:location];
         
         if ([[self appDelegate] isInternetActive]) {
+            [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
             [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+                [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
                 if ([placemarks count] > 0) {
                     CLPlacemark* placemark = placemarks[0];
                     [self mapView:self.mapView searchAnnotation:placemark];
