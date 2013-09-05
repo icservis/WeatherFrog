@@ -61,61 +61,19 @@
     }
 }
 
+#pragma mark - logic
+
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force
 {
-    DDLogInfo(@"force: %d", force);
     DDLogVerbose(@"forecastWithPlacemark: %@, timezone: %@, force: %d", [placemark description], [timezone description], force);
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
     
-    self.name = [placemark title];
-    self.placemark = placemark;
-    self.coordinate = placemark.location.coordinate;
-    self.altitude = placemark.location.altitude;
-    self.timezone = timezone;
-    self.timestamp = [NSDate date];
-    self.validTill = [NSDate dateWithTimeIntervalSinceNow:3*86400];
-    self.weatherData = nil;
-    self.astroData = nil;
+    [self instantiateForecastWithPlacemark:placemark timezone:timezone];
     
     Forecast* forecast;
-    self.progress = 0.0f;
-    self.status = ForecastStatusActive;
     
     if (force == NO) {
         
-        NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"validTill > %@", [NSDate date]];
-        NSArray* forecasts = [Forecast findAllWithPredicate:findPredicate inContext:currentContext];
-        
-        if (forecasts != nil) {
-            
-            CLLocation* placemarkLocation = [[CLLocation alloc] initWithCoordinate:placemark.location.coordinate altitude:placemark.location.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:placemark.location.timestamp];
-            
-            NSMutableArray* availableForecasts = [NSMutableArray array];
-            for (Forecast* forecast in forecasts) {
-                CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
-                
-                NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
-                if ([forecastLocation distanceFromLocation:placemarkLocation] <= [forecastAccuracy floatValue]) {
-                    [availableForecasts addObject:forecast];
-                }
-            }
-            
-            if (availableForecasts.count > 0) {
-                
-                NSArray* sortedForecasts;
-                sortedForecasts = [availableForecasts sortedArrayUsingComparator:^NSComparisonResult(Forecast* obj1, Forecast* obj2) {
-                    NSDate* firstTimestamp = obj1.timestamp;
-                    NSDate* secondTimestamp = obj2.timestamp;
-                    
-                    return  [secondTimestamp compare:firstTimestamp];
-                }];
-                
-                forecast = sortedForecasts[0];
-                
-            } else {
-                DDLogVerbose(@"No valid forecast found");
-            }
-        }
+        forecast = [self findForecastForPlacemark:placemark];
     }
     
     if (forecast != nil) {
@@ -147,6 +105,97 @@
     }
 }
 
+- (void)forecastWithPlacemark:(CLPlacemark *)placemark timezone:(NSTimeZone *)timezone successWithNewData:(void (^)(Forecast *))newData withLoadedData:(void (^)(Forecast *))loadedData failure:(void (^)())failure
+{
+    [self instantiateForecastWithPlacemark:placemark timezone:timezone];
+    Forecast* forecast = [self findForecastForPlacemark:placemark];
+    
+    if (forecast != nil) {
+        
+        [self loadedForecast:forecast];
+        loadedData(forecast);
+    }
+    
+    self.status = ForecastStatusFetchingSolarData;
+    [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
+        
+        self.progress = 0.6f;
+        self.status = ForecastStatusFetchedSolarData;
+        self.astroData = solarData;
+        
+        self.status = ForecastStatusFetchingWeatherData;
+        [[YrApiService sharedService] weatherDatatWithLocation:placemark.location success:^(NSArray *weatherData) {
+            
+            self.progress = 0.8f;
+            self.status = ForecastStatusFetchedWeatherData;
+            self.weatherData = weatherData;
+            
+            __block Forecast* blockForecast;
+            
+            [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+                
+                blockForecast = [self saveForecastInContext:localContext];
+                newData(blockForecast);
+                
+            }];
+            
+        } failure:^(NSError *error) {
+            
+            self.progress = 1.0f;
+            failure();
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        
+        self.progress = 1.0f;
+        failure();
+    }];
+}
+
+#pragma mark - helpers
+
+- (Forecast*)findForecastForPlacemark:(CLPlacemark*)placemark
+{
+    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"validTill > %@", [NSDate date]];
+    NSArray* forecasts = [Forecast findAllWithPredicate:findPredicate inContext:currentContext];
+    
+    if (forecasts != nil) {
+        
+        CLLocation* placemarkLocation = [[CLLocation alloc] initWithCoordinate:placemark.location.coordinate altitude:placemark.location.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:placemark.location.timestamp];
+        
+        NSMutableArray* availableForecasts = [NSMutableArray array];
+        for (Forecast* forecast in forecasts) {
+            CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
+            
+            NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
+            if ([forecastLocation distanceFromLocation:placemarkLocation] <= [forecastAccuracy floatValue]) {
+                [availableForecasts addObject:forecast];
+            }
+        }
+        
+        if (availableForecasts.count > 0) {
+            
+            NSArray* sortedForecasts;
+            sortedForecasts = [availableForecasts sortedArrayUsingComparator:^NSComparisonResult(Forecast* obj1, Forecast* obj2) {
+                NSDate* firstTimestamp = obj1.timestamp;
+                NSDate* secondTimestamp = obj2.timestamp;
+                
+                return  [secondTimestamp compare:firstTimestamp];
+            }];
+            
+            return sortedForecasts[0];
+            
+        } else {
+            
+            return nil;
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark - elements
 
 - (void)fetchElevation
@@ -163,6 +212,7 @@
         [self fetchTimeZone];
         
     } failure:^{
+        
         [self fetchTimeZone];
     }];
 }
@@ -181,6 +231,7 @@
         [self fetchAstroData];
         
     } failure:^{
+        
         [self fetchAstroData];
     }];
 }
@@ -198,6 +249,7 @@
         [self fetchWeatherData];
         
     } failure:^(NSError *error) {
+        
         [self fetchWeatherData];
     }];
 }
@@ -215,18 +267,33 @@
         [self completedForecast];
         
     } failure:^(NSError *error) {
+        
         self.progress = 1.0f;
         [self failedForecastWithError:error];
     }];
 }
 
-#pragma mark - return states
+#pragma mark - states
 
-- (void)completedForecast
+- (void)instantiateForecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone
 {
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    self.name = [placemark title];
+    self.placemark = placemark;
+    self.coordinate = placemark.location.coordinate;
+    self.altitude = placemark.location.altitude;
+    self.timezone = timezone;
+    self.timestamp = [NSDate date];
+    self.validTill = [NSDate dateWithTimeIntervalSinceNow:3*86400];
+    self.weatherData = nil;
+    self.astroData = nil;
     
-    Forecast* forecast = [Forecast createInContext:currentContext];
+    self.progress = 0.0f;
+    self.status = ForecastStatusActive;
+}
+
+- (Forecast*)saveForecastInContext:(NSManagedObjectContext*)context
+{
+    Forecast* forecast = [Forecast createInContext:context];
     forecast.name = self.name;
     forecast.placemark = self.placemark;
     forecast.latitude = [NSNumber numberWithDouble:self.coordinate.latitude];
@@ -240,65 +307,73 @@
         forecast.validTill = lastWeatherData.timestamp;
     }
     
+    for (WeatherDictionary* weatherDict in self.weatherData) {
+        
+        Weather* weather = [Weather createInContext:context];
+        weather.temperature = weatherDict.temperature;
+        weather.windDirection = weatherDict.windDirection;
+        weather.windSpeed = weatherDict.windSpeed;
+        weather.windScale = weatherDict.windScale;
+        weather.humidity = weatherDict.humidity;
+        weather.pressure = weatherDict.pressure;
+        weather.cloudiness = weatherDict.cloudiness;
+        weather.fog = weatherDict.fog;
+        weather.lowClouds = weatherDict.lowClouds;
+        weather.mediumClouds = weatherDict.mediumClouds;
+        weather.highClouds = weatherDict.highClouds;
+        weather.precipitation1h = weatherDict.precipitation1h;
+        weather.precipitation2h = weatherDict.precipitation2h;
+        weather.precipitation3h = weatherDict.precipitation3h;
+        weather.precipitation6h = weatherDict.precipitation6h;
+        weather.timestamp = weatherDict.timestamp;
+        weather.symbol1h = weatherDict.symbol1h;
+        weather.symbol2h = weatherDict.symbol2h;
+        weather.symbol3h = weatherDict.symbol3h;
+        weather.symbol6h = weatherDict.symbol6h;
+        weather.created = weatherDict.created;
+        weather.validTill = weatherDict.validTill;
+        weather.created = weatherDict.created;
+        weather.isNight = [NSNumber numberWithBool:[self isTimestampNight:weatherDict.timestamp forAstroData:self.astroData]];
+        weather.forecast = forecast;
+    }
+    
+    for (AstroDictionary* astroDict in self.astroData) {
+        
+        Astro* astro = [Astro createInContext:context];
+        astro.sunRise = astroDict.sunRise;
+        astro.sunSet = astroDict.sunSet;
+        astro.sunNeverRise = astroDict.sunNeverRise;
+        astro.sunNeverSet = astroDict.sunNeverSet;
+        astro.dayLength = astroDict.dayLength;
+        astro.noonAltitude = astroDict.noonAltitude;
+        astro.moonPhase = astroDict.moonPhase;
+        astro.moonRise = astroDict.moonRise;
+        astro.moonSet = astroDict.moonSet;
+        astro.date = astroDict.date;
+        astro.forecast = forecast;
+    }
+    
+    return forecast;
+}
+
+- (void)completedForecast
+{
+    __block Forecast* blockForecast;
     self.status = ForecastStatusSaving;
+    
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
 
-        for (WeatherDictionary* weatherDict in self.weatherData) {
-            
-            Weather* weather = [Weather createInContext:currentContext];
-            weather.temperature = weatherDict.temperature;
-            weather.windDirection = weatherDict.windDirection;
-            weather.windSpeed = weatherDict.windSpeed;
-            weather.windScale = weatherDict.windScale;
-            weather.humidity = weatherDict.humidity;
-            weather.pressure = weatherDict.pressure;
-            weather.cloudiness = weatherDict.cloudiness;
-            weather.fog = weatherDict.fog;
-            weather.lowClouds = weatherDict.lowClouds;
-            weather.mediumClouds = weatherDict.mediumClouds;
-            weather.highClouds = weatherDict.highClouds;
-            weather.precipitation1h = weatherDict.precipitation1h;
-            weather.precipitation2h = weatherDict.precipitation2h;
-            weather.precipitation3h = weatherDict.precipitation3h;
-            weather.precipitation6h = weatherDict.precipitation6h;
-            weather.timestamp = weatherDict.timestamp;
-            weather.symbol1h = weatherDict.symbol1h;
-            weather.symbol2h = weatherDict.symbol2h;
-            weather.symbol3h = weatherDict.symbol3h;
-            weather.symbol6h = weatherDict.symbol6h;
-            weather.created = weatherDict.created;
-            weather.validTill = weatherDict.validTill;
-            weather.created = weatherDict.created;
-            weather.isNight = [NSNumber numberWithBool:[self isTimestampNight:weatherDict.timestamp forAstroData:self.astroData]];
-            weather.forecast = [forecast inContext:localContext];
-        }
-        
-        self.progress = 0.95f;
-        
-        for (AstroDictionary* astroDict in self.astroData) {
-            
-            Astro* astro = [Astro createInContext:currentContext];
-            astro.sunRise = astroDict.sunRise;
-            astro.sunSet = astroDict.sunSet;
-            astro.sunNeverRise = astroDict.sunNeverRise;
-            astro.sunNeverSet = astroDict.sunNeverSet;
-            astro.dayLength = astroDict.dayLength;
-            astro.noonAltitude = astroDict.noonAltitude;
-            astro.moonPhase = astroDict.moonPhase;
-            astro.moonRise = astroDict.moonRise;
-            astro.moonSet = astroDict.moonSet;
-            astro.date = astroDict.date;
-            astro.forecast = [forecast inContext:localContext];
-        }
+        blockForecast = [self saveForecastInContext:localContext];
         
     } completion:^(BOOL success, NSError *error) {
         
         self.progress = 1.0f;
+        
         if (error == nil) {
             
             DDLogInfo(@"Forecast saved");
             self.status = ForecastStatusCompleted;
-            [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
+            [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
             
         } else {
             

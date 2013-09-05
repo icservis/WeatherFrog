@@ -12,6 +12,7 @@
 
 #pragma mark - Forecast
 
+static int const kBackgoundFetchInterval = 3600;
 static int const kAstroFeedHoursCount = 30*24;
 
 #pragma mark - MapView

@@ -51,5 +51,6 @@ typedef enum {
 @property (nonatomic, readonly) float progress;
 
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force;
+- (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone successWithNewData:(void (^)(Forecast* forecast))newData withLoadedData:(void (^)(Forecast* forecast))loadedData failure:(void (^)())failure;
 
 @end

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "Forecast.h"
+#import "Weather.h"
 #import "Location.h"
 #import "Location+Store.h"
 
@@ -70,6 +71,9 @@
             //DO NOTHING, App will start to required controller and state
         }
     }
+    
+    // Background Fetch
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:kBackgoundFetchInterval];
 
     return YES;
 }
@@ -126,6 +130,33 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
     [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+}
+
+#pragma mark - UIApplicationDelegate
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    DDLogVerbose(@"didReceiveLocalNotification: %@", [notification description]);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ApplicationReceivedLocalNotification object:self userInfo:notification.userInfo];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    DDLogInfo(@"performFetchWithCompletionHandler");
+    
+    ForecastManager* forecastManager = [[ForecastManager alloc] init];
+    [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] successWithNewData:^(Forecast *forecast) {
+        _currentForecast = forecast;
+        [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
+        [self forecastNotifcation];
+        completionHandler(UIBackgroundFetchResultNewData);
+    } withLoadedData:^(Forecast *forecast) {
+        [self forecastNotifcation];
+        completionHandler(UIBackgroundFetchResultNoData);
+    } failure:^{
+        completionHandler(UIBackgroundFetchResultNoData);
+    }];
 }
 
 #pragma mark - Customize UIKit
@@ -327,15 +358,6 @@
     return versText;
 }
 
-#pragma mark - UIApplicationDelegate
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    DDLogVerbose(@"didReceiveLocalNotification: %@", [notification description]);
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:ApplicationReceivedLocalNotification object:self userInfo:notification.userInfo];
-}
-
 #pragma mark - CLLocationDelegete
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -371,7 +393,7 @@
                     _currentPlacemark = placemarks[0];
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
-                    DDLogInfo(@"placemark: %@", [_currentPlacemark description]);
+                    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
                     
                     UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
                     if (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground]) {
@@ -392,30 +414,7 @@
 {
     _currentForecast = forecast;
     [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
-    DDLogVerbose(@"forecast: %@", [_currentForecast description]);
-    
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        
-        UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
-        NSNumber* notifications = [sharedDefaults notifications];
-        NSUInteger notificationLevel = [notifications integerValue];
-        
-        if (notificationLevel > 0) {
-            
-            NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
-            UIApplication* app = [UIApplication sharedApplication];
-            UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-            if (notifyAlarm) {
-                notifyAlarm.fireDate = alertTime;
-                notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-                notifyAlarm.repeatInterval = 0;
-                NSString* alertBody = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Notification level", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications]];
-                
-                notifyAlarm.alertBody = alertBody;
-                [app scheduleLocalNotification:notifyAlarm];
-            }
-        }
-    }
+    [self forecastNotifcation];
 }
 
 - (void)forecastManager:(id)manager didFailProcessingForecast:(Forecast *)forecast error:(NSError *)error
@@ -427,6 +426,57 @@
 - (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:ForecastProgressNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithFloat:progress], @"forecastProgress", nil]];
+}
+
+#pragma mark - Forecast notification
+
+- (void)forecastNotifcation
+{
+    DDLogVerbose(@"forecast: %@", [_currentForecast description]);
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        
+        UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
+        NSNumber* notifications = [sharedDefaults notifications];
+        NSUInteger notificationLevel = [notifications integerValue];
+        
+        if (notificationLevel > 0) {
+            
+            NSDate* now = [NSDate date];
+            __block NSNumber* symbol;
+            [_currentForecast.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
+                
+                if ([weather.timestamp compare:now] == NSOrderedDescending) {
+                    DDLogInfo(@"timestamp: %@", [weather.timestamp description]);
+                    
+                    if (weather.symbol1h != nil) {
+                        symbol = weather.symbol1h;
+                    } else if (weather.symbol2h != nil) {
+                        symbol = weather.symbol2h;
+                    } else if (weather.symbol3h != nil) {
+                        symbol = weather.symbol3h;
+                    } else {
+                        symbol = weather.symbol6h;
+                    }
+                    *stop = YES;
+                }
+                
+            }];
+            
+            NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
+            UIApplication* app = [UIApplication sharedApplication];
+            UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+            if (notifyAlarm) {
+                notifyAlarm.fireDate = alertTime;
+                notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+                notifyAlarm.repeatInterval = 0;
+                NSString* alertBody = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Notification sign", nil), symbol];
+                
+                notifyAlarm.alertBody = alertBody;
+                [app scheduleLocalNotification:notifyAlarm];
+            }
+        }
+    }
 }
 
 @end
