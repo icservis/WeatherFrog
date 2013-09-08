@@ -68,6 +68,7 @@
         
         Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO];
         if (lastForecast != nil) {
+            _selectedPlacemark = lastForecast.placemark;
             [self displayForecast:lastForecast];
         } else {
             if (self.selectedPlacemark == nil) {
@@ -80,6 +81,7 @@
         }
         
     } else {
+        
         [self displayForecast:_selectedForecast];
     }
 }
@@ -129,6 +131,7 @@
 {
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
+    _selectedPlacemark = selectedForecast.placemark;
     if ([self isViewLoaded]) {
         [self displayForecast:_selectedForecast];
     }
@@ -176,6 +179,7 @@
 - (void)displayForecast:(Forecast*)forecast
 {
     DDLogInfo(@"displayForecast");
+    
     self.placemarkTitle.text = forecast.name;
     self.statusInfo.text = [NSString stringWithDate:forecast.timestamp];
     [self.progressBar setProgress:1.0f animated:YES];
@@ -219,6 +223,7 @@
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if (motion == UIEventSubtypeMotionShake) {
+        DDLogInfo(@"shake gesture");
         if (_selectedPlacemark != nil) {
             [self displayLoadingScreen];
             [self forecast:_selectedPlacemark forceUpdate:YES];

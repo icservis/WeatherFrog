@@ -254,7 +254,13 @@
 {
     DDLogVerbose(@"notification: %@", [notification description]);
     
-    [self forecastButtonTapped:self.forecastButton];
+    if (self.presentedViewController != nil) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self forecastButtonTapped:self.forecastButton];
+        }];
+    } else {
+        [self forecastButtonTapped:self.forecastButton];
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate methods

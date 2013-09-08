@@ -309,6 +309,23 @@
     return _forecastUnitAltitude;
 }
 
+#pragma mark - Last Notification Symbol
+
+@synthesize lastNotificationSymbol = _lastNotificationSymbol;
+
+- (void)setLastNotificationSymbol:(NSNumber *)lastNotificationSymbol
+{
+    _lastNotificationSymbol = lastNotificationSymbol;
+    [self.standardDefaults setValue:lastNotificationSymbol forKey:DefaultsLastNotificationSymbol];
+    [self.standardDefaults synchronize];
+}
+
+- (NSNumber*)lastNotificationSymbol
+{
+    _lastNotificationSymbol = [self.standardDefaults valueForKey:DefaultsLastNotificationSymbol];
+    return _lastNotificationSymbol;
+}
+
 #pragma mark - Helpers
 
 - (NSArray*)elementsList

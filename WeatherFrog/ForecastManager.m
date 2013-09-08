@@ -65,6 +65,7 @@
 
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force
 {
+    DDLogInfo(@"force: %d", force);
     DDLogVerbose(@"forecastWithPlacemark: %@, timezone: %@, force: %d", [placemark description], [timezone description], force);
     
     [self instantiateForecastWithPlacemark:placemark timezone:timezone];
@@ -107,6 +108,7 @@
 
 - (void)forecastWithPlacemark:(CLPlacemark *)placemark timezone:(NSTimeZone *)timezone successWithNewData:(void (^)(Forecast *))newData withLoadedData:(void (^)(Forecast *))loadedData failure:(void (^)())failure
 {
+    DDLogInfo(@"forecastWithPlacemark");
     [self instantiateForecastWithPlacemark:placemark timezone:timezone];
     Forecast* forecast = [self findForecastForPlacemark:placemark];
     
@@ -114,6 +116,7 @@
         
         [self loadedForecast:forecast];
         loadedData(forecast);
+        return;
     }
     
     self.status = ForecastStatusFetchingSolarData;
@@ -307,7 +310,7 @@
         forecast.validTill = lastWeatherData.timestamp;
     }
     
-    for (WeatherDictionary* weatherDict in self.weatherData) {
+    [self.weatherData enumerateObjectsUsingBlock:^(WeatherDictionary* weatherDict, NSUInteger idx, BOOL *stop) {
         
         Weather* weather = [Weather createInContext:context];
         weather.temperature = weatherDict.temperature;
@@ -335,9 +338,11 @@
         weather.created = weatherDict.created;
         weather.isNight = [NSNumber numberWithBool:[self isTimestampNight:weatherDict.timestamp forAstroData:self.astroData]];
         weather.forecast = forecast;
-    }
+        
+    }];
     
-    for (AstroDictionary* astroDict in self.astroData) {
+    
+    [self.astroData enumerateObjectsUsingBlock:^(AstroDictionary* astroDict, NSUInteger idx, BOOL *stop) {
         
         Astro* astro = [Astro createInContext:context];
         astro.sunRise = astroDict.sunRise;
@@ -351,7 +356,8 @@
         astro.moonSet = astroDict.moonSet;
         astro.date = astroDict.date;
         astro.forecast = forecast;
-    }
+        
+    }];
     
     return forecast;
 }
