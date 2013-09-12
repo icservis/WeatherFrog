@@ -35,16 +35,6 @@
 			<integer>4</integer>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Share Location and Forecast</string>
-			<key>Key</key>
-			<string>SHARE_LOCATION_AND_FORECAST</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
 			<key>Title</key>
 			<string>Application Options</string>
 			<key>Type</key>
@@ -104,7 +94,7 @@
 			<key>Key</key>
 			<string>FORECAST_ACCURACY</string>
 			<key>DefaultValue</key>
-			<integer>9000</integer>
+			<integer>3000</integer>
 			<key>Titles</key>
 			<array>
 				<string>1 km</string>
@@ -130,18 +120,22 @@
 			<key>Key</key>
 			<string>FORECAST_VALIDITY</string>
 			<key>DefaultValue</key>
-			<integer>259200</integer>
+			<integer>21600</integer>
 			<key>Titles</key>
 			<array>
-				<string>1 day</string>
-				<string>3 days</string>
-				<string>9 days</string>
+				<string>3 hours</string>
+				<string>6 hours</string>
+				<string>12 hours</string>
+				<string>24 hours</string>
+				<string>48 hours</string>
 			</array>
 			<key>Values</key>
 			<array>
-				<integer>86400</integer>
-				<integer>259200</integer>
-				<integer>777600</integer>
+				<integer>10800</integer>
+				<integer>21600</integer>
+				<integer>43200</integer>
+				<string>86400</string>
+				<string>172800</string>
 			</array>
 		</dict>
 		<dict>
