@@ -22,6 +22,7 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 @interface ForecastViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* actionButtonItem;
 @property (nonatomic, weak) IBOutlet UIView* loadingView;
 @property (nonatomic, weak) IBOutlet UIView* headerBackground;
 @property (nonatomic, weak) IBOutlet UILabel* statusInfo;
@@ -29,6 +30,7 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 @property (nonatomic, weak) IBOutlet UIImageView* loadingImage;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 
+- (IBAction)actionButtonTapped:(id)sender;
 
 @end
 
@@ -137,6 +139,19 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 - (AppDelegate*)appDelegate
 {
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)actionButtonTapped:(id)sender
+{
+    NSString* shareString = NSLocalizedString(@"My current forecast", nil);
+    UIImage* shareImage = [UIImage imageNamed:@"logo.png"];
+    NSURL* shareUrl = [NSURL URLWithString:kAPIHost];
+    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
+    
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark - Setters and Getters

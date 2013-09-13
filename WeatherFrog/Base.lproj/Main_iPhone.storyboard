@@ -571,8 +571,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Forecast" id="5Fa-ky-Yba">
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon" id="I7D-i4-ZNl"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="CGe-LN-gSN">
+                            <connections>
+                                <action selector="actionButtonTapped:" destination="XRe-MU-hYk" id="drG-6g-uv7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionButtonItem" destination="CGe-LN-gSN" id="NZs-H8-dJy"/>
                         <outlet property="headerBackground" destination="y6n-Jd-dJO" id="Ru6-i6-ZS5"/>
                         <outlet property="loadingImage" destination="ODR-mZ-YHq" id="ZQa-Uq-hPt"/>
                         <outlet property="loadingView" destination="77f-wz-D6Y" id="2KA-S9-mXZ"/>
