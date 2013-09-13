@@ -20,7 +20,6 @@
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIView* headerBackground;
-@property (nonatomic, weak) IBOutlet UILabel* placemarkTitle;
 @property (nonatomic, weak) IBOutlet UILabel* statusInfo;
 @property (nonatomic, weak) IBOutlet UIProgressView* progressBar;
 @property (nonatomic, weak) IBOutlet UITextView* textView;
@@ -180,7 +179,7 @@
 {
     DDLogInfo(@"displayForecast");
     
-    self.placemarkTitle.text = forecast.name;
+    self.title = forecast.name;
     self.statusInfo.text = [NSString stringWithDate:forecast.timestamp];
     [self.progressBar setProgress:1.0f animated:YES];
     [self.textView setText:[forecast description]];
@@ -189,7 +188,7 @@
 - (void)displayDefaultScreen
 {
     DDLogInfo(@"displayDefaultScreen");
-    self.placemarkTitle.text = NSLocalizedString(@"Location not determined", nil);
+    self.title = NSLocalizedString(@"Location not determined", nil);
     self.statusInfo.text = nil;
     [self.progressBar setProgress:0.0f animated:YES];
     self.textView.text = nil;
@@ -198,8 +197,8 @@
 - (void)displayLoadingScreen
 {
     DDLogInfo(@"displayLoadingScreen");
-    self.placemarkTitle.text = [_selectedPlacemark title];
-    self.statusInfo.text = NSLocalizedString(@"Fetchning forecast…", nil);
+    self.title = NSLocalizedString(@"Fetchning forecast…", nil);
+    self.statusInfo.text = nil;
     [self.progressBar setProgress:0.0f animated:YES];
     self.textView.text = nil;
 }
