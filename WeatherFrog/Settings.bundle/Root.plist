@@ -42,26 +42,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>Display Mode</string>
-			<key>Key</key>
-			<string>DISPLAY_MODE</string>
-			<key>DefaultValue</key>
-			<string>GRAPHIC</string>
-			<key>Titles</key>
-			<array>
-				<string>Graphic</string>
-				<string>Expert</string>
-			</array>
-			<key>Values</key>
-			<array>
-				<string>GRAPHIC</string>
-				<string>EXPERT</string>
-			</array>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
 			<string>Sound Effects</string>
