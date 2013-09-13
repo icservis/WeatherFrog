@@ -16,6 +16,8 @@
 
 @property (nonatomic, weak) IBOutlet UILabel* applicationNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* applicationVersionLabel;
+@property (nonatomic, weak) IBOutlet UIButton* infoButton;
+@property (nonatomic, weak) IBOutlet UIButton* settingsButton;
 @property (nonatomic, weak) IBOutlet UIButton* locatorButton;
 @property (nonatomic, weak) IBOutlet UIButton* forecastButton;
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
@@ -131,6 +133,12 @@
         UINavigationController* settingsNavController = segue.destinationViewController;
         SettingsViewController* settingsViewController = [[settingsNavController viewControllers] objectAtIndex:0];
         settingsViewController.delegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"showInfo"]) {
+        UINavigationController* infoNavController = segue.destinationViewController;
+        InfoViewController* infoViewController = [[infoNavController viewControllers] objectAtIndex:0];
+        infoViewController.delegate = self;
     }
 }
 
@@ -319,6 +327,15 @@
 #pragma mark - SettingsViewControllerDelegate
 
 - (void)closeSettingsViewController:(UIViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        DDLogInfo(@"controller: %@", [controller description]);
+    }];
+}
+
+#pragma mark - InfoViewControllerDelegate
+
+- (void)closeInfoViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
         DDLogInfo(@"controller: %@", [controller description]);

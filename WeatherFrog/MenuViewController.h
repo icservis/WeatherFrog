@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingsViewController.h"
+#import "InfoViewController.h"
 #import "SWRevealViewController.h"
 #import "LocatorViewController.h"
 #import "ForecastViewController.h"
 #import "LocationCell.h"
 
 
-@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate, LocationCellDelegate>
+@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate, LocationCellDelegate, InfoViewControllerDelegate>
 
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
