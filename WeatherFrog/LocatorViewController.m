@@ -12,6 +12,7 @@
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
 #import "Location+Store.h"
+#import "MBProgressHUD.h"
 
 static double const PointHysteresis = 10.0;
 static float const LongTapDuration = 1.2;
@@ -26,6 +27,7 @@ static float const LongTapDuration = 1.2;
 @property (nonatomic) MKUserTrackingMode trackingMode;
 @property (nonatomic) MKMapType mapType;
 @property (nonatomic, strong) UILongPressGestureRecognizer* longPressGestureRecognizer;
+@property (nonatomic, strong) MBProgressHUD* hud;
 
 - (IBAction)trackingButtonTapped:(id)sender;
 - (IBAction)mapButtonTapped:(id)sender;
@@ -227,12 +229,19 @@ static float const LongTapDuration = 1.2;
         [geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error) {
             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             if ([placemarks count] > 0) {
-                
                 CLPlacemark* placemark = placemarks[0];
                 [self mapView:self.mapView setRegionWithPlacemark:placemark];
                 [self mapView:self.mapView searchAnnotation:placemark];
                 self.trackingMode = MKUserTrackingModeNone;
-                
+            } else {
+                if (error != nil) {
+                    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                    _hud.delegate = nil;
+                    _hud.dimBackground = YES;
+                    _hud.mode = MBProgressHUDModeText;
+                    _hud.labelText = NSLocalizedString(@"Location not found", nil);
+                    [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
+                }
             }
         }];
         

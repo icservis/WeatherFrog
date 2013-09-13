@@ -54,4 +54,11 @@
     #define kAPIHost @"weatherfrog.info"
     #define kAPIBaseUrl @"http://api.weatherfrog.info/1/"
 
+    // check device orientation
+    #define kDeviceOrientation [[UIDevice currentDevice] orientation]
+    #define isPortrait  UIDeviceOrientationIsPortrait(kDeviceOrientation)
+    #define isLandscape UIDeviceOrientationIsLandscape(kDeviceOrientation)
+    #define isFaceUp    kDeviceOrientation == UIDeviceOrientationFaceUp   ? YES : NO
+    #define isFaceDown  kDeviceOrientation == UIDeviceOrientationFaceDown ? YES : NO
+
 #endif

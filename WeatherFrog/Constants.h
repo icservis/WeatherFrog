@@ -21,5 +21,9 @@ static double const kMapCenterLatitude = 48.15952f;
 static double const kMapCenterLongitude = 17.12769f;
 static float const kMapRadiusMultiplier = 1000.0f;
 
+#pragma mark - MBProgressHud
+
+static float const kHudDisplayTimeInterval = 1.2f;
+
 
 #endif

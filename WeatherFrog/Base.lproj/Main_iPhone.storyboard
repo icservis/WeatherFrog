@@ -574,6 +574,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="headerBackground" destination="y6n-Jd-dJO" id="Ru6-i6-ZS5"/>
+                        <outlet property="loadingImage" destination="ODR-mZ-YHq" id="ZQa-Uq-hPt"/>
                         <outlet property="loadingView" destination="77f-wz-D6Y" id="2KA-S9-mXZ"/>
                         <outlet property="progressBar" destination="uJV-DA-3aq" id="Vp2-ss-Tf9"/>
                         <outlet property="revealButtonItem" destination="I7D-i4-ZNl" id="7w8-BI-R8p"/>

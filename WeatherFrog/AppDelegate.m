@@ -161,6 +161,7 @@
     if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES && _currentLocation != nil) {
         
         ForecastManager* forecastManager = [[ForecastManager alloc] init];
+        forecastManager.delegate = nil;
         [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] successWithNewData:^(Forecast *forecast) {
             _currentForecast = forecast;
             [self forecastNotifcation];
@@ -380,7 +381,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    DDLogInfo(@"status: %i", status);
     if (status != kCLAuthorizationStatusAuthorized) {
         [locationManager stopUpdatingLocation];
         [locationManager stopMonitoringSignificantLocationChanges];
@@ -452,6 +452,7 @@
 
 - (void)forecastNotifcation
 {
+    DDLogInfo(@"forecastNotifcation");
     DDLogVerbose(@"forecast: %@", [_currentForecast description]);
     
     NSDate* now = [NSDate date];
@@ -468,11 +469,11 @@
     
     if (lastNotification != nil && [lastNotification.created isEqualToDate:currentNotification.created] && [lastNotification.timestamp isEqualToDate:currentNotification.timestamp]) {
         
-        DDLogVerbose(@"Duplicated weather");
+        DDLogInfo(@"Duplicated weather");
         return;
     }
     
-    if ([UIApplication sharedApplication].applicationState  == UIApplicationStateBackground) {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
         
         UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
         NSNumber* notifications = [sharedDefaults notifications];
@@ -510,12 +511,14 @@
                 sharedDefaults.lastNotificationSymbol = @0;
             }
             
-            DDLogInfo(@"symbol: %@", symbol);
-            DDLogInfo(@"lastNotificationSymbol: %@", sharedDefaults.lastNotificationSymbol);
+            DDLogVerbose(@"symbol: %@", symbol);
+            DDLogVerbose(@"lastNotificationSymbol: %@", sharedDefaults.lastNotificationSymbol);
             
         }
         
         if (sheduleNotification) {
+            
+            DDLogInfo(@"sheduleNotification");
             
             NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0.5];
             UIApplication* app = [UIApplication sharedApplication];

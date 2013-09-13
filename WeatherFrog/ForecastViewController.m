@@ -14,6 +14,9 @@
 #import "YrApiService.h"
 #import "GoogleApiService.h"
 
+static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
+static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
+
 @class Forecast;
 
 @interface ForecastViewController ()
@@ -23,6 +26,7 @@
 @property (nonatomic, weak) IBOutlet UIView* headerBackground;
 @property (nonatomic, weak) IBOutlet UILabel* statusInfo;
 @property (nonatomic, weak) IBOutlet UIProgressView* progressBar;
+@property (nonatomic, weak) IBOutlet UIImageView* loadingImage;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 
 
@@ -38,6 +42,8 @@
     }
     return self;
 }
+
+#pragma mark - UIApplicationDelegate
 
 - (void)viewDidLoad
 {
@@ -68,14 +74,18 @@
     if (self.selectedForecast == nil) {
         
         Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+        
         if (lastForecast != nil) {
-            _selectedPlacemark = lastForecast.placemark;
-            [self displayForecast:lastForecast];
+            
+            DDLogInfo(@"forecast restored");
+            self.selectedForecast = lastForecast;
+            
         } else {
+            
             if (self.selectedPlacemark == nil) {
                 [self displayDefaultScreen];
-            }
-            else {
+            } else {
+                DDLogInfo(@"placemark restored");
                 [self displayLoadingScreen];
                 [self forecast:_selectedPlacemark forceUpdate:NO];
             }
@@ -103,6 +113,23 @@
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
+}
+
+#pragma mark - UIDeviceDelegate
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self displayRotatingScreen];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self displayForecast:_selectedForecast];
 }
 
 #pragma mark - Shared objects
@@ -133,7 +160,7 @@
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     _selectedPlacemark = selectedForecast.placemark;
-    if ([self isViewLoaded]) {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive && [self isViewLoaded]) {
         [self displayForecast:_selectedForecast];
     }
 }
@@ -191,11 +218,21 @@
 
 - (void)displayForecast:(Forecast*)forecast
 {
+    if (forecast.name == nil && forecast.timezone == nil) {
+        [self displayDefaultScreen];
+        return;
+    }
+    
     DDLogInfo(@"displayForecast");
     
     self.title = forecast.name;
     [self showForecastLayout];
-    [self setupViewsForPortrait:forecast];
+    
+    if (isLandscape) {
+        [self setupViewsForLandscape:forecast];
+    } else {
+        [self setupViewsForPortrait:forecast];
+    }
 }
 
 - (void)displayDefaultScreen
@@ -204,7 +241,7 @@
     
     self.title = NSLocalizedString(@"Location not determined", nil);
     [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:@"-"];
+    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Location service disabled", nil)];
 }
 
 - (void)displayLoadingScreen
@@ -214,6 +251,25 @@
     self.title = NSLocalizedString(@"Fetchning forecast…", nil);
     [self showLoadingLayout];
     [self updateProgressViewWithValue:0.0f message:nil];
+    
+    if (isLandscape) {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
+    } else {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+    }
+}
+
+- (void)displayRotatingScreen
+{
+    DDLogInfo(@"displayRotatingScreen");
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Rotating…", nil)];
+    
+    if (isLandscape) {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
+    } else {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+    }
 }
 
 - (void)updateProgress:(NSNumber*)progressNumber
@@ -240,19 +296,43 @@
     [self.progressBar setProgress:progress animated:YES];
 }
 
-#pragma mark - Views for Portrait
+#pragma mark - Helpers for Views
 
-- (void)setupViewsForPortrait:(Forecast*)forecast
+- (void)purgeSubViews
 {
     for (UIView* subview in [self.scrollView subviews]) {
         [subview removeFromSuperview];
     }
+}
+
+#pragma mark - Views for Portrait
+
+- (void)setupViewsForPortrait:(Forecast*)forecast
+{
+    DDLogInfo(@"setupViewsForPortrait");
+    [self purgeSubViews];
     
     UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
     [textView setText:[forecast description]];
+    [textView setEditable:NO];
     textView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:textView];
 }
+
+- (void)setupViewsForLandscape:(Forecast*)forecast
+{
+    DDLogInfo(@"setupViewsForLandscape");
+    [self purgeSubViews];
+    
+    UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
+    [textView setText:[forecast description]];
+    [textView setEditable:NO];
+    textView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:textView];
+}
+
+#pragma mark - Views for Landscape
+
 
 #pragma mark - UIEvent
 

@@ -127,6 +127,8 @@
                 forecastViewController.selectedPlacemark = _selectedPlacemark;
             }
         };
+        
+        [self.tableView reloadData];
     }
     
     if ([segue.identifier isEqualToString:@"showSettings"]) {
@@ -200,7 +202,6 @@
     
     CLLocation* location = [[CLLocation alloc] initWithLatitude:[cell.location.latitude doubleValue] longitude:[cell.location.longitude doubleValue]];
     CLLocationDistance distance = [_selectedPlacemark.location distanceFromLocation:location];
-    DDLogInfo(@"distance: %.0f", distance);
     
     if (_selectedPlacemark != nil && distance < kCLLocationAccuracyHundredMeters) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -231,8 +232,6 @@
     
     Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     self.selectedPlacemark = location.placemark;
-    
-    [tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
