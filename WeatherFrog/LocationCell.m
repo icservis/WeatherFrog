@@ -42,12 +42,7 @@
     _location = location;
     _title.text = [location.placemark title];
     _subTitle.text = [location.placemark subTitle];
-    
-    if ([location.isMarked boolValue]) {
-        self.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        self.accessoryType = UITableViewCellAccessoryNone;
-    }
+    self.accessoryType = UITableViewCellAccessoryNone;
 }
 
 - (IBAction)markButtonTapped:(id)sender

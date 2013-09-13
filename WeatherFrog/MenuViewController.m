@@ -52,7 +52,7 @@
 #endif
     
     [self.locatorButton setTitle:NSLocalizedString(@"Locator", nil) forState:UIControlStateNormal];
-    [self.forecastButton setTitle:NSLocalizedString(@"Current location", nil) forState:UIControlStateNormal];
+    [self.forecastButton setTitle:NSLocalizedString(@"Current", nil) forState:UIControlStateNormal];
     
     // NSFetchedResultsController
     
@@ -198,6 +198,14 @@
     cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.delegate = self;
     
+    CLLocation* location = [[CLLocation alloc] initWithLatitude:[cell.location.latitude doubleValue] longitude:[cell.location.longitude doubleValue]];
+    CLLocationDistance distance = [_selectedPlacemark.location distanceFromLocation:location];
+    DDLogInfo(@"distance: %.0f", distance);
+    
+    if (_selectedPlacemark != nil && distance < kCLLocationAccuracyHundredMeters) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     return cell;
 }
 
@@ -223,6 +231,8 @@
     
     Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     self.selectedPlacemark = location.placemark;
+    
+    [tableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

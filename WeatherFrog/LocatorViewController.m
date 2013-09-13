@@ -11,7 +11,7 @@
 #import "LocatorViewController.h"
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
-#import "Location.h"
+#import "Location+Store.h"
 
 static double const PointHysteresis = 10.0;
 static float const LongTapDuration = 1.2;
@@ -192,6 +192,13 @@ static float const LongTapDuration = 1.2;
     menuViewController.selectedPlacemark = _selectedPlacemark;
 }
 
+- (IBAction)addLocation:(id)sender
+{
+    Location* location = [Location locationforPlacemark:_selectedPlacemark withTimezone:nil];
+    [location setIsMarked:@YES];
+    [self.revealViewController revealToggle:self.revealButtonItem];
+}
+
 #pragma mark - MKMapView
 
 - (void)mapView:(MKMapView *)mapView setRegionWithLocation:(CLLocation*)location
@@ -304,11 +311,17 @@ static float const LongTapDuration = 1.2;
         }
         
         if (hasPlacemark == YES) {
+            
             UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-            [locationButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
+            [locationButton addTarget:self action:@selector(addLocation:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.leftCalloutAccessoryView = locationButton;
+            
+            UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+            [forecastButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
+            annotationPinView.rightCalloutAccessoryView = forecastButton;
         } else {
             annotationPinView.leftCalloutAccessoryView = nil;
+            annotationPinView.rightCalloutAccessoryView = nil;
         }
         
         return annotationPinView;
