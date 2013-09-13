@@ -19,10 +19,12 @@
 @interface ForecastViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
+@property (nonatomic, weak) IBOutlet UIView* loadingView;
 @property (nonatomic, weak) IBOutlet UIView* headerBackground;
 @property (nonatomic, weak) IBOutlet UILabel* statusInfo;
 @property (nonatomic, weak) IBOutlet UIProgressView* progressBar;
-@property (nonatomic, weak) IBOutlet UITextView* textView;
+@property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
+
 
 @end
 
@@ -175,46 +177,81 @@
 
 #pragma mark - User Interface
 
+- (void)showLoadingLayout
+{
+    self.loadingView.hidden = NO;
+    self.scrollView.hidden = YES;
+}
+
+- (void)showForecastLayout
+{
+    self.loadingView.hidden = YES;
+    self.scrollView.hidden = NO;
+}
+
 - (void)displayForecast:(Forecast*)forecast
 {
     DDLogInfo(@"displayForecast");
     
     self.title = forecast.name;
-    self.statusInfo.text = [NSString stringWithDate:forecast.timestamp];
-    [self.progressBar setProgress:1.0f animated:YES];
-    [self.textView setText:[forecast description]];
+    [self showForecastLayout];
+    [self setupViewsForPortrait:forecast];
 }
 
 - (void)displayDefaultScreen
 {
     DDLogInfo(@"displayDefaultScreen");
+    
     self.title = NSLocalizedString(@"Location not determined", nil);
-    self.statusInfo.text = nil;
-    [self.progressBar setProgress:0.0f animated:YES];
-    self.textView.text = nil;
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:@"-"];
 }
 
 - (void)displayLoadingScreen
 {
     DDLogInfo(@"displayLoadingScreen");
+    
     self.title = NSLocalizedString(@"Fetchning forecast…", nil);
-    self.statusInfo.text = nil;
-    [self.progressBar setProgress:0.0f animated:YES];
-    self.textView.text = nil;
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:nil];
 }
 
 - (void)updateProgress:(NSNumber*)progressNumber
 {
     float progress = [progressNumber floatValue];
-    self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
-    [self.progressBar setProgress:progress animated:YES];
+    [self updateProgressViewWithValue:progress message:nil];
 }
 
 - (void)updateProgressWithError:(NSError*)error
 {
     DDLogError(@"Error: %@", [error description]);
-    self.statusInfo.text = [error description];
-    [self.progressBar setProgress:0.0f animated:YES];
+    [self updateProgressViewWithValue:0.0f message:[error localizedDescription]];
+}
+
+#pragma mark - Progress view
+
+- (void)updateProgressViewWithValue:(float)progress message:(NSString*)message
+{
+    if (message != nil) {
+        self.statusInfo.text = message;
+    } else {
+        self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
+    }
+    [self.progressBar setProgress:progress animated:YES];
+}
+
+#pragma mark - Views for Portrait
+
+- (void)setupViewsForPortrait:(Forecast*)forecast
+{
+    for (UIView* subview in [self.scrollView subviews]) {
+        [subview removeFromSuperview];
+    }
+    
+    UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
+    [textView setText:[forecast description]];
+    textView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:textView];
 }
 
 #pragma mark - UIEvent
