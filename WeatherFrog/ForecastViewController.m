@@ -202,6 +202,9 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
     NSDictionary* userInfo = notification.userInfo;
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
         self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
+        
+        MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
+        [menuViewController updateCurrentPlacemark:YES];
     }
 }
 
@@ -418,6 +421,16 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark - UITableViewDataSource
 

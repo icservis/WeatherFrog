@@ -169,9 +169,17 @@
 
 - (IBAction)forecastButtonTapped:(id)sender
 {
+    [self updateCurrentPlacemark:NO];
+    [self performSegueWithIdentifier:@"showForecast" sender:sender];
+}
+
+- (void)updateCurrentPlacemark:(BOOL)reloadData
+{
     _selectedPlacemark = [[self appDelegate] currentPlacemark];
     [Location locationforPlacemark:_selectedPlacemark withTimezone:[NSTimeZone localTimeZone]];
-    [self performSegueWithIdentifier:@"showForecast" sender:sender];
+    if (reloadData) {
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - UITableViewdataSource
