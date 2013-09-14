@@ -425,7 +425,6 @@
         [astroData enumerateObjectsUsingBlock:^(Astro* astro, NSUInteger idx, BOOL *stop) {
             if ([astro.date isEqual:date]) {
                 _foundAstro = astro;
-                DDLogVerbose(@"foundAstro: %@", [_foundAstro description]);
                 *stop = YES;
             }
         }];
@@ -435,9 +434,6 @@
         
         if ([timestamp compare:_foundAstro.sunRise] == NSOrderedAscending || [timestamp compare:_foundAstro.sunSet] == NSOrderedDescending || [_foundAstro.sunNeverRise isEqualToNumber:[NSNumber numberWithBool:YES]]) {
             _isNight = YES;
-            DDLogVerbose(@"night: %@", [timestamp description]);
-        } else {
-            DDLogVerbose(@"day: %@", [timestamp description]);
         }
     }
     

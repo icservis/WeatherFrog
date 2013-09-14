@@ -11,5 +11,7 @@
 @interface Forecast (Additions)
 
 - (NSString*)description;
+- (NSArray*)sortedWeatherDataForPortrait;
+- (NSArray*)sortedWeatherDataForLandscape;
 
 @end

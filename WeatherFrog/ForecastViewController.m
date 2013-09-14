@@ -19,11 +19,22 @@
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
 static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
-static NSString* ForecastCellIdentifier = @"ForecastCell";
+static NSString* const ForecastCellIdentifier = @"ForecastCell";
+
+static CGFloat const labelTopMargin = 3.0f;
+static CGFloat const labelHeight = 21.0f;
+static CGFloat const iconTopMargin = 0.0f;
+static CGFloat const iconSize = 64.0f;
+static CGFloat const tableTopMargin = 0.0f;
 
 @class Forecast;
 
-@interface ForecastViewController ()
+@interface ForecastViewController () {
+    NSArray* dataPortrait;
+    NSArray* dataLandscape;
+}
+
+@property (nonatomic, strong) NSDateFormatter* dateFormatter;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* actionButtonItem;
@@ -47,6 +58,16 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
         // Custom initialization
     }
     return self;
+}
+
+- (NSDateFormatter*)dateFormatter
+{
+    if (_dateFormatter == nil) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+        [_dateFormatter setDateStyle:NSDateFormatterLongStyle];
+        [_dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    }
+    return _dateFormatter;
 }
 
 #pragma mark - UIApplicationDelegate
@@ -334,6 +355,79 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
     DDLogInfo(@"setupViewsForPortrait");
     [self purgeSubViews];
     
+    [self.dateFormatter setTimeZone:forecast.timezone];
+    CGRect superViewFrame = self.scrollView.superview.frame;
+    CGRect scrollFrame = self.scrollView.frame;
+    
+    __block CGRect backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, superViewFrame.size.height - scrollFrame.origin.y);
+    DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
+    
+    dataPortrait = [forecast sortedWeatherDataForPortrait];
+    
+    [dataPortrait enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        NSArray* hours = (NSArray*)obj;
+        
+        backgroundRect.origin.x = idx * backgroundRect.size.width;
+        UIView* dayBackground = [[UIView alloc] initWithFrame:backgroundRect];
+        dayBackground.tag = idx;
+        
+        CGRect labelFrame = CGRectMake(0, labelTopMargin, backgroundRect.size.width, labelHeight);
+        UILabel* dayLabel = [[UILabel alloc] initWithFrame:labelFrame];
+        
+        Weather* firstHour = hours[0];
+        dayLabel.text = [self.dateFormatter stringFromDate:firstHour.timestamp];
+        dayLabel.textAlignment = NSTextAlignmentCenter;
+        [dayBackground addSubview:dayLabel];
+        
+        CGFloat spacer = (backgroundRect.size.width - 3 * iconSize) / 3;
+        CGFloat iconOffset = labelTopMargin + labelHeight + iconTopMargin;
+        
+        CGRect iconLeftFrame = CGRectMake(spacer/2, iconOffset, iconSize, iconSize);
+        UIImageView* iconLeft = [[UIImageView alloc] initWithFrame:iconLeftFrame];
+        iconLeft.contentMode = UIViewContentModeScaleAspectFit;
+        iconLeft.image = [UIImage imageNamed:imageLogo];
+        [dayBackground addSubview:iconLeft];
+        
+        CGRect iconCenterFrame = CGRectMake(3*spacer/2+iconSize, iconOffset, iconSize, iconSize);
+        UIImageView* iconCenter = [[UIImageView alloc] initWithFrame:iconCenterFrame];
+        iconCenter.contentMode = UIViewContentModeScaleAspectFit;
+        iconCenter.image = [UIImage imageNamed:imageLogo];
+        [dayBackground addSubview:iconCenter];
+        
+        CGRect iconRightFrame = CGRectMake(5*spacer/2+2*iconSize, iconOffset, iconSize, iconSize);
+        UIImageView* iconRight = [[UIImageView alloc] initWithFrame:iconRightFrame];
+        iconRight.contentMode = UIViewContentModeScaleAspectFit;
+        iconRight.image = [UIImage imageNamed:imageLogo];
+        [dayBackground addSubview:iconRight];
+        
+        CGFloat tableOffset = iconOffset + iconSize + tableTopMargin;
+        CGRect tableFrame = CGRectMake(0, tableOffset, backgroundRect.size.width, backgroundRect.size.height - tableOffset);
+        
+        UITableView* tableView = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = NO;
+        tableView.scrollEnabled = YES;
+        tableView.showsVerticalScrollIndicator = YES;
+        tableView.userInteractionEnabled = YES;
+        tableView.bounces = YES;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.tag = idx;
+        UINib *cellNib = [UINib nibWithNibName:ForecastCellIdentifier bundle:nil];
+        [tableView registerNib:cellNib forCellReuseIdentifier:ForecastCellIdentifier];
+        [dayBackground addSubview:tableView];
+        
+        [self.scrollView addSubview:dayBackground];
+        
+    }];
+    CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
+    [self.scrollView setContentSize:contentSize];
+    DDLogVerbose(@"contentsize: %@", NSStringFromCGSize(contentSize));
+    
+    
+
+    /*
     UITableView* tableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds style:UITableViewStylePlain];
     
     tableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -351,7 +445,7 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
     [tableView registerNib:cellNib forCellReuseIdentifier:ForecastCellIdentifier];
     
     [self.scrollView addSubview:tableView];
-    
+     */
 }
 
 #pragma mark - Views for Landscape
@@ -441,7 +535,8 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _selectedForecast.weather.count;
+    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+    return currentDay.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
@@ -456,7 +551,12 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.0f;
+    return 22.0f;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [_selectedForecast.timezone localizedName:NSTimeZoneNameStyleDaylightSaving locale:[NSLocale currentLocale]];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -464,7 +564,8 @@ static NSString* ForecastCellIdentifier = @"ForecastCell";
     ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
     
     cell.timezone = _selectedForecast.timezone;
-    cell.weather = [_selectedForecast.weather objectAtIndex:indexPath.row];
+    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+    cell.weather = [currentDay objectAtIndex:indexPath.row];
     
     return cell;
 }
