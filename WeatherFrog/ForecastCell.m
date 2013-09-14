@@ -8,37 +8,17 @@
 
 #import "ForecastCell.h"
 #import "Weather.h"
+#import "CFGUnitConverter.h"
+#import "AFNetworking.h"
 
 @interface ForecastCell ()
 
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
-@property (nonatomic, strong) NSNumberFormatter* localNumberFormatter;
-
-@property (nonatomic, weak) IBOutlet UILabel* date;
-@property (nonatomic, weak) IBOutlet UILabel* temperature;
-@property (nonatomic, weak) IBOutlet UILabel* precipitation;
-@property (nonatomic, weak) IBOutlet UILabel* windSpeed;
-@property (nonatomic, weak) IBOutlet UIImageView* icon;
+@property (nonatomic, strong) CFGUnitConverter* unitsConverter;
 
 @end
 
 @implementation ForecastCell
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 - (void)setTimezone:(NSTimeZone *)timezone
 {
@@ -49,27 +29,65 @@
 - (void)setWeather:(Weather *)weather
 {
     _weather = weather;
-    _date.text = [self.localDateFormatter stringFromDate:weather.timestamp];
-    _temperature.text = [self.localNumberFormatter stringFromNumber:weather.temperature];
+    
+    NSNumber* precipitation;
+    if (weather.precipitation1h != nil) {
+        precipitation = weather.precipitation1h;
+    } else if (weather.precipitation2h != nil) {
+        precipitation = weather.precipitation2h;
+    } else if (weather.precipitation3h != nil) {
+        precipitation = weather.precipitation3h;
+    } else if (weather.precipitation6h != nil) {
+        precipitation = weather.precipitation6h;
+    }
+    
+    NSString* temp = [self.unitsConverter convertTemperature:weather.temperature];
+    NSString* precip = [self.unitsConverter convertPrecipitation:precipitation];
+    NSString* wind = [self.unitsConverter convertWindSpeed:weather.windSpeed];
+    self.textLabel.text = [NSString stringWithFormat:@"%@, %@, %@", temp, precip, wind];
+    self.detailTextLabel.text = [self.localDateFormatter stringFromDate:weather.timestamp];
+    
+    NSInteger symbol = 0;
+    if (weather.symbol1h != nil) {
+        symbol = [weather.symbol1h integerValue];
+    } else if (weather.symbol2h != nil) {
+        symbol = [weather.symbol2h integerValue];
+    } else if (weather.symbol3h != nil) {
+        symbol = [weather.symbol3h integerValue];
+    } else if (weather.symbol6h != nil) {
+        symbol = [weather.symbol6h integerValue];
+    }
+    BOOL isNight = [weather.isNight boolValue];
+    
+    NSURL* iconUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.yr.no/weatherapi/weathericon/1.0/?symbol=%i;is_night=%d;content_type=image/png", symbol, isNight]];
+    [self.imageView setImageWithURL:iconUrl];
 }
 
 - (NSDateFormatter*)localDateFormatter
 {
     if (_localDateFormatter == nil) {
         _localDateFormatter = [[NSDateFormatter alloc] init];
-        [_localDateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [_localDateFormatter setDateStyle:NSDateFormatterNoStyle];
         [_localDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        [_localDateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     }
     return _localDateFormatter;
 }
 
-- (NSNumberFormatter*)localNumberFormatter
+- (CFGUnitConverter*)unitsConverter
 {
-    if (_localNumberFormatter == nil) {
-        _localNumberFormatter = [[NSNumberFormatter alloc] init];
-        [_localNumberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    if (_unitsConverter == nil) {
+        _unitsConverter = [[CFGUnitConverter alloc] init];
     }
-    return _localNumberFormatter;
+    return _unitsConverter;
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.textLabel.text = nil;
+    self.detailTextLabel.text = nil;
+    [self.imageView cancelImageRequestOperation];
 }
 
 @end

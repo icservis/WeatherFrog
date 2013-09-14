@@ -49,6 +49,10 @@
 		847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
 		847CFF5317E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
 		847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
+		847CFF6017E48C7C00DA0CC7 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847CFF5F17E48C7C00DA0CC7 /* ForecastCell.xib */; };
+		847CFF6117E48C7C00DA0CC7 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847CFF5F17E48C7C00DA0CC7 /* ForecastCell.xib */; };
+		847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */; };
+		847CFF6517E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */; };
 		848A54DE176E09A1009B3F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DD176E09A1009B3F85 /* Foundation.framework */; };
 		848A54E0176E09A1009B3F85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DF176E09A1009B3F85 /* CoreGraphics.framework */; };
 		848A54E2176E09A1009B3F85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54E1176E09A1009B3F85 /* UIKit.framework */; };
@@ -276,6 +280,9 @@
 		847B916917BFCF1C00AD76E7 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		847CFF5117E43E7800DA0CC7 /* ForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastCell.h; sourceTree = "<group>"; };
 		847CFF5217E43E7800DA0CC7 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastCell.m; sourceTree = "<group>"; };
+		847CFF5F17E48C7C00DA0CC7 /* ForecastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
+		847CFF6217E48F7200DA0CC7 /* CFGUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFGUnitConverter.h; sourceTree = "<group>"; };
+		847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFGUnitConverter.m; sourceTree = "<group>"; };
 		848A54DA176E09A1009B3F85 /* WeatherFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848A54DD176E09A1009B3F85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		848A54DF176E09A1009B3F85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1064,6 +1071,8 @@
 				845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */,
 				841EFAD417D26D94009EF860 /* UserDefaultsManager.h */,
 				841EFAD517D26D94009EF860 /* UserDefaultsManager.m */,
+				847CFF6217E48F7200DA0CC7 /* CFGUnitConverter.h */,
+				847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1097,6 +1106,7 @@
 				847B916917BFCF1C00AD76E7 /* LocationCell.m */,
 				847CFF5117E43E7800DA0CC7 /* ForecastCell.h */,
 				847CFF5217E43E7800DA0CC7 /* ForecastCell.m */,
+				847CFF5F17E48C7C00DA0CC7 /* ForecastCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1211,6 +1221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				848A54F4176E09A2009B3F85 /* Main_iPad.storyboard in Resources */,
+				847CFF6017E48C7C00DA0CC7 /* ForecastCell.xib in Resources */,
 				848A54FC176E09A2009B3F85 /* Images.xcassets in Resources */,
 				848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */,
 				848A54E8176E09A1009B3F85 /* InfoPlist.strings in Resources */,
@@ -1225,6 +1236,7 @@
 			files = (
 				841EFAD317D25571009EF860 /* Settings.bundle in Resources */,
 				84DE491917BF7659005AB3B8 /* README.txt in Resources */,
+				847CFF6117E48C7C00DA0CC7 /* ForecastCell.xib in Resources */,
 				848A550D176E09A2009B3F85 /* InfoPlist.strings in Resources */,
 				845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */,
 			);
@@ -1301,6 +1313,7 @@
 				84DE497817BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
 				84DE49EC17BF76CB005AB3B8 /* MagicalRecord+Setup.m in Sources */,
 				841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */,
+				847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */,
 				84DE49C017BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				84DE49EE17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */,
@@ -1345,6 +1358,7 @@
 				84DE49F517BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
 				84DE49F117BF76CB005AB3B8 /* MagicalRecord.m in Sources */,
 				845C2B8317E330640087C84A /* InfoViewController.m in Sources */,
+				847CFF6517E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */,
 				847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */,
 				84DE49CB17BF76CB005AB3B8 /* NSString+MagicalDataImport.m in Sources */,
 				84DE49E517BF76CB005AB3B8 /* MagicalRecord+Actions.m in Sources */,

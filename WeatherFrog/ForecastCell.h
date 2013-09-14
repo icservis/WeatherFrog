@@ -10,16 +10,9 @@
 
 @class Weather;
 
-@protocol ForecastCellDelegate <NSObject>
-
-- (void)reloadTableViewCell:(UITableViewCell*)cell;
-
-@end
-
 @interface ForecastCell : UITableViewCell
 
 @property (nonatomic, strong) Weather* weather;
 @property (nonatomic, strong) NSTimeZone* timezone;
-@property (nonatomic, weak) id <ForecastCellDelegate> delegate;
 
 @end

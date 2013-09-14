@@ -19,6 +19,7 @@
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
 static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
+static NSString* ForecastCellIdentifier = @"ForecastCell";
 
 @class Forecast;
 
@@ -178,7 +179,7 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     _selectedPlacemark = selectedForecast.placemark;
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive && [self isViewLoaded]) {
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
         [self displayForecast:_selectedForecast];
     }
 }
@@ -343,6 +344,9 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     tableView.delegate = self;
     tableView.dataSource = self;
     
+    UINib *cellNib = [UINib nibWithNibName:ForecastCellIdentifier bundle:nil];
+    [tableView registerNib:cellNib forCellReuseIdentifier:ForecastCellIdentifier];
+    
     [self.scrollView addSubview:tableView];
     
 }
@@ -427,30 +431,27 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     return _selectedForecast.weather.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
+{
+    return 44.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.0f;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* ForecastCellIdentifier = @"ForecastCell";
+    ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
     
-    /*
-    ForecastCell* cell = (ForecastCell*)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
-    
-    if (cell == nil) {
-        cell = (ForecastCell*)[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ForecastCellIdentifier];
-    }
-    
+    cell.timezone = _selectedForecast.timezone;
     cell.weather = [_selectedForecast.weather objectAtIndex:indexPath.row];
-    cell.delegate = nil;
-     */
-    
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ForecastCellIdentifier];
-    }
-    
-    Weather* weather = [_selectedForecast.weather objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = [weather.timestamp description];
-    cell.detailTextLabel.text = [weather.temperature description];
     
     return cell;
 }
