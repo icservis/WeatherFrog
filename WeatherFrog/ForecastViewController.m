@@ -9,11 +9,14 @@
 #import "AppDelegate.h"
 #import "Forecast+Additions.h"
 #import "Location+Store.h"
+#import "Weather.h"
 #import "ForecastViewController.h"
+#import "ForecastCell.h"
 #import "MenuViewController.h"
 #import "YrApiService.h"
 #import "GoogleApiService.h"
 
+static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
 static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 
@@ -58,9 +61,9 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    //self.observeCurrentLocation = YES;
-    
     self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
+    
+    [self displayDefaultScreen];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
@@ -146,7 +149,7 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 - (IBAction)actionButtonTapped:(id)sender
 {
     NSString* shareString = NSLocalizedString(@"My current forecast", nil);
-    UIImage* shareImage = [UIImage imageNamed:@"logo.png"];
+    UIImage* shareImage = [UIImage imageNamed:imageLogo];
     NSURL* shareUrl = [NSURL URLWithString:kAPIHost];
     NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
@@ -327,12 +330,24 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     DDLogInfo(@"setupViewsForPortrait");
     [self purgeSubViews];
     
-    UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
-    [textView setText:[forecast description]];
-    [textView setEditable:NO];
-    textView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.scrollView addSubview:textView];
+    UITableView* tableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds style:UITableViewStylePlain];
+    
+    tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    tableView.rowHeight = 44;
+    tableView.sectionFooterHeight = 22;
+    tableView.sectionHeaderHeight = 22;
+    tableView.scrollEnabled = YES;
+    tableView.showsVerticalScrollIndicator = YES;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    [self.scrollView addSubview:tableView];
+    
 }
+
+#pragma mark - Views for Landscape
 
 - (void)setupViewsForLandscape:(Forecast*)forecast
 {
@@ -345,9 +360,6 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
     textView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:textView];
 }
-
-#pragma mark - Views for Landscape
-
 
 #pragma mark - UIEvent
 
@@ -399,6 +411,48 @@ static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 - (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress
 {
     [self updateProgress:[NSNumber numberWithFloat:progress]];
+}
+
+#pragma mark - UITableViewDelegate
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _selectedForecast.weather.count;
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString* ForecastCellIdentifier = @"ForecastCell";
+    
+    /*
+    ForecastCell* cell = (ForecastCell*)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
+    
+    if (cell == nil) {
+        cell = (ForecastCell*)[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ForecastCellIdentifier];
+    }
+    
+    cell.weather = [_selectedForecast.weather objectAtIndex:indexPath.row];
+    cell.delegate = nil;
+     */
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ForecastCellIdentifier];
+    }
+    
+    Weather* weather = [_selectedForecast.weather objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [weather.timestamp description];
+    cell.detailTextLabel.text = [weather.temperature description];
+    
+    return cell;
 }
 
 @end

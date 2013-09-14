@@ -15,7 +15,7 @@
 
 @end
 
-@interface ForecastViewController : UIViewController <ForecastManagerDelegate>
+@interface ForecastViewController : UIViewController <ForecastManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;

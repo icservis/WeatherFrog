@@ -47,6 +47,8 @@
 		847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
 		847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
 		847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
+		847CFF5317E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
+		847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
 		848A54DE176E09A1009B3F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DD176E09A1009B3F85 /* Foundation.framework */; };
 		848A54E0176E09A1009B3F85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DF176E09A1009B3F85 /* CoreGraphics.framework */; };
 		848A54E2176E09A1009B3F85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54E1176E09A1009B3F85 /* UIKit.framework */; };
@@ -272,6 +274,8 @@
 		847B916117BFC56E00AD76E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		847B916817BFCF1C00AD76E7 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		847B916917BFCF1C00AD76E7 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		847CFF5117E43E7800DA0CC7 /* ForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastCell.h; sourceTree = "<group>"; };
+		847CFF5217E43E7800DA0CC7 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastCell.m; sourceTree = "<group>"; };
 		848A54DA176E09A1009B3F85 /* WeatherFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848A54DD176E09A1009B3F85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		848A54DF176E09A1009B3F85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1091,6 +1095,8 @@
 				847B915D17BFB9F000AD76E7 /* FbUserCell.m */,
 				847B916817BFCF1C00AD76E7 /* LocationCell.h */,
 				847B916917BFCF1C00AD76E7 /* LocationCell.m */,
+				847CFF5117E43E7800DA0CC7 /* ForecastCell.h */,
+				847CFF5217E43E7800DA0CC7 /* ForecastCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1303,6 +1309,7 @@
 				84DE49BE17BF76CB005AB3B8 /* MagicalImportFunctions.m in Sources */,
 				84905D0D17C9381B00402857 /* Location+Store.m in Sources */,
 				84DE48D017BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				847CFF5317E43E7800DA0CC7 /* ForecastCell.m in Sources */,
 				84DE491217BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
 				84DE48F717BF764A005AB3B8 /* DDXMLNode.m in Sources */,
 				84DE4A1817BF86CF005AB3B8 /* Model.xcdatamodeld in Sources */,
@@ -1364,6 +1371,7 @@
 				84DE496D17BF767D005AB3B8 /* NSDate+ISO8601Date.m in Sources */,
 				84DE497117BF767D005AB3B8 /* NSString+URLEncoding.m in Sources */,
 				84DE48F217BF764A005AB3B8 /* NSString+DDXML.m in Sources */,
+				847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */,
 				84DE49D717BF76CB005AB3B8 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				84DE49DB17BF76CB005AB3B8 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
