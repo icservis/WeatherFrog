@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zzJ-tj-uZZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zzJ-tj-uZZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -132,31 +132,35 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-hd-aNp">
-                                        <rect key="frame" x="210" y="20" width="22" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-hd-aNp">
+                                        <rect key="frame" x="205" y="17" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal">
+                                        <state key="normal" image="settings-30">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="fpR-S2-u3r" kind="modal" identifier="showSettings" id="x9u-6Z-Adh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYh-dn-OV0">
-                                        <rect key="frame" x="125" y="70" width="100" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYh-dn-OV0">
+                                        <rect key="frame" x="120" y="70" width="115" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Locator">
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Locator" image="globe-30">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="locatorButtonTapped:" destination="Mab-Hh-jdc" eventType="touchUpInside" id="07o-2b-7Uu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZ1-QR-Ef2">
-                                        <rect key="frame" x="15" y="70" width="100" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZ1-QR-Ef2">
+                                        <rect key="frame" x="8" y="70" width="104" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Current location">
+                                        <inset key="imageEdgeInsets" minX="-8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Current" image="arrow-30">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -188,13 +192,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="201" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-jw-5Ug">
-                                                    <rect key="frame" x="9" y="11" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHQ-jw-5Ug">
+                                                    <rect key="frame" x="5" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
+                                                    <state key="normal" image="question-30"/>
                                                     <connections>
                                                         <action selector="markButtonTapped:" destination="EYa-SU-Gq0" eventType="touchUpInside" id="GsP-q0-pIk"/>
                                                     </connections>
@@ -267,15 +269,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="FbUserCell" rowHeight="64" id="fwo-gV-Ie7" customClass="FbUserCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FbUserCell" rowHeight="64" id="fwo-gV-Ie7" customClass="FbUserCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fwo-gV-Ie7" id="gvS-Ij-1JW">
-                                    <rect key="frame" x="0.0" y="0.0" width="273" height="63"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-NA-17M" customClass="FBProfilePictureView">
-                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-NA-17M" customClass="FBProfilePictureView">
+                                            <rect key="frame" x="0.0" y="0.0" width="103" height="64"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
@@ -283,39 +285,37 @@
                                             <rect key="frame" x="72" y="21" width="170" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="170" id="8PV-JV-rNi"/>
-                                                <constraint firstAttribute="height" constant="21" id="XbV-43-4wZ"/>
+                                                <constraint firstAttribute="width" constant="170" id="91h-7w-NP7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xc-lI-hi4">
+                                            <rect key="frame" x="265" y="17" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" image="checked-30">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="loginButtonTapped:" destination="fwo-gV-Ie7" eventType="touchUpInside" id="b8W-en-dCl"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="36i-hJ-tbO"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="3Af-MY-LCX"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="Uyf-NA-17M" secondAttribute="trailing" constant="8" id="4hM-tT-ifY"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="5uM-l0-1ps"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="Uyf-NA-17M" secondAttribute="trailing" constant="8" symbolic="YES" id="B6v-aa-0vl"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" constant="21" id="EQr-LA-SQW"/>
-                                        <constraint firstAttribute="bottom" secondItem="Uyf-NA-17M" secondAttribute="bottom" constant="-1" id="JeZ-FZ-gqX"/>
-                                        <constraint firstAttribute="trailing" secondItem="LQv-lW-Aob" secondAttribute="trailing" constant="31" id="KRq-BF-ZCW"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="VIk-3k-ju9"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" constant="21" id="VTm-vP-9aA"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="centerY" secondItem="gvS-Ij-1JW" secondAttribute="centerY" id="Zn8-Zg-cvq"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" constant="72" id="ani-D9-Eoi"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" constant="21" id="dZo-4u-F1m"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="gzc-6i-mfY"/>
-                                        <constraint firstAttribute="bottom" secondItem="Uyf-NA-17M" secondAttribute="bottom" constant="-1" id="ikx-id-WHG"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="lED-as-ihc"/>
-                                        <constraint firstAttribute="bottom" secondItem="LQv-lW-Aob" secondAttribute="bottom" constant="21" id="nTp-38-Aw3"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="ulB-PH-vjy"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" constant="72" id="xNA-lR-1EP"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="xSa-P9-iIe"/>
-                                        <constraint firstAttribute="trailing" secondItem="Uyf-NA-17M" secondAttribute="trailing" constant="209" id="zy3-bO-D3T"/>
+                                        <constraint firstItem="3xc-lI-hi4" firstAttribute="leading" secondItem="LQv-lW-Aob" secondAttribute="trailing" constant="23" id="1Zt-5o-ue6"/>
+                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="centerY" secondItem="gvS-Ij-1JW" secondAttribute="centerY" id="C3h-kp-eVz"/>
+                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="CV8-Vp-hyk"/>
+                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="centerY" secondItem="3xc-lI-hi4" secondAttribute="centerY" id="Ejf-3U-dk1"/>
+                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="Uyf-NA-17M" secondAttribute="trailing" constant="8" symbolic="YES" id="NNN-CT-EBs"/>
+                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" constant="72" id="hvD-jm-WiO"/>
+                                        <constraint firstAttribute="bottom" secondItem="Uyf-NA-17M" secondAttribute="bottom" constant="-1" id="pyK-iY-lz1"/>
+                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="sGf-SI-pyS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="loginButton" destination="3xc-lI-hi4" id="YLo-Dx-H68"/>
                                     <outlet property="nameLabel" destination="LQv-lW-Aob" id="aN3-ZT-nza"/>
                                     <outlet property="profileView" destination="Uyf-NA-17M" id="wGp-Z5-WCc"/>
                                 </connections>
@@ -666,8 +666,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow-30" width="30" height="30"/>
+        <image name="checked-30" width="30" height="30"/>
+        <image name="globe-30" width="30" height="30"/>
         <image name="logo" width="100" height="100"/>
+        <image name="question-30" width="30" height="30"/>
         <image name="reveal-icon" width="22" height="17"/>
+        <image name="settings-30" width="30" height="30"/>
         <image name="waiting-frog-portrait" width="320" height="460"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

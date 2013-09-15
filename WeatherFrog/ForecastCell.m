@@ -59,8 +59,13 @@
     }
     BOOL isNight = [weather.isNight boolValue];
     
+    NSString* imageName = [NSString stringWithFormat:@"weathericon-%i-%d-40", symbol, isNight];
+    [self.imageView setImage:[UIImage imageNamed:imageName]];
+    
+    /*
     NSURL* iconUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.yr.no/weatherapi/weathericon/1.0/?symbol=%i;is_night=%d;content_type=image/png", symbol, isNight]];
     [self.imageView setImageWithURL:iconUrl];
+     */
 }
 
 - (NSDateFormatter*)localDateFormatter
@@ -87,7 +92,8 @@
     [super prepareForReuse];
     self.textLabel.text = nil;
     self.detailTextLabel.text = nil;
-    [self.imageView cancelImageRequestOperation];
+    self.imageView.image = nil;
+    //[self.imageView cancelImageRequestOperation];
 }
 
 @end

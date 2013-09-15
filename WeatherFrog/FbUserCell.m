@@ -7,11 +7,15 @@
 //
 
 #import "FbUserCell.h"
+#import "AppDelegate.h"
 
 @interface FbUserCell()
 
 @property (nonatomic, weak) IBOutlet FBProfilePictureView* profileView;
 @property (nonatomic, weak) IBOutlet UILabel* nameLabel;
+@property (nonatomic, weak) IBOutlet UIButton* loginButton;
+
+- (IBAction)loginButtonTapped:(id)sender;
 
 @end
 
@@ -42,9 +46,24 @@
     if (fbUser != nil) {
         _profileView.profileID = fbUser.id;
         _nameLabel.text = fbUser.name;
+        [_loginButton setImage:[UIImage imageNamed:@"checked-30"] forState:UIControlStateNormal];
     } else {
         _profileView.profileID = nil;
         _nameLabel.text = NSLocalizedString(@"User not logged in", nil);
+        [_loginButton setImage:[UIImage imageNamed:@"question-30"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)loginButtonTapped:(id)sender
+{
+    DDLogInfo(@"loginButtonTapped");
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSDictionary<FBGraphUser> * fbUser = [appDelegate fbUser];
+    
+    if (fbUser == nil) {
+        [appDelegate openSession];
+    } else {
+        [appDelegate closeSession];
     }
 }
 

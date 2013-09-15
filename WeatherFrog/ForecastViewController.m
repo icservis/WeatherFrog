@@ -64,7 +64,7 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     if (_dateFormatter == nil) {
         _dateFormatter = [[NSDateFormatter alloc] init];
-        [_dateFormatter setDateStyle:NSDateFormatterLongStyle];
+        [_dateFormatter setDateStyle:NSDateFormatterFullStyle];
         [_dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     }
     return _dateFormatter;
