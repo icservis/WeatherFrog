@@ -122,7 +122,6 @@ static float const LongTapDuration = 1.2;
 {
     DDLogInfo(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
-    
 }
 
 - (void)setTrackingMode:(MKUserTrackingMode)trackingMode
@@ -213,10 +212,10 @@ static float const LongTapDuration = 1.2;
 
 - (void)mapView:(MKMapView *)mapView setRegionWithPlacemark:(CLPlacemark*)placemark
 {
+    DDLogInfo(@"setRegionWithPlacemark: %@", [placemark description]);
     CLCircularRegion* region = (CLCircularRegion*)placemark.region;
     CLLocationDistance radius = region.radius;
-    MKCoordinateRegion mkRegion =
-    MKCoordinateRegionMakeWithDistance(region.center, radius, radius);
+    MKCoordinateRegion mkRegion = MKCoordinateRegionMakeWithDistance(region.center, radius, radius);
     [self.mapView setRegion:mkRegion animated:YES];
 }
 
@@ -321,11 +320,11 @@ static float const LongTapDuration = 1.2;
         
         if (hasPlacemark == YES) {
             
-            UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+            UIButton* locationButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
             [locationButton addTarget:self action:@selector(addLocation:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.leftCalloutAccessoryView = locationButton;
             
-            UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+            UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             [forecastButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.rightCalloutAccessoryView = forecastButton;
         } else {

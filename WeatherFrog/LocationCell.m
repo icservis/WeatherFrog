@@ -43,6 +43,12 @@
     _title.text = [location.placemark title];
     _subTitle.text = [location.placemark subTitle];
     self.accessoryType = UITableViewCellAccessoryNone;
+    
+    if ([location.isMarked isEqualToNumber:@YES]) {
+        [_markButton setImage:[UIImage imageNamed:@"minus-30"] forState:UIControlStateNormal];
+    } else {
+        [_markButton setImage:[UIImage imageNamed:@"plus-30"] forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)markButtonTapped:(id)sender

@@ -91,9 +91,7 @@
     if (indexPath.section == 0) {
         
         FbUserCell* cell = (FbUserCell*)[tableView dequeueReusableCellWithIdentifier:FbUserCellIdentifier forIndexPath:indexPath];
-        cell.fbUser = [[self appDelegate] fbUser];
-        cell.accessoryType = UITableViewCellAccessoryDetailButton;
-        
+        cell.fbUser = [[self appDelegate] fbUser];        
         return cell;
         
     } else {
@@ -218,23 +216,9 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        
-        NSDictionary<FBGraphUser> * fbUser = [[self appDelegate] fbUser];
-        if (fbUser == nil) {
-            [[self appDelegate] openSession];
-        } else {
-            [[self appDelegate] closeSession];
-        }
-    }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 
     if (indexPath.section > 0) {
         

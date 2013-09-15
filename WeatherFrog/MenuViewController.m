@@ -164,6 +164,7 @@
 
 - (IBAction)locatorButtonTapped:(id)sender
 {
+    DDLogVerbose(@"_selectedPlacemark: %@", [_selectedPlacemark description]);
     [self performSegueWithIdentifier:@"showLocator" sender:self];
 }
 
