@@ -10,6 +10,7 @@
 #import "Forecast+Additions.h"
 #import "Location+Store.h"
 #import "Weather.h"
+#import "Astro.h"
 #import "ForecastViewController.h"
 #import "ForecastCell.h"
 #import "MenuViewController.h"
@@ -21,6 +22,7 @@ static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
 static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
 static NSString* const ForecastCellIdentifier = @"ForecastCell";
+static NSString* const AstroCellIdentifier = @"AstroCell";
 
 static CGFloat const labelTopMargin = 3.0f;
 static CGFloat const labelHeight = 21.0f;
@@ -621,18 +623,17 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
-    return currentDay.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
-{
-    return 44.0f;
+    if (section == 0) {
+        NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+        return currentDay.count;
+    } else {
+        return 3;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -647,23 +648,116 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
-    Weather* weather = [currentDay objectAtIndex:0];
-    NSString* tzAbbreviation = [_selectedForecast.timezone abbreviationForDate:weather.timestamp];
+    if (section == 0) {
+        
+        NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+        Weather* weather = [currentDay lastObject];
+        NSString* tzAbbreviation = [_selectedForecast.timezone abbreviationForDate:weather.timestamp];
+        
+        [self.dateFormatter setDateFormat:@"D/w"];
+        return [NSString stringWithFormat:@"%@: %@, %@: %@", NSLocalizedString(@"Day/Week", nil), [self.dateFormatter stringFromDate:weather.timestamp], NSLocalizedString(@"Timezone", nil), tzAbbreviation];
+        
+    } else if (section == 1) {
+        return NSLocalizedString(@"Sun", nil);
+    } else if (section == 2) {
+        return NSLocalizedString(@"Moon", nil);
+    } else {
+        return nil;
+    }
     
-    [self.dateFormatter setDateFormat:@"D/w"];
-    return [NSString stringWithFormat:@"%@: %@, %@: %@", NSLocalizedString(@"Day/Week", nil), [self.dateFormatter stringFromDate:weather.timestamp], NSLocalizedString(@"Timezone", nil), tzAbbreviation];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
-    
-    cell.timezone = _selectedForecast.timezone;
-    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
-    cell.weather = [currentDay objectAtIndex:indexPath.row];
-    
-    return cell;
+    if (indexPath.section == 0) {
+        
+        ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
+        
+        cell.timezone = _selectedForecast.timezone;
+        NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+        cell.weather = [currentDay objectAtIndex:indexPath.row];
+        
+        return cell;
+        
+    } else {
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AstroCellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AstroCellIdentifier];
+        }
+        
+        NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+        Weather* weather = [currentDay lastObject];
+        
+        NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:weather.timestamp];
+        [components setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+        [components setHour:0];
+        [components setMinute:0];
+        [components setSecond:0];
+        NSDate* date = [calendar dateFromComponents:components];
+        
+        __block Astro* _foundAstro;
+        [_selectedForecast.astro enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            Astro* astro = (Astro*)obj;
+            
+            if ([astro.date isEqualToDate:date]) {
+                _foundAstro = astro;
+                *stop = YES;
+            }
+        }];
+        
+        [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
+        [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        
+        if (indexPath.section == 1) {
+            
+            if (indexPath.row == 0) {
+                cell.textLabel.text = NSLocalizedString(@"Rise", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:_foundAstro.sunRise];
+                }
+            }
+            if (indexPath.row == 1) {
+                cell.textLabel.text = NSLocalizedString(@"Set", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:_foundAstro.sunSet];
+                }
+            }
+            if (indexPath.row == 2) {
+                cell.textLabel.text = NSLocalizedString(@"Noon altitude", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = [self.unitsConverter convertDegrees:_foundAstro.noonAltitude];
+                }
+            }
+            
+        }
+        
+        if (indexPath.section == 2) {
+            
+            if (indexPath.row == 0) {
+                cell.textLabel.text = NSLocalizedString(@"Rise", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:_foundAstro.moonRise];
+                }
+            }
+            if (indexPath.row == 1) {
+                cell.textLabel.text = NSLocalizedString(@"Set", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:_foundAstro.moonSet];
+                }
+            }
+            if (indexPath.row == 2) {
+                cell.textLabel.text = NSLocalizedString(@"Phase", nil);
+                if (_foundAstro != nil) {
+                    cell.detailTextLabel.text = _foundAstro.moonPhase;
+                }
+            }
+            
+        }
+        
+        return cell;
+    }
 }
 
 @end

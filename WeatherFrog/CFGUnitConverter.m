@@ -49,6 +49,12 @@
     return [NSString stringWithFormat:@"%@%%", [self formatedNumberString:floatPercentValue]];
 }
 
+- (NSString*)convertDegrees:(NSNumber*)degreesValue
+{
+    float floatDegreesValue = [degreesValue floatValue];
+    return [NSString stringWithFormat:@"%@°", [self formatedNumberString:floatDegreesValue]];
+}
+
 - (NSString*)convertWindSpeed:(NSNumber*)windSpeedMetresPerSecond
 {
     NSString* speedUnit = [[UserDefaultsManager sharedDefaults] forecastUnitWindspeed];

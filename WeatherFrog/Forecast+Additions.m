@@ -9,6 +9,7 @@
 #import "Forecast+Additions.h"
 #import "WeatherDictionary.h"
 #import "Weather.h"
+#import "Astro.h"
 #import "AstroDictionary.h"
 
 @implementation Forecast (Additions)
@@ -49,7 +50,6 @@
     NSMutableArray *sortedValues = [NSMutableArray array];
     for (NSString *key in sortedKeys)
         [sortedValues addObject: [days objectForKey: key]];
-    
     
     return sortedValues;
 }

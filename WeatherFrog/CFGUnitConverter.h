@@ -9,6 +9,7 @@
 @interface CFGUnitConverter : NSObject
 
 - (NSString*)convertPercent:(NSNumber*)percent;
+- (NSString*)convertDegrees:(NSNumber*)degrees;
 - (NSString*)convertTemperature:(NSNumber*)temperatureCelsius;
 - (NSString*)convertWindDirection:(NSNumber*)windDirectionRadius;
 - (NSString*)convertWindSpeed:(NSNumber*)windSpeedMetresPerSecond;
