@@ -43,6 +43,7 @@
     hostActive = [hostReachable isReachable];
     [hostReachable startNotifier];
     
+    [NSFetchedResultsController deleteCacheWithName:nil];
     [MagicalRecord setupCoreDataStack];
     [UserDefaultsManager sharedDefaults];
     [self customizeUIKit];
