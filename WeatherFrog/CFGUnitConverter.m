@@ -46,7 +46,7 @@
 - (NSString*)convertPercent:(NSNumber*)percentValue
 {
     float floatPercentValue = [percentValue floatValue];
-    return [NSString stringWithFormat:@"%@%%", [self formatedNumberString:floatPercentValue]];
+    return [NSString stringWithFormat:@"%@%%", [self formatedNumberString:roundf(floatPercentValue)]];
 }
 
 - (NSString*)convertDegrees:(NSNumber*)degreesValue
@@ -61,11 +61,11 @@
     float floatWindSpeedMetresPerSecond = [windSpeedMetresPerSecond floatValue];
     
     if ([speedUnit isEqualToString:@"knots"]) {
-        return [NSString stringWithFormat:@"%@ k", [self formatedNumberString:(1.94386*floatWindSpeedMetresPerSecond)]];
+        return [NSString stringWithFormat:@"%@ k", [self formatedNumberString:roundf(1.94386*floatWindSpeedMetresPerSecond)]];
     } else if ([speedUnit isEqualToString:@"mph"]) {
-        return [NSString stringWithFormat:@"%@ mph", [self formatedNumberString:(2.23693*floatWindSpeedMetresPerSecond)]];
+        return [NSString stringWithFormat:@"%@ mph", [self formatedNumberString:roundf(2.23693*floatWindSpeedMetresPerSecond)]];
     } else {
-        return [NSString stringWithFormat:@"%@ m/s", [self formatedNumberString:floatWindSpeedMetresPerSecond]];
+        return [NSString stringWithFormat:@"%@ m/s", [self formatedNumberString:roundf(floatWindSpeedMetresPerSecond)]];
     }
 }
 
@@ -93,9 +93,9 @@
     float floatPresureHectoPascals = [presureHectoPascals floatValue];
     
     if ([precipitation isEqualToString:@"mbar"]) {
-        return [NSString stringWithFormat:@"%@ mbar", [self formatedNumberString:(floatPresureHectoPascals)]];
+        return [NSString stringWithFormat:@"%@ mbar", [self formatedNumberString:roundf(floatPresureHectoPascals)]];
     } else {
-        return [NSString stringWithFormat:@"%@ hPa", [self formatedNumberString:floatPresureHectoPascals]];
+        return [NSString stringWithFormat:@"%@ hPa", [self formatedNumberString:roundf(floatPresureHectoPascals)]];
     }
 }
 

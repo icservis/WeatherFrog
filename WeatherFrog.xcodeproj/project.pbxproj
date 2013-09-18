@@ -26,6 +26,9 @@
 		843D1B6C17CD32EA0094AEB4 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */; };
 		843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
 		843D1B7017CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
+		8443B12717EA258C004CFA55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8443B12617EA258C004CFA55 /* Default-568h@2x.png */; };
+		8443B12A17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
+		8443B12B17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
 		8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
 		8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
 		845C2B8217E330640087C84A /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C2B8117E330640087C84A /* InfoViewController.m */; };
@@ -260,6 +263,9 @@
 		8443B12317EA2479004CFA55 /* logo-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-58.png"; path = "Assets/logo-58.png"; sourceTree = "<group>"; };
 		8443B12417EA24B0004CFA55 /* launch-640-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch-640-960.png"; path = "Assets/launch-640-960.png"; sourceTree = "<group>"; };
 		8443B12517EA24C0004CFA55 /* launch-640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch-640-1136.png"; path = "Assets/launch-640-1136.png"; sourceTree = "<group>"; };
+		8443B12617EA258C004CFA55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8443B12817EA3036004CFA55 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		8443B12917EA3036004CFA55 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderViewController.h; sourceTree = "<group>"; };
 		8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderViewController.m; sourceTree = "<group>"; };
 		845C2B8017E330640087C84A /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -514,6 +520,7 @@
 		848A54D1176E09A1009B3F85 = {
 			isa = PBXGroup;
 			children = (
+				8443B12617EA258C004CFA55 /* Default-568h@2x.png */,
 				8443B12517EA24C0004CFA55 /* launch-640-1136.png */,
 				8443B12417EA24B0004CFA55 /* launch-640-960.png */,
 				8443B12317EA2479004CFA55 /* logo-58.png */,
@@ -1125,6 +1132,8 @@
 				847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */,
 				847B915017BFB30E00AD76E7 /* ForecastViewController.h */,
 				847B915117BFB30E00AD76E7 /* ForecastViewController.m */,
+				8443B12817EA3036004CFA55 /* DetailViewController.h */,
+				8443B12917EA3036004CFA55 /* DetailViewController.m */,
 				847B916017BFC56E00AD76E7 /* SettingsViewController.h */,
 				847B916117BFC56E00AD76E7 /* SettingsViewController.m */,
 				841EFAD817D2A7EF009EF860 /* SettingsMultiValueViewController.h */,
@@ -1230,6 +1239,7 @@
 				848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */,
 				848A54E8176E09A1009B3F85 /* InfoPlist.strings in Resources */,
 				841EFAD217D25571009EF860 /* Settings.bundle in Resources */,
+				8443B12717EA258C004CFA55 /* Default-568h@2x.png in Resources */,
 				84DE491817BF7659005AB3B8 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1318,6 +1328,7 @@
 				84DE49EC17BF76CB005AB3B8 /* MagicalRecord+Setup.m in Sources */,
 				841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */,
 				847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */,
+				8443B12A17EA3036004CFA55 /* DetailViewController.m in Sources */,
 				84DE49C017BF76CB005AB3B8 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				84DE49EE17BF76CB005AB3B8 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */,
@@ -1408,6 +1419,7 @@
 				84DE48F017BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */,
 				84DE49E117BF76CB005AB3B8 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */,
+				8443B12B17EA3036004CFA55 /* DetailViewController.m in Sources */,
 				84DE49D317BF76CB005AB3B8 /* NSManagedObject+MagicalRecord.m in Sources */,
 				84BEAEE717C52EA1008B828E /* Weather.m in Sources */,
 				84DE497917BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
@@ -1520,6 +1532,8 @@
 		84089885176E0A2400F45397 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1642,6 +1656,8 @@
 		848A5513176E09A2009B3F85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1665,6 +1681,8 @@
 		848A5514176E09A2009B3F85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

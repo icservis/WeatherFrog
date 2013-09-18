@@ -141,6 +141,20 @@ static CGFloat const tableTopMargin = 0.0f;
     return YES;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        
+        UINavigationController* detailNavController = (UINavigationController*)segue.destinationViewController;
+        DetailViewController* detailViewController = (DetailViewController*)[[detailNavController viewControllers] objectAtIndex:0];
+        detailViewController.delegate = self;
+        
+        ForecastCell* cell = (ForecastCell*)sender;
+        detailViewController.weather = cell.weather;
+        detailViewController.timezone = self.selectedForecast.timezone;
+    }
+}
+
 #pragma mark - UIDeviceDelegate
 
 - (BOOL)shouldAutorotate
@@ -175,6 +189,7 @@ static CGFloat const tableTopMargin = 0.0f;
     NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewController.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
@@ -626,14 +641,14 @@ static CGFloat const tableTopMargin = 0.0f;
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        ForecastCell* cell = (ForecastCell*)[tableView cellForRowAtIndexPath:indexPath];
+        [self performSegueWithIdentifier:@"showDetail" sender:cell];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -778,6 +793,15 @@ static CGFloat const tableTopMargin = 0.0f;
         
         return cell;
     }
+}
+
+#pragma mark - DetailViewControllerDelegate
+
+- (void)closeDetailViewController:(UIViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        DDLogVerbose(@"controller: %@", [controller description]);
+    }];
 }
 
 @end
