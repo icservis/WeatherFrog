@@ -15,6 +15,7 @@
 #import "MenuViewController.h"
 #import "YrApiService.h"
 #import "GoogleApiService.h"
+#import "CFGUnitConverter.h"
 
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
@@ -25,6 +26,8 @@ static CGFloat const labelTopMargin = 3.0f;
 static CGFloat const labelHeight = 21.0f;
 static CGFloat const iconTopMargin = 0.0f;
 static CGFloat const iconSize = 64.0f;
+static CGFloat const timeTopMargin = 0.0f;
+static CGFloat const timeHeight = 21.0f;
 static CGFloat const tableTopMargin = 0.0f;
 
 @class Forecast;
@@ -35,6 +38,7 @@ static CGFloat const tableTopMargin = 0.0f;
 }
 
 @property (nonatomic, strong) NSDateFormatter* dateFormatter;
+@property (nonatomic, strong) CFGUnitConverter* unitsConverter;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* actionButtonItem;
@@ -58,16 +62,6 @@ static CGFloat const tableTopMargin = 0.0f;
         // Custom initialization
     }
     return self;
-}
-
-- (NSDateFormatter*)dateFormatter
-{
-    if (_dateFormatter == nil) {
-        _dateFormatter = [[NSDateFormatter alloc] init];
-        [_dateFormatter setDateStyle:NSDateFormatterFullStyle];
-        [_dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    }
-    return _dateFormatter;
 }
 
 #pragma mark - UIApplicationDelegate
@@ -203,6 +197,22 @@ static CGFloat const tableTopMargin = 0.0f;
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
         [self displayForecast:_selectedForecast];
     }
+}
+
+- (NSDateFormatter*)dateFormatter
+{
+    if (_dateFormatter == nil) {
+        _dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return _dateFormatter;
+}
+
+- (CFGUnitConverter*)unitsConverter
+{
+    if (_unitsConverter == nil) {
+        _unitsConverter = [[CFGUnitConverter alloc] init];
+    }
+    return _unitsConverter;
 }
 
 #pragma mark - Notifications
@@ -368,6 +378,26 @@ static CGFloat const tableTopMargin = 0.0f;
         
         NSArray* hours = (NSArray*)obj;
         
+        __block NSMutableArray* timesforLeftIcon = [NSMutableArray new];
+        __block NSMutableArray* timesforMiddleIcon = [NSMutableArray new];
+        __block NSMutableArray* timesforRightIcon = [NSMutableArray new];
+        [self.dateFormatter setDateFormat:@"HH"];
+        
+        [hours enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            Weather* hour = (Weather*)obj;
+            NSString* timeString = [self.dateFormatter stringFromDate:hour.timestamp];
+            NSInteger hourInt = [timeString integerValue];
+            
+            if (hourInt < 10) {
+                [timesforLeftIcon addObject:hour];
+            } else if (hourInt > 17) {
+                [timesforRightIcon addObject:hour];
+            } else {
+                [timesforMiddleIcon addObject:hour];
+            }
+        }];
+        
         backgroundRect.origin.x = idx * backgroundRect.size.width;
         UIView* dayBackground = [[UIView alloc] initWithFrame:backgroundRect];
         dayBackground.tag = idx;
@@ -376,32 +406,71 @@ static CGFloat const tableTopMargin = 0.0f;
         UILabel* dayLabel = [[UILabel alloc] initWithFrame:labelFrame];
         
         Weather* firstHour = hours[0];
+        [self.dateFormatter setDateStyle:NSDateFormatterFullStyle];
+        [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         dayLabel.text = [self.dateFormatter stringFromDate:firstHour.timestamp];
         dayLabel.textAlignment = NSTextAlignmentCenter;
         [dayBackground addSubview:dayLabel];
         
         CGFloat spacer = (backgroundRect.size.width - 3 * iconSize) / 3;
         CGFloat iconOffset = labelTopMargin + labelHeight + iconTopMargin;
+        CGFloat timeOffset = iconOffset + iconSize + timeTopMargin;
         
         CGRect iconLeftFrame = CGRectMake(spacer/2, iconOffset, iconSize, iconSize);
         UIImageView* iconLeft = [[UIImageView alloc] initWithFrame:iconLeftFrame];
         iconLeft.contentMode = UIViewContentModeScaleAspectFit;
-        iconLeft.image = [UIImage imageNamed:imageLogo];
+        iconLeft.image = [self iconNameForTimes:timesforLeftIcon];
         [dayBackground addSubview:iconLeft];
         
-        CGRect iconCenterFrame = CGRectMake(3*spacer/2+iconSize, iconOffset, iconSize, iconSize);
-        UIImageView* iconCenter = [[UIImageView alloc] initWithFrame:iconCenterFrame];
-        iconCenter.contentMode = UIViewContentModeScaleAspectFit;
-        iconCenter.image = [UIImage imageNamed:imageLogo];
-        [dayBackground addSubview:iconCenter];
+        CGRect timeLeftFrame = CGRectMake(iconLeftFrame.origin.x, timeOffset, iconLeftFrame.size.width, timeHeight);
+        UILabel* timeLeft = [[UILabel alloc] initWithFrame:timeLeftFrame];
+        timeLeft.textAlignment = NSTextAlignmentCenter;
+        timeLeft.textColor = [UIColor darkGrayColor];
+        NSNumber* tempLeftCelsius = [self temperatureForTimes:timesforLeftIcon];
+        if (tempLeftCelsius != nil) {
+            timeLeft.text = [self.unitsConverter convertTemperature:tempLeftCelsius];
+        } else {
+            timeLeft.text = nil;
+        }
+        [dayBackground addSubview:timeLeft];
+        
+        CGRect iconMiddleFrame = CGRectMake(3*spacer/2+iconSize, iconOffset, iconSize, iconSize);
+        UIImageView* iconMiddle = [[UIImageView alloc] initWithFrame:iconMiddleFrame];
+        iconMiddle.contentMode = UIViewContentModeScaleAspectFit;
+        iconMiddle.image = [self iconNameForTimes:timesforMiddleIcon];
+        [dayBackground addSubview:iconMiddle];
+        
+        CGRect timeMiddleFrame = CGRectMake(iconMiddleFrame.origin.x, timeOffset, iconMiddleFrame.size.width, timeHeight);
+        UILabel* timeMiddle = [[UILabel alloc] initWithFrame:timeMiddleFrame];
+        timeMiddle.textAlignment = NSTextAlignmentCenter;
+        timeMiddle.textColor = [UIColor darkGrayColor];
+        NSNumber* tempMiddleCelsius = [self temperatureForTimes:timesforMiddleIcon];
+        if (tempMiddleCelsius != nil) {
+            timeMiddle.text = [self.unitsConverter convertTemperature:tempMiddleCelsius];
+        } else {
+            timeMiddle.text = nil;
+        }
+        [dayBackground addSubview:timeMiddle];
         
         CGRect iconRightFrame = CGRectMake(5*spacer/2+2*iconSize, iconOffset, iconSize, iconSize);
         UIImageView* iconRight = [[UIImageView alloc] initWithFrame:iconRightFrame];
         iconRight.contentMode = UIViewContentModeScaleAspectFit;
-        iconRight.image = [UIImage imageNamed:imageLogo];
+        iconRight.image = [self iconNameForTimes:timesforRightIcon];
         [dayBackground addSubview:iconRight];
         
-        CGFloat tableOffset = iconOffset + iconSize + tableTopMargin;
+        CGRect timeRightFrame = CGRectMake(iconRightFrame.origin.x, timeOffset, iconRightFrame.size.width, timeHeight);
+        UILabel* timeRight = [[UILabel alloc] initWithFrame:timeRightFrame];
+        timeRight.textAlignment = NSTextAlignmentCenter;
+        timeRight.textColor = [UIColor darkGrayColor];
+        NSNumber* tempRightCelsius = [self temperatureForTimes:timesforRightIcon];
+        if (tempRightCelsius != nil) {
+            timeRight.text = [self.unitsConverter convertTemperature:tempRightCelsius];
+        } else {
+            timeRight.text = nil;
+        }
+        [dayBackground addSubview:timeRight];
+        
+        CGFloat tableOffset = timeOffset + timeHeight + tableTopMargin;
         CGRect tableFrame = CGRectMake(0, tableOffset, backgroundRect.size.width, backgroundRect.size.height - tableOffset);
         
         UITableView* tableView = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
@@ -424,28 +493,50 @@ static CGFloat const tableTopMargin = 0.0f;
     CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
     [self.scrollView setContentSize:contentSize];
     DDLogVerbose(@"contentsize: %@", NSStringFromCGSize(contentSize));
-    
-    
+}
 
-    /*
-    UITableView* tableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds style:UITableViewStylePlain];
-    
-    tableView.translatesAutoresizingMaskIntoConstraints = NO;
-    tableView.rowHeight = 44;
-    tableView.sectionFooterHeight = 22;
-    tableView.sectionHeaderHeight = 22;
-    tableView.scrollEnabled = YES;
-    tableView.showsVerticalScrollIndicator = YES;
-    tableView.userInteractionEnabled = YES;
-    tableView.bounces = YES;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    
-    UINib *cellNib = [UINib nibWithNibName:ForecastCellIdentifier bundle:nil];
-    [tableView registerNib:cellNib forCellReuseIdentifier:ForecastCellIdentifier];
-    
-    [self.scrollView addSubview:tableView];
-     */
+- (UIImage*)iconNameForTimes:(NSArray*)weatherArray
+{
+    if (weatherArray != nil) {
+        NSInteger count = weatherArray.count;
+        if (count == 0) {
+            return nil;
+        }
+        Weather* weather = [weatherArray objectAtIndex:(count/2)];
+        
+        NSInteger symbol;
+        if (weather.symbol1h != nil) {
+            symbol = [weather.symbol1h integerValue];
+        } else if (weather.symbol2h != nil) {
+            symbol = [weather.symbol2h integerValue];
+        } else if (weather.symbol3h != nil) {
+            symbol = [weather.symbol3h integerValue];
+        } else {
+            symbol = [weather.symbol6h integerValue];
+        }
+        BOOL isNight = [weather.isNight boolValue];
+        
+        NSString* imageName = [NSString stringWithFormat:@"weathericon-%i-%d-80", symbol, isNight];
+        return [UIImage imageNamed:imageName];
+        
+    } else {
+        return nil;
+    }
+}
+
+- (NSNumber*)temperatureForTimes:(NSArray*)weatherArray
+{
+    if (weatherArray != nil) {
+        NSInteger count = weatherArray.count;
+        if (count == 0) {
+            return nil;
+        }
+        Weather* weather = [weatherArray objectAtIndex:(count/2)];
+        return weather.temperature;
+        
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - Views for Landscape
@@ -556,7 +647,12 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [_selectedForecast.timezone localizedName:NSTimeZoneNameStyleDaylightSaving locale:[NSLocale currentLocale]];
+    NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
+    Weather* weather = [currentDay objectAtIndex:0];
+    NSString* tzAbbreviation = [_selectedForecast.timezone abbreviationForDate:weather.timestamp];
+    
+    [self.dateFormatter setDateFormat:@"D/w"];
+    return [NSString stringWithFormat:@"%@: %@, %@: %@", NSLocalizedString(@"Day/Week", nil), [self.dateFormatter stringFromDate:weather.timestamp], NSLocalizedString(@"Timezone", nil), tzAbbreviation];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
