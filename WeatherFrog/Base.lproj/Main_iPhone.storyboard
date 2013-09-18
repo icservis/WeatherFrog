@@ -731,10 +731,10 @@
             </objects>
             <point key="canvasLocation" x="762" y="2448"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Non Rotating Nav Controller-->
         <scene sceneID="kEt-g1-6cg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fFa-i3-Q8o" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fFa-i3-Q8o" customClass="NonRotatingNavController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g5A-rt-mF8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -756,6 +756,7 @@
         <image name="globe-30" width="30" height="30"/>
         <image name="logo" width="100" height="100"/>
         <image name="question-30" width="30" height="30"/>
+        <image name="reveal-icon" width="22" height="17"/>
         <image name="reveal-icon" width="22" height="17"/>
         <image name="settings-30" width="30" height="30"/>
         <image name="waiting-frog-portrait" width="320" height="460"/>

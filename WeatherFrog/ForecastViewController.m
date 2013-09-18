@@ -189,7 +189,7 @@ static CGFloat const tableTopMargin = 0.0f;
     NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    activityViewController.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+    //activityViewController.view.tintColor = self.view.tintColor;
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
