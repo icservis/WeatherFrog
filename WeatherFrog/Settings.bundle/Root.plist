@@ -36,32 +36,6 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Application Options</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Sound Effects</string>
-			<key>Key</key>
-			<string>SOUND_EFFECTS</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>On Screen Help</string>
-			<key>Key</key>
-			<string>ON_SCREEN_HELP</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Title</key>
 			<string>Forecast Precision</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -132,7 +106,7 @@
 			<key>Key</key>
 			<string>FORECAST_UNIT_TEMPERATURE</string>
 			<key>DefaultValue</key>
-			<string>C</string>
+			<string>F</string>
 			<key>Titles</key>
 			<array>
 				<string>°Celsius</string>
@@ -154,7 +128,7 @@
 			<key>Key</key>
 			<string>FORECAST_UNIT_WINDSPEED</string>
 			<key>DefaultValue</key>
-			<string>mps</string>
+			<string>mph</string>
 			<key>Titles</key>
 			<array>
 				<string>metres (m/s)</string>
@@ -176,7 +150,7 @@
 			<key>Key</key>
 			<string>FORECAST_UNIT_PRECIPITATION</string>
 			<key>DefaultValue</key>
-			<string>mmph</string>
+			<string>in24h</string>
 			<key>Titles</key>
 			<array>
 				<string>metres (mm/h)</string>
@@ -196,7 +170,7 @@
 			<key>Key</key>
 			<string>FORECAST_UNIT_PRESSURE</string>
 			<key>DefaultValue</key>
-			<string>hpa</string>
+			<string>mbar</string>
 			<key>Titles</key>
 			<array>
 				<string>Pascals (hPa)</string>
@@ -206,26 +180,6 @@
 			<array>
 				<string>hpa</string>
 				<string>mbar</string>
-			</array>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSMultiValueSpecifier</string>
-			<key>Title</key>
-			<string>Altitude</string>
-			<key>Key</key>
-			<string>FORECAST_UNIT_ALTITUDE</string>
-			<key>DefaultValue</key>
-			<string>m</string>
-			<key>Titles</key>
-			<array>
-				<string>metres (m)</string>
-				<string>feets (ft)</string>
-			</array>
-			<key>Values</key>
-			<array>
-				<string>m</string>
-				<string>ft</string>
 			</array>
 		</dict>
 	</array>
