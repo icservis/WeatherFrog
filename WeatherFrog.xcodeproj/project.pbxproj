@@ -60,7 +60,6 @@
 		848A54EA176E09A1009B3F85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A54E9176E09A1009B3F85 /* main.m */; };
 		848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 848A54ED176E09A1009B3F85 /* AppDelegate.m */; };
 		848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */; };
-		848A54F4176E09A2009B3F85 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848A54F2176E09A2009B3F85 /* Main_iPad.storyboard */; };
 		848A54FC176E09A2009B3F85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848A54FB176E09A2009B3F85 /* Images.xcassets */; };
 		848A5503176E09A2009B3F85 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A5502176E09A2009B3F85 /* XCTest.framework */; };
 		848A5504176E09A2009B3F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DD176E09A1009B3F85 /* Foundation.framework */; };
@@ -233,11 +232,9 @@
 
 /* Begin PBXFileReference section */
 		84089887176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		84089888176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		84089889176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8408988A176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8408988C176E0A4900F45397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		8408988E176E0A5400F45397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPad.strings; sourceTree = "<group>"; };
 		8408988F176E103900F45397 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84089891176E103E00F45397 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		84089893176E104500F45397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -258,6 +255,11 @@
 		843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastManager.m; sourceTree = "<group>"; };
 		843D1B6D17CD3A600094AEB4 /* Forecast+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+Additions.h"; sourceTree = "<group>"; };
 		843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+Additions.m"; sourceTree = "<group>"; };
+		8443B12117EA2455004CFA55 /* logo-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-120.png"; path = "Assets/logo-120.png"; sourceTree = "<group>"; };
+		8443B12217EA2466004CFA55 /* logo-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-80.png"; path = "Assets/logo-80.png"; sourceTree = "<group>"; };
+		8443B12317EA2479004CFA55 /* logo-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-58.png"; path = "Assets/logo-58.png"; sourceTree = "<group>"; };
+		8443B12417EA24B0004CFA55 /* launch-640-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch-640-960.png"; path = "Assets/launch-640-960.png"; sourceTree = "<group>"; };
+		8443B12517EA24C0004CFA55 /* launch-640-1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch-640-1136.png"; path = "Assets/launch-640-1136.png"; sourceTree = "<group>"; };
 		8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderViewController.h; sourceTree = "<group>"; };
 		8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderViewController.m; sourceTree = "<group>"; };
 		845C2B8017E330640087C84A /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -294,7 +296,6 @@
 		848A54EC176E09A1009B3F85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		848A54ED176E09A1009B3F85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		848A54F0176E09A2009B3F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		848A54F3176E09A2009B3F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		848A54FB176E09A2009B3F85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		848A5501176E09A2009B3F85 /* WeatherFrogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherFrogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848A5502176E09A2009B3F85 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -513,6 +514,11 @@
 		848A54D1176E09A1009B3F85 = {
 			isa = PBXGroup;
 			children = (
+				8443B12517EA24C0004CFA55 /* launch-640-1136.png */,
+				8443B12417EA24B0004CFA55 /* launch-640-960.png */,
+				8443B12317EA2479004CFA55 /* logo-58.png */,
+				8443B12217EA2466004CFA55 /* logo-80.png */,
+				8443B12117EA2455004CFA55 /* logo-120.png */,
 				848A54E3176E09A1009B3F85 /* WeatherFrog */,
 				848A5508176E09A2009B3F85 /* WeatherFrogTests */,
 				84DE48AB17BF7560005AB3B8 /* Submodules */,
@@ -566,7 +572,6 @@
 				84DE4A1317BF83FC005AB3B8 /* Models */,
 				84DE4A1417BF8403005AB3B8 /* Views */,
 				848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */,
-				848A54F2176E09A2009B3F85 /* Main_iPad.storyboard */,
 				848A54FB176E09A2009B3F85 /* Images.xcassets */,
 				848A54E4176E09A1009B3F85 /* Supporting Files */,
 			);
@@ -1220,7 +1225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848A54F4176E09A2009B3F85 /* Main_iPad.storyboard in Resources */,
 				847CFF6017E48C7C00DA0CC7 /* ForecastCell.xib in Resources */,
 				848A54FC176E09A2009B3F85 /* Images.xcassets in Resources */,
 				848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */,
@@ -1466,16 +1470,6 @@
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		848A54F2176E09A2009B3F85 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				848A54F3176E09A2009B3F85 /* Base */,
-				84089888176E0A3500F45397 /* cs */,
-				8408988E176E0A5400F45397 /* en */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		848A550B176E09A2009B3F85 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1526,7 +1520,6 @@
 		84089885176E0A2400F45397 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1542,7 +1535,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
@@ -1649,7 +1642,6 @@
 		848A5513176E09A2009B3F85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1665,7 +1657,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1673,7 +1665,6 @@
 		848A5514176E09A2009B3F85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1689,7 +1680,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
