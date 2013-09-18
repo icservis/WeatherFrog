@@ -352,7 +352,9 @@ static float const LongTapDuration = 1.2;
             [locationButton addTarget:self action:@selector(addLocation:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.leftCalloutAccessoryView = locationButton;
             
-            UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            forecastButton.frame = CGRectMake(0, 0, 36, 36);
+            [forecastButton setImage:[UIImage imageNamed:@"forecast"] forState:UIControlStateNormal];
             [forecastButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.rightCalloutAccessoryView = forecastButton;
         } else {

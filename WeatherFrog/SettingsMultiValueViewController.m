@@ -71,6 +71,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     cell.textLabel.text = self.titles[indexPath.row];
     id currentValue = self.values[indexPath.row];
     if ([currentValue isEqual:self.value]) {

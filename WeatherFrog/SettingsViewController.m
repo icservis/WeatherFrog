@@ -104,6 +104,8 @@
         NSDictionary* element = elements[indexPath.row];
         
         cell.textLabel.text = [element objectForKey:@"Title"];
+        cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         
         if ([[element objectForKey:@"Type"] isEqualToString:@"PSToggleSwitchSpecifier"]) {
             

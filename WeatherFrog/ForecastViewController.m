@@ -81,13 +81,14 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
     
-    [self displayDefaultScreen];
+    //[self displayDefaultScreen];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastUpdate:) name:ForecastUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastProgress:) name:ForecastProgressNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastError:) name:ForecastErrorNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,8 +96,9 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewWillAppear:animated];
     
     if (self.selectedForecast == nil) {
-        
-        Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO];
+
+        NSManagedObjectContext* currentContect = [NSManagedObjectContext contextForCurrentThread];
+        Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO inContext:currentContect];
         
         if (lastForecast != nil) {
             
@@ -106,6 +108,7 @@ static CGFloat const tableTopMargin = 0.0f;
         } else {
             
             if (self.selectedPlacemark == nil) {
+                DDLogInfo(@"placemark not determined");
                 [self displayDefaultScreen];
             } else {
                 DDLogInfo(@"placemark restored");
@@ -219,6 +222,11 @@ static CGFloat const tableTopMargin = 0.0f;
 
 #pragma mark - Notifications
 
+- (void)preferredContentSizeChanged:(NSNotification*)notification {
+    // adjust the layout of the cells
+    [self.view setNeedsLayout];
+}
+
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
@@ -274,6 +282,7 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)displayForecast:(Forecast*)forecast
 {
     if (forecast.name == nil && forecast.timezone == nil) {
+        DDLogInfo(@"forecast empty");
         [self displayDefaultScreen];
         return;
     }
@@ -406,6 +415,7 @@ static CGFloat const tableTopMargin = 0.0f;
         
         CGRect labelFrame = CGRectMake(0, labelTopMargin, backgroundRect.size.width, labelHeight);
         UILabel* dayLabel = [[UILabel alloc] initWithFrame:labelFrame];
+        dayLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
         
         Weather* firstHour = hours[0];
         [self.dateFormatter setDateStyle:NSDateFormatterFullStyle];
@@ -428,6 +438,7 @@ static CGFloat const tableTopMargin = 0.0f;
         UILabel* timeLeft = [[UILabel alloc] initWithFrame:timeLeftFrame];
         timeLeft.textAlignment = NSTextAlignmentCenter;
         timeLeft.textColor = [UIColor darkGrayColor];
+        timeLeft.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSNumber* tempLeftCelsius = [self temperatureForTimes:timesforLeftIcon];
         if (tempLeftCelsius != nil) {
             timeLeft.text = [self.unitsConverter convertTemperature:tempLeftCelsius];
@@ -446,6 +457,7 @@ static CGFloat const tableTopMargin = 0.0f;
         UILabel* timeMiddle = [[UILabel alloc] initWithFrame:timeMiddleFrame];
         timeMiddle.textAlignment = NSTextAlignmentCenter;
         timeMiddle.textColor = [UIColor darkGrayColor];
+        timeMiddle.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSNumber* tempMiddleCelsius = [self temperatureForTimes:timesforMiddleIcon];
         if (tempMiddleCelsius != nil) {
             timeMiddle.text = [self.unitsConverter convertTemperature:tempMiddleCelsius];
@@ -464,6 +476,7 @@ static CGFloat const tableTopMargin = 0.0f;
         UILabel* timeRight = [[UILabel alloc] initWithFrame:timeRightFrame];
         timeRight.textAlignment = NSTextAlignmentCenter;
         timeRight.textColor = [UIColor darkGrayColor];
+        timeRight.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         NSNumber* tempRightCelsius = [self temperatureForTimes:timesforRightIcon];
         if (tempRightCelsius != nil) {
             timeRight.text = [self.unitsConverter convertTemperature:tempRightCelsius];
@@ -564,6 +577,10 @@ static CGFloat const tableTopMargin = 0.0f;
         if (_selectedPlacemark != nil) {
             [self displayLoadingScreen];
             [self forecast:_selectedPlacemark forceUpdate:YES];
+        } else {
+            self.selectedPlacemark = [[self appDelegate] currentPlacemark];
+            DDLogInfo(@"selectedPlacemark: %@", [_selectedPlacemark description]);
+            self.useSelectedLocationInsteadCurrenLocation = NO;
         }
     }
 }
@@ -709,6 +726,9 @@ static CGFloat const tableTopMargin = 0.0f;
         
         [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
         [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        
+        cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         
         if (indexPath.section == 1) {
             

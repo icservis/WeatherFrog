@@ -31,20 +31,28 @@
     _weather = weather;
     
     NSNumber* precipitation;
+    NSInteger hours = 0;
     if (weather.precipitation1h != nil) {
         precipitation = weather.precipitation1h;
+        hours = 1;
     } else if (weather.precipitation2h != nil) {
         precipitation = weather.precipitation2h;
+        hours = 2;
     } else if (weather.precipitation3h != nil) {
         precipitation = weather.precipitation3h;
+        hours = 3;
     } else if (weather.precipitation6h != nil) {
         precipitation = weather.precipitation6h;
+        hours = 6;
     }
     
     NSString* temp = [self.unitsConverter convertTemperature:weather.temperature];
-    NSString* precip = [self.unitsConverter convertPrecipitation:precipitation];
+    NSString* precip = [self.unitsConverter convertPrecipitation:precipitation period:hours];
     NSString* wind = [self.unitsConverter convertWindSpeed:weather.windSpeed];
+    
+    self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.textLabel.text = [NSString stringWithFormat:@"%@, %@, %@", temp, precip, wind];
+    self.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.detailTextLabel.text = [self.localDateFormatter stringFromDate:weather.timestamp];
     
     NSInteger symbol = 0;
@@ -61,11 +69,6 @@
     
     NSString* imageName = [NSString stringWithFormat:@"weathericon-%i-%d-40", symbol, isNight];
     [self.imageView setImage:[UIImage imageNamed:imageName]];
-    
-    /*
-    NSURL* iconUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.yr.no/weatherapi/weathericon/1.0/?symbol=%i;is_night=%d;content_type=image/png", symbol, isNight]];
-    [self.imageView setImageWithURL:iconUrl];
-     */
 }
 
 - (NSDateFormatter*)localDateFormatter
