@@ -81,7 +81,7 @@
     float floatPrecipitationMilimetresPerTime = [precipitationMilimetresPerTime floatValue] / (float)hours;
     
     if ([precipitation isEqualToString:@"in24h"]) {
-        return [NSString stringWithFormat:@"%@ in/h", [self formatedNumberString:(24/25.4*floatPrecipitationMilimetresPerTime)]];
+        return [NSString stringWithFormat:@"%@ in/24h", [self formatedNumberString:(24/25.4*floatPrecipitationMilimetresPerTime)]];
     } else {
         return [NSString stringWithFormat:@"%@ mm/h", [self formatedNumberString:floatPrecipitationMilimetresPerTime]];
     }
