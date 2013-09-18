@@ -36,6 +36,7 @@ static float const LongTapDuration = 1.2;
 
 @implementation LocatorViewController {
     CLGeocoder* geocoder;
+    BOOL internetActive;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -69,6 +70,11 @@ static float const LongTapDuration = 1.2;
         geocoder = [[CLGeocoder alloc] init];
     }
     
+    // Notification
+    internetActive = [[self appDelegate] isInternetActive];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachability:) name:ReachabilityNotification object:nil];
+    
+    
     // UIGestureRecognizer
     UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPress.delegate = self;
@@ -86,6 +92,7 @@ static float const LongTapDuration = 1.2;
 {
     [super viewDidAppear:animated];
     
+    [self setSearchBarPlaceholder];
     if (_selectedPlacemark != nil) {
         [self mapView:self.mapView setRegionWithPlacemark:_selectedPlacemark];
         [self mapView:self.mapView searchAnnotation:_selectedPlacemark];
@@ -200,6 +207,16 @@ static float const LongTapDuration = 1.2;
     [self.revealViewController revealToggle:self.revealButtonItem];
 }
 
+#pragma mark - Notifications
+
+- (void)reachability:(NSNotification*)notification
+{
+    NSDictionary* userInfo = notification.userInfo;
+    NSNumber* internetActiveNumber = [userInfo valueForKey:@"internetActive"];
+    internetActive = [internetActiveNumber boolValue];
+    [self setSearchBarPlaceholder];
+}
+
 #pragma mark - MKMapView
 
 - (void)mapView:(MKMapView *)mapView setRegionWithLocation:(CLLocation*)location
@@ -223,7 +240,7 @@ static float const LongTapDuration = 1.2;
 {
     DDLogInfo(@"searchText: %@", [text description]);
     
-    if ([[self appDelegate] isInternetActive]) {
+    if (internetActive == YES) {
         [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
         [geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error) {
             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -243,7 +260,8 @@ static float const LongTapDuration = 1.2;
                 }
             }
         }];
-        
+    } else {
+        self.searchBar.text = nil;
     }
 }
 
@@ -262,6 +280,7 @@ static float const LongTapDuration = 1.2;
         searchAnnotation = [[MKMapAnnotation alloc] initWithPlacemark:placemark];
         [mapView addAnnotation:searchAnnotation];
     }
+    [mapView selectAnnotation:searchAnnotation animated:YES];
     
     _selectedLocation = placemark.location;
     _selectedPlacemark = placemark;
@@ -287,7 +306,16 @@ static float const LongTapDuration = 1.2;
     _selectedPlacemark = nil;
 }
 
+#pragma mark - UISearchBar
 
+- (void)setSearchBarPlaceholder
+{
+    if (internetActive == YES) {
+        self.searchBar.placeholder = NSLocalizedString(@"Search place or long tap a location", nil);
+    } else {
+        self.searchBar.placeholder = NSLocalizedString(@"Internet not active", nil);
+    }
+}
 
 #pragma mark - MKMapViewDelegate
 

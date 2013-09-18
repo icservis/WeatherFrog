@@ -110,6 +110,7 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+    [MagicalRecord cleanUp];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -143,6 +144,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
     [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+    [MagicalRecord cleanUp];
 }
 
 #pragma mark - UIApplicationDelegate
