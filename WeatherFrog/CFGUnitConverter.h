@@ -14,7 +14,7 @@
 - (NSString*)convertWindDirection:(NSNumber*)windDirectionRadius;
 - (NSString*)convertWindSpeed:(NSNumber*)windSpeedMetresPerSecond;
 - (NSString*)convertWindScale:(NSNumber*)windScaleBeaufort;
-- (NSString*)convertPrecipitation:(NSNumber*)precipitationMilimetresPerhour;
+- (NSString*)convertPrecipitation:(NSNumber*)precipitationMilimetresPerTime period:(NSInteger)hours;
 - (NSString*)convertPressure:(NSNumber*)presureHectoPascals;
 - (NSString*)convertAltitude:(NSNumber*)altitudeMetres;
 

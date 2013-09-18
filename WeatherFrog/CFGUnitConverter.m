@@ -75,15 +75,15 @@
     return [self formatedNumberString:floatWindScaleBeaufort];
 }
 
-- (NSString*)convertPrecipitation:(NSNumber*)precipitationMilimetresPerhour
+- (NSString*)convertPrecipitation:(NSNumber*)precipitationMilimetresPerTime period:(NSInteger)hours
 {
     NSString* precipitation = [[UserDefaultsManager sharedDefaults] forecastUnitPrecipitation];
-    float floatPrecipitationMilimetresPerhour = [precipitationMilimetresPerhour floatValue];
+    float floatPrecipitationMilimetresPerTime = [precipitationMilimetresPerTime floatValue] / (float)hours;
     
     if ([precipitation isEqualToString:@"in24h"]) {
-        return [NSString stringWithFormat:@"%@ in", [self formatedNumberString:(24/25.4*floatPrecipitationMilimetresPerhour)]];
+        return [NSString stringWithFormat:@"%@ in/h", [self formatedNumberString:(24/25.4*floatPrecipitationMilimetresPerTime)]];
     } else {
-        return [NSString stringWithFormat:@"%@ mm", [self formatedNumberString:floatPrecipitationMilimetresPerhour]];
+        return [NSString stringWithFormat:@"%@ mm/h", [self formatedNumberString:floatPrecipitationMilimetresPerTime]];
     }
 }
 
