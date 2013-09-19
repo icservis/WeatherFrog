@@ -13,9 +13,6 @@
 [submodule "Submodules/KissXML"]
 	path = Submodules/KissXML
 	url = https://github.com/robbiehanson/KissXML.git
-[submodule "Submodules/MagicalRecord"]
-	path = Submodules/MagicalRecord
-	url = https://github.com/magicalpanda/MagicalRecord.git
 [submodule "Submodules/AFKissXMLRequestOperation"]
 	path = Submodules/AFKissXMLRequestOperation
 	url = https://github.com/AFNetworking/AFKissXMLRequestOperation.git
@@ -28,3 +25,6 @@
 [submodule "Submodules/Sequencer"]
 	path = Submodules/Sequencer
 	url = https://github.com/berzniz/Sequencer.git
+[submodule "Submodules/MagicalRecord"]
+	path = Submodules/MagicalRecord
+	url = https://github.com/magicalpanda/MagicalRecord.git
