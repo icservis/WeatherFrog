@@ -269,59 +269,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FbUserCell" rowHeight="64" id="fwo-gV-Ie7" customClass="FbUserCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fwo-gV-Ie7" id="gvS-Ij-1JW">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-NA-17M" customClass="FBProfilePictureView">
-                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </view>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fbUser" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQv-lW-Aob">
-                                            <rect key="frame" x="72" y="22" width="170" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="170" id="91h-7w-NP7"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xc-lI-hi4">
-                                            <rect key="frame" x="265" y="17" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <state key="normal" image="checked-30">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="loginButtonTapped:" destination="fwo-gV-Ie7" eventType="touchUpInside" id="b8W-en-dCl"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="3xc-lI-hi4" firstAttribute="leading" secondItem="LQv-lW-Aob" secondAttribute="trailing" constant="23" id="1Zt-5o-ue6"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="centerY" secondItem="gvS-Ij-1JW" secondAttribute="centerY" id="C3h-kp-eVz"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" id="CV8-Vp-hyk"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="centerY" secondItem="3xc-lI-hi4" secondAttribute="centerY" id="Ejf-3U-dk1"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="Uyf-NA-17M" secondAttribute="trailing" constant="8" symbolic="YES" id="NNN-CT-EBs"/>
-                                        <constraint firstItem="LQv-lW-Aob" firstAttribute="leading" secondItem="gvS-Ij-1JW" secondAttribute="leading" constant="72" id="hvD-jm-WiO"/>
-                                        <constraint firstAttribute="bottom" secondItem="Uyf-NA-17M" secondAttribute="bottom" constant="-1" id="pyK-iY-lz1"/>
-                                        <constraint firstItem="Uyf-NA-17M" firstAttribute="top" secondItem="gvS-Ij-1JW" secondAttribute="top" id="sGf-SI-pyS"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="loginButton" destination="3xc-lI-hi4" id="YLo-Dx-H68"/>
-                                    <outlet property="nameLabel" destination="LQv-lW-Aob" id="aN3-ZT-nza"/>
-                                    <outlet property="profileView" destination="Uyf-NA-17M" id="wGp-Z5-WCc"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="c23-3q-kqZ" detailTextLabel="gv0-oj-ZoD" style="IBUITableViewCellStyleValue1" id="LSG-L7-A8p">
-                                <rect key="frame" x="0.0" y="150" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LSG-L7-A8p" id="905-SN-fB6">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -752,7 +701,6 @@
     </scenes>
     <resources>
         <image name="arrow-30" width="30" height="30"/>
-        <image name="checked-30" width="30" height="30"/>
         <image name="globe-30" width="30" height="30"/>
         <image name="logo" width="100" height="100"/>
         <image name="question-30" width="30" height="30"/>
