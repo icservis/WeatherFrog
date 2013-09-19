@@ -718,6 +718,8 @@ static CGFloat const tableTopMargin = 0.0f;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:AstroCellIdentifier];
         }
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
         Weather* weather = [currentDay lastObject];
         
