@@ -14,7 +14,8 @@
 
 + (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark
 {
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
     
     Location* location = [Location createInContext:currentContext];
     location.name = name;
@@ -75,7 +76,8 @@
     DDLogVerbose(@"nearestLocationWith");
     Location* location;
     
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
     NSArray* locations = [Location findAllInContext:currentContext];
     
     if (locations != nil) {

@@ -45,6 +45,8 @@
     
     [NSFetchedResultsController deleteCacheWithName:nil];
     [MagicalRecord setupCoreDataStack];
+    self.defaultContext = [NSManagedObjectContext defaultContext];
+    
     [UserDefaultsManager sharedDefaults];
     [self customizeUIKit];
     
@@ -110,7 +112,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+    [self.defaultContext saveToPersistentStoreAndWait];
     [MagicalRecord cleanUp];
 }
 
@@ -144,7 +146,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
-    [[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+    [self.defaultContext saveToPersistentStoreAndWait];
     [MagicalRecord cleanUp];
 }
 
@@ -434,6 +436,12 @@
 }
 
 #pragma mark - ForecastManagerDelegate
+
+- (void)forecastManager:(id)manager didStartFetchingForecast:(ForecastStatus)status
+{
+    DDLogInfo(@"didStartFetchingForecast");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ForecastFetchNotification object:self userInfo:nil];
+}
 
 - (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast
 {

@@ -34,6 +34,8 @@ typedef enum {
 
 @optional
 
+- (void)forecastManager:(id)manager didStartFetchingForecast:(ForecastStatus)status;
+
 - (void)forecastManager:(id)manager changingStatusForecast:(ForecastStatus)status;
 - (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress;
 

@@ -44,7 +44,7 @@
         }
     }];
     
-    DDLogVerbose(@"days: %@", [days description]);
+    //DDLogVerbose(@"days: %@", [days description]);
     
     NSArray *sortedKeys = [[days allKeys] sortedArrayUsingSelector: @selector(compare:)];
     NSMutableArray *sortedValues = [NSMutableArray array];

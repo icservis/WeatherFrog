@@ -81,10 +81,9 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
     
-    //[self displayDefaultScreen];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastFetch:) name:ForecastFetchNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastUpdate:) name:ForecastUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastProgress:) name:ForecastProgressNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastError:) name:ForecastErrorNotification object:nil];
@@ -95,30 +94,33 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     [super viewWillAppear:animated];
     
+    DDLogVerbose(@"viewWillAppear");
+    
     if (self.selectedForecast == nil) {
         
-        NSManagedObjectContext* currentContect = [NSManagedObjectContext contextForCurrentThread];
-        Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO inContext:currentContect];
+        DDLogVerbose(@"selectedForecast is nil");
         
-        if (lastForecast != nil) {
+        if (self.selectedPlacemark == nil) {
             
-            DDLogInfo(@"forecast restored");
-            self.selectedForecast = lastForecast;
+            AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+            Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO inContext:currentContext];
             
-        } else {
-            
-            if (self.selectedPlacemark == nil) {
+            if (lastForecast != nil) {
+                
+                DDLogInfo(@"forecast restored");
+                self.selectedForecast = lastForecast;
+                
+            } else {
+                
                 DDLogInfo(@"placemark not determined");
                 [self displayDefaultScreen];
-            } else {
-                DDLogInfo(@"placemark restored");
-                [self displayLoadingScreen];
-                [self forecast:_selectedPlacemark forceUpdate:NO];
             }
         }
         
     } else {
         
+        DDLogVerbose(@"display selectedForecast");
         [self displayForecast:_selectedForecast];
     }
 }
@@ -189,7 +191,7 @@ static CGFloat const tableTopMargin = 0.0f;
     NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    //activityViewController.view.tintColor = self.view.tintColor;
+    activityViewController.navigationController.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
@@ -205,7 +207,6 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     DDLogVerbose(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
-    [self displayLoadingScreen];
     [self forecast:_selectedPlacemark forceUpdate:NO];
 }
 
@@ -239,6 +240,7 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)preferredContentSizeChanged:(NSNotification*)notification {
     // adjust the layout of the cells
+    DDLogInfo(@"setNeedsLayout");
     [self.view setNeedsLayout];
 }
 
@@ -256,11 +258,24 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     DDLogVerbose(@"notification: %@", [notification description]);
     NSDictionary* userInfo = notification.userInfo;
+    
+    MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
+    [menuViewController updateCurrentPlacemark:YES];
+    
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
         
-        MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
-        [menuViewController updateCurrentPlacemark:YES];
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
+            self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
+        }
+    }
+}
+
+- (void)forecastFetch:(NSNotification*)notification
+{
+    if (_useSelectedLocationInsteadCurrenLocation == NO) {
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
+            [self displayLoadingScreen];
+        }
     }
 }
 
@@ -268,7 +283,9 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     NSDictionary* userInfo = notification.userInfo;
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
+            [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
+        }
     }
 }
 
@@ -276,7 +293,9 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     NSDictionary* userInfo = notification.userInfo;
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        [self updateProgressWithError:[userInfo objectForKey:@"forecastError"]];
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
+            [self updateProgressWithError:[userInfo objectForKey:@"forecastError"]];
+        }
     }
 }
 
@@ -590,12 +609,16 @@ static CGFloat const tableTopMargin = 0.0f;
     if (motion == UIEventSubtypeMotionShake) {
         DDLogInfo(@"shake gesture");
         if (_selectedPlacemark != nil) {
-            [self displayLoadingScreen];
             [self forecast:_selectedPlacemark forceUpdate:YES];
         } else {
-            self.selectedPlacemark = [[self appDelegate] currentPlacemark];
-            DDLogInfo(@"selectedPlacemark: %@", [_selectedPlacemark description]);
-            self.useSelectedLocationInsteadCurrenLocation = NO;
+            CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
+            DDLogInfo(@"currentPlacemark: %@", [currentPlacemark description]);
+            if (currentPlacemark != nil) {
+                self.selectedPlacemark = currentPlacemark;
+                self.useSelectedLocationInsteadCurrenLocation = NO;
+            } else {
+                [self displayDefaultScreen];
+            }
         }
     }
 }
@@ -621,6 +644,12 @@ static CGFloat const tableTopMargin = 0.0f;
 }
 
 #pragma mark - ForecastManagerDelegate
+
+- (void)forecastManager:(id)manager didStartFetchingForecast:(ForecastStatus)status
+{
+    DDLogInfo(@"didStartFetchingForecast");
+    [self displayLoadingScreen];
+}
 
 - (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast
 {

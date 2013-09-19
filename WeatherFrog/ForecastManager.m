@@ -87,6 +87,8 @@
         
         if ([appDelegate isHostActive]) {
             
+            [self startFetching];
+            
             if (self.altitude == 0) {
                 [self fetchElevation];
             } else if (self.timezone == nil) {
@@ -133,17 +135,29 @@
             self.status = ForecastStatusFetchedWeatherData;
             self.weatherData = weatherData;
             
-            __block Forecast* blockForecast;
+            AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            NSManagedObjectContext* currentContext = appDelegate.defaultContext;
             
-            DDLogVerbose(@"saving data");
-            [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            Forecast* forecast = [self saveForecastInContext:currentContext];
+            newData(forecast);
+            
+            /*
+            DDLogInfo(@"Saving forecast");
+            
+            [currentContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+                self.progress = 1.0f;
                 
-                blockForecast = [self saveForecastInContext:localContext];
-                DDLogInfo(@"forecast saved");
-                newData(blockForecast);
-                
+                if (error == nil) {
+                    
+                    DDLogInfo(@"Forecast saved");
+                    newData(forecast);
+                    
+                } else {
+                    
+                    failure();
+                }
             }];
-
+            */
             
         } failure:^(NSError *error) {
             
@@ -163,7 +177,8 @@
 
 - (Forecast*)findForecastForPlacemark:(CLPlacemark*)placemark
 {
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
     NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"validTill > %@", [NSDate date]];
     NSArray* forecasts = [Forecast findAllWithPredicate:findPredicate inContext:currentContext];
     
@@ -203,6 +218,13 @@
 }
 
 #pragma mark - elements
+
+- (void)startFetching
+{
+    if ([self.delegate respondsToSelector:@selector(forecastManager:didStartFetchingForecast:)]) {
+        [self.delegate forecastManager:self didStartFetchingForecast:self.status];
+    }
+}
 
 - (void)fetchElevation
 {
@@ -367,31 +389,72 @@
 
 - (void)completedForecast
 {
-    __block Forecast* blockForecast;
     self.status = ForecastStatusSaving;
     
     DDLogVerbose(@"Saving forecast");
     
-    [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-
-        blockForecast = [self saveForecastInContext:localContext];
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+    
+    Forecast* forecast = [self saveForecastInContext:currentContext];
+    self.progress = 1.0f;
+    self.status = ForecastStatusCompleted;
+    [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
+    
+    DDLogInfo(@"Forecast saved");
+    
+    
+    /*
+    __block Forecast* blockForecast;
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
         
-    } completion:^(BOOL success, NSError *error) {
-        
-        self.progress = 1.0f;
-        
-        if (error == nil) {
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             
-            DDLogInfo(@"Forecast saved");
-            self.status = ForecastStatusCompleted;
-            [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
+            blockForecast = [self saveForecastInContext:localContext];
             
-        } else {
+        } completion:^(BOOL success, NSError *error) {
             
-            [self failedForecastWithError:error];
-        }
+            self.progress = 1.0f;
+            
+            if (error == nil) {
+                
+                DDLogInfo(@"Forecast saved");
+                self.status = ForecastStatusCompleted;
+                [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
+                
+            } else {
+                
+                [self failedForecastWithError:error];
+            }
+            
+        }];
         
-    }];
+    } else {
+        
+        [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
+            
+            blockForecast = [self saveForecastInContext:localContext];
+            
+        } completion:^(BOOL success, NSError *error) {
+            
+            self.progress = 1.0f;
+            
+            if (error == nil) {
+                
+                DDLogInfo(@"Forecast saved");
+                self.status = ForecastStatusCompleted;
+                [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
+                
+            } else {
+                
+                [self failedForecastWithError:error];
+            }
+            
+        }];
+        
+    }
+     */
 }
 
 - (void)loadedForecast:(Forecast*)forecast
@@ -415,6 +478,11 @@
 - (BOOL)isTimestampNight:(NSDate*)timestamp forAstroData:(NSArray*)astroData
 {
     BOOL _isNight = NO;
+    
+    if (timestamp == nil) {
+        return _isNight;
+    }
+    
     static Astro* _foundAstro = nil;
     
     NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];

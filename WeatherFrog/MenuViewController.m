@@ -56,7 +56,9 @@
     
     // NSFetchedResultsController
     
-    NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+    
     NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"isMarked = 1 OR timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-3600]];
     NSFetchRequest* fetchRequest = [Location requestAllWithPredicate:findPredicate inContext:currentContext];
     NSSortDescriptor* isMarkedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isMarked" ascending:NO];
