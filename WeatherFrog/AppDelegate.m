@@ -385,6 +385,7 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     if (status != kCLAuthorizationStatusAuthorized) {
+        DDLogInfo(@"stop");
         [locationManager stopUpdatingLocation];
         [locationManager stopMonitoringSignificantLocationChanges];
     }
@@ -401,6 +402,7 @@
         
         NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
         if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < [forecastAccuracy floatValue]) {
+            DDLogVerbose(@"throw");
             return;
         }
         
@@ -425,6 +427,8 @@
                     }
                 }
             }];
+        } else {
+            DDLogVerbose(@"internet not active");
         }
     }
 }

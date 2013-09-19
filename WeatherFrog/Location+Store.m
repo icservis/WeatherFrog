@@ -72,6 +72,7 @@
 
 + (Location*)nearestLocationWith:(CLLocation*)selectedLocation
 {
+    DDLogVerbose(@"nearestLocationWith");
     Location* location;
     
     NSManagedObjectContext* currentContext = [NSManagedObjectContext contextForCurrentThread];

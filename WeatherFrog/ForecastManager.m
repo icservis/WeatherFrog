@@ -135,12 +135,15 @@
             
             __block Forecast* blockForecast;
             
+            DDLogVerbose(@"saving data");
             [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext) {
                 
                 blockForecast = [self saveForecastInContext:localContext];
+                DDLogInfo(@"forecast saved");
                 newData(blockForecast);
                 
             }];
+
             
         } failure:^(NSError *error) {
             
@@ -366,6 +369,8 @@
 {
     __block Forecast* blockForecast;
     self.status = ForecastStatusSaving;
+    
+    DDLogVerbose(@"Saving forecast");
     
     [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
 

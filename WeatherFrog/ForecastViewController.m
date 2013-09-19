@@ -97,8 +97,6 @@ static CGFloat const tableTopMargin = 0.0f;
     
     if (self.selectedForecast == nil) {
         
-        [self displayLoadingScreen];
-        
         NSManagedObjectContext* currentContect = [NSManagedObjectContext contextForCurrentThread];
         Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO inContext:currentContect];
         
@@ -114,6 +112,7 @@ static CGFloat const tableTopMargin = 0.0f;
                 [self displayDefaultScreen];
             } else {
                 DDLogInfo(@"placemark restored");
+                [self displayLoadingScreen];
                 [self forecast:_selectedPlacemark forceUpdate:NO];
             }
         }
