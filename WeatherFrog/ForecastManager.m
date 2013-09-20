@@ -121,56 +121,71 @@
         return;
     }
     
-    self.status = ForecastStatusFetchingSolarData;
-    [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    if ([appDelegate isHostActive]) {
         
-        self.progress = 0.6f;
-        self.status = ForecastStatusFetchedSolarData;
-        self.astroData = solarData;
-        
-        self.status = ForecastStatusFetchingWeatherData;
-        [[YrApiService sharedService] weatherDatatWithLocation:placemark.location success:^(NSArray *weatherData) {
+        self.status = ForecastStatusFetchingSolarData;
+        [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
             
-            self.progress = 0.8f;
-            self.status = ForecastStatusFetchedWeatherData;
-            self.weatherData = weatherData;
+            self.progress = 0.6f;
+            self.status = ForecastStatusFetchedSolarData;
+            self.astroData = solarData;
             
-            AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-            NSManagedObjectContext* currentContext = appDelegate.defaultContext;
-            
-            Forecast* forecast = [self saveForecastInContext:currentContext];
-            newData(forecast);
-            
-            /*
-            DDLogInfo(@"Saving forecast");
-            
-            [currentContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-                self.progress = 1.0f;
+            self.status = ForecastStatusFetchingWeatherData;
+            [[YrApiService sharedService] weatherDatatWithLocation:placemark.location success:^(NSArray *weatherData) {
                 
-                if (error == nil) {
-                    
-                    DDLogInfo(@"Forecast saved");
-                    newData(forecast);
-                    
-                } else {
-                    
-                    failure();
-                }
+                self.progress = 0.8f;
+                self.status = ForecastStatusFetchedWeatherData;
+                self.weatherData = weatherData;
+                
+                AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+                
+                Forecast* forecast = [self saveForecastInContext:currentContext];
+                self.progress = 1.0f;
+                self.status = ForecastStatusCompleted;
+                newData(forecast);
+                
+                /*
+                 DDLogInfo(@"Saving forecast");
+                 
+                 [currentContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+                 self.progress = 1.0f;
+                 
+                 if (error == nil) {
+                 
+                 DDLogInfo(@"Forecast saved");
+                 newData(forecast);
+                 
+                 } else {
+                 
+                 failure();
+                 }
+                 }];
+                 */
+                
+            } failure:^(NSError *error) {
+                
+                self.status = ForecastStatusFailed;
+                self.progress = 1.0f;
+                failure();
             }];
-            */
+            
             
         } failure:^(NSError *error) {
             
+            self.status = ForecastStatusFailed;
             self.progress = 1.0f;
             failure();
         }];
         
+    } else {
         
-    } failure:^(NSError *error) {
-        
+        self.status = ForecastStatusFailed;
         self.progress = 1.0f;
         failure();
-    }];
+    }
 }
 
 #pragma mark - helpers

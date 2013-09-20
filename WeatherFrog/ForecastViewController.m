@@ -608,17 +608,10 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     if (motion == UIEventSubtypeMotionShake) {
         DDLogInfo(@"shake gesture");
-        if (_selectedPlacemark != nil) {
+        if (_useSelectedLocationInsteadCurrenLocation == YES) {
             [self forecast:_selectedPlacemark forceUpdate:YES];
         } else {
-            CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
-            DDLogInfo(@"currentPlacemark: %@", [currentPlacemark description]);
-            if (currentPlacemark != nil) {
-                self.selectedPlacemark = currentPlacemark;
-                self.useSelectedLocationInsteadCurrenLocation = NO;
-            } else {
-                [self displayDefaultScreen];
-            }
+            [[self appDelegate] restartGeocoder];
         }
     }
 }

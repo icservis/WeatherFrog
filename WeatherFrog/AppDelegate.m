@@ -404,34 +404,53 @@
         
         NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
         if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < [forecastAccuracy floatValue]) {
-            DDLogVerbose(@"throw");
+            DDLogVerbose(@"distance under limit");
             return;
         }
         
-        _currentLocation = lastLocation;
-        [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
-        DDLogVerbose(@"location: %@", [_currentLocation description]);
+        self.currentLocation = lastLocation;
+    }
+}
+
+- (void)restartGeocoder
+{
+    DDLogInfo(@"restart");
+    self.currentLocation = locationManager.location;
+}
+
+#pragma mark - Setters
+
+- (void)setCurrentLocation:(CLLocation *)currentLocation
+{
+    _currentLocation = currentLocation;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
+    DDLogVerbose(@"location: %@", [_currentLocation description]);
+    
+    if (internetActive) {
+        [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            if ([placemarks count] > 0) {
+                self.currentPlacemark = placemarks[0];
+            }
+        }];
+    } else {
+        DDLogVerbose(@"internet not active");
+    }
+}
+
+- (void)setCurrentPlacemark:(CLPlacemark *)currentPlacemark
+{
+    _currentPlacemark = currentPlacemark;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
+    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
+    
+    UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
+    if (_currentLocation != nil && (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground])) {
         
-        if (internetActive) {
-            [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-                if ([placemarks count] > 0) {
-                    _currentPlacemark = placemarks[0];
-                    
-                    [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
-                    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
-                    
-                    UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
-                    if (_currentLocation != nil && (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground])) {
-                        
-                        ForecastManager* forecastManager = [[ForecastManager alloc] init];
-                        forecastManager.delegate = self;
-                        [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
-                    }
-                }
-            }];
-        } else {
-            DDLogVerbose(@"internet not active");
-        }
+        ForecastManager* forecastManager = [[ForecastManager alloc] init];
+        forecastManager.delegate = self;
+        [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
     }
 }
 

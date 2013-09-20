@@ -260,9 +260,9 @@
     }
     
     if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Delete the row from the data source
+        // Insert the row from the data source
         CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
-		[Location locationWithName:[currentPlacemark title] coordinate:currentPlacemark.location.coordinate altitude:currentPlacemark.location.altitude timezone:[NSTimeZone localTimeZone] placemark:currentPlacemark];
+        [Location locationforPlacemark:currentPlacemark withTimezone:[NSTimeZone localTimeZone]];
     }
 }
 
