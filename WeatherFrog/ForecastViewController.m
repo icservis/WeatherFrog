@@ -17,6 +17,7 @@
 #import "YrApiService.h"
 #import "GoogleApiService.h"
 #import "CFGUnitConverter.h"
+#import "CCHMapsActivity.h"
 
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
@@ -185,14 +186,87 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (IBAction)actionButtonTapped:(id)sender
 {
-    NSString* shareString = NSLocalizedString(@"My current forecast", nil);
-    UIImage* shareImage = [UIImage imageNamed:imageLogo];
+    NSString* shareString = [_selectedPlacemark subTitle];
+    UIImage* shareImage = [self screenshotOnMask];
     NSURL* shareUrl = [NSURL URLWithString:kAPIHost];
-    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
-    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    MKPlacemark* placemark = [[MKPlacemark alloc] initWithPlacemark:_selectedPlacemark];
+    MKMapItem* mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    mapItem.name = [_selectedPlacemark title];
+    
+    NSArray* activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, mapItem, _selectedPlacemark, nil];
+    CCHMapsActivity* mapsActivity = [[CCHMapsActivity alloc] init];
+    
+    UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[mapsActivity]];
+    activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact];
     activityViewController.navigationController.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
     [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
+#pragma mark - Screenshot
+
+- (UIImage*)screenshot
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
+    CGSize screenSize;
+    
+    if (isLandscape) {
+        screenSize = CGSizeMake(screenRect.size.height, screenRect.size.width);
+    } else {
+        screenSize = CGSizeMake(screenRect.size.width, screenRect.size.height);
+    }
+        
+    UIGraphicsBeginImageContext(screenSize);
+    [self.navigationController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage* screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return screenshot;
+}
+
+- (UIImage*)screenshotOnMask
+{
+    UIImage* screenshot = [self screenshot];
+    UIImage* mask;
+    
+    CGFloat maskHorizontalOffset = 0;
+    CGFloat maskVerticalOffset = 0;
+    
+    if (isLandscape) {
+        mask = [UIImage imageNamed:ASSET_BY_SCREEN_HEIGHT(@"model-landscape", @"model-landscape-568h")];
+        maskHorizontalOffset = 140;
+        maskVerticalOffset = 40;
+    } else {
+        mask = [UIImage imageNamed:ASSET_BY_SCREEN_HEIGHT(@"model", @"model-568h")];
+        maskHorizontalOffset = 40;
+        maskVerticalOffset = 140;
+    }
+    
+    
+    CGImageRef maskImageRef = mask.CGImage;
+    CGFloat maskWidth = CGImageGetWidth(maskImageRef);
+    CGFloat maskHeight = CGImageGetHeight(maskImageRef);
+    
+    // get size of the second image
+    CGImageRef screenshotImageRef = screenshot.CGImage;
+    CGFloat screenshotWidth = CGImageGetWidth(screenshotImageRef);
+    CGFloat screenshotHeight = CGImageGetHeight(screenshotImageRef);
+    
+    DDLogInfo(@"mask %@", NSStringFromCGSize(CGSizeMake(maskWidth, maskHeight)));
+    DDLogInfo(@"screenshot %@", NSStringFromCGRect(CGRectMake(maskHorizontalOffset, maskVerticalOffset, screenshotWidth, screenshotHeight)));
+    
+    
+    CGSize maskSize = CGSizeMake(maskWidth, maskHeight);
+    UIGraphicsBeginImageContext(maskSize);
+    
+    [mask drawInRect:CGRectMake(0, 0, maskWidth, maskHeight)];
+    [screenshot drawInRect:CGRectMake(maskHorizontalOffset, maskVerticalOffset, screenshotWidth, screenshotHeight)];
+    
+    UIImage* mergedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return mergedImage;
 }
 
 #pragma mark - Setters and Getters

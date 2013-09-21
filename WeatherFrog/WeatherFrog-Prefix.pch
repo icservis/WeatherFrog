@@ -31,6 +31,7 @@
     #import "NSString+ISO8601Date.h"
     #import "NSDate+ISO8601Date.h"
     #import "NSString+URLEncoding.h"
+    #import "UIImage+fixOrientation.h"
     #import "CLPlacemark+MKAnnotationDelegate.h"
 
     #import <Social/Social.h>
@@ -60,5 +61,6 @@
     #define isLandscape UIDeviceOrientationIsLandscape(kDeviceOrientation)
     #define isFaceUp    kDeviceOrientation == UIDeviceOrientationFaceUp   ? YES : NO
     #define isFaceDown  kDeviceOrientation == UIDeviceOrientationFaceDown ? YES : NO
+    #define ASSET_BY_SCREEN_HEIGHT(regular, longScreen) (([[UIScreen mainScreen] bounds].size.height <= 480.0) ? regular : longScreen)
 
 #endif
