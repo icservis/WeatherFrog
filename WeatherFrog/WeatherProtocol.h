@@ -22,9 +22,17 @@
 @property (nonatomic, retain) NSNumber * mediumClouds;
 @property (nonatomic, retain) NSNumber * highClouds;
 @property (nonatomic, retain) NSNumber * precipitation1h;
+@property (nonatomic, retain) NSNumber * precipitationMin1h;
+@property (nonatomic, retain) NSNumber * precipitationMax1h;
 @property (nonatomic, retain) NSNumber * precipitation2h;
+@property (nonatomic, retain) NSNumber * precipitationMin2h;
+@property (nonatomic, retain) NSNumber * precipitationMax2h;
 @property (nonatomic, retain) NSNumber * precipitation3h;
+@property (nonatomic, retain) NSNumber * precipitationMin3h;
+@property (nonatomic, retain) NSNumber * precipitationMax3h;
 @property (nonatomic, retain) NSNumber * precipitation6h;
+@property (nonatomic, retain) NSNumber * precipitationMin6h;
+@property (nonatomic, retain) NSNumber * precipitationMax6h;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSNumber * isNight;
 @property (nonatomic, retain) NSNumber * symbol1h;

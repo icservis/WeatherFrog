@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3389" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Astro" representedClassName="Astro" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dayLength" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -48,6 +48,14 @@
         <attribute name="precipitation2h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="precipitation3h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="precipitation6h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMax1h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMax2h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMax3h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMax6h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMin1h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMin2h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMin3h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precipitationMin6h" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="symbol1h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="symbol2h" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>

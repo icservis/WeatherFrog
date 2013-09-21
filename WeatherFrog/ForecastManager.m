@@ -194,7 +194,8 @@
 {
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSManagedObjectContext* currentContext = appDelegate.defaultContext;
-    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"validTill > %@", [NSDate date]];
+    NSNumber* forecastValidity = [[UserDefaultsManager sharedDefaults] forecastValidity];
+    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-[forecastValidity integerValue]]];
     NSArray* forecasts = [Forecast findAllWithPredicate:findPredicate inContext:currentContext];
     
     if (forecasts != nil) {
@@ -365,9 +366,17 @@
         weather.mediumClouds = weatherDict.mediumClouds;
         weather.highClouds = weatherDict.highClouds;
         weather.precipitation1h = weatherDict.precipitation1h;
+        weather.precipitationMin1h = weatherDict.precipitationMin1h;
+        weather.precipitationMax1h = weatherDict.precipitationMax1h;
         weather.precipitation2h = weatherDict.precipitation2h;
+        weather.precipitationMin2h = weatherDict.precipitationMin2h;
+        weather.precipitationMax2h = weatherDict.precipitationMax2h;
         weather.precipitation3h = weatherDict.precipitation3h;
+        weather.precipitationMin3h = weatherDict.precipitationMin3h;
+        weather.precipitationMax3h = weatherDict.precipitationMax3h;
         weather.precipitation6h = weatherDict.precipitation6h;
+        weather.precipitationMin6h = weatherDict.precipitationMin6h;
+        weather.precipitationMax6h = weatherDict.precipitationMax6h;
         weather.timestamp = weatherDict.timestamp;
         weather.symbol1h = weatherDict.symbol1h;
         weather.symbol2h = weatherDict.symbol2h;

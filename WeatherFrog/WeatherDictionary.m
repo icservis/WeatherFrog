@@ -22,9 +22,17 @@
 @synthesize mediumClouds;
 @synthesize highClouds;
 @synthesize precipitation1h;
+@synthesize precipitationMin1h;
+@synthesize precipitationMax1h;
 @synthesize precipitation2h;
+@synthesize precipitationMin2h;
+@synthesize precipitationMax2h;
 @synthesize precipitation3h;
+@synthesize precipitationMin3h;
+@synthesize precipitationMax3h;
 @synthesize precipitation6h;
+@synthesize precipitationMin6h;
+@synthesize precipitationMax6h;
 @synthesize timestamp;
 @synthesize isNight;
 @synthesize symbol1h;

@@ -176,21 +176,35 @@
                             for (DDXMLElement* precipitation in [location elementsForName:@"precipitation"]) {
                                 
                                 float precipitationMm = [[[precipitation attributeForName:@"value"] stringValue] floatValue];
+                                float precipitationMinMm = [[[precipitation attributeForName:@"minvalue"] stringValue] floatValue];
+                                float precipitationMaxMm = [[[precipitation attributeForName:@"maxvalue"] stringValue] floatValue];
+                                
+                                DDLogInfo(@"precipitationMm %.0f",precipitationMm);
+                                DDLogInfo(@"precipitationMinMm %.f",precipitationMinMm);
+                                DDLogInfo(@"precipitationMaxMm %.f",precipitationMaxMm);
                                 
                                 if (timestampDifference/3600 == 1) {
                                     weather.precipitation1h = [NSNumber numberWithFloat:precipitationMm];
+                                    weather.precipitationMin1h = [NSNumber numberWithFloat:precipitationMinMm];
+                                    weather.precipitationMax1h = [NSNumber numberWithFloat:precipitationMaxMm];
                                 }
                                 
                                 if (timestampDifference/3600 == 2) {
                                     weather.precipitation2h = [NSNumber numberWithFloat:precipitationMm];
+                                    weather.precipitationMin2h = [NSNumber numberWithFloat:precipitationMinMm];
+                                    weather.precipitationMax2h = [NSNumber numberWithFloat:precipitationMaxMm];
                                 }
                                 
                                 if (timestampDifference/3600 == 3) {
                                     weather.precipitation3h = [NSNumber numberWithFloat:precipitationMm];
+                                    weather.precipitationMin3h = [NSNumber numberWithFloat:precipitationMinMm];
+                                    weather.precipitationMax3h = [NSNumber numberWithFloat:precipitationMaxMm];
                                 }
                                 
                                 if (timestampDifference/3600 == 6) {
                                     weather.precipitation6h = [NSNumber numberWithFloat:precipitationMm];
+                                    weather.precipitationMin6h = [NSNumber numberWithFloat:precipitationMinMm];
+                                    weather.precipitationMax6h = [NSNumber numberWithFloat:precipitationMaxMm];
                                 }
                                 
                                 break;
