@@ -16,6 +16,12 @@
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 @property (nonatomic, strong) CFGUnitConverter* unitsConverter;
 
+@property (nonatomic, weak) IBOutlet UILabel* time;
+@property (nonatomic, weak) IBOutlet UILabel* temp;
+@property (nonatomic, weak) IBOutlet UILabel* precip;
+@property (nonatomic, weak) IBOutlet UILabel* scale;
+@property (nonatomic, weak) IBOutlet UIImageView* icon;
+
 @end
 
 @implementation ForecastCell
@@ -46,14 +52,10 @@
         hours = 6;
     }
     
-    NSString* temp = [self.unitsConverter convertTemperature:weather.temperature];
-    NSString* precip = [self.unitsConverter convertPrecipitation:precipitation period:hours];
-    NSString* wind = [self.unitsConverter convertWindSpeed:weather.windSpeed];
-    
-    self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textLabel.text = [NSString stringWithFormat:@"%@, %@, %@", temp, precip, wind];
-    self.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.detailTextLabel.text = [self.localDateFormatter stringFromDate:weather.timestamp];
+    self.time.text = [self.localDateFormatter stringFromDate:weather.timestamp];
+    self.temp.text = [self.unitsConverter convertTemperature:weather.temperature];
+    self.precip.text = [self.unitsConverter convertPrecipitation:precipitation period:hours];
+    self.scale.text = [self.unitsConverter convertWindScale:weather.windScale];
     
     NSInteger symbol = 0;
     if (weather.symbol1h != nil) {
@@ -68,7 +70,8 @@
     BOOL isNight = [weather.isNight boolValue];
     
     NSString* imageName = [NSString stringWithFormat:@"weathericon-%i-%d-40", symbol, isNight];
-    [self.imageView setImage:[UIImage imageNamed:imageName]];
+    
+    [self.icon setImage:[UIImage imageNamed:imageName]];
 }
 
 - (NSDateFormatter*)localDateFormatter
@@ -88,15 +91,6 @@
         _unitsConverter = [[CFGUnitConverter alloc] init];
     }
     return _unitsConverter;
-}
-
-- (void)prepareForReuse
-{
-    [super prepareForReuse];
-    self.textLabel.text = nil;
-    self.detailTextLabel.text = nil;
-    self.imageView.image = nil;
-    //[self.imageView cancelImageRequestOperation];
 }
 
 @end

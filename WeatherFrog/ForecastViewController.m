@@ -22,8 +22,6 @@
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
 static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
-static NSString* const ForecastCellIdentifier = @"ForecastCell";
-static NSString* const AstroCellIdentifier = @"AstroCell";
 
 static CGFloat const labelTopMargin = 3.0f;
 static CGFloat const labelHeight = 21.0f;
@@ -606,8 +604,10 @@ static CGFloat const tableTopMargin = 0.0f;
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.tag = idx;
-        UINib *cellNib = [UINib nibWithNibName:ForecastCellIdentifier bundle:nil];
-        [tableView registerNib:cellNib forCellReuseIdentifier:ForecastCellIdentifier];
+        
+        UINib* cellNib = [UINib nibWithNibName:@"ForecastCell" bundle:nil];
+        [tableView registerNib:cellNib forCellReuseIdentifier:@"ForecastCell"];
+        
         [dayBackground addSubview:tableView];
         
         [self.scrollView addSubview:dayBackground];
@@ -737,7 +737,7 @@ static CGFloat const tableTopMargin = 0.0f;
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -767,6 +767,15 @@ static CGFloat const tableTopMargin = 0.0f;
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 46;
+    } else {
+        return 44;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -799,15 +808,19 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     if (indexPath.section == 0) {
         
-        ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
+        static NSString* const ForecastCellIdentifier = @"ForecastCell";
         
+        ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier];
+
         cell.timezone = _selectedForecast.timezone;
         NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
         cell.weather = [currentDay objectAtIndex:indexPath.row];
-        
+
         return cell;
         
     } else {
+        
+        static NSString* const AstroCellIdentifier = @"AstroCell";
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:AstroCellIdentifier];
         if (cell == nil) {
