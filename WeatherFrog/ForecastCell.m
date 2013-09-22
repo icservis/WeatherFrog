@@ -19,6 +19,8 @@
 @property (nonatomic, weak) IBOutlet UILabel* time;
 @property (nonatomic, weak) IBOutlet UILabel* temp;
 @property (nonatomic, weak) IBOutlet UILabel* precip;
+@property (nonatomic, weak) IBOutlet UILabel* precipMin;
+@property (nonatomic, weak) IBOutlet UILabel* precipMax;
 @property (nonatomic, weak) IBOutlet UILabel* scale;
 @property (nonatomic, weak) IBOutlet UIImageView* icon;
 
@@ -32,29 +34,46 @@
     [self.localDateFormatter setTimeZone:timezone];
 }
 
++ (CGFloat)forecastCellHeigh
+{
+    return 46.0f;
+}
+
 - (void)setWeather:(Weather *)weather
 {
     _weather = weather;
     
     NSNumber* precipitation;
+    NSNumber* precipitationMin;
+    NSNumber* precipitationMax;
     NSInteger hours = 0;
     if (weather.precipitation1h != nil) {
         precipitation = weather.precipitation1h;
+        precipitationMin = weather.precipitationMin1h;
+        precipitationMax = weather.precipitationMax1h;
         hours = 1;
     } else if (weather.precipitation2h != nil) {
         precipitation = weather.precipitation2h;
+        precipitationMin = weather.precipitationMin2h;
+        precipitationMax = weather.precipitationMax2h;
         hours = 2;
     } else if (weather.precipitation3h != nil) {
         precipitation = weather.precipitation3h;
+        precipitationMin = weather.precipitationMin3h;
+        precipitationMax = weather.precipitationMax2h;
         hours = 3;
     } else if (weather.precipitation6h != nil) {
         precipitation = weather.precipitation6h;
+        precipitationMin = weather.precipitationMin6h;
+        precipitationMax = weather.precipitationMax6h;
         hours = 6;
     }
     
     self.time.text = [self.localDateFormatter stringFromDate:weather.timestamp];
     self.temp.text = [self.unitsConverter convertTemperature:weather.temperature];
     self.precip.text = [self.unitsConverter convertPrecipitation:precipitation period:hours];
+    self.precipMin.text = [self.unitsConverter convertPrecipitation:precipitationMin period:hours];
+    self.precipMax.text = [self.unitsConverter convertPrecipitation:precipitationMax period:hours];
     self.scale.text = [self.unitsConverter convertWindScale:weather.windScale];
     
     NSInteger symbol = 0;

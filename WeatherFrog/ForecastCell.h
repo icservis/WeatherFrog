@@ -15,4 +15,6 @@
 @property (nonatomic, strong) Weather* weather;
 @property (nonatomic, strong) NSTimeZone* timezone;
 
++ (CGFloat)forecastCellHeigh;
+
 @end
