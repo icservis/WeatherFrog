@@ -46,6 +46,10 @@
         NSTimeZone* timezone = forecast.timezone;
         
         location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
+        
+    } else {
+        
+        location.timestamp = [NSDate date];
     }
     
     DDLogVerbose(@"Location: %@", [location description]);
@@ -64,6 +68,10 @@
         CLLocationDistance altitude = placemark.location.altitude;
         
         location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
+        
+    } else {
+        
+        location.timestamp = [NSDate date];
     }
     
     DDLogVerbose(@"Location: %@", [location description]);

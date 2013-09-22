@@ -1126,8 +1126,8 @@
 			children = (
 				848A54EC176E09A1009B3F85 /* AppDelegate.h */,
 				848A54ED176E09A1009B3F85 /* AppDelegate.m */,
-				84DE49FE17BF786A005AB3B8 /* Lumberjack.h */,
 				84DE49FF17BF786A005AB3B8 /* Constants.h */,
+				84DE49FE17BF786A005AB3B8 /* Lumberjack.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";

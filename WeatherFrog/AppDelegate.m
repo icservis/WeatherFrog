@@ -77,6 +77,9 @@
         }
     }
     
+    // Notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    
     // Background Fetch
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:kBackgoundFetchInterval];
     
@@ -170,10 +173,13 @@
             DDLogError(@"current location not determined");
             completionHandler(UIBackgroundFetchResultNoData);
         }
+        DDLogVerbose(@"Current location restored");
         _currentLocation = currentLocation;
+    
         [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 _currentPlacemark = placemarks[0];
+                DDLogVerbose(@"Restoring current placemark completed");
                 
                 ForecastManager* forecastManager = [[ForecastManager alloc] init];
                 forecastManager.delegate = nil;
@@ -188,13 +194,15 @@
                     completionHandler(UIBackgroundFetchResultNoData);
                 } failure:^{
                     DDLogVerbose(@"Error");
-                    completionHandler(UIBackgroundFetchResultNoData);
+                    completionHandler(UIBackgroundFetchResultFailed);
                 }];
                 
             } else {
+                DDLogVerbose(@"Restoring current placemark failed");
                 completionHandler(UIBackgroundFetchResultNoData);
             }
         }];
+        
         
     } else {
         DDLogInfo(@"No background operations");
@@ -243,10 +251,12 @@
         
         DDLogVerbose(@"Host is Active");
         hostActive = YES;
+        [self setBackgroundFetchOperation];
         
     } else {
         DDLogVerbose(@"Host is not Reachable");
         hostActive = NO;
+        [self setBackgroundFetchOperation];
     }
     
     NSDictionary* dict = @{@"hostActive":[NSNumber numberWithBool:hostActive], @"internetActive":[NSNumber numberWithBool:internetActive]};
@@ -263,6 +273,14 @@
     return hostActive;
 }
 
+#pragma mark - nottifications
+
+- (void)defaultsChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"defaultsChanged");
+    [self setBackgroundFetchOperation];
+}
+
 #pragma mark - user locale
 
 - (NSString*)localeCountryCode
@@ -275,6 +293,25 @@
 {
     NSLocale *locale = [NSLocale currentLocale];
     return [locale objectForKey: NSLocaleLanguageCode];
+}
+
+#pragma mark - background operations
+
+- (void)setBackgroundFetchOperation
+{
+    BOOL allowed = YES;
+    
+    if (internetActive == NO) allowed = NO;
+    
+    UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
+    BOOL fetchForecastInBackground = [sharedDefaults fetchForecastInBackground];
+    if (fetchForecastInBackground == NO) allowed = NO;
+    
+    if (allowed) {
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:kBackgoundFetchInterval];
+    } else {
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
+    }
 }
 
 #pragma mark - Facebook
