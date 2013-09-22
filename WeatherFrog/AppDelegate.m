@@ -390,6 +390,10 @@
         DDLogInfo(@"stop");
         [locationManager stopUpdatingLocation];
         [locationManager stopMonitoringSignificantLocationChanges];
+        
+        NSString* message = [NSString stringWithFormat:@"%@: %i",NSLocalizedString(@"Authorisation status", nil), status];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Caution", nil) message: message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alert show];
     }
 }
 
@@ -421,6 +425,7 @@
         self.currentLocation = currentLocation;
         return YES;
     } else {
+        [locationManager startUpdatingLocation];
         return NO;
     }
     
