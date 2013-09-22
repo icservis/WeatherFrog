@@ -160,6 +160,7 @@
 		8496410617EF34D1001B2029 /* ForecastFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8496410417EF34D1001B2029 /* ForecastFooter.xib */; };
 		8496410917EF34DD001B2029 /* ForecastFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496410817EF34DD001B2029 /* ForecastFooter.m */; };
 		8496410A17EF34DD001B2029 /* ForecastFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496410817EF34DD001B2029 /* ForecastFooter.m */; };
+		8496410C17EF3E1A001B2029 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8496410B17EF3E1A001B2029 /* iAd.framework */; };
 		84BEAEE617C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEE717C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEED17C55E09008B828E /* YrApiService.m */; };
@@ -416,6 +417,7 @@
 		8496410417EF34D1001B2029 /* ForecastFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastFooter.xib; sourceTree = "<group>"; };
 		8496410717EF34DD001B2029 /* ForecastFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastFooter.h; sourceTree = "<group>"; };
 		8496410817EF34DD001B2029 /* ForecastFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastFooter.m; sourceTree = "<group>"; };
+		8496410B17EF3E1A001B2029 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		84BEAEE417C52EA1008B828E /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		84BEAEE517C52EA1008B828E /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		84BEAEEC17C55E09008B828E /* YrApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YrApiService.h; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8496410C17EF3E1A001B2029 /* iAd.framework in Frameworks */,
 				84DE4A1017BF7A10005AB3B8 /* Accounts.framework in Frameworks */,
 				84DE4A0E17BF7A09005AB3B8 /* Social.framework in Frameworks */,
 				84DE4A1B17BF88B6005AB3B8 /* StoreKit.framework in Frameworks */,
@@ -699,6 +702,7 @@
 		848A54DC176E09A1009B3F85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8496410B17EF3E1A001B2029 /* iAd.framework */,
 				84DE4A1A17BF88B6005AB3B8 /* StoreKit.framework */,
 				84DE4A0B17BF79FE005AB3B8 /* libz.1.2.5.dylib */,
 				84DE4A0917BF7942005AB3B8 /* libxml2.2.dylib */,

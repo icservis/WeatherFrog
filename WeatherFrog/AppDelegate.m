@@ -412,10 +412,18 @@
     }
 }
 
-- (void)restartGeocoder
+- (BOOL)restartGeocoder
 {
     DDLogInfo(@"restart");
-    self.currentLocation = locationManager.location;
+    
+    CLLocation* currentLocation = locationManager.location;
+    if (currentLocation != nil) {
+        self.currentLocation = currentLocation;
+        return YES;
+    } else {
+        return NO;
+    }
+    
 }
 
 #pragma mark - Setters

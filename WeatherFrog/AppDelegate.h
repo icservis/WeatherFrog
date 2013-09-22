@@ -41,7 +41,7 @@ static NSString* const ApplicationReceivedLocalNotification = @"APPLICATION_RECE
 /**
  Geocoder
  */
-- (void)restartGeocoder;
+- (BOOL)restartGeocoder;
 
 /**
  Facebook status variables.

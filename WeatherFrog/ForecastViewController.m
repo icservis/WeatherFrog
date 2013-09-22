@@ -20,6 +20,7 @@
 #import "GoogleApiService.h"
 #import "CFGUnitConverter.h"
 #import "CCHMapsActivity.h"
+#import "MBProgressHUD.h"
 
 static NSString* const imageLogo = @"logo";
 static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
@@ -56,6 +57,7 @@ static CGFloat const tableTopMargin = 0.0f;
 @property (nonatomic, weak) IBOutlet UIProgressView* progressBar;
 @property (nonatomic, weak) IBOutlet UIImageView* loadingImage;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
+@property (nonatomic, strong) MBProgressHUD* hud;
 
 - (IBAction)actionButtonTapped:(id)sender;
 
@@ -687,13 +689,19 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-    DDLogVerbose(@"motionEnded");
     if (motion == UIEventSubtypeMotionShake) {
         DDLogInfo(@"shake gesture");
         if (_useSelectedLocationInsteadCurrenLocation == YES) {
             [self forecast:_selectedPlacemark forceUpdate:YES];
         } else {
-            [[self appDelegate] restartGeocoder];
+            if ([[self appDelegate] restartGeocoder] == NO) {
+                _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                _hud.delegate = nil;
+                _hud.dimBackground = YES;
+                _hud.mode = MBProgressHUDModeText;
+                _hud.labelText = NSLocalizedString(@"Location not determined", nil);
+                [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
+            };
         }
     }
 }
