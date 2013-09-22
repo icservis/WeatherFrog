@@ -163,22 +163,41 @@
 {
     DDLogInfo(@"performFetchWithCompletionHandler");
     
-    if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES && _currentLocation != nil) {
+    if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES && internetActive) {
         
-        ForecastManager* forecastManager = [[ForecastManager alloc] init];
-        forecastManager.delegate = nil;
-        [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] successWithNewData:^(Forecast *forecast) {
-            _currentForecast = forecast;
-            [self forecastNotifcation];
-            completionHandler(UIBackgroundFetchResultNewData);
-        } withLoadedData:^(Forecast *forecast) {
-            [self forecastNotifcation];
+        CLLocation* currentLocation = locationManager.location;
+        if (currentLocation == nil) {
+            DDLogError(@"current location not determined");
             completionHandler(UIBackgroundFetchResultNoData);
-        } failure:^{
-            completionHandler(UIBackgroundFetchResultNoData);
+        }
+        _currentLocation = currentLocation;
+        [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            if ([placemarks count] > 0) {
+                _currentPlacemark = placemarks[0];
+                
+                ForecastManager* forecastManager = [[ForecastManager alloc] init];
+                forecastManager.delegate = nil;
+                [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] successWithNewData:^(Forecast *forecast) {
+                    _currentForecast = forecast;
+                    DDLogVerbose(@"New data");
+                    [self forecastNotifcation:@"fetch with new data"];
+                    completionHandler(UIBackgroundFetchResultNewData);
+                } withLoadedData:^(Forecast *forecast) {
+                    [self forecastNotifcation:@"fetch with loaded data"];
+                    DDLogVerbose(@"Loaded data");
+                    completionHandler(UIBackgroundFetchResultNoData);
+                } failure:^{
+                    DDLogVerbose(@"Error");
+                    completionHandler(UIBackgroundFetchResultNoData);
+                }];
+                
+            } else {
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
         }];
         
     } else {
+        DDLogInfo(@"No background operations");
         completionHandler(UIBackgroundFetchResultNoData);
     }
 }
@@ -480,7 +499,7 @@
     DDLogInfo(@"didFinishProcessingForecast");
     _currentForecast = forecast;
     [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
-    [self forecastNotifcation];
+    [self forecastNotifcation:@"geolocator"];
 }
 
 - (void)forecastManager:(id)manager didFailProcessingForecast:(Forecast *)forecast error:(NSError *)error
@@ -497,10 +516,9 @@
 
 #pragma mark - Forecast notification
 
-- (void)forecastNotifcation
+- (void)forecastNotifcation:(NSString*)message
 {
     DDLogInfo(@"forecastNotifcation");
-    DDLogVerbose(@"forecast: %@", [_currentForecast description]);
     
     NSDate* now = [NSDate date];
     
@@ -575,7 +593,7 @@
                 notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
                 notifyAlarm.repeatInterval = 0;
                 
-                NSString* alertBody = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Notification", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications]];
+                NSString* alertBody = [NSString stringWithFormat:@"%@ %@ - %@", NSLocalizedString(@"Notification", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications], message];
                 notifyAlarm.alertBody = alertBody;
                 [app scheduleLocalNotification:notifyAlarm];
             }
