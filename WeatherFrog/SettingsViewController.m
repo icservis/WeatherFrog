@@ -47,6 +47,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return NO;
+}
+
 #pragma mark - shared objects
 
 - (AppDelegate*)appDelegate

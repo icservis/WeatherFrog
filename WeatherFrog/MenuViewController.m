@@ -44,6 +44,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.revealViewController.delegate = self;
+    
     self.applicationNameLabel.text = NSLocalizedString(@"WeatherFrog", nil);
 #ifdef DEBUG
     self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDelegate] appVersionBuild]];
@@ -370,6 +372,16 @@
     NSIndexPath* indexpath = [self.tableView indexPathForCell:locationCell];
     
     [self.tableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - RevealViewControlelrDelegate
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position
+{
+    UINavigationController* nc = (UINavigationController*)revealController.frontViewController;
+    UIViewController* frontViewController = [[nc viewControllers] objectAtIndex:0];
+    DDLogVerbose(@"frontViewController: %@", [frontViewController description]);
+    [frontViewController becomeFirstResponder];
 }
 
 @end

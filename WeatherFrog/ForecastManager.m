@@ -418,14 +418,34 @@
     DDLogVerbose(@"Saving forecast");
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+    NSManagedObjectContext* defaultContext = [appDelegate defaultContext];
+    Forecast* forecast = [self saveForecastInContext:defaultContext];
     
-    Forecast* forecast = [self saveForecastInContext:currentContext];
-    self.progress = 1.0f;
-    self.status = ForecastStatusCompleted;
-    [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
-    
-    DDLogInfo(@"Forecast saved");
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+
+        [defaultContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+            self.progress = 1.0f;
+            
+            if (error == nil) {
+                
+                DDLogInfo(@"Forecast saved");
+                self.status = ForecastStatusCompleted;
+                [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
+                
+            } else {
+                
+                [self failedForecastWithError:error];
+            }
+        }];
+        
+    } else {
+        
+        self.progress = 1.0f;
+        self.status = ForecastStatusCompleted;
+        [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
+        
+        DDLogInfo(@"Forecast saved");
+    }
     
     
     /*
@@ -476,9 +496,8 @@
             }
             
         }];
-        
     }
-     */
+    */
 }
 
 - (void)loadedForecast:(Forecast*)forecast

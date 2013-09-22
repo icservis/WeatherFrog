@@ -15,7 +15,7 @@
 #import "LocationCell.h"
 
 
-@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate, LocationCellDelegate, InfoViewControllerDelegate>
+@interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate, LocationCellDelegate, InfoViewControllerDelegate, SWRevealViewControllerDelegate>
 
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 

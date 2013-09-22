@@ -39,6 +39,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+    return NO;
+}
+
 - (IBAction)cancelButtontapped:(id)sender
 {
     [self.delegate closeInfoViewController:self];

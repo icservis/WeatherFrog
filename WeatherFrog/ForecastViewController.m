@@ -103,6 +103,7 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewWillAppear:animated];
     
     DDLogVerbose(@"viewWillAppear");
+    [self becomeFirstResponder];
     
     if (self.selectedForecast == nil) {
         
@@ -472,7 +473,7 @@ static CGFloat const tableTopMargin = 0.0f;
     } else {
         self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
     }
-    [self.progressBar setProgress:progress animated:YES];
+    [self.progressBar setProgress:progress animated:NO];
 }
 
 #pragma mark - Helpers for Views
@@ -853,7 +854,7 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)closeDetailViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        DDLogVerbose(@"controller: %@", [controller description]);
+        [self becomeFirstResponder];
     }];
 }
 
