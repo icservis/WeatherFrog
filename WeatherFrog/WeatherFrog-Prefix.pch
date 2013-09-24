@@ -47,9 +47,6 @@
     #endif
     #pragma GCC diagnostic pop
 
-    #define MR_SHORTHAND
-    #define MR_ENABLE_ACTIVE_RECORD_LOGGING 1
-    #import "CoreData+MagicalRecord.h"
     #import <CoreData/CoreData.h>
 
     #define kAPIHost @"weatherfrog.info"

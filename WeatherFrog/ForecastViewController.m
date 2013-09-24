@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "ForecastManager.h"
 #import "Forecast+Additions.h"
-#import "Location+Store.h"
+#import "Location.h"
 #import "Weather.h"
 #import "Astro.h"
 #import "ForecastViewController.h"
@@ -58,6 +59,7 @@ static CGFloat const tableTopMargin = 0.0f;
 @property (nonatomic, weak) IBOutlet UIImageView* loadingImage;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, strong) MBProgressHUD* hud;
+@property (nonatomic, strong) ForecastManager* forecastManager;
 
 - (IBAction)actionButtonTapped:(id)sender;
 
@@ -113,9 +115,7 @@ static CGFloat const tableTopMargin = 0.0f;
         
         if (self.selectedPlacemark == nil) {
             
-            AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-            NSManagedObjectContext* currentContext = appDelegate.defaultContext;
-            Forecast* lastForecast = [Forecast findFirstOrderedByAttribute:@"timestamp" ascending:NO inContext:currentContext];
+            Forecast* lastForecast = [self.forecastManager lastForecast];
             
             if (lastForecast != nil) {
                 
@@ -335,6 +335,15 @@ static CGFloat const tableTopMargin = 0.0f;
         _unitsConverter = [[CFGUnitConverter alloc] init];
     }
     return _unitsConverter;
+}
+
+- (ForecastManager*)forecastManager
+{
+    if (_forecastManager == nil) {
+        _forecastManager = [[ForecastManager alloc] init];
+        _forecastManager.delegate = self;
+    }
+    return _forecastManager;
 }
 
 #pragma mark - Notifications
@@ -741,9 +750,7 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     DDLogInfo(@"forceUpdate: %d", force);
     DDLogVerbose(@"placemark: %@", [placemark description]);
-    ForecastManager* forecastManager = [[ForecastManager alloc] init];
-    forecastManager.delegate = self;
-    [forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
+    [self.forecastManager forecastWithPlacemark:placemark timezone:nil forceUpdate:force];
 }
 
 #pragma mark - ForecastManagerDelegate

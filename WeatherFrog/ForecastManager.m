@@ -63,6 +63,25 @@
 
 #pragma mark - logic
 
+- (Forecast*)lastForecast
+{
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:currentContext];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+    NSArray* sortDescriptors = [NSArray arrayWithObjects:timestampDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSError* error;
+    NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
+    
+    DDLogInfo(@"forecasts: %@", [forecasts description]);
+    
+    return [forecasts firstObject];
+}
+
 - (void)forecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone forceUpdate:(BOOL)force
 {
     DDLogInfo(@"force: %d", force);
@@ -140,7 +159,7 @@
                 self.weatherData = weatherData;
                 
                 AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-                NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+                NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
                 
                 Forecast* forecast = [self saveForecastInContext:currentContext];
                 self.progress = 1.0f;
@@ -193,10 +212,16 @@
 - (Forecast*)findForecastForPlacemark:(CLPlacemark*)placemark
 {
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+    
     NSNumber* forecastValidity = [[UserDefaultsManager sharedDefaults] forecastValidity];
     NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-[forecastValidity integerValue]]];
-    NSArray* forecasts = [Forecast findAllWithPredicate:findPredicate inContext:currentContext];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:currentContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:findPredicate];
+    NSError* error;
+    NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
     
     if (forecasts != nil) {
         
@@ -337,7 +362,8 @@
 
 - (Forecast*)saveForecastInContext:(NSManagedObjectContext*)context
 {
-    Forecast* forecast = [Forecast createInContext:context];
+    Forecast* forecast = [NSEntityDescription insertNewObjectForEntityForName:@"Forecast" inManagedObjectContext:context];
+    
     forecast.name = self.name;
     forecast.placemark = self.placemark;
     forecast.latitude = [NSNumber numberWithDouble:self.coordinate.latitude];
@@ -353,7 +379,8 @@
     
     [self.weatherData enumerateObjectsUsingBlock:^(WeatherDictionary* weatherDict, NSUInteger idx, BOOL *stop) {
         
-        Weather* weather = [Weather createInContext:context];
+        Weather* weather = [NSEntityDescription insertNewObjectForEntityForName:@"Weather" inManagedObjectContext:context];
+        
         weather.temperature = weatherDict.temperature;
         weather.windDirection = weatherDict.windDirection;
         weather.windSpeed = weatherDict.windSpeed;
@@ -393,7 +420,8 @@
     
     [self.astroData enumerateObjectsUsingBlock:^(AstroDictionary* astroDict, NSUInteger idx, BOOL *stop) {
         
-        Astro* astro = [Astro createInContext:context];
+        Astro* astro = [NSEntityDescription insertNewObjectForEntityForName:@"Astro" inManagedObjectContext:context];
+        
         astro.sunRise = astroDict.sunRise;
         astro.sunSet = astroDict.sunSet;
         astro.sunNeverRise = astroDict.sunNeverRise;
@@ -418,34 +446,14 @@
     DDLogVerbose(@"Saving forecast");
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* defaultContext = [appDelegate defaultContext];
+    NSManagedObjectContext* defaultContext = [appDelegate managedObjectContext];
     Forecast* forecast = [self saveForecastInContext:defaultContext];
     
-    if ( NO && [UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-
-        [defaultContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-            self.progress = 1.0f;
-            
-            if (error == nil) {
-                
-                DDLogInfo(@"Forecast saved");
-                self.status = ForecastStatusCompleted;
-                [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
-                
-            } else {
-                
-                [self failedForecastWithError:error];
-            }
-        }];
-        
-    } else {
-        
-        self.progress = 1.0f;
-        self.status = ForecastStatusCompleted;
-        [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
-        
-        DDLogInfo(@"Forecast saved");
-    }
+    self.progress = 1.0f;
+    self.status = ForecastStatusCompleted;
+    [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
+    
+    DDLogInfo(@"Forecast saved");
     
     
     /*

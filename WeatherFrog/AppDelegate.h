@@ -25,12 +25,15 @@ static NSString* const ApplicationReceivedLocalNotification = @"APPLICATION_RECE
 @interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate, ForecastManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSManagedObjectContext* defaultContext;
 @property (strong, nonatomic) FBSession* session;
 @property (strong, nonatomic) NSDictionary<FBGraphUser>* fbUser;
 @property (strong, nonatomic) CLLocation* currentLocation;
 @property (strong, nonatomic) CLPlacemark* currentPlacemark;
 @property (strong, nonatomic) Forecast* currentForecast;
+
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel* managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator* persistentStoreCoordinator;
 
 /**
  Reachability status variables.

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "Forecast+Additions.h"
 #import "WeatherDictionary.h"
 #import "Weather.h"

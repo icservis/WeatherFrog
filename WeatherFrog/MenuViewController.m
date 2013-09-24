@@ -10,7 +10,7 @@
 #import "MenuViewController.h"
 #import "Forecast.h"
 #import "Location.h"
-#import "Location+Store.h"
+#import "LocationManager.h"
 
 @interface MenuViewController ()
 
@@ -21,6 +21,7 @@
 @property (nonatomic, weak) IBOutlet UIButton* locatorButton;
 @property (nonatomic, weak) IBOutlet UIButton* forecastButton;
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) LocationManager* locationManager;
 @property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
 
 - (IBAction)locatorButtonTapped:(id)sender;
@@ -57,21 +58,6 @@
     [self.forecastButton setTitle:NSLocalizedString(@"Current", nil) forState:UIControlStateNormal];
     
     // NSFetchedResultsController
-    
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
-    
-    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"isMarked = 1 OR timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-3600]];
-    NSFetchRequest* fetchRequest = [Location requestAllWithPredicate:findPredicate inContext:currentContext];
-    NSSortDescriptor* isMarkedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isMarked" ascending:NO];
-    NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
-    NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController* fetchedResultController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:currentContext sectionNameKeyPath:@"isMarked" cacheName:@"Root"];
-    fetchedResultController.delegate = self;
-    
-    self.fetchedResultsController = fetchedResultController;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
     
@@ -92,6 +78,41 @@
     // Dispose of any resources that can be recreated.
     
     self.selectedPlacemark = nil;
+}
+
+#pragma mark setters and getters
+
+- (LocationManager*)locationManager
+{
+    if (_locationManager == nil) {
+        _locationManager = [[LocationManager alloc] init];
+    }
+    return _locationManager;
+}
+
+- (NSFetchedResultsController*)fetchedResultsController
+{
+    if (_fetchedResultsController == nil) {
+        
+        AppDelegate* appDelegate = [self appDelegate];
+        NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+        
+        NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:currentContext];
+        [fetchRequest setEntity:entity];
+        
+        NSPredicate* findPredicate = [NSPredicate predicateWithValue:YES];
+        [fetchRequest setPredicate:findPredicate];
+        
+        NSSortDescriptor* isMarkedDescriptor = [[NSSortDescriptor alloc] initWithKey:@"isMarked" ascending:NO];
+        NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+        NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];
+        [fetchRequest setSortDescriptors:sortDescriptors];
+        
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:currentContext sectionNameKeyPath:@"isMarked" cacheName:nil];
+        _fetchedResultsController.delegate = self;
+    }
+    return _fetchedResultsController;
 }
 
 #pragma mark - Navigation
@@ -160,7 +181,7 @@
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
     _selectedPlacemark = selectedPlacemark;
-    [Location locationforPlacemark:_selectedPlacemark withTimezone:nil];
+    [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:nil];
     [self performSegueWithIdentifier:@"showForecast" sender:nil];
 }
 
@@ -181,7 +202,7 @@
 - (void)updateCurrentPlacemark:(BOOL)reloadData
 {
     _selectedPlacemark = [[self appDelegate] currentPlacemark];
-    [Location locationforPlacemark:_selectedPlacemark withTimezone:[NSTimeZone localTimeZone]];
+    [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:[NSTimeZone localTimeZone]];
     if (reloadData) {
         [self.tableView reloadData];
     }
@@ -258,13 +279,15 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
 		Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-		[location deleteEntity];
+        AppDelegate* appDelegate = [self appDelegate];
+        NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+		[currentContext deleteObject:location];
     }
     
     if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Insert the row from the data source
         CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
-        [Location locationforPlacemark:currentPlacemark withTimezone:[NSTimeZone localTimeZone]];
+        [self.locationManager locationforPlacemark:currentPlacemark withTimezone:[NSTimeZone localTimeZone]];
     }
 }
 

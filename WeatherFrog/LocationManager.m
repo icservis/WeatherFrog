@@ -1,23 +1,25 @@
 //
-//  Location+Store.m
+//  LocationManager.m
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 24.08.13.
+//  Created by Libor Kučera on 24.09.13.
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "Location+Store.h"
+#import "Location.h"
+#import "LocationManager.h"
 #import "Forecast+Additions.h"
 
-@implementation Location (Store)
+@implementation LocationManager
 
-+ (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark
+- (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark
 {
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
     
-    Location* location = [Location createInContext:currentContext];
+    Location* location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:currentContext];
+    
     location.name = name;
     location.latitude = [NSNumber numberWithDouble:coordinate.latitude];
     location.longitude = [NSNumber numberWithDouble:coordinate.longitude];
@@ -32,11 +34,11 @@
     return location;
 }
 
-+ (Location*)locationforForecast:(Forecast*)forecast
+- (Location*)locationforForecast:(Forecast*)forecast
 {
     CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
     
-    Location* location = [Location nearestLocationWith:forecastLocation];
+    Location* location = [self nearestLocationWith:forecastLocation];
     
     if (location == nil) {
         
@@ -45,7 +47,7 @@
         CLLocationDistance altitude = [forecast.altitude floatValue];
         NSTimeZone* timezone = forecast.timezone;
         
-        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
+        location = [self locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
         
     } else {
         
@@ -57,9 +59,9 @@
     return location;
 }
 
-+ (Location*)locationforPlacemark:(CLPlacemark*)placemark withTimezone:(NSTimeZone*)timezone
+- (Location*)locationforPlacemark:(CLPlacemark*)placemark withTimezone:(NSTimeZone*)timezone
 {
-    Location* location = [Location nearestLocationWith:placemark.location];
+    Location* location = [self nearestLocationWith:placemark.location];
     
     if (location == nil) {
         
@@ -67,7 +69,7 @@
         CLLocationCoordinate2D coordinate = placemark.location.coordinate;
         CLLocationDistance altitude = placemark.location.altitude;
         
-        location = [Location locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
+        location = [self locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
         
     } else {
         
@@ -79,14 +81,19 @@
     return location;
 }
 
-+ (Location*)nearestLocationWith:(CLLocation*)selectedLocation
+- (Location*)nearestLocationWith:(CLLocation*)selectedLocation
 {
     DDLogVerbose(@"nearestLocationWith");
     Location* location;
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.defaultContext;
-    NSArray* locations = [Location findAllInContext:currentContext];
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:currentContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    NSArray* locations = [currentContext executeFetchRequest:fetchRequest error:&error];
     
     if (locations != nil) {
         
@@ -121,11 +128,6 @@
     }
     
     return location;
-}
-
-- (NSString*)description
-{
-    return [NSString stringWithFormat:@"name: %@, timestamp: %@, latitude: %.5f, longitude: %.5f, altitude: %.0f, placemark: %@, isMarked: %@", self.name, [NSString stringWithDate:self.timestamp], [self.latitude floatValue], [self.longitude floatValue], [self.altitude floatValue], [self.placemark description], self.isMarked];
 }
 
 @end

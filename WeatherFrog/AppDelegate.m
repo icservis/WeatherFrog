@@ -11,29 +11,30 @@
 #import "Forecast.h"
 #import "Weather.h"
 #import "Location.h"
-#import "Location+Store.h"
 
 @implementation AppDelegate {
     Reachability* internetReachable;
     Reachability* hostReachable;
     BOOL internetActive;
     BOOL hostActive;
-    CLLocationManager* locationManager;
-    CLGeocoder* geocoder;
+    CLLocationManager* clLocationManager;
+    CLGeocoder* clGeocoder;
     Weather* lastNotification;
     NSDictionary* notificationsConfig;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Logging.
     LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
 	[[DDTTYLogger sharedInstance] setLogFormatter:formatter];
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
-    
+    // Activity Manager
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
+    // Reachability
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
     
     internetReachable = [Reachability reachabilityForInternetConnection];
     internetActive = [internetReachable isReachable];
@@ -43,10 +44,10 @@
     hostActive = [hostReachable isReachable];
     [hostReachable startNotifier];
     
+    // Core data
     [NSFetchedResultsController deleteCacheWithName:nil];
-    [MagicalRecord setupCoreDataStack];
-    self.defaultContext = [NSManagedObjectContext defaultContext];
     
+    // User defaults
     [UserDefaultsManager sharedDefaults];
     [self customizeUIKit];
     
@@ -58,16 +59,16 @@
     }
     
     // CLLocation
-    if (locationManager == nil) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        locationManager.distanceFilter = 500;
-        locationManager.delegate = self;
+    if (clLocationManager == nil) {
+        clLocationManager = [[CLLocationManager alloc] init];
+        clLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        clLocationManager.distanceFilter = 500;
+        clLocationManager.delegate = self;
     }
     
     // CLGeocoder
-    if (geocoder == nil) {
-        geocoder = [[CLGeocoder alloc] init];
+    if (clGeocoder == nil) {
+        clGeocoder = [[CLGeocoder alloc] init];
     }
     
     if (launchOptions != nil) {
@@ -103,10 +104,10 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     
     if ([CLLocationManager locationServicesEnabled] == YES) {
-        [locationManager startMonitoringSignificantLocationChanges];
+        [clLocationManager startMonitoringSignificantLocationChanges];
     } else {
-        [locationManager stopUpdatingLocation];
-        [locationManager stopMonitoringSignificantLocationChanges];
+        [clLocationManager stopUpdatingLocation];
+        [clLocationManager stopMonitoringSignificantLocationChanges];
     }
 }
 
@@ -115,8 +116,14 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    [self.defaultContext saveToPersistentStoreAndWait];
-    [MagicalRecord cleanUp];
+    NSError* error;
+    if ([self.managedObjectContext save:&error]) {
+        DDLogInfo(@"CoreData saved");
+    } else {
+        DDLogError(@"CoreData error: %@", [error localizedDescription]);
+    }
+    
+    //[MagicalRecord cleanUp];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -131,14 +138,14 @@
     if ([CLLocationManager locationServicesEnabled] == YES) {
         
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            [locationManager startUpdatingLocation];
+            [clLocationManager startUpdatingLocation];
         } else {
-            [locationManager startMonitoringSignificantLocationChanges];
+            [clLocationManager startMonitoringSignificantLocationChanges];
         }
         
     } else {
-        [locationManager stopUpdatingLocation];
-        [locationManager stopMonitoringSignificantLocationChanges];
+        [clLocationManager stopUpdatingLocation];
+        [clLocationManager stopMonitoringSignificantLocationChanges];
     }
     
     [FBAppEvents activateApp];
@@ -149,8 +156,10 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
-    [self.defaultContext saveToPersistentStoreAndWait];
-    [MagicalRecord cleanUp];
+    
+    NSError* error;
+    [self.managedObjectContext save:&error];
+    //[MagicalRecord cleanUp];
 }
 
 #pragma mark - State preservation and restoration
@@ -200,7 +209,7 @@
     
     if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES && internetActive) {
         
-        CLLocation* currentLocation = locationManager.location;
+        CLLocation* currentLocation = clLocationManager.location;
         if (currentLocation == nil) {
             DDLogError(@"current location not determined");
             completionHandler(UIBackgroundFetchResultNoData);
@@ -208,7 +217,7 @@
         DDLogVerbose(@"Current location restored");
         _currentLocation = currentLocation;
     
-        [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        [clGeocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 _currentPlacemark = placemarks[0];
                 DDLogVerbose(@"Restoring current placemark completed");
@@ -247,6 +256,58 @@
 - (void)customizeUIKit
 {
     
+}
+
+#pragma mark - Core Data
+
+- (NSManagedObjectModel*)managedObjectModel
+{
+    if (_managedObjectModel == nil) {
+        NSString* modelPath = [[NSBundle mainBundle] pathForResource:@"Model" ofType:@"momd"];
+        NSURL* modelURL = [NSURL fileURLWithPath:modelPath];
+        _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    }
+    return _managedObjectModel;
+}
+
+- (NSString*)documentsDirectory
+{
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentsDirectory = [paths objectAtIndex:0];
+    return documentsDirectory;
+}
+
+- (NSString *)dataStorePath
+{
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"DataStore.sqlite"];
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator == nil) {
+        NSURL* storeURL = [NSURL fileURLWithPath:[self dataStorePath]];
+        
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+        
+        NSError* error;
+        if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+            //NSLog(@"Error adding persistent store %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    return _persistentStoreCoordinator;
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext == nil) {
+        NSPersistentStoreCoordinator* coordinator = self.persistentStoreCoordinator;
+        if (coordinator != nil) {
+            _managedObjectContext = [[NSManagedObjectContext alloc] init];
+            [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+        }
+    }
+    return _managedObjectContext;
 }
 
 #pragma mark - Internet reachability
@@ -477,16 +538,16 @@
     if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
         DDLogInfo(@"Stop locator");
         
-        [locationManager stopUpdatingLocation];
-        [locationManager stopMonitoringSignificantLocationChanges];
+        [clLocationManager stopUpdatingLocation];
+        [clLocationManager stopMonitoringSignificantLocationChanges];
         
     } else if (status == kCLAuthorizationStatusAuthorized) {
         DDLogInfo(@"Start locator");
         
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
-            [locationManager startUpdatingLocation];
+            [clLocationManager startUpdatingLocation];
         } else {
-            [locationManager startMonitoringSignificantLocationChanges];
+            [clLocationManager startMonitoringSignificantLocationChanges];
         }
     }
 }
@@ -514,15 +575,15 @@
 {
     DDLogInfo(@"restart");
     
-    CLLocation* currentLocation = locationManager.location;
+    CLLocation* currentLocation = clLocationManager.location;
     if (currentLocation != nil) {
         self.currentLocation = currentLocation;
         return YES;
     } else {
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
-            [locationManager startUpdatingLocation];
+            [clLocationManager startUpdatingLocation];
         } else {
-            [locationManager startMonitoringSignificantLocationChanges];
+            [clLocationManager startMonitoringSignificantLocationChanges];
         }
         return NO;
     }
@@ -539,7 +600,7 @@
     DDLogVerbose(@"location: %@", [_currentLocation description]);
     
     if (internetActive) {
-        [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        [clGeocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 self.currentPlacemark = placemarks[0];
             }

@@ -11,7 +11,8 @@
 #import "LocatorViewController.h"
 #import "MenuViewController.h"
 #import "MKMapAnnotation.h"
-#import "Location+Store.h"
+#import "Location.h"
+#import "LocationManager.h"
 #import "MBProgressHUD.h"
 
 static double const PointHysteresis = 10.0;
@@ -28,6 +29,7 @@ static float const LongTapDuration = 1.2;
 @property (nonatomic) MKMapType mapType;
 @property (nonatomic, strong) UILongPressGestureRecognizer* longPressGestureRecognizer;
 @property (nonatomic, strong) MBProgressHUD* hud;
+@property (nonatomic, strong) LocationManager* locationManager;
 
 - (IBAction)trackingButtonTapped:(id)sender;
 - (IBAction)mapButtonTapped:(id)sender;
@@ -73,7 +75,6 @@ static float const LongTapDuration = 1.2;
     // Notification
     internetActive = [[self appDelegate] isInternetActive];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachability:) name:ReachabilityNotification object:nil];
-    
     
     // UIGestureRecognizer
     UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -124,6 +125,14 @@ static float const LongTapDuration = 1.2;
 }
 
 #pragma mark - Setters and Getters
+
+- (LocationManager*)locationManager
+{
+    if (_locationManager == nil) {
+        _locationManager = [[LocationManager alloc] init];
+    }
+    return _locationManager;
+}
 
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
@@ -202,7 +211,7 @@ static float const LongTapDuration = 1.2;
 
 - (IBAction)addLocation:(id)sender
 {
-    Location* location = [Location locationforPlacemark:_selectedPlacemark withTimezone:nil];
+    Location* location = [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:nil];
     [location setIsMarked:@YES];
     [self.revealViewController revealToggle:self.revealButtonItem];
 }
