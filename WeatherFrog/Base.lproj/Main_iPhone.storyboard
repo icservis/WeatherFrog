@@ -7,7 +7,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="wjk-26-9cn">
             <objects>
-                <viewController id="zzJ-tj-uZZ" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zzJ-tj-uZZ" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Mab-Hh-jdc" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="hty-la-OhI"/>
                         <segue destination="Ec1-xj-Izr" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="jIP-Ca-X3H"/>
@@ -20,7 +20,7 @@
         <!--Locator View Controller - Locator-->
         <scene sceneID="lcx-Na-e4f">
             <objects>
-                <viewController id="K5O-4J-gBf" customClass="LocatorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocatorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="K5O-4J-gBf" customClass="LocatorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0IW-1r-VLi"/>
                         <viewControllerLayoutGuide type="bottom" id="KEP-zX-I92"/>
@@ -107,7 +107,7 @@
         <!--Menu View Controller-->
         <scene sceneID="MPT-ST-AGx">
             <objects>
-                <viewController id="Mab-Hh-jdc" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mab-Hh-jdc" customClass="MenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PaI-8g-ewr"/>
                         <viewControllerLayoutGuide type="bottom" id="N0A-K0-J0G"/>
@@ -447,7 +447,7 @@
         <!--Forecast View Controller - Forecast-->
         <scene sceneID="t9T-Bf-7rg">
             <objects>
-                <viewController id="XRe-MU-hYk" customClass="ForecastViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForecastViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XRe-MU-hYk" customClass="ForecastViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q80-Za-Je1"/>
                         <viewControllerLayoutGuide type="bottom" id="THm-wO-GDS"/>
@@ -623,7 +623,7 @@
         <!--Navigation Controller-->
         <scene sceneID="AbA-BZ-q6c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Pd-fK-Spb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RearNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Pd-fK-Spb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8bk-Bw-ggH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -641,7 +641,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Mod-dl-2a8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ec1-xj-Izr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FrontNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ec1-xj-Izr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="07X-eF-6tU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

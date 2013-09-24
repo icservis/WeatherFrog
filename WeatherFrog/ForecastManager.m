@@ -421,7 +421,7 @@
     NSManagedObjectContext* defaultContext = [appDelegate defaultContext];
     Forecast* forecast = [self saveForecastInContext:defaultContext];
     
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+    if ( NO && [UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 
         [defaultContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
             self.progress = 1.0f;

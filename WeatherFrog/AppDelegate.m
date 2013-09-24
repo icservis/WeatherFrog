@@ -153,6 +153,38 @@
     [MagicalRecord cleanUp];
 }
 
+#pragma mark - State preservation and restoration
+
+- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+{
+    DDLogVerbose(@"shouldSaveApplicationState");
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+{
+    DDLogVerbose(@"shouldRestoreApplicationState");
+    return YES;
+}
+
+- (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    DDLogVerbose(@"viewControllerWithRestorationIdentifierPath %@", identifierComponents);
+    UIViewController* viewController = nil;
+    NSString* identifier = [identifierComponents lastObject];
+    UIStoryboard* storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+    
+    if (storyboard != nil) {
+        viewController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+        if (viewController != nil) {
+            DDLogVerbose(@"viewController: %@", [viewController description]);
+            viewController.restorationIdentifier = identifier;
+        }
+    }
+    
+    return viewController;
+}
+
 #pragma mark - UIApplicationDelegate
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -273,7 +305,7 @@
     return hostActive;
 }
 
-#pragma mark - nottifications
+#pragma mark - notifications
 
 - (void)defaultsChanged:(NSNotification*)notification
 {
@@ -442,14 +474,20 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    if (status != kCLAuthorizationStatusAuthorized) {
-        DDLogInfo(@"stop");
+    if (status == kCLAuthorizationStatusRestricted || status == kCLAuthorizationStatusDenied) {
+        DDLogInfo(@"Stop locator");
+        
         [locationManager stopUpdatingLocation];
         [locationManager stopMonitoringSignificantLocationChanges];
         
-        NSString* message = [NSString stringWithFormat:@"%@: %i",NSLocalizedString(@"Authorisation status", nil), status];
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Caution", nil) message: message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-        [alert show];
+    } else if (status == kCLAuthorizationStatusAuthorized) {
+        DDLogInfo(@"Start locator");
+        
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+            [locationManager startUpdatingLocation];
+        } else {
+            [locationManager startMonitoringSignificantLocationChanges];
+        }
     }
 }
 
@@ -481,7 +519,11 @@
         self.currentLocation = currentLocation;
         return YES;
     } else {
-        [locationManager startUpdatingLocation];
+        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+            [locationManager startUpdatingLocation];
+        } else {
+            [locationManager startMonitoringSignificantLocationChanges];
+        }
         return NO;
     }
     

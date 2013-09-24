@@ -81,8 +81,10 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.title = NSLocalizedString(@"Forecast", nil);
+    self.restorationClass = [self class];
     
+    self.title = NSLocalizedString(@"Forecast", nil);
+        
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
@@ -164,6 +166,23 @@ static CGFloat const tableTopMargin = 0.0f;
         detailViewController.weather = cell.weather;
         detailViewController.timezone = self.selectedForecast.timezone;
     }
+}
+
++ (UIViewController*)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    DDLogVerbose(@"viewControllerWithRestorationIdentifierPath %@", identifierComponents);
+    UIViewController* viewController = nil;
+    NSString* identifier = [identifierComponents lastObject];
+    UIStoryboard* storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+    
+    if (storyboard != nil) {
+        viewController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+        if (viewController != nil) {
+            DDLogVerbose(@"viewController: %@", [viewController description]);
+        }
+    }
+    
+    return viewController;
 }
 
 #pragma mark - UIDeviceDelegate
