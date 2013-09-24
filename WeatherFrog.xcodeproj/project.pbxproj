@@ -1651,8 +1651,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/admin/Documents/FacebookSDK,
@@ -1665,7 +1665,7 @@
 					/Users/admin/Documents/FacebookSDK/FacebookSDK.framework/Versions/A,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4D9748E5-C9FB-4739-8D8E-AE89A90E3C8C";
+				PROVISIONING_PROFILE = "5C97EC1D-179B-4AE8-AAD4-225C67611D3E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
