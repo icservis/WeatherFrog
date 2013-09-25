@@ -194,6 +194,9 @@
 
 - (IBAction)forecastButtonTapped:(id)sender
 {
+    CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
+    DDLogInfo(@"currentPlacemark: %@", [currentPlacemark description]);
+    self.selectedPlacemark = currentPlacemark;
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
 }
 

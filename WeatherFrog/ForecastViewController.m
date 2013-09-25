@@ -107,6 +107,15 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewWillAppear:animated];
     
     DDLogVerbose(@"viewWillAppear");
+    [self displayLoadingScreen];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    DDLogVerbose(@"viewDidAppear");
     [self becomeFirstResponder];
     
     if (self.selectedForecast == nil) {
@@ -134,11 +143,6 @@ static CGFloat const tableTopMargin = 0.0f;
         DDLogVerbose(@"display selectedForecast");
         [self displayForecast:_selectedForecast];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
