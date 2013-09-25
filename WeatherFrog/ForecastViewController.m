@@ -86,6 +86,7 @@ static CGFloat const tableTopMargin = 0.0f;
     self.restorationClass = [self class];
     
     self.title = NSLocalizedString(@"Forecast", nil);
+    [self becomeFirstResponder];
         
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector(revealToggle:)];
@@ -435,6 +436,15 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     self.loadingView.hidden = NO;
     self.scrollView.hidden = YES;
+    
+    self.statusInfo.text = nil;
+    [self.progressBar setProgress:0.0f animated:NO];
+    
+    if (isLandscape) {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
+    } else {
+        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+    }
 }
 
 - (void)showForecastLayout
@@ -469,7 +479,7 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.title = NSLocalizedString(@"Location not determined", nil);
     [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Location service disabled", nil)];
+    [self updateProgressViewWithValue:0.0f message:nil];
 }
 
 - (void)displayOfflineScreen
@@ -478,7 +488,7 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.title = NSLocalizedString(@"Internet connection offline", nil);
     [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Internet connection offline", nil)];
+    [self updateProgressViewWithValue:0.0f message:nil];
 }
 
 - (void)displayLoadedScreen
@@ -487,7 +497,7 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.title = NSLocalizedString(@"Forecast loaded", nil);
     [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Forecast loaded", nil)];
+    [self updateProgressViewWithValue:1.0f message:nil];
 }
 
 - (void)displayFailedScreen
@@ -496,7 +506,7 @@ static CGFloat const tableTopMargin = 0.0f;
     
     self.title = NSLocalizedString(@"Forecast failed", nil);
     [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Forecast failed", nil)];
+    [self updateProgressViewWithValue:0.0f message:nil];
 }
 
 - (void)displayFetchingScreen
@@ -506,12 +516,6 @@ static CGFloat const tableTopMargin = 0.0f;
     self.title = NSLocalizedString(@"Fetchning forecast…", nil);
     [self showLoadingLayout];
     [self updateProgressViewWithValue:0.0f message:nil];
-    
-    if (isLandscape) {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
-    } else {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
-    }
 }
 
 - (void)displayRotatingScreen
@@ -519,12 +523,6 @@ static CGFloat const tableTopMargin = 0.0f;
     DDLogInfo(@"displayRotatingScreen");
     [self showLoadingLayout];
     [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Rotating…", nil)];
-    
-    if (isLandscape) {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
-    } else {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
-    }
 }
 
 - (void)updateProgress:(NSNumber*)progressNumber
@@ -536,7 +534,7 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)updateProgressWithError:(NSError*)error
 {
     DDLogError(@"Error: %@", [error description]);
-    self.statusInfo.text = NSLocalizedString(@"Fetching forecast failed", nil);
+    self.statusInfo.text = NSLocalizedString(@"Processing forecast failed", nil);
     [self.progressBar setProgress:0.0f animated:NO];
 }
 
@@ -544,7 +542,6 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)updateProgressViewWithValue:(float)progress message:(NSString*)message
 {
-    DDLogInfo(@"message: %@", message);
     if (message != nil) {
         self.statusInfo.text = message;
     } else {

@@ -589,14 +589,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="TTC-ym-pLG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xms-s0-DU3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="WNc-rR-7e3">
                             <connections>
-                                <action selector="cancelButonTapped:" destination="KuR-fN-r9X" id="X42-Nb-QzG"/>
+                                <action selector="closeButonTapped:" destination="KuR-fN-r9X" id="Ubi-vu-RdL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButon" destination="xms-s0-DU3" id="eN1-pn-cet"/>
+                        <outlet property="closeButon" destination="WNc-rR-7e3" id="97o-v5-NTZ"/>
                         <outlet property="tableView" destination="6W0-TX-rpV" id="NB9-rx-Y27"/>
                     </connections>
                 </viewController>

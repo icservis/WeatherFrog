@@ -14,10 +14,10 @@
 
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 @property (nonatomic, strong) CFGUnitConverter* unitsConverter;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* cancelButon;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButon;
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
 
-- (IBAction)cancelButonTapped:(id)sender;
+- (IBAction)closeButonTapped:(id)sender;
 
 @end
 
@@ -49,7 +49,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)cancelButonTapped:(id)sender
+- (IBAction)closeButonTapped:(id)sender
 {
     [self.delegate closeDetailViewController:self];
 }

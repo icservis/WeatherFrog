@@ -151,14 +151,14 @@
         self.status = ForecastStatusFetchingSolarData;
         [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
             
-            self.progress = 0.6f;
+            self.progress = 0.75f;
             self.status = ForecastStatusFetchedSolarData;
             self.astroData = solarData;
             
             self.status = ForecastStatusFetchingWeatherData;
             [[YrApiService sharedService] weatherDatatWithLocation:placemark.location success:^(NSArray *weatherData) {
                 
-                self.progress = 0.8f;
+                self.progress = 0.95f;
                 self.status = ForecastStatusFetchedWeatherData;
                 self.weatherData = weatherData;
                 
@@ -166,27 +166,11 @@
                 NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
                 
                 Forecast* forecast = [self saveForecastInContext:currentContext];
+                [appDelegate savePersistence];
+                
                 self.progress = 1.0f;
                 self.status = ForecastStatusCompleted;
                 newData(forecast);
-                
-                /*
-                 DDLogInfo(@"Saving forecast");
-                 
-                 [currentContext saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-                 self.progress = 1.0f;
-                 
-                 if (error == nil) {
-                 
-                 DDLogInfo(@"Forecast saved");
-                 newData(forecast);
-                 
-                 } else {
-                 
-                 failure();
-                 }
-                 }];
-                 */
                 
             } failure:^(NSError *error) {
                 
@@ -276,7 +260,7 @@
     self.status = ForecastStatusFetchingElevation;
     [[GoogleApiService sharedService] elevationWithCoordinate:self.coordinate success:^(float elevation) {
         
-        self.progress = 0.2f;
+        self.progress = 0.25f;
         self.status = ForecastStatusFetchedElevation;
         self.altitude = elevation;
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingElevation:)]) {
@@ -295,7 +279,7 @@
     self.status = ForecastStatusFetchingTimezone;
     [[GoogleApiService sharedService] timezoneWithCoordinate:self.coordinate success:^(NSString *timezoneName) {
         
-        self.progress = 0.4f;
+        self.progress = 0.5f;
         self.status = ForecastStatusFetchedTimezone;
         self.timezone = [NSTimeZone timeZoneWithName:timezoneName];
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingTimezone:)]) {
@@ -316,7 +300,7 @@
     self.status = ForecastStatusFetchingSolarData;
     [[YrApiService sharedService] astroDatatWithLocation:location success:^(NSArray *solarData) {
         
-        self.progress = 0.6f;
+        self.progress = 0.75f;
         self.status = ForecastStatusFetchedSolarData;
         self.astroData = solarData;
         [self fetchWeatherData];
@@ -334,7 +318,7 @@
     self.status = ForecastStatusFetchingWeatherData;
     [[YrApiService sharedService] weatherDatatWithLocation:location success:^(NSArray *weatherData) {
         
-        self.progress = 0.8f;
+        self.progress = 0.95f;
         self.status = ForecastStatusFetchedWeatherData;
         self.weatherData = weatherData;
         [self completedForecast];
@@ -457,63 +441,13 @@
     NSManagedObjectContext* defaultContext = [appDelegate managedObjectContext];
     Forecast* forecast = [self saveForecastInContext:defaultContext];
     
+    [appDelegate savePersistence];
+    
     self.progress = 1.0f;
     self.status = ForecastStatusCompleted;
     [self.delegate forecastManager:self didFinishProcessingForecast:forecast];
     
     DDLogInfo(@"Forecast saved");
-    
-    
-    /*
-    __block Forecast* blockForecast;
-    
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        
-        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-            
-            blockForecast = [self saveForecastInContext:localContext];
-            
-        } completion:^(BOOL success, NSError *error) {
-            
-            self.progress = 1.0f;
-            
-            if (error == nil) {
-                
-                DDLogInfo(@"Forecast saved");
-                self.status = ForecastStatusCompleted;
-                [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
-                
-            } else {
-                
-                [self failedForecastWithError:error];
-            }
-            
-        }];
-        
-    } else {
-        
-        [MagicalRecord saveUsingCurrentThreadContextWithBlock:^(NSManagedObjectContext *localContext) {
-            
-            blockForecast = [self saveForecastInContext:localContext];
-            
-        } completion:^(BOOL success, NSError *error) {
-            
-            self.progress = 1.0f;
-            
-            if (error == nil) {
-                
-                DDLogInfo(@"Forecast saved");
-                self.status = ForecastStatusCompleted;
-                [self.delegate forecastManager:self didFinishProcessingForecast:blockForecast];
-                
-            } else {
-                
-                [self failedForecastWithError:error];
-            }
-            
-        }];
-    }
-    */
 }
 
 - (void)loadedForecast:(Forecast*)forecast

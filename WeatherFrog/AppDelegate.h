@@ -47,6 +47,11 @@ static NSString* const ApplicationReceivedLocalNotification = @"APPLICATION_RECE
 - (BOOL)restartGeocoder;
 
 /**
+ Coredata
+ */
+- (void)savePersistence;
+
+/**
  Facebook status variables.
  */
 - (void)openSession;
