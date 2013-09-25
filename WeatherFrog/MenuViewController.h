@@ -19,6 +19,4 @@
 
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
-- (void)updateCurrentPlacemark:(BOOL)reloadData;
-
 @end

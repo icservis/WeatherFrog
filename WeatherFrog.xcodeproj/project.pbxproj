@@ -93,12 +93,8 @@
 		848BE21817EE206F006BC4F8 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848BE21617EE206F006BC4F8 /* ForecastCell.xib */; };
 		848CC83A17C2BA2300EE02BD /* GoogleApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC83917C2BA2300EE02BD /* GoogleApiService.m */; };
 		848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC83917C2BA2300EE02BD /* GoogleApiService.m */; };
-		84905D0017C89F3300402857 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFF17C89F3300402857 /* Forecast.m */; };
-		84905D0117C89F3300402857 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905CFF17C89F3300402857 /* Forecast.m */; };
 		84905D0517C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */; };
 		84905D0617C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */; };
-		84905D0917C8E7E600402857 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0817C8E7E600402857 /* Location.m */; };
-		84905D0A17C8E7E600402857 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D0817C8E7E600402857 /* Location.m */; };
 		84905D1317CAAD1200402857 /* Sequencer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84905D1117CAAD1200402857 /* Sequencer.m */; };
 		849640FF17EF2C26001B2029 /* ForecastHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 849640FE17EF2C26001B2029 /* ForecastHeader.m */; };
 		8496410017EF2C26001B2029 /* ForecastHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 849640FE17EF2C26001B2029 /* ForecastHeader.m */; };
@@ -109,6 +105,10 @@
 		8496410917EF34DD001B2029 /* ForecastFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496410817EF34DD001B2029 /* ForecastFooter.m */; };
 		8496410A17EF34DD001B2029 /* ForecastFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496410817EF34DD001B2029 /* ForecastFooter.m */; };
 		8496410C17EF3E1A001B2029 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8496410B17EF3E1A001B2029 /* iAd.framework */; };
+		84A1885417F2AD3D00D260C4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1885317F2AD3D00D260C4 /* Location.m */; };
+		84A1885517F2AD3D00D260C4 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1885317F2AD3D00D260C4 /* Location.m */; };
+		84A1885817F2AD3D00D260C4 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1885717F2AD3D00D260C4 /* Forecast.m */; };
+		84A1885917F2AD3D00D260C4 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1885717F2AD3D00D260C4 /* Forecast.m */; };
 		84BEAEE617C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEE717C52EA1008B828E /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEE517C52EA1008B828E /* Weather.m */; };
 		84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BEAEED17C55E09008B828E /* YrApiService.m */; };
@@ -297,12 +297,8 @@
 		848BE21617EE206F006BC4F8 /* ForecastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
 		848CC83817C2BA2300EE02BD /* GoogleApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleApiService.h; sourceTree = "<group>"; };
 		848CC83917C2BA2300EE02BD /* GoogleApiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleApiService.m; sourceTree = "<group>"; };
-		84905CFE17C89F3300402857 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecast.h; sourceTree = "<group>"; };
-		84905CFF17C89F3300402857 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecast.m; sourceTree = "<group>"; };
 		84905D0317C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CLPlacemark+MKAnnotationDelegate.h"; path = "CLPlacemark/CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
 		84905D0417C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CLPlacemark+MKAnnotationDelegate.m"; path = "CLPlacemark/CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
-		84905D0717C8E7E600402857 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		84905D0817C8E7E600402857 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		84905D1017CAAD1200402857 /* Sequencer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequencer.h; sourceTree = "<group>"; };
 		84905D1117CAAD1200402857 /* Sequencer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequencer.m; sourceTree = "<group>"; };
 		849640FD17EF2C26001B2029 /* ForecastHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastHeader.h; sourceTree = "<group>"; };
@@ -312,6 +308,10 @@
 		8496410717EF34DD001B2029 /* ForecastFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastFooter.h; sourceTree = "<group>"; };
 		8496410817EF34DD001B2029 /* ForecastFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastFooter.m; sourceTree = "<group>"; };
 		8496410B17EF3E1A001B2029 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		84A1885217F2AD3D00D260C4 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		84A1885317F2AD3D00D260C4 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		84A1885617F2AD3D00D260C4 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecast.h; sourceTree = "<group>"; };
+		84A1885717F2AD3D00D260C4 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecast.m; sourceTree = "<group>"; };
 		84BEAEE417C52EA1008B828E /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		84BEAEE517C52EA1008B828E /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		84BEAEEC17C55E09008B828E /* YrApiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YrApiService.h; sourceTree = "<group>"; };
@@ -953,11 +953,11 @@
 		84DE4A1317BF83FC005AB3B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84A1885217F2AD3D00D260C4 /* Location.h */,
+				84A1885317F2AD3D00D260C4 /* Location.m */,
+				84A1885617F2AD3D00D260C4 /* Forecast.h */,
+				84A1885717F2AD3D00D260C4 /* Forecast.m */,
 				84DE4A1617BF86CF005AB3B8 /* Model.xcdatamodeld */,
-				84905D0717C8E7E600402857 /* Location.h */,
-				84905D0817C8E7E600402857 /* Location.m */,
-				84905CFE17C89F3300402857 /* Forecast.h */,
-				84905CFF17C89F3300402857 /* Forecast.m */,
 				843D1B6D17CD3A600094AEB4 /* Forecast+Additions.h */,
 				843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */,
 				84BEAEF817C56DB6008B828E /* Astro.h */,
@@ -1158,6 +1158,7 @@
 				84DE491017BF7659005AB3B8 /* DDLog.m in Sources */,
 				847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,
 				84DE49F417BF76D9005AB3B8 /* MBProgressHUD.m in Sources */,
+				84A1885417F2AD3D00D260C4 /* Location.m in Sources */,
 				84DE491617BF7659005AB3B8 /* DispatchQueueLogFormatter.m in Sources */,
 				84DE48CA17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
 				84DE48F317BF764A005AB3B8 /* DDXMLDocument.m in Sources */,
@@ -1186,8 +1187,6 @@
 				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
 				8422638917F1FD41003F3D7D /* LocationManager.m in Sources */,
-				84905D0017C89F3300402857 /* Forecast.m in Sources */,
-				84905D0917C8E7E600402857 /* Location.m in Sources */,
 				847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */,
 				84DE497E17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
@@ -1215,6 +1214,7 @@
 				84DE490A17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
 				841EFADA17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */,
 				845C2B8217E330640087C84A /* InfoViewController.m in Sources */,
+				84A1885817F2AD3D00D260C4 /* Forecast.m in Sources */,
 				84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE497617BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
 				84DE48C817BF7601005AB3B8 /* AFHTTPClient.m in Sources */,
@@ -1227,10 +1227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84905D0117C89F3300402857 /* Forecast.m in Sources */,
 				84DE491117BF7659005AB3B8 /* DDLog.m in Sources */,
 				84DE497B17BF767D005AB3B8 /* LumberjackFormatter.m in Sources */,
 				847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */,
+				84A1885517F2AD3D00D260C4 /* Location.m in Sources */,
 				84DE48D517BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE48D917BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				841EFADB17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */,
@@ -1240,7 +1240,6 @@
 				847CFF6517E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */,
 				847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */,
 				84DE48CD17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
-				84905D0A17C8E7E600402857 /* Location.m in Sources */,
 				843D1B7017CD3A600094AEB4 /* Forecast+Additions.m in Sources */,
 				84DE490F17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
 				84DE48F417BF764A005AB3B8 /* DDXMLDocument.m in Sources */,
@@ -1288,6 +1287,7 @@
 				84DE48DD17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */,
 				847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */,
 				84DE490B17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
+				84A1885917F2AD3D00D260C4 /* Forecast.m in Sources */,
 				848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */,
 				841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */,
 				84DE497717BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,

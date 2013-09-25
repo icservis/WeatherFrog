@@ -11,6 +11,7 @@
 #import "Forecast.h"
 #import "Weather.h"
 #import "Location.h"
+#import "LocationManager.h"
 
 @implementation AppDelegate {
     Reachability* internetReachable;
@@ -116,14 +117,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    NSError* error;
-    if ([self.managedObjectContext save:&error]) {
-        DDLogInfo(@"CoreData saved");
-    } else {
-        DDLogError(@"CoreData error: %@", [error localizedDescription]);
-    }
-    
-    //[MagicalRecord cleanUp];
+    [self savePersistence];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -156,10 +150,22 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
+    [self savePersistence];
+}
+
+#pragma mark - CoreData
+
+- (void)savePersistence
+{
+    LocationManager* locationManager = [[LocationManager alloc] init];
+    [locationManager deleteObsoleteLocations];
     
     NSError* error;
-    [self.managedObjectContext save:&error];
-    //[MagicalRecord cleanUp];
+    if ([self.managedObjectContext save:&error]) {
+        DDLogInfo(@"CoreData saved");
+    } else {
+        DDLogError(@"CoreData error: %@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - State preservation and restoration
@@ -291,7 +297,7 @@
         
         NSError* error;
         if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-            //NSLog(@"Error adding persistent store %@, %@", error, [error userInfo]);
+            DDLogError(@"Error adding persistent store %@, %@", error, [error userInfo]);
             abort();
         }
     }

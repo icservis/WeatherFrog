@@ -23,6 +23,7 @@
         <attribute name="timezone" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="validTill" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="astro" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Astro" inverseName="forecast" inverseEntity="Astro" syncable="YES"/>
+        <relationship name="location" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="forecast" inverseEntity="Location" syncable="YES"/>
         <relationship name="weather" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="forecast" inverseEntity="Weather" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
@@ -34,6 +35,7 @@
         <attribute name="placemark" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="timezone" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="forecast" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Forecast" inverseName="location" inverseEntity="Forecast" syncable="YES"/>
     </entity>
     <entity name="Weather" representedClassName="Weather" syncable="YES">
         <attribute name="cloudiness" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>

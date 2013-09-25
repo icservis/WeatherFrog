@@ -181,7 +181,6 @@
 - (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
 {
     _selectedPlacemark = selectedPlacemark;
-    [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:nil];
     [self performSegueWithIdentifier:@"showForecast" sender:nil];
 }
 
@@ -195,17 +194,7 @@
 
 - (IBAction)forecastButtonTapped:(id)sender
 {
-    [self updateCurrentPlacemark:NO];
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
-}
-
-- (void)updateCurrentPlacemark:(BOOL)reloadData
-{
-    _selectedPlacemark = [[self appDelegate] currentPlacemark];
-    [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:[NSTimeZone localTimeZone]];
-    if (reloadData) {
-        [self.tableView reloadData];
-    }
 }
 
 #pragma mark - UITableViewdataSource
@@ -234,11 +223,10 @@
     cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.delegate = self;
     
-    CLLocation* location = [[CLLocation alloc] initWithLatitude:[cell.location.latitude doubleValue] longitude:[cell.location.longitude doubleValue]];
-    CLLocationDistance distance = [_selectedPlacemark.location distanceFromLocation:location];
-    
-    if (_selectedPlacemark != nil && distance < kCLLocationAccuracyHundredMeters) {
+    if (_selectedPlacemark != nil && [_selectedPlacemark isEqual:cell.location.placemark]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     return cell;
@@ -279,9 +267,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
 		Location* location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        AppDelegate* appDelegate = [self appDelegate];
-        NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
-		[currentContext deleteObject:location];
+        [self.locationManager deleteLocation:location];
     }
     
     if (editingStyle == UITableViewCellEditingStyleInsert) {

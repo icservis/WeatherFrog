@@ -26,23 +26,24 @@ typedef enum {
 } ForecastStatus;
 
 @class Forecast;
+@class ForecastManager;
 
 @protocol ForecastManagerDelegate <NSObject>
 
-- (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast*)forecast;
-- (void)forecastManager:(id)manager didFailProcessingForecast:(Forecast*)forecast error:(NSError*)error;
+- (void)forecastManager:(ForecastManager*)manager didFinishProcessingForecast:(Forecast*)forecast;
+- (void)forecastManager:(ForecastManager*)manager didFailProcessingForecast:(Forecast*)forecast error:(NSError*)error;
 
 @optional
 
-- (void)forecastManager:(id)manager didStartFetchingForecast:(ForecastStatus)status;
+- (void)forecastManager:(ForecastManager*)manager didStartFetchingForecast:(ForecastStatus)status;
 
-- (void)forecastManager:(id)manager changingStatusForecast:(ForecastStatus)status;
-- (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress;
+- (void)forecastManager:(ForecastManager*)manager changingStatusForecast:(ForecastStatus)status;
+- (void)forecastManager:(ForecastManager*)manager updatingProgressProcessingForecast:(float)progress;
 
-- (void)forecastManager:(id)manager didFinishFetchingElevation:(float)elevation;
-- (void)forecastManager:(id)manager didFinishFetchingTimezone:(NSTimeZone*)timezone;
-- (void)forecastManager:(id)manager didFinishFetchingAstro:(NSOrderedSet*)astroData;
-- (void)forecastManager:(id)manager didFinishFetchingWeather:(NSOrderedSet*)weatherData;
+- (void)forecastManager:(ForecastManager*)manager didFinishFetchingElevation:(float)elevation;
+- (void)forecastManager:(ForecastManager*)manager didFinishFetchingTimezone:(NSTimeZone*)timezone;
+- (void)forecastManager:(ForecastManager*)manager didFinishFetchingAstro:(NSOrderedSet*)astroData;
+- (void)forecastManager:(ForecastManager*)manager didFinishFetchingWeather:(NSOrderedSet*)weatherData;
 
 @end
 

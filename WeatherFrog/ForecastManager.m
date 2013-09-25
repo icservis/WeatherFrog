@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ForecastManager.h"
+#import "LocationManager.h"
+#import "Location.h"
 #import "Forecast.h"
 #import "Weather.h"
 #import "WeatherDictionary.h"
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) NSDate* validTill;
 @property (nonatomic, strong) NSArray* weatherData;
 @property (nonatomic, strong) NSArray* astroData;
+@property (nonatomic, strong) Location* location;
 
 @end
 
@@ -44,6 +47,7 @@
 @synthesize validTill = _validTill;
 @synthesize weatherData = _weatherData;
 @synthesize astroData = _astroData;
+@synthesize location = _location;
 
 - (void)setStatus:(ForecastStatus)status
 {
@@ -356,6 +360,9 @@
     self.weatherData = nil;
     self.astroData = nil;
     
+    LocationManager* locationManager = [[LocationManager alloc] init];
+    self.location = [locationManager locationforPlacemark:placemark withTimezone:timezone];
+    
     self.progress = 0.0f;
     self.status = ForecastStatusActive;
 }
@@ -370,6 +377,7 @@
     forecast.longitude = [NSNumber numberWithDouble:self.coordinate.longitude];
     forecast.altitude = [NSNumber numberWithFloat:self.altitude];
     forecast.timezone = self.timezone;
+    forecast.location = self.location;
     forecast.timestamp = self.timestamp;
     
     WeatherDictionary* lastWeatherData = [self.weatherData lastObject];

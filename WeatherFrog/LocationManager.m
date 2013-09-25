@@ -130,4 +130,32 @@
     return location;
 }
 
+- (void)deleteLocation:(Location*)location
+{
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+    
+    [currentContext deleteObject:location];
+}
+
+- (void)deleteObsoleteLocations
+{
+    DDLogInfo(@"deleteObsoleteLocations");
+    
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:currentContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate* deletePredicate = [NSPredicate predicateWithFormat:@"timestamp < %@ AND isMarked = NO", [NSDate dateWithTimeIntervalSinceNow:-3600]];
+    [fetchRequest setPredicate:deletePredicate];
+    NSError* error;
+    NSArray* locations = [currentContext executeFetchRequest:fetchRequest error:&error];
+    
+    [locations enumerateObjectsUsingBlock:^(Location* obj, NSUInteger idx, BOOL *stop) {
+        [currentContext deleteObject:obj];
+    }];
+}
+
 @end

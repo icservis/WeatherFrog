@@ -369,9 +369,6 @@ static CGFloat const tableTopMargin = 0.0f;
     DDLogVerbose(@"notification: %@", [notification description]);
     NSDictionary* userInfo = notification.userInfo;
     
-    MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
-    [menuViewController updateCurrentPlacemark:YES];
-    
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
         
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {

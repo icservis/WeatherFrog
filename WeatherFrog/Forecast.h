@@ -2,27 +2,28 @@
 //  Forecast.h
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 24.08.13.
+//  Created by Libor Kučera on 25.09.13.
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Astro, Weather;
+@class Astro, Location, Weather;
 
 @interface Forecast : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * altitude;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) CLPlacemark * placemark;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSTimeZone * timezone;
 @property (nonatomic, retain) NSDate * validTill;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSOrderedSet * astro;
-@property (nonatomic, retain) NSOrderedSet * weather;
+@property (nonatomic, retain) NSOrderedSet *astro;
+@property (nonatomic, retain) NSOrderedSet *weather;
+@property (nonatomic, retain) Location *location;
 @end
 
 @interface Forecast (CoreDataGeneratedAccessors)
