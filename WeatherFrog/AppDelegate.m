@@ -204,7 +204,7 @@
         DDLogVerbose(@"Current location restored");
         _currentLocation = currentLocation;
     
-        [clGeocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        [clGeocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 _currentPlacemark = placemarks[0];
                 DDLogVerbose(@"Restoring current placemark completed");
@@ -565,7 +565,7 @@
     if (abs(howRecent) < 15.0 && accuracy < kCLLocationAccuracyHundredMeters) {
         
         NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
-        if (_currentLocation != nil && [lastLocation distanceFromLocation:_currentLocation] < [forecastAccuracy floatValue]) {
+        if (self.currentLocation != nil && [lastLocation distanceFromLocation:self.currentLocation] < [forecastAccuracy floatValue]) {
             DDLogVerbose(@"distance under limit");
             return;
         }
@@ -602,11 +602,11 @@
     DDLogInfo(@"setCurrentLocation");
     _currentLocation = currentLocation;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
-    DDLogVerbose(@"location: %@", [_currentLocation description]);
+    [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:currentLocation, @"currentLocation", nil]];
+    DDLogVerbose(@"location: %@", [currentLocation description]);
     
     if (internetActive) {
-        [clGeocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        [clGeocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 self.currentPlacemark = placemarks[0];
             } else {
@@ -623,15 +623,15 @@
     DDLogInfo(@"setCurrentPlacemark");
     _currentPlacemark = currentPlacemark;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];
-    DDLogVerbose(@"placemark: %@", [_currentPlacemark description]);
+    [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:currentPlacemark, @"currentPlacemark", nil]];
+    DDLogVerbose(@"placemark: %@", [currentPlacemark description]);
     
     UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
-    if (_currentLocation != nil && (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground])) {
+    if (self.currentLocation != nil && (applicationState != UIApplicationStateBackground || [[UserDefaultsManager sharedDefaults] fetchForecastInBackground])) {
         
         ForecastManager* forecastManager = [[ForecastManager alloc] init];
         forecastManager.delegate = self;
-        [forecastManager forecastWithPlacemark:_currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
+        [forecastManager forecastWithPlacemark:currentPlacemark timezone:[NSTimeZone localTimeZone] forceUpdate:YES];
     }
 }
 
@@ -646,8 +646,8 @@
 - (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast
 {
     DDLogInfo(@"didFinishProcessingForecast");
-    _currentForecast = forecast;
-    [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentForecast, @"currentForecast", nil]];
+    self.currentForecast = forecast;
+    [[NSNotificationCenter defaultCenter] postNotificationName:ForecastUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:self.currentForecast, @"currentForecast", nil]];
     [self forecastNotifcation:@"geolocator"];
 }
 
@@ -673,7 +673,7 @@
     
     __block Weather* currentNotification;
     
-    [_currentForecast.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
+    [self.currentForecast.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
         if ([weather.timestamp compare:now] == NSOrderedDescending) {
             
             currentNotification = weather;
