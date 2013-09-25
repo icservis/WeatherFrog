@@ -132,7 +132,9 @@
 - (void)forecastWithPlacemark:(CLPlacemark *)placemark timezone:(NSTimeZone *)timezone successWithNewData:(void (^)(Forecast *))newData withLoadedData:(void (^)(Forecast *))loadedData failure:(void (^)())failure
 {
     DDLogInfo(@"forecastWithPlacemark");
+    
     [self instantiateForecastWithPlacemark:placemark timezone:timezone];
+    
     Forecast* forecast = [self findForecastForPlacemark:placemark];
     
     if (forecast != nil) {
@@ -149,14 +151,14 @@
         self.status = ForecastStatusFetchingSolarData;
         [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
             
-            self.progress = 0.75f;
+            self.progress = 0.3f;
             self.status = ForecastStatusFetchedSolarData;
             self.astroData = solarData;
             
             self.status = ForecastStatusFetchingWeatherData;
             [[YrApiService sharedService] weatherDatatWithLocation:placemark.location success:^(NSArray *weatherData) {
                 
-                self.progress = 0.95f;
+                self.progress = 0.8f;
                 self.status = ForecastStatusFetchedWeatherData;
                 self.weatherData = weatherData;
                 
@@ -221,21 +223,23 @@
                 return  [secondTimestamp compare:firstTimestamp];
             }];
             
-            return sortedForecasts[0];
+            return [sortedForecasts firstObject];
             
         } else {
             
-            return forecasts[0];
+            return [forecasts firstObject];
         }
     }
     
     return nil;
 }
 
-#pragma mark - elements
+#pragma mark - states
 
 - (void)startFetching
 {
+    self.progress = 0.05f;
+    self.status = ForecastStatusFetching;
     if ([self.delegate respondsToSelector:@selector(forecastManager:didStartFetchingForecast:)]) {
         [self.delegate forecastManager:self didStartFetchingForecast:self.status];
     }
@@ -246,7 +250,7 @@
     self.status = ForecastStatusFetchingElevation;
     [[GoogleApiService sharedService] elevationWithCoordinate:self.coordinate success:^(float elevation) {
         
-        self.progress = 0.25f;
+        self.progress = 0.1f;
         self.status = ForecastStatusFetchedElevation;
         self.altitude = elevation;
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingElevation:)]) {
@@ -265,7 +269,7 @@
     self.status = ForecastStatusFetchingTimezone;
     [[GoogleApiService sharedService] timezoneWithCoordinate:self.coordinate success:^(NSString *timezoneName) {
         
-        self.progress = 0.5f;
+        self.progress = 0.2f;
         self.status = ForecastStatusFetchedTimezone;
         self.timezone = [NSTimeZone timeZoneWithName:timezoneName];
         if ([self.delegate respondsToSelector:@selector(forecastManager:didFinishFetchingTimezone:)]) {
@@ -286,7 +290,7 @@
     self.status = ForecastStatusFetchingSolarData;
     [[YrApiService sharedService] astroDatatWithLocation:location success:^(NSArray *solarData) {
         
-        self.progress = 0.75f;
+        self.progress = 0.5f;
         self.status = ForecastStatusFetchedSolarData;
         self.astroData = solarData;
         [self fetchWeatherData];

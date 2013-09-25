@@ -11,6 +11,7 @@
 typedef enum {
     ForecastStatusIdle,
     ForecastStatusActive,
+    ForecastStatusFetching,
     ForecastStatusFetchingElevation,
     ForecastStatusFetchedElevation,
     ForecastStatusFetchingTimezone,

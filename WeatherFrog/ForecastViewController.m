@@ -109,14 +109,20 @@ static CGFloat const tableTopMargin = 0.0f;
     DDLogInfo(@"viewWillAppear");
     
     if (self.forecastManager.status == ForecastStatusLoaded) {
+        
         DDLogInfo(@"ForecastStatusLoaded");
         [self displayLoadedScreen];
+        
     } else if (self.forecastManager.status == ForecastStatusFailed) {
+        
         DDLogInfo(@"ForecastStatusFailed");
         [self displayFailedScreen];
+        
     } else {
+        
         DDLogInfo(@"ForecastStatusOther: %i", self.forecastManager.status);
         [self displayLoadingScreen];
+        
     }
 }
 
@@ -151,9 +157,10 @@ static CGFloat const tableTopMargin = 0.0f;
         }
         
     } else {
+        
         if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
             DDLogInfo(@"display selectedForecast");
-            [self displayForecast:_selectedForecast];
+            [self displayForecast:self.selectedForecast];
         }
     }
 }
@@ -228,7 +235,7 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self displayForecast:_selectedForecast];
+    [self displayForecast:self.selectedForecast];
 }
 
 #pragma mark - Shared objects
@@ -242,15 +249,15 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (IBAction)actionButtonTapped:(id)sender
 {
-    NSString* shareString = [_selectedPlacemark subTitle];
+    NSString* shareString = [self.selectedPlacemark subTitle];
     UIImage* shareImage = [self screenshotOnMask];
     NSURL* shareUrl = [NSURL URLWithString:kAPIHost];
     
-    MKPlacemark* placemark = [[MKPlacemark alloc] initWithPlacemark:_selectedPlacemark];
+    MKPlacemark* placemark = [[MKPlacemark alloc] initWithPlacemark:self.selectedPlacemark];
     MKMapItem* mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    mapItem.name = [_selectedPlacemark title];
+    mapItem.name = [self.selectedPlacemark title];
     
-    NSArray* activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, mapItem, _selectedPlacemark, nil];
+    NSArray* activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, mapItem, self.selectedPlacemark, nil];
     CCHMapsActivity* mapsActivity = [[CCHMapsActivity alloc] init];
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[mapsActivity]];
@@ -337,7 +344,7 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     DDLogVerbose(@"selectedPlacemark: %@", [selectedPlacemark description]);
     _selectedPlacemark = selectedPlacemark;
-    [self forecast:_selectedPlacemark forceUpdate:NO];
+    [self forecast:selectedPlacemark forceUpdate:NO];
 }
 
 - (void)setSelectedForecast:(Forecast *)selectedForecast
@@ -348,10 +355,10 @@ static CGFloat const tableTopMargin = 0.0f;
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
         
         MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
-        [menuViewController updatePlacemark:_selectedPlacemark];
+        [menuViewController updatePlacemark:selectedForecast.placemark];
         
         if ([self isViewLoaded]) {
-            [self displayForecast:_selectedForecast];
+            [self performSelector:@selector(displayForecast:) withObject:selectedForecast afterDelay:uiDelay];
         }
     }
 }
@@ -568,7 +575,7 @@ static CGFloat const tableTopMargin = 0.0f;
     } else {
         self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
     }
-    [self.progressBar setProgress:progress animated:NO];
+    [self.progressBar setProgress:progress animated:YES];
 }
 
 #pragma mark - Helpers for Views
@@ -788,7 +795,7 @@ static CGFloat const tableTopMargin = 0.0f;
     if (motion == UIEventSubtypeMotionShake) {
         DDLogInfo(@"shake gesture");
         if (_useSelectedLocationInsteadCurrenLocation == YES) {
-            [self forecast:_selectedPlacemark forceUpdate:YES];
+            [self forecast:self.selectedPlacemark forceUpdate:YES];
         } else {
             if ([[self appDelegate] restartGeocoder] == NO) {
                 _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -805,8 +812,8 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if (motion == UIEventSubtypeMotionShake) {
-        if (_selectedForecast != nil) {
-            [self displayForecast:_selectedForecast];
+        if (self.selectedForecast != nil) {
+            [self displayForecast:self.selectedForecast];
         }
     }
 }
@@ -880,7 +887,7 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier forIndexPath:indexPath];
     
-    cell.timezone = _selectedForecast.timezone;
+    cell.timezone = self.selectedForecast.timezone;
     NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
     cell.weather = [currentDay objectAtIndex:indexPath.row];
     
@@ -900,7 +907,7 @@ static CGFloat const tableTopMargin = 0.0f;
     NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
     
     header.weather = [currentDay lastObject];
-    header.timeZone = _selectedForecast.timezone;
+    header.timeZone = self.selectedForecast.timezone;
     
     return header;
 }
@@ -922,7 +929,7 @@ static CGFloat const tableTopMargin = 0.0f;
     NSDate* date = [calendar dateFromComponents:components];
     
     __block Astro* _foundAstro;
-    [_selectedForecast.astro enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [self.selectedForecast.astro enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         Astro* astro = (Astro*)obj;
         
         if ([astro.date isEqualToDate:date]) {
@@ -932,7 +939,7 @@ static CGFloat const tableTopMargin = 0.0f;
     }];
     
     footer.astro = _foundAstro;
-    footer.timeZone = _selectedForecast.timezone;
+    footer.timeZone = self.selectedForecast.timezone;
     
     return footer;
 }

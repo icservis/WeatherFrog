@@ -375,14 +375,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Info" id="J0A-FQ-quW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gn1-qe-SRS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HJm-pC-9EQ">
                             <connections>
-                                <action selector="cancelButtontapped:" destination="xKF-Jp-NO1" id="in3-7c-K1W"/>
+                                <action selector="closeButtontapped:" destination="xKF-Jp-NO1" id="Rkb-1W-5XX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButon" destination="gn1-qe-SRS" id="vKO-Sg-WRk"/>
+                        <outlet property="closeButon" destination="HJm-pC-9EQ" id="bdA-PX-Mwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBG-4F-DjA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,9 +10,9 @@
 
 @interface InfoViewController ()
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* cancelButon;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButon;
 
-- (IBAction)cancelButtontapped:(id)sender;
+- (IBAction)closeButtontapped:(id)sender;
 
 @end
 
@@ -44,7 +44,7 @@
     return NO;
 }
 
-- (IBAction)cancelButtontapped:(id)sender
+- (IBAction)closeButtontapped:(id)sender
 {
     [self.delegate closeInfoViewController:self];
 }

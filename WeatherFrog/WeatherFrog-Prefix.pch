@@ -60,4 +60,6 @@
     #define isFaceDown  kDeviceOrientation == UIDeviceOrientationFaceDown ? YES : NO
     #define ASSET_BY_SCREEN_HEIGHT(regular, longScreen) (([[UIScreen mainScreen] bounds].size.height <= 480.0) ? regular : longScreen)
 
+    #define uiDelay 0.25f
+
 #endif

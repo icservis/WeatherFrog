@@ -94,9 +94,9 @@ static float const LongTapDuration = 1.2;
     [super viewDidAppear:animated];
     
     [self setSearchBarPlaceholder];
-    if (_selectedPlacemark != nil) {
-        [self mapView:self.mapView setRegionWithPlacemark:_selectedPlacemark];
-        [self mapView:self.mapView searchAnnotation:_selectedPlacemark];
+    if (self.selectedPlacemark != nil) {
+        [self mapView:self.mapView setRegionWithPlacemark:self.selectedPlacemark];
+        [self mapView:self.mapView searchAnnotation:self.selectedPlacemark];
         self.trackingMode = MKUserTrackingModeNone;
     }
 }
@@ -218,12 +218,12 @@ static float const LongTapDuration = 1.2;
     
     SWRevealViewController* rvc = self.revealViewController;
     MenuViewController* menuViewController = (MenuViewController*)rvc.rearViewController;
-    menuViewController.selectedPlacemark = _selectedPlacemark;
+    menuViewController.selectedPlacemark = self.selectedPlacemark;
 }
 
 - (IBAction)addLocation:(id)sender
 {
-    Location* location = [self.locationManager locationforPlacemark:_selectedPlacemark withTimezone:nil];
+    Location* location = [self.locationManager locationforPlacemark:self.selectedPlacemark withTimezone:nil];
     [location setIsMarked:@YES];
     [self.revealViewController revealToggle:self.revealButtonItem];
 }
