@@ -23,4 +23,6 @@
 @property (nonatomic, strong) Forecast* selectedForecast;
 @property (nonatomic) BOOL useSelectedLocationInsteadCurrenLocation;
 
+- (void)setRevealMode:(BOOL)revealed;
+
 @end

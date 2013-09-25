@@ -196,7 +196,7 @@
 {
     CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
     DDLogInfo(@"currentPlacemark: %@", [currentPlacemark description]);
-    self.selectedPlacemark = currentPlacemark;
+    _selectedPlacemark = currentPlacemark;
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
 }
 
@@ -392,8 +392,25 @@
 {
     UINavigationController* nc = (UINavigationController*)revealController.frontViewController;
     UIViewController* frontViewController = [[nc viewControllers] objectAtIndex:0];
-    DDLogVerbose(@"frontViewController: %@", [frontViewController description]);
+    DDLogVerbose(@"frontViewController: %@, position: %i", [frontViewController description], position);
     [frontViewController becomeFirstResponder];
+    
+    if ([frontViewController isKindOfClass:[ForecastViewController class]]) {
+        ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
+        if (position == FrontViewPositionRight) {
+            [forecastViewController setRevealMode:YES];
+        } else {
+            [forecastViewController setRevealMode:NO];
+        }
+    }
+    if ([frontViewController isKindOfClass:[LocatorViewController class]]) {
+        LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
+        if (position == FrontViewPositionRight) {
+            [locatorViewController setRevealMode:YES];
+        } else {
+            [locatorViewController setRevealMode:NO];
+        }
+    }
 }
 
 @end

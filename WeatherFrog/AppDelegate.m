@@ -104,7 +104,7 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     
-    if ([CLLocationManager locationServicesEnabled] == YES) {
+    if ([CLLocationManager locationServicesEnabled] == YES && [[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES) {
         [clLocationManager startMonitoringSignificantLocationChanges];
     } else {
         [clLocationManager stopUpdatingLocation];
@@ -131,11 +131,7 @@
     
     if ([CLLocationManager locationServicesEnabled] == YES) {
         
-        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            [clLocationManager startUpdatingLocation];
-        } else {
-            [clLocationManager startMonitoringSignificantLocationChanges];
-        }
+        [clLocationManager startUpdatingLocation];
         
     } else {
         [clLocationManager stopUpdatingLocation];
@@ -552,8 +548,11 @@
         
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
             [clLocationManager startUpdatingLocation];
-        } else {
+        } else if ([[UserDefaultsManager sharedDefaults] fetchForecastInBackground] == YES) {
             [clLocationManager startMonitoringSignificantLocationChanges];
+        } else {
+            [clLocationManager stopUpdatingLocation];
+            [clLocationManager stopMonitoringSignificantLocationChanges];
         }
     }
 }

@@ -107,7 +107,14 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewWillAppear:animated];
     
     DDLogVerbose(@"viewWillAppear");
-    [self displayLoadingScreen];
+    
+    if (self.forecastManager.status == ForecastStatusLoaded) {
+        [self displayLoadedScreen];
+    } else if (self.forecastManager.status == ForecastStatusFailed) {
+        [self displayFailedScreen];
+    } else {
+        [self displayFetchingScreen];
+    }
 }
 
 
@@ -156,6 +163,18 @@ static CGFloat const tableTopMargin = 0.0f;
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
+}
+
+- (void)setRevealMode:(BOOL)revealed
+{
+    DDLogInfo(@"setRevealMode: %d", revealed);
+    if (revealed == YES) {
+        self.scrollView.scrollEnabled = NO;
+        [self.scrollView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    } else {
+        self.scrollView.scrollEnabled = YES;
+        [self.scrollView removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -385,7 +404,7 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-            [self displayLoadingScreen];
+            [self displayFetchingScreen];
         }
     }
 }
@@ -453,7 +472,34 @@ static CGFloat const tableTopMargin = 0.0f;
     [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Location service disabled", nil)];
 }
 
-- (void)displayLoadingScreen
+- (void)displayOfflineScreen
+{
+    DDLogInfo(@"displayOfflineScreen");
+    
+    self.title = NSLocalizedString(@"Internet connection offline", nil);
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Internet connection offline", nil)];
+}
+
+- (void)displayLoadedScreen
+{
+    DDLogInfo(@"displayLoadedScreen");
+    
+    self.title = NSLocalizedString(@"Forecast loaded", nil);
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Forecast loaded", nil)];
+}
+
+- (void)displayFailedScreen
+{
+    DDLogInfo(@"displayFailedScreen");
+    
+    self.title = NSLocalizedString(@"Forecast failed", nil);
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Forecast failed", nil)];
+}
+
+- (void)displayFetchingScreen
 {
     DDLogInfo(@"displayLoadingScreen");
     
@@ -490,13 +536,15 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)updateProgressWithError:(NSError*)error
 {
     DDLogError(@"Error: %@", [error description]);
-    [self updateProgressViewWithValue:0.0f message:[error localizedDescription]];
+    self.statusInfo.text = NSLocalizedString(@"Fetching forecast failed", nil);
+    [self.progressBar setProgress:0.0f animated:NO];
 }
 
 #pragma mark - Progress view
 
 - (void)updateProgressViewWithValue:(float)progress message:(NSString*)message
 {
+    DDLogInfo(@"message: %@", message);
     if (message != nil) {
         self.statusInfo.text = message;
     } else {
@@ -759,7 +807,7 @@ static CGFloat const tableTopMargin = 0.0f;
 - (void)forecastManager:(id)manager didStartFetchingForecast:(ForecastStatus)status
 {
     DDLogInfo(@"didStartFetchingForecast");
-    [self displayLoadingScreen];
+    [self displayFetchingScreen];
 }
 
 - (void)forecastManager:(id)manager didFinishProcessingForecast:(Forecast *)forecast

@@ -18,4 +18,6 @@
 @property (nonatomic, strong) CLLocation* selectedLocation;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
+- (void)setRevealMode:(BOOL)revealed;
+
 @end

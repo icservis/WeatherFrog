@@ -41,7 +41,7 @@
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wunused-variable"
     #ifdef DEBUG
-    static int ddLogLevel = LOG_LEVEL_INFO;
+    static int ddLogLevel = LOG_LEVEL_VERBOSE;
     #else
     static int ddLogLevel = LOG_LEVEL_OFF;
     #endif

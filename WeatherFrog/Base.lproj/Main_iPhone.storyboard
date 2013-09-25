@@ -307,14 +307,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="dmg-NB-eM2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AcB-c6-NKa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="44P-iu-GyB">
                             <connections>
-                                <action selector="closeButonTapped:" destination="t6w-yA-14b" id="dn3-Hk-MtL"/>
+                                <action selector="closeButonTapped:" destination="t6w-yA-14b" id="Tfb-RV-OVH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="closeButon" destination="AcB-c6-NKa" id="lqN-gz-JCO"/>
+                        <outlet property="closeButon" destination="44P-iu-GyB" id="DSm-Ra-IYn"/>
                         <segue destination="lXC-vq-EV1" kind="push" identifier="showMultiValue" id="TmH-Hp-nSn"/>
                         <segue destination="hDL-2t-d8J" kind="push" identifier="showSlider" id="Kl5-eh-uY8"/>
                     </connections>
@@ -355,16 +355,7 @@
                             <outlet property="delegate" destination="lXC-vq-EV1" id="jRb-C8-LiK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MultiValue" id="Ome-qe-968">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ODE-EJ-ZtK">
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="lXC-vq-EV1" id="13W-rp-Wgt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="closeButton" destination="ODE-EJ-ZtK" id="6Pn-g1-jTt"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="MultiValue" id="Ome-qe-968"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvw-Rk-iqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -427,15 +418,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Slider" id="o2b-Wr-49P">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RV4-gn-hJV">
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="hDL-2t-d8J" id="oVL-xd-hcH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Slider" id="o2b-Wr-49P"/>
                     <connections>
-                        <outlet property="closeButton" destination="RV4-gn-hJV" id="nX8-ee-GEC"/>
                         <outlet property="notificationsLabel" destination="kP3-Co-W51" id="8al-ba-wSG"/>
                         <outlet property="notificationsSlider" destination="AYE-jO-rcA" id="hRK-WZ-6Ab"/>
                     </connections>

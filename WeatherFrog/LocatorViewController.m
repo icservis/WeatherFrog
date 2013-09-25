@@ -117,6 +117,18 @@ static float const LongTapDuration = 1.2;
     geocoder = nil;
 }
 
+- (void)setRevealMode:(BOOL)revealed
+{
+    DDLogInfo(@"setRevealMode: %d", revealed);
+    if (revealed == YES) {
+        self.mapView.scrollEnabled = NO;
+        [self.mapView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    } else {
+        self.mapView.scrollEnabled = YES;
+        [self.mapView removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+}
+
 #pragma mark - Shared objects
 
 - (AppDelegate*)appDelegate
