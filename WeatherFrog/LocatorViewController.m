@@ -119,7 +119,7 @@ static float const LongTapDuration = 1.2;
 
 - (void)setRevealMode:(BOOL)revealed
 {
-    DDLogInfo(@"setRevealMode: %d", revealed);
+    DDLogVerbose(@"setRevealMode: %d", revealed);
     if (revealed == YES) {
         self.mapView.scrollEnabled = NO;
         [self.mapView addGestureRecognizer:self.revealViewController.panGestureRecognizer];

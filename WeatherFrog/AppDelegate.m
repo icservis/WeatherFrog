@@ -149,21 +149,6 @@
     [self savePersistence];
 }
 
-#pragma mark - CoreData
-
-- (void)savePersistence
-{
-    LocationManager* locationManager = [[LocationManager alloc] init];
-    [locationManager deleteObsoleteLocations];
-    
-    NSError* error;
-    if ([self.managedObjectContext save:&error]) {
-        DDLogInfo(@"CoreData saved");
-    } else {
-        DDLogError(@"CoreData error: %@", [error localizedDescription]);
-    }
-}
-
 #pragma mark - State preservation and restoration
 
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
@@ -310,6 +295,19 @@
         }
     }
     return _managedObjectContext;
+}
+
+- (void)savePersistence
+{
+    LocationManager* locationManager = [[LocationManager alloc] init];
+    [locationManager deleteObsoleteLocations];
+    
+    NSError* error;
+    if ([self.managedObjectContext save:&error]) {
+        DDLogInfo(@"CoreData saved");
+    } else {
+        DDLogError(@"CoreData error: %@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - Internet reachability
@@ -583,8 +581,10 @@
     CLLocation* currentLocation = clLocationManager.location;
     if (currentLocation != nil) {
         self.currentLocation = currentLocation;
+        DDLogInfo(@"location restored");
         return YES;
     } else {
+        DDLogInfo(@"restarting geocoder");
         if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
             [clLocationManager startUpdatingLocation];
         } else {
@@ -599,6 +599,7 @@
 
 - (void)setCurrentLocation:(CLLocation *)currentLocation
 {
+    DDLogInfo(@"setCurrentLocation");
     _currentLocation = currentLocation;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentLocation, @"currentLocation", nil]];
@@ -608,15 +609,18 @@
         [clGeocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
             if ([placemarks count] > 0) {
                 self.currentPlacemark = placemarks[0];
+            } else {
+                DDLogError(@"geocoder error: %@", [error description]);
             }
         }];
     } else {
-        DDLogVerbose(@"internet not active");
+        DDLogError(@"internet not active");
     }
 }
 
 - (void)setCurrentPlacemark:(CLPlacemark *)currentPlacemark
 {
+    DDLogInfo(@"setCurrentPlacemark");
     _currentPlacemark = currentPlacemark;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderUpdateNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:_currentPlacemark, @"currentPlacemark", nil]];

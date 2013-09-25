@@ -80,9 +80,7 @@
     [fetchRequest setSortDescriptors:sortDescriptors];
     NSError* error;
     NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
-    
-    DDLogInfo(@"forecasts: %@", [forecasts description]);
-    
+        
     return [forecasts firstObject];
 }
 
@@ -203,7 +201,7 @@
     NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
     
     NSNumber* forecastValidity = [[UserDefaultsManager sharedDefaults] forecastValidity];
-    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"timestamp > %@", [NSDate dateWithTimeIntervalSinceNow:-[forecastValidity integerValue]]];
+    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"timestamp > %@ AND placemark = %@", [NSDate dateWithTimeIntervalSinceNow:-[forecastValidity floatValue]], placemark];
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription* entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:currentContext];
     [fetchRequest setEntity:entity];
@@ -211,24 +209,12 @@
     NSError* error;
     NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
     
-    if (forecasts != nil) {
-        
-        CLLocation* placemarkLocation = [[CLLocation alloc] initWithCoordinate:placemark.location.coordinate altitude:placemark.location.altitude horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:placemark.location.timestamp];
-        
-        NSMutableArray* availableForecasts = [NSMutableArray array];
-        for (Forecast* forecast in forecasts) {
-            CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
-            
-            NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
-            if ([forecastLocation distanceFromLocation:placemarkLocation] <= [forecastAccuracy floatValue]) {
-                [availableForecasts addObject:forecast];
-            }
-        }
-        
-        if (availableForecasts.count > 0) {
+    if (forecasts != nil && forecasts.count > 0) {
+                
+        if (forecasts.count > 1) {
             
             NSArray* sortedForecasts;
-            sortedForecasts = [availableForecasts sortedArrayUsingComparator:^NSComparisonResult(Forecast* obj1, Forecast* obj2) {
+            sortedForecasts = [forecasts sortedArrayUsingComparator:^NSComparisonResult(Forecast* obj1, Forecast* obj2) {
                 NSDate* firstTimestamp = obj1.timestamp;
                 NSDate* secondTimestamp = obj2.timestamp;
                 
@@ -239,7 +225,7 @@
             
         } else {
             
-            return nil;
+            return forecasts[0];
         }
     }
     

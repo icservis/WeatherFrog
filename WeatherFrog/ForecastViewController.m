@@ -92,7 +92,6 @@ static CGFloat const tableTopMargin = 0.0f;
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    self.delegate = (MenuViewController*)self.revealViewController.rearViewController;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
@@ -107,14 +106,17 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     [super viewWillAppear:animated];
     
-    DDLogVerbose(@"viewWillAppear");
+    DDLogInfo(@"viewWillAppear");
     
     if (self.forecastManager.status == ForecastStatusLoaded) {
+        DDLogInfo(@"ForecastStatusLoaded");
         [self displayLoadedScreen];
     } else if (self.forecastManager.status == ForecastStatusFailed) {
+        DDLogInfo(@"ForecastStatusFailed");
         [self displayFailedScreen];
     } else {
-        [self displayFetchingScreen];
+        DDLogInfo(@"ForecastStatusOther: %i", self.forecastManager.status);
+        [self displayLoadingScreen];
     }
 }
 
@@ -123,12 +125,12 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     [super viewDidAppear:animated];
     
-    DDLogVerbose(@"viewDidAppear");
+    DDLogInfo(@"viewDidAppear");
     [self becomeFirstResponder];
     
     if (self.selectedForecast == nil) {
         
-        DDLogVerbose(@"selectedForecast is nil");
+        DDLogInfo(@"selectedForecast is nil");
         
         if (self.selectedPlacemark == nil) {
             
@@ -136,8 +138,10 @@ static CGFloat const tableTopMargin = 0.0f;
             
             if (lastForecast != nil) {
                 
-                DDLogInfo(@"forecast restored");
-                self.selectedForecast = lastForecast;
+                if (self.forecastManager.status != ForecastStatusFailed) {
+                    DDLogInfo(@"forecast restored");
+                    self.selectedForecast = lastForecast;
+                }
                 
             } else {
                 
@@ -147,9 +151,10 @@ static CGFloat const tableTopMargin = 0.0f;
         }
         
     } else {
-        
-        DDLogVerbose(@"display selectedForecast");
-        [self displayForecast:_selectedForecast];
+        if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
+            DDLogInfo(@"display selectedForecast");
+            [self displayForecast:_selectedForecast];
+        }
     }
 }
 
@@ -168,7 +173,7 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)setRevealMode:(BOOL)revealed
 {
-    DDLogInfo(@"setRevealMode: %d", revealed);
+    DDLogVerbose(@"setRevealMode: %d", revealed);
     if (revealed == YES) {
         self.scrollView.scrollEnabled = NO;
         [self.scrollView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -340,8 +345,14 @@ static CGFloat const tableTopMargin = 0.0f;
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     _selectedPlacemark = selectedForecast.placemark;
-    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-        [self displayForecast:_selectedForecast];
+    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+        
+        MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
+        [menuViewController updatePlacemark:_selectedPlacemark];
+        
+        if ([self isViewLoaded]) {
+            [self displayForecast:_selectedForecast];
+        }
     }
 }
 
@@ -508,6 +519,16 @@ static CGFloat const tableTopMargin = 0.0f;
     [self showLoadingLayout];
     [self updateProgressViewWithValue:0.0f message:nil];
 }
+
+- (void)displayLoadingScreen
+{
+    DDLogInfo(@"displayLoadingScreen");
+    
+    self.title = NSLocalizedString(@"Loading forecast…", nil);
+    [self showLoadingLayout];
+    [self updateProgressViewWithValue:0.0f message:nil];
+}
+
 
 - (void)displayFetchingScreen
 {

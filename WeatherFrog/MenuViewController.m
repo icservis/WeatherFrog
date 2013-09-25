@@ -115,6 +115,12 @@
     return _fetchedResultsController;
 }
 
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    _selectedPlacemark = selectedPlacemark;
+    [self performSegueWithIdentifier:@"showForecast" sender:nil];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -152,8 +158,6 @@
                 forecastViewController.selectedPlacemark = _selectedPlacemark;
             }
         };
-        
-        [self.tableView reloadData];
     }
     
     if ([segue.identifier isEqualToString:@"showSettings"]) {
@@ -176,14 +180,6 @@
     return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
-#pragma mark - Setters and Getters
-
-- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
-{
-    _selectedPlacemark = selectedPlacemark;
-    [self performSegueWithIdentifier:@"showForecast" sender:nil];
-}
-
 #pragma mark - IBActions
 
 - (IBAction)locatorButtonTapped:(id)sender
@@ -198,6 +194,18 @@
     DDLogInfo(@"currentPlacemark: %@", [currentPlacemark description]);
     _selectedPlacemark = currentPlacemark;
     [self performSegueWithIdentifier:@"showForecast" sender:sender];
+}
+
+- (void)updatePlacemark:(CLPlacemark*)placemark
+{
+    DDLogInfo(@"updatePlacemark");
+    _selectedPlacemark = placemark;
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:.25];
+}
+
+- (void)updateTable
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewdataSource
@@ -226,7 +234,9 @@
     cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.delegate = self;
     
-    if (_selectedPlacemark != nil && [_selectedPlacemark isEqual:cell.location.placemark]) {
+    CLLocationDistance distance = [_selectedPlacemark.location distanceFromLocation:cell.location.placemark.location];
+    
+    if (_selectedPlacemark != nil && distance == 0) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -358,12 +368,13 @@
     [self.tableView endUpdates];
 }
 
+
 #pragma mark - SettingsViewControllerDelegate
 
 - (void)closeSettingsViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        DDLogInfo(@"controller: %@", [controller description]);
+        DDLogVerbose(@"controller: %@", [controller description]);
     }];
 }
 
@@ -372,7 +383,7 @@
 - (void)closeInfoViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        DDLogInfo(@"controller: %@", [controller description]);
+        DDLogVerbose(@"controller: %@", [controller description]);
     }];
 }
 

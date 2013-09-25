@@ -175,15 +175,10 @@
                             
                             for (DDXMLElement* precipitation in [location elementsForName:@"precipitation"]) {
                                 
-                                DDLogInfo(@"precipitation: %@", [precipitation description]);
                                 
                                 float precipitationMm = [[[precipitation attributeForName:@"value"] stringValue] floatValue];
                                 float precipitationMinMm = [[[precipitation attributeForName:@"minvalue"] stringValue] floatValue];
                                 float precipitationMaxMm = [[[precipitation attributeForName:@"maxvalue"] stringValue] floatValue];
-                                
-                                DDLogInfo(@"precipitationMm %.2f",precipitationMm);
-                                DDLogInfo(@"precipitationMinMm %.2f",precipitationMinMm);
-                                DDLogInfo(@"precipitationMaxMm %.2f",precipitationMaxMm);
                                 
                                 if (timestampDifference/3600 == 1) {
                                     weather.precipitation1h = [NSNumber numberWithFloat:precipitationMm];

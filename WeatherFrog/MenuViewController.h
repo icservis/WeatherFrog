@@ -19,4 +19,6 @@
 
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
+- (void)updatePlacemark:(CLPlacemark*)placemark;
+
 @end
