@@ -46,13 +46,13 @@
         CLLocationDistance altitude = placemark.location.altitude;
         
         location = [self locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
+        DDLogInfo(@"new location %@", [location description]);
         
     } else {
         
         location.timestamp = [NSDate date];
+        DDLogInfo(@"restored location %@", [location description]);
     }
-    
-    DDLogVerbose(@"Location: %@", [location description]);
     
     return location;
 }

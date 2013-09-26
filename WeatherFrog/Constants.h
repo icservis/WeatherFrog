@@ -9,6 +9,10 @@
 #ifndef WeatherFrog_Constants_h
 #define WeatherFrog_Constants_h
 
+#pragma mark - Times
+
+static float const kUserActionDelay = 0.25f;
+static float const kAnimationDuration = 0.25f;
 
 #pragma mark - Forecast
 

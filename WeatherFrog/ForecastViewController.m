@@ -34,11 +34,11 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 
 static CGFloat const labelTopMargin = 3.0f;
 static CGFloat const labelHeight = 21.0f;
+static CGFloat const timeTopMargin = 3.0f;
+static CGFloat const timeHeight = 21.0f;
 static CGFloat const iconTopMargin = 0.0f;
 static CGFloat const iconSize = 64.0f;
-static CGFloat const timeTopMargin = 0.0f;
-static CGFloat const timeHeight = 21.0f;
-static CGFloat const tableTopMargin = 0.0f;
+static CGFloat const tableTopMargin = 2.0f;
 
 @class Forecast;
 
@@ -84,6 +84,9 @@ static CGFloat const tableTopMargin = 0.0f;
 	// Do any additional setup after loading the view.
     
     self.restorationClass = [self class];
+    
+    self.loadingView.hidden = NO;
+    self.scrollView.hidden = NO;
     
     self.title = NSLocalizedString(@"Forecast", nil);
     [self becomeFirstResponder];
@@ -356,7 +359,7 @@ static CGFloat const tableTopMargin = 0.0f;
         [menuViewController updatePlacemark:selectedForecast.placemark];
         
         if ([self isViewLoaded]) {
-            [self performSelector:@selector(displayForecast:) withObject:selectedForecast afterDelay:uiDelay];
+            [self performSelector:@selector(displayForecast:) withObject:selectedForecast afterDelay:kUserActionDelay];
         }
     }
 }
@@ -388,10 +391,10 @@ static CGFloat const tableTopMargin = 0.0f;
 
 #pragma mark - Notifications
 
-- (void)preferredContentSizeChanged:(NSNotification*)notification {
-    // adjust the layout of the cells
-    DDLogInfo(@"setNeedsLayout");
-    [self.view setNeedsLayout];
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    [self.scrollView setNeedsDisplay];
 }
 
 - (void)locationManagerUpdate:(NSNotification*)notification
@@ -450,8 +453,14 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)showLoadingLayout
 {
-    self.loadingView.hidden = NO;
-    self.scrollView.hidden = YES;
+    //self.loadingView.hidden = NO;
+    //self.scrollView.hidden = YES;
+    
+    [UIView beginAnimations:@"ToggleViews" context:nil];
+    [UIView setAnimationDuration:kAnimationDuration];
+    self.loadingView.alpha = 1.0;
+    self.scrollView.alpha = 0.0;
+    [UIView commitAnimations];
     
     self.statusInfo.text = nil;
     [self.progressBar setProgress:0.0f animated:NO];
@@ -465,8 +474,14 @@ static CGFloat const tableTopMargin = 0.0f;
 
 - (void)showForecastLayout
 {
-    self.loadingView.hidden = YES;
-    self.scrollView.hidden = NO;
+    //self.loadingView.hidden = YES;
+    //self.scrollView.hidden = NO;
+    
+    [UIView beginAnimations:@"ToggleViews" context:nil];
+    [UIView setAnimationDuration:kAnimationDuration];
+    self.loadingView.alpha = 0.0;
+    self.scrollView.alpha = 1.0;
+    [UIView commitAnimations];
 }
 
 - (void)displayForecast:(Forecast*)forecast
@@ -487,6 +502,8 @@ static CGFloat const tableTopMargin = 0.0f;
     } else {
         [self setupViewsForPortrait:forecast];
     }
+    
+    [self checkForecastLayoutValidity];
 }
 
 - (void)displayDefaultScreen
@@ -585,6 +602,11 @@ static CGFloat const tableTopMargin = 0.0f;
     }
 }
 
+- (void)checkForecastLayoutValidity
+{
+    [self.scrollView setContentOffset:CGPointZero animated:YES];
+}
+
 #pragma mark - Views for Portrait
 
 - (void)setupViewsForPortrait:(Forecast*)forecast
@@ -631,7 +653,7 @@ static CGFloat const tableTopMargin = 0.0f;
         
         CGRect labelFrame = CGRectMake(0, labelTopMargin, backgroundRect.size.width, labelHeight);
         UILabel* dayLabel = [[UILabel alloc] initWithFrame:labelFrame];
-        dayLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        dayLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
         
         Weather* firstHour = hours[0];
         [self.dateFormatter setDateStyle:NSDateFormatterFullStyle];
@@ -641,8 +663,9 @@ static CGFloat const tableTopMargin = 0.0f;
         [dayBackground addSubview:dayLabel];
         
         CGFloat spacer = (backgroundRect.size.width - 3 * iconSize) / 3;
-        CGFloat iconOffset = labelTopMargin + labelHeight + iconTopMargin;
-        CGFloat timeOffset = iconOffset + iconSize + timeTopMargin;
+        CGFloat timeOffset = labelTopMargin + labelHeight + timeTopMargin;
+        CGFloat iconOffset = timeOffset + timeHeight + iconTopMargin;
+        
         
         CGRect iconLeftFrame = CGRectMake(spacer/2, iconOffset, iconSize, iconSize);
         UIImageView* iconLeft = [[UIImageView alloc] initWithFrame:iconLeftFrame];
@@ -701,14 +724,16 @@ static CGFloat const tableTopMargin = 0.0f;
         }
         [dayBackground addSubview:timeRight];
         
-        CGFloat tableOffset = timeOffset + timeHeight + tableTopMargin;
+        CGFloat tableOffset = iconOffset + iconSize + tableTopMargin;
         CGRect tableFrame = CGRectMake(0, tableOffset, backgroundRect.size.width, backgroundRect.size.height - tableOffset);
         
         UITableView* tableView = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
         
-        tableView.translatesAutoresizingMaskIntoConstraints = NO;
+        tableView.translatesAutoresizingMaskIntoConstraints = YES;
         tableView.scrollEnabled = YES;
-        tableView.showsVerticalScrollIndicator = YES;
+        tableView.autoresizesSubviews = YES;
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        tableView.showsVerticalScrollIndicator = NO;
         tableView.userInteractionEnabled = YES;
         tableView.bounces = YES;
         tableView.delegate = self;
@@ -725,6 +750,7 @@ static CGFloat const tableTopMargin = 0.0f;
     }];
     CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
     [self.scrollView setContentSize:contentSize];
+    
     DDLogVerbose(@"contentsize: %@", NSStringFromCGSize(contentSize));
 }
 
@@ -782,8 +808,12 @@ static CGFloat const tableTopMargin = 0.0f;
     UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
     [textView setText:[forecast description]];
     [textView setEditable:NO];
-    textView.translatesAutoresizingMaskIntoConstraints = NO;
+    textView.translatesAutoresizingMaskIntoConstraints = YES;
+    textView.autoresizesSubviews = YES;
+    textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    textView.backgroundColor = [UIColor lightGrayColor];
     [self.scrollView addSubview:textView];
+    [self.scrollView setContentSize:self.scrollView.frame.size];
 }
 
 #pragma mark - UIEvent
@@ -843,6 +873,16 @@ static CGFloat const tableTopMargin = 0.0f;
 {
     DDLogError(@"Error: %@", [error description]);
     [self updateProgressWithError:error];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _hud.delegate = nil;
+    _hud.dimBackground = YES;
+    _hud.mode = MBProgressHUDModeText;
+    _hud.labelText = [error localizedDescription];
+    [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
+    
+    MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
+    [menuViewController updatePlacemark:_selectedPlacemark];
 }
 
 - (void)forecastManager:(id)manager updatingProgressProcessingForecast:(float)progress

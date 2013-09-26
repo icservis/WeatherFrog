@@ -21,7 +21,8 @@
 @property (nonatomic, weak) IBOutlet UILabel* precip;
 @property (nonatomic, weak) IBOutlet UILabel* precipMin;
 @property (nonatomic, weak) IBOutlet UILabel* precipMax;
-@property (nonatomic, weak) IBOutlet UILabel* scale;
+@property (nonatomic, weak) IBOutlet UILabel* windSpeed;
+@property (nonatomic, weak) IBOutlet UILabel* windScale;
 @property (nonatomic, weak) IBOutlet UIImageView* icon;
 
 @end
@@ -74,7 +75,8 @@
     self.precip.text = [self.unitsConverter convertPrecipitation:precipitation period:hours];
     self.precipMin.text = [self.unitsConverter convertPrecipitation:precipitationMin period:hours];
     self.precipMax.text = [self.unitsConverter convertPrecipitation:precipitationMax period:hours];
-    self.scale.text = [self.unitsConverter convertWindScale:weather.windScale];
+    self.windScale.text = [self.unitsConverter convertWindScale:weather.windScale];
+    self.windSpeed.text = [self.unitsConverter convertWindSpeed:weather.windSpeed];
     
     NSInteger symbol = 0;
     if (weather.symbol1h != nil) {

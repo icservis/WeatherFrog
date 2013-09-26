@@ -65,6 +65,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localNotificationReceived:) name:ApplicationReceivedLocalNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -200,7 +201,7 @@
 {
     DDLogInfo(@"updatePlacemark");
     _selectedPlacemark = placemark;
-    [self performSelector:@selector(updateTable) withObject:nil afterDelay:uiDelay];
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:kUserActionDelay];
 }
 
 - (void)updateTable
@@ -314,6 +315,12 @@
     } else {
         [self forecastButtonTapped:self.forecastButton];
     }
+}
+
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    [self.tableView reloadData];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate methods
