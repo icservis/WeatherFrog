@@ -57,8 +57,6 @@
 		847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915117BFB30E00AD76E7 /* ForecastViewController.m */; };
 		847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915517BFB43800AD76E7 /* MenuViewController.m */; };
 		847B915717BFB43800AD76E7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915517BFB43800AD76E7 /* MenuViewController.m */; };
-		847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915D17BFB9F000AD76E7 /* FbUserCell.m */; };
-		847B915F17BFB9F000AD76E7 /* FbUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B915D17BFB9F000AD76E7 /* FbUserCell.m */; };
 		847B916217BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
 		847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
 		847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
@@ -263,8 +261,6 @@
 		847B915117BFB30E00AD76E7 /* ForecastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastViewController.m; sourceTree = "<group>"; };
 		847B915417BFB43800AD76E7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		847B915517BFB43800AD76E7 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		847B915C17BFB9F000AD76E7 /* FbUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FbUserCell.h; sourceTree = "<group>"; };
-		847B915D17BFB9F000AD76E7 /* FbUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FbUserCell.m; sourceTree = "<group>"; };
 		847B916017BFC56E00AD76E7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		847B916117BFC56E00AD76E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		847B916817BFCF1C00AD76E7 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
@@ -971,8 +967,6 @@
 		84DE4A1417BF8403005AB3B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				847B915C17BFB9F000AD76E7 /* FbUserCell.h */,
-				847B915D17BFB9F000AD76E7 /* FbUserCell.m */,
 				847B916817BFCF1C00AD76E7 /* LocationCell.h */,
 				847B916917BFCF1C00AD76E7 /* LocationCell.m */,
 				847CFF5117E43E7800DA0CC7 /* ForecastCell.h */,
@@ -1187,7 +1181,6 @@
 				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
 				8422638917F1FD41003F3D7D /* LocationManager.m in Sources */,
-				847B915E17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */,
 				84DE497E17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
 				84DE490E17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
@@ -1258,7 +1251,6 @@
 				84DE48CB17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
 				84DE491717BF7659005AB3B8 /* DispatchQueueLogFormatter.m in Sources */,
 				8422638A17F1FD41003F3D7D /* LocationManager.m in Sources */,
-				847B915F17BFB9F000AD76E7 /* FbUserCell.m in Sources */,
 				84DE48F617BF764A005AB3B8 /* DDXMLElement.m in Sources */,
 				84DE491317BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
 				847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */,

@@ -107,20 +107,18 @@ static CGFloat const tableTopMargin = 0.0f;
     [super viewWillAppear:animated];
     
     DDLogInfo(@"viewWillAppear");
+    DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
     
-    if (self.forecastManager.status == ForecastStatusLoaded) {
+    if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
         
-        DDLogInfo(@"ForecastStatusLoaded");
         [self displayLoadedScreen];
         
     } else if (self.forecastManager.status == ForecastStatusFailed) {
         
-        DDLogInfo(@"ForecastStatusFailed");
         [self displayFailedScreen];
         
     } else {
         
-        DDLogInfo(@"ForecastStatusOther: %i", self.forecastManager.status);
         [self displayLoadingScreen];
         
     }

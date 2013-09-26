@@ -19,7 +19,7 @@
 
 + (CGFloat)forecastFooterHeight
 {
-    return 56.0f;
+    return 21.0f;
 }
 
 - (void)setAstro:(Astro *)astro

@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
-#import "FbUserCell.h"
 
 @interface SettingsViewController ()
 

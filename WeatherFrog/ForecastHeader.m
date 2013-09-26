@@ -19,7 +19,7 @@
 
 + (CGFloat)forecastHeaderHeight
 {
-    return 48.0f;
+    return 30.0f;
 }
 
 - (void)setWeather:(Weather *)weather
