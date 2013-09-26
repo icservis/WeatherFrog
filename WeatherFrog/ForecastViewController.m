@@ -158,7 +158,7 @@ static CGFloat const tableTopMargin = 0.0f;
         
     } else {
         
-        if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
+        if (self.forecastManager.status == ForecastStatusCompleted || self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
             DDLogInfo(@"display selectedForecast");
             [self displayForecast:self.selectedForecast];
         }

@@ -49,6 +49,8 @@
 @synthesize astroData = _astroData;
 @synthesize location = _location;
 
+#pragma mark - setters and getters
+
 - (void)setStatus:(ForecastStatus)status
 {
     _status = status;
@@ -65,7 +67,7 @@
     }
 }
 
-#pragma mark - logic
+#pragma mark - queries
 
 - (Forecast*)lastForecast
 {
@@ -95,7 +97,7 @@
     
     if (force == NO) {
         
-        forecast = [self findForecastForPlacemark:placemark];
+        forecast = [self forecastForPlacemark:placemark];
     }
     
     if (forecast != nil) {
@@ -135,7 +137,7 @@
     
     [self instantiateForecastWithPlacemark:placemark timezone:timezone];
     
-    Forecast* forecast = [self findForecastForPlacemark:placemark];
+    Forecast* forecast = [self forecastForPlacemark:placemark];
     
     if (forecast != nil) {
         
@@ -195,9 +197,7 @@
     }
 }
 
-#pragma mark - helpers
-
-- (Forecast*)findForecastForPlacemark:(CLPlacemark*)placemark
+- (Forecast*)forecastForPlacemark:(CLPlacemark*)placemark
 {
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
@@ -234,7 +234,7 @@
     return nil;
 }
 
-#pragma mark - states
+#pragma mark - actions
 
 - (void)startFetching
 {
@@ -319,8 +319,6 @@
         [self failedForecastWithError:error];
     }];
 }
-
-#pragma mark - states
 
 - (void)instantiateForecastWithPlacemark:(CLPlacemark*)placemark timezone:(NSTimeZone*)timezone
 {
@@ -421,6 +419,8 @@
     return forecast;
 }
 
+#pragma mark - states
+
 - (void)completedForecast
 {
     self.status = ForecastStatusSaving;
@@ -456,7 +456,7 @@
     [self.delegate forecastManager:self didFailProcessingForecast:nil error:error];
 }
 
-#pragma mark - support functions
+#pragma mark - convertors
 
 - (BOOL)isTimestampNight:(NSDate*)timestamp forAstroData:(NSArray*)astroData
 {

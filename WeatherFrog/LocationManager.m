@@ -35,34 +35,9 @@
     return location;
 }
 
-- (Location*)locationforForecast:(Forecast*)forecast
-{
-    CLLocation* forecastLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]) altitude:[forecast.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:forecast.timestamp];
-    
-    Location* location = [self nearestLocationWith:forecastLocation];
-    
-    if (location == nil) {
-        
-        NSString* name = (forecast.name) ? forecast.name : [forecast.placemark title];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([forecast.latitude doubleValue], [forecast.longitude doubleValue]);
-        CLLocationDistance altitude = [forecast.altitude floatValue];
-        NSTimeZone* timezone = forecast.timezone;
-        
-        location = [self locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:forecast.placemark];
-        
-    } else {
-        
-        location.timestamp = [NSDate date];
-    }
-    
-    DDLogVerbose(@"Location: %@", [location description]);
-    
-    return location;
-}
-
 - (Location*)locationforPlacemark:(CLPlacemark*)placemark withTimezone:(NSTimeZone*)timezone
 {
-    Location* location = [self nearestLocationWith:placemark.location];
+    Location* location = [self locationWithCLPlacemark:placemark];
     
     if (location == nil) {
         
@@ -82,9 +57,9 @@
     return location;
 }
 
-- (Location*)nearestLocationWith:(CLLocation*)selectedLocation
+- (Location*)locationWithCLPlacemark:(CLPlacemark*)placemark
 {
-    DDLogVerbose(@"nearestLocationWith");
+    DDLogVerbose(@"nearestLocationWithCLPlacemark");
     Location* location;
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
@@ -93,39 +68,13 @@
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription* entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:currentContext];
     [fetchRequest setEntity:entity];
+    NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"latitude = %@ AND longitude = %@", [NSNumber numberWithDouble:placemark.location.coordinate.latitude], [NSNumber numberWithDouble:placemark.location.coordinate.longitude]];
+    [fetchRequest setPredicate:findPredicate];
     NSError* error;
     NSArray* locations = [currentContext executeFetchRequest:fetchRequest error:&error];
     
-    if (locations != nil) {
-        
-        NSArray* sortedLocations;
-        sortedLocations = [locations sortedArrayUsingComparator:^NSComparisonResult(Location* a, Location* b) {
-            
-            CLLocation* locationFirst = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([a.latitude doubleValue], [a.longitude doubleValue]) altitude:[a.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:a.timestamp];
-            CLLocationDistance first = [locationFirst distanceFromLocation:selectedLocation];
-            
-            CLLocation* locationSecond = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([b.latitude doubleValue], [b.longitude doubleValue]) altitude:[b.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:b.timestamp];
-            CLLocationDistance second = [locationSecond distanceFromLocation:selectedLocation];
-            
-            if (first < second) {
-                return NSOrderedAscending;
-            } else if (first > second) {
-                return NSOrderedDescending;
-            } else {
-                return  NSOrderedSame;
-            }
-            
-        }];
-        
-        if (sortedLocations.count > 0) {
-            Location* nearestLocation = [sortedLocations firstObject];
-            CLLocation* nearestLocationLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake([nearestLocation.latitude doubleValue], [nearestLocation.longitude doubleValue]) altitude:[nearestLocation.altitude floatValue] horizontalAccuracy:-1 verticalAccuracy:-1 timestamp:nearestLocation.timestamp];
-            CLLocationDistance nearestLocationDistance = [nearestLocationLocation distanceFromLocation:selectedLocation];
-            
-            if (nearestLocationDistance < kCLLocationAccuracyHundredMeters) {
-                location = nearestLocation;
-            }
-        }
+    if (locations != nil && locations.count > 0) {
+        location = [locations firstObject];
     }
     
     return location;

@@ -234,9 +234,10 @@
     cell.location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.delegate = self;
     
-    CLLocationDistance distance = [_selectedPlacemark.location distanceFromLocation:cell.location.placemark.location];
+    NSNumber* latitude = [NSNumber numberWithDouble:_selectedPlacemark.location.coordinate.latitude];
+    NSNumber* longitude = [NSNumber numberWithDouble:_selectedPlacemark.location.coordinate.longitude];
     
-    if (_selectedPlacemark != nil && distance == 0) {
+    if ([cell.location.latitude isEqualToNumber:latitude] || [cell.location.longitude isEqualToNumber:longitude]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
