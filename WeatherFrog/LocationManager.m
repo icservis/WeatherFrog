@@ -44,14 +44,11 @@
         NSString* name = [placemark title];
         CLLocationCoordinate2D coordinate = placemark.location.coordinate;
         CLLocationDistance altitude = placemark.location.altitude;
-        
         location = [self locationWithName:name coordinate:coordinate altitude:altitude timezone:timezone placemark:placemark];
-        DDLogInfo(@"new location %@", [location description]);
         
     } else {
         
         location.timestamp = [NSDate date];
-        DDLogInfo(@"restored location %@", [location description]);
     }
     
     return location;

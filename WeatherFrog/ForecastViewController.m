@@ -109,7 +109,6 @@ static CGFloat const tableTopMargin = 2.0f;
 {
     [super viewWillAppear:animated];
     
-    DDLogInfo(@"viewWillAppear");
     DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
     
     if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
@@ -132,12 +131,12 @@ static CGFloat const tableTopMargin = 2.0f;
 {
     [super viewDidAppear:animated];
     
-    DDLogInfo(@"viewDidAppear");
+    DDLogVerbose(@"viewDidAppear");
     [self becomeFirstResponder];
     
     if (self.selectedForecast == nil) {
         
-        DDLogInfo(@"selectedForecast is nil");
+        DDLogVerbose(@"selectedForecast is nil");
         
         if (self.selectedPlacemark == nil) {
             
@@ -146,13 +145,13 @@ static CGFloat const tableTopMargin = 2.0f;
             if (lastForecast != nil) {
                 
                 if (self.forecastManager.status != ForecastStatusFailed) {
-                    DDLogInfo(@"forecast restored");
+                    DDLogVerbose(@"forecast restored");
                     self.selectedForecast = lastForecast;
                 }
                 
             } else {
                 
-                DDLogInfo(@"placemark not determined");
+                DDLogVerbose(@"placemark not determined");
                 [self displayDefaultScreen];
             }
         }
@@ -160,7 +159,7 @@ static CGFloat const tableTopMargin = 2.0f;
     } else {
         
         if (self.forecastManager.status == ForecastStatusCompleted || self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
-            DDLogInfo(@"display selectedForecast");
+            DDLogVerbose(@"display selectedForecast");
             [self displayForecast:self.selectedForecast];
         }
     }

@@ -370,7 +370,7 @@
 
 - (void)defaultsChanged:(NSNotification*)notification
 {
-    DDLogInfo(@"defaultsChanged");
+    DDLogVerbose(@"defaultsChanged");
     [self setBackgroundFetchOperation];
 }
 
