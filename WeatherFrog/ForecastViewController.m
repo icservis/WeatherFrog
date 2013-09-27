@@ -359,7 +359,7 @@ static CGFloat const tableTopMargin = 2.0f;
         [menuViewController updatePlacemark:selectedForecast.placemark];
         
         if ([self isViewLoaded]) {
-            [self performSelector:@selector(displayForecast:) withObject:selectedForecast afterDelay:kUserActionDelay];
+            [self displayForecast:selectedForecast];
         }
     }
 }

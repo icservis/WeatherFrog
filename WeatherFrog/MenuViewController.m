@@ -201,7 +201,7 @@
 {
     DDLogInfo(@"updatePlacemark");
     _selectedPlacemark = placemark;
-    [self performSelector:@selector(updateTable) withObject:nil afterDelay:kUserActionDelay];
+    [self updateTable];
 }
 
 - (void)updateTable
