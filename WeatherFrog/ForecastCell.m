@@ -71,12 +71,19 @@
     }
     
     self.time.text = [self.localDateFormatter stringFromDate:weather.timestamp];
+    self.time.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.temp.text = [self.unitsConverter convertTemperature:weather.temperature];
+    self.temp.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.precip.text = [self.unitsConverter convertPrecipitation:precipitation period:hours];
+    self.precip.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
     self.precipMin.text = [self.unitsConverter convertPrecipitation:precipitationMin period:hours];
+    self.precipMin.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
     self.precipMax.text = [self.unitsConverter convertPrecipitation:precipitationMax period:hours];
+    self.precipMax.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
     self.windScale.text = [self.unitsConverter convertWindScale:weather.windScale];
+    self.windScale.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption2];
     self.windSpeed.text = [self.unitsConverter convertWindSpeed:weather.windSpeed];
+    self.windSpeed.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
     
     NSInteger symbol = 0;
     if (weather.symbol1h != nil) {

@@ -38,12 +38,22 @@
     self.notificationsSlider.maximumValue = [self.maxValue integerValue];
     self.notificationsSlider.value = [self.value integerValue];
     self.notificationsLabel.text = [[UserDefaultsManager sharedDefaults] titleOfSliderValue:self.value forKey:DefaultsNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Notifications
+
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    [self.notificationsLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
 }
 
 #pragma mark - IBActions

@@ -38,7 +38,9 @@
     self.elementsSections = [[UserDefaultsManager sharedDefaults] elementsSections];
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsChanged:) name:NSUserDefaultsDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -236,7 +238,7 @@
     }
 }
 
-#pragma mark - NSnotification
+#pragma mark - Notification
 
 - (void)fbSessionStateClosed:(NSNotification*)notification
 {
@@ -245,10 +247,15 @@
 
 - (void)defaultsChanged:(NSNotification*)notification
 {
-    DDLogVerbose(@"notification: %@", [notification description]);
+    DDLogVerbose(@"defaultsChanged: %@", [notification description]);
     [self.tableView reloadData];
 }
 
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    [self.tableView reloadData];
+}
 
 #pragma mark - Navigation
 

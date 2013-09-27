@@ -320,7 +320,15 @@
 - (void)preferredContentSizeChanged:(NSNotification*)notification
 {
     DDLogInfo(@"preferredContentSizeChanged");
+    
+    // table
     [self.tableView reloadData];
+    //buttons
+    [self.forecastButton.titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [self.locatorButton.titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    // labels
+    [self.applicationNameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    [self.applicationVersionLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate methods

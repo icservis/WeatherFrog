@@ -11,6 +11,7 @@
 @interface InfoViewController ()
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButon;
+@property (nonatomic, weak) IBOutlet UITextView* textView;
 
 - (IBAction)closeButtontapped:(id)sender;
 
@@ -31,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +46,16 @@
 {
     return NO;
 }
+
+#pragma mark - Notifications
+
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
+
+#pragma mark - IBActions
 
 - (IBAction)closeButtontapped:(id)sender
 {

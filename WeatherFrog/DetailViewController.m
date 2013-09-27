@@ -41,6 +41,8 @@
     [self.localDateFormatter setDateStyle:NSDateFormatterLongStyle];
     [self.localDateFormatter setTimeStyle:NSDateFormatterShortStyle];
     self.title = [self.localDateFormatter stringFromDate:self.weather.timestamp];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +72,14 @@
     return _unitsConverter;
 }
 
+#pragma mark - Notifications
+
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewdataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,6 +97,9 @@
     static NSString* DetailCellIdentifier = @"DetailCell";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:DetailCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     if (indexPath.row == 0) {
         cell.textLabel.text = NSLocalizedString(@"Temperature", nil);

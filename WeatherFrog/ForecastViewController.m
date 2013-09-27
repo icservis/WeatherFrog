@@ -394,7 +394,31 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)preferredContentSizeChanged:(NSNotification*)notification
 {
     DDLogInfo(@"preferredContentSizeChanged");
-    [self.scrollView setNeedsDisplay];
+    
+    // refreshing portrait
+    
+    [[self.scrollView subviews] enumerateObjectsUsingBlock:^(UIView* dayBackground, NSUInteger idx, BOOL *stopx) {
+        
+        [[dayBackground subviews] enumerateObjectsUsingBlock:^(UIView* subView, NSUInteger idy, BOOL *stopy) {
+            
+            if ([subView isKindOfClass:[UITableView class]]) {
+                UITableView* tableView = (UITableView*)subView;
+                [tableView reloadData];
+            }
+            
+            if ([subView isKindOfClass:[UILabel class]]) {
+                UILabel* label = (UILabel*)subView;
+                
+                if (label.tag == 0) {
+                    [label setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
+                } else {
+                    [label setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+                }
+            }
+            
+        }];
+        
+    }];
 }
 
 - (void)locationManagerUpdate:(NSNotification*)notification
@@ -604,7 +628,7 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)checkForecastLayoutValidity
 {
-    [self.scrollView setContentOffset:CGPointZero animated:YES];
+    //[self.scrollView setContentOffset:CGPointZero animated:YES];
 }
 
 #pragma mark - Views for Portrait
@@ -654,6 +678,7 @@ static CGFloat const tableTopMargin = 2.0f;
         CGRect labelFrame = CGRectMake(0, labelTopMargin, backgroundRect.size.width, labelHeight);
         UILabel* dayLabel = [[UILabel alloc] initWithFrame:labelFrame];
         dayLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        dayLabel.tag = 0;
         
         Weather* firstHour = hours[0];
         [self.dateFormatter setDateStyle:NSDateFormatterFullStyle];
@@ -684,6 +709,7 @@ static CGFloat const tableTopMargin = 2.0f;
         } else {
             timeLeft.text = nil;
         }
+        timeLeft.tag = 1;
         [dayBackground addSubview:timeLeft];
         
         CGRect iconMiddleFrame = CGRectMake(3*spacer/2+iconSize, iconOffset, iconSize, iconSize);
@@ -703,6 +729,7 @@ static CGFloat const tableTopMargin = 2.0f;
         } else {
             timeMiddle.text = nil;
         }
+        timeMiddle.tag = 2;
         [dayBackground addSubview:timeMiddle];
         
         CGRect iconRightFrame = CGRectMake(5*spacer/2+2*iconSize, iconOffset, iconSize, iconSize);
@@ -722,6 +749,7 @@ static CGFloat const tableTopMargin = 2.0f;
         } else {
             timeRight.text = nil;
         }
+        timeRight.tag = 3;
         [dayBackground addSubview:timeRight];
         
         CGFloat tableOffset = iconOffset + iconSize + tableTopMargin;

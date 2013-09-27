@@ -40,8 +40,11 @@
 - (void)setLocation:(Location *)location
 {
     _location = location;
-    _title.text = [location.placemark title];
-    _subTitle.text = [location.placemark subTitle];
+    
+    self.title.text = [location.placemark title];
+    self.title.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.subTitle.text = [location.placemark subTitle];
+    self.subTitle.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     self.accessoryType = UITableViewCellAccessoryNone;
     
     if ([location.isMarked isEqualToNumber:@YES]) {
