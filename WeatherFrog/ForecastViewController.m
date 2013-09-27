@@ -60,6 +60,7 @@ static CGFloat const tableTopMargin = 2.0f;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, strong) MBProgressHUD* hud;
 @property (nonatomic, strong) ForecastManager* forecastManager;
+@property (nonatomic, strong) ADBannerView* adBanner;
 
 - (IBAction)actionButtonTapped:(id)sender;
 
@@ -171,6 +172,9 @@ static CGFloat const tableTopMargin = 2.0f;
     // Dispose of any resources that can be recreated.
     _selectedForecast = nil;
     _selectedPlacemark = nil;
+    dataPortrait = nil;
+    dataLandscape = nil;
+    _adBanner = nil;
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -352,6 +356,9 @@ static CGFloat const tableTopMargin = 2.0f;
     DDLogVerbose(@"setSelectedForecast: %@", [selectedForecast description]);
     _selectedForecast = selectedForecast;
     _selectedPlacemark = selectedForecast.placemark;
+    dataPortrait = [selectedForecast sortedWeatherDataForPortrait];
+    dataLandscape = [selectedForecast sortedWeatherDataForLandscape];
+    
     if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
         
         MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
@@ -386,6 +393,15 @@ static CGFloat const tableTopMargin = 2.0f;
         _forecastManager.delegate = self;
     }
     return _forecastManager;
+}
+
+- (ADBannerView*)adBanner
+{
+    if (_adBanner == nil) {
+        _adBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+        _adBanner.delegate = self;
+    }
+    return _adBanner;
 }
 
 #pragma mark - Notifications
@@ -476,15 +492,13 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)showLoadingLayout
 {
-    //self.loadingView.hidden = NO;
-    //self.scrollView.hidden = YES;
-    
     [UIView beginAnimations:@"ToggleViews" context:nil];
     [UIView setAnimationDuration:kAnimationDuration];
     self.loadingView.alpha = 1.0;
     self.scrollView.alpha = 0.0;
     [UIView commitAnimations];
     
+    [self purgeSubViews];
     self.statusInfo.text = nil;
     [self.progressBar setProgress:0.0f animated:NO];
     
@@ -497,8 +511,7 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)showForecastLayout
 {
-    //self.loadingView.hidden = YES;
-    //self.scrollView.hidden = NO;
+    [self purgeSubViews];
     
     [UIView beginAnimations:@"ToggleViews" context:nil];
     [UIView setAnimationDuration:kAnimationDuration];
@@ -620,6 +633,10 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)purgeSubViews
 {
+    if (self.adBanner.superview != nil) {
+        [self.adBanner removeFromSuperview];
+    }
+    
     for (UIView* subview in [self.scrollView subviews]) {
         [subview removeFromSuperview];
     }
@@ -635,16 +652,32 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)setupViewsForPortrait:(Forecast*)forecast
 {
     DDLogInfo(@"setupViewsForPortrait");
-    [self purgeSubViews];
     
     [self.dateFormatter setTimeZone:forecast.timezone];
-    CGRect superViewFrame = self.scrollView.superview.frame;
     CGRect scrollFrame = self.scrollView.frame;
+    __block CGRect backgroundRect;
     
-    __block CGRect backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, superViewFrame.size.height - scrollFrame.origin.y);
+    if ([[UserDefaultsManager sharedDefaults] adFreeMode] == NO) {
+        
+        CGRect superViewFrame = self.scrollView.superview.frame;
+        CGFloat adBannerHeight = 50.0f;
+        CGFloat adBannerYOrigin = superViewFrame.size.height - adBannerHeight;
+        self.adBanner.frame = CGRectMake(0, adBannerYOrigin, superViewFrame.size.width, adBannerHeight);
+        DDLogInfo(@"self.adBanner.frame: %@", NSStringFromCGRect(self.adBanner.frame));
+        [self.scrollView.superview addSubview:self.adBanner];
+        [self hideAdBanner];
+        
+        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - adBannerHeight);
+        CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height - adBannerHeight);
+        [self.scrollView setContentSize:contentSize];
+        
+    } else {
+        
+        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height);
+        CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
+        [self.scrollView setContentSize:contentSize];
+    }
     DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
-    
-    dataPortrait = [forecast sortedWeatherDataForPortrait];
     
     [dataPortrait enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
@@ -775,10 +808,6 @@ static CGFloat const tableTopMargin = 2.0f;
         [self.scrollView addSubview:dayBackground];
         
     }];
-    CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
-    [self.scrollView setContentSize:contentSize];
-    
-    DDLogVerbose(@"contentsize: %@", NSStringFromCGSize(contentSize));
 }
 
 - (UIImage*)iconNameForTimes:(NSArray*)weatherArray
@@ -830,17 +859,37 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)setupViewsForLandscape:(Forecast*)forecast
 {
     DDLogInfo(@"setupViewsForLandscape");
-    [self purgeSubViews];
     
-    UITextView* textView = [[UITextView alloc] initWithFrame:self.scrollView.bounds];
+    UITextView* textView;
+    if ([[UserDefaultsManager sharedDefaults] adFreeMode] == NO) {
+        
+        CGRect superViewFrame = self.scrollView.superview.frame;
+        CGFloat adBannerHeight = 32.0f;
+        CGFloat adBannerYOrigin = superViewFrame.size.height - adBannerHeight;
+        self.adBanner.frame = CGRectMake(0, adBannerYOrigin, superViewFrame.size.width, adBannerHeight);
+        DDLogInfo(@"self.adBanner.frame: %@", NSStringFromCGRect(self.adBanner.frame));
+        [self.scrollView.superview addSubview:self.adBanner];
+        [self hideAdBanner];
+        
+        CGRect textFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height - adBannerHeight);
+        textView = [[UITextView alloc] initWithFrame:textFrame];
+        
+    } else {
+        
+        CGRect textFrame = self.scrollView.bounds;
+        textView = [[UITextView alloc] initWithFrame:textFrame];
+    }
+    
     [textView setText:[forecast description]];
     [textView setEditable:NO];
     textView.translatesAutoresizingMaskIntoConstraints = YES;
     textView.autoresizesSubviews = YES;
     textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     textView.backgroundColor = [UIColor lightGrayColor];
+    
     [self.scrollView addSubview:textView];
     [self.scrollView setContentSize:self.scrollView.frame.size];
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
 }
 
 #pragma mark - UIEvent
@@ -1021,6 +1070,36 @@ static CGFloat const tableTopMargin = 2.0f;
     [self dismissViewControllerAnimated:YES completion:^{
         [self becomeFirstResponder];
     }];
+}
+
+#pragma mark - ADBannerViewDelegate
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    [self hideAdBanner];
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    [self showAdBanner];
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    
+}
+
+#pragma mark - AdBanner actions
+
+- (void)hideAdBanner
+{
+    
+    self.adBanner.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f];
+}
+
+- (void)showAdBanner
+{
+    self.adBanner.backgroundColor = [UIColor clearColor];
 }
 
 @end

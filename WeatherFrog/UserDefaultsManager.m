@@ -326,6 +326,40 @@
     return _lastNotificationSymbol;
 }
 
+#pragma mark - Ad Free Mode
+
+@synthesize adFreeMode = _adFreeMode;
+
+- (void)setAdFreeMode:(BOOL)adFreeMode
+{
+    _adFreeMode = adFreeMode;
+    [self.standardDefaults setBool:adFreeMode forKey:DefaultsAdFreeMode];
+    [self.standardDefaults synchronize];
+}
+
+- (BOOL)adFreeMode
+{
+    _adFreeMode = [self.standardDefaults boolForKey:DefaultsAdFreeMode];
+    return _onScreenHelp;
+}
+
+#pragma mark - Full Notification Mode
+
+@synthesize fullNotificationMode = _fullNotificationMode;
+
+- (void)setFullNotificationMode:(BOOL)fullNotificationMode
+{
+    _fullNotificationMode = fullNotificationMode;
+    [self.standardDefaults setBool:fullNotificationMode forKey:DefaultsFullNotificationMode];
+    [self.standardDefaults synchronize];
+}
+
+- (BOOL)fullNotificationMode
+{
+    _fullNotificationMode = [self.standardDefaults boolForKey:DefaultsFullNotificationMode];
+    return _fullNotificationMode;
+}
+
 #pragma mark - Helpers
 
 - (NSArray*)elementsList

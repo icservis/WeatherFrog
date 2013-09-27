@@ -24,6 +24,8 @@ static NSString* const DefaultsForecastUnitPrecipitation = @"FORECAST_UNIT_PRECI
 static NSString* const DefaultsForecastUnitPressure = @"FORECAST_UNIT_PRESSURE";
 static NSString* const DefaultsForecastUnitAltitude = @"FORECAST_UNIT_ALTITUDE";
 static NSString* const DefaultsLastNotificationSymbol = @"LAST_NOTIFICATION_SYMBOL";
+static NSString* const DefaultsAdFreeMode = @"AD_FREE_MODE";
+static NSString* const DefaultsFullNotificationMode = @"FULL_NOTIFICATION_MODE";
 
 @interface UserDefaultsManager : NSObject
 
@@ -43,6 +45,8 @@ static NSString* const DefaultsLastNotificationSymbol = @"LAST_NOTIFICATION_SYMB
 @property (nonatomic, strong) NSString* forecastUnitPressure;
 @property (nonatomic, strong) NSString* forecastUnitAltitude;
 @property (nonatomic, strong) NSNumber* lastNotificationSymbol;
+@property (nonatomic) BOOL adFreeMode;
+@property (nonatomic) BOOL fullNotificationMode;
 
 + (UserDefaultsManager *)sharedDefaults;
 

@@ -21,6 +21,7 @@
     #import <CoreLocation/CoreLocation.h>
     #import <MapKit/MapKit.h>
     #import <StoreKit/StoreKit.h>
+    #import <iAd/iAd.h>
 
     #import "Lumberjack.h"
     #import "Reachability.h"
