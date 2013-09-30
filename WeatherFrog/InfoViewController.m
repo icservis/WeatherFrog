@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "InfoViewController.h"
 
 @interface InfoViewController ()
@@ -34,6 +35,21 @@
 	// Do any additional setup after loading the view.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    DDFileLogger*fileLogger = [appDelegate fileLogger];
+    id <DDLogFileManager> manager = [fileLogger logFileManager];
+    NSString* logFilePath = [[manager sortedLogFilePaths] firstObject];
+    //DDLogInfo(@"logFilePath: %@", logFilePath);
+    
+    NSError* error;
+    NSString* logs = [NSString stringWithContentsOfFile:logFilePath encoding:NSUTF8StringEncoding error:&error];
+    NSArray* logsArray = [logs componentsSeparatedByString:@"\n"];
+    NSArray* reversedLogsArray = [[logsArray reverseObjectEnumerator] allObjects];
+    NSString* reversedLogs = [reversedLogsArray componentsJoinedByString:@"\n"];
+    self.textView.text = reversedLogs;
+    [self.textView scrollsToTop];
 }
 
 - (void)didReceiveMemoryWarning

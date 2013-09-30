@@ -98,7 +98,9 @@ static CGFloat const tableTopMargin = 2.0f;
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdateUnderTreshold:) name:LocationManagerUpdateUnderTresholdNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderFail:) name:ReverseGeocoderFailNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastFetch:) name:ForecastFetchNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastUpdate:) name:ForecastUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastProgress:) name:ForecastProgressNotification object:nil];
@@ -184,7 +186,6 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)setRevealMode:(BOOL)revealed
 {
-    DDLogVerbose(@"setRevealMode: %d", revealed);
     if (revealed == YES) {
         self.scrollView.scrollEnabled = NO;
         [self.scrollView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -439,11 +440,25 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
+    [self infoMessage:@"Location update"];
+}
+
+- (void)locationManagerUpdateUnderTreshold:(NSNotification*)notification
+{
+    DDLogVerbose(@"notification: %@", [notification description]);
+    [self infoMessage:@"location under treshold"];
 }
 
 - (void)reverseGeocoderUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
+    [self infoMessage:@"Geocoder update"];
+}
+
+- (void)reverseGeocoderFail:(NSNotification*)notification
+{
+    DDLogVerbose(@"notification: %@", [notification description]);
+    [self infoMessage:@"Geocoder fail"];
 }
 
 - (void)forecastUpdate:(NSNotification*)notification
@@ -489,6 +504,11 @@ static CGFloat const tableTopMargin = 2.0f;
 }
 
 #pragma mark - User Interface
+
+- (void)infoMessage:(NSString*)message
+{
+    // Log message
+}
 
 - (void)showLoadingLayout
 {
@@ -663,7 +683,6 @@ static CGFloat const tableTopMargin = 2.0f;
         CGFloat adBannerHeight = 50.0f;
         CGFloat adBannerYOrigin = superViewFrame.size.height - adBannerHeight;
         self.adBanner.frame = CGRectMake(0, adBannerYOrigin, superViewFrame.size.width, adBannerHeight);
-        DDLogInfo(@"self.adBanner.frame: %@", NSStringFromCGRect(self.adBanner.frame));
         [self.scrollView.superview addSubview:self.adBanner];
         [self hideAdBanner];
         
@@ -677,7 +696,6 @@ static CGFloat const tableTopMargin = 2.0f;
         CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height);
         [self.scrollView setContentSize:contentSize];
     }
-    DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
     
     [dataPortrait enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         

@@ -13,7 +13,9 @@
 
 static NSString* const ReachabilityNotification = @"REACHABILITY_NOTIFICATION";
 static NSString* const LocationManagerUpdateNotification = @"LOCATION_MANAGER_UPDATE_NOTIFICATION";
+static NSString* const LocationManagerUpdateUnderTresholdNotification = @"LOCATION_MANAGER_UPDATE_UNDER_TRESHOLD_NOTIFICATION";
 static NSString* const ReverseGeocoderUpdateNotification = @"REVERSE_GEOCODER_UPDATE_NOTIFICATION";
+static NSString* const ReverseGeocoderFailNotification = @"REVERSE_GEOCODER_FAIL_NOTIFICATION";
 static NSString* const ForecastErrorNotification = @"FORECAST_ERROR_NOTIFICATION";
 static NSString* const ForecastFetchNotification = @"FORECAST_FETCH_NOTIFICATION";
 static NSString* const ForecastProgressNotification = @"FORECAST_PROGRESS_NOTIFICATION";
@@ -30,6 +32,7 @@ static NSString* const ApplicationReceivedLocalNotification = @"APPLICATION_RECE
 @property (strong, nonatomic) CLLocation* currentLocation;
 @property (strong, nonatomic) CLPlacemark* currentPlacemark;
 @property (strong, nonatomic) Forecast* currentForecast;
+@property (strong, nonatomic) DDFileLogger* fileLogger;
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel* managedObjectModel;

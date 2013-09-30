@@ -402,7 +402,6 @@
             
         }
     }
-    DDLogVerbose(@"sections: %@", [sections description]);
     return sections;
 }
 

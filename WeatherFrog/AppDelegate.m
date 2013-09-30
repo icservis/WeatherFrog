@@ -31,6 +31,9 @@
 	[[DDTTYLogger sharedInstance] setLogFormatter:formatter];
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
     
+    self.fileLogger = [DDFileLogger new];
+    [DDLog addLogger:self.fileLogger];
+
     // Activity Manager
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
@@ -154,13 +157,13 @@
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
 {
     DDLogVerbose(@"shouldSaveApplicationState");
-    return YES;
+    return NO;
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
 {
     DDLogVerbose(@"shouldRestoreApplicationState");
-    return YES;
+    return NO;
 }
 
 - (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
@@ -203,8 +206,9 @@
         }
         DDLogVerbose(@"Current location restored");
         _currentLocation = currentLocation;
-    
+        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
         [clGeocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             if ([placemarks count] > 0) {
                 _currentPlacemark = placemarks[0];
                 DDLogVerbose(@"Restoring current placemark completed");
@@ -565,11 +569,13 @@
     if (abs(howRecent) < 15.0 && accuracy < kCLLocationAccuracyHundredMeters) {
         
         NSNumber* forecastAccuracy = [[UserDefaultsManager sharedDefaults] forecastAccuracy];
-        if (self.currentLocation != nil && [lastLocation distanceFromLocation:self.currentLocation] < [forecastAccuracy floatValue]) {
-            DDLogVerbose(@"distance under limit");
+        CLLocationDistance distance = [lastLocation distanceFromLocation:self.currentLocation];
+        CLLocationDistance minDistance = [forecastAccuracy floatValue];
+        if (self.currentLocation != nil && distance < [forecastAccuracy floatValue]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:LocationManagerUpdateUnderTresholdNotification object:self userInfo:[[NSDictionary alloc] initWithObjectsAndKeys:lastLocation, @"currentLocation", nil]];
+            DDLogVerbose(@"distance under treshold: %.5f/%.5f", distance, minDistance);
             return;
         }
-        
         self.currentLocation = lastLocation;
     }
 }
@@ -606,15 +612,19 @@
     DDLogVerbose(@"location: %@", [currentLocation description]);
     
     if (internetActive) {
+        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
         [clGeocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             if ([placemarks count] > 0) {
                 self.currentPlacemark = placemarks[0];
             } else {
                 DDLogError(@"geocoder error: %@", [error description]);
+                [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderFailNotification object:self userInfo:nil];
             }
         }];
     } else {
         DDLogError(@"internet not active");
+        [[NSNotificationCenter defaultCenter] postNotificationName:ReverseGeocoderFailNotification object:self userInfo:nil];
     }
 }
 

@@ -390,7 +390,6 @@
 - (void)closeSettingsViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        DDLogVerbose(@"controller: %@", [controller description]);
     }];
 }
 
@@ -399,7 +398,6 @@
 - (void)closeInfoViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        DDLogVerbose(@"controller: %@", [controller description]);
     }];
 }
 
@@ -419,7 +417,6 @@
 {
     UINavigationController* nc = (UINavigationController*)revealController.frontViewController;
     UIViewController* frontViewController = [[nc viewControllers] objectAtIndex:0];
-    DDLogVerbose(@"frontViewController: %@, position: %i", [frontViewController description], position);
     [frontViewController becomeFirstResponder];
     
     if ([frontViewController isKindOfClass:[ForecastViewController class]]) {
