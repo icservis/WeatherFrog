@@ -12,6 +12,18 @@
 		84089894176E104500F45397 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089893176E104500F45397 /* QuartzCore.framework */; };
 		84089896176E105700F45397 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089895176E105700F45397 /* CoreLocation.framework */; };
 		84089898176E106500F45397 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84089897176E106500F45397 /* CoreImage.framework */; };
+		841122E717FA9AFC0079ECCA /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122E617FA9AFC0079ECCA /* BannerView.m */; };
+		841122E817FA9AFC0079ECCA /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122E617FA9AFC0079ECCA /* BannerView.m */; };
+		841122EA17FA9BB40079ECCA /* BannerView-Portrait.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122E917FA9BB40079ECCA /* BannerView-Portrait.xib */; };
+		841122EB17FA9BB40079ECCA /* BannerView-Portrait.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122E917FA9BB40079ECCA /* BannerView-Portrait.xib */; };
+		841122ED17FA9BCD0079ECCA /* BannerView-Landscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122EC17FA9BCD0079ECCA /* BannerView-Landscape.xib */; };
+		841122EE17FA9BCD0079ECCA /* BannerView-Landscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122EC17FA9BCD0079ECCA /* BannerView-Landscape.xib */; };
+		841122F217FABC780079ECCA /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122F017FABC780079ECCA /* BannerViewController.m */; };
+		841122F317FABC780079ECCA /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122F017FABC780079ECCA /* BannerViewController.m */; };
+		841122F417FABC780079ECCA /* BannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122F117FABC780079ECCA /* BannerViewController.xib */; };
+		841122F517FABC780079ECCA /* BannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122F117FABC780079ECCA /* BannerViewController.xib */; };
+		841122FF17FC3D280079ECCA /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122FE17FC3D280079ECCA /* Banner.m */; };
+		8411230017FC3D280079ECCA /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122FE17FC3D280079ECCA /* Banner.m */; };
 		841EFAD217D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
 		841EFAD317D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
 		841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
@@ -217,6 +229,15 @@
 		84089893176E104500F45397 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84089895176E105700F45397 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		84089897176E106500F45397 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		841122E517FA9AFC0079ECCA /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		841122E617FA9AFC0079ECCA /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
+		841122E917FA9BB40079ECCA /* BannerView-Portrait.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BannerView-Portrait.xib"; sourceTree = "<group>"; };
+		841122EC17FA9BCD0079ECCA /* BannerView-Landscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BannerView-Landscape.xib"; sourceTree = "<group>"; };
+		841122EF17FABC780079ECCA /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
+		841122F017FABC780079ECCA /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
+		841122F117FABC780079ECCA /* BannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerViewController.xib; sourceTree = "<group>"; };
+		841122FD17FC3D280079ECCA /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		841122FE17FC3D280079ECCA /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
 		841EFAD117D25571009EF860 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		841EFAD417D26D94009EF860 /* UserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsManager.h; sourceTree = "<group>"; };
 		841EFAD517D26D94009EF860 /* UserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsManager.m; sourceTree = "<group>"; };
@@ -442,6 +463,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8411230117FC72750079ECCA /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				841122FD17FC3D280079ECCA /* Banner.h */,
+				841122FE17FC3D280079ECCA /* Banner.m */,
+				841122E517FA9AFC0079ECCA /* BannerView.h */,
+				841122E617FA9AFC0079ECCA /* BannerView.m */,
+				841122EF17FABC780079ECCA /* BannerViewController.h */,
+				841122F017FABC780079ECCA /* BannerViewController.m */,
+				841122E917FA9BB40079ECCA /* BannerView-Portrait.xib */,
+				841122EC17FA9BCD0079ECCA /* BannerView-Landscape.xib */,
+				841122F117FABC780079ECCA /* BannerViewController.xib */,
+			);
+			name = Banner;
+			sourceTree = "<group>";
+		};
 		8422226E17ECF62200F5D231 /* CCHMapsActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +560,7 @@
 				84DE4A1517BF840C005AB3B8 /* Controllers */,
 				84DE4A1317BF83FC005AB3B8 /* Models */,
 				84DE4A1417BF8403005AB3B8 /* Views */,
+				8411230117FC72750079ECCA /* Banner */,
 				848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */,
 				848BE1D717ED9161006BC4F8 /* Images.xcassets */,
 				848BE1DA17ED918E006BC4F8 /* Resources */,
@@ -1099,17 +1137,20 @@
 			files = (
 				848BE1E317ED918E006BC4F8 /* model-landscape.png in Resources */,
 				848BE1E517ED918E006BC4F8 /* model.png in Resources */,
+				841122F417FABC780079ECCA /* BannerViewController.xib in Resources */,
 				848BE1E117ED918E006BC4F8 /* model-landscape-568h.png in Resources */,
 				8496410217EF2C3B001B2029 /* ForecastHeader.xib in Resources */,
 				8422227D17ECF62300F5D231 /* CCHMapsActivity.png in Resources */,
 				8422228117ECF62300F5D231 /* CCHMapsActivity@2x˜ipad.png in Resources */,
 				8422228317ECF62300F5D231 /* CCHMapsActivity˜ipad.png in Resources */,
 				848BE1D817ED9161006BC4F8 /* Images.xcassets in Resources */,
+				841122ED17FA9BCD0079ECCA /* BannerView-Landscape.xib in Resources */,
 				848BE21717EE206F006BC4F8 /* ForecastCell.xib in Resources */,
 				848A54F1176E09A2009B3F85 /* Main_iPhone.storyboard in Resources */,
 				848BE1DF17ED918E006BC4F8 /* model-568h.png in Resources */,
 				8496410517EF34D1001B2029 /* ForecastFooter.xib in Resources */,
 				848A54E8176E09A1009B3F85 /* InfoPlist.strings in Resources */,
+				841122EA17FA9BB40079ECCA /* BannerView-Portrait.xib in Resources */,
 				841EFAD217D25571009EF860 /* Settings.bundle in Resources */,
 				8422228517ECF62300F5D231 /* CCHMapsActivity.strings in Resources */,
 				84DE491817BF7659005AB3B8 /* README.txt in Resources */,
@@ -1123,17 +1164,20 @@
 			files = (
 				841EFAD317D25571009EF860 /* Settings.bundle in Resources */,
 				848BE1E417ED918E006BC4F8 /* model-landscape.png in Resources */,
+				841122F517FABC780079ECCA /* BannerViewController.xib in Resources */,
 				848BE1E617ED918E006BC4F8 /* model.png in Resources */,
 				8496410317EF2C3B001B2029 /* ForecastHeader.xib in Resources */,
 				848BE1E217ED918E006BC4F8 /* model-landscape-568h.png in Resources */,
 				84DE491917BF7659005AB3B8 /* README.txt in Resources */,
 				8422228017ECF62300F5D231 /* CCHMapsActivity@2x.png in Resources */,
 				8422228417ECF62300F5D231 /* CCHMapsActivity˜ipad.png in Resources */,
+				841122EE17FA9BCD0079ECCA /* BannerView-Landscape.xib in Resources */,
 				848BE21817EE206F006BC4F8 /* ForecastCell.xib in Resources */,
 				848BE1D917ED9161006BC4F8 /* Images.xcassets in Resources */,
 				8422227E17ECF62300F5D231 /* CCHMapsActivity.png in Resources */,
 				8496410617EF34D1001B2029 /* ForecastFooter.xib in Resources */,
 				848BE1E017ED918E006BC4F8 /* model-568h.png in Resources */,
+				841122EB17FA9BB40079ECCA /* BannerView-Portrait.xib in Resources */,
 				848A550D176E09A2009B3F85 /* InfoPlist.strings in Resources */,
 				8422228217ECF62300F5D231 /* CCHMapsActivity@2x˜ipad.png in Resources */,
 				845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */,
@@ -1174,6 +1218,7 @@
 				8496410917EF34DD001B2029 /* ForecastFooter.m in Sources */,
 				84DE48CE17BF7601005AB3B8 /* AFJSONRequestOperation.m in Sources */,
 				84DE496C17BF767D005AB3B8 /* NSDate+ISO8601Date.m in Sources */,
+				841122E717FA9AFC0079ECCA /* BannerView.m in Sources */,
 				84DE48D417BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE496E17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				8422227B17ECF62300F5D231 /* CCHMapsActivity.m in Sources */,
@@ -1196,6 +1241,7 @@
 				847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */,
 				8443B12A17EA3036004CFA55 /* DetailViewController.m in Sources */,
 				84BEAEEE17C55E09008B828E /* YrApiService.m in Sources */,
+				841122FF17FC3D280079ECCA /* Banner.m in Sources */,
 				84BEAEE617C52EA1008B828E /* Weather.m in Sources */,
 				84DE497417BF767D005AB3B8 /* UIImage+fixOrientation.m in Sources */,
 				84DE48D017BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1210,6 +1256,7 @@
 				84A1885817F2AD3D00D260C4 /* Forecast.m in Sources */,
 				84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE497617BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
+				841122F217FABC780079ECCA /* BannerViewController.m in Sources */,
 				84DE48C817BF7601005AB3B8 /* AFHTTPClient.m in Sources */,
 				84DE48F117BF764A005AB3B8 /* NSString+DDXML.m in Sources */,
 				849640FF17EF2C26001B2029 /* ForecastHeader.m in Sources */,
@@ -1246,6 +1293,7 @@
 				8422227C17ECF62300F5D231 /* CCHMapsActivity.m in Sources */,
 				84DE497117BF767D005AB3B8 /* NSString+URLEncoding.m in Sources */,
 				84DE48F217BF764A005AB3B8 /* NSString+DDXML.m in Sources */,
+				841122E817FA9AFC0079ECCA /* BannerView.m in Sources */,
 				847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */,
 				8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
 				84DE48CB17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
@@ -1268,6 +1316,7 @@
 				84DE48CF17BF7601005AB3B8 /* AFJSONRequestOperation.m in Sources */,
 				84DE491517BF7659005AB3B8 /* ContextFilterLogFormatter.m in Sources */,
 				84DE4A1917BF86CF005AB3B8 /* Model.xcdatamodeld in Sources */,
+				8411230017FC3D280079ECCA /* Banner.m in Sources */,
 				84BEAEFB17C56DB6008B828E /* Astro.m in Sources */,
 				84DE497F17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
 				84DE49FA17BF76FA005AB3B8 /* Reachability.m in Sources */,
@@ -1282,6 +1331,7 @@
 				84A1885917F2AD3D00D260C4 /* Forecast.m in Sources */,
 				848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */,
 				841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */,
+				841122F317FABC780079ECCA /* BannerViewController.m in Sources */,
 				84DE497717BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
 				84DE48C917BF7601005AB3B8 /* AFHTTPClient.m in Sources */,
 				8496410017EF2C26001B2029 /* ForecastHeader.m in Sources */,

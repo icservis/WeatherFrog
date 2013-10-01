@@ -60,7 +60,7 @@ static CGFloat const tableTopMargin = 2.0f;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, strong) MBProgressHUD* hud;
 @property (nonatomic, strong) ForecastManager* forecastManager;
-@property (nonatomic, strong) ADBannerView* adBanner;
+@property (nonatomic, strong) BannerView* bannerView;
 
 - (IBAction)actionButtonTapped:(id)sender;
 
@@ -95,6 +95,9 @@ static CGFloat const tableTopMargin = 2.0f;
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    [[Banner sharedBanner] setupWithDemoPeriod:1000 alertsCount:3];
+    [[Banner sharedBanner] setDelegate:self];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
@@ -176,7 +179,7 @@ static CGFloat const tableTopMargin = 2.0f;
     _selectedPlacemark = nil;
     dataPortrait = nil;
     dataLandscape = nil;
-    _adBanner = nil;
+    _bannerView = nil;
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -396,13 +399,16 @@ static CGFloat const tableTopMargin = 2.0f;
     return _forecastManager;
 }
 
-- (ADBannerView*)adBanner
+- (BannerView*)bannerView
 {
-    if (_adBanner == nil) {
-        _adBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-        _adBanner.delegate = self;
+    if (_bannerView == nil) {
+        if (isLandscape) {
+            _bannerView = [[Banner sharedBanner] bannerViewLandscape];
+        } else {
+            _bannerView = [[Banner sharedBanner] bannerViewPortrait];
+        }
     }
-    return _adBanner;
+    return _bannerView;
 }
 
 #pragma mark - Notifications
@@ -653,8 +659,9 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)purgeSubViews
 {
-    if (self.adBanner.superview != nil) {
-        [self.adBanner removeFromSuperview];
+    if (self.bannerView.superview != nil) {
+        [self.bannerView removeFromSuperview];
+        self.bannerView = nil;
     }
     
     for (UIView* subview in [self.scrollView subviews]) {
@@ -677,17 +684,18 @@ static CGFloat const tableTopMargin = 2.0f;
     CGRect scrollFrame = self.scrollView.frame;
     __block CGRect backgroundRect;
     
-    if ([[UserDefaultsManager sharedDefaults] adFreeMode] == NO) {
+    if ([[Banner sharedBanner] isBannerActive] == YES) {
         
         CGRect superViewFrame = self.scrollView.superview.frame;
-        CGFloat adBannerHeight = 50.0f;
-        CGFloat adBannerYOrigin = superViewFrame.size.height - adBannerHeight;
-        self.adBanner.frame = CGRectMake(0, adBannerYOrigin, superViewFrame.size.width, adBannerHeight);
-        [self.scrollView.superview addSubview:self.adBanner];
-        [self hideAdBanner];
+        CGFloat bannerHeight = [self.bannerView height];
+        CGFloat bannerOriginY = superViewFrame.size.height - bannerHeight;
+        self.bannerView.frame = CGRectMake(0, bannerOriginY, superViewFrame.size.width, bannerHeight);
+        DDLogInfo(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
+        [self.scrollView.superview addSubview:self.bannerView];
         
-        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - adBannerHeight);
-        CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height - adBannerHeight);
+        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - bannerHeight);
+        CGSize contentSize = CGSizeMake(dataPortrait.count * backgroundRect.size.width, backgroundRect.size.height - bannerHeight);
+        
         [self.scrollView setContentSize:contentSize];
         
     } else {
@@ -879,17 +887,16 @@ static CGFloat const tableTopMargin = 2.0f;
     DDLogInfo(@"setupViewsForLandscape");
     
     UITextView* textView;
-    if ([[UserDefaultsManager sharedDefaults] adFreeMode] == NO) {
+    if ([[Banner sharedBanner] isBannerActive] == YES) {
         
         CGRect superViewFrame = self.scrollView.superview.frame;
-        CGFloat adBannerHeight = 32.0f;
-        CGFloat adBannerYOrigin = superViewFrame.size.height - adBannerHeight;
-        self.adBanner.frame = CGRectMake(0, adBannerYOrigin, superViewFrame.size.width, adBannerHeight);
-        DDLogInfo(@"self.adBanner.frame: %@", NSStringFromCGRect(self.adBanner.frame));
-        [self.scrollView.superview addSubview:self.adBanner];
-        [self hideAdBanner];
+        CGFloat bannerHeight = [self.bannerView height];
+        CGFloat bannerOriginY = superViewFrame.size.height - bannerHeight;
+        self.bannerView.frame = CGRectMake(0, bannerOriginY, superViewFrame.size.width, bannerHeight);
+        DDLogInfo(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
+        [self.scrollView.superview addSubview:self.bannerView];
         
-        CGRect textFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height - adBannerHeight);
+        CGRect textFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height - bannerHeight);
         textView = [[UITextView alloc] initWithFrame:textFrame];
         
     } else {
@@ -903,7 +910,6 @@ static CGFloat const tableTopMargin = 2.0f;
     textView.translatesAutoresizingMaskIntoConstraints = YES;
     textView.autoresizesSubviews = YES;
     textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    textView.backgroundColor = [UIColor lightGrayColor];
     
     [self.scrollView addSubview:textView];
     [self.scrollView setContentSize:self.scrollView.frame.size];
@@ -1090,34 +1096,29 @@ static CGFloat const tableTopMargin = 2.0f;
     }];
 }
 
-#pragma mark - ADBannerViewDelegate
+#pragma mark - BannerDeleagte
 
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+- (void)bannerDidPerformAction:(BannerAction)action
 {
-    [self hideAdBanner];
+    DDLogVerbose(@"action: %d", action);
 }
 
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+- (void)bannerChangedStatus:(BannerMode)status
 {
-    [self showAdBanner];
+    DDLogVerbose(@"status: %d", status);
 }
 
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+- (void)bannerPresentModalViewController:(UIViewController *)controler
 {
-    
+    DDLogVerbose(@"controler: %@", [controler description]);
+    [self presentViewController:controler animated:YES completion:nil];
 }
 
-#pragma mark - AdBanner actions
-
-- (void)hideAdBanner
+- (void)bannerDismisModalViewController
 {
-    
-    self.adBanner.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f];
-}
-
-- (void)showAdBanner
-{
-    self.adBanner.backgroundColor = [UIColor clearColor];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self becomeFirstResponder];
+    }];
 }
 
 @end

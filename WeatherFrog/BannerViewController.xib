@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BannerViewController">
+            <connections>
+                <outlet property="actionButton" destination="CgL-nT-jgx" id="cSw-h7-JEu"/>
+                <outlet property="closeButton" destination="maE-m4-7W8" id="8nD-J0-uxf"/>
+                <outlet property="infoLabel" destination="ejI-6v-IhT" id="eF3-M4-Qhg"/>
+                <outlet property="pageConroll" destination="Hd1-Mb-B6x" id="lLC-sG-wSo"/>
+                <outlet property="scrollView" destination="YMx-cV-VH8" id="4pE-7p-nVa"/>
+                <outlet property="staticView" destination="41o-AN-pwa" id="jNW-FW-chp"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMx-cV-VH8">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="iuQ-xq-Iep"/>
+                    </connections>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41o-AN-pwa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ejI-6v-IhT">
+                            <rect key="frame" x="20" y="240" width="280" height="88"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="88" id="bEs-7Y-22w"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ejI-6v-IhT" firstAttribute="centerY" secondItem="41o-AN-pwa" secondAttribute="centerY" id="Sx2-tg-a5u"/>
+                        <constraint firstItem="ejI-6v-IhT" firstAttribute="leading" secondItem="41o-AN-pwa" secondAttribute="leading" constant="20" symbolic="YES" id="UCl-or-qfT"/>
+                        <constraint firstAttribute="trailing" secondItem="ejI-6v-IhT" secondAttribute="trailing" constant="20" symbolic="YES" id="vfL-5j-8G4"/>
+                    </constraints>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Hd1-Mb-B6x">
+                    <rect key="frame" x="10" y="528" width="300" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="pageControllValueChanged:" destination="-1" eventType="valueChanged" id="UE5-7R-u1v"/>
+                    </connections>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maE-m4-7W8">
+                    <rect key="frame" x="20" y="40" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <state key="normal" image="cancel-30">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="yAx-kY-6hK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgL-nT-jgx">
+                    <rect key="frame" x="20" y="480" width="280" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mQE-Pj-MTB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <state key="normal" title="Action">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="actionButtonTapped:" destination="-1" eventType="touchUpInside" id="7nl-f4-MbW"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Hd1-Mb-B6x" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="3rk-or-5zg"/>
+                <constraint firstItem="maE-m4-7W8" firstAttribute="leading" secondItem="CgL-nT-jgx" secondAttribute="leading" id="Cym-fU-2IJ"/>
+                <constraint firstItem="Hd1-Mb-B6x" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="Etg-L2-VQ2"/>
+                <constraint firstItem="41o-AN-pwa" firstAttribute="leading" secondItem="YMx-cV-VH8" secondAttribute="leading" id="GKu-Lf-0sH"/>
+                <constraint firstItem="YMx-cV-VH8" firstAttribute="top" secondItem="1" secondAttribute="top" id="L4w-pn-vSd"/>
+                <constraint firstAttribute="bottom" secondItem="YMx-cV-VH8" secondAttribute="bottom" id="MUS-BK-brH"/>
+                <constraint firstItem="Hd1-Mb-B6x" firstAttribute="top" secondItem="CgL-nT-jgx" secondAttribute="bottom" constant="18" id="Mgz-RD-P0C"/>
+                <constraint firstItem="Hd1-Mb-B6x" firstAttribute="centerX" secondItem="YMx-cV-VH8" secondAttribute="centerX" id="OF1-QV-uSL"/>
+                <constraint firstItem="YMx-cV-VH8" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="ZYI-tm-evi"/>
+                <constraint firstItem="41o-AN-pwa" firstAttribute="top" secondItem="YMx-cV-VH8" secondAttribute="top" id="bCW-u2-UGw"/>
+                <constraint firstItem="41o-AN-pwa" firstAttribute="trailing" secondItem="YMx-cV-VH8" secondAttribute="trailing" id="nhf-bd-bsR"/>
+                <constraint firstItem="CgL-nT-jgx" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="orc-n7-0Av"/>
+                <constraint firstItem="41o-AN-pwa" firstAttribute="bottom" secondItem="YMx-cV-VH8" secondAttribute="bottom" id="rSl-uF-rlh"/>
+                <constraint firstItem="CgL-nT-jgx" firstAttribute="centerX" secondItem="YMx-cV-VH8" secondAttribute="centerX" id="vh9-8A-j4h"/>
+                <constraint firstItem="maE-m4-7W8" firstAttribute="top" secondItem="1" secondAttribute="top" constant="40" id="y9q-Bs-rc8"/>
+                <constraint firstAttribute="bottom" secondItem="Hd1-Mb-B6x" secondAttribute="bottom" constant="3" id="zTi-EC-KyW"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cancel-30" width="30" height="30"/>
+    </resources>
+</document>

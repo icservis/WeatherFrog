@@ -11,7 +11,7 @@
 
 #pragma mark - Times
 
-static float const kAnimationDuration = 0.25f;
+static float const kAnimationDuration = 0.5f;
 
 #pragma mark - Forecast
 

@@ -78,7 +78,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    self.selectedPlacemark = nil;
+    _selectedPlacemark = nil;
 }
 
 #pragma mark setters and getters

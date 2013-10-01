@@ -326,38 +326,21 @@
     return _lastNotificationSymbol;
 }
 
-#pragma mark - Ad Free Mode
-
-@synthesize adFreeMode = _adFreeMode;
-
-- (void)setAdFreeMode:(BOOL)adFreeMode
-{
-    _adFreeMode = adFreeMode;
-    [self.standardDefaults setBool:adFreeMode forKey:DefaultsAdFreeMode];
-    [self.standardDefaults synchronize];
-}
-
-- (BOOL)adFreeMode
-{
-    _adFreeMode = [self.standardDefaults boolForKey:DefaultsAdFreeMode];
-    return _onScreenHelp;
-}
-
 #pragma mark - Full Notification Mode
 
-@synthesize fullNotificationMode = _fullNotificationMode;
+@synthesize limitedMode = _limitedMode;
 
-- (void)setFullNotificationMode:(BOOL)fullNotificationMode
+- (void)setLimitedMode:(BOOL)limitedMode
 {
-    _fullNotificationMode = fullNotificationMode;
-    [self.standardDefaults setBool:fullNotificationMode forKey:DefaultsFullNotificationMode];
+    _limitedMode = limitedMode;
+    [self.standardDefaults setBool:limitedMode forKey:DefaultsLimitedMode];
     [self.standardDefaults synchronize];
 }
 
-- (BOOL)fullNotificationMode
+- (BOOL)limitedMode
 {
-    _fullNotificationMode = [self.standardDefaults boolForKey:DefaultsFullNotificationMode];
-    return _fullNotificationMode;
+    _limitedMode = [self.standardDefaults boolForKey:DefaultsLimitedMode];
+    return _limitedMode;
 }
 
 #pragma mark - Helpers
