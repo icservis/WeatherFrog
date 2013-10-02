@@ -43,8 +43,4 @@ typedef enum {
 + (Banner *)sharedBanner;
 - (void)setupWithDemoPeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount;
 
-// TEST
-- (void)expireLimitedPerion;
-- (void)activateFullOperation;
-
 @end

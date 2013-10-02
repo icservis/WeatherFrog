@@ -11,13 +11,17 @@
 @interface BannerViewController ()
 
 @property (nonatomic, weak) IBOutlet UIButton* closeButton;
-@property (nonatomic, weak) IBOutlet UIButton* actionButton;
+@property (nonatomic, weak) IBOutlet UIButton* purchaseButton;
+@property (nonatomic, weak) IBOutlet UIButton* expireButton;
+@property (nonatomic, weak) IBOutlet UIButton* restoreButton;
 @property (nonatomic, weak) IBOutlet UIView* staticView;
 @property (nonatomic, weak) IBOutlet UILabel* infoLabel;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, weak) IBOutlet UIPageControl* pageConroll;
 
-- (IBAction)actionButtonTapped:(id)sender;
+- (IBAction)purchaseButtonTapped:(id)sender;
+- (IBAction)expireButtonTapped:(id)sender;
+- (IBAction)restoreButtonTapped:(id)sender;
 - (IBAction)closeButtonTapped:(id)sender;
 - (IBAction)pageControllValueChanged:(id)sender;
 
@@ -71,7 +75,7 @@
 - (void)dynamicMode
 {
     self.scrollView.hidden = NO;
-    self.actionButton.hidden = NO;
+    self.purchaseButton.hidden = NO;
     self.pageConroll.hidden = NO;
     self.staticView.hidden = YES;
     
@@ -81,14 +85,24 @@
 - (void)staticMode
 {
     self.scrollView.hidden = YES;
-    self.actionButton.hidden = YES;
+    self.purchaseButton.hidden = YES;
     self.pageConroll.hidden = YES;
     self.staticView.hidden = NO;
     
     self.infoLabel.text = NSLocalizedString(@"Thank you for supporting us", nil);
 }
 
-- (IBAction)actionButtonTapped:(id)sender
+- (IBAction)purchaseButtonTapped:(id)sender
+{
+    [self.delegate bannerViewController:self performAction:sender];
+}
+
+- (IBAction)expireButtonTapped:(id)sender
+{
+    [self.delegate bannerViewController:self performAction:sender];
+}
+
+- (IBAction)restoreButtonTapped:(id)sender
 {
     [self.delegate bannerViewController:self performAction:sender];
 }

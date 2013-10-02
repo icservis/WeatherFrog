@@ -6,12 +6,19 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "Banner.h"
+#import "WeatherfrogInAppPurchaseHelper.h"
+#import "AFNetworking.h"
 
 static NSString* const BannerViewNib = @"BannerView";
 static NSString* const BannerViewControllerNib = @"BannerViewController";
 
-@implementation Banner
+@implementation Banner {
+    NSArray* _products;
+}
+
+#pragma mark - logic
 
 + (Banner *)sharedBanner {
     
@@ -26,9 +33,34 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)setupWithDemoPeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount
 {
-    [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
-    self.bannerActive = YES;
+    NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
+    DDLogVerbose(@"expiry: %@", [expiryDate description]);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+    
+    if (expiryDate == nil) {
+        
+        DDLogVerbose(@"setup");
+        expiryDate = [NSDate dateWithTimeIntervalSinceNow:timeinterval];
+        [[UserDefaultsManager sharedDefaults] setExpiryDate:expiryDate];
+        
+        [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
+        self.bannerActive = YES;
+        
+    } else {
+        
+        if ([expiryDate compare:[NSDate date]] == NSOrderedAscending) {
+            DDLogVerbose(@"limited period");
+            [[UserDefaultsManager sharedDefaults] setLimitedMode:YES];
+            [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
+            self.bannerActive = YES;
+        }
+    }
+    
+    [self reloadProducts];
 }
+
+#pragma mark - getters
 
 - (BannerView*)bannerViewLandscape
 {
@@ -63,33 +95,69 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     return _bannerViewController;
 }
 
-- (void)storeKitPerformAction:(id)sender
-{
-    [self.delegate bannerDismisModalViewController];
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Perform action?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-    [alert show];
-}
+#pragma mark - StoreKit
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)storeKitResotrePurchases
 {
-    if (buttonIndex != alertView.cancelButtonIndex) {
-        
-        [self activateFullOperation];
-        self.bannerViewController.mode = BannerViewControllerModeStatic;
-        [self.delegate bannerPresentModalViewController:self.bannerViewController];
-        [self.delegate bannerChangedStatus:BannerModeInvisible];
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([appDelegate isInternetActive]) {
+        [[WeatherfrogInAppPurchaseHelper sharedInstance] restoreCompletedTransactions];
     }
 }
 
+- (void)storeKitPerformAction:(NSString*)productIdentifier
+{
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([appDelegate isInternetActive]) {
+       // call sk
+    }
+}
+
+- (void)productPurchased:(NSNotification *)notification {
+    
+    NSString * productIdentifier = notification.object;
+    
+    if ([productIdentifier isEqualToString:IAP_fullmode]) {
+        [self activateFullOperation];
+        self.bannerViewController.mode = BannerViewControllerModeStatic;
+        [self.delegate bannerPresentModalViewController:self.bannerViewController];
+    }
+    
+}
+
+- (void)reloadProducts
+{
+    AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if ([appDelegate isInternetActive]) {
+        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+        [[WeatherfrogInAppPurchaseHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            if (success) {
+                _products = products;
+            }
+        }];
+    }
+}
+
+#pragma mark - actions
+
 - (void)expireLimitedPerion
 {
+    DDLogVerbose(@"expireLimitedPerion");
     [[UserDefaultsManager sharedDefaults] setLimitedMode:YES];
+    [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
+    [[UserDefaultsManager sharedDefaults] setExpiryDate:nil];
+    [self.delegate bannerChangedStatus:BannerModeVisible];
     self.bannerActive = YES;
 }
 
 - (void)activateFullOperation
 {
+    DDLogVerbose(@"activateFullOperation");
     [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
+    [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:YES];
+    [[UserDefaultsManager sharedDefaults] setExpiryDate:[NSDate distantFuture]];
+    [self.delegate bannerChangedStatus:BannerModeInvisible];
     self.bannerActive = NO;
 }
 
@@ -103,14 +171,24 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)bannerView:(UIView *)view performAction:(id)sender
 {
-    [self storeKitPerformAction:sender];
+    [self storeKitPerformAction:IAP_fullmode];
 }
 
 #pragma mark - BannerViewControlerDelegate
 
 - (void)bannerViewController:(UIViewController *)controller performAction:(id)sender
 {
-    [self storeKitPerformAction:sender];
+    UIButton* button = (UIButton*)sender;
+    if (button.tag == 3) {
+        [self storeKitResotrePurchases];
+    }
+    if (button.tag == 2) {
+        [self storeKitPerformAction:IAP_fullmode];
+    }
+    if (button.tag == 1) {
+        [self expireLimitedPerion];
+    }
+    [self.delegate bannerDismisModalViewController];
 }
 
 - (void)closeBannerViewController:(UIViewController *)controller

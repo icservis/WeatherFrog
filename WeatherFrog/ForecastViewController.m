@@ -96,7 +96,7 @@ static CGFloat const tableTopMargin = 2.0f;
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    [[Banner sharedBanner] setupWithDemoPeriod:1000 alertsCount:3];
+    [[Banner sharedBanner] setupWithDemoPeriod:100 alertsCount:3];
     [[Banner sharedBanner] setDelegate:self];
     
     

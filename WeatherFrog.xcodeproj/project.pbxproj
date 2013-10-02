@@ -24,6 +24,10 @@
 		841122F517FABC780079ECCA /* BannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841122F117FABC780079ECCA /* BannerViewController.xib */; };
 		841122FF17FC3D280079ECCA /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122FE17FC3D280079ECCA /* Banner.m */; };
 		8411230017FC3D280079ECCA /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 841122FE17FC3D280079ECCA /* Banner.m */; };
+		8411230B17FC88F00079ECCA /* InAppPurchaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8411230817FC88F00079ECCA /* InAppPurchaseHelper.m */; };
+		8411230C17FC88F00079ECCA /* InAppPurchaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8411230817FC88F00079ECCA /* InAppPurchaseHelper.m */; };
+		8411230D17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8411230A17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m */; };
+		8411230E17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8411230A17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m */; };
 		841EFAD217D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
 		841EFAD317D25571009EF860 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 841EFAD117D25571009EF860 /* Settings.bundle */; };
 		841EFAD617D26D94009EF860 /* UserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841EFAD517D26D94009EF860 /* UserDefaultsManager.m */; };
@@ -238,6 +242,10 @@
 		841122F117FABC780079ECCA /* BannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerViewController.xib; sourceTree = "<group>"; };
 		841122FD17FC3D280079ECCA /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
 		841122FE17FC3D280079ECCA /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		8411230717FC88F00079ECCA /* InAppPurchaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchaseHelper.h; sourceTree = "<group>"; };
+		8411230817FC88F00079ECCA /* InAppPurchaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchaseHelper.m; sourceTree = "<group>"; };
+		8411230917FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherfrogInAppPurchaseHelper.h; sourceTree = "<group>"; };
+		8411230A17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherfrogInAppPurchaseHelper.m; sourceTree = "<group>"; };
 		841EFAD117D25571009EF860 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		841EFAD417D26D94009EF860 /* UserDefaultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsManager.h; sourceTree = "<group>"; };
 		841EFAD517D26D94009EF860 /* UserDefaultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsManager.m; sourceTree = "<group>"; };
@@ -479,6 +487,17 @@
 			name = Banner;
 			sourceTree = "<group>";
 		};
+		8411230F17FC89880079ECCA /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				8411230717FC88F00079ECCA /* InAppPurchaseHelper.h */,
+				8411230817FC88F00079ECCA /* InAppPurchaseHelper.m */,
+				8411230917FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.h */,
+				8411230A17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m */,
+			);
+			name = InAppPurchase;
+			sourceTree = "<group>";
+		};
 		8422226E17ECF62200F5D231 /* CCHMapsActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +580,7 @@
 				84DE4A1317BF83FC005AB3B8 /* Models */,
 				84DE4A1417BF8403005AB3B8 /* Views */,
 				8411230117FC72750079ECCA /* Banner */,
+				8411230F17FC89880079ECCA /* InAppPurchase */,
 				848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */,
 				848BE1D717ED9161006BC4F8 /* Images.xcassets */,
 				848BE1DA17ED918E006BC4F8 /* Resources */,
@@ -1234,6 +1254,8 @@
 				847B916217BFC56E00AD76E7 /* SettingsViewController.m in Sources */,
 				84DE48D617BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */,
 				84BEAEFA17C56DB6008B828E /* Astro.m in Sources */,
+				8411230D17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m in Sources */,
+				8411230B17FC88F00079ECCA /* InAppPurchaseHelper.m in Sources */,
 				848A54EA176E09A1009B3F85 /* main.m in Sources */,
 				84DE49F917BF76FA005AB3B8 /* Reachability.m in Sources */,
 				84DE497817BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
@@ -1309,6 +1331,8 @@
 				84DE48F017BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */,
 				847B915317BFB30E00AD76E7 /* ForecastViewController.m in Sources */,
 				8443B12B17EA3036004CFA55 /* DetailViewController.m in Sources */,
+				8411230E17FC88F00079ECCA /* WeatherfrogInAppPurchaseHelper.m in Sources */,
+				8411230C17FC88F00079ECCA /* InAppPurchaseHelper.m in Sources */,
 				84BEAEE717C52EA1008B828E /* Weather.m in Sources */,
 				84DE497917BF767D005AB3B8 /* ISO8601DateFormatter.m in Sources */,
 				84905D0617C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,

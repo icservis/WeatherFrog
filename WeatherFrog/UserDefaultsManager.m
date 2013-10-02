@@ -343,6 +343,23 @@
     return _limitedMode;
 }
 
+#pragma mark - Expiry Date
+
+@synthesize expiryDate = _expiryDate;
+
+- (void)setExpiryDate:(NSDate *)expiryDate
+{
+    _expiryDate = expiryDate;
+    [self.standardDefaults setValue:expiryDate forKey:DefaultsExpiryDate];
+    [self.standardDefaults synchronize];
+}
+
+- (NSDate*)expiryDate
+{
+    _expiryDate = [self.standardDefaults valueForKey:DefaultsExpiryDate];
+    return _expiryDate;
+}
+
 #pragma mark - Helpers
 
 - (NSArray*)elementsList

@@ -105,6 +105,7 @@
         BOOL value = NO;
         
         if ([[element objectForKey:@"Key"] isEqualToString:DefaultsFetchForecastInBackground]) {
+            DDLogVerbose(@"DefaultsFetchForecastInBackground: %d", value);
             value = [sharedDefaults fetchForecastInBackground];
         }
         if ([[element objectForKey:@"Key"] isEqualToString:DefaultsShareLocationAndForecast]) {
@@ -206,10 +207,11 @@
     
     if ([[element objectForKey:@"Type"] isEqualToString:@"PSToggleSwitchSpecifier"]) {
         
-        
         if ([[element objectForKey:@"Key"] isEqualToString:DefaultsFetchForecastInBackground]) {
             BOOL fetchForecastInBackground = [sharedDefaults fetchForecastInBackground];
-            [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:!fetchForecastInBackground];
+            if ([sharedDefaults limitedMode] == NO) {
+                [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:!fetchForecastInBackground];
+            }
         }
         if ([[element objectForKey:@"Key"] isEqualToString:DefaultsShareLocationAndForecast]) {
             BOOL shareLocationAndForecast = [sharedDefaults shareLocationAndForecast];

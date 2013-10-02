@@ -54,6 +54,8 @@
     #define kAPIHost @"weatherfrog.info"
     #define kAPIBaseUrl @"http://api.weatherfrog.info/1/"
 
+    #define IAP_fullmode @"info.weatherfrog.fullmode"
+
     // check device orientation
     #define kDeviceOrientation [[UIDevice currentDevice] orientation]
     #define isPortrait  UIDeviceOrientationIsPortrait(kDeviceOrientation)
