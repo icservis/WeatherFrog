@@ -16,9 +16,9 @@
     static WeatherfrogInAppPurchaseHelper * sharedInstance;
     dispatch_once(&once, ^{
         
-        NSString* inAppPuruchaseAddBlocker = IAP_fullmode;
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      inAppPuruchaseAddBlocker,
+                                      IAP_fullmode,
+                                      IAP_advancedfeatures,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

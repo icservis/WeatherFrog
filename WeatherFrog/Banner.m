@@ -50,10 +50,26 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     } else {
         
         if ([expiryDate compare:[NSDate date]] == NSOrderedAscending) {
+            
             DDLogVerbose(@"limited period");
             [[UserDefaultsManager sharedDefaults] setLimitedMode:YES];
             [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
             self.bannerActive = YES;
+            
+        } else {
+            
+            if ([[WeatherfrogInAppPurchaseHelper sharedInstance] productPurchased:IAP_fullmode]) {
+                DDLogVerbose(@"IAP_fullmode purchased");
+                self.bannerActive = NO;
+            } else {
+                self.bannerActive = YES;
+            }
+            
+            if ([[WeatherfrogInAppPurchaseHelper sharedInstance] productPurchased:IAP_advancedfeatures]) {
+                DDLogVerbose(@"IAP_advancedfeatures purchased");
+            } else {
+                
+            }
         }
     }
     
@@ -99,6 +115,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)storeKitResotrePurchases
 {
+    DDLogVerbose(@"storeKitResotrePurchases");
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([appDelegate isInternetActive]) {
         [[WeatherfrogInAppPurchaseHelper sharedInstance] restoreCompletedTransactions];
@@ -107,17 +124,33 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)storeKitPerformAction:(NSString*)productIdentifier
 {
+    DDLogVerbose(@"storeKitPerformAction: %@", productIdentifier);
+    
+    __block SKProduct* product;
+    [_products enumerateObjectsUsingBlock:^(SKProduct* availableProduct, NSUInteger idx, BOOL *stop) {
+        
+        if ([availableProduct.productIdentifier isEqualToString:productIdentifier]) {
+            product = availableProduct;
+            *stop = YES;
+        }
+    }];
+    
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([appDelegate isInternetActive]) {
-       // call sk
+    if ([appDelegate isInternetActive] && product != nil) {
+       
+        DDLogVerbose(@"product requested: %@", product.productIdentifier);
+        [[WeatherfrogInAppPurchaseHelper sharedInstance] buyProduct:product];
+        
     }
 }
 
-- (void)productPurchased:(NSNotification *)notification {
-    
+- (void)productPurchased:(NSNotification *)notification
+{
     NSString * productIdentifier = notification.object;
+    DDLogVerbose(@"productIdentifier: %@", productIdentifier);
     
     if ([productIdentifier isEqualToString:IAP_fullmode]) {
+        
         [self activateFullOperation];
         self.bannerViewController.mode = BannerViewControllerModeStatic;
         [self.delegate bannerPresentModalViewController:self.bannerViewController];
@@ -127,6 +160,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)reloadProducts
 {
+    DDLogVerbose(@"reloadProducts");
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([appDelegate isInternetActive]) {
         [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
@@ -180,12 +214,15 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 {
     UIButton* button = (UIButton*)sender;
     if (button.tag == 3) {
-        [self storeKitResotrePurchases];
+        [self storeKitPerformAction:IAP_advancedfeatures];
     }
     if (button.tag == 2) {
         [self storeKitPerformAction:IAP_fullmode];
     }
     if (button.tag == 1) {
+        [self storeKitResotrePurchases];
+    }
+    if (button.tag == 0) {
         [self expireLimitedPerion];
     }
     [self.delegate bannerDismisModalViewController];

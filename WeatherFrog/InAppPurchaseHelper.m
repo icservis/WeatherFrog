@@ -51,10 +51,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
     
-    // 1
+    DDLogVerbose(@"Requesting products list width identifiers: %@", [_productIdentifiers description]);
     _completionHandler = [completionHandler copy];
-    
-    // 2
     _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
     _productsRequest.delegate = self;
     [_productsRequest start];
@@ -83,7 +81,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     
-    DDLogError(@"Failed to load list of products.");
+    DDLogError(@"Failed to load list of products. %@", [error description]);
     _productsRequest = nil;
     
     _completionHandler(NO, nil);
