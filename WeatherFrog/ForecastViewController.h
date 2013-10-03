@@ -25,5 +25,6 @@
 @property (nonatomic) BOOL useSelectedLocationInsteadCurrenLocation;
 
 - (void)setRevealMode:(BOOL)revealed;
+- (void)showSplashScreen;
 
 @end

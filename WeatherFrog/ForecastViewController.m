@@ -96,7 +96,7 @@ static CGFloat const tableTopMargin = 2.0f;
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    [[Banner sharedBanner] setupWithDemoPeriod:100 alertsCount:3];
+    [[Banner sharedBanner] setupWithDemoPeriod:10000 alertsCount:3];
     [[Banner sharedBanner] setDelegate:self];
     
     
@@ -109,29 +109,14 @@ static CGFloat const tableTopMargin = 2.0f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastProgress:) name:ForecastProgressNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forecastError:) name:ForecastErrorNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignActive:) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
-    
-    if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
-        
-        [self displayLoadedScreen];
-        
-    } else if (self.forecastManager.status == ForecastStatusFailed) {
-        
-        [self displayFailedScreen];
-        
-    } else {
-        
-        [self displayLoadingScreen];
-        
-    }
+    [self showSplashScreen];
 }
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -169,6 +154,11 @@ static CGFloat const tableTopMargin = 2.0f;
             [self displayForecast:self.selectedForecast];
         }
     }
+}
+
+- (void)viewDidLayoutSubviews
+{
+    DDLogVerbose(@"viewDidLayoutSubviews");
 }
 
 - (void)didReceiveMemoryWarning
@@ -443,6 +433,16 @@ static CGFloat const tableTopMargin = 2.0f;
     }];
 }
 
+- (void)resignActive:(NSNotification*)notification
+{
+    DDLogInfo(@"resignActive");
+    if (self.presentedViewController != nil && ![self.presentedViewController isBeingDismissed]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            DDLogVerbose(@"dismissed");
+        }];
+    }
+}
+
 - (void)locationManagerUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
@@ -514,6 +514,25 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)infoMessage:(NSString*)message
 {
     // Log message
+}
+
+- (void)showSplashScreen
+{
+    DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
+    
+    if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
+        
+        [self displayLoadedScreen];
+        
+    } else if (self.forecastManager.status == ForecastStatusFailed) {
+        
+        [self displayFailedScreen];
+        
+    } else {
+        
+        [self displayLoadingScreen];
+        
+    }
 }
 
 - (void)showLoadingLayout

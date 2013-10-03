@@ -75,6 +75,7 @@ static float const LongTapDuration = 1.2;
     // Notification
     internetActive = [[self appDelegate] isInternetActive];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachability:) name:ReachabilityNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     // UIGestureRecognizer
     UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -94,11 +95,7 @@ static float const LongTapDuration = 1.2;
     [super viewDidAppear:animated];
     
     [self setSearchBarPlaceholder];
-    if (self.selectedPlacemark != nil) {
-        [self mapView:self.mapView setRegionWithPlacemark:self.selectedPlacemark];
-        [self mapView:self.mapView searchAnnotation:self.selectedPlacemark];
-        self.trackingMode = MKUserTrackingModeNone;
-    }
+    [self showSelectedPlacemark];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -238,7 +235,26 @@ static float const LongTapDuration = 1.2;
     [self setSearchBarPlaceholder];
 }
 
+- (void)resignActive:(NSNotification*)notification
+{
+    DDLogInfo(@"resignActive");
+    if (self.presentedViewController != nil && ![self.presentedViewController isBeingDismissed]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            DDLogVerbose(@"dismissed");
+        }];
+    }
+}
+
 #pragma mark - MKMapView
+
+- (void)showSelectedPlacemark
+{
+    if (self.selectedPlacemark != nil) {
+        [self mapView:self.mapView setRegionWithPlacemark:self.selectedPlacemark];
+        [self mapView:self.mapView searchAnnotation:self.selectedPlacemark];
+        self.trackingMode = MKUserTrackingModeNone;
+    }
+}
 
 - (void)mapView:(MKMapView *)mapView setRegionWithLocation:(CLLocation*)location
 {
@@ -302,6 +318,7 @@ static float const LongTapDuration = 1.2;
         [mapView addAnnotation:searchAnnotation];
     }
     [mapView selectAnnotation:searchAnnotation animated:YES];
+    DDLogVerbose(@"selectAnnotation: %@", [searchAnnotation description]);
     
     _selectedLocation = placemark.location;
     _selectedPlacemark = placemark;

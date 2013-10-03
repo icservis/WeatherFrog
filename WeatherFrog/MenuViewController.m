@@ -66,6 +66,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reverseGeocoderUpdate:) name:ReverseGeocoderUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localNotificationReceived:) name:ApplicationReceivedLocalNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignActive:) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,7 +82,7 @@
     _selectedPlacemark = nil;
 }
 
-#pragma mark setters and getters
+#pragma mark - setters and getters
 
 - (LocationManager*)locationManager
 {
@@ -138,13 +139,13 @@
         rvcs.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
             
             UINavigationController* nc = (UINavigationController*)rvc.frontViewController;
-            UIViewController* frontViewController = [[(UINavigationController*)dvc viewControllers] objectAtIndex:0];
+            UIViewController* frontViewController = [[(UINavigationController*)dvc viewControllers] firstObject];
             [nc setViewControllers: @[ frontViewController ] animated: YES];
             [rvc setFrontViewPosition: FrontViewPositionLeft animated: YES];
             
             if ([segue.identifier isEqualToString:@"showLocator"]) {
                 LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
-                locatorViewController.selectedPlacemark = _selectedPlacemark;
+                locatorViewController.selectedPlacemark = self.selectedPlacemark;
             }
             
             if ([segue.identifier isEqualToString:@"showForecast"]) {
@@ -156,7 +157,7 @@
                     // other sender
                     forecastViewController.useSelectedLocationInsteadCurrenLocation = YES;
                 }
-                forecastViewController.selectedPlacemark = _selectedPlacemark;
+                forecastViewController.selectedPlacemark = self.selectedPlacemark;
             }
         };
     }
@@ -308,13 +309,39 @@
 {
     DDLogVerbose(@"notification: %@", [notification description]);
     
-    if (self.presentedViewController != nil) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            [self forecastButtonTapped:self.forecastButton];
-        }];
-    } else {
+    
+    // FrontViewControler revealed
+    if (self.revealViewController.frontViewPosition == FrontViewPositionRight) {
+        
+        DDLogVerbose(@"FrontViewPositionRight");
         [self forecastButtonTapped:self.forecastButton];
+        
+    } else {
+        
+        CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
+        
+        UINavigationController* frontNavigationController = (UINavigationController*)self.revealViewController.frontViewController;
+        UIViewController* frontViewController = [[frontNavigationController viewControllers] firstObject];
+        DDLogVerbose(@"frontViewController: %@", [frontViewController description]);
+        [frontViewController becomeFirstResponder];
+        
+        if ([frontViewController isKindOfClass:[ForecastViewController class]]) {
+            DDLogVerbose(@"ForecastViewController");
+            ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
+            [forecastViewController showSplashScreen];
+            forecastViewController.useSelectedLocationInsteadCurrenLocation = NO;
+            forecastViewController.selectedPlacemark = currentPlacemark;
+        }
+        
+        if ([frontViewController isKindOfClass:[LocatorViewController class]]) {
+            DDLogVerbose(@"LocationViewController");
+            LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
+            locatorViewController.selectedPlacemark = currentPlacemark;
+            [locatorViewController showSelectedPlacemark];
+        }
+    
     }
+
 }
 
 - (void)preferredContentSizeChanged:(NSNotification*)notification
@@ -322,13 +349,24 @@
     DDLogInfo(@"preferredContentSizeChanged");
     
     // table
-    [self.tableView reloadData];
+    [self updateTable];
     //buttons
     [self.forecastButton.titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     [self.locatorButton.titleLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     // labels
     [self.applicationNameLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     [self.applicationVersionLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleCaption2]];
+}
+
+- (void)resignActive:(NSNotification*)notification
+{
+    DDLogInfo(@"resignActive");
+    
+    if (self.presentedViewController != nil && ![self.presentedViewController isBeingDismissed]) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            DDLogVerbose(@"dismissed");
+        }];
+    }
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate methods
@@ -389,16 +427,14 @@
 
 - (void)closeSettingsViewController:(UIViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - InfoViewControllerDelegate
 
 - (void)closeInfoViewController:(UIViewController *)controller
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - LocationCellDelegate
