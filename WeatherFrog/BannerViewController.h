@@ -17,6 +17,7 @@ typedef enum {
 
 - (void)closeBannerViewController:(UIViewController*)controller;
 - (void)bannerViewController:(UIViewController*)controller performAction:(id)sender;
+- (void)bannerViewController:(UIViewController *)controller reloadProductsWithSuccess:(void (^)())success failure:(void (^)())failure;
 
 @end
 
@@ -24,5 +25,6 @@ typedef enum {
 
 @property (nonatomic, weak) id <BannerViewControllerDelegate> delegate;
 @property (nonatomic) BannerViewControllerMode mode;
+@property (nonatomic, strong) NSArray* products;
 
 @end

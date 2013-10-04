@@ -72,7 +72,11 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         }
     }
     
-    [self reloadProducts];
+    [self reloadProductsWithSuccess:^{
+        DDLogVerbose(@"products loaded");
+    } failure:^{
+        DDLogVerbose(@"products failed");
+    }];
 }
 
 #pragma mark - getters
@@ -112,18 +116,30 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 #pragma mark - StoreKit
 
-- (void)storeKitResotrePurchases
+- (void)storeKitRestorePurchases
 {
-    DDLogVerbose(@"storeKitResotrePurchases");
+    DDLogVerbose(@"storeKitRestorePurchases");
+    
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([appDelegate isInternetActive]) {
+        
         [[WeatherfrogInAppPurchaseHelper sharedInstance] restoreCompletedTransactions];
+        
+    } else {
+        
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        
     }
 }
 
 - (void)storeKitPerformAction:(NSString*)productIdentifier
 {
     DDLogVerbose(@"storeKitPerformAction: %@", productIdentifier);
+    
+    if (_products == nil) {
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        return;
+    }
     
     __block SKProduct* product;
     [_products enumerateObjectsUsingBlock:^(SKProduct* availableProduct, NSUInteger idx, BOOL *stop) {
@@ -135,11 +151,13 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     }];
     
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    if ([appDelegate isInternetActive] && product != nil) {
+    if ([appDelegate isInternetActive]) {
        
-        DDLogVerbose(@"product requested: %@", product.productIdentifier);
-        [[WeatherfrogInAppPurchaseHelper sharedInstance] buyProduct:product];
+            DDLogVerbose(@"product requested: %@", product.productIdentifier);
+            [[WeatherfrogInAppPurchaseHelper sharedInstance] buyProduct:product];
         
+    } else {
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
     }
 }
 
@@ -157,16 +175,25 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     
 }
 
-- (void)reloadProducts
+- (void)reloadProductsWithSuccess:(void (^)())success failure:(void (^)())failure
 {
     DDLogVerbose(@"reloadProducts");
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     if ([appDelegate isInternetActive]) {
-        [[WeatherfrogInAppPurchaseHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-            if (success) {
+        
+        [[WeatherfrogInAppPurchaseHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL scs, NSArray *products) {
+            if (scs) {
                 _products = products;
+                success();
+            } else {
+                failure();
             }
         }];
+        
+    } else {
+        
+        failure();
     }
 }
 
@@ -196,13 +223,29 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 - (void)bannerViewTapped:(UIView *)view
 {
+    self.bannerViewController.products = _products;
     self.bannerViewController.mode = BannerViewControllerModeDynamic;
     [self.delegate bannerPresentModalViewController:self.bannerViewController];
 }
 
 - (void)bannerView:(UIView *)view performAction:(id)sender
 {
-    [self storeKitPerformAction:IAP_fullmode];
+    if (_products != nil) {
+        
+        [self storeKitPerformAction:IAP_fullmode];
+        
+    } else {
+        
+        [self reloadProductsWithSuccess:^{
+            
+            [self bannerViewTapped:nil];
+            
+        } failure:^{
+            
+            [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        }];
+        
+    }
 }
 
 #pragma mark - BannerViewControlerDelegate
@@ -217,10 +260,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         [self storeKitPerformAction:IAP_fullmode];
     }
     if (button.tag == 1) {
-        [self storeKitResotrePurchases];
-    }
-    if (button.tag == 0) {
-        [self expireLimitedPerion];
+        [self storeKitRestorePurchases];
     }
     [self.delegate bannerDismisModalViewController];
 }
@@ -228,6 +268,17 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 - (void)closeBannerViewController:(UIViewController *)controller
 {
     [self.delegate bannerDismisModalViewController];
+}
+
+- (void)bannerViewController:(UIViewController *)controller reloadProductsWithSuccess:(void (^)())success2 failure:(void (^)())failure2
+{
+    [self reloadProductsWithSuccess:^{
+        BannerViewController* bannerViewController = (BannerViewController*)controller;
+        bannerViewController.products = _products;
+        success2();
+    } failure:^{
+        failure2();
+    }];
 }
 
 @end

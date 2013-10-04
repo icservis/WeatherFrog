@@ -13,7 +13,7 @@
 @property (nonatomic, weak) IBOutlet UIButton* closeButton;
 @property (nonatomic, weak) IBOutlet UIButton* fullModeButton;
 @property (nonatomic, weak) IBOutlet UIButton* advancedFeaturesButton;
-@property (nonatomic, weak) IBOutlet UIButton* expireButton;
+@property (nonatomic, weak) IBOutlet UIButton* reloadProductsButton;
 @property (nonatomic, weak) IBOutlet UIButton* restoreButton;
 @property (nonatomic, weak) IBOutlet UIView* staticView;
 @property (nonatomic, weak) IBOutlet UILabel* infoLabel;
@@ -22,7 +22,7 @@
 
 - (IBAction)fullModeButtonTapped:(id)sender;
 - (IBAction)advancedFeaturesButtonTapped:(id)sender;
-- (IBAction)expireButtonTapped:(id)sender;
+- (IBAction)reloadProductsButtonTapped:(id)sender;
 - (IBAction)restoreButtonTapped:(id)sender;
 - (IBAction)closeButtonTapped:(id)sender;
 - (IBAction)pageControllValueChanged:(id)sender;
@@ -58,6 +58,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - setters and getters
+
 - (void)setMode:(BannerViewControllerMode)mode
 {
     DDLogVerbose(@"mode: %d", mode);
@@ -71,8 +73,15 @@
             [self staticMode];
         }
     }
-    
 }
+
+- (void)setProducts:(NSArray *)products
+{
+    DDLogVerbose(@"_products: %@", [products description]);
+    _products = products;
+}
+
+#pragma mark - modes
 
 - (void)dynamicMode
 {
@@ -104,9 +113,14 @@
     [self.delegate bannerViewController:self performAction:sender];
 }
 
-- (IBAction)expireButtonTapped:(id)sender
+- (IBAction)reloadProductsButtonTapped:(id)sender
 {
-    [self.delegate bannerViewController:self performAction:sender];
+    self.reloadProductsButton.enabled = NO;
+    [self.delegate bannerViewController:self reloadProductsWithSuccess:^{
+        self.reloadProductsButton.enabled = YES;
+    } failure:^{
+        self.reloadProductsButton.enabled = YES;
+    }];
 }
 
 - (IBAction)restoreButtonTapped:(id)sender

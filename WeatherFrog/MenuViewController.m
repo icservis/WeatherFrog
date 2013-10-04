@@ -152,12 +152,14 @@
                 ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
                 if ([sender isKindOfClass:[UIButton class]]) {
                     // sender is ForecastButton = automatic update
+                    Forecast* currentForecast = [[self appDelegate] currentForecast];
                     forecastViewController.useSelectedLocationInsteadCurrenLocation = NO;
+                    forecastViewController.selectedForecast = currentForecast;
                 } else {
                     // other sender
                     forecastViewController.useSelectedLocationInsteadCurrenLocation = YES;
+                    forecastViewController.selectedPlacemark = self.selectedPlacemark;
                 }
-                forecastViewController.selectedPlacemark = self.selectedPlacemark;
             }
         };
     }

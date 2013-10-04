@@ -12,6 +12,7 @@
 #import "Weather.h"
 #import "Location.h"
 #import "LocationManager.h"
+#import "Banner.h"
 
 @implementation AppDelegate {
     Reachability* internetReachable;
@@ -54,6 +55,9 @@
     // User defaults
     [UserDefaultsManager sharedDefaults];
     [self customizeUIKit];
+    
+    // Banner
+    [[Banner sharedBanner] setupWithDemoPeriod:7200 alertsCount:3];
     
     // Facebook
     [FBProfilePictureView class];

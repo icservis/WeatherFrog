@@ -28,6 +28,7 @@ typedef enum {
 - (void)bannerPresentModalViewController:(UIViewController*)controler;
 - (void)bannerDismisModalViewController;
 - (void)bannerChangedStatus:(BannerMode)status;
+- (void)bannerErrorMessage:(NSString*)message;
 
 @end
 

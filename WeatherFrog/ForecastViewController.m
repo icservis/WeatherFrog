@@ -91,14 +91,12 @@ static CGFloat const tableTopMargin = 2.0f;
     
     self.title = NSLocalizedString(@"Forecast", nil);
     [self becomeFirstResponder];
+    
+    [[Banner sharedBanner] setDelegate:self];
         
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector(revealToggle:)];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    
-    [[Banner sharedBanner] setupWithDemoPeriod:7200 alertsCount:3];
-    [[Banner sharedBanner] setDelegate:self];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdate:) name:LocationManagerUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationManagerUpdateUnderTreshold:) name:LocationManagerUpdateUnderTresholdNotification object:nil];
@@ -115,7 +113,22 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self showSplashScreen];
+    
+    DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
+    
+    if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
+        
+        [self displayLoadedScreen];
+        
+    } else if (self.forecastManager.status == ForecastStatusFailed) {
+        
+        [self displayFailedScreen];
+        
+    } else {
+        
+        [self displayLoadingScreen];
+        
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -391,6 +404,7 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (BannerView*)bannerView
 {
+    DDLogVerbose(@"bannerView");
     if (_bannerView == nil) {
         if (isLandscape) {
             _bannerView = [[Banner sharedBanner] bannerViewLandscape];
@@ -514,25 +528,6 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)infoMessage:(NSString*)message
 {
     // Log message
-}
-
-- (void)showSplashScreen
-{
-    DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
-    
-    if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
-        
-        [self displayLoadedScreen];
-        
-    } else if (self.forecastManager.status == ForecastStatusFailed) {
-        
-        [self displayFailedScreen];
-        
-    } else {
-        
-        [self displayLoadingScreen];
-        
-    }
 }
 
 - (void)showLoadingLayout
@@ -678,6 +673,7 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)purgeSubViews
 {
+    DDLogVerbose(@"purgeSubViews");
     if (self.bannerView.superview != nil) {
         [self.bannerView removeFromSuperview];
         self.bannerView = nil;
@@ -1138,6 +1134,16 @@ static CGFloat const tableTopMargin = 2.0f;
     [self dismissViewControllerAnimated:YES completion:^{
         [self becomeFirstResponder];
     }];
+}
+
+- (void)bannerErrorMessage:(NSString *)message
+{
+    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    _hud.delegate = nil;
+    _hud.dimBackground = YES;
+    _hud.mode = MBProgressHUDModeText;
+    _hud.labelText = message;
+    [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
 }
 
 @end

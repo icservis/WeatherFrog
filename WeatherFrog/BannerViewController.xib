@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BannerViewController">
             <connections>
                 <outlet property="closeButton" destination="maE-m4-7W8" id="8nD-J0-uxf"/>
-                <outlet property="expireButton" destination="Z2M-ab-6fA" id="zsB-6M-yfR"/>
                 <outlet property="fullModeButton" destination="CgL-nT-jgx" id="Zw5-9u-5dm"/>
                 <outlet property="infoLabel" destination="ejI-6v-IhT" id="eF3-M4-Qhg"/>
                 <outlet property="pageConroll" destination="Hd1-Mb-B6x" id="lLC-sG-wSo"/>
+                <outlet property="reloadProductsButton" destination="Z2M-ab-6fA" id="6vp-pd-ew6"/>
                 <outlet property="restoreButton" destination="b6f-vT-pfx" id="CId-Lw-TkE"/>
                 <outlet property="scrollView" destination="YMx-cV-VH8" id="4pE-7p-nVa"/>
                 <outlet property="staticView" destination="41o-AN-pwa" id="jNW-FW-chp"/>
@@ -47,7 +47,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="expireButtonTapped:" destination="-1" eventType="touchUpInside" id="Krf-nO-H5V"/>
+                                <action selector="reloadProductsButtonTapped:" destination="-1" eventType="touchUpInside" id="9Uy-1f-0h0"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6f-vT-pfx">
