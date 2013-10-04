@@ -8,6 +8,7 @@
 
 #import "InAppPurchaseHelper.h"
 #import "Lumberjack.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 
@@ -56,6 +57,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
     _productsRequest.delegate = self;
     [_productsRequest start];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
 }
 
@@ -77,6 +79,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _completionHandler(YES, skProducts);
     _completionHandler = nil;
     
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
@@ -87,6 +90,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _completionHandler(NO, nil);
     _completionHandler = nil;
     
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
 }
 
 - (BOOL)productPurchased:(NSString *)productIdentifier {
@@ -99,7 +103,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
     SKPayment * payment = [SKPayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
-    
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
@@ -119,6 +123,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
                 break;
         }
     };
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
 }
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
@@ -157,6 +162,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)restoreCompletedTransactions {
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
 }
 
 @end

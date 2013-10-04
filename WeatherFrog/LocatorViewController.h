@@ -19,6 +19,5 @@
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
 - (void)setRevealMode:(BOOL)revealed;
-- (void)showSelectedPlacemark;
 
 @end

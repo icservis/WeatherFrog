@@ -44,7 +44,7 @@
     #ifdef DEBUG
     static int ddLogLevel = LOG_LEVEL_VERBOSE;
     #else
-    static int ddLogLevel = LOG_LEVEL_OFF;
+    static int ddLogLevel = LOG_LEVEL_INFO;
     #endif
     
     #pragma GCC diagnostic pop

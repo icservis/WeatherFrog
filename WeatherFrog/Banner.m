@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "Banner.h"
 #import "WeatherfrogInAppPurchaseHelper.h"
-#import "AFNetworking.h"
 
 static NSString* const BannerViewNib = @"BannerView";
 static NSString* const BannerViewControllerNib = @"BannerViewController";
@@ -163,9 +162,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     DDLogVerbose(@"reloadProducts");
     AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     if ([appDelegate isInternetActive]) {
-        [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
         [[WeatherfrogInAppPurchaseHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             if (success) {
                 _products = products;
             }

@@ -318,7 +318,7 @@
         
     } else {
         
-        CLPlacemark* currentPlacemark = [[self appDelegate] currentPlacemark];
+        Forecast* currentForecast = [[self appDelegate] currentForecast];
         
         UINavigationController* frontNavigationController = (UINavigationController*)self.revealViewController.frontViewController;
         UIViewController* frontViewController = [[frontNavigationController viewControllers] firstObject];
@@ -328,16 +328,13 @@
         if ([frontViewController isKindOfClass:[ForecastViewController class]]) {
             DDLogVerbose(@"ForecastViewController");
             ForecastViewController* forecastViewController = (ForecastViewController*)frontViewController;
-            [forecastViewController showSplashScreen];
             forecastViewController.useSelectedLocationInsteadCurrenLocation = NO;
-            forecastViewController.selectedPlacemark = currentPlacemark;
+            forecastViewController.selectedForecast = currentForecast;
         }
         
         if ([frontViewController isKindOfClass:[LocatorViewController class]]) {
             DDLogVerbose(@"LocationViewController");
-            LocatorViewController* locatorViewController = (LocatorViewController*)frontViewController;
-            locatorViewController.selectedPlacemark = currentPlacemark;
-            [locatorViewController showSelectedPlacemark];
+            [self forecastButtonTapped:self.forecastButton];
         }
     
     }
