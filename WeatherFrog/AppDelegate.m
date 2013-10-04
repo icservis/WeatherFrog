@@ -57,7 +57,7 @@
     [self customizeUIKit];
     
     // Banner
-    [[Banner sharedBanner] setupWithDemoPeriod:7200 alertsCount:3];
+    [[Banner sharedBanner] setupWithDemoPeriod:kExpiryTimeInterval alertsCount:kExpiryAlertCount];
     
     // Facebook
     [FBProfilePictureView class];

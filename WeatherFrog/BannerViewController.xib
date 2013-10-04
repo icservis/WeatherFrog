@@ -9,6 +9,7 @@
                 <outlet property="closeButton" destination="maE-m4-7W8" id="8nD-J0-uxf"/>
                 <outlet property="fullModeButton" destination="CgL-nT-jgx" id="Zw5-9u-5dm"/>
                 <outlet property="infoLabel" destination="ejI-6v-IhT" id="eF3-M4-Qhg"/>
+                <outlet property="infoText" destination="AsW-dn-utJ" id="ZJ5-7P-JX4"/>
                 <outlet property="pageConroll" destination="Hd1-Mb-B6x" id="lLC-sG-wSo"/>
                 <outlet property="reloadProductsButton" destination="Z2M-ab-6fA" id="6vp-pd-ew6"/>
                 <outlet property="restoreButton" destination="b6f-vT-pfx" id="CId-Lw-TkE"/>
@@ -39,6 +40,20 @@
                     <rect key="frame" x="0.0" y="0.0" width="321" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-dn-utJ">
+                            <rect key="frame" x="0.0" y="350" width="320" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="TqD-Nb-agx"/>
+                            </constraints>
+                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="uie-Ju-asE"/>
+                            </connections>
+                        </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2M-ab-6fA">
                             <rect key="frame" x="270" y="40" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -91,12 +106,14 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="AsW-dn-utJ" firstAttribute="centerX" secondItem="b6f-vT-pfx" secondAttribute="centerX" id="0Fc-3M-VXg"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z2M-ab-6fA" secondAttribute="trailing" constant="21" id="1T1-ip-kDW"/>
                         <constraint firstItem="b6f-vT-pfx" firstAttribute="top" secondItem="CgL-nT-jgx" secondAttribute="bottom" constant="22" id="4j6-FC-z7a"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HxE-bY-JWh" secondAttribute="trailing" constant="20" id="9bs-g4-rli"/>
                         <constraint firstAttribute="trailing" secondItem="b6f-vT-pfx" secondAttribute="trailing" constant="20" id="9vU-PR-Ozb"/>
                         <constraint firstItem="HxE-bY-JWh" firstAttribute="leading" secondItem="YMx-cV-VH8" secondAttribute="leading" constant="20" symbolic="YES" id="C4G-3z-w1j"/>
                         <constraint firstItem="b6f-vT-pfx" firstAttribute="top" secondItem="CgL-nT-jgx" secondAttribute="bottom" constant="22" id="Csy-nH-aPI"/>
+                        <constraint firstItem="AsW-dn-utJ" firstAttribute="top" secondItem="YMx-cV-VH8" secondAttribute="top" constant="350" id="Cxo-T3-hRu"/>
                         <constraint firstItem="b6f-vT-pfx" firstAttribute="trailing" secondItem="CgL-nT-jgx" secondAttribute="trailing" id="FTX-n2-WQa"/>
                         <constraint firstItem="HxE-bY-JWh" firstAttribute="top" secondItem="Z2M-ab-6fA" secondAttribute="bottom" constant="8" symbolic="YES" id="Gnm-QZ-sxT"/>
                         <constraint firstItem="b6f-vT-pfx" firstAttribute="leading" secondItem="YMx-cV-VH8" secondAttribute="leading" constant="20" id="MGa-9U-t1w"/>
@@ -113,6 +130,7 @@
                         <constraint firstItem="CgL-nT-jgx" firstAttribute="leading" secondItem="YMx-cV-VH8" secondAttribute="leading" constant="20" id="uA7-ea-brT"/>
                         <constraint firstItem="CgL-nT-jgx" firstAttribute="top" secondItem="HxE-bY-JWh" secondAttribute="bottom" constant="19" id="vy1-zD-dM4"/>
                         <constraint firstAttribute="trailing" secondItem="HxE-bY-JWh" secondAttribute="trailing" constant="20" symbolic="YES" id="wT3-PC-XKe"/>
+                        <constraint firstItem="AsW-dn-utJ" firstAttribute="leading" secondItem="YMx-cV-VH8" secondAttribute="leading" id="yOC-x0-fv3"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="iuQ-xq-Iep"/>

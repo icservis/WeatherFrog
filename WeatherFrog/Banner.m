@@ -33,41 +33,38 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 - (void)setupWithDemoPeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount
 {
     NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
-    DDLogVerbose(@"expiry: %@", [expiryDate description]);
+    DDLogVerbose(@"expiry date: %@", [expiryDate description]);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     
     if (expiryDate == nil) {
         
-        DDLogVerbose(@"setup");
-        expiryDate = [NSDate dateWithTimeIntervalSinceNow:timeinterval];
-        [[UserDefaultsManager sharedDefaults] setExpiryDate:expiryDate];
-        
-        [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
+        [self setupExpirePeriod:timeinterval alertsCount:alertsCount];
         self.bannerActive = YES;
         
     } else {
         
         if ([expiryDate compare:[NSDate date]] == NSOrderedAscending) {
             
-            DDLogVerbose(@"limited period");
-            [[UserDefaultsManager sharedDefaults] setLimitedMode:YES];
-            [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
+            [self expireLimitedPerion];
             self.bannerActive = YES;
             
         } else {
             
+            [self checkAlertPeriod:timeinterval/alertsCount];
+            
             if ([[WeatherfrogInAppPurchaseHelper sharedInstance] productPurchased:IAP_fullmode]) {
-                DDLogVerbose(@"IAP_fullmode purchased");
+                DDLogVerbose(@"IAP_fullmode activated");
                 self.bannerActive = NO;
             } else {
                 self.bannerActive = YES;
             }
             
             if ([[WeatherfrogInAppPurchaseHelper sharedInstance] productPurchased:IAP_advancedfeatures]) {
-                DDLogVerbose(@"IAP_advancedfeatures purchased");
+                DDLogVerbose(@"IAP_advancedfeatures activated");
+                self.advancedFeaturesActive = YES;
             } else {
-                
+                self.advancedFeaturesActive = NO;
             }
         }
     }
@@ -75,11 +72,11 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     [self reloadProductsWithSuccess:^{
         DDLogVerbose(@"products loaded");
     } failure:^{
-        DDLogVerbose(@"products failed");
+        DDLogError(@"products failed");
     }];
 }
 
-#pragma mark - getters
+#pragma mark - getters and setters
 
 - (BannerView*)bannerViewLandscape
 {
@@ -112,6 +109,16 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         _bannerViewController.delegate = self;
     }
     return _bannerViewController;
+}
+
+- (void)setBannerActive:(BOOL)bannerActive
+{
+    _bannerActive = bannerActive;
+    
+    if (bannerActive == YES)
+        [self.delegate bannerChangedStatus:BannerModeVisible];
+    else
+        [self.delegate bannerChangedStatus:BannerModeInvisible];
 }
 
 #pragma mark - StoreKit
@@ -199,24 +206,67 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 #pragma mark - actions
 
+- (void)setupExpirePeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount
+{
+    DDLogVerbose(@"setupExpirePeriod: %f, count: %d", timeinterval, alertsCount);
+    [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
+    
+    NSDate* expiryDate = [NSDate dateWithTimeIntervalSinceNow:timeinterval];
+    [[UserDefaultsManager sharedDefaults] setExpiryDate:expiryDate];
+    
+    NSDate* nextExpireAlertDate = [NSDate dateWithTimeIntervalSinceNow:timeinterval/alertsCount];
+    [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:nextExpireAlertDate];
+}
+
 - (void)expireLimitedPerion
 {
     DDLogVerbose(@"expireLimitedPerion");
+    
     [[UserDefaultsManager sharedDefaults] setLimitedMode:YES];
     [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
+    
     [[UserDefaultsManager sharedDefaults] setExpiryDate:nil];
-    [self.delegate bannerChangedStatus:BannerModeVisible];
-    self.bannerActive = YES;
+    if ([[UserDefaultsManager sharedDefaults] nextExpiryAlertDate] != nil) {
+        
+        UIAlertView* expiryAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:NSLocalizedString(@"Evaluating period expired", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
+        [expiryAlertView show];
+        
+    }
+    [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:nil];
 }
 
 - (void)activateFullOperation
 {
     DDLogVerbose(@"activateFullOperation");
+    
     [[UserDefaultsManager sharedDefaults] setLimitedMode:NO];
     [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:YES];
+    
     [[UserDefaultsManager sharedDefaults] setExpiryDate:[NSDate distantFuture]];
-    [self.delegate bannerChangedStatus:BannerModeInvisible];
+    [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:[NSDate distantFuture]];
+    
     self.bannerActive = NO;
+}
+
+- (void)checkAlertPeriod:(NSTimeInterval)nextExpiryAlertPeriod
+{
+    DDLogVerbose(@"checkAlertPeriod");
+    
+    NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
+    NSDate* nextExpiryAlertDate = [[UserDefaultsManager sharedDefaults] nextExpiryAlertDate];
+    DDLogVerbose(@"nextExpiryAlertDate: %@", nextExpiryAlertDate);
+    
+    if (nextExpiryAlertDate != nil && [nextExpiryAlertDate compare:[NSDate date]] == NSOrderedAscending) {
+        DDLogVerbose(@"passed");
+        [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:[NSDate dateWithTimeInterval:nextExpiryAlertPeriod sinceDate:nextExpiryAlertDate]];
+        NSInteger timeRemaining = [expiryDate timeIntervalSinceNow];
+        float daysRemaining = floorf(timeRemaining/60.0f);
+        float hoursRemaining = timeRemaining - daysRemaining*60.0f;
+        NSString* daysRemainingFormattedString = [NSString stringWithFormat:@"%.0f %@ %.0f %@", daysRemaining, NSLocalizedString(@"days", nil), hoursRemaining, NSLocalizedString(@"hours", nil)];
+        NSString* expiryAlertMessage = [NSString stringWithFormat:@"%@ %@", daysRemainingFormattedString, NSLocalizedString(@"remaining till the end of evaluating period", nil)];
+        UIAlertView* expiryAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:expiryAlertMessage delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
+        [expiryAlertView show];
+    }
 }
 
 #pragma mark - BannerViewDelegate
@@ -279,6 +329,17 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     } failure:^{
         failure2();
     }];
+}
+
+#pragma mark - formatters
+
+- (NSString*)daysRemainingFormatted
+{
+    NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
+    NSInteger timeRemaining = [expiryDate timeIntervalSinceNow];
+    float daysRemaining = floorf(timeRemaining/60.0f);
+    float hoursRemaining = timeRemaining - daysRemaining*60.0f;
+    return [NSString stringWithFormat:@"%.0f %@ %.0f %@", daysRemaining, NSLocalizedString(@"days", nil), hoursRemaining, NSLocalizedString(@"hours", nil)];
 }
 
 @end

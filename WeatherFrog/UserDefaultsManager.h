@@ -26,6 +26,7 @@ static NSString* const DefaultsForecastUnitAltitude = @"FORECAST_UNIT_ALTITUDE";
 static NSString* const DefaultsLastNotificationSymbol = @"LAST_NOTIFICATION_SYMBOL";
 static NSString* const DefaultsLimitedMode = @"LIMITED_MODE";
 static NSString* const DefaultsExpiryDate = @"EXPIRY_DATE";
+static NSString* const DefaultsNextExpiryAlertDate = @"NEXT_EXPIRY_ALERT_DATE";
 
 @interface UserDefaultsManager : NSObject
 
@@ -47,6 +48,7 @@ static NSString* const DefaultsExpiryDate = @"EXPIRY_DATE";
 @property (nonatomic, strong) NSNumber* lastNotificationSymbol;
 @property (nonatomic) BOOL limitedMode;
 @property (nonatomic, strong) NSDate* expiryDate;
+@property (nonatomic, strong) NSDate* nextExpiryAlertDate;
 
 + (UserDefaultsManager *)sharedDefaults;
 

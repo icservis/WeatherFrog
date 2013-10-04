@@ -7,6 +7,7 @@
 //
 
 #import "BannerViewController.h"
+#import "UserDefaultsManager.h"
 
 @interface BannerViewController ()
 
@@ -15,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIButton* advancedFeaturesButton;
 @property (nonatomic, weak) IBOutlet UIButton* reloadProductsButton;
 @property (nonatomic, weak) IBOutlet UIButton* restoreButton;
+@property (nonatomic, weak) IBOutlet UITextView* infoText;
 @property (nonatomic, weak) IBOutlet UIView* staticView;
 @property (nonatomic, weak) IBOutlet UILabel* infoLabel;
 @property (nonatomic, weak) IBOutlet UIScrollView* scrollView;
@@ -91,6 +93,7 @@
     self.staticView.hidden = YES;
     
     self.infoLabel.text = nil;
+    self.infoText.text = [NSString stringWithFormat:@"expiry: %@\nnext alert: %@", [[UserDefaultsManager sharedDefaults] expiryDate], [[UserDefaultsManager sharedDefaults] nextExpiryAlertDate]];
 }
 
 - (void)staticMode
@@ -101,6 +104,7 @@
     self.staticView.hidden = NO;
     
     self.infoLabel.text = NSLocalizedString(@"Thank you for supporting us", nil);
+    self.infoText.text = nil;
 }
 
 - (IBAction)fullModeButtonTapped:(id)sender

@@ -993,7 +993,7 @@ static CGFloat const tableTopMargin = 2.0f;
     _hud.delegate = nil;
     _hud.dimBackground = YES;
     _hud.mode = MBProgressHUDModeText;
-    _hud.labelText = [error localizedDescription];
+    _hud.labelText = NSLocalizedString(@"Fetching forecast failed", nil);
     [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
     
     MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;

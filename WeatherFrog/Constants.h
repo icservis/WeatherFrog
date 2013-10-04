@@ -9,6 +9,11 @@
 #ifndef WeatherFrog_Constants_h
 #define WeatherFrog_Constants_h
 
+#pragma mark - Banner
+
+static float const kExpiryTimeInterval = 7200;
+static int const kExpiryAlertCount = 3;
+
 #pragma mark - Times
 
 static float const kAnimationDuration = 0.5f;

@@ -36,6 +36,7 @@ typedef enum {
 
 @property (nonatomic, weak) id <BannerDelegate> delegate;
 @property (nonatomic, getter=isBannerActive) BOOL bannerActive;
+@property (nonatomic, getter=isBannerActive) BOOL advancedFeaturesActive;
 
 @property (nonatomic, strong) BannerView* bannerViewLandscape;
 @property (nonatomic, strong) BannerView* bannerViewPortrait;
@@ -43,5 +44,6 @@ typedef enum {
 
 + (Banner *)sharedBanner;
 - (void)setupWithDemoPeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount;
+- (NSString*)daysRemainingFormatted;
 
 @end

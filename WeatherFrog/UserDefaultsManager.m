@@ -360,6 +360,23 @@
     return _expiryDate;
 }
 
+#pragma mark - Next Expiry
+
+@synthesize nextExpiryAlertDate = _nextExpiryAlertDate;
+
+- (void)setNextExpiryAlertDate:(NSDate *)nextExpiryAlertDate
+{
+    _nextExpiryAlertDate = nextExpiryAlertDate;
+    [self.standardDefaults setValue:nextExpiryAlertDate forKey:DefaultsNextExpiryAlertDate];
+    [self.standardDefaults synchronize];
+}
+
+- (NSDate*)nextExpiryAlertDate
+{
+    _nextExpiryAlertDate = [self.standardDefaults valueForKey:DefaultsNextExpiryAlertDate];
+    return _nextExpiryAlertDate;
+}
+
 #pragma mark - Helpers
 
 - (NSArray*)elementsList
