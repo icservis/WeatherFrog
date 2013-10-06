@@ -77,6 +77,10 @@
 		847B916317BFC56E00AD76E7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916117BFC56E00AD76E7 /* SettingsViewController.m */; };
 		847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
 		847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B916917BFCF1C00AD76E7 /* LocationCell.m */; };
+		847CD6BC1801C0910012EA76 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847CD6B91801C0910012EA76 /* iRate.bundle */; };
+		847CD6BD1801C0910012EA76 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 847CD6B91801C0910012EA76 /* iRate.bundle */; };
+		847CD6BE1801C0910012EA76 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CD6BB1801C0910012EA76 /* iRate.m */; };
+		847CD6BF1801C0910012EA76 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CD6BB1801C0910012EA76 /* iRate.m */; };
 		847CFF5317E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
 		847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
 		847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */; };
@@ -294,6 +298,9 @@
 		847B916117BFC56E00AD76E7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		847B916817BFCF1C00AD76E7 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
 		847B916917BFCF1C00AD76E7 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		847CD6B91801C0910012EA76 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		847CD6BA1801C0910012EA76 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		847CD6BB1801C0910012EA76 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		847CFF5117E43E7800DA0CC7 /* ForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastCell.h; sourceTree = "<group>"; };
 		847CFF5217E43E7800DA0CC7 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastCell.m; sourceTree = "<group>"; };
 		847CFF6217E48F7200DA0CC7 /* CFGUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFGUnitConverter.h; sourceTree = "<group>"; };
@@ -523,6 +530,17 @@
 			path = Submodules/SWRevealViewController/SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		847CD6B81801C0910012EA76 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				847CD6B91801C0910012EA76 /* iRate.bundle */,
+				847CD6BA1801C0910012EA76 /* iRate.h */,
+				847CD6BB1801C0910012EA76 /* iRate.m */,
+			);
+			name = iRate;
+			path = Submodules/iRate/iRate;
+			sourceTree = "<group>";
+		};
 		848A54D1176E09A1009B3F85 = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +670,7 @@
 		84DE48AB17BF7560005AB3B8 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				847CD6B81801C0910012EA76 /* iRate */,
 				8422226E17ECF62200F5D231 /* CCHMapsActivity */,
 				84905D0F17CAAD1200402857 /* Sequencer */,
 				847B914717BFA6D600AD76E7 /* SWRevealViewController */,
@@ -1175,6 +1194,7 @@
 				8422228517ECF62300F5D231 /* CCHMapsActivity.strings in Resources */,
 				84DE491817BF7659005AB3B8 /* README.txt in Resources */,
 				8422227F17ECF62300F5D231 /* CCHMapsActivity@2x.png in Resources */,
+				847CD6BC1801C0910012EA76 /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,6 +1222,7 @@
 				8422228217ECF62300F5D231 /* CCHMapsActivity@2x˜ipad.png in Resources */,
 				845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */,
 				8422228617ECF62300F5D231 /* CCHMapsActivity.strings in Resources */,
+				847CD6BD1801C0910012EA76 /* iRate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,6 +1263,7 @@
 				84DE48D417BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE496E17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				8422227B17ECF62300F5D231 /* CCHMapsActivity.m in Sources */,
+				847CD6BE1801C0910012EA76 /* iRate.m in Sources */,
 				84905D0517C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
@@ -1319,6 +1341,7 @@
 				847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */,
 				8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
 				84DE48CB17BF7601005AB3B8 /* AFHTTPRequestOperation.m in Sources */,
+				847CD6BF1801C0910012EA76 /* iRate.m in Sources */,
 				84DE491717BF7659005AB3B8 /* DispatchQueueLogFormatter.m in Sources */,
 				8422638A17F1FD41003F3D7D /* LocationManager.m in Sources */,
 				84DE48F617BF764A005AB3B8 /* DDXMLElement.m in Sources */,

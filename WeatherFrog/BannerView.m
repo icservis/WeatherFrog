@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IC Servis. All rights reserved.
 //
 
+#import "Banner.h"
 #import "BannerView.h"
 
 @interface BannerView ()
@@ -28,13 +29,14 @@
 {
     self.logoView.image = [UIImage imageNamed:@"logo"];
     if (isLandscape) {
-        self.titleLabel.text = NSLocalizedString(@"This is a landscape message", nil);
-        self.subtitleLabel.text = nil;
+        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period is progress", nil);
     } else {
-        self.titleLabel.text = NSLocalizedString(@"This is a portrait message", nil);
-        self.subtitleLabel.text = NSLocalizedString(@"This is a portrait note", nil);
+        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period", nil);
     }
-    [self.actionButton setTitle:NSLocalizedString(@"Action", nil) forState:UIControlStateNormal];
+    self.subtitleLabel.text = nil;
+    [self.actionButton setTitle:NSLocalizedString(@"Buy", nil) forState:UIControlStateNormal];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
 - (IBAction)actionButtonTapped:(id)sender
@@ -59,13 +61,9 @@
     return self.bounds.size.height;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)updateTimeRemaining
 {
-    // Drawing code
+    self.subtitleLabel.text = [[Banner sharedBanner] timeRemainingFormatted:NO];
 }
-*/
 
 @end

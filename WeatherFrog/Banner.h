@@ -32,18 +32,18 @@ typedef enum {
 
 @end
 
-@interface Banner : NSObject <BannerViewDelegate, BannerViewControllerDelegate>
+@interface Banner : NSObject <BannerViewDelegate, BannerViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id <BannerDelegate> delegate;
-@property (nonatomic, getter=isBannerActive) BOOL bannerActive;
-@property (nonatomic, getter=isBannerActive) BOOL advancedFeaturesActive;
+@property (nonatomic, getter = isBannerActive) BOOL bannerActive;
+@property (nonatomic, getter = isAdvancedFeaturesActive) BOOL advancedFeaturesActive;
 
 @property (nonatomic, strong) BannerView* bannerViewLandscape;
 @property (nonatomic, strong) BannerView* bannerViewPortrait;
 @property (nonatomic, strong) BannerViewController* bannerViewController;
 
 + (Banner *)sharedBanner;
-- (void)setupWithDemoPeriod:(NSTimeInterval)timeinterval alertsCount:(NSUInteger)alertsCount;
-- (NSString*)daysRemainingFormatted;
+- (void)setupWithDemoPeriod:(NSTimeInterval)expirePeriod alertsCount:(NSUInteger)alertsCount;
+- (NSString*)timeRemainingFormatted:(BOOL)shortFormat;
 
 @end

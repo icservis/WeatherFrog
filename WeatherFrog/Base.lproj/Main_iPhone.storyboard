@@ -721,7 +721,6 @@
         <image name="settings-30" width="30" height="30"/>
         <image name="waiting-frog-portrait" width="320" height="460"/>
     </resources>
-    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
