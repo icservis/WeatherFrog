@@ -18,6 +18,8 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 @property (nonatomic) NSTimeInterval expirePeriod;
 @property (nonatomic) NSUInteger alertsCount;
+@property (nonatomic, strong) NSTimer* timer;
+@property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 
 @end
 
@@ -41,12 +43,13 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 - (void)setupWithDemoPeriod:(NSTimeInterval)expirePeriod alertsCount:(NSUInteger)alertsCount
 {
     NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
-    DDLogVerbose(@"expiry date: %@", [expiryDate description]);
+    DDLogVerbose(@"expiry date: %@", [self.localDateFormatter stringFromDate:expiryDate]);
     
     self.expirePeriod = expirePeriod;
     self.alertsCount = alertsCount;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     
@@ -132,6 +135,17 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         [self.delegate bannerChangedStatus:BannerModeInvisible];
 }
 
+- (NSDateFormatter*)localDateFormatter
+{
+    if (_localDateFormatter == nil) {
+        _localDateFormatter = [[NSDateFormatter alloc] init];
+        [_localDateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [_localDateFormatter setTimeStyle:NSDateFormatterLongStyle];
+        [_localDateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    }
+    return _localDateFormatter;
+}
+
 #pragma mark - StoreKit
 
 - (void)storeKitRestorePurchases
@@ -190,7 +204,6 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         self.bannerViewController.mode = BannerViewControllerModeStatic;
         [self.delegate bannerPresentModalViewController:self.bannerViewController];
     }
-    
 }
 
 - (void)reloadProductsWithSuccess:(void (^)())success failure:(void (^)())failure
@@ -237,14 +250,16 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     [[UserDefaultsManager sharedDefaults] setFetchForecastInBackground:NO];
     
     [[UserDefaultsManager sharedDefaults] setExpiryDate:nil];
-    if ([[UserDefaultsManager sharedDefaults] nextExpiryAlertDate] != nil) {
-        
-        UIAlertView* expiryAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:NSLocalizedString(@"Evaluating period expired!", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
-        expiryAlertView.tag = 1;
-        [expiryAlertView show];
-        
-    }
     [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:nil];
+}
+
+- (void)setNextExpiryAlertDate
+{
+    DDLogVerbose(@"setNextExpiryAlertDate");
+    NSDate* nextExpiryAlertDate = [[UserDefaultsManager sharedDefaults] nextExpiryAlertDate];
+    NSTimeInterval nextExpiryAlertPeriod = self.expirePeriod/self.alertsCount;
+    
+    [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:[NSDate dateWithTimeInterval:nextExpiryAlertPeriod sinceDate:nextExpiryAlertDate]];
 }
 
 - (void)activateFullOperation
@@ -260,28 +275,40 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     self.bannerActive = NO;
 }
 
-- (void)checkAlertPeriod:(NSTimeInterval)nextExpiryAlertPeriod
+- (void)checkAlertPeriod
 {
     DDLogVerbose(@"checkAlertPeriod");
+    NSDate* todayDate = [NSDate date];
+    
+    NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
+    DDLogVerbose(@"expiryDate: %@", [self.localDateFormatter stringFromDate:expiryDate]);
     
     NSDate* nextExpiryAlertDate = [[UserDefaultsManager sharedDefaults] nextExpiryAlertDate];
-    DDLogVerbose(@"nextExpiryAlertDate: %@", nextExpiryAlertDate);
+    DDLogVerbose(@"nextExpiryAlertDate: %@", [self.localDateFormatter stringFromDate:nextExpiryAlertDate]);
     
-    if (nextExpiryAlertDate != nil && [nextExpiryAlertDate compare:[NSDate date]] == NSOrderedAscending) {
-        DDLogVerbose(@"set next expiry date");
-        [[UserDefaultsManager sharedDefaults] setNextExpiryAlertDate:[NSDate dateWithTimeInterval:nextExpiryAlertPeriod sinceDate:nextExpiryAlertDate]];
+    if (expiryDate != nil && [expiryDate compare:todayDate] == NSOrderedAscending) {
         
-        NSString* checkAlertMessage = [NSString stringWithFormat:@"%@ %@", [self timeRemainingFormatted:YES], NSLocalizedString(@"remaining till the end of evaluating period.", nil)];
-        UIAlertView* checkPeriodAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:checkAlertMessage delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
-        checkPeriodAlertView.tag = 2;
-        [checkPeriodAlertView show];
+        [self expireLimitedPerion];
+        [self alertExpireIn:0];
+        
+    } else if (nextExpiryAlertDate != nil && [nextExpiryAlertDate compare:todayDate] == NSOrderedAscending) {
+        
+        [self setNextExpiryAlertDate];
+        float countOfMinutesToExpire = roundf([expiryDate timeIntervalSinceDate:nextExpiryAlertDate]/3600);
+        [self alertExpireIn:countOfMinutesToExpire];
     }
 }
 
 - (void)applicationDidBecomeActive:(NSNotification*)notification
 {
     DDLogVerbose(@"applicationDidBecomeActive");
-    [self checkAlertPeriod:self.expirePeriod/self.alertsCount];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kExpiryAlertTimerPeriod target:self selector:@selector(checkAlertPeriod) userInfo:nil repeats:YES];
+}
+
+- (void)applicationWillResignActive:(NSNotification*)notification
+{
+    DDLogVerbose(@"applicationWillResignActive");
+    [self.timer invalidate];
 }
 
 #pragma mark - BannerViewDelegate
@@ -346,6 +373,23 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     }];
 }
 
+#pragma mark - UIAlertView actions
+
+- (void)alertExpireIn:(float)minutesToExpire
+{
+    DDLogVerbose(@"minutesToExpire: %.3f", minutesToExpire);
+    NSString* message;
+    
+    if (minutesToExpire > 0) {
+        message = [NSString stringWithFormat:@"%@ %.0f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), minutesToExpire, NSLocalizedString(@"hours, please see more details about.", nil)];
+    } else {
+        message = NSLocalizedString(@"Evaluating period expired, plase see more details about.", nil);
+    }
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
+    [alertView show];
+}
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -362,7 +406,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     NSDate* expiryDate = [[UserDefaultsManager sharedDefaults] expiryDate];
     NSDate* todayDate = [NSDate date];
     
-    if ([todayDate compare:expiryDate] == NSOrderedDescending) {
+    if ([todayDate compare:expiryDate] == NSOrderedDescending || expiryDate == nil) {
         return NSLocalizedString(@"expired", nil);
     }
     

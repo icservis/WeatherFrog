@@ -59,13 +59,21 @@
     self.fullModeLabel.text = NSLocalizedString(@"Unlimited notifications", nil);
     self.advancedFeaturesLabel.text = NSLocalizedString(@"Advanced features", nil);
     [self.restoreButton setTitle:NSLocalizedString(@"Restore purcheses", nil) forState:UIControlStateNormal];
-    self.timeRemainingValue.text = nil;
     
     if (self.mode == BannerViewControllerModeDynamic) {
         [self dynamicMode];
     } else {
         [self staticMode];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+    self.timeRemainingValue.text = nil;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,7 +160,6 @@
     self.restoreButton.hidden = NO;
     
     self.infoText.text = NSLocalizedString(@"Description for dynamic mode", nil);
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
 - (void)staticMode
@@ -165,7 +172,6 @@
     self.reloadProductsButton.hidden = YES;
     
     self.infoText.text = NSLocalizedString(@"Description for static mode", nil);
-    [self.timer invalidate];
 }
 
 - (void)updateTimeRemaining
@@ -203,6 +209,7 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
+    [self.timer invalidate];
     [self.delegate closeBannerViewController:self];
 }
 

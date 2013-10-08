@@ -29,7 +29,7 @@
 {
     self.logoView.image = [UIImage imageNamed:@"logo"];
     if (isLandscape) {
-        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period is progress", nil);
+        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period", nil);
     } else {
         self.titleLabel.text = NSLocalizedString(@"Notification evaluating period", nil);
     }

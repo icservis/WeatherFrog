@@ -13,6 +13,7 @@
 
 static float const kExpiryTimeInterval = 7200;
 static int const kExpiryAlertCount = 3;
+static float const kExpiryAlertTimerPeriod = 30.0;
 
 #pragma mark - Times
 
