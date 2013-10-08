@@ -294,8 +294,8 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     } else if (nextExpiryAlertDate != nil && [nextExpiryAlertDate compare:todayDate] == NSOrderedAscending) {
         
         [self setNextExpiryAlertDate];
-        float countOfMinutesToExpire = roundf([expiryDate timeIntervalSinceDate:nextExpiryAlertDate]/3600);
-        [self alertExpireIn:countOfMinutesToExpire];
+        float countOfSecondsToExpire = [expiryDate timeIntervalSinceDate:nextExpiryAlertDate];
+        [self alertExpireIn:countOfSecondsToExpire];
     }
 }
 
@@ -375,13 +375,13 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 
 #pragma mark - UIAlertView actions
 
-- (void)alertExpireIn:(float)minutesToExpire
+- (void)alertExpireIn:(float)secondsToExpire
 {
-    DDLogVerbose(@"minutesToExpire: %.3f", minutesToExpire);
+    DDLogVerbose(@"secondsToExpire: %.2f", secondsToExpire);
     NSString* message;
     
-    if (minutesToExpire > 0) {
-        message = [NSString stringWithFormat:@"%@ %.0f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), minutesToExpire, NSLocalizedString(@"hours, please see more details about.", nil)];
+    if (secondsToExpire > 0) {
+        message = [NSString stringWithFormat:@"%@ %.2f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), secondsToExpire/3600, NSLocalizedString(@"hours, please see more details about.", nil)];
     } else {
         message = NSLocalizedString(@"Evaluating period expired, plase see more details about.", nil);
     }
@@ -407,7 +407,11 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     NSDate* todayDate = [NSDate date];
     
     if ([todayDate compare:expiryDate] == NSOrderedDescending || expiryDate == nil) {
-        return NSLocalizedString(@"expired", nil);
+        if (shortFormat == YES) {
+            return NSLocalizedString(@"expired", nil);
+        } else {
+            return NSLocalizedString(@"Period expired", nil);
+        }
     }
     
     NSCalendar* sysCalendar = [NSCalendar currentCalendar];
@@ -418,13 +422,13 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         if ([conversionInfo day] > 0) {
             return [NSString stringWithFormat:@"%d %@", [conversionInfo day], NSLocalizedString(@"days", nil)];
         } else {
-            return [NSString stringWithFormat:@"%02i:%02i:%02i", [conversionInfo hour], [conversionInfo minute], [conversionInfo second]];
+            return [NSString stringWithFormat:@"%02i:%02i", [conversionInfo hour], [conversionInfo minute]];
         }
     } else {
         if ([conversionInfo day] > 0) {
             return [NSString stringWithFormat:@"%@ %d %@", NSLocalizedString(@"Remaining", nil), [conversionInfo day], NSLocalizedString(@"days", nil)];
         } else {
-            return [NSString stringWithFormat:@"%@: %02i:%02i:%02i", NSLocalizedString(@"Remaining time", nil), [conversionInfo hour], [conversionInfo minute], [conversionInfo second]];
+            return [NSString stringWithFormat:@"%@: %02i:%02i", NSLocalizedString(@"Remaining time", nil), [conversionInfo hour], [conversionInfo minute]];
         }
     }
 }

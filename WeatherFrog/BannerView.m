@@ -36,7 +36,7 @@
     self.subtitleLabel.text = nil;
     [self.actionButton setTitle:NSLocalizedString(@"Buy", nil) forState:UIControlStateNormal];
     
-    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:kExpiryAlertTimerPeriod/2 target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
 - (IBAction)actionButtonTapped:(id)sender

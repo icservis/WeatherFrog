@@ -71,9 +71,9 @@
 {
     [super viewWillAppear:animated];
     
-    
     self.timeRemainingValue.text = nil;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
+    [self updateTimeRemaining];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kExpiryAlertTimerPeriod/2 target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
