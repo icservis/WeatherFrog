@@ -232,6 +232,11 @@ static CGFloat const tableTopMargin = 2.0f;
     return viewController;
 }
 
+- (BOOL)isViewVisible
+{
+    return [self isViewLoaded];
+}
+
 #pragma mark - UIDeviceDelegate
 
 - (BOOL)shouldAutorotate
@@ -366,14 +371,11 @@ static CGFloat const tableTopMargin = 2.0f;
     dataPortrait = [selectedForecast sortedWeatherDataForPortrait];
     dataLandscape = [selectedForecast sortedWeatherDataForLandscape];
     
-    if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
-        
-        MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
-        [menuViewController updatePlacemark:selectedForecast.placemark];
-        
-        if ([self isViewLoaded]) {
-            [self displayForecast:selectedForecast];
-        }
+    MenuViewController* menuViewController = (MenuViewController*)self.revealViewController.rearViewController;
+    [menuViewController updatePlacemark:selectedForecast.placemark];
+    
+    if ([self isViewVisible]) {
+        [self displayForecast:selectedForecast];
     }
 }
 
@@ -484,42 +486,37 @@ static CGFloat const tableTopMargin = 2.0f;
 - (void)forecastUpdate:(NSNotification*)notification
 {
     DDLogVerbose(@"notification: %@", [notification description]);
-    NSDictionary* userInfo = notification.userInfo;
     
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        
-        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-            self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
-        }
+        NSDictionary* userInfo = notification.userInfo;
+        self.selectedForecast = [userInfo objectForKey:@"currentForecast"];
     }
 }
 
 - (void)forecastFetch:(NSNotification*)notification
 {
+    DDLogVerbose(@"notification: %@", [notification description]);
+    
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-            [self displayFetchingScreen];
-        }
+        [self displayFetchingScreen];
     }
 }
 
 - (void)forecastProgress:(NSNotification*)notification
 {
-    NSDictionary* userInfo = notification.userInfo;
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-            [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
-        }
+        NSDictionary* userInfo = notification.userInfo;
+        [self updateProgress:[userInfo objectForKey:@"forecastProgress"]];
     }
 }
 
 - (void)forecastError:(NSNotification*)notification
 {
-    NSDictionary* userInfo = notification.userInfo;
+    DDLogError(@"notification: %@", [notification description]);
+    
     if (_useSelectedLocationInsteadCurrenLocation == NO) {
-        if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground && [self isViewLoaded]) {
-            [self updateProgressWithError:[userInfo objectForKey:@"forecastError"]];
-        }
+        NSDictionary* userInfo = notification.userInfo;
+        [self updateProgressWithError:[userInfo objectForKey:@"forecastError"]];
     }
 }
 
@@ -532,99 +529,122 @@ static CGFloat const tableTopMargin = 2.0f;
 
 - (void)showLoadingLayout
 {
-    [UIView beginAnimations:@"ToggleViews" context:nil];
-    [UIView setAnimationDuration:kAnimationDuration];
-    self.loadingView.alpha = 1.0;
-    self.scrollView.alpha = 0.0;
-    [UIView commitAnimations];
+    DDLogInfo(@"showLoadingLayout");
     
-    [self purgeSubViews];
-    self.statusInfo.text = nil;
-    [self.progressBar setProgress:0.0f animated:NO];
-    
-    if (isLandscape) {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
-    } else {
-        self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+    if ([self isViewVisible]) {
+        
+        [UIView beginAnimations:@"ToggleViews" context:nil];
+        [UIView setAnimationDuration:kAnimationDuration];
+        self.loadingView.alpha = 1.0;
+        self.scrollView.alpha = 0.0;
+        [UIView commitAnimations];
+        
+        [self purgeSubViews];
+        self.statusInfo.text = nil;
+        [self.progressBar setProgress:0.0f animated:NO];
+        
+        if (isLandscape) {
+            self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogLandscape];
+        } else {
+            self.loadingImage.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+        }
     }
 }
 
 - (void)showForecastLayout
 {
-    [self purgeSubViews];
+    DDLogInfo(@"showForecastLayout");
     
-    [UIView beginAnimations:@"ToggleViews" context:nil];
-    [UIView setAnimationDuration:kAnimationDuration];
-    self.loadingView.alpha = 0.0;
-    self.scrollView.alpha = 1.0;
-    [UIView commitAnimations];
+    if ([self isViewVisible]) {
+        
+        [self purgeSubViews];
+        
+        [UIView beginAnimations:@"ToggleViews" context:nil];
+        [UIView setAnimationDuration:kAnimationDuration];
+        self.loadingView.alpha = 0.0;
+        self.scrollView.alpha = 1.0;
+        [UIView commitAnimations];
+    }
 }
 
 - (void)displayForecast:(Forecast*)forecast
 {
-    if (forecast.name == nil && forecast.timezone == nil) {
-        DDLogInfo(@"forecast empty");
-        [self displayDefaultScreen];
-        return;
-    }
-    
     DDLogInfo(@"displayForecast");
     
-    self.title = forecast.name;
-    [self showForecastLayout];
-    
-    if (isLandscape) {
-        [self setupViewsForLandscape:forecast];
-    } else {
-        [self setupViewsForPortrait:forecast];
+    if ([self isViewVisible]) {
+        
+        if (forecast.name == nil && forecast.timezone == nil) {
+            DDLogInfo(@"forecast empty");
+            [self displayDefaultScreen];
+            return;
+        }
+        
+        self.title = forecast.name;
+        [self showForecastLayout];
+        
+        if (isLandscape) {
+            [self setupViewsForLandscape:forecast];
+        } else {
+            [self setupViewsForPortrait:forecast];
+        }
+        
+        [self checkForecastLayoutValidity];
     }
-    
-    [self checkForecastLayoutValidity];
 }
 
 - (void)displayDefaultScreen
 {
     DDLogInfo(@"displayDefaultScreen");
     
-    self.title = NSLocalizedString(@"Location not determined", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Location not determined", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:nil];
+    }
 }
 
 - (void)displayOfflineScreen
 {
     DDLogInfo(@"displayOfflineScreen");
     
-    self.title = NSLocalizedString(@"Internet connection offline", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Internet connection offline", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:nil];
+    }
 }
 
 - (void)displayLoadedScreen
 {
     DDLogInfo(@"displayLoadedScreen");
     
-    self.title = NSLocalizedString(@"Forecast loaded", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:1.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Forecast loaded", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:1.0f message:nil];
+    }
 }
 
 - (void)displayFailedScreen
 {
     DDLogInfo(@"displayFailedScreen");
     
-    self.title = NSLocalizedString(@"Forecast failed", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Forecast failed", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:nil];
+    }
 }
 
 - (void)displayLoadingScreen
 {
     DDLogInfo(@"displayLoadingScreen");
     
-    self.title = NSLocalizedString(@"Loading forecast…", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Loading forecast…", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:nil];
+    }
 }
 
 
@@ -632,41 +652,53 @@ static CGFloat const tableTopMargin = 2.0f;
 {
     DDLogInfo(@"displayLoadingScreen");
     
-    self.title = NSLocalizedString(@"Fetchning forecast…", nil);
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:nil];
+    if ([self isViewVisible]) {
+        self.title = NSLocalizedString(@"Fetchning forecast…", nil);
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:nil];
+    }
 }
 
 - (void)displayRotatingScreen
 {
     DDLogInfo(@"displayRotatingScreen");
-    [self showLoadingLayout];
-    [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Rotating…", nil)];
+    
+    if ([self isViewVisible]) {
+        [self showLoadingLayout];
+        [self updateProgressViewWithValue:0.0f message:NSLocalizedString(@"Rotating…", nil)];
+    }
 }
 
 - (void)updateProgress:(NSNumber*)progressNumber
 {
-    float progress = [progressNumber floatValue];
-    [self updateProgressViewWithValue:progress message:nil];
+    if ([self isViewVisible]) {
+        float progress = [progressNumber floatValue];
+        [self updateProgressViewWithValue:progress message:nil];
+    }
 }
 
 - (void)updateProgressWithError:(NSError*)error
 {
     DDLogError(@"Error: %@", [error description]);
-    self.statusInfo.text = NSLocalizedString(@"Processing forecast failed", nil);
-    [self.progressBar setProgress:0.0f animated:NO];
+    
+    if ([self isViewVisible]) {
+        self.statusInfo.text = NSLocalizedString(@"Processing forecast failed", nil);
+        [self.progressBar setProgress:0.0f animated:NO];
+    }
 }
 
 #pragma mark - Progress view
 
 - (void)updateProgressViewWithValue:(float)progress message:(NSString*)message
 {
-    if (message != nil) {
-        self.statusInfo.text = message;
-    } else {
-        self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
+    if ([self isViewVisible]) {
+        if (message != nil) {
+            self.statusInfo.text = message;
+        } else {
+            self.statusInfo.text = [NSString stringWithFormat:@"%.0f%%", 100*progress];
+        }
+        [self.progressBar setProgress:progress animated:YES];
     }
-    [self.progressBar setProgress:progress animated:YES];
 }
 
 #pragma mark - Helpers for Views
