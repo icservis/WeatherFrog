@@ -34,7 +34,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>310</string>
+	<string>311</string>
 	<key>FacebookAppID</key>
 	<string>272754479404746</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -56,6 +56,8 @@
 	</array>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>

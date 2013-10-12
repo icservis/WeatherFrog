@@ -48,9 +48,13 @@
     self.accessoryType = UITableViewCellAccessoryNone;
     
     if ([location.isMarked isEqualToNumber:@YES]) {
-        [_markButton setImage:[UIImage imageNamed:@"minus-30"] forState:UIControlStateNormal];
+        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle"] forState:UIControlStateNormal];
+        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle-selected"] forState:UIControlStateHighlighted];
+        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle-selected"] forState:UIControlStateSelected];
     } else {
-        [_markButton setImage:[UIImage imageNamed:@"plus-30"] forState:UIControlStateNormal];
+        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle"] forState:UIControlStateNormal];
+        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle-selected"] forState:UIControlStateHighlighted];
+        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle-selected"] forState:UIControlStateSelected];
     }
 }
 

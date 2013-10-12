@@ -11,7 +11,7 @@
 
 #pragma mark - Banner
 
-static float const kExpiryTimeInterval = 7200;
+static float const kExpiryTimeInterval = 86400*30;
 static int const kExpiryAlertCount = 3;
 static float const kExpiryAlertTimerPeriod = 30.0;
 

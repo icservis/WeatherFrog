@@ -250,6 +250,27 @@
 
 - (void)customizeUIKit
 {
+    UIColor* tintColor = [UIColor orangeColor];
+    UIColor* titleColor = [UIColor whiteColor];
+    UIColor* alternateColor = [UIColor lightGrayColor];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UIToolbar appearance] setTintColor:titleColor];
+    [[UIToolbar appearance] setBarTintColor:tintColor];
+    
+    [[UINavigationBar appearance] setTintColor:titleColor];
+    [[UINavigationBar appearance] setBarTintColor:tintColor];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleColor, NSForegroundColorAttributeName, [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSFontAttributeName, nil]];
+    
+    [[UIButton appearance] setTitleColor:tintColor forState:UIControlStateNormal];
+    [[UIButton appearance] setTitleColor:alternateColor forState:UIControlStateHighlighted];
+    
+    
+    [[UITableViewCell appearance] setTintColor:tintColor];
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:tintColor];
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
     
 }
 
