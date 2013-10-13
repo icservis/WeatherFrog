@@ -48,13 +48,17 @@
     self.accessoryType = UITableViewCellAccessoryNone;
     
     if ([location.isMarked isEqualToNumber:@YES]) {
-        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle"] forState:UIControlStateNormal];
-        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle-selected"] forState:UIControlStateHighlighted];
-        [_markButton setImage:[UIImage imageNamed:@"746-minus-circle-selected"] forState:UIControlStateSelected];
+        UIImage* normalImage = [[UIImage imageNamed:@"746-minus-circle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage* selectedImage = [[UIImage imageNamed:@"746-minus-circle-selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [_markButton setImage:normalImage forState:UIControlStateNormal];
+        [_markButton setImage:selectedImage forState:UIControlStateHighlighted];
+        [_markButton setImage:selectedImage forState:UIControlStateSelected];
     } else {
-        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle"] forState:UIControlStateNormal];
-        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle-selected"] forState:UIControlStateHighlighted];
-        [_markButton setImage:[UIImage imageNamed:@"746-plus-circle-selected"] forState:UIControlStateSelected];
+        UIImage* normalImage = [[UIImage imageNamed:@"746-plus-circle"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage* selectedImage = [[UIImage imageNamed:@"746-plus-circle-selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [_markButton setImage:normalImage forState:UIControlStateNormal];
+        [_markButton setImage:selectedImage forState:UIControlStateHighlighted];
+        [_markButton setImage:selectedImage forState:UIControlStateSelected];
     }
 }
 

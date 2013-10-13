@@ -392,7 +392,7 @@ static float const LongTapDuration = 1.2;
             
             UIButton* forecastButton = [UIButton buttonWithType:UIButtonTypeCustom];
             forecastButton.frame = CGRectMake(0, 0, 36, 36);
-            UIImage* forecastImage = [UIImage imageNamed:@"forecast"];
+            UIImage* forecastImage = [[UIImage imageNamed:@"forecast"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [forecastButton setImage:forecastImage forState:UIControlStateNormal];
             [forecastButton addTarget:self action:@selector(showForecast:) forControlEvents:UIControlEventTouchUpInside];
             annotationPinView.rightCalloutAccessoryView = forecastButton;

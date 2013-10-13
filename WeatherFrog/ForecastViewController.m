@@ -278,6 +278,7 @@ static CGFloat const tableTopMargin = 2.0f;
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[mapsActivity]];
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact];
+    activityViewController.navigationController.toolbar.tintColor = [UIColor orangeColor];
 
     [self presentViewController:activityViewController animated:YES completion:nil];
 }

@@ -250,6 +250,7 @@
 
 - (void)customizeUIKit
 {
+    /*
     UIColor* tintColor = [UIColor orangeColor];
     UIColor* titleColor = [UIColor whiteColor];
     UIColor* alternateColor = [UIColor lightGrayColor];
@@ -258,6 +259,7 @@
     
     [[UIToolbar appearance] setTintColor:titleColor];
     [[UIToolbar appearance] setBarTintColor:tintColor];
+    [[UIBarButtonItem appearance] setTintColor:titleColor];
     
     [[UINavigationBar appearance] setTintColor:titleColor];
     [[UINavigationBar appearance] setBarTintColor:tintColor];
@@ -266,12 +268,12 @@
     
     [[UIButton appearance] setTitleColor:tintColor forState:UIControlStateNormal];
     [[UIButton appearance] setTitleColor:alternateColor forState:UIControlStateHighlighted];
-    
+    [[UILabel appearanceWhenContainedIn:[UIButton class], nil] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
     
     [[UITableViewCell appearance] setTintColor:tintColor];
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:tintColor];
-    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]];
-    
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
+    */
 }
 
 #pragma mark - Core Data
