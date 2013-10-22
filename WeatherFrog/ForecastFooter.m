@@ -8,10 +8,12 @@
 
 #import "ForecastFooter.h"
 #import "Astro.h"
+#import "Weather.h"
 
 @interface ForecastFooter()
 
 @property (nonatomic, weak) IBOutlet UILabel* moonPhase;
+@property (nonatomic, weak) IBOutlet UILabel* tzAbbreviation;
 
 @end
 
@@ -20,6 +22,17 @@
 + (CGFloat)forecastFooterHeight
 {
     return 21.0f;
+}
+
+- (void)setWeather:(Weather *)weather
+{
+    _weather = weather;
+}
+
+- (void)setTimeZone:(NSTimeZone *)timeZone
+{
+    _timeZone = timeZone;
+    _tzAbbreviation.text = [_timeZone abbreviationForDate:_weather.timestamp];
 }
 
 - (void)setAstro:(Astro *)astro

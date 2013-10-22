@@ -1105,6 +1105,7 @@ static CGFloat const tableTopMargin = 2.0f;
     
     NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
     Weather* weather = [currentDay lastObject];
+    footer.weather = weather;
     
     NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:weather.timestamp];

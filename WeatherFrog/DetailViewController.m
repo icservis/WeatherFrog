@@ -188,7 +188,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.0;
+    return 21.0;
+}
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString* tzAbbreviation = [self.timezone abbreviationForDate:self.weather.timestamp];
+    NSTimeZone* timeZoneFromAbbreviation = [NSTimeZone timeZoneWithAbbreviation:tzAbbreviation];
+    return [timeZoneFromAbbreviation localizedName:NSTimeZoneNameStyleDaylightSaving locale:[NSLocale currentLocale]];
 }
 
 @end
