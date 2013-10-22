@@ -38,8 +38,8 @@
 	// Do any additional setup after loading the view.
     
     [self.localDateFormatter setTimeZone:self.timezone];
-    [self.localDateFormatter setDateStyle:NSDateFormatterLongStyle];
-    [self.localDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [self.localDateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.localDateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     self.title = [self.localDateFormatter stringFromDate:self.weather.timestamp];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
@@ -193,9 +193,9 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString* tzAbbreviation = [self.timezone abbreviationForDate:self.weather.timestamp];
-    NSTimeZone* timeZoneFromAbbreviation = [NSTimeZone timeZoneWithAbbreviation:tzAbbreviation];
-    return [timeZoneFromAbbreviation localizedName:NSTimeZoneNameStyleDaylightSaving locale:[NSLocale currentLocale]];
+    [self.localDateFormatter setTimeZone:self.timezone];
+    [self.localDateFormatter setDateFormat:@"zzzz"];
+    return  [self.localDateFormatter stringFromDate:self.weather.timestamp];
 }
 
 @end

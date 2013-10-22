@@ -708,17 +708,17 @@
     
     NSDate* now = [NSDate date];
     
-    __block Weather* currentNotification;
+    __block Weather* forthcommingWeather;
     
     [self.currentForecast.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
         if ([weather.timestamp compare:now] == NSOrderedDescending) {
             
-            currentNotification = weather;
+            forthcommingWeather = weather;
             *stop = YES;
         }
     }];
     
-    if (lastNotification != nil && [lastNotification.created isEqualToDate:currentNotification.created] && [lastNotification.timestamp isEqualToDate:currentNotification.timestamp]) {
+    if (lastNotification != nil && [lastNotification.created isEqualToDate:forthcommingWeather.created] && [lastNotification.timestamp isEqualToDate:forthcommingWeather.timestamp]) {
         
         DDLogInfo(@"Duplicated weather");
         return;
@@ -729,7 +729,19 @@
         UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
         NSNumber* notifications = [sharedDefaults notifications];
         NSUInteger notificationLevel = [notifications integerValue];
-            
+        
+        NSNumber* symbol;
+        
+        if (forthcommingWeather.symbol1h != nil) {
+            symbol = forthcommingWeather.symbol1h;
+        } else if (forthcommingWeather.symbol2h != nil) {
+            symbol = forthcommingWeather.symbol2h;
+        } else if (forthcommingWeather.symbol3h != nil) {
+            symbol = forthcommingWeather.symbol3h;
+        } else {
+            symbol = forthcommingWeather.symbol6h;
+        }
+        
         BOOL sheduleNotification = NO;
         
         if (notificationLevel == 4) {
@@ -737,18 +749,6 @@
             sheduleNotification = YES;
             
         } else if (notificationLevel > 0) {
-            
-            NSNumber* symbol;
-            
-            if (currentNotification.symbol1h != nil) {
-                symbol = currentNotification.symbol1h;
-            } else if (currentNotification.symbol2h != nil) {
-                symbol = currentNotification.symbol2h;
-            } else if (currentNotification.symbol3h != nil) {
-                symbol = currentNotification.symbol3h;
-            } else {
-                symbol = currentNotification.symbol6h;
-            }
             
             NSArray* notificationLevelConfig = [notificationsConfig objectForKey:notifications];
             
@@ -779,7 +779,12 @@
                 notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
                 notifyAlarm.repeatInterval = 0;
                 
-                NSString* alertBody = [NSString stringWithFormat:@"%@ %@ - %@", NSLocalizedString(@"Notification", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications], message];
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+                [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                
+                NSString* alertBody = [NSString stringWithFormat:@"%@ %@ - %@: symbol: %@, time: %@", NSLocalizedString(@"Notification", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications], message, symbol, [dateFormatter stringFromDate:forthcommingWeather.timestamp]];
                 notifyAlarm.alertBody = alertBody;
                 [app scheduleLocalNotification:notifyAlarm];
             }
@@ -788,7 +793,7 @@
         
     }
     
-    lastNotification = currentNotification;
+    lastNotification = forthcommingWeather;
 }
 
 @end
