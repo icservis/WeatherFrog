@@ -59,13 +59,6 @@
     // Banner
     [[Banner sharedBanner] setupWithDemoPeriod:kExpiryTimeInterval alertsCount:kExpiryAlertCount];
     
-    // Facebook
-    [FBProfilePictureView class];
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        // Yes, so just open the session (this won't display any UX).
-        [self openSession];
-    }
-    
     // CLLocation
     if (clLocationManager == nil) {
         clLocationManager = [[CLLocationManager alloc] init];
@@ -144,15 +137,11 @@
         [clLocationManager stopUpdatingLocation];
         [clLocationManager stopMonitoringSignificantLocationChanges];
     }
-    
-    [FBAppEvents activateApp];
-    [FBSession.activeSession handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [FBSession.activeSession close];
     [self savePersistence];
 }
 
@@ -436,100 +425,6 @@
     } else {
         [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
     }
-}
-
-#pragma mark - Facebook
-
-// FBSample logic
-// The native facebook application transitions back to an authenticating application when the user
-// chooses to either log in, or cancel. The url passed to this method contains the token in the
-// case of a successful login. By passing the url to the handleOpenURL method of FBAppCall the provided
-// session object can parse the URL, and capture the token for use by the rest of the authenticating
-// application; the return value of handleOpenURL indicates whether or not the URL was handled by the
-// session object, and does not reflect whether or not the login was successful; the session object's
-// state, as well as its arguments passed to the state completion handler indicate whether the login
-// was successful; note that if the session is nil or closed when handleOpenURL is called, the expression
-// will be boolean NO, meaning the URL was not handled by the authenticating application
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
-    // attempt to extract a token from the url
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication
-                        withSession:self.session];
-}
-
-- (void)sessionStateChanged:(FBSession *)session
-                      state:(FBSessionState) state
-                      error:(NSError *)error
-{
-    self.session = session;
-    DDLogVerbose(@"session: %@", [self.session description]);
-    
-    switch (state) {
-        case FBSessionStateOpen: {
-            
-            [[FBRequest requestForMe] startWithCompletionHandler:
-             ^(FBRequestConnection *connection,
-               NSDictionary<FBGraphUser> *fbUser,
-               NSError *error) {
-                 if (!error) {
-                     DDLogVerbose(@"fbUser: %@", [fbUser description]);
-                     _fbUser = fbUser;
-                     [[NSNotificationCenter defaultCenter] postNotificationName:FbSessionOpenedNotification object:self userInfo:fbUser];
-                 } else {
-                     _fbUser = fbUser;
-                     DDLogError(@"fb error: %@", [error localizedDescription]);
-                 }
-             }];
-        }
-            break;
-        case FBSessionStateClosed:
-        case FBSessionStateClosedLoginFailed: {
-            // Once the user has logged in, we want them to
-            // be looking at the root view.
-            [FBSession.activeSession closeAndClearTokenInformation];
-            _fbUser = nil;
-            [[NSNotificationCenter defaultCenter] postNotificationName:FbSessionClosedNotification object:self userInfo:nil];
-        }
-            break;
-        default:
-            break;
-    }
-    
-    if (error) {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:NSLocalizedString(@"Caution", nil)
-                                  message:error.localizedDescription
-                                  delegate:nil
-                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-}
-
-#pragma mark - Facebook session
-
-- (void)openSession
-{
-    DDLogInfo(@"openSession");
-    [FBSession openActiveSessionWithReadPermissions:[[NSArray alloc] initWithObjects:@"email", nil]
-                                       allowLoginUI:YES
-                                  completionHandler:
-     ^(FBSession *session,
-       FBSessionState state, NSError *error) {
-         [self sessionStateChanged:session state:state error:error];
-     }];
-}
-
-- (void)closeSession
-{
-    DDLogInfo(@"closeSession");
-    [FBSession.activeSession closeAndClearTokenInformation];
-    _session = nil;
-    _fbUser = nil;
 }
 
 #pragma mark - Application version

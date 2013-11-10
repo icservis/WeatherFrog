@@ -206,7 +206,6 @@
 		84DE49F917BF76FA005AB3B8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE49F817BF76FA005AB3B8 /* Reachability.m */; };
 		84DE49FA17BF76FA005AB3B8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE49F817BF76FA005AB3B8 /* Reachability.m */; };
 		84DE49FD17BF77FA005AB3B8 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE49FC17BF77FA005AB3B8 /* EventKit.framework */; };
-		84DE4A0717BF790C005AB3B8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE4A0617BF790C005AB3B8 /* FacebookSDK.framework */; };
 		84DE4A0817BF790D005AB3B8 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE4A0617BF790C005AB3B8 /* FacebookSDK.framework */; };
 		84DE4A0A17BF7942005AB3B8 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE4A0917BF7942005AB3B8 /* libxml2.2.dylib */; };
 		84DE4A0C17BF79FE005AB3B8 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DE4A0B17BF79FE005AB3B8 /* libz.1.2.5.dylib */; };
@@ -458,7 +457,6 @@
 				848A54E0176E09A1009B3F85 /* CoreGraphics.framework in Frameworks */,
 				848A54E2176E09A1009B3F85 /* UIKit.framework in Frameworks */,
 				848A54DE176E09A1009B3F85 /* Foundation.framework in Frameworks */,
-				84DE4A0717BF790C005AB3B8 /* FacebookSDK.framework in Frameworks */,
 				84DE4A0C17BF79FE005AB3B8 /* libz.1.2.5.dylib in Frameworks */,
 				84DE4A0A17BF7942005AB3B8 /* libxml2.2.dylib in Frameworks */,
 			);

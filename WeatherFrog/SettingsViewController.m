@@ -242,11 +242,6 @@
 
 #pragma mark - Notification
 
-- (void)fbSessionStateClosed:(NSNotification*)notification
-{
-    [self.tableView reloadData];
-}
-
 - (void)defaultsChanged:(NSNotification*)notification
 {
     DDLogVerbose(@"defaultsChanged: %@", [notification description]);
