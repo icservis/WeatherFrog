@@ -10,6 +10,7 @@
 #import "BannerViewController.h"
 #import "UserDefaultsManager.h"
 #import "DDLog.h"
+#import "Constants.h"
 
 @interface BannerViewController ()
 
@@ -18,12 +19,14 @@
 @property (nonatomic, weak) IBOutlet UIButton* advancedFeaturesButton;
 @property (nonatomic, weak) IBOutlet UIButton* reloadProductsButton;
 @property (nonatomic, weak) IBOutlet UIButton* restoreButton;
-@property (nonatomic, weak) IBOutlet UITextView* infoText;
+@property (nonatomic, weak) IBOutlet UIView* contentView;
 @property (nonatomic, weak) IBOutlet UILabel* titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel* fullModeLabel;
 @property (nonatomic, weak) IBOutlet UILabel* advancedFeaturesLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingValue;
+@property (nonatomic, weak) IBOutlet UITextView* infoText;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 @property (nonatomic, strong) NSNumberFormatter* localNumberFormatter;
@@ -60,6 +63,8 @@
     self.advancedFeaturesLabel.text = NSLocalizedString(@"Advanced features", nil);
     [self.restoreButton setTitle:NSLocalizedString(@"Restore purcheses", nil) forState:UIControlStateNormal];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
     if (self.mode == BannerViewControllerModeDynamic) {
         [self dynamicMode];
     } else {
@@ -80,6 +85,43 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    DDLogInfo(@"willRotateToInterfaceOrientation");
+    [self displayRotatingScreen];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    DDLogInfo(@"didRotateFromInterfaceOrientation");
+}
+
+- (void)viewDidLayoutSubviews
+{
+    DDLogInfo(@"viewDidLayoutSubviews");
+}
+
+- (void)displayRotatingScreen
+{
+    DDLogInfo(@"displayRotatingScreen");
+    
+    if (isLandscape) {
+        self.imageView.image = [UIImage imageNamed:imageWaitingFrogLandscape];
+    } else {
+        self.imageView.image = [UIImage imageNamed:imageWaitingFrogPortrait];
+    }
+}
+
+- (void)preferredContentSizeChanged:(NSNotification*)notification
+{
+    DDLogInfo(@"preferredContentSizeChanged");
 }
 
 #pragma mark - setters and getters

@@ -9,6 +9,12 @@
 #ifndef WeatherFrog_Constants_h
 #define WeatherFrog_Constants_h
 
+#pragma mark - Images
+
+static NSString* const imageLogo = @"logo";
+static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
+static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
+
 #pragma mark - Banner
 
 static float const kExpiryTimeInterval = 86400*30;
@@ -23,6 +29,16 @@ static float const kAnimationDuration = 0.5f;
 
 static int const kBackgoundFetchInterval = 3600;
 static int const kAstroFeedHoursCount = 30*24;
+
+#pragma mark - ForecastController
+
+static CGFloat const labelTopMargin = 3.0f;
+static CGFloat const labelHeight = 21.0f;
+static CGFloat const timeTopMargin = 3.0f;
+static CGFloat const timeHeight = 21.0f;
+static CGFloat const iconTopMargin = 0.0f;
+static CGFloat const iconSize = 64.0f;
+static CGFloat const tableTopMargin = 2.0f;
 
 #pragma mark - MapView
 

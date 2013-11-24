@@ -22,23 +22,12 @@
 #import "CFGUnitConverter.h"
 #import "CCHMapsActivity.h"
 #import "MBProgressHUD.h"
-
-static NSString* const imageLogo = @"logo";
-static NSString* const imageWaitingFrogLandscape = @"waiting-frog-landscape";
-static NSString* const imageWaitingFrogPortrait = @"waiting-frog-portrait";
+#import "Constants.h"
 
 static NSString* const ForecastCellNib = @"ForecastCell";
 static NSString* const ForecastCellIdentifier = @"ForecastCell";
 static NSString* const ForecastHeaderNib = @"ForecastHeader";
 static NSString* const ForecastFooterNib = @"ForecastFooter";
-
-static CGFloat const labelTopMargin = 3.0f;
-static CGFloat const labelHeight = 21.0f;
-static CGFloat const timeTopMargin = 3.0f;
-static CGFloat const timeHeight = 21.0f;
-static CGFloat const iconTopMargin = 0.0f;
-static CGFloat const iconSize = 64.0f;
-static CGFloat const tableTopMargin = 2.0f;
 
 @class Forecast;
 
