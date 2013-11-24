@@ -381,7 +381,9 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     NSString* message;
     
     if (secondsToExpire > 0) {
-        message = [NSString stringWithFormat:@"%@ %.2f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), secondsToExpire/3600, NSLocalizedString(@"hours, please see more details about.", nil)];
+        message = [NSString stringWithFormat:@"%@ %.0f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), secondsToExpire/86400, NSLocalizedString(@"days, please see more details about.", nil)];
+    } else if (secondsToExpire > 0) {
+        message = [NSString stringWithFormat:@"%@ %.0f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), secondsToExpire/3600, NSLocalizedString(@"hours, please see more details about.", nil)];
     } else {
         message = NSLocalizedString(@"Evaluating period expired, plase see more details about.", nil);
     }
