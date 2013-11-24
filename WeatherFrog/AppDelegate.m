@@ -319,8 +319,7 @@
 
 - (void)savePersistence
 {
-    LocationManager* locationManager = [[LocationManager alloc] init];
-    [locationManager deleteObsoleteLocations];
+    [[LocationManager sharedManager] deleteObsoleteLocations];
     
     NSError* error;
     if ([self.managedObjectContext save:&error]) {

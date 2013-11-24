@@ -17,6 +17,7 @@
 
 @interface MenuViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SettingsViewControllerDelegate, LocatorViewControllerDelegate, ForecastViewControllerDelegate, NSFetchedResultsControllerDelegate, LocationCellDelegate, InfoViewControllerDelegate, SWRevealViewControllerDelegate>
 
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;
 
 - (void)updatePlacemark:(CLPlacemark*)placemark;

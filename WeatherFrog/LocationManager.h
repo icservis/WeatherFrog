@@ -12,6 +12,10 @@
 
 @interface LocationManager : NSObject
 
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+
++ (LocationManager *)sharedManager;
+
 - (Location*)locationWithName:(NSString*)name coordinate:(CLLocationCoordinate2D)coordinate altitude:(CLLocationDistance)altitude timezone:(NSTimeZone*)timezone placemark:(CLPlacemark*)placemark;
 - (Location*)locationforPlacemark:(CLPlacemark*)placemark withTimezone:(NSTimeZone*)timezone;
 - (void)deleteLocation:(Location*)location;

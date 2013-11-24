@@ -53,6 +53,7 @@ typedef enum {
 @property (nonatomic, weak) id <ForecastManagerDelegate> delegate;
 @property (nonatomic, readonly) ForecastStatus status;
 @property (nonatomic, readonly) float progress;
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 
 - (Forecast*)lastForecast;
 

@@ -155,7 +155,7 @@
 		84DE48D717BF7601005AB3B8 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48C517BF7601005AB3B8 /* AFXMLRequestOperation.m */; };
 		84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48C717BF7601005AB3B8 /* UIImageView+AFNetworking.m */; };
 		84DE48D917BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48C717BF7601005AB3B8 /* UIImageView+AFNetworking.m */; };
-		84DE48DC17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48DB17BF7622005AB3B8 /* AFKissXMLRequestOperation.m */; };
+		84DE48DC17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48DB17BF7622005AB3B8 /* AFKissXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-Xanalyzer -analyzer-disable-checker"; }; };
 		84DE48DD17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48DB17BF7622005AB3B8 /* AFKissXMLRequestOperation.m */; };
 		84DE48EF17BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48E217BF764A005AB3B8 /* DDXMLElementAdditions.m */; };
 		84DE48F017BF764A005AB3B8 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DE48E217BF764A005AB3B8 /* DDXMLElementAdditions.m */; };

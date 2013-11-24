@@ -138,7 +138,7 @@ static float const LongTapDuration = 1.2;
 - (LocationManager*)locationManager
 {
     if (_locationManager == nil) {
-        _locationManager = [[LocationManager alloc] init];
+        _locationManager = [LocationManager sharedManager];
     }
     return _locationManager;
 }

@@ -87,20 +87,25 @@
 - (LocationManager*)locationManager
 {
     if (_locationManager == nil) {
-        _locationManager = [[LocationManager alloc] init];
+        _locationManager = [LocationManager sharedManager];
     }
     return _locationManager;
+}
+
+- (NSManagedObjectContext *)managedObjectContext{
+    if (_managedObjectContext == nil) {
+        AppDelegate* appDelegate = [self appDelegate];
+        _managedObjectContext = appDelegate.managedObjectContext;
+    }
+    return _managedObjectContext;
 }
 
 - (NSFetchedResultsController*)fetchedResultsController
 {
     if (_fetchedResultsController == nil) {
         
-        AppDelegate* appDelegate = [self appDelegate];
-        NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
-        
         NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:currentContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Location" inManagedObjectContext:self.managedObjectContext];
         [fetchRequest setEntity:entity];
         
         NSPredicate* findPredicate = [NSPredicate predicateWithValue:YES];
@@ -111,7 +116,7 @@
         NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];
         [fetchRequest setSortDescriptors:sortDescriptors];
         
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:currentContext sectionNameKeyPath:@"isMarked" cacheName:nil];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"isMarked" cacheName:nil];
         _fetchedResultsController.delegate = self;
     }
     return _fetchedResultsController;

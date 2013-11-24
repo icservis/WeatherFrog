@@ -51,6 +51,14 @@
 
 #pragma mark - setters and getters
 
+- (NSManagedObjectContext *)managedObjectContext{
+    if (_managedObjectContext == nil) {
+        AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        _managedObjectContext = appDelegate.managedObjectContext;
+    }
+    return _managedObjectContext;
+}
+
 - (void)setStatus:(ForecastStatus)status
 {
     _status = status;
@@ -71,17 +79,14 @@
 
 - (Forecast*)lastForecast
 {
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
-    
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:currentContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSSortDescriptor* timestampDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
     NSArray* sortDescriptors = [NSArray arrayWithObjects:timestampDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     NSError* error;
-    NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
+    NSArray* forecasts = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         
     return [forecasts firstObject];
 }
@@ -164,10 +169,7 @@
                 self.status = ForecastStatusFetchedWeatherData;
                 self.weatherData = weatherData;
                 
-                AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-                NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
-                
-                Forecast* forecast = [self saveForecastInContext:currentContext];
+                Forecast* forecast = [self saveForecastInContext:self.managedObjectContext];
                 [appDelegate savePersistence];
                 
                 self.progress = 1.0f;
@@ -199,17 +201,14 @@
 
 - (Forecast*)forecastForPlacemark:(CLPlacemark*)placemark
 {
-    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    NSManagedObjectContext* currentContext = appDelegate.managedObjectContext;
-    
     NSNumber* forecastValidity = [[UserDefaultsManager sharedDefaults] forecastValidity];
     NSPredicate* findPredicate = [NSPredicate predicateWithFormat:@"timestamp > %@ AND placemark = %@", [NSDate dateWithTimeIntervalSinceNow:-[forecastValidity floatValue]], placemark];
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:currentContext];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:@"Forecast" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:findPredicate];
     NSError* error;
-    NSArray* forecasts = [currentContext executeFetchRequest:fetchRequest error:&error];
+    NSArray* forecasts = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
     if (forecasts != nil && forecasts.count > 0) {
                 
@@ -332,8 +331,7 @@
     self.weatherData = nil;
     self.astroData = nil;
     
-    LocationManager* locationManager = [[LocationManager alloc] init];
-    self.location = [locationManager locationforPlacemark:placemark withTimezone:timezone];
+    self.location = [[LocationManager sharedManager] locationforPlacemark:placemark withTimezone:timezone];
     
     self.progress = 0.0f;
     self.status = ForecastStatusActive;
