@@ -385,7 +385,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     } else if (secondsToExpire > 0) {
         message = [NSString stringWithFormat:@"%@ %.0f %@", NSLocalizedString(@"Evaluating period is going to expire in", nil), secondsToExpire/3600, NSLocalizedString(@"hours, please see more details about.", nil)];
     } else {
-        message = NSLocalizedString(@"Evaluating period expired, plase see more details about.", nil);
+        message = NSLocalizedString(@"Evaluating period expired, please see more details about.", nil);
     }
     
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Background notifications", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Dismiss", nil) otherButtonTitles:NSLocalizedString(@"More…", nil), nil];
@@ -410,9 +410,9 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     
     if ([todayDate compare:expiryDate] == NSOrderedDescending || expiryDate == nil) {
         if (shortFormat == YES) {
-            return NSLocalizedString(@"expired", nil);
+            return NSLocalizedString(@"Expired", nil);
         } else {
-            return NSLocalizedString(@"Period expired", nil);
+            return NSLocalizedString(@"Period Expired", nil);
         }
     }
     
@@ -422,15 +422,15 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     
     if (shortFormat == YES) {
         if ([conversionInfo day] > 0) {
-            return [NSString stringWithFormat:@"%d %@", [conversionInfo day], NSLocalizedString(@"days", nil)];
+            return [NSString stringWithFormat:@"%d %@", [conversionInfo day], NSLocalizedString(@"Days", nil)];
         } else {
             return [NSString stringWithFormat:@"%02i:%02i", [conversionInfo hour], [conversionInfo minute]];
         }
     } else {
         if ([conversionInfo day] > 0) {
-            return [NSString stringWithFormat:@"%@ %d %@", NSLocalizedString(@"Remaining", nil), [conversionInfo day], NSLocalizedString(@"days", nil)];
+            return [NSString stringWithFormat:@"%@ %d %@", NSLocalizedString(@"Remaining", nil), [conversionInfo day], NSLocalizedString(@"Days", nil)];
         } else {
-            return [NSString stringWithFormat:@"%@: %02i:%02i", NSLocalizedString(@"Remaining time", nil), [conversionInfo hour], [conversionInfo minute]];
+            return [NSString stringWithFormat:@"%@: %02i:%02i", NSLocalizedString(@"Remaining Time", nil), [conversionInfo hour], [conversionInfo minute]];
         }
     }
 }

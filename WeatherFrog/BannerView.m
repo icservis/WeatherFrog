@@ -29,11 +29,11 @@
 {
     self.logoView.image = [UIImage imageNamed:@"logo"];
     if (isLandscape) {
-        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period", nil);
+        self.titleLabel.text = NSLocalizedString(@"Notification Evaluating Period", nil);
     } else {
-        self.titleLabel.text = NSLocalizedString(@"Notification evaluating period", nil);
+        self.titleLabel.text = NSLocalizedString(@"Notification Evaluating Period", nil);
     }
-    self.subtitleLabel.text = nil;
+    self.subtitleLabel.text = [[Banner sharedBanner] timeRemainingFormatted:NO];
     [self.actionButton setTitle:NSLocalizedString(@"Buy", nil) forState:UIControlStateNormal];
     
     [NSTimer scheduledTimerWithTimeInterval:kExpiryAlertTimerPeriod/2 target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];

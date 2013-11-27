@@ -94,6 +94,10 @@ static float const LongTapDuration = 1.2;
 {
     [super viewDidAppear:animated];
     
+    if (self.presentedViewController != nil) {
+        return;
+    }
+    
     [self setSearchBarPlaceholder];
     [self showSelectedPlacemark];
 }

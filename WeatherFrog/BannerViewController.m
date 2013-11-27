@@ -25,8 +25,8 @@
 @property (nonatomic, weak) IBOutlet UILabel* advancedFeaturesLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingValue;
-@property (nonatomic, weak) IBOutlet UITextView* infoText;
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UITextView* infoTextView;
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 @property (nonatomic, strong) NSNumberFormatter* localNumberFormatter;
@@ -40,7 +40,11 @@
 
 @end
 
-@implementation BannerViewController
+@implementation BannerViewController {
+    NSTextStorage* _infoTextStorage;
+    CGRect _infoTextFrame;
+    CGRect _imageViewFrame;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,13 +61,77 @@
     // Do any additional setup after loading the view from its nib.
     DDLogVerbose(@"viewDidLoad");
     
-    self.titleLabel.text = NSLocalizedString(@"Notifications", nil);
-    self.timeRemainingLabel.text = NSLocalizedString(@"Time remaining:", nil);
-    self.fullModeLabel.text = NSLocalizedString(@"Unlimited notifications", nil);
-    self.advancedFeaturesLabel.text = NSLocalizedString(@"Advanced features", nil);
-    [self.restoreButton setTitle:NSLocalizedString(@"Restore purcheses", nil) forState:UIControlStateNormal];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+    
+    self.titleLabel.text = NSLocalizedString(@"Notifications", nil);
+    self.timeRemainingLabel.text = NSLocalizedString(@"Time Remaining:", nil);
+    self.fullModeLabel.text = NSLocalizedString(@"Unlimited Notifications", nil);
+    self.advancedFeaturesLabel.text = NSLocalizedString(@"Advanced Features", nil);
+    [self.restoreButton setTitle:NSLocalizedString(@"Restore Purchases", nil) forState:UIControlStateNormal];
+    [self.fullModeButton setTitle:NSLocalizedString(@"Buy", nil) forState:UIControlStateNormal];
+    
+    
+    // info text
+    
+    NSDictionary* attrs = @{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]};
+    NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:@"…" attributes:attrs];
+    
+    _infoTextStorage = [NSTextStorage new];
+    [_infoTextStorage setAttributedString:attrString];
+    
+    CGRect newTextViewRect = self.contentView.bounds;
+    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+    
+    CGSize containerSize = CGSizeMake(newTextViewRect.size.width, newTextViewRect.size.height);
+    NSTextContainer *container = [[NSTextContainer alloc] initWithSize:containerSize];
+    container.widthTracksTextView = YES;
+    [layoutManager addTextContainer:container];
+    [_infoTextStorage addLayoutManager:layoutManager];
+    
+    _infoTextView = [[UITextView alloc] initWithFrame:newTextViewRect textContainer:container];
+    _infoTextView.delegate = self;
+    _infoTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    _infoTextView.editable = NO;
+    
+    [self.contentView addSubview:_infoTextView];
+    
+    _imageViewFrame = CGRectMake(0, 0, 100, 100);
+    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageLogo]];
+    _imageView.frame = _imageViewFrame;
+    [_imageView sizeToFit];
+    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    _imageView.contentMode = UIViewContentModeCenter;
+    _imageView.clipsToBounds = YES;
+    
+    UIBezierPath* excludePath = [UIBezierPath bezierPathWithRect:_imageView.frame];
+    self.infoTextView.textContainer.exclusionPaths = @[excludePath];
+    
+    /*
+    CALayer* imageViewLayer = [_imageView layer];
+    [imageViewLayer setMasksToBounds:YES];
+    [imageViewLayer setBorderColor:[UIColor blackColor].CGColor];
+    [imageViewLayer setBorderWidth:1.0];
+     */
+    
+    [self.contentView addSubview:_imageView];
+    
+    NSLayoutConstraint *constraintLeading = [NSLayoutConstraint constraintWithItem:_infoTextView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraintLeading];
+    
+    NSLayoutConstraint *constraintTrailing = [NSLayoutConstraint constraintWithItem:_infoTextView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraintTrailing];
+    
+    NSLayoutConstraint *constraintTop = [NSLayoutConstraint constraintWithItem:_infoTextView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraintTop];
+    
+    NSLayoutConstraint *constraintBottom = [NSLayoutConstraint constraintWithItem:_infoTextView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraintBottom];
+    
+    NSLayoutConstraint *constraint2Top = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraint2Top];
+    
+    NSLayoutConstraint *constraint2Leading = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0f];
+    [self.contentView addConstraint:constraint2Leading];
     
     if (self.mode == BannerViewControllerModeDynamic) {
         [self dynamicMode];
@@ -95,7 +163,6 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     DDLogInfo(@"willRotateToInterfaceOrientation");
-    [self displayRotatingScreen];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -106,22 +173,20 @@
 - (void)viewDidLayoutSubviews
 {
     DDLogInfo(@"viewDidLayoutSubviews");
+    [self updateInfoTextView];
 }
 
-- (void)displayRotatingScreen
+- (void)updateInfoTextView
 {
-    DDLogInfo(@"displayRotatingScreen");
+    DDLogInfo(@"updateInfoTextView");
     
-    if (isLandscape) {
-        self.imageView.image = [UIImage imageNamed:imageWaitingFrogLandscape];
-    } else {
-        self.imageView.image = [UIImage imageNamed:imageWaitingFrogPortrait];
-    }
+    self.infoTextView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
 }
 
 - (void)preferredContentSizeChanged:(NSNotification*)notification
 {
     DDLogInfo(@"preferredContentSizeChanged");
+    [self updateInfoTextView];
 }
 
 #pragma mark - setters and getters
@@ -201,7 +266,7 @@
     self.reloadProductsButton.hidden = NO;
     self.restoreButton.hidden = NO;
     
-    self.infoText.text = NSLocalizedString(@"Description for dynamic mode", nil);
+    self.infoTextView.text = NSLocalizedString(@"Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode.", nil);
 }
 
 - (void)staticMode
@@ -213,7 +278,7 @@
     self.restoreButton.hidden = YES;
     self.reloadProductsButton.hidden = YES;
     
-    self.infoText.text = NSLocalizedString(@"Description for static mode", nil);
+    self.infoTextView.text = NSLocalizedString(@"Long description text for static mode. Long description text for static mode. Long description text for static mode. Long description text for static mode.", nil);
 }
 
 - (void)updateTimeRemaining
@@ -256,3 +321,4 @@
 }
 
 @end
+

@@ -21,7 +21,7 @@ typedef enum {
 
 @end
 
-@interface BannerViewController : UIViewController <UIScrollViewDelegate>
+@interface BannerViewController : UIViewController <UIScrollViewDelegate, UITextViewDelegate>
 
 @property (nonatomic, weak) id <BannerViewControllerDelegate> delegate;
 @property (nonatomic) BannerViewControllerMode mode;

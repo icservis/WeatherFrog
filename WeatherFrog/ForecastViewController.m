@@ -103,6 +103,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 {
     [super viewWillAppear:animated];
     
+    if (self.presentedViewController != nil) {
+        return;
+    }
+    
     DDLogInfo(@"ForecastStatus: %i", self.forecastManager.status);
     
     if (self.forecastManager.status == ForecastStatusLoaded || self.forecastManager.status == ForecastStatusIdle) {
@@ -126,6 +130,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     
     DDLogVerbose(@"viewDidAppear");
     [self becomeFirstResponder];
+    
+    if (self.presentedViewController != nil) {
+        return;
+    }
     
     if (self.selectedForecast == nil) {
         
@@ -322,9 +330,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     CGFloat screenshotWidth = CGImageGetWidth(screenshotImageRef);
     CGFloat screenshotHeight = CGImageGetHeight(screenshotImageRef);
     
-    DDLogInfo(@"mask %@", NSStringFromCGSize(CGSizeMake(maskWidth, maskHeight)));
-    DDLogInfo(@"screenshot %@", NSStringFromCGRect(CGRectMake(maskHorizontalOffset, maskVerticalOffset, screenshotWidth, screenshotHeight)));
-    
+    DDLogVerbose(@"mask %@", NSStringFromCGSize(CGSizeMake(maskWidth, maskHeight)));
+    DDLogVerbose(@"screenshot %@", NSStringFromCGRect(CGRectMake(maskHorizontalOffset, maskVerticalOffset, screenshotWidth, screenshotHeight)));
     
     CGSize maskSize = CGSizeMake(maskWidth, maskHeight);
     UIGraphicsBeginImageContext(maskSize);
@@ -1130,6 +1137,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 - (void)closeDetailViewController:(UIViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:^{
+        DDLogVerbose(@"dismissed");
         [self becomeFirstResponder];
     }];
 }
@@ -1155,6 +1163,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 - (void)bannerDismisModalViewController
 {
     [self dismissViewControllerAnimated:YES completion:^{
+        DDLogVerbose(@"dismissed");
         [self becomeFirstResponder];
     }];
 }
