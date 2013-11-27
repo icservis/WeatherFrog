@@ -73,13 +73,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
             } else {
                 self.bannerActive = YES;
             }
-            
-            if ([[WeatherfrogInAppPurchaseHelper sharedInstance] productPurchased:IAP_advancedfeatures]) {
-                DDLogVerbose(@"IAP_advancedfeatures activated");
-                self.advancedFeaturesActive = YES;
-            } else {
-                self.advancedFeaturesActive = NO;
-            }
+
         }
     }
     
@@ -345,9 +339,6 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
 - (void)bannerViewController:(UIViewController *)controller performAction:(id)sender
 {
     UIButton* button = (UIButton*)sender;
-    if (button.tag == 3) {
-        [self storeKitPerformAction:IAP_advancedfeatures];
-    }
     if (button.tag == 2) {
         [self storeKitPerformAction:IAP_fullmode];
     }
@@ -414,6 +405,10 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         } else {
             return NSLocalizedString(@"Period Expired", nil);
         }
+    }
+    
+    if ([expiryDate isEqualToDate:[NSDate distantFuture]]) {
+        return NSLocalizedString(@"Unlimited", nil);
     }
     
     NSCalendar* sysCalendar = [NSCalendar currentCalendar];

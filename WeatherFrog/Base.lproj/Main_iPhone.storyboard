@@ -29,21 +29,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-Gh-eye">
-                                <rect key="frame" x="0.0" y="-24" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.95597496810000004" green="0.44179200010000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="K5O-4J-gBf" id="frd-sD-dgO"/>
-                                </connections>
-                            </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-7v-JD7">
-                                <rect key="frame" x="0.0" y="20" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="328"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="416" id="dTR-VC-0Sq"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="K5O-4J-gBf" id="UKT-5W-QIJ"/>
                                 </connections>
@@ -65,18 +53,27 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-Gh-eye">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="K5O-4J-gBf" id="frd-sD-dgO"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="leading" secondItem="Y4k-5o-sS7" secondAttribute="leading" id="2xq-cf-Ekc"/>
                             <constraint firstAttribute="bottom" secondItem="Y4k-5o-sS7" secondAttribute="bottom" id="5Qz-hh-h0Q"/>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="trailing" secondItem="Ozx-Gh-eye" secondAttribute="trailing" id="6Sc-z9-TI0"/>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="bottom" secondItem="Y4k-5o-sS7" secondAttribute="top" id="I7e-nT-W7l"/>
-                            <constraint firstItem="Ozx-Gh-eye" firstAttribute="leading" secondItem="wOx-0Z-A8t" secondAttribute="leading" id="OxA-cf-0qm"/>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="trailing" secondItem="Y4k-5o-sS7" secondAttribute="trailing" id="cGE-nK-aaT"/>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="leading" secondItem="Ozx-Gh-eye" secondAttribute="leading" id="h7v-rD-Bcm"/>
-                            <constraint firstAttribute="trailing" secondItem="Ozx-Gh-eye" secondAttribute="trailing" id="hvF-Yp-RaW"/>
-                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="top" secondItem="Ozx-Gh-eye" secondAttribute="bottom" id="yMg-8b-REi"/>
+                            <constraint firstItem="Ozx-Gh-eye" firstAttribute="trailing" secondItem="hPQ-7v-JD7" secondAttribute="trailing" id="8FQ-cf-vF9"/>
+                            <constraint firstItem="Ozx-Gh-eye" firstAttribute="bottom" secondItem="hPQ-7v-JD7" secondAttribute="top" id="DEO-q5-w5k"/>
+                            <constraint firstItem="hPQ-7v-JD7" firstAttribute="leading" secondItem="wOx-0Z-A8t" secondAttribute="leading" id="KGS-j5-Xu6"/>
+                            <constraint firstItem="Y4k-5o-sS7" firstAttribute="leading" secondItem="wOx-0Z-A8t" secondAttribute="leading" id="KwM-Dp-7Rb"/>
+                            <constraint firstItem="Ozx-Gh-eye" firstAttribute="top" secondItem="0IW-1r-VLi" secondAttribute="bottom" id="Q81-7z-Brk"/>
+                            <constraint firstAttribute="bottom" secondItem="hPQ-7v-JD7" secondAttribute="bottom" constant="44" id="XnQ-0U-TH7"/>
+                            <constraint firstItem="Ozx-Gh-eye" firstAttribute="leading" secondItem="hPQ-7v-JD7" secondAttribute="leading" id="aM7-2z-zvs"/>
+                            <constraint firstAttribute="trailing" secondItem="hPQ-7v-JD7" secondAttribute="trailing" id="tAA-aR-IlD"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4k-5o-sS7" secondAttribute="trailing" id="yiA-fc-VYL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Locator" id="P2o-Wu-oij">

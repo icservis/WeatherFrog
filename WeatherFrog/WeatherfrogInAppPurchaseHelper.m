@@ -18,7 +18,6 @@
         
         NSSet * productIdentifiers = [NSSet setWithObjects:
                                       IAP_fullmode,
-                                      IAP_advancedfeatures,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

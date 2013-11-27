@@ -16,13 +16,11 @@
 
 @property (nonatomic, weak) IBOutlet UIButton* closeButton;
 @property (nonatomic, weak) IBOutlet UIButton* fullModeButton;
-@property (nonatomic, weak) IBOutlet UIButton* advancedFeaturesButton;
 @property (nonatomic, weak) IBOutlet UIButton* reloadProductsButton;
 @property (nonatomic, weak) IBOutlet UIButton* restoreButton;
 @property (nonatomic, weak) IBOutlet UIView* contentView;
 @property (nonatomic, weak) IBOutlet UILabel* titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel* fullModeLabel;
-@property (nonatomic, weak) IBOutlet UILabel* advancedFeaturesLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeRemainingValue;
 @property (nonatomic, strong) IBOutlet UITextView* infoTextView;
@@ -33,7 +31,6 @@
 @property (nonatomic, strong) NSTimer* timer;
 
 - (IBAction)fullModeButtonTapped:(id)sender;
-- (IBAction)advancedFeaturesButtonTapped:(id)sender;
 - (IBAction)reloadProductsButtonTapped:(id)sender;
 - (IBAction)restoreButtonTapped:(id)sender;
 - (IBAction)closeButtonTapped:(id)sender;
@@ -66,7 +63,6 @@
     self.titleLabel.text = NSLocalizedString(@"Notifications", nil);
     self.timeRemainingLabel.text = NSLocalizedString(@"Time Remaining:", nil);
     self.fullModeLabel.text = NSLocalizedString(@"Unlimited Notifications", nil);
-    self.advancedFeaturesLabel.text = NSLocalizedString(@"Advanced Features", nil);
     [self.restoreButton setTitle:NSLocalizedString(@"Restore Purchases", nil) forState:UIControlStateNormal];
     [self.fullModeButton setTitle:NSLocalizedString(@"Buy", nil) forState:UIControlStateNormal];
     
@@ -144,8 +140,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.timeRemainingValue.text = nil;
-    [self updateTimeRemaining];
+    if (self.mode == BannerViewControllerModeDynamic) {
+        self.timeRemainingValue.text = nil;
+        [self updateTimeRemaining];
+    }
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kExpiryAlertTimerPeriod/2 target:self selector:@selector(updateTimeRemaining) userInfo:nil repeats:YES];
 }
 
@@ -249,20 +248,6 @@
         }
     }];
     self.fullModeButton.hidden = NO;
-    
-    [_products enumerateObjectsUsingBlock:^(SKProduct* availableProduct, NSUInteger idx, BOOL *stop) {
-        
-        if ([availableProduct.productIdentifier isEqualToString:IAP_advancedfeatures]) {
-            
-            [self.localNumberFormatter setLocale:availableProduct.priceLocale];
-            NSString* fullModePrice = [self.localNumberFormatter stringFromNumber:availableProduct.price];
-            [self.advancedFeaturesButton setTitle:fullModePrice forState:UIControlStateNormal];
-            
-            *stop = YES;
-        }
-    }];
-    self.advancedFeaturesButton.hidden = NO;
-    
     self.reloadProductsButton.hidden = NO;
     self.restoreButton.hidden = NO;
     
@@ -273,10 +258,9 @@
 {
     self.fullModeLabel.hidden = YES;
     self.fullModeButton.hidden = YES;
-    self.advancedFeaturesLabel.hidden = YES;
-    self.advancedFeaturesButton.hidden = YES;
     self.restoreButton.hidden = YES;
     self.reloadProductsButton.hidden = YES;
+    self.timeRemainingValue.text = NSLocalizedString(@"Unlimited", nil);
     
     self.infoTextView.text = NSLocalizedString(@"Long description text for static mode. Long description text for static mode. Long description text for static mode. Long description text for static mode.", nil);
 }
@@ -289,11 +273,6 @@
 #pragma mark - IBActions
 
 - (IBAction)fullModeButtonTapped:(id)sender
-{
-    [self.delegate bannerViewController:self performAction:sender];
-}
-
-- (IBAction)advancedFeaturesButtonTapped:(id)sender
 {
     [self.delegate bannerViewController:self performAction:sender];
 }
