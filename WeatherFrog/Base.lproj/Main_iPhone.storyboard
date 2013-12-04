@@ -8,6 +8,7 @@
         <scene sceneID="wjk-26-9cn">
             <objects>
                 <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zzJ-tj-uZZ" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <segue destination="Mab-Hh-jdc" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="hty-la-OhI"/>
                         <segue destination="Ec1-xj-Izr" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="jIP-Ca-X3H"/>
@@ -26,18 +27,18 @@
                         <viewControllerLayoutGuide type="bottom" id="KEP-zX-I92"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="wOx-0Z-A8t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-7v-JD7">
-                                <rect key="frame" x="0.0" y="108" width="320" height="328"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="328"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="K5O-4J-gBf" id="UKT-5W-QIJ"/>
                                 </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4k-5o-sS7">
-                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Tracking" id="kuu-pr-pgp">
@@ -54,7 +55,7 @@
                                 </items>
                             </toolbar>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-Gh-eye">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -76,6 +77,7 @@
                             <constraint firstAttribute="trailing" secondItem="Y4k-5o-sS7" secondAttribute="trailing" id="yiA-fc-VYL"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Locator" id="P2o-Wu-oij">
                         <barButtonItem key="leftBarButtonItem" image="854-list" id="klB-SE-4kR"/>
                     </navigationItem>
@@ -249,6 +251,7 @@
                             <constraint firstAttribute="trailing" secondItem="5hy-sW-OJP" secondAttribute="trailing" constant="60" id="wWn-A5-rvw"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="746-7l-NKm"/>
                     <connections>
                         <outlet property="applicationNameLabel" destination="DAw-gU-Xzd" id="2xz-VI-oDI"/>
@@ -269,14 +272,14 @@
         <!--Settings View Controller - Settings-->
         <scene sceneID="jOL-5x-5Fx">
             <objects>
-                <tableViewController id="t6w-yA-14b" customClass="SettingsViewController" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="t6w-yA-14b" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SgK-Bs-0Lv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="c23-3q-kqZ" detailTextLabel="gv0-oj-ZoD" style="IBUITableViewCellStyleValue1" id="LSG-L7-A8p">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LSG-L7-A8p" id="905-SN-fB6">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -306,6 +309,7 @@
                             <outlet property="delegate" destination="t6w-yA-14b" id="m6d-mP-8WJ"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Settings" id="dmg-NB-eM2">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="44P-iu-GyB">
                             <connections>
@@ -328,12 +332,12 @@
             <objects>
                 <tableViewController id="lXC-vq-EV1" customClass="SettingsMultiValueViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o09-BE-RyK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="dMn-u9-gSH" style="IBUITableViewCellStyleDefault" id="Xgj-gd-6Nx">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgj-gd-6Nx" id="xcz-Ay-jQV">
                                     <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
@@ -355,6 +359,7 @@
                             <outlet property="delegate" destination="lXC-vq-EV1" id="jRb-C8-LiK"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="MultiValue" id="Ome-qe-968"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvw-Rk-iqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -454,11 +459,11 @@
                         <viewControllerLayoutGuide type="bottom" id="THm-wO-GDS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w66-vH-Jra">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77f-wz-D6Y">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6n-Jd-dJO">
@@ -506,7 +511,7 @@
                                 </constraints>
                             </view>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14K-he-56k">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="XRe-MU-hYk" id="NRz-ET-RDt"/>
@@ -525,6 +530,7 @@
                             <constraint firstAttribute="trailing" secondItem="14K-he-56k" secondAttribute="trailing" id="wvb-rZ-zhY"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Forecast" id="5Fa-ky-Yba">
                         <barButtonItem key="leftBarButtonItem" image="854-list" id="I7D-i4-ZNl"/>
                         <barButtonItem key="rightBarButtonItem" image="702-share" id="CGe-LN-gSN">
@@ -558,16 +564,16 @@
                         <viewControllerLayoutGuide type="bottom" id="jK2-OG-tuv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BIb-5f-MoZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6W0-TX-rpV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" textLabel="4Ll-Ym-MeG" detailTextLabel="ev8-7T-Bbe" style="IBUITableViewCellStyleValue1" id="8RK-Xq-0it">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8RK-Xq-0it" id="Ap7-tw-kAw">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -605,6 +611,7 @@
                             <constraint firstAttribute="bottom" secondItem="6W0-TX-rpV" secondAttribute="bottom" id="kIu-uX-jVU"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Detail" id="TTC-ym-pLG">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="WNc-rR-7e3">
                             <connections>
@@ -625,6 +632,7 @@
         <scene sceneID="AbA-BZ-q6c">
             <objects>
                 <navigationController storyboardIdentifier="RearNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Pd-fK-Spb" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8bk-Bw-ggH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -650,6 +658,7 @@
         <scene sceneID="Mod-dl-2a8">
             <objects>
                 <navigationController storyboardIdentifier="FrontNavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ec1-xj-Izr" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="07X-eF-6tU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -671,6 +680,7 @@
         <scene sceneID="urd-Ep-etf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fpR-S2-u3r" customClass="NonRotatingNavController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFF-4W-4VB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -710,6 +720,7 @@
         <scene sceneID="kEt-g1-6cg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fFa-i3-Q8o" customClass="NonRotatingNavController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g5A-rt-mF8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

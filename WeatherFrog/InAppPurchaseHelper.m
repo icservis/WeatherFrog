@@ -161,8 +161,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)restoreCompletedTransactions {
+    DDLogVerbose(@"restoreCompletedTransactions");
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
 }
 
 @end

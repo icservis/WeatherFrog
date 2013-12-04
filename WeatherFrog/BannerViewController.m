@@ -69,7 +69,7 @@
     
     // info text
     
-    NSDictionary* attrs = @{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]};
+    NSDictionary* attrs = @{NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline], NSForegroundColorAttributeName: [UIColor darkGrayColor]};
     NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:@"…" attributes:attrs];
     
     _infoTextStorage = [NSTextStorage new];
@@ -251,7 +251,7 @@
     self.reloadProductsButton.hidden = NO;
     self.restoreButton.hidden = NO;
     
-    self.infoTextView.text = NSLocalizedString(@"Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode. Long description text for dynamic mode.", nil);
+    self.infoTextView.text = NSLocalizedString(@"WeatherFrog Notifier is running in evaluating period. By purchasing of Unlimited Nofitications you unlock full functionality of Notifier. In case you bought it yet please use Restore Purchase button.", nil);
 }
 
 - (void)staticMode
@@ -262,7 +262,7 @@
     self.reloadProductsButton.hidden = YES;
     self.timeRemainingValue.text = NSLocalizedString(@"Unlimited", nil);
     
-    self.infoTextView.text = NSLocalizedString(@"Long description text for static mode. Long description text for static mode. Long description text for static mode. Long description text for static mode.", nil);
+    self.infoTextView.text = NSLocalizedString(@"Thank you for supporting us. WeatherFrog Notifier is fully unlocked now. Notifier can be set in Application Settings.", nil);
 }
 
 - (void)updateTimeRemaining

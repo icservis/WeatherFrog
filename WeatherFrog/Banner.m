@@ -153,7 +153,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
         
     } else {
         
-        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Connection to App Store failed.", nil)];
         
     }
 }
@@ -163,7 +163,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
     DDLogVerbose(@"storeKitPerformAction: %@", productIdentifier);
     
     if (_products == nil) {
-        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Connection to App Store failed.", nil)];
         return;
     }
     
@@ -183,7 +183,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
             [[WeatherfrogInAppPurchaseHelper sharedInstance] buyProduct:product];
         
     } else {
-        [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+        [self.delegate bannerErrorMessage:NSLocalizedString(@"Connection to App Store failed.", nil)];
     }
 }
 
@@ -328,7 +328,7 @@ static NSString* const BannerViewControllerNib = @"BannerViewController";
             
         } failure:^{
             
-            [self.delegate bannerErrorMessage:NSLocalizedString(@"Can not connect to iTunes Store", nil)];
+            [self.delegate bannerErrorMessage:NSLocalizedString(@"Connection to App Store failed.", nil)];
         }];
         
     }

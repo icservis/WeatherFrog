@@ -1176,6 +1176,9 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     _hud.mode = MBProgressHUDModeText;
     _hud.labelText = message;
     [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
+    
+    UIAlertView* bannerAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AppStore Alert", nil) message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+    [bannerAlert show];
 }
 
 @end
