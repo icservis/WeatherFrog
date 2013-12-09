@@ -275,7 +275,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[mapsActivity]];
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact];
-    activityViewController.navigationController.toolbar.tintColor = [UIColor orangeColor];
+    activityViewController.navigationController.navigationBar.tintColor = self.view.tintColor;
 
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
@@ -1069,7 +1069,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 {
     ForecastCell* cell = (ForecastCell *)[tableView dequeueReusableCellWithIdentifier:ForecastCellIdentifier forIndexPath:indexPath];
     
-    cell.timezone = self.selectedForecast.timezone;
+    cell.timeZone = self.selectedForecast.timezone;
     NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
     cell.weather = [currentDay objectAtIndex:indexPath.row];
     
@@ -1102,6 +1102,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     NSArray* currentDay = [dataPortrait objectAtIndex:tableView.tag];
     Weather* weather = [currentDay lastObject];
     footer.weather = weather;
+    footer.timeZone = self.selectedForecast.timezone;
     
     NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:weather.timestamp];
@@ -1121,8 +1122,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         }
     }];
     
+    
     footer.astro = _foundAstro;
-    footer.timeZone = self.selectedForecast.timezone;
     
     return footer;
 }
@@ -1170,13 +1171,6 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 
 - (void)bannerErrorMessage:(NSString *)message
 {
-    _hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    _hud.delegate = nil;
-    _hud.dimBackground = YES;
-    _hud.mode = MBProgressHUDModeText;
-    _hud.labelText = message;
-    [_hud hide:YES afterDelay:kHudDisplayTimeInterval];
-    
     UIAlertView* bannerAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"AppStore Alert", nil) message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
     [bannerAlert show];
 }

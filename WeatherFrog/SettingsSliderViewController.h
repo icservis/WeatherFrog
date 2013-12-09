@@ -15,7 +15,7 @@
 
 @end
 
-@interface SettingsSliderViewController : UIViewController
+@interface SettingsSliderViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic, weak) id <SettingsSliderViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString* identifier;

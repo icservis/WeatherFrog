@@ -13,6 +13,7 @@
 #import "Location.h"
 #import "LocationManager.h"
 #import "Banner.h"
+#import "iRate.h"
 
 @implementation AppDelegate {
     Reachability* internetReachable;
@@ -23,6 +24,11 @@
     CLGeocoder* clGeocoder;
     Weather* lastNotification;
     NSDictionary* notificationsConfig;
+}
+
++ (void)initialize
+{
+    [iRate sharedInstance].daysUntilPrompt = 10;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -87,8 +93,8 @@
     
     // Notifications config
     NSArray* notificationsConfigLow = @[@20, @21, @22, @23];
-    NSArray* notificationsConfigMiddle = @[@10, @11, @12, @13, @14, @18, @19, @20, @21, @22, @23];
-    NSArray* notificationsConfigHigh = @[@5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @18, @19, @20, @21, @22, @23];
+    NSArray* notificationsConfigMiddle = @[@10, @11, @12, @13, @14, @20, @21, @22, @23];
+    NSArray* notificationsConfigHigh = @[@5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @20, @21, @22, @23];
     
     notificationsConfig = @{
                             @1 : notificationsConfigLow,
@@ -239,12 +245,14 @@
 
 - (void)customizeUIKit
 {
-    /*
+    
     UIColor* tintColor = [UIColor orangeColor];
     UIColor* titleColor = [UIColor whiteColor];
     UIColor* alternateColor = [UIColor lightGrayColor];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    [[UIAlertView appearance] setTintColor:titleColor];
     
     [[UIToolbar appearance] setTintColor:titleColor];
     [[UIToolbar appearance] setBarTintColor:tintColor];
@@ -262,7 +270,7 @@
     [[UITableViewCell appearance] setTintColor:tintColor];
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:tintColor];
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleHeadline]];
-    */
+    
 }
 
 #pragma mark - Core Data
@@ -619,6 +627,8 @@
     }
     
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        
+        DDLogVerbose(@"Background Notification");
         
         UserDefaultsManager* sharedDefaults = [UserDefaultsManager sharedDefaults];
         NSNumber* notifications = [sharedDefaults notifications];

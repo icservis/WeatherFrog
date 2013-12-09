@@ -10,6 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <color key="backgroundColor" white="0.7998973540145986" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

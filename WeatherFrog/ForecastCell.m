@@ -29,10 +29,10 @@
 
 @implementation ForecastCell
 
-- (void)setTimezone:(NSTimeZone *)timezone
+- (void)setTimeZone:(NSTimeZone *)timeZone
 {
-    _timezone = timezone;
-    [self.localDateFormatter setTimeZone:timezone];
+    _timeZone = timeZone;
+    [self.localDateFormatter setTimeZone:timeZone];
 }
 
 + (CGFloat)forecastCellHeigh

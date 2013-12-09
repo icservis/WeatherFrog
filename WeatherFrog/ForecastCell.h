@@ -13,7 +13,7 @@
 @interface ForecastCell : UITableViewCell
 
 @property (nonatomic, strong) Weather* weather;
-@property (nonatomic, strong) NSTimeZone* timezone;
+@property (nonatomic, strong) NSTimeZone* timeZone;
 
 + (CGFloat)forecastCellHeigh;
 

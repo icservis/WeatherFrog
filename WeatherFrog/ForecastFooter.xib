@@ -10,23 +10,34 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="moonPhase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-DS-0Yr">
-                    <rect key="frame" x="80" y="0.0" width="160" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="moonPhase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-DS-0Yr">
+                    <rect key="frame" x="249" y="4" width="61" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sunRiseSet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-nF-Mdf">
+                    <rect key="frame" x="10" y="4" width="59" height="14"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="FwO-DS-0Yr" secondAttribute="bottom" id="3HI-Pz-cSc"/>
-                <constraint firstItem="FwO-DS-0Yr" firstAttribute="leading" secondItem="8SB-1c-gmf" secondAttribute="leading" constant="80" id="WON-pO-Wp1"/>
-                <constraint firstItem="FwO-DS-0Yr" firstAttribute="top" secondItem="8SB-1c-gmf" secondAttribute="top" id="hIW-wW-hhB"/>
-                <constraint firstItem="FwO-DS-0Yr" firstAttribute="centerX" secondItem="8SB-1c-gmf" secondAttribute="centerX" id="mdY-f8-VWQ"/>
+                <constraint firstItem="FwO-DS-0Yr" firstAttribute="top" secondItem="8SB-1c-gmf" secondAttribute="top" constant="4" id="4tc-LE-Jmx"/>
+                <constraint firstItem="f2R-nF-Mdf" firstAttribute="baseline" secondItem="FwO-DS-0Yr" secondAttribute="baseline" id="GMW-ce-WEy"/>
+                <constraint firstItem="FwO-DS-0Yr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f2R-nF-Mdf" secondAttribute="trailing" constant="10" id="I1A-hb-51g"/>
+                <constraint firstItem="f2R-nF-Mdf" firstAttribute="leading" secondItem="8SB-1c-gmf" secondAttribute="leading" constant="10" id="SBH-OS-IGi"/>
+                <constraint firstAttribute="trailing" secondItem="FwO-DS-0Yr" secondAttribute="trailing" constant="10" id="asM-cn-Wsf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="moonPhase" destination="FwO-DS-0Yr" id="a8M-A8-uyN"/>
+                <outlet property="sunRiseSet" destination="f2R-nF-Mdf" id="vyv-Ch-c96"/>
             </connections>
         </view>
     </objects>

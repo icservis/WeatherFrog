@@ -30,7 +30,6 @@
 - (void)setTimeZone:(NSTimeZone *)timeZone
 {
     _timeZone = timeZone;
-    
     _tzAbbreviation.text = [_timeZone abbreviationForDate:_weather.timestamp];
 }
 

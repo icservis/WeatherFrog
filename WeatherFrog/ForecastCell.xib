@@ -72,6 +72,7 @@
                     <constraint firstItem="5" firstAttribute="top" secondItem="Q4e-NP-oKj" secondAttribute="top" constant="10" id="zJu-bk-qbz"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" red="0.9250684307" green="0.63996920619999997" blue="0.057624315689999997" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="icon" destination="10" id="AB4-g9-RyF"/>
                 <outlet property="precip" destination="6" id="C4W-5Y-9ZI"/>
