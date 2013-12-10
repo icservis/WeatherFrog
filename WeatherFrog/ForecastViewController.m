@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "MBProgressHUD.h"
+#import "Constants.h"
 #import "ForecastManager.h"
 #import "Forecast+Additions.h"
 #import "Location.h"
 #import "Weather.h"
+#import "WeatherSymbol.h"
 #import "Astro.h"
 #import "ForecastViewController.h"
 #import "ForecastCell.h"
@@ -21,8 +24,8 @@
 #import "GoogleApiService.h"
 #import "CFGUnitConverter.h"
 #import "CCHMapsActivity.h"
-#import "MBProgressHUD.h"
-#import "Constants.h"
+#import "CPTGraph.h"
+
 
 static NSString* const ForecastCellNib = @"ForecastCell";
 static NSString* const ForecastCellIdentifier = @"ForecastCell";
@@ -902,8 +905,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         }
         BOOL isNight = [weather.isNight boolValue];
         
-        NSString* imageName = [NSString stringWithFormat:@"weathericon-%i-%d-80", symbol, isNight];
-        return [UIImage imageNamed:imageName];
+        WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:symbol];
+        return [weatherSymbol imageForSize:80 isNight:isNight];
         
     } else {
         return nil;
@@ -931,7 +934,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 {
     DDLogInfo(@"setupViewsForLandscape");
     
-    UITextView* textView;
+    [self.dateFormatter setTimeZone:forecast.timezone];
+    CGRect scrollFrame = self.scrollView.frame;
+    __block CGRect backgroundRect;
+    
     if ([[Banner sharedBanner] isBannerActive] == YES) {
         
         CGRect superViewFrame = self.scrollView.superview.frame;
@@ -941,24 +947,43 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         DDLogInfo(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
         [self.scrollView.superview addSubview:self.bannerView];
         
-        CGRect textFrame = CGRectMake(0, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height - bannerHeight);
-        textView = [[UITextView alloc] initWithFrame:textFrame];
+        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - bannerHeight);
+        CGSize contentSize = CGSizeMake(dataLandscape.count * backgroundRect.size.width, backgroundRect.size.height - bannerHeight);
+        
+        [self.scrollView setContentSize:contentSize];
         
     } else {
         
-        CGRect textFrame = self.scrollView.bounds;
-        textView = [[UITextView alloc] initWithFrame:textFrame];
+        backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height);
+        CGSize contentSize = CGSizeMake(dataLandscape.count * backgroundRect.size.width, backgroundRect.size.height);
+        [self.scrollView setContentSize:contentSize];
     }
     
-    [textView setText:[forecast description]];
-    [textView setEditable:NO];
-    textView.translatesAutoresizingMaskIntoConstraints = YES;
-    textView.autoresizesSubviews = YES;
-    textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.scrollView addSubview:textView];
-    [self.scrollView setContentSize:self.scrollView.frame.size];
-    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    [dataLandscape enumerateObjectsUsingBlock:^(NSArray* pageContent, NSUInteger idx, BOOL *stop) {
+        
+        backgroundRect.origin.x = idx * backgroundRect.size.width;
+        UIView* pageBackground = [[UIView alloc] initWithFrame:backgroundRect];
+        pageBackground.tag = idx;
+
+        UILabel* pageLabel = [[UILabel alloc] initWithFrame:pageBackground.bounds];
+        pageLabel.textAlignment = NSTextAlignmentCenter;
+        pageLabel.text = [NSString stringWithFormat:@"page: %i, count: %i", idx, [pageContent count]];
+        pageLabel.font = [UIFont systemFontOfSize:17];
+        
+        if (idx % 3 == 0) {
+            pageBackground.backgroundColor = [UIColor redColor];
+        } else if (idx % 3 == 1) {
+            pageBackground.backgroundColor = [UIColor greenColor];
+        } else {
+            pageBackground.backgroundColor = [UIColor yellowColor];
+        }
+        
+        pageLabel.textColor = [UIColor blackColor];
+        [pageBackground addSubview:pageLabel];
+        DDLogVerbose(@"page frame: %@", NSStringFromCGRect(pageBackground.frame));
+        
+        [self.scrollView addSubview:pageBackground];
+    }];
 }
 
 #pragma mark - UIEvent

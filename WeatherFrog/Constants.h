@@ -30,7 +30,7 @@ static float const kAnimationDuration = 0.5f;
 static int const kBackgoundFetchInterval = 3600;
 static int const kAstroFeedHoursCount = 30*24;
 
-#pragma mark - ForecastController
+#pragma mark - ForecastController - Portrait
 
 static CGFloat const labelTopMargin = 3.0f;
 static CGFloat const labelHeight = 21.0f;
@@ -39,6 +39,18 @@ static CGFloat const timeHeight = 21.0f;
 static CGFloat const iconTopMargin = 0.0f;
 static CGFloat const iconSize = 64.0f;
 static CGFloat const tableTopMargin = 2.0f;
+
+#pragma mark - ForecastController - Landscape
+
+static float const LandscapeForecastElementsCount = 12; // number of elements in page
+static float const LandscapeForecasConfigHours = 72; // hours interval in page
+static float const BarPlotPrecipitationMinValue = 0.4f; // min value of precipitation
+static float const BarPlotPrecipitationMaxValue = 150.0f; // max value of precipitation
+static NSString *const BarPlotPrecipitationLabelsString = @"1,10,100"; // procipitation labels
+static int const ScatterPlotTemperatureLabelsCount = 5; // count of label on temp axis
+static float const ScatterPlotMarginPercentualValue = 10.0f; // percent of scatter plot margin
+static int const ScatterPlotXAxisMajorIntervalLength = 86400;
+static int const ScatterPlotXAxisMinorTicksPerInterval = 3;
 
 #pragma mark - MapView
 

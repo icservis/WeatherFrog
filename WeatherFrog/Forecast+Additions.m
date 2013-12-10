@@ -27,8 +27,7 @@
     [localDateFormatter setTimeZone:self.timezone];
     
     
-    [self.weather enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Weather* weather = (Weather*)obj;
+    [self.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
         
         NSString* day = [localDateFormatter stringFromDate:weather.timestamp];
         
@@ -45,19 +44,56 @@
         }
     }];
     
-    //DDLogVerbose(@"days: %@", [days description]);
     
     NSArray *sortedKeys = [[days allKeys] sortedArrayUsingSelector: @selector(compare:)];
     NSMutableArray *sortedValues = [NSMutableArray array];
     for (NSString *key in sortedKeys)
         [sortedValues addObject: [days objectForKey: key]];
     
+    DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
     return sortedValues;
 }
 
 - (NSArray*)sortedWeatherDataForLandscape
 {
-    return nil;
+    NSArray* sortedData = [self.weather sortedArrayUsingComparator:^NSComparisonResult(Weather* obj1, Weather* obj2) {
+        NSDate* firstTimestamp = obj1.timestamp;
+        NSDate* secondTimestamp = obj2.timestamp;
+        
+        return  [firstTimestamp compare:secondTimestamp];
+    }];
+    
+    NSMutableDictionary* pages = [NSMutableDictionary new];
+    
+    Weather* firstWeather = sortedData[0];
+    NSDate* startTime = firstWeather.timestamp;
+    
+    [self.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
+        
+        NSTimeInterval difference = [weather.timestamp timeIntervalSinceDate:startTime];
+        float page_nr = floorf(difference/3600/LandscapeForecasConfigHours);
+        NSNumber* page = [NSNumber numberWithFloat:page_nr];
+        
+        if ([pages objectForKey:page] == nil) {
+            
+            NSMutableArray* hours = [NSMutableArray new];
+            [hours addObject:weather];
+            [pages setObject:hours forKey:page];
+            
+        } else {
+            
+            NSMutableArray* hours = [pages objectForKey:page];
+            [hours addObject:weather];
+        }
+    }];
+    
+    NSArray *sortedKeys = [[pages allKeys] sortedArrayUsingSelector: @selector(compare:)];
+    NSMutableArray *sortedValues = [NSMutableArray array];
+    for (NSString *key in sortedKeys)
+        [sortedValues addObject: [pages objectForKey: key]];
+    
+    DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
+    return sortedValues;
 }
 
 - (NSString*)description
