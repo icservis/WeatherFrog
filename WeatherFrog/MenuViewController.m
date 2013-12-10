@@ -175,10 +175,10 @@
         settingsViewController.delegate = self;
     }
     
-    if ([segue.identifier isEqualToString:@"showInfo"]) {
-        UINavigationController* infoNavController = segue.destinationViewController;
-        InfoViewController* infoViewController = [[infoNavController viewControllers] objectAtIndex:0];
-        infoViewController.delegate = self;
+    if ([segue.identifier isEqualToString:@"showAbout"]) {
+        UINavigationController* aboutNavController = segue.destinationViewController;
+        AboutTableViewController* aboutTableViewController = [[aboutNavController viewControllers] objectAtIndex:0];
+        aboutTableViewController.delegate = self;
     }
 }
 
@@ -434,9 +434,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - InfoViewControllerDelegate
+#pragma mark - AboutTableViewControllerDelegate
 
-- (void)closeInfoViewController:(UIViewController *)controller
+- (void)closeAboutTableViewController:(UITableViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -87,6 +87,17 @@
 		847CFF5417E43E7800DA0CC7 /* ForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF5217E43E7800DA0CC7 /* ForecastCell.m */; };
 		847CFF6417E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */; };
 		847CFF6517E48F7200DA0CC7 /* CFGUnitConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */; };
+		8484693B185767CB00EE31BB /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484693A185767CB00EE31BB /* AboutTableViewController.m */; };
+		8484693C185767CB00EE31BB /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484693A185767CB00EE31BB /* AboutTableViewController.m */; };
+		8484693E18576E0800EE31BB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8484693D18576E0800EE31BB /* MessageUI.framework */; };
+		848469431857822F00EE31BB /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848469421857822F00EE31BB /* DisclaimerViewController.m */; };
+		848469441857822F00EE31BB /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848469421857822F00EE31BB /* DisclaimerViewController.m */; };
+		84846947185782DD00EE31BB /* PrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84846946185782DD00EE31BB /* PrivacyViewController.m */; };
+		84846948185782DD00EE31BB /* PrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84846946185782DD00EE31BB /* PrivacyViewController.m */; };
+		8484695018578CB500EE31BB /* disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8484695318578CB500EE31BB /* disclaimer.txt */; };
+		8484695118578CB500EE31BB /* disclaimer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8484695318578CB500EE31BB /* disclaimer.txt */; };
+		8484695518578CC600EE31BB /* privacy_policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8484695818578CC600EE31BB /* privacy_policy.txt */; };
+		8484695618578CC600EE31BB /* privacy_policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8484695818578CC600EE31BB /* privacy_policy.txt */; };
 		848A54DE176E09A1009B3F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DD176E09A1009B3F85 /* Foundation.framework */; };
 		848A54E0176E09A1009B3F85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54DF176E09A1009B3F85 /* CoreGraphics.framework */; };
 		848A54E2176E09A1009B3F85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848A54E1176E09A1009B3F85 /* UIKit.framework */; };
@@ -229,9 +240,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		84089887176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
-		84089889176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8408988A176E0A3500F45397 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8408988C176E0A4900F45397 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		8408988F176E103900F45397 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84089891176E103E00F45397 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -262,11 +270,7 @@
 		8422227217ECF62200F5D231 /* CCHMapsActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CCHMapsActivity@2x.png"; sourceTree = "<group>"; };
 		8422227317ECF62200F5D231 /* CCHMapsActivity@2x˜ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CCHMapsActivity@2x˜ipad.png"; sourceTree = "<group>"; };
 		8422227417ECF62300F5D231 /* CCHMapsActivity˜ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CCHMapsActivity˜ipad.png"; sourceTree = "<group>"; };
-		8422227617ECF62300F5D231 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CCHMapsActivity.strings; sourceTree = "<group>"; };
 		8422227717ECF62300F5D231 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CCHMapsActivity.strings; sourceTree = "<group>"; };
-		8422227817ECF62300F5D231 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/CCHMapsActivity.strings; sourceTree = "<group>"; };
-		8422227917ECF62300F5D231 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CCHMapsActivity.strings; sourceTree = "<group>"; };
-		8422227A17ECF62300F5D231 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CCHMapsActivity.strings; sourceTree = "<group>"; };
 		8422638717F1FD41003F3D7D /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		8422638817F1FD41003F3D7D /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		843C230A17CEA38E00F1DBBF /* WeatherProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherProtocol.h; sourceTree = "<group>"; };
@@ -308,6 +312,18 @@
 		847CFF5217E43E7800DA0CC7 /* ForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastCell.m; sourceTree = "<group>"; };
 		847CFF6217E48F7200DA0CC7 /* CFGUnitConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFGUnitConverter.h; sourceTree = "<group>"; };
 		847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFGUnitConverter.m; sourceTree = "<group>"; };
+		84846939185767CB00EE31BB /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		8484693A185767CB00EE31BB /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		8484693D18576E0800EE31BB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		848469411857822F00EE31BB /* DisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclaimerViewController.h; sourceTree = "<group>"; };
+		848469421857822F00EE31BB /* DisclaimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisclaimerViewController.m; sourceTree = "<group>"; };
+		84846945185782DD00EE31BB /* PrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyViewController.h; sourceTree = "<group>"; };
+		84846946185782DD00EE31BB /* PrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyViewController.m; sourceTree = "<group>"; };
+		8484694918578B7C00EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8484695218578CB500EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/disclaimer.txt; sourceTree = "<group>"; };
+		8484695418578CBF00EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/disclaimer.txt; sourceTree = "<group>"; };
+		8484695918578CC900EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/privacy_policy.txt; sourceTree = "<group>"; };
+		8484695A18578D5200EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/privacy_policy.txt; sourceTree = "<group>"; };
 		848A54DA176E09A1009B3F85 /* WeatherFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848A54DD176E09A1009B3F85 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		848A54DF176E09A1009B3F85 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -444,6 +460,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8484693E18576E0800EE31BB /* MessageUI.framework in Frameworks */,
 				8496410C17EF3E1A001B2029 /* iAd.framework in Frameworks */,
 				84DE4A1017BF7A10005AB3B8 /* Accounts.framework in Frameworks */,
 				84DE4A0E17BF7A09005AB3B8 /* Social.framework in Frameworks */,
@@ -566,6 +583,7 @@
 		848A54DC176E09A1009B3F85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8484693D18576E0800EE31BB /* MessageUI.framework */,
 				8496410B17EF3E1A001B2029 /* iAd.framework */,
 				84DE4A1A17BF88B6005AB3B8 /* StoreKit.framework */,
 				84DE4A0B17BF79FE005AB3B8 /* libz.1.2.5.dylib */,
@@ -642,6 +660,8 @@
 		848BE1DA17ED918E006BC4F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8484695318578CB500EE31BB /* disclaimer.txt */,
+				8484695818578CC600EE31BB /* privacy_policy.txt */,
 				848BE1DB17ED918E006BC4F8 /* model-568h.png */,
 				848BE1DC17ED918E006BC4F8 /* model-landscape-568h.png */,
 				848BE1DD17ED918E006BC4F8 /* model-landscape.png */,
@@ -1082,6 +1102,12 @@
 				8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */,
 				845C2B8017E330640087C84A /* InfoViewController.h */,
 				845C2B8117E330640087C84A /* InfoViewController.m */,
+				84846939185767CB00EE31BB /* AboutTableViewController.h */,
+				8484693A185767CB00EE31BB /* AboutTableViewController.m */,
+				848469411857822F00EE31BB /* DisclaimerViewController.h */,
+				848469421857822F00EE31BB /* DisclaimerViewController.m */,
+				84846945185782DD00EE31BB /* PrivacyViewController.h */,
+				84846946185782DD00EE31BB /* PrivacyViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1179,8 +1205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				848BE1E317ED918E006BC4F8 /* model-landscape.png in Resources */,
+				8484695518578CC600EE31BB /* privacy_policy.txt in Resources */,
 				848BE1E517ED918E006BC4F8 /* model.png in Resources */,
 				841122F417FABC780079ECCA /* BannerViewController.xib in Resources */,
+				8484695018578CB500EE31BB /* disclaimer.txt in Resources */,
 				848BE1E117ED918E006BC4F8 /* model-landscape-568h.png in Resources */,
 				8496410217EF2C3B001B2029 /* ForecastHeader.xib in Resources */,
 				8422227D17ECF62300F5D231 /* CCHMapsActivity.png in Resources */,
@@ -1207,8 +1235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				841EFAD317D25571009EF860 /* Settings.bundle in Resources */,
+				8484695618578CC600EE31BB /* privacy_policy.txt in Resources */,
 				848BE1E417ED918E006BC4F8 /* model-landscape.png in Resources */,
 				841122F517FABC780079ECCA /* BannerViewController.xib in Resources */,
+				8484695118578CB500EE31BB /* disclaimer.txt in Resources */,
 				848BE1E617ED918E006BC4F8 /* model.png in Resources */,
 				8496410317EF2C3B001B2029 /* ForecastHeader.xib in Resources */,
 				848BE1E217ED918E006BC4F8 /* model-landscape-568h.png in Resources */,
@@ -1252,6 +1282,7 @@
 				84DE48CC17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
 				84DE497217BF767D005AB3B8 /* NSString+validation.m in Sources */,
 				84DE490C17BF7659005AB3B8 /* DDASLLogger.m in Sources */,
+				84846947185782DD00EE31BB /* PrivacyViewController.m in Sources */,
 				84DE491417BF7659005AB3B8 /* ContextFilterLogFormatter.m in Sources */,
 				8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */,
 				84DE48D217BF7601005AB3B8 /* AFPropertyListRequestOperation.m in Sources */,
@@ -1272,6 +1303,7 @@
 				847B915617BFB43800AD76E7 /* MenuViewController.m in Sources */,
 				848A54EE176E09A1009B3F85 /* AppDelegate.m in Sources */,
 				8422638917F1FD41003F3D7D /* LocationManager.m in Sources */,
+				8484693B185767CB00EE31BB /* AboutTableViewController.m in Sources */,
 				843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */,
 				84DE497E17BF767D005AB3B8 /* ImageToDataTransformer.m in Sources */,
 				84DE490E17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
@@ -1295,6 +1327,7 @@
 				84DE48D017BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				847CFF5317E43E7800DA0CC7 /* ForecastCell.m in Sources */,
 				84DE491217BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
+				848469431857822F00EE31BB /* DisclaimerViewController.m in Sources */,
 				84DE48F717BF764A005AB3B8 /* DDXMLNode.m in Sources */,
 				84DE4A1817BF86CF005AB3B8 /* Model.xcdatamodeld in Sources */,
 				84DE48F517BF764A005AB3B8 /* DDXMLElement.m in Sources */,
@@ -1331,6 +1364,7 @@
 				84DE48CD17BF7601005AB3B8 /* AFImageRequestOperation.m in Sources */,
 				843D1B7017CD3A600094AEB4 /* Forecast+Additions.m in Sources */,
 				84DE490F17BF7659005AB3B8 /* DDFileLogger.m in Sources */,
+				84846948185782DD00EE31BB /* PrivacyViewController.m in Sources */,
 				84DE48F417BF764A005AB3B8 /* DDXMLDocument.m in Sources */,
 				843C231017CEA83100F1DBBF /* WeatherDictionary.m in Sources */,
 				847B914F17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,
@@ -1351,6 +1385,7 @@
 				8422638A17F1FD41003F3D7D /* LocationManager.m in Sources */,
 				84DE48F617BF764A005AB3B8 /* DDXMLElement.m in Sources */,
 				84DE491317BF7659005AB3B8 /* DDTTYLogger.m in Sources */,
+				8484693C185767CB00EE31BB /* AboutTableViewController.m in Sources */,
 				847B916B17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
 				84DE48D117BF7601005AB3B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				843C231417CEA8CC00F1DBBF /* AstroDictionary.m in Sources */,
@@ -1374,6 +1409,7 @@
 				84DE49FA17BF76FA005AB3B8 /* Reachability.m in Sources */,
 				84DE497517BF767D005AB3B8 /* UIImage+fixOrientation.m in Sources */,
 				84905D1317CAAD1200402857 /* Sequencer.m in Sources */,
+				848469441857822F00EE31BB /* DisclaimerViewController.m in Sources */,
 				84DE490D17BF7659005AB3B8 /* DDASLLogger.m in Sources */,
 				84DE496F17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
 				84BEAEEF17C55E09008B828E /* YrApiService.m in Sources */,
@@ -1405,20 +1441,36 @@
 		8422227517ECF62300F5D231 /* CCHMapsActivity.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8422227617ECF62300F5D231 /* de */,
 				8422227717ECF62300F5D231 /* en */,
-				8422227817ECF62300F5D231 /* es */,
-				8422227917ECF62300F5D231 /* fr */,
-				8422227A17ECF62300F5D231 /* it */,
 			);
 			name = CCHMapsActivity.strings;
 			sourceTree = "<group>";
+		};
+		8484695318578CB500EE31BB /* disclaimer.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8484695218578CB500EE31BB /* Base */,
+				8484695418578CBF00EE31BB /* en */,
+			);
+			name = disclaimer.txt;
+			path = WeatherFrog;
+			sourceTree = SOURCE_ROOT;
+		};
+		8484695818578CC600EE31BB /* privacy_policy.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8484695918578CC900EE31BB /* en */,
+				8484695A18578D5200EE31BB /* Base */,
+			);
+			name = privacy_policy.txt;
+			path = WeatherFrog;
+			sourceTree = SOURCE_ROOT;
 		};
 		848A54E6176E09A1009B3F85 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				848A54E7176E09A1009B3F85 /* en */,
-				84089889176E0A3500F45397 /* cs */,
+				8484694918578B7C00EE31BB /* Base */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1427,7 +1479,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				848A54F0176E09A2009B3F85 /* Base */,
-				84089887176E0A3500F45397 /* cs */,
 				8408988C176E0A4900F45397 /* en */,
 			);
 			name = Main_iPhone.storyboard;
@@ -1437,7 +1488,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				848A550C176E09A2009B3F85 /* en */,
-				8408988A176E0A3500F45397 /* cs */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -108,6 +108,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
 {
+    DDLogVerbose(@"transactions :%@", [transactions description]);
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+    
     for (SKPaymentTransaction * transaction in transactions) {
         switch (transaction.transactionState)
         {
@@ -123,7 +126,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
                 break;
         }
     };
-    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
 }
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {

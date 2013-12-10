@@ -37,7 +37,7 @@
 
     #import <Social/Social.h>
     #import <Accounts/Accounts.h>
-    #import <FacebookSDK/FacebookSDK.h>
+    #import <MessageUI/MessageUI.h>
 
     #pragma GCC diagnostic push
     #pragma GCC diagnostic ignored "-Wunused-variable"

@@ -242,15 +242,14 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UIAlertView appearance] setTintColor:titleColor];
+    [[UIBarButtonItem appearance] setTintColor:titleColor];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleColor, NSForegroundColorAttributeName, [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSFontAttributeName, nil] forState:UIControlStateNormal];
     
     [[UIToolbar appearance] setTintColor:titleColor];
     [[UIToolbar appearance] setBarTintColor:tintColor];
-    [[UIBarButtonItem appearance] setTintColor:titleColor];
-    
+        
     [[UINavigationBar appearance] setTintColor:titleColor];
     [[UINavigationBar appearance] setBarTintColor:tintColor];
-    
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleColor, NSForegroundColorAttributeName, [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSFontAttributeName, nil]];
     
     [[UIButton appearance] setTitleColor:tintColor forState:UIControlStateNormal];

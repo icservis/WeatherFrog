@@ -50,5 +50,9 @@ static float const kMapRadiusMultiplier = 1000.0f;
 
 static float const kHudDisplayTimeInterval = 1.2f;
 
+#pragma mark - Support
+
+static NSString* const weatherFrogSupportEmail = @"support@weatherfrog.info";
+static NSString* const weatherFrogSupportWeb = @"http://weatherfrog.info/";
 
 #endif

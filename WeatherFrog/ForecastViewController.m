@@ -275,9 +275,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     
     UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[mapsActivity]];
     activityViewController.excludedActivityTypes = @[UIActivityTypeAssignToContact];
-    activityViewController.navigationController.navigationBar.tintColor = self.view.tintColor;
-
-    [self presentViewController:activityViewController animated:YES completion:nil];
+    activityViewController.navigationController.navigationBar.tintColor = self.navigationController.navigationBar.tintColor;
+    [self.navigationController presentViewController:activityViewController animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Screenshot
