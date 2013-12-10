@@ -14,6 +14,7 @@
 #import "LocationManager.h"
 #import "Banner.h"
 #import "iRate.h"
+#import "WeatherSymbol.h"
 
 @implementation AppDelegate {
     Reachability* internetReachable;
@@ -90,17 +91,6 @@
     
     // Background Fetch
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:kBackgoundFetchInterval];
-    
-    // Notifications config
-    NSArray* notificationsConfigLow = @[@20, @21, @22, @23];
-    NSArray* notificationsConfigMiddle = @[@10, @11, @12, @13, @14, @20, @21, @22, @23];
-    NSArray* notificationsConfigHigh = @[@5, @6, @7, @8, @9, @10, @11, @12, @13, @14, @20, @21, @22, @23];
-    
-    notificationsConfig = @{
-                            @1 : notificationsConfigLow,
-                            @2 : notificationsConfigMiddle,
-                            @3 : notificationsConfigHigh
-                        };
 
     return YES;
 }
@@ -648,13 +638,13 @@
         
         BOOL sheduleNotification = NO;
         
-        if (notificationLevel == 4) {
+        if (notificationLevel == kWeatherNotificationLevelAll) {
             
             sheduleNotification = YES;
             
-        } else if (notificationLevel > 0) {
+        } else if (notificationLevel > kWeatherNotificationLevelNone) {
             
-            NSArray* notificationLevelConfig = [notificationsConfig objectForKey:notifications];
+            NSArray* notificationLevelConfig = [WeatherSymbol notificationsConfigForLevel:notificationLevel];
             
             if ([notificationLevelConfig indexOfObject:symbol] != NSNotFound) {
                 if (![sharedDefaults.lastNotificationSymbol isEqualToNumber:symbol]) {
@@ -663,7 +653,8 @@
                 }
             } else {
                 sheduleNotification = NO;
-                sharedDefaults.lastNotificationSymbol = @0;
+                WeatherSymbol* wetherSymbolNone = [[WeatherSymbol alloc] initWithSymbol:kWeatherSymbolNone];
+                sharedDefaults.lastNotificationSymbol = [wetherSymbolNone symbol];
             }
             
             DDLogVerbose(@"symbol: %@", symbol);
@@ -688,7 +679,8 @@
                 [dateFormatter setDateStyle:NSDateFormatterShortStyle];
                 [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
                 
-                NSString* alertBody = [NSString stringWithFormat:@"%@ %@ - %@: symbol: %@, time: %@", NSLocalizedString(@"Notification", nil), [sharedDefaults titleOfSliderValue:notifications forKey:DefaultsNotifications], message, symbol, [dateFormatter stringFromDate:forthcommingWeather.timestamp]];
+                WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:[symbol integerValue]];
+                NSString* alertBody = [NSString stringWithFormat:@"%@: %@", [dateFormatter stringFromDate:forthcommingWeather.timestamp], [weatherSymbol localizedName]];
                 notifyAlarm.alertBody = alertBody;
                 [app scheduleLocalNotification:notifyAlarm];
             }

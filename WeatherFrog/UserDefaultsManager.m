@@ -7,6 +7,7 @@
 //
 
 #import "UserDefaultsManager.h"
+#import "WeatherSymbol.h"
 
 @interface UserDefaultsManager ()
 
@@ -520,38 +521,51 @@
     NSMutableArray* descriptions = [NSMutableArray array];
     
     if ([key isEqualToString:DefaultsNotifications]) {
-        [descriptions addObject:NSLocalizedString(@"No Notifiactions at All", nil)];
-        [descriptions addObject:NSLocalizedString(@"Heavy Rain, Heavy Thunder, Heavy Snow", nil)];
-        [descriptions addObject:NSLocalizedString(@"Rain, Rain Thunder, Snow, Snow Thunder, Sleet", nil)];
-        [descriptions addObject:NSLocalizedString(@"Light Rain, Sleet Sun, Snow Sun, Light Rain Thunder Sun", nil)];
-        [descriptions addObject:NSLocalizedString(@"Notification at Any Condition.", nil)];
+        
+        // kWeatherNotificationLevelNone
+        [descriptions addObject:NSLocalizedString(@"No Notificactions at All", nil)];
+        
+        // kWeatherNotificationLevelLow
+        
+        NSArray* lowSymbols = [WeatherSymbol notificationsConfigForLevel:kWeatherNotificationLevelLow];
+        NSMutableArray* lowSymbolsLocaleNames = [NSMutableArray array];
+        [lowSymbols enumerateObjectsUsingBlock:^(NSNumber* symbol, NSUInteger idx, BOOL *stop) {
+            WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:[symbol integerValue]];
+            [lowSymbolsLocaleNames addObject:[weatherSymbol localizedName]];
+        }];
+        
+        [descriptions addObject:[lowSymbolsLocaleNames componentsJoinedByString:@", "]];
+        
+        // kWeatherNotificationLevelMiddle
+        
+        NSArray* middleSymbols = [WeatherSymbol notificationsConfigForLevel:kWeatherNotificationLevelMiddle];
+        NSMutableArray* middleSymbolsLocaleNames = [NSMutableArray array];
+        [middleSymbols enumerateObjectsUsingBlock:^(NSNumber* symbol, NSUInteger idx, BOOL *stop) {
+            WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:[symbol integerValue]];
+            [middleSymbolsLocaleNames addObject:[weatherSymbol localizedName]];
+        }];
+        
+        [descriptions addObject:[middleSymbolsLocaleNames componentsJoinedByString:@", "]];
+        
+        // kWeatherNotificationLevelHigh
+        
+        NSArray* highSymbols = [WeatherSymbol notificationsConfigForLevel:kWeatherNotificationLevelHigh];
+        NSMutableArray* highSymbolsLocaleNames = [NSMutableArray array];
+        [highSymbols enumerateObjectsUsingBlock:^(NSNumber* symbol, NSUInteger idx, BOOL *stop) {
+            WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:[symbol integerValue]];
+            [highSymbolsLocaleNames addObject:[weatherSymbol localizedName]];
+        }];
+        
+        [descriptions addObject:[highSymbolsLocaleNames componentsJoinedByString:@", "]];
+        
+        // kWeatherNotificationLevelAll
+        [descriptions addObject:NSLocalizedString(@"Notification at Any Condition Change.", nil)];
     }
     
     if (descriptions[idx] != nil) {
         return (NSString*)descriptions[idx];
     }
-    return [NSString stringWithFormat:@"%@: %i", NSLocalizedString(@"Description of level", nil), idx];
-}
-
-- (NSArray*)imageIndexesOfSliderValue:(id)value forKey:(NSString*)key
-{
-    DDLogVerbose(@"%@", [[self elementValueForKey:key] description]);
-    
-    NSUInteger idx = [[self elementValueForKey:key] integerValue];
-    NSMutableArray* imageIndexes = [NSMutableArray array];
-    
-    if ([key isEqualToString:DefaultsNotifications]) {
-        [imageIndexes addObject:[NSArray arrayWithObjects: @0, @0, @0, nil]]; // None
-        [imageIndexes addObject:[NSArray arrayWithObjects: @20, @21, @22, nil]]; // Low
-        [imageIndexes addObject:[NSArray arrayWithObjects: @10, @12, @14, nil]]; // Middle
-        [imageIndexes addObject:[NSArray arrayWithObjects: @5, @7, @9, nil]]; // High
-        [imageIndexes addObject:[NSArray arrayWithObjects: @0, @1, @0, nil]]; // All
-    }
-    
-    if (imageIndexes[idx] != nil) {
-        return (NSArray*)imageIndexes[idx];
-    }
-    return nil;
+    return [NSString stringWithFormat:@"%@: %i", NSLocalizedString(@"Description of Notification Level", nil), idx];
 }
 
 - (NSArray*)valuesForKey:(NSString *)key

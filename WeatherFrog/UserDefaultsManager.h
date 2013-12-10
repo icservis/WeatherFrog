@@ -58,7 +58,6 @@ static NSString* const DefaultsNextExpiryAlertDate = @"NEXT_EXPIRY_ALERT_DATE";
 - (NSString*)titleOfMultiValue:(id)value forKey:(NSString*)key;
 - (NSString*)titleOfSliderValue:(id)value forKey:(NSString*)key;
 - (NSString*)descriptionOfSliderValue:(id)value forKey:(NSString*)key;
-- (NSArray*)imageIndexesOfSliderValue:(id)value forKey:(NSString*)key;
 - (NSArray*)titlesForKey:(NSString*)key;
 - (NSArray*)valuesForKey:(NSString*)key;
 - (NSNumber*)minValueForKey:(NSString *)key;

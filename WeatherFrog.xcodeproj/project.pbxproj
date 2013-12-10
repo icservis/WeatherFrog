@@ -56,6 +56,8 @@
 		843D1B6C17CD32EA0094AEB4 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */; };
 		843D1B6F17CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
 		843D1B7017CD3A600094AEB4 /* Forecast+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */; };
+		844107451856F2C4008C6B7C /* WeatherSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 844107441856F2C4008C6B7C /* WeatherSymbol.m */; };
+		844107461856F2C4008C6B7C /* WeatherSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 844107441856F2C4008C6B7C /* WeatherSymbol.m */; };
 		8443B12A17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
 		8443B12B17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
 		8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
@@ -277,6 +279,8 @@
 		843D1B6A17CD32EA0094AEB4 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastManager.m; sourceTree = "<group>"; };
 		843D1B6D17CD3A600094AEB4 /* Forecast+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+Additions.h"; sourceTree = "<group>"; };
 		843D1B6E17CD3A600094AEB4 /* Forecast+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+Additions.m"; sourceTree = "<group>"; };
+		844107431856F2C4008C6B7C /* WeatherSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherSymbol.h; sourceTree = "<group>"; };
+		844107441856F2C4008C6B7C /* WeatherSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherSymbol.m; sourceTree = "<group>"; };
 		8443B12817EA3036004CFA55 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8443B12917EA3036004CFA55 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderViewController.h; sourceTree = "<group>"; };
@@ -1017,6 +1021,8 @@
 				841EFAD517D26D94009EF860 /* UserDefaultsManager.m */,
 				847CFF6217E48F7200DA0CC7 /* CFGUnitConverter.h */,
 				847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */,
+				844107431856F2C4008C6B7C /* WeatherSymbol.h */,
+				844107441856F2C4008C6B7C /* WeatherSymbol.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1295,6 +1301,7 @@
 				84DE490A17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
 				841EFADA17D2A7EF009EF860 /* SettingsMultiValueViewController.m in Sources */,
 				845C2B8217E330640087C84A /* InfoViewController.m in Sources */,
+				844107451856F2C4008C6B7C /* WeatherSymbol.m in Sources */,
 				84A1885817F2AD3D00D260C4 /* Forecast.m in Sources */,
 				84DE48D817BF7601005AB3B8 /* UIImageView+AFNetworking.m in Sources */,
 				84DE497617BF767D005AB3B8 /* NonRotatingNavController.m in Sources */,
@@ -1373,6 +1380,7 @@
 				84DE48DD17BF7622005AB3B8 /* AFKissXMLRequestOperation.m in Sources */,
 				847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */,
 				84DE490B17BF7659005AB3B8 /* DDAbstractDatabaseLogger.m in Sources */,
+				844107461856F2C4008C6B7C /* WeatherSymbol.m in Sources */,
 				84A1885917F2AD3D00D260C4 /* Forecast.m in Sources */,
 				848CC83B17C2BA2300EE02BD /* GoogleApiService.m in Sources */,
 				841EFAD717D26D94009EF860 /* UserDefaultsManager.m in Sources */,
