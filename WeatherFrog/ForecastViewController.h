@@ -10,6 +10,7 @@
 #import "ForecastManager.h"
 #import "DetailViewController.h"
 #import "Banner.h"
+#import "CorePlot-CocoaTouch.h"
 
 @class Forecast;
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface ForecastViewController : UIViewController <ForecastManagerDelegate, UITableViewDataSource, UITableViewDelegate, DetailViewControllerDelegate, BannerDelegate, UIAlertViewDelegate>
+@interface ForecastViewController : UIViewController <ForecastManagerDelegate, UITableViewDataSource, UITableViewDelegate, DetailViewControllerDelegate, BannerDelegate, UIAlertViewDelegate, CPTScatterPlotDelegate, CPTPlotDataSource>
 
 @property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;

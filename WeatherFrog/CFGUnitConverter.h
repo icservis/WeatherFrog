@@ -11,10 +11,12 @@
 - (NSString*)convertPercent:(NSNumber*)percent;
 - (NSString*)convertDegrees:(NSNumber*)degrees;
 - (NSString*)convertTemperature:(NSNumber*)temperatureCelsius;
+- (NSNumber*)convertTemperatureToNumber:(NSNumber*)temperatureCelsius;
 - (NSString*)convertWindDirection:(NSNumber*)windDirectionRadius;
 - (NSString*)convertWindSpeed:(NSNumber*)windSpeedMetresPerSecond;
 - (NSString*)convertWindScale:(NSNumber*)windScaleBeaufort;
 - (NSString*)convertPrecipitation:(NSNumber*)precipitationMilimetresPerTime period:(NSInteger)hours;
+- (NSNumber*)convertPrecipitationToNumber:(NSNumber*)precipitationMilimetresPerTime period:(NSInteger)hours;
 - (NSString*)convertPressure:(NSNumber*)presureHectoPascals;
 - (NSString*)convertAltitude:(NSNumber*)altitudeMetres;
 

@@ -37,6 +37,20 @@
     }
 }
 
+- (NSNumber*)convertTemperatureToNumber:(NSNumber*)temperatureCelsius
+{
+    NSString* tempUnit = [[UserDefaultsManager sharedDefaults] forecastUnitTemperature];
+    float floatCelsiusTemperature = [temperatureCelsius floatValue];
+    
+    if ([tempUnit isEqualToString:@"K"]) {
+        return [NSNumber numberWithFloat:roundf(floatCelsiusTemperature+273.2)];
+    } else if ([tempUnit isEqualToString:@"F"]) {
+        return [NSNumber numberWithFloat:roundf(1.8*floatCelsiusTemperature)+32];
+    } else {
+        return [NSNumber numberWithFloat:roundf(floatCelsiusTemperature)];
+    }
+}
+
 - (NSString*)convertWindDirection:(NSNumber*)windDirectionRadius
 {
     float floatWindDirectionRadius = [windDirectionRadius floatValue];
@@ -84,6 +98,18 @@
         return [NSString stringWithFormat:@"%@ in/24h", [self formatedNumberString:(24/25.4*floatPrecipitationMilimetresPerTime)]];
     } else {
         return [NSString stringWithFormat:@"%@ mm/h", [self formatedNumberString:floatPrecipitationMilimetresPerTime]];
+    }
+}
+
+- (NSNumber*)convertPrecipitationToNumber:(NSNumber*)precipitationMilimetresPerTime period:(NSInteger)hours
+{
+    NSString* precipitation = [[UserDefaultsManager sharedDefaults] forecastUnitPrecipitation];
+    float floatPrecipitationMilimetresPerTime = [precipitationMilimetresPerTime floatValue] / (float)hours;
+    
+    if ([precipitation isEqualToString:@"in24h"]) {
+        return [NSNumber numberWithFloat:(24/25.4*floatPrecipitationMilimetresPerTime)];
+    } else {
+        return [NSNumber numberWithFloat:floatPrecipitationMilimetresPerTime];
     }
 }
 

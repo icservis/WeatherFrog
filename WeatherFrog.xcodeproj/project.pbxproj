@@ -322,10 +322,10 @@
 		84846945185782DD00EE31BB /* PrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyViewController.h; sourceTree = "<group>"; };
 		84846946185782DD00EE31BB /* PrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyViewController.m; sourceTree = "<group>"; };
 		8484694918578B7C00EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8484695218578CB500EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/disclaimer.txt; sourceTree = "<group>"; };
-		8484695418578CBF00EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/disclaimer.txt; sourceTree = "<group>"; };
-		8484695918578CC900EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/privacy_policy.txt; sourceTree = "<group>"; };
-		8484695A18578D5200EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/privacy_policy.txt; sourceTree = "<group>"; };
+		8484695218578CB500EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/disclaimer.txt; sourceTree = "<group>"; };
+		8484695418578CBF00EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/disclaimer.txt; sourceTree = "<group>"; };
+		8484695918578CC900EE31BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/privacy_policy.txt; sourceTree = "<group>"; };
+		8484695A18578D5200EE31BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/privacy_policy.txt; sourceTree = "<group>"; };
 		8484695D1857A63700EE31BB /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		8484695E1857A63700EE31BB /* CPTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnimation.h; sourceTree = "<group>"; };
 		8484695F1857A63700EE31BB /* CPTAnimationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnimationOperation.h; sourceTree = "<group>"; };
@@ -1690,8 +1690,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1704,7 +1704,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4D9748E5-C9FB-4739-8D8E-AE89A90E3C8C";
+				PROVISIONING_PROFILE = "0BEBB3F7-5271-49F8-A1AC-45B2B5140AA1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1718,17 +1718,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog-Prefix.pch";
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK/FacebookSDK.framework/Versions/A,
 					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1796,7 +1796,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "A8EDF827-60E5-4088-9EF3-ED47461071AA";
+				PROVISIONING_PROFILE = "A6416C02-9306-4495-9F49-9C0C9EB29659";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1831,7 +1831,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2F9DD5E0-3846-441D-AD00-50F3EE3EC627";
+				PROVISIONING_PROFILE = "693728B2-7213-43EF-9C8D-70F6CE5CC59C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1846,17 +1846,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog-Prefix.pch";
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK/FacebookSDK.framework/Versions/A,
 					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1872,17 +1872,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog-Prefix.pch";
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK/FacebookSDK.framework/Versions/A,
 					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

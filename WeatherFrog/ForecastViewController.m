@@ -24,8 +24,20 @@
 #import "GoogleApiService.h"
 #import "CFGUnitConverter.h"
 #import "CCHMapsActivity.h"
-#import "CPTGraph.h"
-
+/*
+#import "CPTGraphHostingView.h"
+#import "CPTXYGraph.h"
+#import "CPTMutableLineStyle.h"
+#import "CPTColor.h"
+#import "CPTMutableTextStyle.h"
+#import "CPTPlotAreaFrame.h"
+#import "CPTPlotSymbol.h"
+#import "CPTXYPlotSpace.h"
+#import "CPTPlotRange.h"
+#import "CPTXYAxis.h"
+#import "CPTXYAxisSet.h"
+#import "CPTAxisLabel.h"
+ */
 
 static NSString* const ForecastCellNib = @"ForecastCell";
 static NSString* const ForecastCellIdentifier = @"ForecastCell";
@@ -975,7 +987,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         pageBackground.tag = idx;
         //DDLogVerbose(@"page frame: %@", NSStringFromCGRect(pageBackground.frame));
         
-        // test
+        /*
         UILabel* pgLabel = [[UILabel alloc] initWithFrame:pageBackground.bounds];
         pgLabel.textAlignment = NSTextAlignmentCenter;
         pgLabel.text = [NSString stringWithFormat:@"page: %i, count: %i", idx, [pageContent count]];
@@ -983,7 +995,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         pgLabel.textColor = [UIColor blackColor];
         [pageBackground addSubview:pgLabel];
         
-        // test
+        */
         
         Weather* firstWeather = [pageContent firstObject];
         NSDate* firstTime = firstWeather.timestamp;
@@ -1022,12 +1034,12 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         
         // page label
         
-        CGFloat pageLabelWidthMargin = 40;
+        //CGFloat pageLabelWidthMargin = 40;
         CGFloat pageLabelHeightMargin = 205;
         CGFloat pageLabelHeight = 21;
-        CGFloat pageLabelFontSize = 14;
+        //CGFloat pageLabelFontSize = 14;
         
-        
+        /*
         CGRect pageLabelFrame;
         pageLabelFrame.origin.x = pageLabelWidthMargin;
         pageLabelFrame.origin.y = pageLabelHeightMargin;
@@ -1045,7 +1057,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
          
          pageLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.dateFormatter stringFromDate:firstTime], [self.dateFormatter stringFromDate:lastTime]];
          [pageBackground addSubview:pageLabel];
-        
+        */
         
         // page elements
         
@@ -1078,6 +1090,322 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
             }
             
         }];
+        
+        float minTemp = 999;
+        float maxTemp = -273.15;
+        
+        for (Weather* weather in self.selectedForecast.weather) {
+            
+            NSNumber* temp = [self.unitsConverter convertTemperatureToNumber:weather.temperature];
+            
+            if ([temp floatValue] < minTemp) minTemp = [temp floatValue];
+            if ([temp floatValue] > maxTemp) maxTemp = [temp floatValue];
+            
+        }
+        
+        CGFloat hostingViewWidthMargin = 0;
+        CGFloat hostingViewlHeightMargin = LandscapeForecastIconMargin + elementHeight;
+        CGFloat hostingViewHeight = pageLabelHeightMargin - hostingViewlHeightMargin + pageLabelHeight;
+        
+        CGRect hostingViewFrame;
+        hostingViewFrame.origin.x = hostingViewWidthMargin;
+        hostingViewFrame.origin.y = hostingViewlHeightMargin;
+        hostingViewFrame.size = CGSizeMake((backgroundRect.size.width-2*hostingViewWidthMargin),hostingViewHeight);
+        
+        CPTGraphHostingView *hostingView = [[CPTGraphHostingView alloc] initWithFrame:hostingViewFrame];
+        [pageBackground addSubview:hostingView];
+        
+        // Create a graph object which we will use to host just one scatter plot.
+        CGRect graphFrame = [hostingView bounds];
+        CPTXYGraph* graph = [[CPTXYGraph alloc] initWithFrame:graphFrame];
+        [graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+        
+        // Add some padding to the graph, with more at the bottom for axis labels.
+        CPTMutableLineStyle *borderLineStyle = [CPTMutableLineStyle lineStyle];
+        borderLineStyle.lineColor = [CPTColor lightGrayColor];
+        borderLineStyle.lineWidth = 0.0f;
+        
+        graph.plotAreaFrame.paddingTop = 5.0f;
+        graph.plotAreaFrame.paddingRight = 0.0f;
+        graph.plotAreaFrame.paddingBottom = 15.0f;
+        graph.plotAreaFrame.paddingLeft = 0.0f;
+        
+        graph.plotAreaFrame.borderLineStyle = borderLineStyle;
+        graph.paddingTop = 0.0f;
+        graph.paddingBottom = 0.0f;
+        graph.paddingLeft = 0.0f;
+        graph.paddingRight = 0.0f;
+        
+        // Tie the graph we've created with the hosting view.
+        hostingView.hostedGraph = graph;
+        
+        // Create a line style that we will apply to the axis and data line.
+        
+        CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
+        lineStyle.lineColor = [CPTColor lightGrayColor];
+        lineStyle.lineWidth = 1.5f;
+        lineStyle.miterLimit = 10.0f;
+        
+        CPTMutableLineStyle *xLineStyle = [CPTMutableLineStyle lineStyle];
+        xLineStyle.lineColor = [CPTColor darkGrayColor];
+        xLineStyle.lineWidth = 0.0f;
+        
+        CPTMutableLineStyle *yLineStyle = [CPTMutableLineStyle lineStyle];
+        yLineStyle.lineColor = [CPTColor darkGrayColor];
+        yLineStyle.lineWidth = 0.0f;
+        
+        // Create a text style that we will use for the axis labels.
+        CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+        textStyle.fontSize = 9;
+        textStyle.color = [CPTColor darkGrayColor];
+        
+        CPTMutableTextStyle *headStyle = [CPTMutableTextStyle textStyle];
+        headStyle.fontSize = 13;
+        headStyle.color = [CPTColor darkGrayColor];
+        
+        // Create the plot symbol we're going to use.
+        CPTPlotSymbol *plotSymbol = [CPTPlotSymbol crossPlotSymbol];
+        plotSymbol.lineStyle = lineStyle;
+        plotSymbol.size = CGSizeMake(4.0, 4.0);
+        
+        // Setup some floats that represent the min/max values on our axis.
+        float xAxisMin = [startTime timeIntervalSinceDate:firstTime] + ScatterPlotXAxisMajorIntervalLength;
+        float xAxisMax = [nextTime timeIntervalSinceDate:firstTime] + ScatterPlotXAxisMajorIntervalLength;
+        float yAxisMin = floorf(minTemp - abs(minTemp/ScatterPlotMarginPercentualValue));
+        float yAxisMax = ceilf(maxTemp + abs(maxTemp/ScatterPlotMarginPercentualValue));
+        
+        DDLogVerbose(@"yAxisMin: %f", yAxisMin);
+        DDLogVerbose(@"yAxisMax: %f", yAxisMax);
+        
+        // We modify the graph's plot space to setup the axis' min / max values.
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+        
+        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xAxisMin) length:CPTDecimalFromFloat(xAxisMax - xAxisMin)];
+        plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yAxisMin) length:CPTDecimalFromFloat(yAxisMax - yAxisMin)];
+        
+        //NSLog(@"plotSpace.xRange page: %i, origin: %f, lenght: %f", i, CPTDecimalCGFloatValue(plotSpace.xRange.location), CPTDecimalCGFloatValue(plotSpace.xRange.length));
+        
+        [graph addPlotSpace:plotSpace];
+        
+        // Grid line styles
+        CPTMutableLineStyle *majorGridLineStyle = [CPTMutableLineStyle lineStyle];
+        majorGridLineStyle.lineWidth = 0.75;
+        majorGridLineStyle.lineColor = [[CPTColor colorWithGenericGray:0.5] colorWithAlphaComponent:0.75];
+        
+        CPTMutableLineStyle *minorGridLineStyle = [CPTMutableLineStyle lineStyle];
+        minorGridLineStyle.lineWidth = 0.5;
+        minorGridLineStyle.lineColor = [[CPTColor colorWithGenericGray:0.2] colorWithAlphaComponent:0.75];
+        
+        // Modify the graph's axis with a label, line style, etc.
+        CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
+        
+        axisSet.xAxis.title = nil;
+        axisSet.xAxis.titleTextStyle = headStyle;
+        axisSet.xAxis.titleOffset = 0.0f;
+        axisSet.xAxis.axisLineStyle = xLineStyle;
+        axisSet.xAxis.majorTickLineStyle = xLineStyle;
+        axisSet.xAxis.minorTickLineStyle = xLineStyle;
+        axisSet.xAxis.labelTextStyle = textStyle;
+        axisSet.xAxis.labelOffset = 5.0f;
+        axisSet.xAxis.majorIntervalLength = CPTDecimalFromInt(ScatterPlotXAxisMajorIntervalLength);
+        axisSet.xAxis.minorTicksPerInterval = ScatterPlotXAxisMinorTicksPerInterval;
+        axisSet.xAxis.minorTickLength = 0.0f;
+        axisSet.xAxis.majorTickLength = 0.0f;
+        axisSet.xAxis.majorGridLineStyle = majorGridLineStyle;
+        axisSet.xAxis.minorGridLineStyle = minorGridLineStyle;
+        axisSet.xAxis.orthogonalCoordinateDecimal = CPTDecimalFromFloat(yAxisMin);
+        
+        if (idx%2 == 0) {
+            axisSet.xAxis.alternatingBandFills = [NSArray arrayWithObjects:[[CPTColor grayColor] colorWithAlphaComponent:0.0], [[CPTColor grayColor] colorWithAlphaComponent:0.2], nil];
+        } else {
+            axisSet.xAxis.alternatingBandFills = [NSArray arrayWithObjects:[[CPTColor grayColor] colorWithAlphaComponent:0.2], [[CPTColor grayColor] colorWithAlphaComponent:0.0], nil];
+        }
+        
+        axisSet.xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+        NSMutableSet *newAxisLabels = [NSMutableSet set];
+        NSMutableSet *majorTickLocations = [NSMutableSet set];
+        
+        int jMin = midnightTimeInterval - ScatterPlotXAxisMajorIntervalLength;
+        int jMax = xAxisMax - xAxisMin + ScatterPlotXAxisMajorIntervalLength;
+        int jStep = ScatterPlotXAxisMajorIntervalLength;
+        
+        int j;
+        for (j=jMin;j<jMax;j+=jStep) {
+            
+            //NSLog(@"tickLocation: %i", j);
+            [majorTickLocations addObject:[NSDecimalNumber numberWithUnsignedInteger:j + ScatterPlotXAxisMajorIntervalLength]];
+            
+            NSDate *majorLabelTickTime = [firstTime dateByAddingTimeInterval:j - ScatterPlotXAxisMajorIntervalLength];
+            
+            [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+            [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            NSString *labelText = [self.dateFormatter stringFromDate:majorLabelTickTime];
+            
+            CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:labelText textStyle:textStyle];
+            newLabel.tickLocation = CPTDecimalFromUnsignedInteger(j + ScatterPlotXAxisMajorIntervalLength / 2);
+            
+            newLabel.offset = 5.0;
+            //NSLog(@"majorLabelTick: %i, %@, %@", (j + ScatterPlotXAxisMajorIntervalLength / 2), [formatter stringLocalDay:majorLabelTickTime], [formatter stringLocalShortDate:majorLabelTickTime]);
+            
+            [newAxisLabels addObject:newLabel];
+            
+        }
+        
+        axisSet.xAxis.axisLabels = newAxisLabels;
+        axisSet.xAxis.majorTickLocations = majorTickLocations;
+        //axisSet.xAxis.visibleRange = [CPTPlotRange plotRangeWithLocation: CPTDecimalFromInteger(jMin) length:CPTDecimalFromInteger(jMax-jMin)];
+        //NSLog(@" axisSet.xAxis.visibleRange: %@", [axisSet.xAxis.visibleRange description]);
+        //NSLog(@" plotSpace.xRange: %@", [plotSpace.xRange description]);
+        
+        axisSet.yAxis.title = nil;
+        axisSet.yAxis.titleTextStyle = textStyle;
+        axisSet.yAxis.titleOffset = 0.0f;
+        axisSet.yAxis.axisLineStyle = yLineStyle;
+        axisSet.yAxis.majorTickLineStyle = yLineStyle;
+        axisSet.yAxis.minorTickLineStyle = yLineStyle;
+        axisSet.yAxis.labelTextStyle = textStyle;
+        axisSet.yAxis.labelOffset = -30.0f;
+        
+        axisSet.yAxis.majorIntervalLength = CPTDecimalFromFloat(roundf((yAxisMax-yAxisMin)/ScatterPlotTemperatureLabelsCount));
+        axisSet.yAxis.minorTicksPerInterval = 1;
+        axisSet.yAxis.minorTickLength = 0.0f;
+        axisSet.yAxis.majorTickLength = 0.0f;
+        axisSet.yAxis.majorGridLineStyle = majorGridLineStyle;
+        axisSet.yAxis.minorGridLineStyle = minorGridLineStyle;
+        axisSet.yAxis.orthogonalCoordinateDecimal = CPTDecimalFromFloat(xAxisMin);
+        
+        axisSet.yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
+        newAxisLabels = [NSMutableSet set];
+        majorTickLocations = [NSMutableSet set];
+        
+        float temp;
+        for (temp=yAxisMin; temp<=yAxisMax; temp+=roundf((yAxisMax-yAxisMin)/ScatterPlotTemperatureLabelsCount)) {
+            
+            [majorTickLocations addObject:[NSDecimalNumber numberWithFloat:temp]];
+            
+            NSString *labelText = [self.unitsConverter convertTemperature:[NSDecimalNumber numberWithFloat:temp]];
+            
+            CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:labelText textStyle:textStyle];
+            newLabel.tickLocation = CPTDecimalFromFloat(temp);
+            newLabel.offset = -30.0;
+            
+            [newAxisLabels addObject:newLabel];
+        }
+        
+        axisSet.yAxis.axisLabels = newAxisLabels;
+        axisSet.yAxis.majorTickLocations = majorTickLocations;
+        
+        
+        // Add a plot to our graph and axis. We give it an identifier so that we
+        // could add multiple plots (data lines) to the same graph if necessary.
+        CPTScatterPlot *plot = [[CPTScatterPlot alloc] init];
+        plot.dataSource = self;
+        plot.identifier = [NSNumber numberWithInteger:idx];
+        plot.dataLineStyle = lineStyle;
+        plot.plotSymbol = plotSymbol;
+        
+        // Put an area gradient under the plot above
+        CPTColor *areaColor		  = [CPTColor colorWithGenericGray:0.5];
+        CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:areaColor endingColor:[CPTColor clearColor]];
+        areaGradient.angle = -90.0;
+        CPTFill *areaGradientFill = [CPTFill fillWithGradient:areaGradient];
+        plot.areaFill		 = areaGradientFill;
+        plot.areaBaseValue = CPTDecimalFromFloat(0);
+        
+        [graph addPlot:plot toPlotSpace:plotSpace];
+        
+        // bargraph
+        
+        CPTXYPlotSpace *barPlotSpace = [[CPTXYPlotSpace alloc] init];
+        barPlotSpace.yScaleType = CPTScaleTypeLog;
+        barPlotSpace.yRange		= [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(BarPlotPrecipitationMinValue) length:CPTDecimalFromDouble(BarPlotPrecipitationMaxValue)];
+        barPlotSpace.xRange = plotSpace.xRange;
+        
+        [graph addPlotSpace:barPlotSpace];
+        
+        CPTXYAxis *rightY = [[CPTXYAxis alloc] initWithFrame:axisSet.yAxis.frame];
+        
+        CPTMutableTextStyle *rTextStyle = [CPTMutableTextStyle textStyle];
+        rTextStyle.fontSize = 9;
+        rTextStyle.color = [CPTColor colorWithComponentRed:0.3 green:0.7 blue:1.0 alpha:1.0];
+        
+        CPTMutableLineStyle *rLineStyle = [CPTMutableLineStyle lineStyle];
+        rLineStyle.lineColor = [CPTColor whiteColor];
+        rLineStyle.lineWidth = 0.0f;
+        
+        rightY.title = nil;
+        rightY.titleTextStyle = rTextStyle;
+        rightY.titleOffset = 0.0f;
+        rightY.axisLineStyle = rLineStyle;
+        rightY.majorTickLineStyle = rLineStyle;
+        rightY.minorTickLineStyle = rLineStyle;
+        rightY.labelTextStyle = rTextStyle;
+        rightY.labelOffset = 2.0f;
+        rightY.labelingPolicy = CPTAxisLabelingPolicyAutomatic;
+        rightY.minorTicksPerInterval = 1;
+        rightY.coordinate = CPTCoordinateY;
+        rightY.orthogonalCoordinateDecimal = CPTDecimalFromFloat(xAxisMax);
+        rightY.plotSpace = barPlotSpace;
+        
+        // custom labels
+        
+        NSArray *barPlotPrecipitationLabels = [BarPlotPrecipitationLabelsString componentsSeparatedByString: @","];
+        rightY.labelingPolicy = CPTAxisLabelingPolicyNone;
+        newAxisLabels = [NSMutableSet set];
+        majorTickLocations = [NSMutableSet set];
+        
+        for (NSString *label in barPlotPrecipitationLabels) {
+            
+            [majorTickLocations addObject:[NSDecimalNumber numberWithUnsignedInteger:[label intValue]]];
+            
+            NSString *labelText = [self.unitsConverter convertPrecipitation:[NSNumber numberWithInteger:[label integerValue]] period:1];
+            CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:labelText textStyle:rTextStyle];
+            newLabel.tickLocation = CPTDecimalFromUnsignedInteger([label intValue]);
+            newLabel.offset = 2.0f;
+            
+            [newAxisLabels addObject:newLabel];
+        }
+        
+        rightY.axisLabels = newAxisLabels;
+        rightY.majorTickLocations = majorTickLocations;
+        
+        // pridani 3 osy
+        
+        NSMutableArray *newAxes = [graph.axisSet.axes mutableCopy];
+        [newAxes addObject:rightY];
+        graph.axisSet.axes = newAxes;
+        
+        // konec 3 osa
+        
+        CPTMutableLineStyle *barLineStyle = [[CPTMutableLineStyle alloc] init];
+        barLineStyle.lineWidth = 0.0;
+        barLineStyle.lineColor = [CPTColor whiteColor];
+        
+        CPTBarPlot *barPlot = [[CPTBarPlot alloc] init];
+        
+        barPlot.dataSource        = self;
+        barPlot.identifier        = [NSNumber numberWithInteger:idx];
+        float barSpaceWidth = (xAxisMax - xAxisMin) / [pageContent count];
+        barPlot.barOffset         = CPTDecimalFromFloat(barSpaceWidth*.325);
+        barPlot.baseValue         = CPTDecimalFromFloat(0.0f);
+        barPlot.barBasesVary      = NO;
+        barPlot.lineStyle		  = barLineStyle;
+        barPlot.barWidth		  = CPTDecimalFromFloat(barSpaceWidth*0.75);
+        barPlot.barCornerRadius	  = 2.5f;
+        barPlot.barsAreHorizontal = NO;
+        
+        CPTColor *beginningColor = [CPTColor colorWithComponentRed:0.1 green:0.8 blue:1.0 alpha:0.5];
+        CPTColor *endingColor = [CPTColor colorWithComponentRed:0.1 green:0.8 blue:1.0 alpha:0.8];
+        CPTGradient *fillGradient = [CPTGradient gradientWithBeginningColor:beginningColor endingColor:endingColor beginningPosition:0.0 endingPosition:1.0];
+        
+        barPlot.shadowColor = [[UIColor blackColor] CGColor];
+        barPlot.shadowRadius = 1;
+        barPlot.shadowOffset = CGSizeMake(1,-1);
+        barPlot.shadowOpacity = 0.9f;
+        barPlot.fill = [CPTFill fillWithGradient:fillGradient];
+        
+        [graph addPlot:barPlot toPlotSpace:barPlotSpace];
+        
         
         [self.scrollView addSubview:pageBackground];
     }];
@@ -1272,6 +1600,92 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return [ForecastFooter forecastFooterHeight];
+}
+
+#pragma mark - CorePlot DataSource
+
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    // graph on Landscape orientation
+    
+    NSNumber* idxNumber = (NSNumber*)plot.identifier;
+    NSInteger idx = [idxNumber integerValue];
+    NSArray* currentPage = dataLandscape[idx];
+    NSInteger count = [currentPage count];
+    
+    if ( [plot isKindOfClass:[CPTBarPlot class]] ) {
+        return count;
+    } else {
+        if (idx < [dataLandscape count] - 1)
+            return (count + 1);
+        else
+            return count;
+    }
+    
+}
+
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+{
+    NSNumber* idxNumber = (NSNumber*)plot.identifier;
+    NSInteger idx = [idxNumber integerValue];
+    NSArray* currentPage = dataLandscape[idx];
+    
+    Weather* firstWeather = currentPage[0];
+    Weather* currentWeather;
+    
+    if (index < [currentPage count]) {
+        currentWeather = currentPage[index];
+    } else {
+        NSArray* nextPage = dataLandscape[idx+1];
+        currentWeather = nextPage[0];
+    }
+    
+    if ( [plot isKindOfClass:[CPTBarPlot class]] ) {
+        
+        if (fieldEnum == CPTBarPlotFieldBarLocation) {
+            
+            float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
+            return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+        
+        } else  if (fieldEnum == CPTBarPlotFieldBarTip) {
+            
+            NSNumber* precipitation;
+            NSInteger hours = 0;
+            if (currentWeather.precipitation1h != nil) {
+                precipitation = currentWeather.precipitation1h;
+                hours = 1;
+            } else if (currentWeather.precipitation2h != nil) {
+                precipitation = currentWeather.precipitation2h;
+                hours = 2;
+            } else if (currentWeather.precipitation3h != nil) {
+                precipitation = currentWeather.precipitation3h;
+                hours = 3;
+            } else if (currentWeather.precipitation6h != nil) {
+                precipitation = currentWeather.precipitation6h;
+                hours = 6;
+            }
+            
+            return [self.unitsConverter convertPrecipitationToNumber:precipitation period:hours];
+            
+        } else {
+            return @0;
+        }
+        
+    } else {
+        
+        if (fieldEnum == CPTScatterPlotFieldX) {
+            
+            float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
+            return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            
+        } else if (fieldEnum == CPTScatterPlotFieldY) {
+            
+            return [self.unitsConverter convertTemperatureToNumber:currentWeather.temperature];
+            
+        } else {
+            return @0;
+        }
+    }
 }
 
 #pragma mark - DetailViewControllerDelegate
