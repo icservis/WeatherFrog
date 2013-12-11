@@ -1,6 +1,6 @@
 WeatherFrog
 ===========
 
-WeatherFrog os OpenSource Project published under The Code Project Open Licence (http://www.codeproject.com/info/cpol10.aspx).
+WeatherFrog is OpenSource Project published under The Code Project Open Licence (CPOL). http://www.codeproject.com/info/cpol10.aspx
 
-Using embedded graphics for commercial purposes is strictly prohibited unless written licence. 
+Using embedded graphics for commercial purposes is strictly prohibited unless written agree. 
