@@ -366,45 +366,6 @@
             </objects>
             <point key="canvasLocation" x="1792" y="772"/>
         </scene>
-        <!--Info View Controller - Info-->
-        <scene sceneID="ygb-SM-UJl">
-            <objects>
-                <viewController id="xKF-Jp-NO1" customClass="InfoViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nur-oU-OUP"/>
-                        <viewControllerLayoutGuide type="bottom" id="xok-VE-MNR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="J9m-2q-3pw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-de-0Ej">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1KH-de-0Ej" secondAttribute="trailing" id="KB7-kG-MNL"/>
-                            <constraint firstAttribute="bottom" secondItem="1KH-de-0Ej" secondAttribute="bottom" id="Vkv-ZE-NlG"/>
-                            <constraint firstItem="1KH-de-0Ej" firstAttribute="top" secondItem="J9m-2q-3pw" secondAttribute="top" id="szb-eR-Nv8"/>
-                            <constraint firstItem="1KH-de-0Ej" firstAttribute="leading" secondItem="J9m-2q-3pw" secondAttribute="leading" id="zjf-mn-chh"/>
-                        </constraints>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Info" id="J0A-FQ-quW"/>
-                    <connections>
-                        <outlet property="textView" destination="1KH-de-0Ej" id="0Au-YH-Kca"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uBG-4F-DjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1233" y="3200"/>
-        </scene>
         <!--About Table View Controller - WeatherFrog-->
         <scene sceneID="ocj-5H-5Tn">
             <objects>
@@ -494,26 +455,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="W3w-a0-7H3" style="IBUITableViewCellStyleDefault" id="5PI-dy-1hh">
-                                        <rect key="frame" x="0.0" y="231" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5PI-dy-1hh" id="IED-CJ-qxY">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Diagnostic Logs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W3w-a0-7H3">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="xKF-Jp-NO1" kind="push" id="k7n-VR-35p"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -530,7 +471,6 @@
                         <outlet property="aboutLabel" destination="MYk-RF-4tx" id="vZk-hD-xy2"/>
                         <outlet property="disclaimerLabel" destination="vu4-kO-hf8" id="l8P-z8-SWC"/>
                         <outlet property="doneButton" destination="Z4p-zL-qNj" id="hfQ-l8-y4x"/>
-                        <outlet property="logsLabel" destination="W3w-a0-7H3" id="bbm-xM-Xb4"/>
                         <outlet property="privacyLabel" destination="hUH-um-Xdn" id="Oit-9h-yz1"/>
                         <outlet property="supportLabel" destination="HpA-ET-5Vd" id="szr-hG-drn"/>
                     </connections>

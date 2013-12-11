@@ -38,9 +38,6 @@
     LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
 	[[DDTTYLogger sharedInstance] setLogFormatter:formatter];
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
-    self.fileLogger = [DDFileLogger new];
-    [DDLog addLogger:self.fileLogger];
 
     // Activity Manager
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
