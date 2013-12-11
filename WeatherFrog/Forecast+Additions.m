@@ -71,7 +71,7 @@
     [self.weather enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger idx, BOOL *stop) {
         
         NSTimeInterval difference = [weather.timestamp timeIntervalSinceDate:startTime];
-        float page_nr = floorf(difference/3600/LandscapeForecasConfigHours);
+        float page_nr = floorf(difference/3600/LandscapeForecastConfigHours);
         NSNumber* page = [NSNumber numberWithFloat:page_nr];
         
         if ([pages objectForKey:page] == nil) {

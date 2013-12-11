@@ -39,11 +39,14 @@ static CGFloat const timeHeight = 21.0f;
 static CGFloat const iconTopMargin = 0.0f;
 static CGFloat const iconSize = 64.0f;
 static CGFloat const tableTopMargin = 2.0f;
+static float const PortraitForecastIconSize = 80; // icon size before resizinh
 
 #pragma mark - ForecastController - Landscape
 
 static float const LandscapeForecastElementsCount = 12; // number of elements in page
-static float const LandscapeForecasConfigHours = 72; // hours interval in page
+static float const LandscapeForecastConfigHours = 72; // hours interval in page
+static float const LandscapeForecastIconSize = 40; // icon size
+static float const LandscapeForecastIconMargin = 5; // icon margin
 static float const BarPlotPrecipitationMinValue = 0.4f; // min value of precipitation
 static float const BarPlotPrecipitationMaxValue = 150.0f; // max value of precipitation
 static NSString *const BarPlotPrecipitationLabelsString = @"1,10,100"; // procipitation labels

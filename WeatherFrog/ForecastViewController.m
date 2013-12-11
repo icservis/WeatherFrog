@@ -58,7 +58,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 
 @end
 
-@implementation ForecastViewController
+@implementation ForecastViewController {
+    CGPoint _scrollViewContentOffsetPortrait;
+    CGPoint _scrollViewContentOffsetLandscape;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -246,12 +249,22 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+    if (!isLandscape) {
+        _scrollViewContentOffsetLandscape = self.scrollView.contentOffset;
+    } else {
+        _scrollViewContentOffsetPortrait = self.scrollView.contentOffset;
+    }
     [self displayRotatingScreen];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self displayForecast:self.selectedForecast];
+    if (isLandscape) {
+        [self.scrollView setContentOffset:_scrollViewContentOffsetLandscape animated:NO];
+    } else {
+        [self.scrollView setContentOffset:_scrollViewContentOffsetPortrait animated:NO];
+    }
 }
 
 #pragma mark - Shared objects
@@ -377,6 +390,9 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     
     if ([self isViewVisible]) {
         [self displayForecast:selectedForecast];
+        _scrollViewContentOffsetPortrait = CGPointZero;
+        _scrollViewContentOffsetLandscape = CGPointZero;
+        [self.scrollView setContentOffset:CGPointZero animated:NO];
     }
 }
 
@@ -588,8 +604,6 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         } else {
             [self setupViewsForPortrait:forecast];
         }
-        
-        [self checkForecastLayoutValidity];
     }
 }
 
@@ -717,11 +731,6 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     }
 }
 
-- (void)checkForecastLayoutValidity
-{
-    //[self.scrollView setContentOffset:CGPointZero animated:YES];
-}
-
 #pragma mark - Views for Portrait
 
 - (void)setupViewsForPortrait:(Forecast*)forecast
@@ -738,7 +747,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         CGFloat bannerHeight = [self.bannerView height];
         CGFloat bannerOriginY = superViewFrame.size.height - bannerHeight;
         self.bannerView.frame = CGRectMake(0, bannerOriginY, superViewFrame.size.width, bannerHeight);
-        DDLogInfo(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
+        //DDLogVerbose(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
         [self.scrollView.superview addSubview:self.bannerView];
         
         backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - bannerHeight);
@@ -906,7 +915,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         BOOL isNight = [weather.isNight boolValue];
         
         WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:symbol];
-        return [weatherSymbol imageForSize:80 isNight:isNight];
+        return [weatherSymbol imageForSize:PortraitForecastIconSize isNight:isNight];
         
     } else {
         return nil;
@@ -944,7 +953,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         CGFloat bannerHeight = [self.bannerView height];
         CGFloat bannerOriginY = superViewFrame.size.height - bannerHeight;
         self.bannerView.frame = CGRectMake(0, bannerOriginY, superViewFrame.size.width, bannerHeight);
-        DDLogInfo(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
+        //DDLogVerbose(@"self.banner.frame: %@", NSStringFromCGRect(self.bannerView.frame));
         [self.scrollView.superview addSubview:self.bannerView];
         
         backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - bannerHeight);
@@ -964,26 +973,132 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         backgroundRect.origin.x = idx * backgroundRect.size.width;
         UIView* pageBackground = [[UIView alloc] initWithFrame:backgroundRect];
         pageBackground.tag = idx;
-
-        UILabel* pageLabel = [[UILabel alloc] initWithFrame:pageBackground.bounds];
-        pageLabel.textAlignment = NSTextAlignmentCenter;
-        pageLabel.text = [NSString stringWithFormat:@"page: %i, count: %i", idx, [pageContent count]];
-        pageLabel.font = [UIFont systemFontOfSize:17];
+        //DDLogVerbose(@"page frame: %@", NSStringFromCGRect(pageBackground.frame));
         
-        if (idx % 3 == 0) {
-            pageBackground.backgroundColor = [UIColor redColor];
-        } else if (idx % 3 == 1) {
-            pageBackground.backgroundColor = [UIColor greenColor];
+        // test
+        UILabel* pgLabel = [[UILabel alloc] initWithFrame:pageBackground.bounds];
+        pgLabel.textAlignment = NSTextAlignmentCenter;
+        pgLabel.text = [NSString stringWithFormat:@"page: %i, count: %i", idx, [pageContent count]];
+        pgLabel.font = [UIFont systemFontOfSize:17];
+        pgLabel.textColor = [UIColor blackColor];
+        [pageBackground addSubview:pgLabel];
+        
+        // test
+        
+        Weather* firstWeather = [pageContent firstObject];
+        NSDate* firstTime = firstWeather.timestamp;
+        Weather* lastWeather = [pageContent lastObject];
+        NSDate* lastTime = lastWeather.timestamp;
+        
+        [self.dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+        
+        NSDate* nextTime;
+        NSDate* startTime;
+        if (idx < [dataLandscape count]-1) {
+            Weather* nextWeather = [dataLandscape[idx+1] firstObject];
+            nextTime = nextWeather.timestamp;
+            startTime = [nextTime dateByAddingTimeInterval:(-3600 * LandscapeForecastConfigHours)];
         } else {
-            pageBackground.backgroundColor = [UIColor yellowColor];
+            nextTime = lastTime;
+            startTime = firstTime;
         }
         
-        pageLabel.textColor = [UIColor blackColor];
-        [pageBackground addSubview:pageLabel];
-        DDLogVerbose(@"page frame: %@", NSStringFromCGRect(pageBackground.frame));
+        NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:firstTime];
+        [components setTimeZone:forecast.timezone];
+        [components setHour:0];
+        [components setMinute:0];
+        [components setSecond:0];
+        NSDate* midnightTime = [calendar dateFromComponents:components];
+        
+        NSTimeInterval midnightTimeInterval = [midnightTime timeIntervalSinceDate:firstTime];
+        if (midnightTimeInterval < 0) midnightTimeInterval += ScatterPlotXAxisMajorIntervalLength;
+        
+        //DDLogVerbose(@"midnightTimeInterval: %.f", midnightTimeInterval);
+        DDLogVerbose(@"startTime: %@", [self.dateFormatter stringFromDate:startTime]);
+        DDLogVerbose(@"firstTime: %@", [self.dateFormatter stringFromDate:firstTime]);
+        DDLogVerbose(@"midnightTime: %@", [self.dateFormatter stringFromDate:midnightTime]);
+        DDLogVerbose(@"nextTime: %@", [self.dateFormatter stringFromDate:nextTime]);
+        
+        // page label
+        
+        CGFloat pageLabelWidthMargin = 40;
+        CGFloat pageLabelHeightMargin = 205;
+        CGFloat pageLabelHeight = 21;
+        CGFloat pageLabelFontSize = 14;
+        
+        
+        CGRect pageLabelFrame;
+        pageLabelFrame.origin.x = pageLabelWidthMargin;
+        pageLabelFrame.origin.y = pageLabelHeightMargin;
+        pageLabelFrame.size = CGSizeMake((backgroundRect.size.width-2*pageLabelWidthMargin),pageLabelHeight);
+         
+         UILabel *pageLabel = [[UILabel alloc] initWithFrame:pageLabelFrame];
+         [pageLabel setFont:[UIFont systemFontOfSize:pageLabelFontSize]];
+         pageLabel.backgroundColor = [UIColor clearColor];
+         pageLabel.textAlignment = NSTextAlignmentCenter;
+         pageLabel.textColor = [UIColor lightGrayColor];
+         pageLabel.adjustsFontSizeToFitWidth = YES;
+        
+        [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+         
+         pageLabel.text = [NSString stringWithFormat:@"%@ - %@", [self.dateFormatter stringFromDate:firstTime], [self.dateFormatter stringFromDate:lastTime]];
+         [pageBackground addSubview:pageLabel];
+        
+        
+        // page elements
+        
+        CGFloat elementDistance = floorf(self.scrollView.frame.size.width / LandscapeForecastElementsCount);
+        CGFloat elementWidth = LandscapeForecastIconSize;
+        CGFloat elementHeight = LandscapeForecastIconSize;
+        
+        __block NSDate* nextTimestamp = firstTime;
+        __block NSInteger iconCounter = 0;
+        
+        [pageContent enumerateObjectsUsingBlock:^(Weather* weather, NSUInteger subidx, BOOL *substop) {
+            
+            if ([weather.timestamp compare:nextTimestamp] != NSOrderedAscending) {
+                
+                CGRect elementImageFrame;
+                elementImageFrame.origin.x = iconCounter*elementDistance + (elementDistance-elementWidth)/2;
+                elementImageFrame.origin.y = LandscapeForecastIconMargin;
+                elementImageFrame.size = CGSizeMake(elementWidth, elementHeight);
+                DDLogVerbose(@"icon frame %i: %@", subidx, NSStringFromCGRect(elementImageFrame));
+                
+                UIImageView *elementImage = [[UIImageView alloc] initWithFrame:elementImageFrame];
+                elementImage.tag = iconCounter;
+                elementImage.image = [self iconNameForWeather:weather];
+                
+                [pageBackground addSubview:elementImage];
+                
+                iconCounter ++;
+                NSTimeInterval timeDifference = 3600*LandscapeForecastConfigHours/12;
+                nextTimestamp = [nextTimestamp dateByAddingTimeInterval:timeDifference];
+            }
+            
+        }];
         
         [self.scrollView addSubview:pageBackground];
     }];
+}
+
+- (UIImage*)iconNameForWeather:(Weather*)weather
+{
+        NSInteger symbol;
+        if (weather.symbol1h != nil) {
+            symbol = [weather.symbol1h integerValue];
+        } else if (weather.symbol2h != nil) {
+            symbol = [weather.symbol2h integerValue];
+        } else if (weather.symbol3h != nil) {
+            symbol = [weather.symbol3h integerValue];
+        } else {
+            symbol = [weather.symbol6h integerValue];
+        }
+        BOOL isNight = [weather.isNight boolValue];
+        
+        WeatherSymbol* weatherSymbol = [[WeatherSymbol alloc] initWithSymbol:symbol];
+        return [weatherSymbol imageForSize:LandscapeForecastIconSize isNight:isNight];
 }
 
 #pragma mark - UIEvent
