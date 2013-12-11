@@ -240,7 +240,6 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [[UIBarButtonItem appearance] setTintColor:titleColor];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:titleColor, NSForegroundColorAttributeName, [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline], NSFontAttributeName, nil] forState:UIControlStateNormal];
     
     [[UIToolbar appearance] setTintColor:titleColor];
     [[UIToolbar appearance] setBarTintColor:tintColor];

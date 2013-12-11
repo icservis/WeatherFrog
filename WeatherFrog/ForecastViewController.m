@@ -1003,16 +1003,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         UIView* pageBackground = [[UIView alloc] initWithFrame:backgroundRect];
         pageBackground.tag = idx;
         //DDLogVerbose(@"page frame: %@", NSStringFromCGRect(pageBackground.frame));
-        
-        /*
-        UILabel* pgLabel = [[UILabel alloc] initWithFrame:pageBackground.bounds];
-        pgLabel.textAlignment = NSTextAlignmentCenter;
-        pgLabel.text = [NSString stringWithFormat:@"page: %i, count: %i", idx, [pageContent count]];
-        pgLabel.font = [UIFont systemFontOfSize:17];
-        pgLabel.textColor = [UIColor blackColor];
-        [pageBackground addSubview:pgLabel];
-        
-        */
+        [pageBackground setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75]];
         
         Weather* firstWeather = [pageContent firstObject];
         NSDate* firstTime = firstWeather.timestamp;
@@ -1130,8 +1121,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         hostingViewFrame.origin.y = hostingViewlHeightMargin;
         hostingViewFrame.size = CGSizeMake(backgroundRect.size.width, hostingViewHeight);
         
-        DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
-        DDLogVerbose(@"hostingViewFrame: %@", NSStringFromCGRect(hostingViewFrame));
+        //DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
+        //DDLogVerbose(@"hostingViewFrame: %@", NSStringFromCGRect(hostingViewFrame));
         
         CPTGraphHostingView *hostingView = [[CPTGraphHostingView alloc] initWithFrame:hostingViewFrame];
         [pageBackground addSubview:hostingView];
@@ -1139,11 +1130,11 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         // Create a graph object which we will use to host just one scatter plot.
         CGRect graphFrame = [hostingView bounds];
         CPTXYGraph* graph = [[CPTXYGraph alloc] initWithFrame:graphFrame];
-        [graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+        //[graph applyTheme:[CPTTheme themeNamed:kCPTPlainBlackTheme]];
         
         // Add some padding to the graph, with more at the bottom for axis labels.
         CPTMutableLineStyle *borderLineStyle = [CPTMutableLineStyle lineStyle];
-        borderLineStyle.lineColor = [CPTColor lightGrayColor];
+        borderLineStyle.lineColor = [CPTColor darkGrayColor];
         borderLineStyle.lineWidth = 0.0f;
         
         graph.plotAreaFrame.paddingTop = 5.0f;
@@ -1163,7 +1154,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         // Create a line style that we will apply to the axis and data line.
         
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-        lineStyle.lineColor = [CPTColor lightGrayColor];
+        lineStyle.lineColor = [CPTColor whiteColor];
         lineStyle.lineWidth = 1.5f;
         lineStyle.miterLimit = 10.0f;
         
@@ -1178,16 +1169,16 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         // Create a text style that we will use for the axis labels.
         CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
         textStyle.fontSize = 9;
-        textStyle.color = [CPTColor darkGrayColor];
+        textStyle.color = [CPTColor whiteColor];
         
         CPTMutableTextStyle *headStyle = [CPTMutableTextStyle textStyle];
         headStyle.fontSize = 13;
         headStyle.color = [CPTColor darkGrayColor];
         
         // Create the plot symbol we're going to use.
-        CPTPlotSymbol *plotSymbol = [CPTPlotSymbol crossPlotSymbol];
+        CPTPlotSymbol *plotSymbol = [CPTPlotSymbol pentagonPlotSymbol];
         plotSymbol.lineStyle = lineStyle;
-        plotSymbol.size = CGSizeMake(4.0, 4.0);
+        plotSymbol.size = CGSizeMake(2.0, 2.0);
         
         // Setup some floats that represent the min/max values on our axis.
         float xAxisMin = [startTime timeIntervalSinceDate:firstTime] + ScatterPlotXAxisMajorIntervalLength;

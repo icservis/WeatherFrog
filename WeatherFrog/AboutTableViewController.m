@@ -29,7 +29,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
-    self.title = NSLocalizedString(@"WeatherFrog App", nil);
+    self.title = NSLocalizedString(@"WeatherFrog 2", nil);
     self.aboutLabel.text = NSLocalizedString(@"About (External Link)", nil);
     self.supportLabel.text = NSLocalizedString(@"Support (Email Message)", nil);
     self.disclaimerLabel.text = NSLocalizedString(@"Legal Disclaimer", nil);

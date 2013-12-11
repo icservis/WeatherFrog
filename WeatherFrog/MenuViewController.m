@@ -47,7 +47,7 @@
     
     self.revealViewController.delegate = self;
     
-    self.applicationNameLabel.text = NSLocalizedString(@"WeatherFrog", nil);
+    self.applicationNameLabel.text = NSLocalizedString(@"WeatherFrog 2", nil);
 #ifdef DEBUG
     self.applicationVersionLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Version", nil), [[self appDelegate] appVersionBuild]];
 #else
