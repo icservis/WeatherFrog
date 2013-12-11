@@ -1183,11 +1183,9 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         // Setup some floats that represent the min/max values on our axis.
         float xAxisMin = [startTime timeIntervalSinceDate:firstTime] + ScatterPlotXAxisMajorIntervalLength;
         float xAxisMax = [nextTime timeIntervalSinceDate:firstTime] + ScatterPlotXAxisMajorIntervalLength;
-        float yAxisMin = floorf(minTemp - abs(minTemp/ScatterPlotMarginPercentualValue));
-        float yAxisMax = ceilf(maxTemp + abs(maxTemp/ScatterPlotMarginPercentualValue));
         
-        //DDLogVerbose(@"yAxisMin: %f", yAxisMin);
-        //DDLogVerbose(@"yAxisMax: %f", yAxisMax);
+        float yAxisMin = minTemp - fabsf(minTemp*ScatterPlotMarginPercentualValue/100);
+        float yAxisMax = maxTemp + fabsf(maxTemp*ScatterPlotMarginPercentualValue/100);
         
         // We modify the graph's plot space to setup the axis' min / max values.
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;

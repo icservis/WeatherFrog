@@ -52,7 +52,7 @@ static float const BarPlotPrecipitationMinValue = 0.4f; // min value of precipit
 static float const BarPlotPrecipitationMaxValue = 150.0f; // max value of precipitation
 static NSString *const BarPlotPrecipitationLabelsString = @"1,10,100"; // procipitation labels
 static int const ScatterPlotTemperatureLabelsCount = 5; // count of label on temp axis
-static float const ScatterPlotMarginPercentualValue = 10.0f; // percent of scatter plot margin
+static float const ScatterPlotMarginPercentualValue = 5.0f; // percent of scatter plot margin
 static int const ScatterPlotXAxisMajorIntervalLength = 86400;
 static int const ScatterPlotXAxisMinorTicksPerInterval = 3;
 
