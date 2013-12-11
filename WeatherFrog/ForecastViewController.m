@@ -954,6 +954,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 - (void)setupViewsForLandscape:(Forecast*)forecast
 {
     DDLogInfo(@"setupViewsForLandscape");
+    BOOL suppresLastPage = YES;
     
     [self.dateFormatter setTimeZone:forecast.timezone];
     CGRect scrollFrame = self.scrollView.frame;
@@ -969,18 +970,34 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         [self.scrollView.superview addSubview:self.bannerView];
         
         backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height - bannerHeight);
-        CGSize contentSize = CGSizeMake(dataLandscape.count * backgroundRect.size.width, backgroundRect.size.height - bannerHeight);
+        NSUInteger pagesCount;
+        if (suppresLastPage) {
+            pagesCount = dataLandscape.count -1;
+        } else {
+            pagesCount = dataLandscape.count;
+        }
+        CGSize contentSize = CGSizeMake(pagesCount * backgroundRect.size.width, backgroundRect.size.height - bannerHeight);
         
         [self.scrollView setContentSize:contentSize];
         
     } else {
         
         backgroundRect = CGRectMake(0, 0, scrollFrame.size.width, scrollFrame.size.height);
-        CGSize contentSize = CGSizeMake(dataLandscape.count * backgroundRect.size.width, backgroundRect.size.height);
+        NSUInteger pagesCount;
+        if (suppresLastPage) {
+            pagesCount = dataLandscape.count -1;
+        } else {
+            pagesCount = dataLandscape.count;
+        }
+        CGSize contentSize = CGSizeMake(pagesCount * backgroundRect.size.width, backgroundRect.size.height);
         [self.scrollView setContentSize:contentSize];
     }
     
     [dataLandscape enumerateObjectsUsingBlock:^(NSArray* pageContent, NSUInteger idx, BOOL *stop) {
+        
+        if (suppresLastPage && idx == [dataLandscape indexOfObject:[dataLandscape lastObject]]-1) {
+            *stop = YES;
+        }
         
         backgroundRect.origin.x = idx * backgroundRect.size.width;
         UIView* pageBackground = [[UIView alloc] initWithFrame:backgroundRect];
@@ -1026,17 +1043,19 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         NSTimeInterval midnightTimeInterval = [midnightTime timeIntervalSinceDate:firstTime];
         if (midnightTimeInterval < 0) midnightTimeInterval += ScatterPlotXAxisMajorIntervalLength;
         
-        //DDLogVerbose(@"midnightTimeInterval: %.f", midnightTimeInterval);
+        /*
+        DDLogVerbose(@"midnightTimeInterval: %.f", midnightTimeInterval);
         DDLogVerbose(@"startTime: %@", [self.dateFormatter stringFromDate:startTime]);
         DDLogVerbose(@"firstTime: %@", [self.dateFormatter stringFromDate:firstTime]);
         DDLogVerbose(@"midnightTime: %@", [self.dateFormatter stringFromDate:midnightTime]);
         DDLogVerbose(@"nextTime: %@", [self.dateFormatter stringFromDate:nextTime]);
+        */
         
         // page label
         
         //CGFloat pageLabelWidthMargin = 40;
-        CGFloat pageLabelHeightMargin = 205;
-        CGFloat pageLabelHeight = 21;
+        //CGFloat pageLabelHeightMargin = 205;
+        //CGFloat pageLabelHeight = 21;
         //CGFloat pageLabelFontSize = 14;
         
         /*
@@ -1076,7 +1095,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
                 elementImageFrame.origin.x = iconCounter*elementDistance + (elementDistance-elementWidth)/2;
                 elementImageFrame.origin.y = LandscapeForecastIconMargin;
                 elementImageFrame.size = CGSizeMake(elementWidth, elementHeight);
-                DDLogVerbose(@"icon frame %i: %@", subidx, NSStringFromCGRect(elementImageFrame));
+                //DDLogVerbose(@"icon frame %i: %@", subidx, NSStringFromCGRect(elementImageFrame));
                 
                 UIImageView *elementImage = [[UIImageView alloc] initWithFrame:elementImageFrame];
                 elementImage.tag = iconCounter;
@@ -1103,14 +1122,16 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
             
         }
         
-        CGFloat hostingViewWidthMargin = 0;
-        CGFloat hostingViewlHeightMargin = LandscapeForecastIconMargin + elementHeight;
-        CGFloat hostingViewHeight = pageLabelHeightMargin - hostingViewlHeightMargin + pageLabelHeight;
+        CGFloat hostingViewlHeightMargin = elementHeight + LandscapeForecastIconMargin;
+        CGFloat hostingViewHeight = backgroundRect.size.height - hostingViewlHeightMargin - LandscapeForecastGraphMargin;
         
         CGRect hostingViewFrame;
-        hostingViewFrame.origin.x = hostingViewWidthMargin;
+        hostingViewFrame.origin.x = 0;
         hostingViewFrame.origin.y = hostingViewlHeightMargin;
-        hostingViewFrame.size = CGSizeMake((backgroundRect.size.width-2*hostingViewWidthMargin),hostingViewHeight);
+        hostingViewFrame.size = CGSizeMake(backgroundRect.size.width, hostingViewHeight);
+        
+        DDLogVerbose(@"backgroundRect: %@", NSStringFromCGRect(backgroundRect));
+        DDLogVerbose(@"hostingViewFrame: %@", NSStringFromCGRect(hostingViewFrame));
         
         CPTGraphHostingView *hostingView = [[CPTGraphHostingView alloc] initWithFrame:hostingViewFrame];
         [pageBackground addSubview:hostingView];
@@ -1174,8 +1195,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         float yAxisMin = floorf(minTemp - abs(minTemp/ScatterPlotMarginPercentualValue));
         float yAxisMax = ceilf(maxTemp + abs(maxTemp/ScatterPlotMarginPercentualValue));
         
-        DDLogVerbose(@"yAxisMin: %f", yAxisMin);
-        DDLogVerbose(@"yAxisMax: %f", yAxisMax);
+        //DDLogVerbose(@"yAxisMin: %f", yAxisMin);
+        //DDLogVerbose(@"yAxisMax: %f", yAxisMax);
         
         // We modify the graph's plot space to setup the axis' min / max values.
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
@@ -1183,7 +1204,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xAxisMin) length:CPTDecimalFromFloat(xAxisMax - xAxisMin)];
         plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(yAxisMin) length:CPTDecimalFromFloat(yAxisMax - yAxisMin)];
         
-        //NSLog(@"plotSpace.xRange page: %i, origin: %f, lenght: %f", i, CPTDecimalCGFloatValue(plotSpace.xRange.location), CPTDecimalCGFloatValue(plotSpace.xRange.length));
+        //DDLogVerbose(@"plotSpace.xRange page: %i, origin: %f, lenght: %f", i, CPTDecimalCGFloatValue(plotSpace.xRange.location), CPTDecimalCGFloatValue(plotSpace.xRange.length));
         
         [graph addPlotSpace:plotSpace];
         
@@ -1232,7 +1253,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         int j;
         for (j=jMin;j<jMax;j+=jStep) {
             
-            //NSLog(@"tickLocation: %i", j);
+            //DDLogVerbose(@"tickLocation: %i", j);
             [majorTickLocations addObject:[NSDecimalNumber numberWithUnsignedInteger:j + ScatterPlotXAxisMajorIntervalLength]];
             
             NSDate *majorLabelTickTime = [firstTime dateByAddingTimeInterval:j - ScatterPlotXAxisMajorIntervalLength];
@@ -1245,7 +1266,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
             newLabel.tickLocation = CPTDecimalFromUnsignedInteger(j + ScatterPlotXAxisMajorIntervalLength / 2);
             
             newLabel.offset = 5.0;
-            //NSLog(@"majorLabelTick: %i, %@, %@", (j + ScatterPlotXAxisMajorIntervalLength / 2), [formatter stringLocalDay:majorLabelTickTime], [formatter stringLocalShortDate:majorLabelTickTime]);
+            //DDLogVerbose(@"majorLabelTick: %i, %@, %@", (j + ScatterPlotXAxisMajorIntervalLength / 2), [formatter stringLocalDay:majorLabelTickTime], [formatter stringLocalShortDate:majorLabelTickTime]);
             
             [newAxisLabels addObject:newLabel];
             
@@ -1254,8 +1275,8 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         axisSet.xAxis.axisLabels = newAxisLabels;
         axisSet.xAxis.majorTickLocations = majorTickLocations;
         //axisSet.xAxis.visibleRange = [CPTPlotRange plotRangeWithLocation: CPTDecimalFromInteger(jMin) length:CPTDecimalFromInteger(jMax-jMin)];
-        //NSLog(@" axisSet.xAxis.visibleRange: %@", [axisSet.xAxis.visibleRange description]);
-        //NSLog(@" plotSpace.xRange: %@", [plotSpace.xRange description]);
+        //DDLogVerbose(@" axisSet.xAxis.visibleRange: %@", [axisSet.xAxis.visibleRange description]);
+        //DDLogVerbose(@" plotSpace.xRange: %@", [plotSpace.xRange description]);
         
         axisSet.yAxis.title = nil;
         axisSet.yAxis.titleTextStyle = textStyle;
@@ -1303,6 +1324,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         plot.identifier = [NSNumber numberWithInteger:idx];
         plot.dataLineStyle = lineStyle;
         plot.plotSymbol = plotSymbol;
+        plot.interpolation = CPTScatterPlotInterpolationCurved;
         
         // Put an area gradient under the plot above
         CPTColor *areaColor		  = [CPTColor colorWithGenericGray:0.5];
@@ -1611,9 +1633,11 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     NSNumber* idxNumber = (NSNumber*)plot.identifier;
     NSInteger idx = [idxNumber integerValue];
     NSArray* currentPage = dataLandscape[idx];
-    NSInteger count = [currentPage count];
+    NSUInteger count = [currentPage count];
     
-    if ( [plot isKindOfClass:[CPTBarPlot class]] ) {
+    if (count < LandscapeForecastElementsCount) {
+        return LandscapeForecastElementsCount;
+    } else if ( [plot isKindOfClass:[CPTBarPlot class]] ) {
         return count;
     } else {
         if (idx < [dataLandscape count] - 1)
@@ -1621,7 +1645,6 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         else
             return count;
     }
-    
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
@@ -1629,45 +1652,60 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     NSNumber* idxNumber = (NSNumber*)plot.identifier;
     NSInteger idx = [idxNumber integerValue];
     NSArray* currentPage = dataLandscape[idx];
+    NSUInteger count = [currentPage count];
     
     Weather* firstWeather = currentPage[0];
     Weather* currentWeather;
     
-    if (index < [currentPage count]) {
-        currentWeather = currentPage[index];
-    } else {
+    if (index == count && idx < ([dataLandscape count] -1)) {
         NSArray* nextPage = dataLandscape[idx+1];
         currentWeather = nextPage[0];
+    } else if (index < count) {
+        currentWeather = currentPage[index];
+    } else  {
+        currentWeather = nil;
     }
     
     if ( [plot isKindOfClass:[CPTBarPlot class]] ) {
         
         if (fieldEnum == CPTBarPlotFieldBarLocation) {
             
-            float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
-            return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            if (currentWeather != nil) {
+                
+                float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
+                return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            } else {
+                float tickLocation = index * 3600*LandscapeForecastConfigHours/LandscapeForecastElementsCount;
+                return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            }
         
         } else  if (fieldEnum == CPTBarPlotFieldBarTip) {
             
-            NSNumber* precipitation;
-            NSInteger hours = 0;
-            if (currentWeather.precipitation1h != nil) {
-                precipitation = currentWeather.precipitation1h;
-                hours = 1;
-            } else if (currentWeather.precipitation2h != nil) {
-                precipitation = currentWeather.precipitation2h;
-                hours = 2;
-            } else if (currentWeather.precipitation3h != nil) {
-                precipitation = currentWeather.precipitation3h;
-                hours = 3;
-            } else if (currentWeather.precipitation6h != nil) {
-                precipitation = currentWeather.precipitation6h;
-                hours = 6;
+            if (currentWeather != nil) {
+                
+                NSNumber* precipitation;
+                NSInteger hours = 0;
+                if (currentWeather.precipitation1h != nil) {
+                    precipitation = currentWeather.precipitation1h;
+                    hours = 1;
+                } else if (currentWeather.precipitation2h != nil) {
+                    precipitation = currentWeather.precipitation2h;
+                    hours = 2;
+                } else if (currentWeather.precipitation3h != nil) {
+                    precipitation = currentWeather.precipitation3h;
+                    hours = 3;
+                } else if (currentWeather.precipitation6h != nil) {
+                    precipitation = currentWeather.precipitation6h;
+                    hours = 6;
+                }
+                return [self.unitsConverter convertPrecipitationToNumber:precipitation period:hours];
+                
+            } else {
+                return @0;
             }
             
-            return [self.unitsConverter convertPrecipitationToNumber:precipitation period:hours];
-            
         } else {
+            
             return @0;
         }
         
@@ -1675,13 +1713,20 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
         
         if (fieldEnum == CPTScatterPlotFieldX) {
             
-            float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
-            return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            if (currentWeather != nil) {
+                float tickLocation = [currentWeather.timestamp timeIntervalSinceDate:firstWeather.timestamp];
+                return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            } else {
+                float tickLocation = index * 3600*LandscapeForecastConfigHours/LandscapeForecastElementsCount;
+                return [NSNumber numberWithFloat:tickLocation + ScatterPlotXAxisMajorIntervalLength];
+            }
             
         } else if (fieldEnum == CPTScatterPlotFieldY) {
-            
-            return [self.unitsConverter convertTemperatureToNumber:currentWeather.temperature];
-            
+            if (currentWeather != nil) {
+                return [self.unitsConverter convertTemperatureToNumber:currentWeather.temperature];
+            } else {
+                return [self.unitsConverter convertTemperatureToNumber:firstWeather.temperature];
+            }
         } else {
             return @0;
         }

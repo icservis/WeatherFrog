@@ -50,7 +50,7 @@
     for (NSString *key in sortedKeys)
         [sortedValues addObject: [days objectForKey: key]];
     
-    DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
+    //DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
     return sortedValues;
 }
 
@@ -92,7 +92,7 @@
     for (NSString *key in sortedKeys)
         [sortedValues addObject: [pages objectForKey: key]];
     
-    DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
+    //DDLogVerbose(@"sortedValues: %@", [sortedValues description]);
     return sortedValues;
 }
 

@@ -47,6 +47,7 @@ static float const LandscapeForecastElementsCount = 12; // number of elements in
 static float const LandscapeForecastConfigHours = 72; // hours interval in page
 static float const LandscapeForecastIconSize = 40; // icon size
 static float const LandscapeForecastIconMargin = 5; // icon margin
+static float const LandscapeForecastGraphMargin = 5; // graph margin
 static float const BarPlotPrecipitationMinValue = 0.4f; // min value of precipitation
 static float const BarPlotPrecipitationMaxValue = 150.0f; // max value of precipitation
 static NSString *const BarPlotPrecipitationLabelsString = @"1,10,100"; // procipitation labels
