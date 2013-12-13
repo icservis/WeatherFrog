@@ -1724,7 +1724,7 @@
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+					Submodules/CorePlot_1.4/Binaries/iOS,
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1852,7 +1852,7 @@
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+					Submodules/CorePlot_1.4/Binaries/iOS,
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1878,7 +1878,7 @@
 				INFOPLIST_FILE = "WeatherFrog/WeatherFrog-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/github/WeatherFrog/Submodules/CorePlot_1.4/Binaries/iOS,
+					Submodules/CorePlot_1.4/Binaries/iOS,
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
