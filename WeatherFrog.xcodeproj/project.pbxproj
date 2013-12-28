@@ -67,6 +67,7 @@
 		845DEDFD17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
 		845DEDFE17C0DA8400561B7B /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */; };
 		845DEDFF17C0F1BD00561B7B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848A54EF176E09A2009B3F85 /* Main_iPhone.storyboard */; };
+		847A0055186F216300039910 /* CPTAxis+CustomLabelVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 847A0054186F216300039910 /* CPTAxis+CustomLabelVisibility.m */; };
 		847B914A17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
 		847B914B17BFA6D600AD76E7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914917BFA6D600AD76E7 /* SWRevealViewController.m */; };
 		847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B914D17BFB2FE00AD76E7 /* LocatorViewController.m */; };
@@ -295,6 +296,8 @@
 		845C2B8117E330640087C84A /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		845DEDFB17C0DA8400561B7B /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapAnnotation.h; sourceTree = "<group>"; };
 		845DEDFC17C0DA8400561B7B /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapAnnotation.m; sourceTree = "<group>"; };
+		847A0053186F216300039910 /* CPTAxis+CustomLabelVisibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPTAxis+CustomLabelVisibility.h"; sourceTree = "<group>"; };
+		847A0054186F216300039910 /* CPTAxis+CustomLabelVisibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPTAxis+CustomLabelVisibility.m"; sourceTree = "<group>"; };
 		847B914817BFA6D600AD76E7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		847B914917BFA6D600AD76E7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		847B914C17BFB2FE00AD76E7 /* LocatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocatorViewController.h; sourceTree = "<group>"; };
@@ -1222,6 +1225,8 @@
 				847CFF6317E48F7200DA0CC7 /* CFGUnitConverter.m */,
 				844107431856F2C4008C6B7C /* WeatherSymbol.h */,
 				844107441856F2C4008C6B7C /* WeatherSymbol.m */,
+				847A0053186F216300039910 /* CPTAxis+CustomLabelVisibility.h */,
+				847A0054186F216300039910 /* CPTAxis+CustomLabelVisibility.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847A0055186F216300039910 /* CPTAxis+CustomLabelVisibility.m in Sources */,
 				847B916A17BFCF1C00AD76E7 /* LocationCell.m in Sources */,
 				84DE491017BF7659005AB3B8 /* DDLog.m in Sources */,
 				847B914E17BFB2FE00AD76E7 /* LocatorViewController.m in Sources */,

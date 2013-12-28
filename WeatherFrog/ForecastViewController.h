@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "Banner.h"
 #import "CorePlot-CocoaTouch.h"
+#import "CPTAxis+CustomLabelVisibility.h"
 
 @class Forecast;
 

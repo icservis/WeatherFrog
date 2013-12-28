@@ -1248,7 +1248,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
             NSDate *majorLabelTickTime = [firstTime dateByAddingTimeInterval:j - ScatterPlotXAxisMajorIntervalLength];
             
             [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-            [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
             NSString *labelText = [self.dateFormatter stringFromDate:majorLabelTickTime];
             
             CPTAxisLabel *newLabel = [[CPTAxisLabel alloc] initWithText:labelText textStyle:textStyle];
