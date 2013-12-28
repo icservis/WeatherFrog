@@ -22,7 +22,7 @@
     static NSDateFormatter* localDateFormatter = nil;
     if (localDateFormatter == nil) {
         localDateFormatter = [[NSDateFormatter alloc] init];
-        [localDateFormatter setDateFormat:@"D"];
+        [localDateFormatter setDateFormat:@"g"]; // Modified Julian day. This is different from the conventional Julian day number in two regards. First, it demarcates days at local zone midnight, rather than noon GMT. Second, it is a local number; that is, it depends on the local time zone. It can be thought of as a single number that encompasses all the date-related fields.
     }
     [localDateFormatter setTimeZone:self.timezone];
     
@@ -44,6 +44,7 @@
         }
     }];
     
+    //DDLogVerbose(@"days: %@", [days description]);
     
     NSArray *sortedKeys = [[days allKeys] sortedArrayUsingSelector: @selector(compare:)];
     NSMutableArray *sortedValues = [NSMutableArray array];
