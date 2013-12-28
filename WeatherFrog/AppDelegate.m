@@ -54,7 +54,7 @@
     [hostReachable startNotifier];
     
     // Core data
-    [NSFetchedResultsController deleteCacheWithName:nil];
+    [NSFetchedResultsController deleteCacheWithName:ForecastCache];
     
     // User defaults
     [UserDefaultsManager sharedDefaults];

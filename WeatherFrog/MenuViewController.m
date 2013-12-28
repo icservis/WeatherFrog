@@ -116,7 +116,7 @@
         NSArray* sortDescriptors = [NSArray arrayWithObjects:isMarkedDescriptor, timestampDescriptor, nil];
         [fetchRequest setSortDescriptors:sortDescriptors];
         
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"isMarked" cacheName:nil];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"isMarked" cacheName:ForecastCache];
         _fetchedResultsController.delegate = self;
     }
     return _fetchedResultsController;

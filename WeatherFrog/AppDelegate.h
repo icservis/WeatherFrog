@@ -11,6 +11,7 @@
 
 @class Forecast;
 
+static NSString* const ForecastCache = @"FORECAST_CACHE";
 static NSString* const ReachabilityNotification = @"REACHABILITY_NOTIFICATION";
 static NSString* const LocationManagerUpdateNotification = @"LOCATION_MANAGER_UPDATE_NOTIFICATION";
 static NSString* const LocationManagerUpdateUnderTresholdNotification = @"LOCATION_MANAGER_UPDATE_UNDER_TRESHOLD_NOTIFICATION";
