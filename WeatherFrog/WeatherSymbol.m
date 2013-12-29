@@ -26,7 +26,7 @@
     if (localeNames == nil) {
         localeNames = [[NSArray alloc] initWithObjects:
                        NSLocalizedString(@"Weather undefined", @"kWeatherSymbolNone"),
-                       NSLocalizedString(@"Sun", @"kWeatherSymbolSun"),
+                       NSLocalizedString(@"Clear", @"kWeatherSymbolSun"),
                        NSLocalizedString(@"Light Cloud", @"kWeatherSymbolLightCloud"),
                        NSLocalizedString(@"Partly Cloud", @"kWeatherSymbolPartlyCloud"),
                        NSLocalizedString(@"Cloud", @"kWeatherSymbolCloud"),
