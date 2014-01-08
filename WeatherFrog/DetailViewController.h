@@ -10,15 +10,9 @@
 
 @class Weather;
 
-@protocol DetailViewControllerDelegate <NSObject>
+@interface DetailViewController : UIViewController
 
-- (void)closeDetailViewController:(UIViewController*)controller;
-
-@end
-
-@interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, weak) id <DetailViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^completionBlock)(BOOL success);
 @property (nonatomic, strong) Weather* weather;
 @property (nonatomic, strong) NSTimeZone* timezone;
 

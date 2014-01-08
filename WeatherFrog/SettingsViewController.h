@@ -7,17 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsMultiValueViewController.h"
-#import "SettingsSliderViewController.h"
 
-@protocol SettingsViewControllerDelegate <NSObject>
+@interface SettingsViewController : UITableViewController
 
-- (void)closeSettingsViewController:(UIViewController*)controller;
-
-@end
-
-@interface SettingsViewController : UITableViewController <SettingsMultiValueViewControllerDelegate, SettingsSliderViewControllerDelegate>
-
-@property (nonatomic, weak) id<SettingsViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^completionBlock) (BOOL success);
 
 @end

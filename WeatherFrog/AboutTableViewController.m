@@ -8,7 +8,7 @@
 
 #import "AboutTableViewController.h"
 
-@interface AboutTableViewController ()
+@interface AboutTableViewController () <UITableViewDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* doneButton;
 @property (nonatomic, weak) IBOutlet UILabel* aboutLabel;
@@ -39,7 +39,9 @@
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-    [self.delegate closeAboutTableViewController:self];
+    if (self.completionBlock != nil) {
+        self.completionBlock(YES);
+    }
 }
 
 #pragma mark - Notifications

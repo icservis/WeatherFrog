@@ -10,7 +10,7 @@
 #import "Weather.h"
 #import "CFGUnitConverter.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSDateFormatter* localDateFormatter;
 @property (nonatomic, strong) CFGUnitConverter* unitsConverter;
@@ -53,7 +53,9 @@
 
 - (IBAction)closeButonTapped:(id)sender
 {
-    [self.delegate closeDetailViewController:self];
+    if (self.completionBlock != nil) {
+        self.completionBlock(YES);
+    }
 }
 
 - (NSDateFormatter*)localDateFormatter

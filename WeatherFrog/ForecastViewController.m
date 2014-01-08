@@ -16,6 +16,7 @@
 #import "WeatherSymbol.h"
 #import "Astro.h"
 #import "ForecastViewController.h"
+#import "DetailViewController.h"
 #import "ForecastCell.h"
 #import "ForecastHeader.h"
 #import "ForecastFooter.h"
@@ -24,20 +25,6 @@
 #import "GoogleApiService.h"
 #import "CFGUnitConverter.h"
 #import "CCHMapsActivity.h"
-/*
-#import "CPTGraphHostingView.h"
-#import "CPTXYGraph.h"
-#import "CPTMutableLineStyle.h"
-#import "CPTColor.h"
-#import "CPTMutableTextStyle.h"
-#import "CPTPlotAreaFrame.h"
-#import "CPTPlotSymbol.h"
-#import "CPTXYPlotSpace.h"
-#import "CPTPlotRange.h"
-#import "CPTXYAxis.h"
-#import "CPTXYAxisSet.h"
-#import "CPTAxisLabel.h"
- */
 
 static NSString* const ForecastCellNib = @"ForecastCell";
 static NSString* const ForecastCellIdentifier = @"ForecastCell";
@@ -46,7 +33,7 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
 
 @class Forecast;
 
-@interface ForecastViewController () {
+@interface ForecastViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, CPTScatterPlotDelegate, CPTPlotDataSource> {
     NSArray* dataPortrait;
     NSArray* dataLandscape;
 }
@@ -221,9 +208,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     if ([segue.identifier isEqualToString:@"showDetail"]) {
         
         UINavigationController* detailNavController = (UINavigationController*)segue.destinationViewController;
-        DetailViewController* detailViewController = (DetailViewController*)[[detailNavController viewControllers] objectAtIndex:0];
-        detailViewController.delegate = self;
-        
+        __weak DetailViewController* detailViewController = (DetailViewController*)[[detailNavController viewControllers] objectAtIndex:0];
+        detailViewController.completionBlock = ^(BOOL success) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
         ForecastCell* cell = (ForecastCell*)sender;
         detailViewController.weather = cell.weather;
         detailViewController.timezone = self.selectedForecast.timezone;

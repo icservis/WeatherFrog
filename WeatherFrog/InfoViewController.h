@@ -10,4 +10,6 @@
 
 @interface InfoViewController : UIViewController
 
+@property (nonatomic, copy) void (^compleletonBlock) (BOOL success);
+
 @end

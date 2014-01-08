@@ -13,6 +13,8 @@
 
 @property (nonatomic, weak) IBOutlet UITextView* textView;
 
+- (IBAction)doneButtonTapped:(id)sender;
+
 @end
 
 @implementation InfoViewController
@@ -60,6 +62,13 @@
 - (BOOL)canBecomeFirstResponder
 {
     return NO;
+}
+
+- (IBAction)doneButtonTapped:(id)sender
+{
+    if (self.compleletonBlock != nil) {
+        self.compleletonBlock(YES);
+    }
 }
 
 #pragma mark - Notifications

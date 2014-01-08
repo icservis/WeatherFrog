@@ -18,7 +18,7 @@
 static double const PointHysteresis = 10.0;
 static float const LongTapDuration = 1.2;
 
-@interface LocatorViewController ()
+@interface LocatorViewController () <MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* revealButtonItem;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* trackingButton;

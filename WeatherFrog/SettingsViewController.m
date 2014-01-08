@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import "SettingsViewController.h"
+#import "SettingsMultiValueViewController.h"
+#import "SettingsSliderViewController.h"
 
-@interface SettingsViewController ()
+@interface SettingsViewController ()  <SettingsMultiValueViewControllerDelegate, SettingsSliderViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButon;
 @property (nonatomic, strong) NSArray* elementsSections;
@@ -64,7 +66,9 @@
 
 - (IBAction)closeButonTapped:(id)sender
 {
-    [self.delegate closeSettingsViewController:self];
+    if (self.completionBlock != nil) {
+        self.completionBlock(YES);
+    }
 }
 
 #pragma mark - Table view data source

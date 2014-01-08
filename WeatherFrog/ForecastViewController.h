@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ForecastManager.h"
-#import "DetailViewController.h"
 #import "Banner.h"
 #import "CorePlot-CocoaTouch.h"
 #import "CPTAxis+CustomLabelVisibility.h"
@@ -19,7 +18,7 @@
 
 @end
 
-@interface ForecastViewController : UIViewController <ForecastManagerDelegate, UITableViewDataSource, UITableViewDelegate, DetailViewControllerDelegate, BannerDelegate, UIAlertViewDelegate, CPTScatterPlotDelegate, CPTPlotDataSource>
+@interface ForecastViewController : UIViewController <ForecastManagerDelegate, BannerDelegate>
 
 @property (nonatomic, weak) id<ForecastViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLPlacemark* selectedPlacemark;

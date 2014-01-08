@@ -12,7 +12,7 @@
 
 @end
 
-@interface LocatorViewController : UIViewController<MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate>
+@interface LocatorViewController : UIViewController
 
 @property (nonatomic, weak) id<LocatorViewControllerDelegate> delegate;
 @property (nonatomic, strong) CLLocation* selectedLocation;

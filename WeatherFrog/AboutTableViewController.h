@@ -8,14 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol AboutTableViewControllerDelegate <NSObject>
+@interface AboutTableViewController : UITableViewController
 
-- (void)closeAboutTableViewController:(UITableViewController*)controller;
-
-@end
-
-@interface AboutTableViewController : UITableViewController <UITableViewDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
-
-@property (nonatomic, weak) id <AboutTableViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^completionBlock) (BOOL success);
 
 @end

@@ -8,11 +8,12 @@
 
 #import "AppDelegate.h"
 #import "MenuViewController.h"
+#import "AboutTableViewController.h"
 #import "Forecast.h"
 #import "Location.h"
 #import "LocationManager.h"
 
-@interface MenuViewController ()
+@interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel* applicationNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* applicationVersionLabel;
@@ -171,14 +172,18 @@
     
     if ([segue.identifier isEqualToString:@"showSettings"]) {
         UINavigationController* settingsNavController = segue.destinationViewController;
-        SettingsViewController* settingsViewController = [[settingsNavController viewControllers] objectAtIndex:0];
-        settingsViewController.delegate = self;
+        __weak SettingsViewController* settingsViewController = [[settingsNavController viewControllers] objectAtIndex:0];
+        settingsViewController.completionBlock = ^(BOOL success) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
     }
     
     if ([segue.identifier isEqualToString:@"showAbout"]) {
         UINavigationController* aboutNavController = segue.destinationViewController;
-        AboutTableViewController* aboutTableViewController = [[aboutNavController viewControllers] objectAtIndex:0];
-        aboutTableViewController.delegate = self;
+        __weak AboutTableViewController* aboutTableViewController = [[aboutNavController viewControllers] objectAtIndex:0];
+        aboutTableViewController.completionBlock = ^(BOOL success) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
     }
 }
 
@@ -424,21 +429,6 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
-}
-
-
-#pragma mark - SettingsViewControllerDelegate
-
-- (void)closeSettingsViewController:(UIViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - AboutTableViewControllerDelegate
-
-- (void)closeAboutTableViewController:(UITableViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - LocationCellDelegate
