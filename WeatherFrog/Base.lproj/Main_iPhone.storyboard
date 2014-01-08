@@ -9,6 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zzJ-tj-uZZ" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="Mab-Hh-jdc" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="hty-la-OhI"/>
                         <segue destination="Ec1-xj-Izr" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="jIP-Ca-X3H"/>
@@ -895,6 +896,10 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="epi-qf-NHT">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="XRe-MU-hYk" kind="relationship" relationship="rootViewController" id="d6C-uT-KB7"/>
                     </connections>

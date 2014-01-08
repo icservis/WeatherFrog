@@ -34,6 +34,7 @@
     #import "NSString+URLEncoding.h"
     #import "UIImage+fixOrientation.h"
     #import "CLPlacemark+MKAnnotationDelegate.h"
+    #import "UINavigationController+StausBarStyle.h"
 
     #import <Social/Social.h>
     #import <Accounts/Accounts.h>

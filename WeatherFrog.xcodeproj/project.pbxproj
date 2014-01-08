@@ -60,6 +60,7 @@
 		844107461856F2C4008C6B7C /* WeatherSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 844107441856F2C4008C6B7C /* WeatherSymbol.m */; };
 		8443B12A17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
 		8443B12B17EA3036004CFA55 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443B12917EA3036004CFA55 /* DetailViewController.m */; };
+		844697AE187DF42E009C0B1B /* UINavigationController+StausBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 844697AD187DF42E009C0B1B /* UINavigationController+StausBarStyle.m */; };
 		8452056F17D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
 		8452057017D51E4A00AF7D5C /* SettingsSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */; };
 		845C2B8217E330640087C84A /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845C2B8117E330640087C84A /* InfoViewController.m */; };
@@ -290,6 +291,8 @@
 		844107441856F2C4008C6B7C /* WeatherSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherSymbol.m; sourceTree = "<group>"; };
 		8443B12817EA3036004CFA55 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		8443B12917EA3036004CFA55 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		844697AC187DF42E009C0B1B /* UINavigationController+StausBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StausBarStyle.h"; sourceTree = "<group>"; };
+		844697AD187DF42E009C0B1B /* UINavigationController+StausBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StausBarStyle.m"; sourceTree = "<group>"; };
 		8452056D17D51E4A00AF7D5C /* SettingsSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderViewController.h; sourceTree = "<group>"; };
 		8452056E17D51E4A00AF7D5C /* SettingsSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderViewController.m; sourceTree = "<group>"; };
 		845C2B8017E330640087C84A /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -1227,6 +1230,8 @@
 				844107441856F2C4008C6B7C /* WeatherSymbol.m */,
 				847A0053186F216300039910 /* CPTAxis+CustomLabelVisibility.h */,
 				847A0054186F216300039910 /* CPTAxis+CustomLabelVisibility.m */,
+				844697AC187DF42E009C0B1B /* UINavigationController+StausBarStyle.h */,
+				844697AD187DF42E009C0B1B /* UINavigationController+StausBarStyle.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1482,6 +1487,7 @@
 				841122E717FA9AFC0079ECCA /* BannerView.m in Sources */,
 				84DE48D417BF7601005AB3B8 /* AFURLConnectionOperation.m in Sources */,
 				84DE496E17BF767D005AB3B8 /* NSString+ISO8601Date.m in Sources */,
+				844697AE187DF42E009C0B1B /* UINavigationController+StausBarStyle.m in Sources */,
 				8422227B17ECF62300F5D231 /* CCHMapsActivity.m in Sources */,
 				847CD6BE1801C0910012EA76 /* iRate.m in Sources */,
 				84905D0517C8B43700402857 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,

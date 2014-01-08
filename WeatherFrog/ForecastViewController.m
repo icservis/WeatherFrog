@@ -187,6 +187,10 @@ static NSString* const ForecastFooterNib = @"ForecastFooter";
     _bannerView = nil;
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
