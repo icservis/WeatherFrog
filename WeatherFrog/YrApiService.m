@@ -65,7 +65,7 @@
 
 - (void)weatherDatatWithLocation:(CLLocation*)location success:(void (^)(NSArray* weatherData))success failure:(void (^)(NSError* error))failure
 {
-    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/locationforecast/1.8/?lat=%f;lon=%f;msl=%i", kYrAPIUrl, location.coordinate.latitude, location.coordinate.longitude, @(location.altitude).intValue]];
+    NSURL* apiURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/locationforecast/1.9/?lat=%f;lon=%f;msl=%i", kYrAPIUrl, location.coordinate.latitude, location.coordinate.longitude, @(location.altitude).intValue]];
     DDLogVerbose(@"url: %@", [apiURL absoluteString]);
     NSURLRequest* request = [NSURLRequest requestWithURL:apiURL];
     
