@@ -113,7 +113,7 @@
         
         AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         
-        if ([appDelegate isHostActive]) {
+        if ([appDelegate isInternetActive]) {
             
             [self startFetching];
             
@@ -153,7 +153,7 @@
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    if ([appDelegate isHostActive]) {
+    if ([appDelegate isInternetActive]) {
         
         self.status = ForecastStatusFetchingSolarData;
         [[YrApiService sharedService] astroDatatWithLocation:placemark.location success:^(NSArray *solarData) {
