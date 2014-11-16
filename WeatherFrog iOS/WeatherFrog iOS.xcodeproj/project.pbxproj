@@ -32,7 +32,7 @@
 		840F3B841A18B86200E8BFDE /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7A1A18B86200E8BFDE /* UIProgressView+AFNetworking.m */; };
 		840F3B851A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7C1A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m */; };
 		840F3B861A18B86200E8BFDE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1A18B86200E8BFDE /* UIWebView+AFNetworking.m */; };
-		8447DF201A18DAE60011425A /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */; };
+		8447DF201A18DAE60011425A /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		8447DF2D1A18DB1A0011425A /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */; };
 		84C01D0C1A18CDDA000B473C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */; };
 		84C01D0D1A18CDDA000B473C /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF81A18CDDA000B473C /* DDASLLogCapture.m */; };
