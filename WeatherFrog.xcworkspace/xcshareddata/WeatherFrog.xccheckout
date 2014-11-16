@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6CCDCBAF-5365-4A3D-935C-612CA64F6B9A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WeatherFrog</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>236B8910826D78C14B3CA726E593BF967BC25115</key>
+		<string>https://github.com/icservis/WeatherFrog.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WeatherFrog.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>236B8910826D78C14B3CA726E593BF967BC25115</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/icservis/WeatherFrog.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>236B8910826D78C14B3CA726E593BF967BC25115</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>236B8910826D78C14B3CA726E593BF967BC25115</string>
+			<key>IDESourceControlWCCName</key>
+			<string>WeatherFrog</string>
+		</dict>
+	</array>
+</dict>
+</plist>
