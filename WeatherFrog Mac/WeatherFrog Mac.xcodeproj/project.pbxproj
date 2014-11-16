@@ -23,6 +23,25 @@
 		840F3B5F1A18B84000E8BFDE /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B351A18B84000E8BFDE /* AFURLRequestSerialization.m */; };
 		840F3B601A18B84000E8BFDE /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B371A18B84000E8BFDE /* AFURLResponseSerialization.m */; };
 		840F3B611A18B84000E8BFDE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B391A18B84000E8BFDE /* AFURLSessionManager.m */; };
+		8447DF241A18DAF60011425A /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF231A18DAF60011425A /* ISO8601DateFormatter.m */; };
+		8447DF4A1A18DC590011425A /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF331A18DC590011425A /* CLIColor.m */; };
+		8447DF4B1A18DC590011425A /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF351A18DC590011425A /* DDAbstractDatabaseLogger.m */; };
+		8447DF4C1A18DC590011425A /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF371A18DC590011425A /* DDASLLogCapture.m */; };
+		8447DF4D1A18DC590011425A /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF391A18DC590011425A /* DDASLLogger.m */; };
+		8447DF4E1A18DC590011425A /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF3C1A18DC590011425A /* DDFileLogger.m */; };
+		8447DF4F1A18DC590011425A /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF3F1A18DC590011425A /* DDLog.m */; };
+		8447DF501A18DC590011425A /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF411A18DC590011425A /* DDTTYLogger.m */; };
+		8447DF511A18DC590011425A /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF441A18DC590011425A /* DDContextFilterLogFormatter.m */; };
+		8447DF521A18DC590011425A /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF461A18DC590011425A /* DDDispatchQueueLogFormatter.m */; };
+		8447DF531A18DC590011425A /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF481A18DC590011425A /* DDMultiFormatter.m */; };
+		8447DF541A18DC590011425A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8447DF491A18DC590011425A /* README.txt */; };
+		84C084FC1A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084A11A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84C084FD1A18DA680053BC1D /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084A51A18DA680053BC1D /* NSDate+ISO8601Date.m */; };
+		84C084FE1A18DA680053BC1D /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084A91A18DA680053BC1D /* NSString+ISO8601Date.m */; };
+		84C084FF1A18DA680053BC1D /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084AC1A18DA680053BC1D /* NSString+URLEncoding.m */; };
+		84C085001A18DA680053BC1D /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084AF1A18DA680053BC1D /* NSString+validation.m */; };
+		84C085041A18DA680053BC1D /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084BF1A18DA680053BC1D /* LumberjackFormatter.m */; };
+		84C0851B1A18DA680053BC1D /* NSImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C084F71A18DA680053BC1D /* NSImageToDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +87,47 @@
 		840F3B371A18B84000E8BFDE /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		840F3B381A18B84000E8BFDE /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		840F3B391A18B84000E8BFDE /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		8447DF221A18DAF60011425A /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		8447DF231A18DAF60011425A /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		8447DF2E1A18DB6A0011425A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lumberjack.h; sourceTree = "<group>"; };
+		8447DF2F1A18DB7B0011425A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8447DF321A18DC590011425A /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
+		8447DF331A18DC590011425A /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
+		8447DF341A18DC590011425A /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		8447DF351A18DC590011425A /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		8447DF361A18DC590011425A /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		8447DF371A18DC590011425A /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
+		8447DF381A18DC590011425A /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		8447DF391A18DC590011425A /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		8447DF3A1A18DC590011425A /* DDAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssert.h; sourceTree = "<group>"; };
+		8447DF3B1A18DC590011425A /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		8447DF3C1A18DC590011425A /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		8447DF3D1A18DC590011425A /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		8447DF3E1A18DC590011425A /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		8447DF3F1A18DC590011425A /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		8447DF401A18DC590011425A /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		8447DF411A18DC590011425A /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		8447DF431A18DC590011425A /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		8447DF441A18DC590011425A /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		8447DF451A18DC590011425A /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		8447DF461A18DC590011425A /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		8447DF471A18DC590011425A /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		8447DF481A18DC590011425A /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		8447DF491A18DC590011425A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		84C084A01A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
+		84C084A11A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
+		84C084A41A18DA680053BC1D /* NSDate+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601Date.h"; sourceTree = "<group>"; };
+		84C084A51A18DA680053BC1D /* NSDate+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601Date.m"; sourceTree = "<group>"; };
+		84C084A81A18DA680053BC1D /* NSString+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ISO8601Date.h"; sourceTree = "<group>"; };
+		84C084A91A18DA680053BC1D /* NSString+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ISO8601Date.m"; sourceTree = "<group>"; };
+		84C084AB1A18DA680053BC1D /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		84C084AC1A18DA680053BC1D /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		84C084AE1A18DA680053BC1D /* NSString+validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+validation.h"; sourceTree = "<group>"; };
+		84C084AF1A18DA680053BC1D /* NSString+validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+validation.m"; sourceTree = "<group>"; };
+		84C084BE1A18DA680053BC1D /* LumberjackFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumberjackFormatter.h; sourceTree = "<group>"; };
+		84C084BF1A18DA680053BC1D /* LumberjackFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumberjackFormatter.m; sourceTree = "<group>"; };
+		84C084F61A18DA680053BC1D /* NSImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImageToDataTransformer.h; sourceTree = "<group>"; };
+		84C084F71A18DA680053BC1D /* NSImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImageToDataTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +187,8 @@
 			children = (
 				840F3ABC1A18B40100E8BFDE /* Info.plist */,
 				840F3AC01A18B40100E8BFDE /* main.m */,
+				8447DF2F1A18DB7B0011425A /* PrefixHeader.pch */,
+				8447DF2E1A18DB6A0011425A /* Lumberjack.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -178,10 +240,195 @@
 		840F3B581A18B84000E8BFDE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8447DF301A18DC590011425A /* Lumberjack */,
+				84C0849D1A18DA680053BC1D /* Libraries */,
 				840F3B3A1A18B84000E8BFDE /* AFNetworking */,
 			);
 			name = Vendor;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		8447DF211A18DAF60011425A /* ISO86001DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF221A18DAF60011425A /* ISO8601DateFormatter.h */,
+				8447DF231A18DAF60011425A /* ISO8601DateFormatter.m */,
+			);
+			path = ISO86001DateFormatter;
+			sourceTree = "<group>";
+		};
+		8447DF301A18DC590011425A /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF311A18DC590011425A /* CLI */,
+				8447DF341A18DC590011425A /* DDAbstractDatabaseLogger.h */,
+				8447DF351A18DC590011425A /* DDAbstractDatabaseLogger.m */,
+				8447DF361A18DC590011425A /* DDASLLogCapture.h */,
+				8447DF371A18DC590011425A /* DDASLLogCapture.m */,
+				8447DF381A18DC590011425A /* DDASLLogger.h */,
+				8447DF391A18DC590011425A /* DDASLLogger.m */,
+				8447DF3A1A18DC590011425A /* DDAssert.h */,
+				8447DF3B1A18DC590011425A /* DDFileLogger.h */,
+				8447DF3C1A18DC590011425A /* DDFileLogger.m */,
+				8447DF3D1A18DC590011425A /* DDLog+LOGV.h */,
+				8447DF3E1A18DC590011425A /* DDLog.h */,
+				8447DF3F1A18DC590011425A /* DDLog.m */,
+				8447DF401A18DC590011425A /* DDTTYLogger.h */,
+				8447DF411A18DC590011425A /* DDTTYLogger.m */,
+				8447DF421A18DC590011425A /* Extensions */,
+			);
+			name = Lumberjack;
+			path = Submodules/CocoaLumberjack/Lumberjack;
+			sourceTree = "<group>";
+		};
+		8447DF311A18DC590011425A /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF321A18DC590011425A /* CLIColor.h */,
+				8447DF331A18DC590011425A /* CLIColor.m */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		8447DF421A18DC590011425A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF431A18DC590011425A /* DDContextFilterLogFormatter.h */,
+				8447DF441A18DC590011425A /* DDContextFilterLogFormatter.m */,
+				8447DF451A18DC590011425A /* DDDispatchQueueLogFormatter.h */,
+				8447DF461A18DC590011425A /* DDDispatchQueueLogFormatter.m */,
+				8447DF471A18DC590011425A /* DDMultiFormatter.h */,
+				8447DF481A18DC590011425A /* DDMultiFormatter.m */,
+				8447DF491A18DC590011425A /* README.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84C0849D1A18DA680053BC1D /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				84C0849E1A18DA680053BC1D /* Categories */,
+				84C084B41A18DA680053BC1D /* Classes */,
+			);
+			name = Libraries;
+			path = Submodules/Libraries;
+			sourceTree = "<group>";
+		};
+		84C0849E1A18DA680053BC1D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				84C0849F1A18DA680053BC1D /* CLPlacemark */,
+				84C084A21A18DA680053BC1D /* NSDate */,
+				84C084A61A18DA680053BC1D /* NSString */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		84C0849F1A18DA680053BC1D /* CLPlacemark */ = {
+			isa = PBXGroup;
+			children = (
+				84C084A01A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.h */,
+				84C084A11A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m */,
+			);
+			path = CLPlacemark;
+			sourceTree = "<group>";
+		};
+		84C084A21A18DA680053BC1D /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				84C084A31A18DA680053BC1D /* ISO8601Date */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		84C084A31A18DA680053BC1D /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84C084A41A18DA680053BC1D /* NSDate+ISO8601Date.h */,
+				84C084A51A18DA680053BC1D /* NSDate+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84C084A61A18DA680053BC1D /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				84C084A71A18DA680053BC1D /* ISO8601Date */,
+				84C084AA1A18DA680053BC1D /* URLEncoding */,
+				84C084AD1A18DA680053BC1D /* Validation */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		84C084A71A18DA680053BC1D /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84C084A81A18DA680053BC1D /* NSString+ISO8601Date.h */,
+				84C084A91A18DA680053BC1D /* NSString+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84C084AA1A18DA680053BC1D /* URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				84C084AB1A18DA680053BC1D /* NSString+URLEncoding.h */,
+				84C084AC1A18DA680053BC1D /* NSString+URLEncoding.m */,
+			);
+			path = URLEncoding;
+			sourceTree = "<group>";
+		};
+		84C084AD1A18DA680053BC1D /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				84C084AE1A18DA680053BC1D /* NSString+validation.h */,
+				84C084AF1A18DA680053BC1D /* NSString+validation.m */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		84C084B41A18DA680053BC1D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84C084B91A18DA680053BC1D /* Formatters */,
+				84C084F41A18DA680053BC1D /* Transformers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		84C084B91A18DA680053BC1D /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF211A18DAF60011425A /* ISO86001DateFormatter */,
+				84C084BD1A18DA680053BC1D /* LumberJackFormatter */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		84C084BD1A18DA680053BC1D /* LumberJackFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84C084BE1A18DA680053BC1D /* LumberjackFormatter.h */,
+				84C084BF1A18DA680053BC1D /* LumberjackFormatter.m */,
+			);
+			path = LumberJackFormatter;
+			sourceTree = "<group>";
+		};
+		84C084F41A18DA680053BC1D /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				84C084F51A18DA680053BC1D /* NSImageToDataTransformer */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		84C084F51A18DA680053BC1D /* NSImageToDataTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				84C084F61A18DA680053BC1D /* NSImageToDataTransformer.h */,
+				84C084F71A18DA680053BC1D /* NSImageToDataTransformer.m */,
+			);
+			path = NSImageToDataTransformer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				840F3AC91A18B40100E8BFDE /* Images.xcassets in Resources */,
+				8447DF541A18DC590011425A /* README.txt in Resources */,
 				840F3ACC1A18B40100E8BFDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,18 +532,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C084FD1A18DA680053BC1D /* NSDate+ISO8601Date.m in Sources */,
+				8447DF4E1A18DC590011425A /* DDFileLogger.m in Sources */,
 				840F3AC41A18B40100E8BFDE /* ViewController.m in Sources */,
 				840F3B5D1A18B84000E8BFDE /* AFSecurityPolicy.m in Sources */,
 				840F3AC11A18B40100E8BFDE /* main.m in Sources */,
+				8447DF501A18DC590011425A /* DDTTYLogger.m in Sources */,
+				8447DF511A18DC590011425A /* DDContextFilterLogFormatter.m in Sources */,
+				8447DF4D1A18DC590011425A /* DDASLLogger.m in Sources */,
+				8447DF4F1A18DC590011425A /* DDLog.m in Sources */,
+				84C084FC1A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				840F3B5A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m in Sources */,
 				840F3B5E1A18B84000E8BFDE /* AFURLConnectionOperation.m in Sources */,
+				8447DF4B1A18DC590011425A /* DDAbstractDatabaseLogger.m in Sources */,
 				840F3B591A18B84000E8BFDE /* AFHTTPRequestOperation.m in Sources */,
 				840F3AC71A18B40100E8BFDE /* WeatherFrog_Mac.xcdatamodeld in Sources */,
 				840F3B5F1A18B84000E8BFDE /* AFURLRequestSerialization.m in Sources */,
+				84C085001A18DA680053BC1D /* NSString+validation.m in Sources */,
+				8447DF531A18DC590011425A /* DDMultiFormatter.m in Sources */,
+				8447DF521A18DC590011425A /* DDDispatchQueueLogFormatter.m in Sources */,
 				840F3B5B1A18B84000E8BFDE /* AFHTTPSessionManager.m in Sources */,
+				84C085041A18DA680053BC1D /* LumberjackFormatter.m in Sources */,
 				840F3B5C1A18B84000E8BFDE /* AFNetworkReachabilityManager.m in Sources */,
+				8447DF241A18DAF60011425A /* ISO8601DateFormatter.m in Sources */,
+				84C0851B1A18DA680053BC1D /* NSImageToDataTransformer.m in Sources */,
+				84C084FE1A18DA680053BC1D /* NSString+ISO8601Date.m in Sources */,
+				8447DF4C1A18DC590011425A /* DDASLLogCapture.m in Sources */,
 				840F3B601A18B84000E8BFDE /* AFURLResponseSerialization.m in Sources */,
 				840F3B611A18B84000E8BFDE /* AFURLSessionManager.m in Sources */,
+				84C084FF1A18DA680053BC1D /* NSString+URLEncoding.m in Sources */,
+				8447DF4A1A18DC590011425A /* CLIColor.m in Sources */,
 				840F3ABF1A18B40100E8BFDE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +678,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog Mac/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,6 +692,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog Mac/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

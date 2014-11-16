@@ -18,6 +18,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    
+    // Logging.
+    LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
+    [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    DDLogDebug(@"OSX Test");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

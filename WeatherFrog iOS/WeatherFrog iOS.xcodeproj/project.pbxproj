@@ -32,6 +32,8 @@
 		840F3B841A18B86200E8BFDE /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7A1A18B86200E8BFDE /* UIProgressView+AFNetworking.m */; };
 		840F3B851A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7C1A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m */; };
 		840F3B861A18B86200E8BFDE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1A18B86200E8BFDE /* UIWebView+AFNetworking.m */; };
+		8447DF201A18DAE60011425A /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */; };
+		8447DF2D1A18DB1A0011425A /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */; };
 		84C01D0C1A18CDDA000B473C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */; };
 		84C01D0D1A18CDDA000B473C /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF81A18CDDA000B473C /* DDASLLogCapture.m */; };
 		84C01D0E1A18CDDA000B473C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CFA1A18CDDA000B473C /* DDASLLogger.m */; };
@@ -48,9 +50,7 @@
 		84C01D421A18D01F000B473C /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D261A18D01F000B473C /* NSString+URLEncoding.m */; };
 		84C01D431A18D01F000B473C /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D291A18D01F000B473C /* NSString+validation.m */; };
 		84C01D441A18D01F000B473C /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D2D1A18D01F000B473C /* UIImage+fixOrientation.m */; };
-		84C01D461A18D01F000B473C /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		84C01D471A18D01F000B473C /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D391A18D01F000B473C /* LumberjackFormatter.m */; };
-		84C01D481A18D01F000B473C /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +114,10 @@
 		840F3B7C1A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		840F3B7D1A18B86200E8BFDE /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		840F3B7E1A18B86200E8BFDE /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		8447DF1E1A18DAE60011425A /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		8447DF2A1A18DB1A0011425A /* UIImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageToDataTransformer.h; sourceTree = "<group>"; };
+		8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageToDataTransformer.m; sourceTree = "<group>"; };
 		84C01CF51A18CDDA000B473C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		84C01CF71A18CDDA000B473C /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
@@ -148,12 +152,8 @@
 		84C01D291A18D01F000B473C /* NSString+validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+validation.m"; sourceTree = "<group>"; };
 		84C01D2C1A18D01F000B473C /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
 		84C01D2D1A18D01F000B473C /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
-		84C01D351A18D01F000B473C /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
-		84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		84C01D381A18D01F000B473C /* LumberjackFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumberjackFormatter.h; sourceTree = "<group>"; };
 		84C01D391A18D01F000B473C /* LumberjackFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumberjackFormatter.m; sourceTree = "<group>"; };
-		84C01D3C1A18D01F000B473C /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDataTransformer.h; sourceTree = "<group>"; };
-		84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
 		84C01D4A1A18D082000B473C /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lumberjack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -302,6 +302,32 @@
 			path = "Submodules/AFNetworking/UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		8447DF1D1A18DAE60011425A /* ISO86001DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF1E1A18DAE60011425A /* ISO8601DateFormatter.h */,
+				8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */,
+			);
+			path = ISO86001DateFormatter;
+			sourceTree = "<group>";
+		};
+		8447DF251A18DB1A0011425A /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF291A18DB1A0011425A /* UIImageToDataTransformer */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		8447DF291A18DB1A0011425A /* UIImageToDataTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF2A1A18DB1A0011425A /* UIImageToDataTransformer.h */,
+				8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */,
+			);
+			path = UIImageToDataTransformer;
+			sourceTree = "<group>";
+		};
 		84C01CF11A18CDDA000B473C /* Lumberjack */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				84C01D331A18D01F000B473C /* Formatters */,
-				84C01D3A1A18D01F000B473C /* Transformers */,
+				8447DF251A18DB1A0011425A /* Transformers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -452,19 +478,10 @@
 		84C01D331A18D01F000B473C /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				84C01D341A18D01F000B473C /* ISO86001DAteFormatter */,
+				8447DF1D1A18DAE60011425A /* ISO86001DateFormatter */,
 				84C01D371A18D01F000B473C /* LumberJackFormatter */,
 			);
 			path = Formatters;
-			sourceTree = "<group>";
-		};
-		84C01D341A18D01F000B473C /* ISO86001DAteFormatter */ = {
-			isa = PBXGroup;
-			children = (
-				84C01D351A18D01F000B473C /* ISO8601DateFormatter.h */,
-				84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */,
-			);
-			path = ISO86001DAteFormatter;
 			sourceTree = "<group>";
 		};
 		84C01D371A18D01F000B473C /* LumberJackFormatter */ = {
@@ -474,23 +491,6 @@
 				84C01D391A18D01F000B473C /* LumberjackFormatter.m */,
 			);
 			path = LumberJackFormatter;
-			sourceTree = "<group>";
-		};
-		84C01D3A1A18D01F000B473C /* Transformers */ = {
-			isa = PBXGroup;
-			children = (
-				84C01D3B1A18D01F000B473C /* ImageToDataTransformer */,
-			);
-			path = Transformers;
-			sourceTree = "<group>";
-		};
-		84C01D3B1A18D01F000B473C /* ImageToDataTransformer */ = {
-			isa = PBXGroup;
-			children = (
-				84C01D3C1A18D01F000B473C /* ImageToDataTransformer.h */,
-				84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */,
-			);
-			path = ImageToDataTransformer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -601,13 +601,13 @@
 				840F3B861A18B86200E8BFDE /* UIWebView+AFNetworking.m in Sources */,
 				840F3B841A18B86200E8BFDE /* UIProgressView+AFNetworking.m in Sources */,
 				84C01D111A18CDDA000B473C /* DDTTYLogger.m in Sources */,
-				84C01D481A18D01F000B473C /* ImageToDataTransformer.m in Sources */,
+				8447DF2D1A18DB1A0011425A /* UIImageToDataTransformer.m in Sources */,
 				84C01D441A18D01F000B473C /* UIImage+fixOrientation.m in Sources */,
+				8447DF201A18DAE60011425A /* ISO8601DateFormatter.m in Sources */,
 				84C01D411A18D01F000B473C /* NSString+ISO8601Date.m in Sources */,
 				84C01D121A18CDDA000B473C /* DDContextFilterLogFormatter.m in Sources */,
 				84C01D0E1A18CDDA000B473C /* DDASLLogger.m in Sources */,
 				84C01D101A18CDDA000B473C /* DDLog.m in Sources */,
-				84C01D461A18D01F000B473C /* ISO8601DateFormatter.m in Sources */,
 				840F3B831A18B86200E8BFDE /* UIImageView+AFNetworking.m in Sources */,
 				840F3B171A18B83400E8BFDE /* AFSecurityPolicy.m in Sources */,
 				840F3A4E1A18B39E00E8BFDE /* main.m in Sources */,
