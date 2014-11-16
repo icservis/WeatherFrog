@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Logging.
+    LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
+    [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    DDLogDebug(@"Test");
     return YES;
 }
 

@@ -32,6 +32,25 @@
 		840F3B841A18B86200E8BFDE /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7A1A18B86200E8BFDE /* UIProgressView+AFNetworking.m */; };
 		840F3B851A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7C1A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m */; };
 		840F3B861A18B86200E8BFDE /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1A18B86200E8BFDE /* UIWebView+AFNetworking.m */; };
+		84C01D0C1A18CDDA000B473C /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */; };
+		84C01D0D1A18CDDA000B473C /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CF81A18CDDA000B473C /* DDASLLogCapture.m */; };
+		84C01D0E1A18CDDA000B473C /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CFA1A18CDDA000B473C /* DDASLLogger.m */; };
+		84C01D0F1A18CDDA000B473C /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01CFD1A18CDDA000B473C /* DDFileLogger.m */; };
+		84C01D101A18CDDA000B473C /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D001A18CDDA000B473C /* DDLog.m */; };
+		84C01D111A18CDDA000B473C /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D021A18CDDA000B473C /* DDTTYLogger.m */; };
+		84C01D121A18CDDA000B473C /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D051A18CDDA000B473C /* DDContextFilterLogFormatter.m */; };
+		84C01D131A18CDDA000B473C /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D071A18CDDA000B473C /* DDDispatchQueueLogFormatter.m */; };
+		84C01D141A18CDDA000B473C /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D091A18CDDA000B473C /* DDMultiFormatter.m */; };
+		84C01D151A18CDDA000B473C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84C01D0A1A18CDDA000B473C /* README.txt */; };
+		84C01D3F1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D1B1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84C01D401A18D01F000B473C /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D1F1A18D01F000B473C /* NSDate+ISO8601Date.m */; };
+		84C01D411A18D01F000B473C /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D231A18D01F000B473C /* NSString+ISO8601Date.m */; };
+		84C01D421A18D01F000B473C /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D261A18D01F000B473C /* NSString+URLEncoding.m */; };
+		84C01D431A18D01F000B473C /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D291A18D01F000B473C /* NSString+validation.m */; };
+		84C01D441A18D01F000B473C /* UIImage+fixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D2D1A18D01F000B473C /* UIImage+fixOrientation.m */; };
+		84C01D461A18D01F000B473C /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		84C01D471A18D01F000B473C /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D391A18D01F000B473C /* LumberjackFormatter.m */; };
+		84C01D481A18D01F000B473C /* ImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +114,47 @@
 		840F3B7C1A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		840F3B7D1A18B86200E8BFDE /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		840F3B7E1A18B86200E8BFDE /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		84C01CF51A18CDDA000B473C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		84C01CF71A18CDDA000B473C /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
+		84C01CF81A18CDDA000B473C /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
+		84C01CF91A18CDDA000B473C /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		84C01CFA1A18CDDA000B473C /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		84C01CFB1A18CDDA000B473C /* DDAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssert.h; sourceTree = "<group>"; };
+		84C01CFC1A18CDDA000B473C /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		84C01CFD1A18CDDA000B473C /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		84C01CFE1A18CDDA000B473C /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
+		84C01CFF1A18CDDA000B473C /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		84C01D001A18CDDA000B473C /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		84C01D011A18CDDA000B473C /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		84C01D021A18CDDA000B473C /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		84C01D041A18CDDA000B473C /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		84C01D051A18CDDA000B473C /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		84C01D061A18CDDA000B473C /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		84C01D071A18CDDA000B473C /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		84C01D081A18CDDA000B473C /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
+		84C01D091A18CDDA000B473C /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
+		84C01D0A1A18CDDA000B473C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		84C01D161A18CE30000B473C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		84C01D1A1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
+		84C01D1B1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
+		84C01D1E1A18D01F000B473C /* NSDate+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601Date.h"; sourceTree = "<group>"; };
+		84C01D1F1A18D01F000B473C /* NSDate+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601Date.m"; sourceTree = "<group>"; };
+		84C01D221A18D01F000B473C /* NSString+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ISO8601Date.h"; sourceTree = "<group>"; };
+		84C01D231A18D01F000B473C /* NSString+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ISO8601Date.m"; sourceTree = "<group>"; };
+		84C01D251A18D01F000B473C /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		84C01D261A18D01F000B473C /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		84C01D281A18D01F000B473C /* NSString+validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+validation.h"; sourceTree = "<group>"; };
+		84C01D291A18D01F000B473C /* NSString+validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+validation.m"; sourceTree = "<group>"; };
+		84C01D2C1A18D01F000B473C /* UIImage+fixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+fixOrientation.h"; sourceTree = "<group>"; };
+		84C01D2D1A18D01F000B473C /* UIImage+fixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+fixOrientation.m"; sourceTree = "<group>"; };
+		84C01D351A18D01F000B473C /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		84C01D381A18D01F000B473C /* LumberjackFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumberjackFormatter.h; sourceTree = "<group>"; };
+		84C01D391A18D01F000B473C /* LumberjackFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumberjackFormatter.m; sourceTree = "<group>"; };
+		84C01D3C1A18D01F000B473C /* ImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToDataTransformer.h; sourceTree = "<group>"; };
+		84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToDataTransformer.m; sourceTree = "<group>"; };
+		84C01D4A1A18D082000B473C /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lumberjack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +215,8 @@
 			children = (
 				840F3A4C1A18B39E00E8BFDE /* Info.plist */,
 				840F3A4D1A18B39E00E8BFDE /* main.m */,
+				84C01D161A18CE30000B473C /* PrefixHeader.pch */,
+				84C01D4A1A18D082000B473C /* Lumberjack.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -206,6 +268,8 @@
 		840F3B121A18B83400E8BFDE /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				84C01D171A18D01F000B473C /* Libraries */,
+				84C01CF11A18CDDA000B473C /* Lumberjack */,
 				840F3AF41A18B83400E8BFDE /* AFNetworking */,
 				840F3B6D1A18B86200E8BFDE /* UIKit+AFNetworking */,
 			);
@@ -236,6 +300,197 @@
 			);
 			name = "UIKit+AFNetworking";
 			path = "Submodules/AFNetworking/UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		84C01CF11A18CDDA000B473C /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				84C01CF51A18CDDA000B473C /* DDAbstractDatabaseLogger.h */,
+				84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */,
+				84C01CF71A18CDDA000B473C /* DDASLLogCapture.h */,
+				84C01CF81A18CDDA000B473C /* DDASLLogCapture.m */,
+				84C01CF91A18CDDA000B473C /* DDASLLogger.h */,
+				84C01CFA1A18CDDA000B473C /* DDASLLogger.m */,
+				84C01CFB1A18CDDA000B473C /* DDAssert.h */,
+				84C01CFC1A18CDDA000B473C /* DDFileLogger.h */,
+				84C01CFD1A18CDDA000B473C /* DDFileLogger.m */,
+				84C01CFE1A18CDDA000B473C /* DDLog+LOGV.h */,
+				84C01CFF1A18CDDA000B473C /* DDLog.h */,
+				84C01D001A18CDDA000B473C /* DDLog.m */,
+				84C01D011A18CDDA000B473C /* DDTTYLogger.h */,
+				84C01D021A18CDDA000B473C /* DDTTYLogger.m */,
+				84C01D031A18CDDA000B473C /* Extensions */,
+			);
+			name = Lumberjack;
+			path = Submodules/CocoaLumberjack/Lumberjack;
+			sourceTree = "<group>";
+		};
+		84C01D031A18CDDA000B473C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D041A18CDDA000B473C /* DDContextFilterLogFormatter.h */,
+				84C01D051A18CDDA000B473C /* DDContextFilterLogFormatter.m */,
+				84C01D061A18CDDA000B473C /* DDDispatchQueueLogFormatter.h */,
+				84C01D071A18CDDA000B473C /* DDDispatchQueueLogFormatter.m */,
+				84C01D081A18CDDA000B473C /* DDMultiFormatter.h */,
+				84C01D091A18CDDA000B473C /* DDMultiFormatter.m */,
+				84C01D0A1A18CDDA000B473C /* README.txt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84C01D171A18D01F000B473C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D181A18D01F000B473C /* Categories */,
+				84C01D2E1A18D01F000B473C /* Classes */,
+			);
+			name = Libraries;
+			path = Submodules/Libraries;
+			sourceTree = "<group>";
+		};
+		84C01D181A18D01F000B473C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D191A18D01F000B473C /* CLPlacemark */,
+				84C01D1C1A18D01F000B473C /* NSDate */,
+				84C01D201A18D01F000B473C /* NSString */,
+				84C01D2A1A18D01F000B473C /* UIImage */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		84C01D191A18D01F000B473C /* CLPlacemark */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D1A1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.h */,
+				84C01D1B1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.m */,
+			);
+			path = CLPlacemark;
+			sourceTree = "<group>";
+		};
+		84C01D1C1A18D01F000B473C /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D1D1A18D01F000B473C /* ISO8601Date */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		84C01D1D1A18D01F000B473C /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D1E1A18D01F000B473C /* NSDate+ISO8601Date.h */,
+				84C01D1F1A18D01F000B473C /* NSDate+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84C01D201A18D01F000B473C /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D211A18D01F000B473C /* ISO8601Date */,
+				84C01D241A18D01F000B473C /* URLEncoding */,
+				84C01D271A18D01F000B473C /* Validation */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		84C01D211A18D01F000B473C /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D221A18D01F000B473C /* NSString+ISO8601Date.h */,
+				84C01D231A18D01F000B473C /* NSString+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84C01D241A18D01F000B473C /* URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D251A18D01F000B473C /* NSString+URLEncoding.h */,
+				84C01D261A18D01F000B473C /* NSString+URLEncoding.m */,
+			);
+			path = URLEncoding;
+			sourceTree = "<group>";
+		};
+		84C01D271A18D01F000B473C /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D281A18D01F000B473C /* NSString+validation.h */,
+				84C01D291A18D01F000B473C /* NSString+validation.m */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		84C01D2A1A18D01F000B473C /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D2B1A18D01F000B473C /* FixOrientation */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		84C01D2B1A18D01F000B473C /* FixOrientation */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D2C1A18D01F000B473C /* UIImage+fixOrientation.h */,
+				84C01D2D1A18D01F000B473C /* UIImage+fixOrientation.m */,
+			);
+			path = FixOrientation;
+			sourceTree = "<group>";
+		};
+		84C01D2E1A18D01F000B473C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D331A18D01F000B473C /* Formatters */,
+				84C01D3A1A18D01F000B473C /* Transformers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		84C01D331A18D01F000B473C /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D341A18D01F000B473C /* ISO86001DAteFormatter */,
+				84C01D371A18D01F000B473C /* LumberJackFormatter */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		84C01D341A18D01F000B473C /* ISO86001DAteFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D351A18D01F000B473C /* ISO8601DateFormatter.h */,
+				84C01D361A18D01F000B473C /* ISO8601DateFormatter.m */,
+			);
+			path = ISO86001DAteFormatter;
+			sourceTree = "<group>";
+		};
+		84C01D371A18D01F000B473C /* LumberJackFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D381A18D01F000B473C /* LumberjackFormatter.h */,
+				84C01D391A18D01F000B473C /* LumberjackFormatter.m */,
+			);
+			path = LumberJackFormatter;
+			sourceTree = "<group>";
+		};
+		84C01D3A1A18D01F000B473C /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D3B1A18D01F000B473C /* ImageToDataTransformer */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		84C01D3B1A18D01F000B473C /* ImageToDataTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				84C01D3C1A18D01F000B473C /* ImageToDataTransformer.h */,
+				84C01D3D1A18D01F000B473C /* ImageToDataTransformer.m */,
+			);
+			path = ImageToDataTransformer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +576,7 @@
 			files = (
 				840F3A5A1A18B39E00E8BFDE /* Main.storyboard in Resources */,
 				840F3A5F1A18B39E00E8BFDE /* LaunchScreen.xib in Resources */,
+				84C01D151A18CDDA000B473C /* README.txt in Resources */,
 				840F3A5C1A18B39E00E8BFDE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,25 +596,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				840F3A511A18B39E00E8BFDE /* AppDelegate.m in Sources */,
+				84C01D0F1A18CDDA000B473C /* DDFileLogger.m in Sources */,
 				840F3B821A18B86200E8BFDE /* UIButton+AFNetworking.m in Sources */,
 				840F3B861A18B86200E8BFDE /* UIWebView+AFNetworking.m in Sources */,
 				840F3B841A18B86200E8BFDE /* UIProgressView+AFNetworking.m in Sources */,
+				84C01D111A18CDDA000B473C /* DDTTYLogger.m in Sources */,
+				84C01D481A18D01F000B473C /* ImageToDataTransformer.m in Sources */,
+				84C01D441A18D01F000B473C /* UIImage+fixOrientation.m in Sources */,
+				84C01D411A18D01F000B473C /* NSString+ISO8601Date.m in Sources */,
+				84C01D121A18CDDA000B473C /* DDContextFilterLogFormatter.m in Sources */,
+				84C01D0E1A18CDDA000B473C /* DDASLLogger.m in Sources */,
+				84C01D101A18CDDA000B473C /* DDLog.m in Sources */,
+				84C01D461A18D01F000B473C /* ISO8601DateFormatter.m in Sources */,
 				840F3B831A18B86200E8BFDE /* UIImageView+AFNetworking.m in Sources */,
 				840F3B171A18B83400E8BFDE /* AFSecurityPolicy.m in Sources */,
 				840F3A4E1A18B39E00E8BFDE /* main.m in Sources */,
+				84C01D471A18D01F000B473C /* LumberjackFormatter.m in Sources */,
+				84C01D431A18D01F000B473C /* NSString+validation.m in Sources */,
+				84C01D0C1A18CDDA000B473C /* DDAbstractDatabaseLogger.m in Sources */,
 				840F3B141A18B83400E8BFDE /* AFHTTPRequestOperationManager.m in Sources */,
 				840F3B181A18B83400E8BFDE /* AFURLConnectionOperation.m in Sources */,
 				840F3B801A18B86200E8BFDE /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				840F3B131A18B83400E8BFDE /* AFHTTPRequestOperation.m in Sources */,
+				84C01D401A18D01F000B473C /* NSDate+ISO8601Date.m in Sources */,
+				84C01D141A18CDDA000B473C /* DDMultiFormatter.m in Sources */,
+				84C01D131A18CDDA000B473C /* DDDispatchQueueLogFormatter.m in Sources */,
 				840F3A571A18B39E00E8BFDE /* ViewController.m in Sources */,
 				840F3B191A18B83400E8BFDE /* AFURLRequestSerialization.m in Sources */,
 				840F3B151A18B83400E8BFDE /* AFHTTPSessionManager.m in Sources */,
 				840F3B161A18B83400E8BFDE /* AFNetworkReachabilityManager.m in Sources */,
 				840F3B851A18B86200E8BFDE /* UIRefreshControl+AFNetworking.m in Sources */,
 				840F3B811A18B86200E8BFDE /* UIAlertView+AFNetworking.m in Sources */,
+				84C01D0D1A18CDDA000B473C /* DDASLLogCapture.m in Sources */,
+				84C01D3F1A18D01F000B473C /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				840F3B1A1A18B83400E8BFDE /* AFURLResponseSerialization.m in Sources */,
 				840F3B1B1A18B83400E8BFDE /* AFURLSessionManager.m in Sources */,
 				840F3A541A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld in Sources */,
+				84C01D421A18D01F000B473C /* NSString+URLEncoding.m in Sources */,
 				840F3B7F1A18B86200E8BFDE /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +698,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog iOS/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -465,6 +741,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog iOS/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
