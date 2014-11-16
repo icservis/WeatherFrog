@@ -14,6 +14,15 @@
 		840F3AC91A18B40100E8BFDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840F3AC81A18B40100E8BFDE /* Images.xcassets */; };
 		840F3ACC1A18B40100E8BFDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F3ACA1A18B40100E8BFDE /* Main.storyboard */; };
 		840F3AD81A18B40100E8BFDE /* WeatherFrog_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3AD71A18B40100E8BFDE /* WeatherFrog_MacTests.m */; };
+		840F3B591A18B84000E8BFDE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B281A18B84000E8BFDE /* AFHTTPRequestOperation.m */; };
+		840F3B5A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B2A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m */; };
+		840F3B5B1A18B84000E8BFDE /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B2C1A18B84000E8BFDE /* AFHTTPSessionManager.m */; };
+		840F3B5C1A18B84000E8BFDE /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B2F1A18B84000E8BFDE /* AFNetworkReachabilityManager.m */; };
+		840F3B5D1A18B84000E8BFDE /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B311A18B84000E8BFDE /* AFSecurityPolicy.m */; };
+		840F3B5E1A18B84000E8BFDE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B331A18B84000E8BFDE /* AFURLConnectionOperation.m */; };
+		840F3B5F1A18B84000E8BFDE /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B351A18B84000E8BFDE /* AFURLRequestSerialization.m */; };
+		840F3B601A18B84000E8BFDE /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B371A18B84000E8BFDE /* AFURLResponseSerialization.m */; };
+		840F3B611A18B84000E8BFDE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B391A18B84000E8BFDE /* AFURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +49,25 @@
 		840F3AD11A18B40100E8BFDE /* WeatherFrog MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherFrog MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840F3AD61A18B40100E8BFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840F3AD71A18B40100E8BFDE /* WeatherFrog_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrog_MacTests.m; sourceTree = "<group>"; };
+		840F3B271A18B84000E8BFDE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		840F3B281A18B84000E8BFDE /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		840F3B291A18B84000E8BFDE /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		840F3B2A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		840F3B2B1A18B84000E8BFDE /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		840F3B2C1A18B84000E8BFDE /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		840F3B2D1A18B84000E8BFDE /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		840F3B2E1A18B84000E8BFDE /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		840F3B2F1A18B84000E8BFDE /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		840F3B301A18B84000E8BFDE /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		840F3B311A18B84000E8BFDE /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		840F3B321A18B84000E8BFDE /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		840F3B331A18B84000E8BFDE /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		840F3B341A18B84000E8BFDE /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		840F3B351A18B84000E8BFDE /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		840F3B361A18B84000E8BFDE /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		840F3B371A18B84000E8BFDE /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		840F3B381A18B84000E8BFDE /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		840F3B391A18B84000E8BFDE /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +93,7 @@
 			children = (
 				840F3ABA1A18B40100E8BFDE /* WeatherFrog Mac */,
 				840F3AD41A18B40100E8BFDE /* WeatherFrog MacTests */,
+				840F3B581A18B84000E8BFDE /* Vendor */,
 				840F3AB91A18B40100E8BFDE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +146,42 @@
 				840F3AD61A18B40100E8BFDE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		840F3B3A1A18B84000E8BFDE /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				840F3B271A18B84000E8BFDE /* AFHTTPRequestOperation.h */,
+				840F3B281A18B84000E8BFDE /* AFHTTPRequestOperation.m */,
+				840F3B291A18B84000E8BFDE /* AFHTTPRequestOperationManager.h */,
+				840F3B2A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m */,
+				840F3B2B1A18B84000E8BFDE /* AFHTTPSessionManager.h */,
+				840F3B2C1A18B84000E8BFDE /* AFHTTPSessionManager.m */,
+				840F3B2D1A18B84000E8BFDE /* AFNetworking.h */,
+				840F3B2E1A18B84000E8BFDE /* AFNetworkReachabilityManager.h */,
+				840F3B2F1A18B84000E8BFDE /* AFNetworkReachabilityManager.m */,
+				840F3B301A18B84000E8BFDE /* AFSecurityPolicy.h */,
+				840F3B311A18B84000E8BFDE /* AFSecurityPolicy.m */,
+				840F3B321A18B84000E8BFDE /* AFURLConnectionOperation.h */,
+				840F3B331A18B84000E8BFDE /* AFURLConnectionOperation.m */,
+				840F3B341A18B84000E8BFDE /* AFURLRequestSerialization.h */,
+				840F3B351A18B84000E8BFDE /* AFURLRequestSerialization.m */,
+				840F3B361A18B84000E8BFDE /* AFURLResponseSerialization.h */,
+				840F3B371A18B84000E8BFDE /* AFURLResponseSerialization.m */,
+				840F3B381A18B84000E8BFDE /* AFURLSessionManager.h */,
+				840F3B391A18B84000E8BFDE /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			path = Submodules/AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
+		840F3B581A18B84000E8BFDE /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				840F3B3A1A18B84000E8BFDE /* AFNetworking */,
+			);
+			name = Vendor;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +285,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				840F3AC41A18B40100E8BFDE /* ViewController.m in Sources */,
+				840F3B5D1A18B84000E8BFDE /* AFSecurityPolicy.m in Sources */,
 				840F3AC11A18B40100E8BFDE /* main.m in Sources */,
+				840F3B5A1A18B84000E8BFDE /* AFHTTPRequestOperationManager.m in Sources */,
+				840F3B5E1A18B84000E8BFDE /* AFURLConnectionOperation.m in Sources */,
+				840F3B591A18B84000E8BFDE /* AFHTTPRequestOperation.m in Sources */,
 				840F3AC71A18B40100E8BFDE /* WeatherFrog_Mac.xcdatamodeld in Sources */,
+				840F3B5F1A18B84000E8BFDE /* AFURLRequestSerialization.m in Sources */,
+				840F3B5B1A18B84000E8BFDE /* AFHTTPSessionManager.m in Sources */,
+				840F3B5C1A18B84000E8BFDE /* AFNetworkReachabilityManager.m in Sources */,
+				840F3B601A18B84000E8BFDE /* AFURLResponseSerialization.m in Sources */,
+				840F3B611A18B84000E8BFDE /* AFURLSessionManager.m in Sources */,
 				840F3ABF1A18B40100E8BFDE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

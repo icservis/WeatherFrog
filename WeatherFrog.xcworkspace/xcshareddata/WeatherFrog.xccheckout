@@ -12,6 +12,10 @@
 	<dict>
 		<key>236B8910826D78C14B3CA726E593BF967BC25115</key>
 		<string>https://github.com/icservis/WeatherFrog.git</string>
+		<key>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</key>
+		<string>https://github.com/robbiehanson/CocoaLumberjack</string>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
+		<string>https://github.com/AFNetworking/AFNetworking.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>WeatherFrog.xcworkspace</string>
@@ -19,6 +23,10 @@
 	<dict>
 		<key>236B8910826D78C14B3CA726E593BF967BC25115</key>
 		<string>..</string>
+		<key>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</key>
+		<string>..Submodules/CocoaLumberjack/</string>
+		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
+		<string>..Submodules/AFNetworking/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/icservis/WeatherFrog.git</string>
@@ -28,6 +36,22 @@
 	<string>236B8910826D78C14B3CA726E593BF967BC25115</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AFNetworking</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CocoaLumberjack</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
