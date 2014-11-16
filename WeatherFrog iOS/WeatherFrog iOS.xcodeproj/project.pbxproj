@@ -1,0 +1,446 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		840F3A4E1A18B39E00E8BFDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3A4D1A18B39E00E8BFDE /* main.m */; };
+		840F3A511A18B39E00E8BFDE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3A501A18B39E00E8BFDE /* AppDelegate.m */; };
+		840F3A541A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 840F3A521A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld */; };
+		840F3A571A18B39E00E8BFDE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3A561A18B39E00E8BFDE /* ViewController.m */; };
+		840F3A5A1A18B39E00E8BFDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840F3A581A18B39E00E8BFDE /* Main.storyboard */; };
+		840F3A5C1A18B39E00E8BFDE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840F3A5B1A18B39E00E8BFDE /* Images.xcassets */; };
+		840F3A5F1A18B39E00E8BFDE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F3A5D1A18B39E00E8BFDE /* LaunchScreen.xib */; };
+		840F3A6B1A18B39E00E8BFDE /* WeatherFrog_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F3A6A1A18B39E00E8BFDE /* WeatherFrog_iOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		840F3A651A18B39E00E8BFDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 840F3A401A18B39E00E8BFDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 840F3A471A18B39E00E8BFDE;
+			remoteInfo = "WeatherFrog iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		840F3A481A18B39E00E8BFDE /* WeatherFrog iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840F3A4C1A18B39E00E8BFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		840F3A4D1A18B39E00E8BFDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		840F3A4F1A18B39E00E8BFDE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		840F3A501A18B39E00E8BFDE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		840F3A531A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherFrog_iOS.xcdatamodel; sourceTree = "<group>"; };
+		840F3A551A18B39E00E8BFDE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		840F3A561A18B39E00E8BFDE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		840F3A591A18B39E00E8BFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		840F3A5B1A18B39E00E8BFDE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		840F3A5E1A18B39E00E8BFDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		840F3A641A18B39E00E8BFDE /* WeatherFrog iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherFrog iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840F3A691A18B39E00E8BFDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		840F3A6A1A18B39E00E8BFDE /* WeatherFrog_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrog_iOSTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		840F3A451A18B39E00E8BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840F3A611A18B39E00E8BFDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		840F3A3F1A18B39E00E8BFDE = {
+			isa = PBXGroup;
+			children = (
+				840F3A4A1A18B39E00E8BFDE /* WeatherFrog iOS */,
+				840F3A671A18B39E00E8BFDE /* WeatherFrog iOSTests */,
+				840F3A491A18B39E00E8BFDE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		840F3A491A18B39E00E8BFDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				840F3A481A18B39E00E8BFDE /* WeatherFrog iOS.app */,
+				840F3A641A18B39E00E8BFDE /* WeatherFrog iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		840F3A4A1A18B39E00E8BFDE /* WeatherFrog iOS */ = {
+			isa = PBXGroup;
+			children = (
+				840F3A4F1A18B39E00E8BFDE /* AppDelegate.h */,
+				840F3A501A18B39E00E8BFDE /* AppDelegate.m */,
+				840F3A551A18B39E00E8BFDE /* ViewController.h */,
+				840F3A561A18B39E00E8BFDE /* ViewController.m */,
+				840F3A581A18B39E00E8BFDE /* Main.storyboard */,
+				840F3A5B1A18B39E00E8BFDE /* Images.xcassets */,
+				840F3A5D1A18B39E00E8BFDE /* LaunchScreen.xib */,
+				840F3A521A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld */,
+				840F3A4B1A18B39E00E8BFDE /* Supporting Files */,
+			);
+			path = "WeatherFrog iOS";
+			sourceTree = "<group>";
+		};
+		840F3A4B1A18B39E00E8BFDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				840F3A4C1A18B39E00E8BFDE /* Info.plist */,
+				840F3A4D1A18B39E00E8BFDE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		840F3A671A18B39E00E8BFDE /* WeatherFrog iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				840F3A6A1A18B39E00E8BFDE /* WeatherFrog_iOSTests.m */,
+				840F3A681A18B39E00E8BFDE /* Supporting Files */,
+			);
+			path = "WeatherFrog iOSTests";
+			sourceTree = "<group>";
+		};
+		840F3A681A18B39E00E8BFDE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				840F3A691A18B39E00E8BFDE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		840F3A471A18B39E00E8BFDE /* WeatherFrog iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840F3A6E1A18B39E00E8BFDE /* Build configuration list for PBXNativeTarget "WeatherFrog iOS" */;
+			buildPhases = (
+				840F3A441A18B39E00E8BFDE /* Sources */,
+				840F3A451A18B39E00E8BFDE /* Frameworks */,
+				840F3A461A18B39E00E8BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WeatherFrog iOS";
+			productName = "WeatherFrog iOS";
+			productReference = 840F3A481A18B39E00E8BFDE /* WeatherFrog iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		840F3A631A18B39E00E8BFDE /* WeatherFrog iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 840F3A711A18B39E00E8BFDE /* Build configuration list for PBXNativeTarget "WeatherFrog iOSTests" */;
+			buildPhases = (
+				840F3A601A18B39E00E8BFDE /* Sources */,
+				840F3A611A18B39E00E8BFDE /* Frameworks */,
+				840F3A621A18B39E00E8BFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				840F3A661A18B39E00E8BFDE /* PBXTargetDependency */,
+			);
+			name = "WeatherFrog iOSTests";
+			productName = "WeatherFrog iOSTests";
+			productReference = 840F3A641A18B39E00E8BFDE /* WeatherFrog iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		840F3A401A18B39E00E8BFDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "IC Servis, s.r.o.";
+				TargetAttributes = {
+					840F3A471A18B39E00E8BFDE = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					840F3A631A18B39E00E8BFDE = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 840F3A471A18B39E00E8BFDE;
+					};
+				};
+			};
+			buildConfigurationList = 840F3A431A18B39E00E8BFDE /* Build configuration list for PBXProject "WeatherFrog iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 840F3A3F1A18B39E00E8BFDE;
+			productRefGroup = 840F3A491A18B39E00E8BFDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				840F3A471A18B39E00E8BFDE /* WeatherFrog iOS */,
+				840F3A631A18B39E00E8BFDE /* WeatherFrog iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		840F3A461A18B39E00E8BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840F3A5A1A18B39E00E8BFDE /* Main.storyboard in Resources */,
+				840F3A5F1A18B39E00E8BFDE /* LaunchScreen.xib in Resources */,
+				840F3A5C1A18B39E00E8BFDE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840F3A621A18B39E00E8BFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		840F3A441A18B39E00E8BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840F3A511A18B39E00E8BFDE /* AppDelegate.m in Sources */,
+				840F3A4E1A18B39E00E8BFDE /* main.m in Sources */,
+				840F3A571A18B39E00E8BFDE /* ViewController.m in Sources */,
+				840F3A541A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		840F3A601A18B39E00E8BFDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840F3A6B1A18B39E00E8BFDE /* WeatherFrog_iOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		840F3A661A18B39E00E8BFDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 840F3A471A18B39E00E8BFDE /* WeatherFrog iOS */;
+			targetProxy = 840F3A651A18B39E00E8BFDE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		840F3A581A18B39E00E8BFDE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840F3A591A18B39E00E8BFDE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		840F3A5D1A18B39E00E8BFDE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840F3A5E1A18B39E00E8BFDE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		840F3A6C1A18B39E00E8BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		840F3A6D1A18B39E00E8BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		840F3A6F1A18B39E00E8BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WeatherFrog iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		840F3A701A18B39E00E8BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WeatherFrog iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		840F3A721A18B39E00E8BFDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WeatherFrog iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherFrog iOS.app/WeatherFrog iOS";
+			};
+			name = Debug;
+		};
+		840F3A731A18B39E00E8BFDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WeatherFrog iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherFrog iOS.app/WeatherFrog iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		840F3A431A18B39E00E8BFDE /* Build configuration list for PBXProject "WeatherFrog iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840F3A6C1A18B39E00E8BFDE /* Debug */,
+				840F3A6D1A18B39E00E8BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		840F3A6E1A18B39E00E8BFDE /* Build configuration list for PBXNativeTarget "WeatherFrog iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840F3A6F1A18B39E00E8BFDE /* Debug */,
+				840F3A701A18B39E00E8BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		840F3A711A18B39E00E8BFDE /* Build configuration list for PBXNativeTarget "WeatherFrog iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				840F3A721A18B39E00E8BFDE /* Debug */,
+				840F3A731A18B39E00E8BFDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		840F3A521A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				840F3A531A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodel */,
+			);
+			currentVersion = 840F3A531A18B39E00E8BFDE /* WeatherFrog_iOS.xcdatamodel */;
+			path = WeatherFrog_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 840F3A401A18B39E00E8BFDE /* Project object */;
+}
