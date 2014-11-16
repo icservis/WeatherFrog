@@ -52,6 +52,20 @@
 			remoteGlobalIDString = 840F3AB71A18B40100E8BFDE;
 			remoteInfo = "WeatherFrog Mac";
 		};
+		8447DF631A18E2670011425A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8447DF5D1A18E2670011425A /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CorePlot;
+		};
+		8447DF651A18E2670011425A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8447DF5D1A18E2670011425A /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0730F600109492D800E95162;
+			remoteInfo = UnitTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +128,7 @@
 		8447DF471A18DC590011425A /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
 		8447DF481A18DC590011425A /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
 		8447DF491A18DC590011425A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		8447DF5D1A18E2670011425A /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = ../Submodules/CorePlot/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		84C084A01A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
 		84C084A11A18DA680053BC1D /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
 		84C084A41A18DA680053BC1D /* NSDate+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601Date.h"; sourceTree = "<group>"; };
@@ -151,6 +166,7 @@
 		840F3AAF1A18B40100E8BFDE = {
 			isa = PBXGroup;
 			children = (
+				8447DF5D1A18E2670011425A /* CorePlot.xcodeproj */,
 				840F3ABA1A18B40100E8BFDE /* WeatherFrog Mac */,
 				840F3AD41A18B40100E8BFDE /* WeatherFrog MacTests */,
 				840F3B581A18B84000E8BFDE /* Vendor */,
@@ -302,6 +318,15 @@
 				8447DF491A18DC590011425A /* README.txt */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8447DF5E1A18E2670011425A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF641A18E2670011425A /* CorePlot.framework */,
+				8447DF661A18E2670011425A /* UnitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		84C0849D1A18DA680053BC1D /* Libraries */ = {
@@ -499,6 +524,12 @@
 			mainGroup = 840F3AAF1A18B40100E8BFDE;
 			productRefGroup = 840F3AB91A18B40100E8BFDE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8447DF5E1A18E2670011425A /* Products */;
+					ProjectRef = 8447DF5D1A18E2670011425A /* CorePlot.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				840F3AB71A18B40100E8BFDE /* WeatherFrog Mac */,
@@ -506,6 +537,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8447DF641A18E2670011425A /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 8447DF631A18E2670011425A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8447DF661A18E2670011425A /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = 8447DF651A18E2670011425A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		840F3AB61A18B40100E8BFDE /* Resources */ = {

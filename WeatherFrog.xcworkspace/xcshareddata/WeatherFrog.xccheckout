@@ -14,6 +14,8 @@
 		<string>https://github.com/icservis/WeatherFrog.git</string>
 		<key>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</key>
 		<string>https://github.com/robbiehanson/CocoaLumberjack</string>
+		<key>8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5</key>
+		<string>https://github.com/core-plot/core-plot.git</string>
 		<key>91A0227A2188E7831814D55E00DD3B54EB0BE38B</key>
 		<string>https://github.com/icservis/Libraries.git</string>
 		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
@@ -27,6 +29,8 @@
 		<string>..</string>
 		<key>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</key>
 		<string>..Submodules/CocoaLumberjack</string>
+		<key>8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5</key>
+		<string>../Submodules/CorePlot/</string>
 		<key>91A0227A2188E7831814D55E00DD3B54EB0BE38B</key>
 		<string>../Submodules/Libraries</string>
 		<key>DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8</key>
@@ -55,6 +59,14 @@
 			<string>35B5C9A93714EC9BEB56BAE809C5551E5C66E52D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CocoaLumberjack</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CorePlot</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

@@ -1,30 +1,12 @@
 [submodule "Submodules/AFNetworking"]
 	path = Submodules/AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
-[submodule "Submodules/Reachability"]
-	path = Submodules/Reachability
-	url = https://github.com/tonymillion/Reachability.git
 [submodule "Submodules/CocoaLumberjack"]
 	path = Submodules/CocoaLumberjack
 	url = https://github.com/robbiehanson/CocoaLumberjack
-[submodule "Submodules/MBProgressHUD"]
-	path = Submodules/MBProgressHUD
-	url = https://github.com/jdg/MBProgressHUD.git
-[submodule "Submodules/KissXML"]
-	path = Submodules/KissXML
-	url = https://github.com/robbiehanson/KissXML.git
-[submodule "Submodules/AFKissXMLRequestOperation"]
-	path = Submodules/AFKissXMLRequestOperation
-	url = https://github.com/AFNetworking/AFKissXMLRequestOperation.git
 [submodule "Submodules/Libraries"]
 	path = Submodules/Libraries
 	url = https://icservis@github.com/icservis/Libraries.git
-[submodule "Submodules/SWRevealViewController"]
-	path = Submodules/SWRevealViewController
-	url = https://github.com/John-Lluch/SWRevealViewController.git
-[submodule "Submodules/CCHMapsActivity"]
-	path = Submodules/CCHMapsActivity
-	url = https://github.com/choefele/CCHMapsActivity.git
-[submodule "Submodules/iRate"]
-	path = Submodules/iRate
-	url = https://github.com/nicklockwood/iRate.git
+[submodule "Submodules/CorePlot"]
+	path = Submodules/CorePlot
+	url = https://github.com/core-plot/core-plot.git

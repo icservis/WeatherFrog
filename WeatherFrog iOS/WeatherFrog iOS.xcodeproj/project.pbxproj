@@ -61,6 +61,13 @@
 			remoteGlobalIDString = 840F3A471A18B39E00E8BFDE;
 			remoteInfo = "WeatherFrog iOS";
 		};
+		8447DF5B1A18E2520011425A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8447DF551A18E2520011425A /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +125,7 @@
 		8447DF1F1A18DAE60011425A /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		8447DF2A1A18DB1A0011425A /* UIImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageToDataTransformer.h; sourceTree = "<group>"; };
 		8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageToDataTransformer.m; sourceTree = "<group>"; };
+		8447DF551A18E2520011425A /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Submodules/CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		84C01CF51A18CDDA000B473C /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		84C01CF61A18CDDA000B473C /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		84C01CF71A18CDDA000B473C /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 		840F3A3F1A18B39E00E8BFDE = {
 			isa = PBXGroup;
 			children = (
+				8447DF551A18E2520011425A /* CorePlot-CocoaTouch.xcodeproj */,
 				840F3A4A1A18B39E00E8BFDE /* WeatherFrog iOS */,
 				840F3A671A18B39E00E8BFDE /* WeatherFrog iOSTests */,
 				840F3B121A18B83400E8BFDE /* Vendor */,
@@ -326,6 +335,14 @@
 				8447DF2B1A18DB1A0011425A /* UIImageToDataTransformer.m */,
 			);
 			path = UIImageToDataTransformer;
+			sourceTree = "<group>";
+		};
+		8447DF561A18E2520011425A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8447DF5C1A18E2520011425A /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		84C01CF11A18CDDA000B473C /* Lumberjack */ = {
@@ -561,6 +578,12 @@
 			mainGroup = 840F3A3F1A18B39E00E8BFDE;
 			productRefGroup = 840F3A491A18B39E00E8BFDE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8447DF561A18E2520011425A /* Products */;
+					ProjectRef = 8447DF551A18E2520011425A /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				840F3A471A18B39E00E8BFDE /* WeatherFrog iOS */,
@@ -568,6 +591,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8447DF5C1A18E2520011425A /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 8447DF5B1A18E2520011425A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		840F3A461A18B39E00E8BFDE /* Resources */ = {
