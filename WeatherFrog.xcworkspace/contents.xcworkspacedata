@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:WeatherFrog Mac/WeatherFrog Mac.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:WeatherFrog iOS/WeatherFrog iOS.xcodeproj">
+      location = "group:WeatherFrog/WeatherFrog.xcodeproj">
    </FileRef>
 </Workspace>
