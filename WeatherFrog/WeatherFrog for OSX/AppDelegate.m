@@ -16,6 +16,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    
+    // Logging.
+    LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
+    [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    DataService* dataService = [DataService sharedInstance];
+    DDLogDebug(@"applicationDirectory: %@", [dataService applicationDocumentsDirectory]);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

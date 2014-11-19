@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		84E084111A1B987C0071D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084101A1B987C0071D662 /* main.m */; };
 		84E084141A1B987C0071D662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084131A1B987C0071D662 /* AppDelegate.m */; };
-		84E084171A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E084151A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodeld */; };
 		84E0841A1A1B987C0071D662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084191A1B987C0071D662 /* ViewController.m */; };
 		84E0841D1A1B987C0071D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E0841B1A1B987C0071D662 /* Main.storyboard */; };
 		84E0841F1A1B987C0071D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E0841E1A1B987C0071D662 /* Images.xcassets */; };
@@ -68,6 +67,26 @@
 		84E084CA1A1B9A020071D662 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084B51A1B9A020071D662 /* DDMultiFormatter.m */; };
 		84E084CB1A1B9A020071D662 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84E084B61A1B9A020071D662 /* README.txt */; };
 		84E084CC1A1B9A020071D662 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84E084B61A1B9A020071D662 /* README.txt */; };
+		84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */; };
+		84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */; };
+		84E084E71A1C7D040071D662 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E61A1C7D040071D662 /* DataService.m */; };
+		84E084E81A1C7D040071D662 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E61A1C7D040071D662 /* DataService.m */; };
+		84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084EF1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084EF1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m */; };
+		84E0854C1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084F31A1C7F380071D662 /* NSDate+ISO8601Date.m */; };
+		84E0854D1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084F31A1C7F380071D662 /* NSDate+ISO8601Date.m */; };
+		84E0854E1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084F71A1C7F380071D662 /* NSString+ISO8601Date.m */; };
+		84E0854F1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084F71A1C7F380071D662 /* NSString+ISO8601Date.m */; };
+		84E085501A1C7F380071D662 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084FA1A1C7F380071D662 /* NSString+URLEncoding.m */; };
+		84E085511A1C7F380071D662 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084FA1A1C7F380071D662 /* NSString+URLEncoding.m */; };
+		84E085521A1C7F380071D662 /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084FD1A1C7F380071D662 /* NSString+validation.m */; };
+		84E085531A1C7F380071D662 /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084FD1A1C7F380071D662 /* NSString+validation.m */; };
+		84E085581A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0850A1A1C7F380071D662 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		84E085591A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0850A1A1C7F380071D662 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		84E0855A1A1C7F380071D662 /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0850D1A1C7F380071D662 /* LumberjackFormatter.m */; };
+		84E0855B1A1C7F380071D662 /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0850D1A1C7F380071D662 /* LumberjackFormatter.m */; };
+		84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E085451A1C7F380071D662 /* NSImageToDataTransformer.m */; };
+		84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E085481A1C7F380071D662 /* UIImageToDataTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,12 +128,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
 		84E0840C1A1B987C0071D662 /* WeatherFrog for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E0840F1A1B987C0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E084101A1B987C0071D662 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84E084121A1B987C0071D662 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84E084131A1B987C0071D662 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84E084161A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherFrog_for_iOS.xcdatamodel; sourceTree = "<group>"; };
 		84E084181A1B987C0071D662 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		84E084191A1B987C0071D662 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84E0841C1A1B987C0071D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +215,29 @@
 		84E084B61A1B9A020071D662 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = ../Submodules/CorePlot/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Submodules/CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		84E084E21A1C7CD60071D662 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		84E084E51A1C7D040071D662 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataService.h; path = "Shared Resources/DataService.h"; sourceTree = "<group>"; };
+		84E084E61A1C7D040071D662 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataService.m; path = "Shared Resources/DataService.m"; sourceTree = "<group>"; };
+		84E084E91A1C7E620071D662 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		84E084EA1A1C7E720071D662 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		84E084EE1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
+		84E084EF1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
+		84E084F21A1C7F380071D662 /* NSDate+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601Date.h"; sourceTree = "<group>"; };
+		84E084F31A1C7F380071D662 /* NSDate+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601Date.m"; sourceTree = "<group>"; };
+		84E084F61A1C7F380071D662 /* NSString+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ISO8601Date.h"; sourceTree = "<group>"; };
+		84E084F71A1C7F380071D662 /* NSString+ISO8601Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ISO8601Date.m"; sourceTree = "<group>"; };
+		84E084F91A1C7F380071D662 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		84E084FA1A1C7F380071D662 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		84E084FC1A1C7F380071D662 /* NSString+validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+validation.h"; sourceTree = "<group>"; };
+		84E084FD1A1C7F380071D662 /* NSString+validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+validation.m"; sourceTree = "<group>"; };
+		84E085091A1C7F380071D662 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		84E0850A1A1C7F380071D662 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		84E0850C1A1C7F380071D662 /* LumberjackFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumberjackFormatter.h; sourceTree = "<group>"; };
+		84E0850D1A1C7F380071D662 /* LumberjackFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumberjackFormatter.m; sourceTree = "<group>"; };
+		84E085441A1C7F380071D662 /* NSImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImageToDataTransformer.h; sourceTree = "<group>"; };
+		84E085451A1C7F380071D662 /* NSImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImageToDataTransformer.m; sourceTree = "<group>"; };
+		84E085471A1C7F380071D662 /* UIImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageToDataTransformer.h; sourceTree = "<group>"; };
+		84E085481A1C7F380071D662 /* UIImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageToDataTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +275,7 @@
 		84E083D31A1B98380071D662 = {
 			isa = PBXGroup;
 			children = (
+				84E084DF1A1C76CE0071D662 /* Shared Resources */,
 				84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */,
 				84E0842A1A1B987C0071D662 /* WeatherFrog for iOSTests */,
 				84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */,
@@ -263,7 +306,6 @@
 				84E0841B1A1B987C0071D662 /* Main.storyboard */,
 				84E0841E1A1B987C0071D662 /* Images.xcassets */,
 				84E084201A1B987C0071D662 /* LaunchScreen.xib */,
-				84E084151A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodeld */,
 				84E0840E1A1B987C0071D662 /* Supporting Files */,
 			);
 			path = "WeatherFrog for iOS";
@@ -274,6 +316,7 @@
 			children = (
 				84E0840F1A1B987C0071D662 /* Info.plist */,
 				84E084101A1B987C0071D662 /* main.m */,
+				84E084E91A1C7E620071D662 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -314,6 +357,7 @@
 			children = (
 				84E0843C1A1B988D0071D662 /* Info.plist */,
 				84E084401A1B988D0071D662 /* main.m */,
+				84E084EA1A1C7E720071D662 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -338,6 +382,7 @@
 		84E0845C1A1B99B10071D662 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				84E084EB1A1C7F380071D662 /* Libraries */,
 				84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */,
 				84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */,
 				84E0849D1A1B9A020071D662 /* Lumberjack */,
@@ -461,6 +506,171 @@
 				84E084DE1A1B9A7D0071D662 /* libCorePlot-CocoaTouch.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84E084DF1A1C76CE0071D662 /* Shared Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */,
+				84E084E51A1C7D040071D662 /* DataService.h */,
+				84E084E61A1C7D040071D662 /* DataService.m */,
+				84C77E161A1C808300348A8A /* Lumberjack.h */,
+			);
+			name = "Shared Resources";
+			sourceTree = "<group>";
+		};
+		84E084EB1A1C7F380071D662 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				84E084EC1A1C7F380071D662 /* Categories */,
+				84E085021A1C7F380071D662 /* Classes */,
+			);
+			name = Libraries;
+			path = ../Submodules/Libraries;
+			sourceTree = "<group>";
+		};
+		84E084EC1A1C7F380071D662 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				84E084ED1A1C7F380071D662 /* CLPlacemark */,
+				84E084F01A1C7F380071D662 /* NSDate */,
+				84E084F41A1C7F380071D662 /* NSString */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		84E084ED1A1C7F380071D662 /* CLPlacemark */ = {
+			isa = PBXGroup;
+			children = (
+				84E084EE1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.h */,
+				84E084EF1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m */,
+			);
+			path = CLPlacemark;
+			sourceTree = "<group>";
+		};
+		84E084F01A1C7F380071D662 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				84E084F11A1C7F380071D662 /* ISO8601Date */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		84E084F11A1C7F380071D662 /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84E084F21A1C7F380071D662 /* NSDate+ISO8601Date.h */,
+				84E084F31A1C7F380071D662 /* NSDate+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84E084F41A1C7F380071D662 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				84E084F51A1C7F380071D662 /* ISO8601Date */,
+				84E084F81A1C7F380071D662 /* URLEncoding */,
+				84E084FB1A1C7F380071D662 /* Validation */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		84E084F51A1C7F380071D662 /* ISO8601Date */ = {
+			isa = PBXGroup;
+			children = (
+				84E084F61A1C7F380071D662 /* NSString+ISO8601Date.h */,
+				84E084F71A1C7F380071D662 /* NSString+ISO8601Date.m */,
+			);
+			path = ISO8601Date;
+			sourceTree = "<group>";
+		};
+		84E084F81A1C7F380071D662 /* URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				84E084F91A1C7F380071D662 /* NSString+URLEncoding.h */,
+				84E084FA1A1C7F380071D662 /* NSString+URLEncoding.m */,
+			);
+			path = URLEncoding;
+			sourceTree = "<group>";
+		};
+		84E084FB1A1C7F380071D662 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				84E084FC1A1C7F380071D662 /* NSString+validation.h */,
+				84E084FD1A1C7F380071D662 /* NSString+validation.m */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		84E085021A1C7F380071D662 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				84E085071A1C7F380071D662 /* Formatters */,
+				84E0850E1A1C7F380071D662 /* Logic */,
+				84E085421A1C7F380071D662 /* Transformers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		84E085071A1C7F380071D662 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				84E085081A1C7F380071D662 /* ISO86001DateFormatter */,
+				84E0850B1A1C7F380071D662 /* LumberJackFormatter */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		84E085081A1C7F380071D662 /* ISO86001DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84E085091A1C7F380071D662 /* ISO8601DateFormatter.h */,
+				84E0850A1A1C7F380071D662 /* ISO8601DateFormatter.m */,
+			);
+			path = ISO86001DateFormatter;
+			sourceTree = "<group>";
+		};
+		84E0850B1A1C7F380071D662 /* LumberJackFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				84E0850C1A1C7F380071D662 /* LumberjackFormatter.h */,
+				84E0850D1A1C7F380071D662 /* LumberjackFormatter.m */,
+			);
+			path = LumberJackFormatter;
+			sourceTree = "<group>";
+		};
+		84E0850E1A1C7F380071D662 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		84E085421A1C7F380071D662 /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				84E085431A1C7F380071D662 /* NSImageToDataTransformer */,
+				84E085461A1C7F380071D662 /* UIImageToDataTransformer */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		84E085431A1C7F380071D662 /* NSImageToDataTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				84E085441A1C7F380071D662 /* NSImageToDataTransformer.h */,
+				84E085451A1C7F380071D662 /* NSImageToDataTransformer.m */,
+			);
+			path = NSImageToDataTransformer;
+			sourceTree = "<group>";
+		};
+		84E085461A1C7F380071D662 /* UIImageToDataTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				84E085471A1C7F380071D662 /* UIImageToDataTransformer.h */,
+				84E085481A1C7F380071D662 /* UIImageToDataTransformer.m */,
+			);
+			path = UIImageToDataTransformer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,33 +872,42 @@
 				84E0849A1A1B99E40071D662 /* UIProgressView+AFNetworking.m in Sources */,
 				84E084BF1A1B9A020071D662 /* DDFileLogger.m in Sources */,
 				84E084981A1B99E40071D662 /* UIButton+AFNetworking.m in Sources */,
+				84E0854C1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E0849B1A1B99E40071D662 /* UIRefreshControl+AFNetworking.m in Sources */,
+				84E085501A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
 				84E084971A1B99E40071D662 /* UIAlertView+AFNetworking.m in Sources */,
+				84E085581A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
 				84E084C31A1B9A020071D662 /* DDTTYLogger.m in Sources */,
 				84E084C51A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BD1A1B9A020071D662 /* DDASLLogger.m in Sources */,
+				84E085521A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084C11A1B9A020071D662 /* DDLog.m in Sources */,
+				84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084141A1B987C0071D662 /* AppDelegate.m in Sources */,
 				84E084791A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084111A1B987C0071D662 /* main.m in Sources */,
+				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
 				84E084B91A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084731A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84E0847B1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E084991A1B99E40071D662 /* UIImageView+AFNetworking.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
+				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84E084C91A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084C71A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
+				84E0854E1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
 				84E084961A1B99E40071D662 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				84E0841A1A1B987C0071D662 /* ViewController.m in Sources */,
 				84E0847D1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084751A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
 				84E084771A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
+				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
 				84E0847F1A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
 				84E084BB1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
+				84E0855A1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E0849C1A1B99E40071D662 /* UIWebView+AFNetworking.m in Sources */,
 				84E084811A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
 				84E084951A1B99E40071D662 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				84E084171A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,26 +924,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E084BE1A1B9A020071D662 /* DDASLLogger.m in Sources */,
+				84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
+				84E0855B1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E084721A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
+				84E084E81A1C7D040071D662 /* DataService.m in Sources */,
 				84E084C81A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
 				84E084441A1B988D0071D662 /* ViewController.m in Sources */,
 				84E084741A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
+				84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */,
+				84E0854D1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E084781A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
+				84E0854F1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
 				84E084C61A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BA1A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084C21A1B9A020071D662 /* DDLog.m in Sources */,
 				84E084801A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
+				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084B81A1B9A020071D662 /* CLIColor.m in Sources */,
 				84E0847A1A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084BC1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,
+				84E085531A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084761A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
 				84E0847E1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084C41A1B9A020071D662 /* DDTTYLogger.m in Sources */,
 				84E084CA1A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084821A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
 				84E084411A1B988D0071D662 /* main.m in Sources */,
+				84E085591A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
+				84E085511A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
 				84E0843F1A1B988D0071D662 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -862,6 +1091,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -876,6 +1107,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -922,6 +1155,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -941,6 +1176,8 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog for OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1009,6 +1246,7 @@
 				84E084311A1B987C0071D662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E084321A1B987C0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1017,6 +1255,7 @@
 				84E084341A1B987C0071D662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E084561A1B988E0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for OSX" */ = {
 			isa = XCConfigurationList;
@@ -1025,6 +1264,7 @@
 				84E084581A1B988E0071D662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E084591A1B988E0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -1033,17 +1273,19 @@
 				84E0845B1A1B988E0071D662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		84E084151A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodeld */ = {
+		84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84E084161A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodel */,
+				84E084E21A1C7CD60071D662 /* Model.xcdatamodel */,
 			);
-			currentVersion = 84E084161A1B987C0071D662 /* WeatherFrog_for_iOS.xcdatamodel */;
-			path = WeatherFrog_for_iOS.xcdatamodeld;
+			currentVersion = 84E084E21A1C7CD60071D662 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "Shared Resources/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
