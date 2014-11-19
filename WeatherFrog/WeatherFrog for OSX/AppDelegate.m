@@ -22,12 +22,12 @@
     [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
-    DataService* dataService = [DataService sharedInstance];
-    DDLogDebug(@"applicationDirectory: %@", [dataService applicationDocumentsDirectory]);
+    DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    [[DataService sharedInstance] saveContext];
 }
 
 @end

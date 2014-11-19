@@ -129,6 +129,7 @@
 
 /* Begin PBXFileReference section */
 		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
+		84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for OSX.entitlements"; sourceTree = "<group>"; };
 		84E0840C1A1B987C0071D662 /* WeatherFrog for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E0840F1A1B987C0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E084101A1B987C0071D662 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -341,6 +342,7 @@
 		84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */ = {
 			isa = PBXGroup;
 			children = (
+				84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */,
 				84E0843D1A1B988D0071D662 /* AppDelegate.h */,
 				84E0843E1A1B988D0071D662 /* AppDelegate.m */,
 				84E084421A1B988D0071D662 /* ViewController.h */,
@@ -382,12 +384,12 @@
 		84E0845C1A1B99B10071D662 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				84E084EB1A1C7F380071D662 /* Libraries */,
 				84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */,
 				84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */,
 				84E0849D1A1B9A020071D662 /* Lumberjack */,
 				84E084831A1B99E40071D662 /* UIKit+AFNetworking */,
 				84E0845D1A1B99D20071D662 /* AFNetworking */,
+				84E084EB1A1C7F380071D662 /* Libraries */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -764,6 +766,11 @@
 					};
 					84E084381A1B988D0071D662 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					84E0844D1A1B988E0071D662 = {
 						CreatedOnToolsVersion = 6.1;
@@ -1153,6 +1160,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1173,6 +1181,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
