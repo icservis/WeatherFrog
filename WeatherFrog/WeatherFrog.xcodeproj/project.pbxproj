@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848BF9CB1A1D2E2F00A4F000 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */; };
+		848BF9D21A1D2E2F00A4F000 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */; };
+		848BF9D51A1D2E2F00A4F000 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D41A1D2E2F00A4F000 /* NotificationController.m */; };
+		848BF9D71A1D2E2F00A4F000 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9D61A1D2E2F00A4F000 /* Images.xcassets */; };
+		848BF9DB1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9DA1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app */; };
+		848BF9E21A1D2E2F00A4F000 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */; };
+		848BF9E41A1D2E2F00A4F000 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E31A1D2E2F00A4F000 /* Images.xcassets */; };
+		848BF9E71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		84E084111A1B987C0071D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084101A1B987C0071D662 /* main.m */; };
 		84E084141A1B987C0071D662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084131A1B987C0071D662 /* AppDelegate.m */; };
 		84E0841A1A1B987C0071D662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084191A1B987C0071D662 /* ViewController.m */; };
@@ -90,6 +98,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		848BF9DC1A1D2E2F00A4F000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84E083D41A1B98380071D662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 848BF9D91A1D2E2F00A4F000;
+			remoteInfo = "WeatherFrog for iOS Watch App";
+		};
+		848BF9E51A1D2E2F00A4F000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84E083D41A1B98380071D662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 848BF9C71A1D2E2F00A4F000;
+			remoteInfo = "WeatherFrog for iOS WatchKit Extension";
+		};
 		84E084281A1B987C0071D662 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84E083D41A1B98380071D662 /* Project object */;
@@ -127,7 +149,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		848BF9F41A1D2E2F00A4F000 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				848BF9E71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WeatherFrog for iOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		848BF9CE1A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848BF9CF1A1D2E2F00A4F000 /* PushNotificationPayload.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushNotificationPayload.json; sourceTree = "<group>"; };
+		848BF9D01A1D2E2F00A4F000 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		848BF9D31A1D2E2F00A4F000 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		848BF9D41A1D2E2F00A4F000 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		848BF9D61A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		848BF9DA1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		848BF9E01A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
 		84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for OSX.entitlements"; sourceTree = "<group>"; };
 		84E0840C1A1B987C0071D662 /* WeatherFrog for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +291,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		848BF9C51A1D2E2F00A4F000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848BF9CB1A1D2E2F00A4F000 /* WatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E084091A1B987C0071D662 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,15 +330,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		848BF9CC1A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				848BF9D01A1D2E2F00A4F000 /* InterfaceController.h */,
+				848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */,
+				848BF9D31A1D2E2F00A4F000 /* NotificationController.h */,
+				848BF9D41A1D2E2F00A4F000 /* NotificationController.m */,
+				848BF9D61A1D2E2F00A4F000 /* Images.xcassets */,
+				848BF9CD1A1D2E2F00A4F000 /* Supporting Files */,
+			);
+			path = "WeatherFrog for iOS WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		848BF9CD1A1D2E2F00A4F000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				848BF9CE1A1D2E2F00A4F000 /* Info.plist */,
+				848BF9CF1A1D2E2F00A4F000 /* PushNotificationPayload.json */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		848BF9DE1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */,
+				848BF9E31A1D2E2F00A4F000 /* Images.xcassets */,
+				848BF9DF1A1D2E2F00A4F000 /* Supporting Files */,
+			);
+			path = "WeatherFrog for iOS Watch App";
+			sourceTree = "<group>";
+		};
+		848BF9DF1A1D2E2F00A4F000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				848BF9E01A1D2E2F00A4F000 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		84E083D31A1B98380071D662 = {
 			isa = PBXGroup;
 			children = (
-				84E084DF1A1C76CE0071D662 /* Shared Resources */,
 				84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */,
-				84E0842A1A1B987C0071D662 /* WeatherFrog for iOSTests */,
 				84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */,
-				84E084511A1B988E0071D662 /* WeatherFrog for OSXTests */,
+				848BF9CC1A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */,
+				848BF9DE1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */,
+				84E084DF1A1C76CE0071D662 /* Shared Resources */,
+				848BF9C91A1D2E2F00A4F000 /* Frameworks */,
 				84E0845C1A1B99B10071D662 /* Vendor */,
+				84E0842A1A1B987C0071D662 /* WeatherFrog for iOSTests */,
+				84E084511A1B988E0071D662 /* WeatherFrog for OSXTests */,
 				84E083DD1A1B98380071D662 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -293,6 +401,8 @@
 				84E084271A1B987C0071D662 /* WeatherFrog for iOSTests.xctest */,
 				84E084391A1B988D0071D662 /* WeatherFrog for OSX.app */,
 				84E0844E1A1B988E0071D662 /* WeatherFrog for OSXTests.xctest */,
+				848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */,
+				848BF9DA1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -678,6 +788,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		848BF9C71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 848BF9F31A1D2E2F00A4F000 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS WatchKit Extension" */;
+			buildPhases = (
+				848BF9C41A1D2E2F00A4F000 /* Sources */,
+				848BF9C51A1D2E2F00A4F000 /* Frameworks */,
+				848BF9C61A1D2E2F00A4F000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				848BF9DD1A1D2E2F00A4F000 /* PBXTargetDependency */,
+			);
+			name = "WeatherFrog for iOS WatchKit Extension";
+			productName = "WeatherFrog for iOS WatchKit Extension";
+			productReference = 848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		848BF9D91A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 848BF9F21A1D2E2F00A4F000 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS Watch App" */;
+			buildPhases = (
+				848BF9D81A1D2E2F00A4F000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WeatherFrog for iOS Watch App";
+			productName = "WeatherFrog for iOS Watch App";
+			productReference = 848BF9DA1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		84E0840B1A1B987C0071D662 /* WeatherFrog for iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84E0842F1A1B987C0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS" */;
@@ -685,10 +828,12 @@
 				84E084081A1B987C0071D662 /* Sources */,
 				84E084091A1B987C0071D662 /* Frameworks */,
 				84E0840A1A1B987C0071D662 /* Resources */,
+				848BF9F41A1D2E2F00A4F000 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				848BF9E61A1D2E2F00A4F000 /* PBXTargetDependency */,
 			);
 			name = "WeatherFrog for iOS";
 			productName = "WeatherFrog for iOS";
@@ -757,6 +902,12 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "IC Servis, s.r.o.";
 				TargetAttributes = {
+					848BF9C71A1D2E2F00A4F000 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					848BF9D91A1D2E2F00A4F000 = {
+						CreatedOnToolsVersion = 6.2;
+					};
 					84E0840B1A1B987C0071D662 = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -805,6 +956,8 @@
 				84E084261A1B987C0071D662 /* WeatherFrog for iOSTests */,
 				84E084381A1B988D0071D662 /* WeatherFrog for OSX */,
 				84E0844D1A1B988E0071D662 /* WeatherFrog for OSXTests */,
+				848BF9C71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */,
+				848BF9D91A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -834,6 +987,24 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		848BF9C61A1D2E2F00A4F000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848BF9DB1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App.app in Resources */,
+				848BF9D71A1D2E2F00A4F000 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		848BF9D81A1D2E2F00A4F000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848BF9E21A1D2E2F00A4F000 /* Interface.storyboard in Resources */,
+				848BF9E41A1D2E2F00A4F000 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E0840A1A1B987C0071D662 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -872,6 +1043,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		848BF9C41A1D2E2F00A4F000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848BF9D51A1D2E2F00A4F000 /* NotificationController.m in Sources */,
+				848BF9D21A1D2E2F00A4F000 /* InterfaceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E084081A1B987C0071D662 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -976,6 +1156,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		848BF9DD1A1D2E2F00A4F000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 848BF9D91A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */;
+			targetProxy = 848BF9DC1A1D2E2F00A4F000 /* PBXContainerItemProxy */;
+		};
+		848BF9E61A1D2E2F00A4F000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 848BF9C71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */;
+			targetProxy = 848BF9E51A1D2E2F00A4F000 /* PBXContainerItemProxy */;
+		};
 		84E084291A1B987C0071D662 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84E0840B1A1B987C0071D662 /* WeatherFrog for iOS */;
@@ -1016,6 +1206,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		848BF9E81A1D2E2F00A4F000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WeatherFrog for iOS WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		848BF9E91A1D2E2F00A4F000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "WeatherFrog for iOS WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		848BF9EA1A1D2E2F00A4F000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = WeatherFrog_for_iOS_WatchKit_Extension;
+				INFOPLIST_FILE = "WeatherFrog for iOS Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		848BF9EB1A1D2E2F00A4F000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				IBSC_MODULE = WeatherFrog_for_iOS_WatchKit_Extension;
+				INFOPLIST_FILE = "WeatherFrog for iOS Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
 		84E084001A1B98380071D662 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1051,6 +1301,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1087,6 +1338,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1239,6 +1491,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		848BF9F21A1D2E2F00A4F000 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				848BF9EA1A1D2E2F00A4F000 /* Debug */,
+				848BF9EB1A1D2E2F00A4F000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		848BF9F31A1D2E2F00A4F000 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				848BF9E81A1D2E2F00A4F000 /* Debug */,
+				848BF9E91A1D2E2F00A4F000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		84E083D71A1B98380071D662 /* Build configuration list for PBXProject "WeatherFrog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
