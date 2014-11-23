@@ -7,6 +7,8 @@
 //
 
 #import "WindowController.h"
+#import "SplitViewController.h"
+#import "MapViewController.h"
 
 @interface WindowController ()
 @property (weak) IBOutlet NSToolbar *toolBar;
@@ -27,5 +29,18 @@
     self.window.titleVisibility = NSWindowTitleHidden;
     NSLog(@"%@", self.contentViewController);
 };
+
+
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PresentMapViewController"]) {
+        MapViewController* mapViewController = (MapViewController*)segue.destinationController;
+        SplitViewController* splitViewController = (SplitViewController*)self.contentViewController;
+        mapViewController.delegate = splitViewController;
+    }
+}
+
+
+
 
 @end

@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
+#import "MapViewController.h"
 
-@interface SplitViewController : NSSplitViewController
+@interface SplitViewController : NSSplitViewController <MapViewControllerDelegate>
 
 
 @end

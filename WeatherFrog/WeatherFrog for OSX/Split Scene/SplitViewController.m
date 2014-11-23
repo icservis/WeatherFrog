@@ -20,14 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    
-    NSLog(@"self.listViewItem isCollapsed: %d", [self.listViewItem isCollapsed]);
 }
 
 #pragma mark - SplitVC Delegate
-
-
-/*
 
 - (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview
 {
@@ -38,11 +33,17 @@
 - (BOOL)splitView:(NSSplitView*)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex
 {
     BOOL splitViewShouldHideDividerAtIndex = [super splitView:splitView shouldHideDividerAtIndex:dividerIndex];
-    if (splitViewShouldHideDividerAtIndex == NO) {
-        splitViewShouldHideDividerAtIndex = YES;
+    if (splitViewShouldHideDividerAtIndex == YES) {
+        splitViewShouldHideDividerAtIndex = NO;
     }
     return splitViewShouldHideDividerAtIndex;
 }
- */
+
+#pragma mark - MapVC Delegate
+
+- (void)mapViewControllerDidClose:(MapViewController *)controller
+{
+    [self dismissViewController:controller];
+}
 
 @end

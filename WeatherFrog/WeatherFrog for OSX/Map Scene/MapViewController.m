@@ -9,6 +9,11 @@
 #import "MapViewController.h"
 
 @interface MapViewController ()
+@property (weak) IBOutlet NSButton *bookmarkButton;
+@property (weak) IBOutlet NSButton *forecastButton;
+@property (weak) IBOutlet NSButton *closeButton;
+@property (weak) IBOutlet NSSearchField *searchField;
+- (IBAction)closeButtonClicked:(id)sender;
 
 @end
 
@@ -17,6 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+}
+
+- (IBAction)closeButtonClicked:(id)sender
+{
+    [self.delegate mapViewControllerDidClose:self];
 }
 
 @end

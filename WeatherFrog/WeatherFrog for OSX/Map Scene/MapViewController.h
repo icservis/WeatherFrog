@@ -8,6 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MapViewController;
+
+@protocol MapViewControllerDelegate <NSObject>
+
+- (void)mapViewControllerDidClose:(MapViewController*)controller;
+
+@end
+
 @interface MapViewController : NSViewController
+
+@property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 
 @end

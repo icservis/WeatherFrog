@@ -679,7 +679,7 @@
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <segue destination="UeI-Xw-w7l" kind="popover" popoverAnchorView="ivw-GL-fJl" popoverBehavior="t" preferredEdge="maxY" id="XZH-gB-csI"/>
+                                        <segue destination="UeI-Xw-w7l" kind="popover" identifier="PresentMapViewController" popoverAnchorView="ivw-GL-fJl" popoverBehavior="t" preferredEdge="maxY" id="XZH-gB-csI"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="09CDDB58-3B4B-4DCB-B36D-A29808288349" label="Navigation" paletteLabel="Navigation" id="1NW-Ea-Wkx">
@@ -737,7 +737,7 @@
             <objects>
                 <splitViewController id="nTB-Sb-BDn" customClass="SplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="7z6-c9-Xco"/>
+                        <splitViewItem canCollapse="YES" id="7z6-c9-Xco"/>
                         <splitViewItem id="1Fy-eQ-ube"/>
                     </splitViewItems>
                     <splitView key="splitView" autosaveName="SplitView" dividerStyle="thin" vertical="YES" id="Tiu-rL-JuG" customClass="SplitView">
@@ -798,6 +798,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="closeButtonClicked:" target="UeI-Xw-w7l" id="5iN-cY-aLc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -816,6 +819,12 @@
                             <constraint firstItem="DFf-q9-7xp" firstAttribute="leading" secondItem="zTt-1Z-cm3" secondAttribute="leading" constant="20" id="uQ5-GA-Ozv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bookmarkButton" destination="jba-8O-zw7" id="xc2-wu-4yT"/>
+                        <outlet property="closeButton" destination="mtS-RD-Kq0" id="041-fh-PgA"/>
+                        <outlet property="forecastButton" destination="oLZ-5C-7bI" id="tLC-TO-Gdb"/>
+                        <outlet property="searchField" destination="DFf-q9-7xp" id="2r5-DA-Z17"/>
+                    </connections>
                 </viewController>
                 <customObject id="V7a-fi-yfP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
