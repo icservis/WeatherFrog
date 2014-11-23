@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ListViewController.h"
 
-@implementation ViewController
+@interface ListViewController ()
+
+@end
+
+@implementation ListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

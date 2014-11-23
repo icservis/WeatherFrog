@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PrefixHeader.pch"
+
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
