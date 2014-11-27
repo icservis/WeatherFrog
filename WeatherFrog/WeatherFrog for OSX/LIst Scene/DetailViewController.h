@@ -10,4 +10,8 @@
 
 @interface DetailViewController : NSViewController
 
+@property (weak) IBOutlet NSTabView *tabView;
+
+- (IBAction)viewModeControlDidChangeValue:(id)sender;
+
 @end
