@@ -11,7 +11,7 @@
 @interface SplitViewController () <NSSplitViewDelegate>
 
 @property (weak) IBOutlet NSSplitViewItem *listViewItem;
-@property (weak) IBOutlet NSSplitViewItem *detailViewItem;
+@property (weak) IBOutlet NSSplitViewItem *tabViewItem;
 
 @end
 
@@ -20,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+}
+
+- (IBAction)viewModeControlDidChangedValue:(id)sender
+{
+    DDLogVerbose(@"");
 }
 
 #pragma mark - SplitVC Delegate

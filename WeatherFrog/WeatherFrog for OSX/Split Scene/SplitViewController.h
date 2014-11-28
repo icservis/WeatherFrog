@@ -13,4 +13,6 @@
 @interface SplitViewController : NSSplitViewController <MapViewControllerDelegate>
 
 
+- (IBAction)viewModeControlDidChangedValue:(id)sender;
+
 @end

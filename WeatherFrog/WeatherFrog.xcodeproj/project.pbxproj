@@ -11,7 +11,6 @@
 		84297AA61A2142A20070E151 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* WindowController.m */; };
 		84297AA91A2143F30070E151 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* SplitViewController.m */; };
 		84297AAF1A21DFEA0070E151 /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* ListTableView.m */; };
-		84297AB21A21EA280070E151 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB11A21EA280070E151 /* DetailViewController.m */; };
 		84297AB81A21EAA10070E151 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB61A21EAA10070E151 /* MapViewController.m */; };
 		84297ABC1A21EDB70070E151 /* SplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* SplitView.m */; };
 		848BF9CB1A1D2E2F00A4F000 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */; };
@@ -22,6 +21,11 @@
 		848BF9E21A1D2E2F00A4F000 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */; };
 		848BF9E41A1D2E2F00A4F000 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E31A1D2E2F00A4F000 /* Images.xcassets */; };
 		848BF9E71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		84CB76241A288D47008D6775 /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76221A288D47008D6775 /* TabViewController.m */; };
+		84CB76251A288D47008D6775 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CB76231A288D47008D6775 /* TabViewController.xib */; };
+		84CB762E1A288D83008D6775 /* TabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB762D1A288D83008D6775 /* TabView.m */; };
+		84CB76311A288E19008D6775 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76301A288E19008D6775 /* CollectionViewController.m */; };
+		84CB76361A288E74008D6775 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76341A288E74008D6775 /* GraphViewController.m */; };
 		84E084111A1B987C0071D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084101A1B987C0071D662 /* main.m */; };
 		84E084141A1B987C0071D662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084131A1B987C0071D662 /* AppDelegate.m */; };
 		84E0841A1A1B987C0071D662 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084191A1B987C0071D662 /* ListViewController.m */; };
@@ -178,8 +182,6 @@
 		84297AA81A2143F30070E151 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplitViewController.m; path = "Split Scene/SplitViewController.m"; sourceTree = "<group>"; };
 		84297AAD1A21DFEA0070E151 /* ListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListTableView.h; path = "LIst Scene/ListTableView.h"; sourceTree = "<group>"; };
 		84297AAE1A21DFEA0070E151 /* ListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListTableView.m; path = "LIst Scene/ListTableView.m"; sourceTree = "<group>"; };
-		84297AB01A21EA280070E151 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "LIst Scene/DetailViewController.h"; sourceTree = "<group>"; };
-		84297AB11A21EA280070E151 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "LIst Scene/DetailViewController.m"; sourceTree = "<group>"; };
 		84297AB51A21EAA10070E151 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Map Scene/MapViewController.h"; sourceTree = "<group>"; };
 		84297AB61A21EAA10070E151 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Map Scene/MapViewController.m"; sourceTree = "<group>"; };
 		84297ABA1A21EDB70070E151 /* SplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitView.h; path = "Split Scene/SplitView.h"; sourceTree = "<group>"; };
@@ -199,6 +201,15 @@
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
 		84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for OSX.entitlements"; sourceTree = "<group>"; };
+		84CB76211A288D47008D6775 /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabViewController.h; path = "Detail Scene/TabViewController.h"; sourceTree = "<group>"; };
+		84CB76221A288D47008D6775 /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabViewController.m; path = "Detail Scene/TabViewController.m"; sourceTree = "<group>"; };
+		84CB76231A288D47008D6775 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabViewController.xib; path = "Detail Scene/TabViewController.xib"; sourceTree = "<group>"; };
+		84CB762C1A288D83008D6775 /* TabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabView.h; path = "Detail Scene/TabView.h"; sourceTree = "<group>"; };
+		84CB762D1A288D83008D6775 /* TabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabView.m; path = "Detail Scene/TabView.m"; sourceTree = "<group>"; };
+		84CB762F1A288E19008D6775 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = "Detail Scene/Collection Scene/CollectionViewController.h"; sourceTree = "<group>"; };
+		84CB76301A288E19008D6775 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = "Detail Scene/Collection Scene/CollectionViewController.m"; sourceTree = "<group>"; };
+		84CB76331A288E74008D6775 /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphViewController.h; path = "Detail Scene/Graph Scene/GraphViewController.h"; sourceTree = "<group>"; };
+		84CB76341A288E74008D6775 /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphViewController.m; path = "Detail Scene/Graph Scene/GraphViewController.m"; sourceTree = "<group>"; };
 		84E0840C1A1B987C0071D662 /* WeatherFrog for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E0840F1A1B987C0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E084101A1B987C0071D662 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -365,8 +376,13 @@
 		84297AB31A21EA2F0070E151 /* Detail Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84297AB01A21EA280070E151 /* DetailViewController.h */,
-				84297AB11A21EA280070E151 /* DetailViewController.m */,
+				84CB76211A288D47008D6775 /* TabViewController.h */,
+				84CB76221A288D47008D6775 /* TabViewController.m */,
+				84CB76231A288D47008D6775 /* TabViewController.xib */,
+				84CB762C1A288D83008D6775 /* TabView.h */,
+				84CB762D1A288D83008D6775 /* TabView.m */,
+				84CB76321A288E1E008D6775 /* Collection Scene */,
+				84CB76381A288E83008D6775 /* Graph Scene */,
 			);
 			name = "Detail Scene";
 			sourceTree = "<group>";
@@ -438,6 +454,24 @@
 				848BF9E01A1D2E2F00A4F000 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84CB76321A288E1E008D6775 /* Collection Scene */ = {
+			isa = PBXGroup;
+			children = (
+				84CB762F1A288E19008D6775 /* CollectionViewController.h */,
+				84CB76301A288E19008D6775 /* CollectionViewController.m */,
+			);
+			name = "Collection Scene";
+			sourceTree = "<group>";
+		};
+		84CB76381A288E83008D6775 /* Graph Scene */ = {
+			isa = PBXGroup;
+			children = (
+				84CB76331A288E74008D6775 /* GraphViewController.h */,
+				84CB76341A288E74008D6775 /* GraphViewController.m */,
+			);
+			name = "Graph Scene";
 			sourceTree = "<group>";
 		};
 		84E083D31A1B98380071D662 = {
@@ -1093,6 +1127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CB76251A288D47008D6775 /* TabViewController.xib in Resources */,
 				84E084461A1B988E0071D662 /* Images.xcassets in Resources */,
 				84E084CC1A1B9A020071D662 /* README.txt in Resources */,
 				84E084491A1B988E0071D662 /* Main.storyboard in Resources */,
@@ -1179,16 +1214,17 @@
 				84E084BE1A1B9A020071D662 /* DDASLLogger.m in Sources */,
 				84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84297AB81A21EAA10070E151 /* MapViewController.m in Sources */,
+				84CB76361A288E74008D6775 /* GraphViewController.m in Sources */,
 				84E0855B1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E084721A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				84E084E81A1C7D040071D662 /* DataService.m in Sources */,
 				84E084C81A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
 				84E084441A1B988D0071D662 /* ListViewController.m in Sources */,
+				84CB76311A288E19008D6775 /* CollectionViewController.m in Sources */,
 				84297AA61A2142A20070E151 /* WindowController.m in Sources */,
 				84297AAF1A21DFEA0070E151 /* ListTableView.m in Sources */,
 				84E084741A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84297AA91A2143F30070E151 /* SplitViewController.m in Sources */,
-				84297AB21A21EA280070E151 /* DetailViewController.m in Sources */,
 				84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */,
 				84E0854D1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E084781A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1208,10 +1244,12 @@
 				84E084761A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
 				84E0847E1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084C41A1B9A020071D662 /* DDTTYLogger.m in Sources */,
+				84CB76241A288D47008D6775 /* TabViewController.m in Sources */,
 				84E084CA1A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084821A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
 				84E084411A1B988D0071D662 /* main.m in Sources */,
 				84E085591A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
+				84CB762E1A288D83008D6775 /* TabView.m in Sources */,
 				84E085511A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
 				84E0843F1A1B988D0071D662 /* AppDelegate.m in Sources */,
 			);
