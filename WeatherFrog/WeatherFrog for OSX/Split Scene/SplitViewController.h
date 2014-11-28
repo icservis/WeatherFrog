@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
 #import "MapViewController.h"
+#import "ListViewController.h"
+#import "TabViewController.h"
 
 @interface SplitViewController : NSSplitViewController <MapViewControllerDelegate>
 
-
-- (IBAction)viewModeControlDidChangedValue:(id)sender;
+@property (weak) IBOutlet NSSplitViewItem *listViewItem;
+@property (weak) IBOutlet NSSplitViewItem *tabViewItem;
 
 @end

@@ -697,7 +697,7 @@
                                             </segments>
                                         </segmentedCell>
                                         <connections>
-                                            <action selector="viewModeControlDidChangedValue:" target="Oky-zY-oP4" id="RgR-GN-WnD"/>
+                                            <action selector="viewModeControlValueChanged:" target="B8D-0N-5wS" id="bPY-Zf-zU0"/>
                                         </connections>
                                     </segmentedControl>
                                 </toolbarItem>
@@ -741,7 +741,7 @@
                 <splitViewController id="nTB-Sb-BDn" customClass="SplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" id="7z6-c9-Xco" userLabel="listViewItem"/>
-                        <splitViewItem id="GYx-J3-T25"/>
+                        <splitViewItem id="GYx-J3-T25" userLabel="tabViewItem"/>
                     </splitViewItems>
                     <splitView key="splitView" autosaveName="SplitView" dividerStyle="thin" vertical="YES" id="Tiu-rL-JuG" customClass="SplitView">
                         <rect key="frame" x="0.0" y="0.0" width="597" height="400"/>
@@ -752,6 +752,7 @@
                     </splitView>
                     <connections>
                         <outlet property="listViewItem" destination="7z6-c9-Xco" id="nRc-wA-UNM"/>
+                        <outlet property="tabViewItem" destination="GYx-J3-T25" id="YHc-yu-9dc"/>
                         <outlet property="view" destination="Tiu-rL-JuG" id="aia-o0-ddx"/>
                         <segue destination="nTs-Xn-VIg" kind="relationship" relationship="splitItems" id="8F2-lb-teM"/>
                         <segue destination="GDK-Cp-ZBK" kind="relationship" relationship="splitItems" id="eIy-r6-MMb"/>
@@ -917,7 +918,7 @@
                 </viewController>
                 <customObject id="gYq-w2-wp9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856" y="686"/>
+            <point key="canvasLocation" x="853" y="691"/>
         </scene>
         <!--Tab View Controller-->
         <scene sceneID="Q0L-Ex-aoQ">

@@ -8,6 +8,8 @@
 
 #import "WindowController.h"
 #import "SplitViewController.h"
+#import "ListViewController.h"
+#import "TabViewController.h"
 #import "MapViewController.h"
 
 @interface WindowController ()
@@ -16,6 +18,8 @@
 @property (weak) IBOutlet NSProgressIndicator* progressIndicator;
 @property (weak) IBOutlet NSSegmentedControl *viewModeControl;
 @property (weak) IBOutlet NSButton *addButton;
+
+- (IBAction)viewModeControlValueChanged:(id)sender;
 
 @end
 
@@ -27,7 +31,7 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
     self.window.titleVisibility = NSWindowTitleHidden;
-    NSLog(@"%@", self.contentViewController);
+    [self selectDetailSceneTabViewItemAccordingToViewModeControl];
 };
 
 
@@ -40,5 +44,18 @@
     }
 }
 
+
+- (IBAction)viewModeControlValueChanged:(id)sender
+{
+    [self selectDetailSceneTabViewItemAccordingToViewModeControl];
+}
+
+
+- (void)selectDetailSceneTabViewItemAccordingToViewModeControl
+{
+    SplitViewController* splitViewController = (SplitViewController*)self.contentViewController;
+    TabViewController* tabViewController = (TabViewController*)splitViewController.tabViewItem.viewController;
+    tabViewController.selectedTabViewItemIndex = self.viewModeControl.selectedSegment;
+}
 
 @end
