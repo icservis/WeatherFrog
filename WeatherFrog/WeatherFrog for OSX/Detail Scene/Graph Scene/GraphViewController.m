@@ -7,8 +7,11 @@
 //
 
 #import "GraphViewController.h"
+#import "GraphView.h"
 
 @interface GraphViewController ()
+
+@property (weak) IBOutlet GraphView *graphView;
 
 @end
 

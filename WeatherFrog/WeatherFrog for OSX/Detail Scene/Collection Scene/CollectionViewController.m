@@ -7,8 +7,11 @@
 //
 
 #import "CollectionViewController.h"
+#import "CollectionView.h"
 
-@interface CollectionViewController ()
+@interface CollectionViewController () <NSCollectionViewDelegate>
+
+@property (weak) IBOutlet CollectionView *collectionView;
 
 @end
 

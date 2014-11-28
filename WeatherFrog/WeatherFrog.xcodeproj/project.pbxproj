@@ -13,6 +13,8 @@
 		84297AAF1A21DFEA0070E151 /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* ListTableView.m */; };
 		84297AB81A21EAA10070E151 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB61A21EAA10070E151 /* MapViewController.m */; };
 		84297ABC1A21EDB70070E151 /* SplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* SplitView.m */; };
+		8475976D1A28A2490013824D /* CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* CollectionView.m */; };
+		847597791A28A3820013824D /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* GraphView.m */; };
 		848BF9CB1A1D2E2F00A4F000 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */; };
 		848BF9D21A1D2E2F00A4F000 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */; };
 		848BF9D51A1D2E2F00A4F000 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D41A1D2E2F00A4F000 /* NotificationController.m */; };
@@ -186,6 +188,10 @@
 		84297AB61A21EAA10070E151 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Map Scene/MapViewController.m"; sourceTree = "<group>"; };
 		84297ABA1A21EDB70070E151 /* SplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitView.h; path = "Split Scene/SplitView.h"; sourceTree = "<group>"; };
 		84297ABB1A21EDB70070E151 /* SplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplitView.m; path = "Split Scene/SplitView.m"; sourceTree = "<group>"; };
+		8475976B1A28A2490013824D /* CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionView.h; path = "Detail Scene/Collection Scene/CollectionView.h"; sourceTree = "<group>"; };
+		8475976C1A28A2490013824D /* CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionView.m; path = "Detail Scene/Collection Scene/CollectionView.m"; sourceTree = "<group>"; };
+		847597771A28A3820013824D /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphView.h; path = "Detail Scene/Graph Scene/GraphView.h"; sourceTree = "<group>"; };
+		847597781A28A3820013824D /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphView.m; path = "Detail Scene/Graph Scene/GraphView.m"; sourceTree = "<group>"; };
 		848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WeatherFrog for iOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		848BF9CE1A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -461,6 +467,8 @@
 			children = (
 				84CB762F1A288E19008D6775 /* CollectionViewController.h */,
 				84CB76301A288E19008D6775 /* CollectionViewController.m */,
+				8475976B1A28A2490013824D /* CollectionView.h */,
+				8475976C1A28A2490013824D /* CollectionView.m */,
 			);
 			name = "Collection Scene";
 			sourceTree = "<group>";
@@ -470,6 +478,8 @@
 			children = (
 				84CB76331A288E74008D6775 /* GraphViewController.h */,
 				84CB76341A288E74008D6775 /* GraphViewController.m */,
+				847597771A28A3820013824D /* GraphView.h */,
+				847597781A28A3820013824D /* GraphView.m */,
 			);
 			name = "Graph Scene";
 			sourceTree = "<group>";
@@ -1229,6 +1239,7 @@
 				84E0854D1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E084781A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
 				84E0854F1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
+				8475976D1A28A2490013824D /* CollectionView.m in Sources */,
 				84297ABC1A21EDB70070E151 /* SplitView.m in Sources */,
 				84E084C61A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BA1A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
@@ -1237,6 +1248,7 @@
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084B81A1B9A020071D662 /* CLIColor.m in Sources */,
+				847597791A28A3820013824D /* GraphView.m in Sources */,
 				84E0847A1A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084BC1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,
