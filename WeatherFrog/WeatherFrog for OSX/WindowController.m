@@ -29,7 +29,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
+    //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
