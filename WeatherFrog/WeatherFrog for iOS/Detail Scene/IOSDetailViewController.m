@@ -10,6 +10,8 @@
 #import "IOSMapViewController.h"
 #import "IOSSplitViewController.h"
 
+static NSTimeInterval const kContainerAnimationDuration = 0.25f;
+
 @interface IOSDetailViewController () <IOSMapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *collectionContainerView;
@@ -30,8 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.collectionContainerView.hidden = YES;
-    self.graphContainerView.hidden = YES;
+    self.collectionContainerView.alpha = 0.f;
+    self.graphContainerView.alpha = 0.f;
     
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.splitViewControllerTraintCollection = self.splitViewController.traitCollection;
@@ -95,7 +97,7 @@
             
         } else {
             
-            self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            self.navigationItem.leftBarButtonItems = @[self.splitViewController.displayModeButtonItem];
             
             if (splitViewControllerVerticalClass == UIUserInterfaceSizeClassCompact) {
                 self.selectedContainerViewIndex = 1;
@@ -112,13 +114,15 @@
 {
     _selectedContainerViewIndex = selectedContainerViewIndex;
     
-    if (selectedContainerViewIndex == 1) {
-        self.graphContainerView.hidden = NO;
-        self.collectionContainerView.hidden = YES;
-    } else {
-        self.graphContainerView.hidden = YES;
-        self.collectionContainerView.hidden = NO;
-    }
+    [UIView animateWithDuration:kContainerAnimationDuration animations:^{
+        if (selectedContainerViewIndex == 1) {
+            self.graphContainerView.alpha = 1.f;
+            self.collectionContainerView.alpha = 0.f;
+        } else {
+            self.graphContainerView.alpha = 0.f;
+            self.collectionContainerView.alpha = 1.f;
+        }
+    }];
 }
 
 #pragma mark - Notifications
