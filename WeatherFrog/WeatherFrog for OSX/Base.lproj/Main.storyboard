@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6221"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="6221"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -596,6 +596,10 @@
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="ATy-77-dbt"/>
+                                        <menuItem title="Toggle List View" id="tVG-Kp-exL">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -642,7 +646,9 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+                <customObject id="Voe-Tx-rLC" customClass="OSXAppDelegate"/>
+                <managedObjectContext id="5By-oz-i75"/>
+                <userDefaultsController id="nVj-Q4-Sd1"/>
                 <textFinder id="J9i-d8-cdE"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -651,7 +657,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="WindowController" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="OSXWindowController" sceneMemberID="viewController">
                     <window key="window" title="WeatherFrog" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES" fullSizeContentView="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
@@ -659,7 +665,6 @@
                         <rect key="contentRect" x="200" y="240" width="600" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="600" height="400"/>
-                        <value key="maxSize" type="size" width="1024" height="768"/>
                         <toolbar key="toolbar" implicitIdentifier="28FD0A39-3045-4C3F-913E-ECAEFC8C3F8F" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="small" id="IDl-mu-db2">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="KYL-pC-7Vm"/>
@@ -682,12 +687,12 @@
                                         <segue destination="UeI-Xw-w7l" kind="popover" identifier="PresentMapViewController" popoverAnchorView="ivw-GL-fJl" popoverBehavior="t" preferredEdge="maxY" id="XZH-gB-csI"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="09CDDB58-3B4B-4DCB-B36D-A29808288349" label="Navigation" paletteLabel="Navigation" id="1NW-Ea-Wkx">
+                                <toolbarItem implicitItemIdentifier="09CDDB58-3B4B-4DCB-B36D-A29808288349" label="View Mode" paletteLabel="View Mode" id="1NW-Ea-Wkx">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="71" height="25"/>
                                     <size key="maxSize" width="71" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="nBh-W2-svU">
-                                        <rect key="frame" x="0.0" y="14" width="71" height="28"/>
+                                        <rect key="frame" x="0.0" y="14" width="71" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="selectOne" id="evR-9X-5Xq">
                                             <font key="font" metaFont="system"/>
@@ -713,14 +718,20 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="htI-jH-3LB"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="ivw-GL-fJl"/>
-                                <toolbarItem reference="htI-jH-3LB"/>
+                                <toolbarItem reference="1NW-Ea-Wkx"/>
                                 <toolbarItem reference="t6B-JY-Mnk"/>
                                 <toolbarItem reference="jsA-my-jGc"/>
                                 <toolbarItem reference="t6B-JY-Mnk"/>
-                                <toolbarItem reference="1NW-Ea-Wkx"/>
+                                <toolbarItem reference="htI-jH-3LB"/>
+                                <toolbarItem reference="ivw-GL-fJl"/>
                             </defaultToolbarItems>
+                            <connections>
+                                <outlet property="delegate" destination="B8D-0N-5wS" id="ZPP-hn-DfX"/>
+                            </connections>
                         </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="4MB-Mc-npT"/>
+                        </connections>
                     </window>
                     <connections>
                         <outlet property="addButton" destination="gjn-Kf-syg" id="OXn-hG-VOf"/>
@@ -738,12 +749,12 @@
         <!--Split View Controller-->
         <scene sceneID="WRx-l8-Ffj">
             <objects>
-                <splitViewController id="nTB-Sb-BDn" customClass="SplitViewController" sceneMemberID="viewController">
+                <splitViewController id="nTB-Sb-BDn" customClass="OSXSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" id="7z6-c9-Xco" userLabel="listViewItem"/>
                         <splitViewItem id="GYx-J3-T25" userLabel="tabViewItem"/>
                     </splitViewItems>
-                    <splitView key="splitView" autosaveName="SplitView" dividerStyle="thin" vertical="YES" id="Tiu-rL-JuG" customClass="SplitView">
+                    <splitView key="splitView" autosaveName="SplitView" dividerStyle="thin" vertical="YES" id="Tiu-rL-JuG" customClass="OSXSplitView">
                         <rect key="frame" x="0.0" y="0.0" width="597" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -765,7 +776,7 @@
         <!--Map View Controller-->
         <scene sceneID="fFy-u5-hJY">
             <objects>
-                <viewController id="UeI-Xw-w7l" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="UeI-Xw-w7l" customClass="OSXMapViewController" sceneMemberID="viewController">
                     <view key="view" id="zTt-1Z-cm3">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -836,7 +847,7 @@
         <!--List View Controller-->
         <scene sceneID="DrW-JE-2Ss">
             <objects>
-                <viewController id="nTs-Xn-VIg" customClass="ListViewController" sceneMemberID="viewController">
+                <viewController id="nTs-Xn-VIg" customClass="OSXListViewController" sceneMemberID="viewController">
                     <view key="view" id="fRq-bM-6Ca">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -847,7 +858,7 @@
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" id="pEb-6x-Pqw" customClass="ListTableView">
+                                        <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" id="pEb-6x-Pqw" customClass="OSXListTableView">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -916,15 +927,15 @@
             </objects>
             <point key="canvasLocation" x="853" y="691"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Q0L-Ex-aoQ">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="GDK-Cp-ZBK" customClass="TabViewController" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="GDK-Cp-ZBK" customClass="OSXDetailViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="DBe-Sa-rEg"/>
                         <tabViewItem id="rYx-rS-9W8"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="CMp-VV-3tb" customClass="TabView">
+                    <tabView key="tabView" type="noTabsNoBorder" id="CMp-VV-3tb" customClass="OSXTabView">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
@@ -942,7 +953,7 @@
         <!--Collection-->
         <scene sceneID="7LZ-MB-FUi">
             <objects>
-                <viewController title="Collection" id="YsM-se-pej" customClass="CollectionViewController" sceneMemberID="viewController">
+                <viewController title="Collection" id="YsM-se-pej" customClass="OSXCollectionViewController" sceneMemberID="viewController">
                     <view key="view" id="W5q-Hj-tIJ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -953,7 +964,7 @@
                                     <rect key="frame" x="1" y="1" width="248" height="158"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="YbU-4K-2GZ" userLabel="collectionView" customClass="CollectionView">
+                                        <collectionView id="YbU-4K-2GZ" userLabel="collectionView" customClass="OSXCollectionView">
                                             <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -992,7 +1003,7 @@
         <!--Graph-->
         <scene sceneID="eMH-I6-ae0">
             <objects>
-                <viewController title="Graph" id="UAh-eQ-qIx" customClass="GraphViewController" sceneMemberID="viewController">
+                <viewController title="Graph" id="UAh-eQ-qIx" customClass="OSXGraphViewController" sceneMemberID="viewController">
                     <view key="view" id="WjD-DH-Mc2">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1003,7 +1014,7 @@
                                     <rect key="frame" x="1" y="1" width="166" height="79"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" customClass="GraphView">
+                                        <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" customClass="OSXGraphView">
                                             <rect key="frame" x="0.0" y="0.0" width="166" height="79"/>
                                         </view>
                                     </subviews>

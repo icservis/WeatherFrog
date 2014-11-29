@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84297A9C1A21407D0070E151 /* MapKit.framework */; };
-		84297AA61A2142A20070E151 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* WindowController.m */; };
-		84297AA91A2143F30070E151 /* SplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* SplitViewController.m */; };
-		84297AAF1A21DFEA0070E151 /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* ListTableView.m */; };
-		84297AB81A21EAA10070E151 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB61A21EAA10070E151 /* MapViewController.m */; };
-		84297ABC1A21EDB70070E151 /* SplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* SplitView.m */; };
-		8475976D1A28A2490013824D /* CollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* CollectionView.m */; };
-		847597791A28A3820013824D /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* GraphView.m */; };
+		84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* OSXWindowController.m */; };
+		84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* OSXSplitViewController.m */; };
+		84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* OSXListTableView.m */; };
+		84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB61A21EAA10070E151 /* OSXMapViewController.m */; };
+		84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* OSXSplitView.m */; };
+		845558671A291036003127B3 /* IOSSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558661A291036003127B3 /* IOSSplitViewController.m */; };
+		8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455586A1A2912A3003127B3 /* IOSMapViewController.m */; };
+		8455586E1A291808003127B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8455586D1A291808003127B3 /* MapKit.framework */; };
+		845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558701A291C17003127B3 /* IOSDetailViewController.m */; };
+		8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* OSXCollectionView.m */; };
+		847597791A28A3820013824D /* OSXGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* OSXGraphView.m */; };
 		848BF9CB1A1D2E2F00A4F000 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */; };
 		848BF9D21A1D2E2F00A4F000 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */; };
 		848BF9D51A1D2E2F00A4F000 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848BF9D41A1D2E2F00A4F000 /* NotificationController.m */; };
@@ -23,21 +27,20 @@
 		848BF9E21A1D2E2F00A4F000 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */; };
 		848BF9E41A1D2E2F00A4F000 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848BF9E31A1D2E2F00A4F000 /* Images.xcassets */; };
 		848BF9E71A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		84CB76241A288D47008D6775 /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76221A288D47008D6775 /* TabViewController.m */; };
-		84CB76251A288D47008D6775 /* TabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CB76231A288D47008D6775 /* TabViewController.xib */; };
-		84CB762E1A288D83008D6775 /* TabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB762D1A288D83008D6775 /* TabView.m */; };
-		84CB76311A288E19008D6775 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76301A288E19008D6775 /* CollectionViewController.m */; };
-		84CB76361A288E74008D6775 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76341A288E74008D6775 /* GraphViewController.m */; };
+		84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76221A288D47008D6775 /* OSXDetailViewController.m */; };
+		84CB762E1A288D83008D6775 /* OSXTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB762D1A288D83008D6775 /* OSXTabView.m */; };
+		84CB76311A288E19008D6775 /* OSXCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76301A288E19008D6775 /* OSXCollectionViewController.m */; };
+		84CB76361A288E74008D6775 /* OSXGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76341A288E74008D6775 /* OSXGraphViewController.m */; };
 		84E084111A1B987C0071D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084101A1B987C0071D662 /* main.m */; };
-		84E084141A1B987C0071D662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084131A1B987C0071D662 /* AppDelegate.m */; };
-		84E0841A1A1B987C0071D662 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084191A1B987C0071D662 /* ListViewController.m */; };
+		84E084141A1B987C0071D662 /* IOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084131A1B987C0071D662 /* IOSAppDelegate.m */; };
+		84E0841A1A1B987C0071D662 /* IOSListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084191A1B987C0071D662 /* IOSListViewController.m */; };
 		84E0841D1A1B987C0071D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E0841B1A1B987C0071D662 /* Main.storyboard */; };
 		84E0841F1A1B987C0071D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E0841E1A1B987C0071D662 /* Images.xcassets */; };
 		84E084221A1B987C0071D662 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E084201A1B987C0071D662 /* LaunchScreen.xib */; };
 		84E0842E1A1B987C0071D662 /* WeatherFrog_for_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0842D1A1B987C0071D662 /* WeatherFrog_for_iOSTests.m */; };
-		84E0843F1A1B988D0071D662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0843E1A1B988D0071D662 /* AppDelegate.m */; };
+		84E0843F1A1B988D0071D662 /* OSXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0843E1A1B988D0071D662 /* OSXAppDelegate.m */; };
 		84E084411A1B988D0071D662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084401A1B988D0071D662 /* main.m */; };
-		84E084441A1B988D0071D662 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084431A1B988D0071D662 /* ListViewController.m */; };
+		84E084441A1B988D0071D662 /* OSXListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084431A1B988D0071D662 /* OSXListViewController.m */; };
 		84E084461A1B988E0071D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E084451A1B988D0071D662 /* Images.xcassets */; };
 		84E084491A1B988E0071D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E084471A1B988E0071D662 /* Main.storyboard */; };
 		84E084551A1B988E0071D662 /* WeatherFrog_for_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084541A1B988E0071D662 /* WeatherFrog_for_OSXTests.m */; };
@@ -178,20 +181,27 @@
 
 /* Begin PBXFileReference section */
 		84297A9C1A21407D0070E151 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		84297AA41A2142A20070E151 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
-		84297AA51A2142A20070E151 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
-		84297AA71A2143F30070E151 /* SplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitViewController.h; path = "Split Scene/SplitViewController.h"; sourceTree = "<group>"; };
-		84297AA81A2143F30070E151 /* SplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplitViewController.m; path = "Split Scene/SplitViewController.m"; sourceTree = "<group>"; };
-		84297AAD1A21DFEA0070E151 /* ListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListTableView.h; path = "LIst Scene/ListTableView.h"; sourceTree = "<group>"; };
-		84297AAE1A21DFEA0070E151 /* ListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListTableView.m; path = "LIst Scene/ListTableView.m"; sourceTree = "<group>"; };
-		84297AB51A21EAA10070E151 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Map Scene/MapViewController.h"; sourceTree = "<group>"; };
-		84297AB61A21EAA10070E151 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Map Scene/MapViewController.m"; sourceTree = "<group>"; };
-		84297ABA1A21EDB70070E151 /* SplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitView.h; path = "Split Scene/SplitView.h"; sourceTree = "<group>"; };
-		84297ABB1A21EDB70070E151 /* SplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplitView.m; path = "Split Scene/SplitView.m"; sourceTree = "<group>"; };
-		8475976B1A28A2490013824D /* CollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionView.h; path = "Detail Scene/Collection Scene/CollectionView.h"; sourceTree = "<group>"; };
-		8475976C1A28A2490013824D /* CollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionView.m; path = "Detail Scene/Collection Scene/CollectionView.m"; sourceTree = "<group>"; };
-		847597771A28A3820013824D /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphView.h; path = "Detail Scene/Graph Scene/GraphView.h"; sourceTree = "<group>"; };
-		847597781A28A3820013824D /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphView.m; path = "Detail Scene/Graph Scene/GraphView.m"; sourceTree = "<group>"; };
+		84297AA41A2142A20070E151 /* OSXWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXWindowController.h; sourceTree = "<group>"; };
+		84297AA51A2142A20070E151 /* OSXWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXWindowController.m; sourceTree = "<group>"; };
+		84297AA71A2143F30070E151 /* OSXSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXSplitViewController.h; path = "Split Scene/OSXSplitViewController.h"; sourceTree = "<group>"; };
+		84297AA81A2143F30070E151 /* OSXSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXSplitViewController.m; path = "Split Scene/OSXSplitViewController.m"; sourceTree = "<group>"; };
+		84297AAD1A21DFEA0070E151 /* OSXListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXListTableView.h; path = "LIst Scene/OSXListTableView.h"; sourceTree = "<group>"; };
+		84297AAE1A21DFEA0070E151 /* OSXListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXListTableView.m; path = "LIst Scene/OSXListTableView.m"; sourceTree = "<group>"; };
+		84297AB51A21EAA10070E151 /* OSXMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXMapViewController.h; path = "Map Scene/OSXMapViewController.h"; sourceTree = "<group>"; };
+		84297AB61A21EAA10070E151 /* OSXMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXMapViewController.m; path = "Map Scene/OSXMapViewController.m"; sourceTree = "<group>"; };
+		84297ABA1A21EDB70070E151 /* OSXSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXSplitView.h; path = "Split Scene/OSXSplitView.h"; sourceTree = "<group>"; };
+		84297ABB1A21EDB70070E151 /* OSXSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXSplitView.m; path = "Split Scene/OSXSplitView.m"; sourceTree = "<group>"; };
+		845558651A291036003127B3 /* IOSSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSSplitViewController.h; path = "Split Scene/IOSSplitViewController.h"; sourceTree = "<group>"; };
+		845558661A291036003127B3 /* IOSSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSSplitViewController.m; path = "Split Scene/IOSSplitViewController.m"; sourceTree = "<group>"; };
+		845558691A2912A3003127B3 /* IOSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSMapViewController.h; path = "Map Scene/IOSMapViewController.h"; sourceTree = "<group>"; };
+		8455586A1A2912A3003127B3 /* IOSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSMapViewController.m; path = "Map Scene/IOSMapViewController.m"; sourceTree = "<group>"; };
+		8455586D1A291808003127B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8455586F1A291C17003127B3 /* IOSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSDetailViewController.h; path = "WeatherFrog for iOS/Detail Scene/IOSDetailViewController.h"; sourceTree = "<group>"; };
+		845558701A291C17003127B3 /* IOSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSDetailViewController.m; path = "WeatherFrog for iOS/Detail Scene/IOSDetailViewController.m"; sourceTree = "<group>"; };
+		8475976B1A28A2490013824D /* OSXCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionView.h; path = "Detail Scene/Collection Scene/OSXCollectionView.h"; sourceTree = "<group>"; };
+		8475976C1A28A2490013824D /* OSXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionView.m; path = "Detail Scene/Collection Scene/OSXCollectionView.m"; sourceTree = "<group>"; };
+		847597771A28A3820013824D /* OSXGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXGraphView.h; path = "Detail Scene/Graph Scene/OSXGraphView.h"; sourceTree = "<group>"; };
+		847597781A28A3820013824D /* OSXGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXGraphView.m; path = "Detail Scene/Graph Scene/OSXGraphView.m"; sourceTree = "<group>"; };
 		848BF9C81A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WeatherFrog for iOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		848BF9CE1A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,22 +217,21 @@
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
 		84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for OSX.entitlements"; sourceTree = "<group>"; };
-		84CB76211A288D47008D6775 /* TabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabViewController.h; path = "Detail Scene/TabViewController.h"; sourceTree = "<group>"; };
-		84CB76221A288D47008D6775 /* TabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabViewController.m; path = "Detail Scene/TabViewController.m"; sourceTree = "<group>"; };
-		84CB76231A288D47008D6775 /* TabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabViewController.xib; path = "Detail Scene/TabViewController.xib"; sourceTree = "<group>"; };
-		84CB762C1A288D83008D6775 /* TabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabView.h; path = "Detail Scene/TabView.h"; sourceTree = "<group>"; };
-		84CB762D1A288D83008D6775 /* TabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabView.m; path = "Detail Scene/TabView.m"; sourceTree = "<group>"; };
-		84CB762F1A288E19008D6775 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewController.h; path = "Detail Scene/Collection Scene/CollectionViewController.h"; sourceTree = "<group>"; };
-		84CB76301A288E19008D6775 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewController.m; path = "Detail Scene/Collection Scene/CollectionViewController.m"; sourceTree = "<group>"; };
-		84CB76331A288E74008D6775 /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphViewController.h; path = "Detail Scene/Graph Scene/GraphViewController.h"; sourceTree = "<group>"; };
-		84CB76341A288E74008D6775 /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphViewController.m; path = "Detail Scene/Graph Scene/GraphViewController.m"; sourceTree = "<group>"; };
+		84CB76211A288D47008D6775 /* OSXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXDetailViewController.h; path = "Detail Scene/OSXDetailViewController.h"; sourceTree = "<group>"; };
+		84CB76221A288D47008D6775 /* OSXDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXDetailViewController.m; path = "Detail Scene/OSXDetailViewController.m"; sourceTree = "<group>"; };
+		84CB762C1A288D83008D6775 /* OSXTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXTabView.h; path = "Detail Scene/OSXTabView.h"; sourceTree = "<group>"; };
+		84CB762D1A288D83008D6775 /* OSXTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXTabView.m; path = "Detail Scene/OSXTabView.m"; sourceTree = "<group>"; };
+		84CB762F1A288E19008D6775 /* OSXCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionViewController.h; path = "Detail Scene/Collection Scene/OSXCollectionViewController.h"; sourceTree = "<group>"; };
+		84CB76301A288E19008D6775 /* OSXCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionViewController.m; path = "Detail Scene/Collection Scene/OSXCollectionViewController.m"; sourceTree = "<group>"; };
+		84CB76331A288E74008D6775 /* OSXGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXGraphViewController.h; path = "Detail Scene/Graph Scene/OSXGraphViewController.h"; sourceTree = "<group>"; };
+		84CB76341A288E74008D6775 /* OSXGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXGraphViewController.m; path = "Detail Scene/Graph Scene/OSXGraphViewController.m"; sourceTree = "<group>"; };
 		84E0840C1A1B987C0071D662 /* WeatherFrog for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E0840F1A1B987C0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E084101A1B987C0071D662 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		84E084121A1B987C0071D662 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		84E084131A1B987C0071D662 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84E084181A1B987C0071D662 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		84E084191A1B987C0071D662 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		84E084121A1B987C0071D662 /* IOSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSAppDelegate.h; sourceTree = "<group>"; };
+		84E084131A1B987C0071D662 /* IOSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSAppDelegate.m; sourceTree = "<group>"; };
+		84E084181A1B987C0071D662 /* IOSListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IOSListViewController.h; path = "List Scene/IOSListViewController.h"; sourceTree = "<group>"; };
+		84E084191A1B987C0071D662 /* IOSListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IOSListViewController.m; path = "List Scene/IOSListViewController.m"; sourceTree = "<group>"; };
 		84E0841C1A1B987C0071D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E0841E1A1B987C0071D662 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84E084211A1B987C0071D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -231,11 +240,11 @@
 		84E0842D1A1B987C0071D662 /* WeatherFrog_for_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrog_for_iOSTests.m; sourceTree = "<group>"; };
 		84E084391A1B988D0071D662 /* WeatherFrog for OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherFrog for OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E0843C1A1B988D0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84E0843D1A1B988D0071D662 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		84E0843E1A1B988D0071D662 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84E0843D1A1B988D0071D662 /* OSXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSXAppDelegate.h; sourceTree = "<group>"; };
+		84E0843E1A1B988D0071D662 /* OSXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSXAppDelegate.m; sourceTree = "<group>"; };
 		84E084401A1B988D0071D662 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		84E084421A1B988D0071D662 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = "LIst Scene/ListViewController.h"; sourceTree = "<group>"; };
-		84E084431A1B988D0071D662 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = "LIst Scene/ListViewController.m"; sourceTree = "<group>"; };
+		84E084421A1B988D0071D662 /* OSXListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSXListViewController.h; path = "LIst Scene/OSXListViewController.h"; sourceTree = "<group>"; };
+		84E084431A1B988D0071D662 /* OSXListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OSXListViewController.m; path = "LIst Scene/OSXListViewController.m"; sourceTree = "<group>"; };
 		84E084451A1B988D0071D662 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84E084481A1B988E0071D662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E0844E1A1B988E0071D662 /* WeatherFrog for OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherFrog for OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8455586E1A291808003127B3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,10 +381,10 @@
 		84297AAC1A21DF660070E151 /* List Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84E084421A1B988D0071D662 /* ListViewController.h */,
-				84E084431A1B988D0071D662 /* ListViewController.m */,
-				84297AAD1A21DFEA0070E151 /* ListTableView.h */,
-				84297AAE1A21DFEA0070E151 /* ListTableView.m */,
+				84E084421A1B988D0071D662 /* OSXListViewController.h */,
+				84E084431A1B988D0071D662 /* OSXListViewController.m */,
+				84297AAD1A21DFEA0070E151 /* OSXListTableView.h */,
+				84297AAE1A21DFEA0070E151 /* OSXListTableView.m */,
 			);
 			name = "List Scene";
 			sourceTree = "<group>";
@@ -382,11 +392,10 @@
 		84297AB31A21EA2F0070E151 /* Detail Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84CB76211A288D47008D6775 /* TabViewController.h */,
-				84CB76221A288D47008D6775 /* TabViewController.m */,
-				84CB76231A288D47008D6775 /* TabViewController.xib */,
-				84CB762C1A288D83008D6775 /* TabView.h */,
-				84CB762D1A288D83008D6775 /* TabView.m */,
+				84CB76211A288D47008D6775 /* OSXDetailViewController.h */,
+				84CB76221A288D47008D6775 /* OSXDetailViewController.m */,
+				84CB762C1A288D83008D6775 /* OSXTabView.h */,
+				84CB762D1A288D83008D6775 /* OSXTabView.m */,
 				84CB76321A288E1E008D6775 /* Collection Scene */,
 				84CB76381A288E83008D6775 /* Graph Scene */,
 			);
@@ -396,8 +405,8 @@
 		84297AB41A21EA7D0070E151 /* Map Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84297AB51A21EAA10070E151 /* MapViewController.h */,
-				84297AB61A21EAA10070E151 /* MapViewController.m */,
+				84297AB51A21EAA10070E151 /* OSXMapViewController.h */,
+				84297AB61A21EAA10070E151 /* OSXMapViewController.m */,
 			);
 			name = "Map Scene";
 			sourceTree = "<group>";
@@ -405,17 +414,55 @@
 		84297ABD1A21EDC20070E151 /* Split Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84297AA71A2143F30070E151 /* SplitViewController.h */,
-				84297AA81A2143F30070E151 /* SplitViewController.m */,
-				84297ABA1A21EDB70070E151 /* SplitView.h */,
-				84297ABB1A21EDB70070E151 /* SplitView.m */,
+				84297AA71A2143F30070E151 /* OSXSplitViewController.h */,
+				84297AA81A2143F30070E151 /* OSXSplitViewController.m */,
+				84297ABA1A21EDB70070E151 /* OSXSplitView.h */,
+				84297ABB1A21EDB70070E151 /* OSXSplitView.m */,
 			);
 			name = "Split Scene";
+			sourceTree = "<group>";
+		};
+		845558631A290F4F003127B3 /* List Scene */ = {
+			isa = PBXGroup;
+			children = (
+				84E084181A1B987C0071D662 /* IOSListViewController.h */,
+				84E084191A1B987C0071D662 /* IOSListViewController.m */,
+			);
+			name = "List Scene";
+			sourceTree = "<group>";
+		};
+		845558641A290F6A003127B3 /* Detail Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8455586F1A291C17003127B3 /* IOSDetailViewController.h */,
+				845558701A291C17003127B3 /* IOSDetailViewController.m */,
+			);
+			name = "Detail Scene";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		845558681A29103C003127B3 /* Split Scene */ = {
+			isa = PBXGroup;
+			children = (
+				845558651A291036003127B3 /* IOSSplitViewController.h */,
+				845558661A291036003127B3 /* IOSSplitViewController.m */,
+			);
+			name = "Split Scene";
+			sourceTree = "<group>";
+		};
+		8455586C1A2912A9003127B3 /* Map Scene */ = {
+			isa = PBXGroup;
+			children = (
+				845558691A2912A3003127B3 /* IOSMapViewController.h */,
+				8455586A1A2912A3003127B3 /* IOSMapViewController.m */,
+			);
+			name = "Map Scene";
 			sourceTree = "<group>";
 		};
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8455586D1A291808003127B3 /* MapKit.framework */,
 				84297A9C1A21407D0070E151 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
 			);
@@ -465,10 +512,10 @@
 		84CB76321A288E1E008D6775 /* Collection Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84CB762F1A288E19008D6775 /* CollectionViewController.h */,
-				84CB76301A288E19008D6775 /* CollectionViewController.m */,
-				8475976B1A28A2490013824D /* CollectionView.h */,
-				8475976C1A28A2490013824D /* CollectionView.m */,
+				84CB762F1A288E19008D6775 /* OSXCollectionViewController.h */,
+				84CB76301A288E19008D6775 /* OSXCollectionViewController.m */,
+				8475976B1A28A2490013824D /* OSXCollectionView.h */,
+				8475976C1A28A2490013824D /* OSXCollectionView.m */,
 			);
 			name = "Collection Scene";
 			sourceTree = "<group>";
@@ -476,10 +523,10 @@
 		84CB76381A288E83008D6775 /* Graph Scene */ = {
 			isa = PBXGroup;
 			children = (
-				84CB76331A288E74008D6775 /* GraphViewController.h */,
-				84CB76341A288E74008D6775 /* GraphViewController.m */,
-				847597771A28A3820013824D /* GraphView.h */,
-				847597781A28A3820013824D /* GraphView.m */,
+				84CB76331A288E74008D6775 /* OSXGraphViewController.h */,
+				84CB76341A288E74008D6775 /* OSXGraphViewController.m */,
+				847597771A28A3820013824D /* OSXGraphView.h */,
+				847597781A28A3820013824D /* OSXGraphView.m */,
 			);
 			name = "Graph Scene";
 			sourceTree = "<group>";
@@ -516,10 +563,12 @@
 		84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */ = {
 			isa = PBXGroup;
 			children = (
-				84E084121A1B987C0071D662 /* AppDelegate.h */,
-				84E084131A1B987C0071D662 /* AppDelegate.m */,
-				84E084181A1B987C0071D662 /* ListViewController.h */,
-				84E084191A1B987C0071D662 /* ListViewController.m */,
+				84E084121A1B987C0071D662 /* IOSAppDelegate.h */,
+				84E084131A1B987C0071D662 /* IOSAppDelegate.m */,
+				845558681A29103C003127B3 /* Split Scene */,
+				845558631A290F4F003127B3 /* List Scene */,
+				845558641A290F6A003127B3 /* Detail Scene */,
+				8455586C1A2912A9003127B3 /* Map Scene */,
 				84E0841B1A1B987C0071D662 /* Main.storyboard */,
 				84E0841E1A1B987C0071D662 /* Images.xcassets */,
 				84E084201A1B987C0071D662 /* LaunchScreen.xib */,
@@ -559,10 +608,10 @@
 			isa = PBXGroup;
 			children = (
 				84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */,
-				84E0843D1A1B988D0071D662 /* AppDelegate.h */,
-				84E0843E1A1B988D0071D662 /* AppDelegate.m */,
-				84297AA41A2142A20070E151 /* WindowController.h */,
-				84297AA51A2142A20070E151 /* WindowController.m */,
+				84E0843D1A1B988D0071D662 /* OSXAppDelegate.h */,
+				84E0843E1A1B988D0071D662 /* OSXAppDelegate.m */,
+				84297AA41A2142A20070E151 /* OSXWindowController.h */,
+				84297AA51A2142A20070E151 /* OSXWindowController.m */,
 				84297ABD1A21EDC20070E151 /* Split Scene */,
 				84297AAC1A21DF660070E151 /* List Scene */,
 				84297AB31A21EA2F0070E151 /* Detail Scene */,
@@ -1020,6 +1069,11 @@
 					};
 					84E0840B1A1B987C0071D662 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					84E084261A1B987C0071D662 = {
 						CreatedOnToolsVersion = 6.1;
@@ -1137,7 +1191,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CB76251A288D47008D6775 /* TabViewController.xib in Resources */,
 				84E084461A1B988E0071D662 /* Images.xcassets in Resources */,
 				84E084CC1A1B9A020071D662 /* README.txt in Resources */,
 				84E084491A1B988E0071D662 /* Main.storyboard in Resources */,
@@ -1181,7 +1234,7 @@
 				84E085521A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084C11A1B9A020071D662 /* DDLog.m in Sources */,
 				84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
-				84E084141A1B987C0071D662 /* AppDelegate.m in Sources */,
+				84E084141A1B987C0071D662 /* IOSAppDelegate.m in Sources */,
 				84E084791A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
@@ -1194,10 +1247,13 @@
 				84E084C91A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084C71A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
 				84E0854E1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
+				8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */,
+				845558671A291036003127B3 /* IOSSplitViewController.m in Sources */,
 				84E084961A1B99E40071D662 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				84E0841A1A1B987C0071D662 /* ListViewController.m in Sources */,
+				84E0841A1A1B987C0071D662 /* IOSListViewController.m in Sources */,
 				84E0847D1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084751A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
+				845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */,
 				84E084771A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
 				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
 				84E0847F1A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
@@ -1223,24 +1279,24 @@
 			files = (
 				84E084BE1A1B9A020071D662 /* DDASLLogger.m in Sources */,
 				84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
-				84297AB81A21EAA10070E151 /* MapViewController.m in Sources */,
-				84CB76361A288E74008D6775 /* GraphViewController.m in Sources */,
+				84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */,
+				84CB76361A288E74008D6775 /* OSXGraphViewController.m in Sources */,
 				84E0855B1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E084721A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				84E084E81A1C7D040071D662 /* DataService.m in Sources */,
 				84E084C81A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
-				84E084441A1B988D0071D662 /* ListViewController.m in Sources */,
-				84CB76311A288E19008D6775 /* CollectionViewController.m in Sources */,
-				84297AA61A2142A20070E151 /* WindowController.m in Sources */,
-				84297AAF1A21DFEA0070E151 /* ListTableView.m in Sources */,
+				84E084441A1B988D0071D662 /* OSXListViewController.m in Sources */,
+				84CB76311A288E19008D6775 /* OSXCollectionViewController.m in Sources */,
+				84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */,
+				84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */,
 				84E084741A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
-				84297AA91A2143F30070E151 /* SplitViewController.m in Sources */,
+				84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */,
 				84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */,
 				84E0854D1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E084781A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
 				84E0854F1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
-				8475976D1A28A2490013824D /* CollectionView.m in Sources */,
-				84297ABC1A21EDB70070E151 /* SplitView.m in Sources */,
+				8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */,
+				84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */,
 				84E084C61A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BA1A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084C21A1B9A020071D662 /* DDLog.m in Sources */,
@@ -1248,7 +1304,7 @@
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084B81A1B9A020071D662 /* CLIColor.m in Sources */,
-				847597791A28A3820013824D /* GraphView.m in Sources */,
+				847597791A28A3820013824D /* OSXGraphView.m in Sources */,
 				84E0847A1A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084BC1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,
@@ -1256,14 +1312,14 @@
 				84E084761A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
 				84E0847E1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084C41A1B9A020071D662 /* DDTTYLogger.m in Sources */,
-				84CB76241A288D47008D6775 /* TabViewController.m in Sources */,
+				84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */,
 				84E084CA1A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084821A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
 				84E084411A1B988D0071D662 /* main.m in Sources */,
 				84E085591A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
-				84CB762E1A288D83008D6775 /* TabView.m in Sources */,
+				84CB762E1A288D83008D6775 /* OSXTabView.m in Sources */,
 				84E085511A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
-				84E0843F1A1B988D0071D662 /* AppDelegate.m in Sources */,
+				84E0843F1A1B988D0071D662 /* OSXAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
