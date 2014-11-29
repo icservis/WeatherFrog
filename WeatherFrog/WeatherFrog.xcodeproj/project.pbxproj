@@ -24,6 +24,11 @@
 		8486FE081A29CA7B003AB3EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FE061A29CA7B003AB3EE /* Location.m */; };
 		84B808C21A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
 		84B808C31A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
+		84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */; };
+		84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808CF1A2A2EDB0074DF01 /* IOSCollectionView.m */; };
+		84B808D31A2A31D00074DF01 /* IOSCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808D21A2A31D00074DF01 /* IOSCollectionHeaderView.m */; };
+		84B808D61A2A31EF0074DF01 /* IOSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808D51A2A31EF0074DF01 /* IOSCollectionViewCell.m */; };
+		84B808D91A2A33A90074DF01 /* IOSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808D81A2A33A90074DF01 /* IOSGraphViewController.m */; };
 		84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76221A288D47008D6775 /* OSXDetailViewController.m */; };
 		84CB762E1A288D83008D6775 /* OSXTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB762D1A288D83008D6775 /* OSXTabView.m */; };
 		84CB76311A288E19008D6775 /* OSXCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB76301A288E19008D6775 /* OSXCollectionViewController.m */; };
@@ -201,6 +206,16 @@
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84B808C01A29F8BC0074DF01 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = "Shared Resources/LocationManager.h"; sourceTree = "<group>"; };
 		84B808C11A29F8BC0074DF01 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = "Shared Resources/LocationManager.m"; sourceTree = "<group>"; };
+		84B808CA1A2A2EA60074DF01 /* IOSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionViewController.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.h"; sourceTree = "<group>"; };
+		84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionViewController.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.m"; sourceTree = "<group>"; };
+		84B808CE1A2A2EDB0074DF01 /* IOSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionView.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionView.h"; sourceTree = "<group>"; };
+		84B808CF1A2A2EDB0074DF01 /* IOSCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionView.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionView.m"; sourceTree = "<group>"; };
+		84B808D11A2A31D00074DF01 /* IOSCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionHeaderView.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionHeaderView.h"; sourceTree = "<group>"; };
+		84B808D21A2A31D00074DF01 /* IOSCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionHeaderView.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionHeaderView.m"; sourceTree = "<group>"; };
+		84B808D41A2A31EF0074DF01 /* IOSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionViewCell.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewCell.h"; sourceTree = "<group>"; };
+		84B808D51A2A31EF0074DF01 /* IOSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionViewCell.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewCell.m"; sourceTree = "<group>"; };
+		84B808D71A2A33A90074DF01 /* IOSGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSGraphViewController.h; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphViewController.h"; sourceTree = "<group>"; };
+		84B808D81A2A33A90074DF01 /* IOSGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSGraphViewController.m; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphViewController.m"; sourceTree = "<group>"; };
 		84C77E161A1C808300348A8A /* Lumberjack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lumberjack.h; path = "Shared Resources/Lumberjack.h"; sourceTree = "<group>"; };
 		84C77E181A1C84DC00348A8A /* WeatherFrog for OSX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for OSX.entitlements"; sourceTree = "<group>"; };
 		84CB76211A288D47008D6775 /* OSXDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXDetailViewController.h; path = "Detail Scene/OSXDetailViewController.h"; sourceTree = "<group>"; };
@@ -416,6 +431,9 @@
 			children = (
 				8455586F1A291C17003127B3 /* IOSDetailViewController.h */,
 				845558701A291C17003127B3 /* IOSDetailViewController.m */,
+				84B808CD1A2A2EAA0074DF01 /* Collection Scene */,
+				84B808D71A2A33A90074DF01 /* IOSGraphViewController.h */,
+				84B808D81A2A33A90074DF01 /* IOSGraphViewController.m */,
 			);
 			name = "Detail Scene";
 			path = ..;
@@ -496,6 +514,21 @@
 				848BF9E01A1D2E2F00A4F000 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84B808CD1A2A2EAA0074DF01 /* Collection Scene */ = {
+			isa = PBXGroup;
+			children = (
+				84B808CA1A2A2EA60074DF01 /* IOSCollectionViewController.h */,
+				84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */,
+				84B808CE1A2A2EDB0074DF01 /* IOSCollectionView.h */,
+				84B808CF1A2A2EDB0074DF01 /* IOSCollectionView.m */,
+				84B808D11A2A31D00074DF01 /* IOSCollectionHeaderView.h */,
+				84B808D21A2A31D00074DF01 /* IOSCollectionHeaderView.m */,
+				84B808D41A2A31EF0074DF01 /* IOSCollectionViewCell.h */,
+				84B808D51A2A31EF0074DF01 /* IOSCollectionViewCell.m */,
+			);
+			name = "Collection Scene";
 			sourceTree = "<group>";
 		};
 		84CB76321A288E1E008D6775 /* Collection Scene */ = {
@@ -1146,12 +1179,14 @@
 				84E084981A1B99E40071D662 /* UIButton+AFNetworking.m in Sources */,
 				84E0854C1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E0849B1A1B99E40071D662 /* UIRefreshControl+AFNetworking.m in Sources */,
+				84B808D91A2A33A90074DF01 /* IOSGraphViewController.m in Sources */,
 				84E085501A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
 				84E084971A1B99E40071D662 /* UIAlertView+AFNetworking.m in Sources */,
 				84E085581A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
 				84E084C31A1B9A020071D662 /* DDTTYLogger.m in Sources */,
 				84E084C51A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BD1A1B9A020071D662 /* DDASLLogger.m in Sources */,
+				84B808D61A2A31EF0074DF01 /* IOSCollectionViewCell.m in Sources */,
 				84E085521A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084C11A1B9A020071D662 /* DDLog.m in Sources */,
 				84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
@@ -1159,11 +1194,13 @@
 				84E084791A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
+				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
 				84E084B91A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084731A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84E0847B1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84B808C31A29F8BC0074DF01 /* LocationManager.m in Sources */,
 				84E084991A1B99E40071D662 /* UIImageView+AFNetworking.m in Sources */,
+				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
 				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
@@ -1186,6 +1223,7 @@
 				84E0849C1A1B99E40071D662 /* UIWebView+AFNetworking.m in Sources */,
 				84E084811A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
 				84E084951A1B99E40071D662 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				84B808D31A2A31D00074DF01 /* IOSCollectionHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,4 +28,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIContentContainerProtocol
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KViewControllerWillTrasitionToTraitCollection object:newCollection];
+}
+
 @end

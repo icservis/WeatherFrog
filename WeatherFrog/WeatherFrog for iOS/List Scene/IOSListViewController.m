@@ -9,6 +9,7 @@
 #import "IOSListViewController.h"
 #import "IOSListTableViewCell.h"
 #import "IOSDetailViewController.h"
+#import "IOSSplitViewController.h"
 
 @interface IOSListViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *removeAllBookmarksButton;
 
 @property (strong, nonatomic) UIBarButtonItem *closeButtonItem;
-@property (assign, nonatomic) UIUserInterfaceSizeClass splitViewControllerHorizontalClass;
+@property (strong, nonatomic) UITraitCollection* splitViewControllerTraintCollection;
 
 - (IBAction)currentPositionButtonTapped:(id)sender;
 - (IBAction)bookmarkButtonTapped:(id)sender;
@@ -35,12 +36,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.toolbarHidden = YES;
-    self.splitViewControllerHorizontalClass = [self.splitViewController.traitCollection horizontalSizeClass];
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    self.splitViewControllerTraintCollection = self.splitViewController.traitCollection;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,10 +95,12 @@
     return _closeButtonItem;
 }
 
-- (void)setSplitViewControllerHorizontalClass:(UIUserInterfaceSizeClass)splitViewControllerHorizontalClass
+- (void)setSplitViewControllerTraintCollection:(UITraitCollection *)splitViewControllerTraintCollection
 {
-    if (_splitViewControllerHorizontalClass != splitViewControllerHorizontalClass) {
-        _splitViewControllerHorizontalClass = splitViewControllerHorizontalClass;
+    if (_splitViewControllerTraintCollection != splitViewControllerTraintCollection) {
+        
+        UIUserInterfaceSizeClass splitViewControllerHorizontalClass = [splitViewControllerTraintCollection horizontalSizeClass];
+        //UIUserInterfaceSizeClass splitViewControllerVerticalClass = [splitViewControllerTraintCollection verticalSizeClass];
         
         if (splitViewControllerHorizontalClass == UIUserInterfaceSizeClassCompact) {
             self.navigationItem.rightBarButtonItems = @[self.closeButtonItem, self.editButtonItem];
@@ -107,12 +118,12 @@
 }
 
 
-#pragma mark - ViewController Delegate
+#pragma mark - Notifications
 
-- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+- (void)viewControllerWillTrasitionToTraitCollectionNotification:(NSNotification*)notification
 {
-    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
-    self.splitViewControllerHorizontalClass = [self.splitViewController.traitCollection horizontalSizeClass];
+    UITraitCollection* splitViewControllerTraitCollection = (UITraitCollection*)notification.object;
+    self.splitViewControllerTraintCollection = splitViewControllerTraitCollection;
 }
 
 #pragma mark - User Actions
