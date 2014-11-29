@@ -127,16 +127,25 @@
                                     <segue destination="bTQ-zW-uVj" kind="embed" id="CdT-W2-HAk"/>
                                 </connections>
                             </containerView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4JO-wd-bfP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="mZp-o0-vGv"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Kw4-uH-saK" secondAttribute="trailing" constant="-16" id="Lcg-U4-6Bh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4JO-wd-bfP" secondAttribute="trailing" constant="-16" id="NGc-Lf-5qy"/>
                             <constraint firstItem="Kw4-uH-saK" firstAttribute="leading" secondItem="R4U-g0-arW" secondAttribute="leadingMargin" constant="-16" id="UQi-Re-YMd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fOO-j1-fdS" secondAttribute="trailing" constant="-16" id="YiI-tQ-BJD"/>
                             <constraint firstItem="fOO-j1-fdS" firstAttribute="leading" secondItem="R4U-g0-arW" secondAttribute="leadingMargin" constant="-16" id="ZFr-vg-IJD"/>
                             <constraint firstItem="Kw4-uH-saK" firstAttribute="top" secondItem="R4U-g0-arW" secondAttribute="topMargin" id="bCR-tT-e5j"/>
                             <constraint firstAttribute="bottom" secondItem="Kw4-uH-saK" secondAttribute="bottom" id="hQM-H5-vrq"/>
+                            <constraint firstItem="4JO-wd-bfP" firstAttribute="leading" secondItem="R4U-g0-arW" secondAttribute="leadingMargin" constant="-16" id="mGM-Ii-KL8"/>
                             <constraint firstItem="fOO-j1-fdS" firstAttribute="top" secondItem="R4U-g0-arW" secondAttribute="top" id="nfD-eq-ccc"/>
+                            <constraint firstItem="4JO-wd-bfP" firstAttribute="top" secondItem="jZu-7U-GML" secondAttribute="bottom" id="nxF-CE-RGc"/>
                             <constraint firstAttribute="bottom" secondItem="fOO-j1-fdS" secondAttribute="bottom" id="xBX-rO-WFV"/>
                         </constraints>
                     </view>
@@ -152,6 +161,7 @@
                     <connections>
                         <outlet property="collectionContainerView" destination="Kw4-uH-saK" id="TAw-25-zYZ"/>
                         <outlet property="graphContainerView" destination="fOO-j1-fdS" id="V10-JJ-RIp"/>
+                        <outlet property="progressView" destination="4JO-wd-bfP" id="g8t-OU-4Du"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXJ-sb-axg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,15 +349,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ml-Tv-BOZ" userLabel="fakeView">
-                                                <rect key="frame" x="250" y="250" width="100" height="100"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <rect key="frame" x="100" y="100" width="400" height="400"/>
+                                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="See-HK-47C"/>
-                                                    <constraint firstAttribute="height" constant="100" id="hoR-dW-nvg"/>
+                                                    <constraint firstAttribute="width" constant="400" id="See-HK-47C"/>
+                                                    <constraint firstAttribute="height" constant="400" id="hoR-dW-nvg"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="ZXF-Mb-8Cn"/>
                                             <constraint firstAttribute="centerY" secondItem="9Ml-Tv-BOZ" secondAttribute="centerY" id="nkS-Ds-MxZ"/>
@@ -372,7 +381,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.02306274078" green="1" blue="0.071162334290000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hrE-57-Z9P" firstAttribute="top" secondItem="Xzy-mQ-fCQ" secondAttribute="top" id="KbQ-Lc-VK4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hrE-57-Z9P" secondAttribute="trailing" constant="-16" id="Uks-oj-SDf"/>

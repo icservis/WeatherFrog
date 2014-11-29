@@ -16,6 +16,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
 @property (weak, nonatomic) IBOutlet UIView *collectionContainerView;
 @property (weak, nonatomic) IBOutlet UIView *graphContainerView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (strong, nonatomic) UIBarButtonItem* viewModeButtonItem;
 @property (strong, nonatomic) UISegmentedControl* viewModeControl;
