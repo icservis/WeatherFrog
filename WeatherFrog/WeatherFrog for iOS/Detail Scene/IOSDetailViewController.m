@@ -19,7 +19,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
 @property (strong, nonatomic) UIBarButtonItem* viewModeButtonItem;
 @property (strong, nonatomic) UISegmentedControl* viewModeControl;
-@property (strong, nonatomic) UITraitCollection* splitViewControllerTraintCollection;
+@property (strong, nonatomic) UITraitCollection* splitViewControllerTraitCollection;
 @property (assign, nonatomic) NSInteger selectedContainerViewIndex;
 
 @end
@@ -36,7 +36,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     self.graphContainerView.alpha = 0.f;
     
     self.navigationItem.leftItemsSupplementBackButton = YES;
-    self.splitViewControllerTraintCollection = self.splitViewController.traitCollection;
+    self.splitViewControllerTraitCollection = self.splitViewController.traitCollection;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
 }
@@ -83,21 +83,30 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     return _viewModeControl;
 }
 
-- (void)setSplitViewControllerTraintCollection:(UITraitCollection *)splitViewControllerTraintCollection
+- (void)setSplitViewControllerTraitCollection:(UITraitCollection *)splitViewControllerTraitCollection
 {
-    if (_splitViewControllerTraintCollection != splitViewControllerTraintCollection) {
+    if (_splitViewControllerTraitCollection != splitViewControllerTraitCollection) {
         
-        UIUserInterfaceSizeClass splitViewControllerHorizontalClass = [splitViewControllerTraintCollection horizontalSizeClass];
-        UIUserInterfaceSizeClass splitViewControllerVerticalClass = [splitViewControllerTraintCollection verticalSizeClass];
+        UIUserInterfaceSizeClass splitViewControllerHorizontalClass = [splitViewControllerTraitCollection horizontalSizeClass];
+        UIUserInterfaceSizeClass splitViewControllerVerticalClass = [splitViewControllerTraitCollection verticalSizeClass];
         
         if (splitViewControllerVerticalClass == UIUserInterfaceSizeClassRegular && splitViewControllerHorizontalClass == UIUserInterfaceSizeClassRegular) {
             
-            self.navigationItem.leftBarButtonItems = @[self.splitViewController.displayModeButtonItem, self.viewModeButtonItem];
+            if (self.splitViewController.displayModeButtonItem) {
+                self.navigationItem.leftBarButtonItems = @[self.splitViewController.displayModeButtonItem, self.viewModeButtonItem];
+            } else {
+                self.navigationItem.leftBarButtonItems = @[self.viewModeButtonItem];
+            }
+            
             self.selectedContainerViewIndex = self.viewModeControl.selectedSegmentIndex;
             
         } else {
             
-            self.navigationItem.leftBarButtonItems = @[self.splitViewController.displayModeButtonItem];
+            if (self.splitViewController.displayModeButtonItem) {
+                self.navigationItem.leftBarButtonItems = @[self.splitViewController.displayModeButtonItem];
+            } else {
+                self.navigationItem.leftBarButtonItems = nil;
+            }
             
             if (splitViewControllerVerticalClass == UIUserInterfaceSizeClassCompact) {
                 self.selectedContainerViewIndex = 1;
@@ -106,7 +115,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
             }
         }
         
-        _splitViewControllerTraintCollection = splitViewControllerTraintCollection;
+        _splitViewControllerTraitCollection = splitViewControllerTraitCollection;
     }
 }
 
@@ -130,7 +139,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 - (void)viewControllerWillTrasitionToTraitCollectionNotification:(NSNotification*)notification
 {
     UITraitCollection* splitViewControllerTraitCollection = (UITraitCollection*)notification.object;
-    self.splitViewControllerTraintCollection = splitViewControllerTraitCollection;
+    self.splitViewControllerTraitCollection = splitViewControllerTraitCollection;
 }
 
 #pragma mark - User Actions
