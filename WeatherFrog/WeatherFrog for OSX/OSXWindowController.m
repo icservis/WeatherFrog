@@ -40,7 +40,7 @@
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"PresentMapViewController"]) {
+    if ([segue.identifier isEqualToString:@"PresentMap"]) {
         OSXMapViewController* mapViewController = (OSXMapViewController*)segue.destinationController;
         OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
         mapViewController.delegate = splitViewController;

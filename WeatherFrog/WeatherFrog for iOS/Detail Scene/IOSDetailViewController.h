@@ -10,4 +10,6 @@
 
 @interface IOSDetailViewController : UIViewController
 
+@property (nonatomic, weak) id data;
+
 @end

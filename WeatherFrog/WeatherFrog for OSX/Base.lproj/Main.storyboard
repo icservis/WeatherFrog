@@ -684,7 +684,7 @@
                                         </buttonCell>
                                     </button>
                                     <connections>
-                                        <segue destination="UeI-Xw-w7l" kind="popover" identifier="PresentMapViewController" popoverAnchorView="ivw-GL-fJl" popoverBehavior="t" preferredEdge="maxY" id="XZH-gB-csI"/>
+                                        <segue destination="UeI-Xw-w7l" kind="popover" identifier="PresentMap" popoverAnchorView="ivw-GL-fJl" popoverBehavior="t" preferredEdge="maxY" id="XZH-gB-csI"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="09CDDB58-3B4B-4DCB-B36D-A29808288349" label="View Mode" paletteLabel="View Mode" id="1NW-Ea-Wkx">

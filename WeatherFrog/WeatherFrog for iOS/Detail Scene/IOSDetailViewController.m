@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +35,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if ([segue.identifier isEqualToString:@"PresentMapViewController"]) {
+    if ([segue.identifier isEqualToString:@"PresentMap"]) {
         IOSMapViewController* mapViewController = (IOSMapViewController*)segue.destinationViewController;
         mapViewController.delegate = self;
     }
