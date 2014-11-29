@@ -14,8 +14,6 @@
 @property (weak) IBOutlet UISearchBar *searchBar;
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem* cancelButton;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* bookmarkButton;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* forecastButton;
 
 - (IBAction)closeButtonTapped:(id)sender;
 

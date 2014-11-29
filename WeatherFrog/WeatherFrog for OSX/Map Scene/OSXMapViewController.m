@@ -10,8 +10,6 @@
 
 @interface OSXMapViewController ()
 
-@property (weak) IBOutlet NSButton *bookmarkButton;
-@property (weak) IBOutlet NSButton *forecastButton;
 @property (weak) IBOutlet NSButton *closeButton;
 @property (weak) IBOutlet NSSearchField *searchField;
 

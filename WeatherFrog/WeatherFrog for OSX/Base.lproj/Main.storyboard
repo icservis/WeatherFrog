@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6221"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="6221"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="6250"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -784,20 +784,6 @@
                             <mapView mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-eJ-6jC">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                             </mapView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jba-8O-zw7">
-                                <rect key="frame" x="98" y="13" width="103" height="32"/>
-                                <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7eh-Lx-N2M">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oLZ-5C-7bI">
-                                <rect key="frame" x="201" y="13" width="94" height="32"/>
-                                <buttonCell key="cell" type="push" title="Forecast" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VMA-ym-VzA">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DFf-q9-7xp">
                                 <rect key="frame" x="20" y="258" width="410" height="22"/>
                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Vab-RI-1JZ">
@@ -818,15 +804,11 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jba-8O-zw7" firstAttribute="leading" secondItem="mtS-RD-Kq0" secondAttribute="trailing" constant="20" id="9ta-8C-G5D"/>
-                            <constraint firstItem="mtS-RD-Kq0" firstAttribute="centerY" secondItem="jba-8O-zw7" secondAttribute="centerY" id="Nbk-bK-k6v"/>
-                            <constraint firstItem="oLZ-5C-7bI" firstAttribute="centerY" secondItem="jba-8O-zw7" secondAttribute="centerY" id="UHO-5i-4HT"/>
                             <constraint firstItem="mtS-RD-Kq0" firstAttribute="leading" secondItem="zTt-1Z-cm3" secondAttribute="leading" constant="20" id="UNE-dU-L9X"/>
                             <constraint firstItem="Nt1-eJ-6jC" firstAttribute="top" secondItem="zTt-1Z-cm3" secondAttribute="top" id="WGu-rY-h9T"/>
                             <constraint firstAttribute="bottom" secondItem="Nt1-eJ-6jC" secondAttribute="bottom" id="YgZ-C2-HaW"/>
                             <constraint firstItem="DFf-q9-7xp" firstAttribute="top" secondItem="zTt-1Z-cm3" secondAttribute="top" constant="20" id="ZU2-lc-jL0"/>
                             <constraint firstAttribute="trailing" secondItem="DFf-q9-7xp" secondAttribute="trailing" constant="20" id="bQh-Dn-S6s"/>
-                            <constraint firstItem="oLZ-5C-7bI" firstAttribute="leading" secondItem="jba-8O-zw7" secondAttribute="trailing" constant="12" id="foB-X9-ff6"/>
                             <constraint firstAttribute="bottom" secondItem="mtS-RD-Kq0" secondAttribute="bottom" constant="20" id="hNC-jl-hYm"/>
                             <constraint firstAttribute="trailing" secondItem="Nt1-eJ-6jC" secondAttribute="trailing" id="rhQ-6U-j4f"/>
                             <constraint firstItem="Nt1-eJ-6jC" firstAttribute="leading" secondItem="zTt-1Z-cm3" secondAttribute="leading" id="tzW-go-IgX"/>
@@ -834,9 +816,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bookmarkButton" destination="jba-8O-zw7" id="xc2-wu-4yT"/>
                         <outlet property="closeButton" destination="mtS-RD-Kq0" id="041-fh-PgA"/>
-                        <outlet property="forecastButton" destination="oLZ-5C-7bI" id="tLC-TO-Gdb"/>
                         <outlet property="searchField" destination="DFf-q9-7xp" id="2r5-DA-Z17"/>
                     </connections>
                 </viewController>

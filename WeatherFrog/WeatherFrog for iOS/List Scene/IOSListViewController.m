@@ -13,20 +13,29 @@
 @interface IOSListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView* tableView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *currentPositionButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *bookmarkButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *removeAllBookmarksButton;
 
-- (IBAction)cancelButtonTapped:(id)sender;
-- (IBAction)addButtonTapped:(id)sender;
+@property (strong, nonatomic) UIBarButtonItem *closeButtonItem;
+@property (assign, nonatomic) UIUserInterfaceSizeClass splitViewControllerHorizontalClass;
+
+- (IBAction)currentPositionButtonTapped:(id)sender;
+- (IBAction)bookmarkButtonTapped:(id)sender;
+- (IBAction)removeAllBookmarksButtonTapped:(id)sender;
+- (IBAction)closeButtonTapped:(id)sender;
 
 @end
 
 @implementation IOSListViewController
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.toolbarHidden = YES;
+    self.splitViewControllerHorizontalClass = [self.splitViewController.traitCollection horizontalSizeClass];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,24 +43,59 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWilAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setEditing:NO animated:NO];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
-    [self setEditing:NO animated:NO];
+    [super viewDidAppear:animated];
 }
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self setEditing:NO animated:YES];
+    
     if ([segue.identifier isEqualToString:@"ReplaceDetail"]) {
+        
+        if (self.splitViewController.collapsed == NO) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            if (self.splitViewController.displayModeButtonItem.action != nil) {
+                [self.splitViewController.displayModeButtonItem.target performSelector:self.splitViewController.displayModeButtonItem.action withObject:nil];
+            }
+#pragma clang diagnostic pop
+        }
+        
         UINavigationController* navigationVC = segue.destinationViewController;
         IOSDetailViewController* detailVC = (IOSDetailViewController*)[[navigationVC viewControllers] firstObject];
         detailVC.data = sender;
+    }
+}
+
+#pragma mark - Setters and Getters
+
+- (UIBarButtonItem*)closeButtonItem
+{
+    if (_closeButtonItem == nil) {
+        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Close", nil) style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
+    }
+    return _closeButtonItem;
+}
+
+- (void)setSplitViewControllerHorizontalClass:(UIUserInterfaceSizeClass)splitViewControllerHorizontalClass
+{
+    if (_splitViewControllerHorizontalClass != splitViewControllerHorizontalClass) {
+        _splitViewControllerHorizontalClass = splitViewControllerHorizontalClass;
+        
+        if (splitViewControllerHorizontalClass == UIUserInterfaceSizeClassCompact) {
+            self.navigationItem.rightBarButtonItems = @[self.closeButtonItem, self.editButtonItem];
+        } else {
+            self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
+        }
     }
 }
 
@@ -60,6 +104,62 @@
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:animated];
     [self.navigationController setToolbarHidden:!editing animated:animated];
+}
+
+
+#pragma mark - ViewController Delegate
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    self.splitViewControllerHorizontalClass = [self.splitViewController.traitCollection horizontalSizeClass];
+}
+
+#pragma mark - User Actions
+
+- (IBAction)currentPositionButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"ReplaceDetail" sender:sender];
+}
+
+- (IBAction)bookmarkButtonTapped:(id)sender
+{
+    
+}
+
+- (IBAction)closeButtonTapped:(id)sender
+{
+    [self performSegueWithIdentifier:@"ReplaceDetail" sender:nil];
+}
+
+- (IBAction)removeAllBookmarksButtonTapped:(id)sender
+{
+    UIAlertController* alertController = [UIAlertController
+                                          alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
+                                          message:NSLocalizedString(@"Do you really want to erase all bookmarks?", nil)
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"Confirm", nil)
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   DDLogVerbose(@"");
+                                   [self setEditing:NO animated:YES];
+                               }];
+    UIAlertAction *cancelAction = [UIAlertAction
+                               actionWithTitle:NSLocalizedString(@"Cancel", nil)
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   DDLogVerbose(@"");
+                               }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:confirmAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        DDLogVerbose(@"");
+    }];
 }
 
 #pragma mark - TableView DataSource
@@ -84,15 +184,9 @@
     return cell;
 }
 
-
-- (IBAction)cancelButtonTapped:(id)sender
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"ReplaceDetail" sender:sender];
-}
-
-- (IBAction)addButtonTapped:(id)sender
-{
-    
+    return YES;
 }
 
 @end

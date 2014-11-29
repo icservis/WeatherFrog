@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EWa-Q8-2cM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EWa-Q8-2cM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-wX-lHh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vtt-wX-lHh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -75,20 +75,27 @@
                     <toolbarItems>
                         <barButtonItem systemItem="add" id="pYn-f0-UvW">
                             <connections>
-                                <action selector="addButtonTapped:" destination="zPb-dI-UmC" id="dyA-PW-ea4"/>
+                                <action selector="bookmarkButtonTapped:" destination="zPb-dI-UmC" id="QcM-93-X6W"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="LbK-hv-zqi"/>
+                        <barButtonItem title="Remove All" id="u3A-Wv-mpk">
+                            <connections>
+                                <action selector="removeAllBookmarksButtonTapped:" destination="zPb-dI-UmC" id="Yxc-Pb-71g"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="712-Xt-fpn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I2h-cJ-aCD">
+                        <barButtonItem key="leftBarButtonItem" title="Current Position" id="I2h-cJ-aCD">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="zPb-dI-UmC" id="omp-3U-mQC"/>
+                                <action selector="currentPositionButtonTapped:" destination="zPb-dI-UmC" id="H7L-Ez-j73"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="pYn-f0-UvW" id="AoL-1x-N3M"/>
-                        <outlet property="cancelButton" destination="I2h-cJ-aCD" id="ekV-RQ-5d6"/>
+                        <outlet property="bookmarkButton" destination="pYn-f0-UvW" id="gAx-3U-R7b"/>
+                        <outlet property="currentPositionButton" destination="I2h-cJ-aCD" id="3kc-I8-mJS"/>
+                        <outlet property="removeAllBookmarksButton" destination="u3A-Wv-mpk" id="4PU-dS-vyI"/>
                         <outlet property="tableView" destination="vtt-wX-lHh" id="8Kw-1s-9GD"/>
                     </connections>
                 </viewController>
@@ -107,7 +114,21 @@
                     <view key="view" contentMode="scaleToFill" id="R4U-g0-arW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-uH-saK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="cOb-Lm-l2h" kind="embed" id="26c-Kr-OpH"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kw4-uH-saK" secondAttribute="trailing" constant="-16" id="Lcg-U4-6Bh"/>
+                            <constraint firstItem="Kw4-uH-saK" firstAttribute="leading" secondItem="R4U-g0-arW" secondAttribute="leadingMargin" constant="-16" id="UQi-Re-YMd"/>
+                            <constraint firstItem="rDD-ww-a57" firstAttribute="top" secondItem="Kw4-uH-saK" secondAttribute="bottom" id="b6J-zD-j6a"/>
+                            <constraint firstItem="Kw4-uH-saK" firstAttribute="top" secondItem="R4U-g0-arW" secondAttribute="topMargin" id="bCR-tT-e5j"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wok-bG-SDu">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="iYU-Nx-HxC">
@@ -157,8 +178,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GKx-pS-NCc"/>
-                                    <barButtonItem title="Bookmark" id="I1X-QZ-98k"/>
-                                    <barButtonItem title="Forecast" id="3cv-OL-Spq"/>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
@@ -186,21 +205,19 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="bookmarkButton" destination="I1X-QZ-98k" id="muh-yS-7Ls"/>
                         <outlet property="cancelButton" destination="Pu4-dA-rog" id="Tk4-rM-DQa"/>
-                        <outlet property="forecastButton" destination="3cv-OL-Spq" id="AHI-RR-FvM"/>
                         <outlet property="searchBar" destination="7fq-vM-trH" id="ooN-na-oQF"/>
                         <outlet property="toolBar" destination="7mH-UQ-IsI" id="CSs-o6-NXC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goL-XE-E9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="393"/>
+            <point key="canvasLocation" x="1030" y="1212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M4l-aC-FI6">
             <objects>
-                <navigationController id="25U-re-Hzf" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="25U-re-Hzf" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pM5-BI-5OO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -246,6 +263,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kii-qe-INi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="223" y="393"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aek-N0-10f">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cOb-Lm-l2h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="miz-5F-0qN"/>
+                        <viewControllerLayoutGuide type="bottom" id="HPN-QT-CoF"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mNA-ZO-zAX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18R-1m-Pmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1810" y="393"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
