@@ -238,7 +238,7 @@
                                     <constraint firstAttribute="height" constant="44" id="UO8-aE-bbX"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="Pu4-dA-rog">
+                                    <barButtonItem title="Close" id="Pu4-dA-rog">
                                         <connections>
                                             <action selector="closeButtonTapped:" destination="CSz-5o-UvC" id="Fcj-ue-i9n"/>
                                         </connections>
@@ -271,7 +271,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="Pu4-dA-rog" id="Tk4-rM-DQa"/>
+                        <outlet property="closeButton" destination="Pu4-dA-rog" id="3vR-20-Gm5"/>
                         <outlet property="searchBar" destination="7fq-vM-trH" id="ooN-na-oQF"/>
                         <outlet property="toolBar" destination="7mH-UQ-IsI" id="CSs-o6-NXC"/>
                     </connections>

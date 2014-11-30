@@ -14,6 +14,8 @@
 		84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* OSXListTableView.m */; };
 		84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AB61A21EAA10070E151 /* OSXMapViewController.m */; };
 		84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* OSXSplitView.m */; };
+		8432FF091A2B0B0C00414A20 /* OSXCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432FF081A2B0B0C00414A20 /* OSXCollectionViewItem.m */; };
+		8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432FF111A2B0B6400414A20 /* OSXCollectionCell.m */; };
 		845558671A291036003127B3 /* IOSSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558661A291036003127B3 /* IOSSplitViewController.m */; };
 		8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455586A1A2912A3003127B3 /* IOSMapViewController.m */; };
 		8455586E1A291808003127B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8455586D1A291808003127B3 /* MapKit.framework */; };
@@ -181,6 +183,10 @@
 		84297AB61A21EAA10070E151 /* OSXMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXMapViewController.m; path = "Map Scene/OSXMapViewController.m"; sourceTree = "<group>"; };
 		84297ABA1A21EDB70070E151 /* OSXSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXSplitView.h; path = "Split Scene/OSXSplitView.h"; sourceTree = "<group>"; };
 		84297ABB1A21EDB70070E151 /* OSXSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXSplitView.m; path = "Split Scene/OSXSplitView.m"; sourceTree = "<group>"; };
+		8432FF071A2B0B0C00414A20 /* OSXCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionViewItem.h; path = "Detail Scene/Collection Scene/OSXCollectionViewItem.h"; sourceTree = "<group>"; };
+		8432FF081A2B0B0C00414A20 /* OSXCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionViewItem.m; path = "Detail Scene/Collection Scene/OSXCollectionViewItem.m"; sourceTree = "<group>"; };
+		8432FF101A2B0B6400414A20 /* OSXCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionCell.h; path = "Detail Scene/Collection Scene/OSXCollectionCell.h"; sourceTree = "<group>"; };
+		8432FF111A2B0B6400414A20 /* OSXCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionCell.m; path = "Detail Scene/Collection Scene/OSXCollectionCell.m"; sourceTree = "<group>"; };
 		845558651A291036003127B3 /* IOSSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSSplitViewController.h; path = "Split Scene/IOSSplitViewController.h"; sourceTree = "<group>"; };
 		845558661A291036003127B3 /* IOSSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSSplitViewController.m; path = "Split Scene/IOSSplitViewController.m"; sourceTree = "<group>"; };
 		845558691A2912A3003127B3 /* IOSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSMapViewController.h; path = "Map Scene/IOSMapViewController.h"; sourceTree = "<group>"; };
@@ -551,6 +557,10 @@
 				84CB76301A288E19008D6775 /* OSXCollectionViewController.m */,
 				8475976B1A28A2490013824D /* OSXCollectionView.h */,
 				8475976C1A28A2490013824D /* OSXCollectionView.m */,
+				8432FF071A2B0B0C00414A20 /* OSXCollectionViewItem.h */,
+				8432FF081A2B0B0C00414A20 /* OSXCollectionViewItem.m */,
+				8432FF101A2B0B6400414A20 /* OSXCollectionCell.h */,
+				8432FF111A2B0B6400414A20 /* OSXCollectionCell.m */,
 			);
 			name = "Collection Scene";
 			sourceTree = "<group>";
@@ -1265,6 +1275,7 @@
 				84CB76311A288E19008D6775 /* OSXCollectionViewController.m in Sources */,
 				84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */,
 				84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */,
+				8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */,
 				84E084741A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */,
 				84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */,
@@ -1297,6 +1308,7 @@
 				84E085591A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
 				84CB762E1A288D83008D6775 /* OSXTabView.m in Sources */,
 				84E085511A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
+				8432FF091A2B0B0C00414A20 /* OSXCollectionViewItem.m in Sources */,
 				84E0843F1A1B988D0071D662 /* OSXAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    [[self.graphView.widthConstraint animator] setConstant:1000.0f];
+    [[self.graphView.heightConstraint animator] setConstant:1000.0f];
+}
+
+
+- (void)viewWillLayout
+{
+    
 }
 
 @end

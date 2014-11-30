@@ -13,7 +13,7 @@
 @property (weak) IBOutlet UIToolbar *toolBar;
 @property (weak) IBOutlet UISearchBar *searchBar;
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem* cancelButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem* closeButton;
 
 - (IBAction)closeButtonTapped:(id)sender;
 

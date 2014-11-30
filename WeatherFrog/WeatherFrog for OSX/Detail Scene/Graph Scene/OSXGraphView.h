@@ -10,4 +10,13 @@
 
 @interface OSXGraphView : NSView
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* widthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* heightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* topSpaceToSuperViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* bottomSpaceToSuperViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* leadingSpaceToSuperViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* trailingSpaceToSuperViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* centerXAlignmentConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint* centerYAlignmentConstraint;
+
 @end
