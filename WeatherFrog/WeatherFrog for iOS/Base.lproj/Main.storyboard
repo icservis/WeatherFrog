@@ -175,7 +175,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" dataMode="prototypes" id="qGf-tb-5hJ" customClass="IOSCollectionView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TWw-2h-gjJ">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -342,27 +341,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-57-Z9P" userLabel="scrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" maximumZoomScale="4" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-57-Z9P" userLabel="scrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sip-gs-HGQ" userLabel="contentView" customClass="IOSGraphView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ml-Tv-BOZ" userLabel="fakeView">
-                                                <rect key="frame" x="100" y="100" width="400" height="400"/>
-                                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="400" id="See-HK-47C"/>
-                                                    <constraint firstAttribute="height" constant="400" id="hoR-dW-nvg"/>
-                                                </constraints>
-                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hopetoun_falls" translatesAutoresizingMaskIntoConstraints="NO" id="lHA-QD-YcZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lHA-QD-YcZ" secondAttribute="bottom" id="8GJ-zD-Ib8"/>
+                                            <constraint firstItem="lHA-QD-YcZ" firstAttribute="top" secondItem="sip-gs-HGQ" secondAttribute="top" id="9BV-ZE-HBX"/>
+                                            <constraint firstItem="lHA-QD-YcZ" firstAttribute="leading" secondItem="sip-gs-HGQ" secondAttribute="leading" id="B3e-8B-5ip"/>
+                                            <constraint firstAttribute="trailing" secondItem="lHA-QD-YcZ" secondAttribute="trailing" id="Crd-C3-yfh"/>
                                             <constraint firstAttribute="height" constant="600" id="ZXF-Mb-8Cn"/>
-                                            <constraint firstAttribute="centerY" secondItem="9Ml-Tv-BOZ" secondAttribute="centerY" id="nkS-Ds-MxZ"/>
-                                            <constraint firstAttribute="centerX" secondItem="9Ml-Tv-BOZ" secondAttribute="centerX" id="uLT-3O-S48"/>
                                             <constraint firstAttribute="width" constant="600" id="xGT-Xr-Jdl"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ZXF-Mb-8Cn"/>
+                                                <exclude reference="xGT-Xr-Jdl"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="bottomSpaceToSuperViewConstraint" destination="Huk-d5-LZc" id="yrL-h8-25Y"/>
                                             <outlet property="heightConstraint" destination="ZXF-Mb-8Cn" id="Gk2-zl-whu"/>
@@ -381,7 +383,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.02306274078" green="1" blue="0.071162334290000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hrE-57-Z9P" firstAttribute="top" secondItem="Xzy-mQ-fCQ" secondAttribute="top" id="KbQ-Lc-VK4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hrE-57-Z9P" secondAttribute="trailing" constant="-16" id="Uks-oj-SDf"/>
@@ -392,7 +393,6 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="contentView" destination="sip-gs-HGQ" id="CLI-Mg-i2y"/>
-                        <outlet property="fakeView" destination="9Ml-Tv-BOZ" id="fGj-CX-8rj"/>
                         <outlet property="scrollView" destination="hrE-57-Z9P" id="tbd-vA-dz1"/>
                     </connections>
                 </viewController>
@@ -401,6 +401,9 @@
             <point key="canvasLocation" x="1808" y="798"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Hopetoun_falls" width="3072" height="2048"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cal-iz-cN8"/>
     </inferredMetricsTieBreakers>
