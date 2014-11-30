@@ -245,7 +245,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GKx-pS-NCc"/>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                             </mapView>
                         </subviews>

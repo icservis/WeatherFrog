@@ -10,6 +10,7 @@
 
 @interface OSXMapViewController ()
 
+@property (weak) IBOutlet MKMapView *mapView;
 @property (weak) IBOutlet NSButton *closeButton;
 @property (weak) IBOutlet NSSearchField *searchField;
 

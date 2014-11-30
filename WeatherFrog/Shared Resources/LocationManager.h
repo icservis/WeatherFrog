@@ -11,12 +11,13 @@
 
 @interface LocationManager : NSObject
 
+@property (atomic, strong) CLLocation* currentLocation;
+
 /**
  * gets singleton object.
  * @return singleton
  */
-+ (LocationManager*)sharedManager;
 
-- (CLLocation*)currentLocation;
++ (LocationManager*)sharedManager;
 
 @end

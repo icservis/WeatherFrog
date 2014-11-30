@@ -12,5 +12,9 @@
 
 @interface OSXAppDelegate : NSObject <NSApplicationDelegate>
 
+@property (weak) IBOutlet NSMenu *mainMenu;
+@property (weak) IBOutlet NSUserDefaultsController *userDefaultsController;
+
+
 @end
 

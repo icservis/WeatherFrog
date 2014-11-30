@@ -8,7 +8,13 @@
 
 #import "OSXListViewController.h"
 
+@class OSXListTableView;
+
 @interface OSXListViewController ()
+
+@property (weak) IBOutlet NSScrollView *scrollView;
+@property (weak) IBOutlet NSClipView *clipView;
+@property (weak) IBOutlet OSXListTableView *listTableView;
 
 @end
 

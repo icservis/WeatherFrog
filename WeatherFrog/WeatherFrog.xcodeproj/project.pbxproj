@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841381441A2A7F94004EC601 /* IOSGraphView.m */; };
+		8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2EC1A2B571D004E1062 /* CoreLocation.framework */; };
+		8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F41A2B577B004E1062 /* QuartzCore.framework */; };
+		8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F61A2B5784004E1062 /* CoreLocation.framework */; };
+		8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F81A2B578B004E1062 /* QuartzCore.framework */; };
 		84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84297A9C1A21407D0070E151 /* MapKit.framework */; };
 		84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* OSXWindowController.m */; };
 		84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* OSXSplitViewController.m */; };
@@ -173,6 +177,10 @@
 /* Begin PBXFileReference section */
 		841381431A2A7F94004EC601 /* IOSGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSGraphView.h; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.h"; sourceTree = "<group>"; };
 		841381441A2A7F94004EC601 /* IOSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSGraphView.m; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.m"; sourceTree = "<group>"; };
+		8414F2EC1A2B571D004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8414F2F41A2B577B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8414F2F61A2B5784004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		8414F2F81A2B578B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		84297A9C1A21407D0070E151 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		84297AA41A2142A20070E151 /* OSXWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXWindowController.h; sourceTree = "<group>"; };
 		84297AA51A2142A20070E151 /* OSXWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXWindowController.m; sourceTree = "<group>"; };
@@ -354,6 +362,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */,
+				8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */,
 				8455586E1A291808003127B3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +379,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */,
+				8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */,
 				84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +503,10 @@
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8414F2F81A2B578B004E1062 /* QuartzCore.framework */,
+				8414F2F61A2B5784004E1062 /* CoreLocation.framework */,
+				8414F2F41A2B577B004E1062 /* QuartzCore.framework */,
+				8414F2EC1A2B571D004E1062 /* CoreLocation.framework */,
 				8455586D1A291808003127B3 /* MapKit.framework */,
 				84297A9C1A21407D0070E151 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,

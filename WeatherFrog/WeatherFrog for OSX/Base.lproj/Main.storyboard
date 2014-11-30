@@ -646,10 +646,13 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="OSXAppDelegate"/>
-                <managedObjectContext id="5By-oz-i75"/>
+                <customObject id="Voe-Tx-rLC" customClass="OSXAppDelegate">
+                    <connections>
+                        <outlet property="mainMenu" destination="AYu-sK-qS6" id="Er6-UN-Xo1"/>
+                        <outlet property="userDefaultsController" destination="nVj-Q4-Sd1" id="YkP-ps-4er"/>
+                    </connections>
+                </customObject>
                 <userDefaultsController id="nVj-Q4-Sd1"/>
-                <textFinder id="J9i-d8-cdE"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157.5" y="8"/>
@@ -820,6 +823,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="mtS-RD-Kq0" id="041-fh-PgA"/>
+                        <outlet property="mapView" destination="Nt1-eJ-6jC" id="9Rg-Gf-nBr"/>
                         <outlet property="searchField" destination="DFf-q9-7xp" id="2r5-DA-Z17"/>
                     </connections>
                 </viewController>
@@ -905,6 +909,11 @@ Gw
                             <constraint firstItem="z09-id-QHM" firstAttribute="leading" secondItem="fRq-bM-6Ca" secondAttribute="leading" id="YCS-k5-3pk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clipView" destination="ubz-uE-RMJ" id="LIc-Jg-Lm3"/>
+                        <outlet property="listTableView" destination="pEb-6x-Pqw" id="OS8-1I-E2I"/>
+                        <outlet property="scrollView" destination="z09-id-QHM" id="1Q7-iA-Ae6"/>
+                    </connections>
                 </viewController>
                 <customObject id="gYq-w2-wp9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1067,10 +1076,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="1224" y="1924"/>
         </scene>
-        <!--Collection View Item-->
+        <!--Collection Cell-->
         <scene sceneID="2a0-wU-Qb5">
             <objects>
-                <collectionViewItem id="BF1-xS-Xxz" customClass="OSXCollectionViewItem" sceneMemberID="viewController">
+                <collectionViewItem title="Collection Cell" storyboardIdentifier="CollectionViewItem" id="BF1-xS-Xxz" customClass="OSXCollectionViewItem" sceneMemberID="viewController">
                     <view key="view" id="nbM-LN-Yrr" customClass="OSXCollectionCell">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>

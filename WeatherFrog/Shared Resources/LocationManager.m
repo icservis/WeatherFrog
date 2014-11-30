@@ -10,6 +10,8 @@
 
 @implementation LocationManager
 
+@synthesize currentLocation = _currentLocation;
+
 static LocationManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
@@ -64,6 +66,21 @@ static bool isFirstAccess = YES;
     }
     self = [super init];
     return self;
+}
+
+#pragma mark - Properties
+
+- (void)setCurrentLocation:(CLLocation *)currentLocation
+{
+    _currentLocation = currentLocation;
+}
+
+- (CLLocation*)currentLocation
+{
+    if (_currentLocation == nil) {
+        _currentLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(50.f, 14.f) altitude:300.f horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:[NSDate date]];
+    }
+    return _currentLocation;
 }
 
 
