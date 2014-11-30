@@ -16,7 +16,5 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* bottomSpaceToSuperViewConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* leadingSpaceToSuperViewConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint* trailingSpaceToSuperViewConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint* centerXAlignmentConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint* centerYAlignmentConstraint;
 
 @end

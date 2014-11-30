@@ -1,19 +1,23 @@
 //
-//  GraphView.m
+//  OSXFlippedView.m
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 28.11.14.
+//  Created by Libor Kučera on 30.11.14.
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import "OSXGraphView.h"
+#import "OSXFlippedView.h"
 
-@implementation OSXGraphView
+@implementation OSXFlippedView
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
     // Drawing code here.
+}
+
+- (BOOL)isFlipped {
+    return YES;
 }
 
 @end

@@ -972,6 +972,11 @@ Gw
                             <constraint firstItem="Ndf-js-e6b" firstAttribute="top" secondItem="W5q-Hj-tIJ" secondAttribute="top" id="pAo-y9-OZf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clipView" destination="zDA-yR-CH8" id="IFt-s3-9W9"/>
+                        <outlet property="collectionView" destination="crB-Cu-PC6" id="Hlo-03-06O"/>
+                        <outlet property="scrollView" destination="Ndf-js-e6b" id="rsa-Qt-dq4"/>
+                    </connections>
                 </viewController>
                 <customObject id="Fzc-oy-Nse" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -991,37 +996,54 @@ Gw
                                     <rect key="frame" x="1" y="1" width="166" height="79"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" userLabel="graphView" customClass="OSXGraphView">
-                                            <rect key="frame" x="-161" y="-8" width="922" height="615"/>
+                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" userLabel="contentView" customClass="OSXFlippedView">
+                                            <rect key="frame" x="-1236" y="-724" width="3072" height="2048"/>
                                             <subviews>
-                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tg3-hf-IC9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="922" height="615"/>
-                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Hopetoun_falls" id="67u-sY-tSd"/>
-                                                </imageView>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="hib-8u-GC5" userLabel="graphView" customClass="OSXGraphView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RxQ-J3-714">
+                                                            <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Hopetoun_falls" id="WEK-KU-nqY"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="RxQ-J3-714" firstAttribute="leading" secondItem="hib-8u-GC5" secondAttribute="leading" id="2dg-nm-VGy"/>
+                                                        <constraint firstItem="RxQ-J3-714" firstAttribute="top" secondItem="hib-8u-GC5" secondAttribute="top" id="6QD-q3-2xW"/>
+                                                        <constraint firstAttribute="width" constant="3072" id="IYt-gw-sCK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RxQ-J3-714" secondAttribute="bottom" id="OFo-CL-Tg4"/>
+                                                        <constraint firstAttribute="height" constant="2048" id="OGy-EV-56C"/>
+                                                        <constraint firstAttribute="trailing" secondItem="RxQ-J3-714" secondAttribute="trailing" id="iNI-0X-wZi"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="bottomSpaceToSuperViewConstraint" destination="OFo-CL-Tg4" id="aNp-NX-ER0"/>
+                                                        <outlet property="heightConstraint" destination="OGy-EV-56C" id="l3O-RC-JJz"/>
+                                                        <outlet property="leadingSpaceToSuperViewConstraint" destination="2dg-nm-VGy" id="oAq-H7-8dh"/>
+                                                        <outlet property="topSpaceToSuperViewConstraint" destination="6QD-q3-2xW" id="0zz-Qe-S1z"/>
+                                                        <outlet property="trailingSpaceToSuperViewConstraint" destination="iNI-0X-wZi" id="Wal-Ph-wgY"/>
+                                                        <outlet property="widthConstraint" destination="IYt-gw-sCK" id="uGX-bP-giH"/>
+                                                    </connections>
+                                                </customView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="tg3-hf-IC9" secondAttribute="trailing" id="2Vn-os-lLN"/>
-                                                <constraint firstItem="tg3-hf-IC9" firstAttribute="top" secondItem="3lV-YN-YN1" secondAttribute="top" id="JhX-gv-7jg"/>
-                                                <constraint firstAttribute="bottom" secondItem="tg3-hf-IC9" secondAttribute="bottom" id="YEL-qf-laz"/>
-                                                <constraint firstItem="tg3-hf-IC9" firstAttribute="leading" secondItem="3lV-YN-YN1" secondAttribute="leading" id="zTY-QB-biX"/>
+                                                <constraint firstAttribute="bottom" secondItem="hib-8u-GC5" secondAttribute="bottom" id="53r-Sy-xLf"/>
+                                                <constraint firstAttribute="trailing" secondItem="hib-8u-GC5" secondAttribute="trailing" id="AkZ-g2-qi1"/>
+                                                <constraint firstItem="hib-8u-GC5" firstAttribute="leading" secondItem="3lV-YN-YN1" secondAttribute="leading" id="DDK-1a-5KI"/>
+                                                <constraint firstItem="hib-8u-GC5" firstAttribute="top" secondItem="3lV-YN-YN1" secondAttribute="top" id="FE3-gh-Tcs"/>
                                             </constraints>
-                                            <connections>
-                                                <outlet property="centerXAlignmentConstraint" destination="u3O-2J-NDu" id="bZs-w1-sei"/>
-                                                <outlet property="centerYAlignmentConstraint" destination="sx6-DZ-7gG" id="WC9-W5-5fL"/>
-                                            </connections>
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="3lV-YN-YN1" secondAttribute="centerY" id="sx6-DZ-7gG"/>
-                                        <constraint firstAttribute="centerX" secondItem="3lV-YN-YN1" secondAttribute="centerX" id="u3O-2J-NDu"/>
+                                        <constraint firstAttribute="centerY" secondItem="3lV-YN-YN1" secondAttribute="centerY" id="OLT-3G-N8l"/>
+                                        <constraint firstAttribute="centerX" secondItem="3lV-YN-YN1" secondAttribute="centerX" id="nn2-UF-bmg"/>
                                     </constraints>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="MNu-Ow-Q6Q">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.51618122977346281" horizontal="YES" id="MNu-Ow-Q6Q">
                                     <rect key="frame" x="1" y="80" width="166" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.46666666666666667" horizontal="NO" id="m5x-Ad-ZYE">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.50552486187845302" horizontal="NO" id="m5x-Ad-ZYE">
                                     <rect key="frame" x="167" y="1" width="15" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1034,6 +1056,12 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="n98-94-9mW" secondAttribute="bottom" id="rAf-I7-oph"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clipView" destination="Nhq-1b-yRF" id="rDM-AL-iPe"/>
+                        <outlet property="contentView" destination="3lV-YN-YN1" id="imB-ag-gWn"/>
+                        <outlet property="graphView" destination="hib-8u-GC5" id="JLf-Y7-s5A"/>
+                        <outlet property="scrollView" destination="n98-94-9mW" id="KPg-Uq-cQ3"/>
+                    </connections>
                 </viewController>
                 <customObject id="aDK-nB-xWW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

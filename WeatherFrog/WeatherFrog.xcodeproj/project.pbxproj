@@ -25,6 +25,7 @@
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
 		8486FE071A29CA7B003AB3EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FE061A29CA7B003AB3EE /* Location.m */; };
 		8486FE081A29CA7B003AB3EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FE061A29CA7B003AB3EE /* Location.m */; };
+		84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */; };
 		84B808C21A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
 		84B808C31A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
 		84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */; };
@@ -213,6 +214,8 @@
 		848BF9E01A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXFlippedView.h; path = Subclasses/OSXFlippedView.h; sourceTree = "<group>"; };
+		84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXFlippedView.m; path = Subclasses/OSXFlippedView.m; sourceTree = "<group>"; };
 		84B808C01A29F8BC0074DF01 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = "Shared Resources/LocationManager.h"; sourceTree = "<group>"; };
 		84B808C11A29F8BC0074DF01 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = "Shared Resources/LocationManager.m"; sourceTree = "<group>"; };
 		84B808CA1A2A2EA60074DF01 /* IOSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionViewController.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.h"; sourceTree = "<group>"; };
@@ -535,6 +538,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84B5CD0A1A2B48B30084DB55 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */,
+				84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		84B808CD1A2A2EAA0074DF01 /* Collection Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +673,7 @@
 				84297AB41A21EA7D0070E151 /* Map Scene */,
 				84E084451A1B988D0071D662 /* Images.xcassets */,
 				84E084471A1B988E0071D662 /* Main.storyboard */,
+				84B5CD0A1A2B48B30084DB55 /* Subclasses */,
 				84E0843B1A1B988D0071D662 /* Supporting Files */,
 			);
 			path = "WeatherFrog for OSX";
@@ -1299,6 +1312,7 @@
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,
 				84E085531A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084761A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
+				84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */,
 				84E0847E1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084C41A1B9A020071D662 /* DDTTYLogger.m in Sources */,
 				84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */,

@@ -11,6 +11,8 @@
 
 @interface OSXCollectionViewController () <NSCollectionViewDelegate>
 
+@property (weak) IBOutlet NSScrollView *scrollView;
+@property (weak) IBOutlet NSClipView *clipView;
 @property (weak) IBOutlet OSXCollectionView *collectionView;
 
 @end

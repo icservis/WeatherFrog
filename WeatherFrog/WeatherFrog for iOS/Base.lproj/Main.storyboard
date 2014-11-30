@@ -344,7 +344,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" maximumZoomScale="4" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-57-Z9P" userLabel="scrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sip-gs-HGQ" userLabel="contentView" customClass="IOSGraphView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sip-gs-HGQ" userLabel="graphView" customClass="IOSGraphView">
                                         <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hopetoun_falls" translatesAutoresizingMaskIntoConstraints="NO" id="lHA-QD-YcZ">
@@ -356,22 +356,16 @@
                                             <constraint firstItem="lHA-QD-YcZ" firstAttribute="top" secondItem="sip-gs-HGQ" secondAttribute="top" id="9BV-ZE-HBX"/>
                                             <constraint firstItem="lHA-QD-YcZ" firstAttribute="leading" secondItem="sip-gs-HGQ" secondAttribute="leading" id="B3e-8B-5ip"/>
                                             <constraint firstAttribute="trailing" secondItem="lHA-QD-YcZ" secondAttribute="trailing" id="Crd-C3-yfh"/>
-                                            <constraint firstAttribute="height" constant="600" id="ZXF-Mb-8Cn"/>
-                                            <constraint firstAttribute="width" constant="600" id="xGT-Xr-Jdl"/>
+                                            <constraint firstAttribute="height" constant="2048" id="XrA-ut-i9d"/>
+                                            <constraint firstAttribute="width" constant="3072" id="gph-Pt-dnD"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="ZXF-Mb-8Cn"/>
-                                                <exclude reference="xGT-Xr-Jdl"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
-                                            <outlet property="bottomSpaceToSuperViewConstraint" destination="Huk-d5-LZc" id="yrL-h8-25Y"/>
-                                            <outlet property="heightConstraint" destination="ZXF-Mb-8Cn" id="Gk2-zl-whu"/>
-                                            <outlet property="leadingSpaceToSuperViewConstraint" destination="Sgg-Wz-7dF" id="Lob-jQ-LYZ"/>
-                                            <outlet property="topSpaceToSuperViewConstraint" destination="hF6-FW-K3F" id="69Q-iW-xs7"/>
-                                            <outlet property="trailingSpaceToSuperViewConstraint" destination="XZv-Oc-YQE" id="f9v-U5-sGa"/>
-                                            <outlet property="widthConstraint" destination="xGT-Xr-Jdl" id="Smy-Up-i5u"/>
+                                            <outlet property="bottomSpaceToSuperViewConstraint" destination="8GJ-zD-Ib8" id="rM2-U4-k1y"/>
+                                            <outlet property="heightConstraint" destination="XrA-ut-i9d" id="PTI-0p-nGe"/>
+                                            <outlet property="leadingSpaceToSuperViewConstraint" destination="B3e-8B-5ip" id="3OY-9B-GXC"/>
+                                            <outlet property="topSpaceToSuperViewConstraint" destination="9BV-ZE-HBX" id="LIY-LO-WQZ"/>
+                                            <outlet property="trailingSpaceToSuperViewConstraint" destination="Crd-C3-yfh" id="adg-mv-nPW"/>
+                                            <outlet property="widthConstraint" destination="gph-Pt-dnD" id="xFB-K3-1w8"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -392,7 +386,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="contentView" destination="sip-gs-HGQ" id="CLI-Mg-i2y"/>
+                        <outlet property="graphView" destination="sip-gs-HGQ" id="hPf-RT-VFe"/>
                         <outlet property="scrollView" destination="hrE-57-Z9P" id="tbd-vA-dz1"/>
                     </connections>
                 </viewController>

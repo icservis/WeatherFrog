@@ -9,8 +9,13 @@
 #import "OSXGraphViewController.h"
 #import "OSXGraphView.h"
 
+@class OSXFlippedView;
+
 @interface OSXGraphViewController ()
 
+@property (weak) IBOutlet NSScrollView *scrollView;
+@property (weak) IBOutlet NSClipView *clipView;
+@property (weak) IBOutlet OSXFlippedView *contentView;
 @property (weak) IBOutlet OSXGraphView *graphView;
 
 @end
@@ -21,8 +26,6 @@
     [super viewDidLoad];
     // Do view setup here.
     
-    [[self.graphView.widthConstraint animator] setConstant:1000.0f];
-    [[self.graphView.heightConstraint animator] setConstant:1000.0f];
 }
 
 
