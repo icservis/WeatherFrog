@@ -12,12 +12,13 @@
 
 @protocol OSXMapViewControllerDelegate <NSObject>
 
-- (void)mapViewControllerDidClose:(OSXMapViewController*)controller;
+- (void)mapViewControllerDidSelectLocation:(CLLocation*)location storeLocation:(BOOL)shouldStoreLocation;
 
 @end
 
 @interface OSXMapViewController : NSViewController
 
 @property (nonatomic, weak) id <OSXMapViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^closeBlock)(void);
 
 @end

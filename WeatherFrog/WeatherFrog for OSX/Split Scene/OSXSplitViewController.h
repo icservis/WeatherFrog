@@ -7,12 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "OSXAppDelegate.h"
-#import "OSXMapViewController.h"
-#import "OSXListViewController.h"
-#import "OSXDetailViewController.h"
 
-@interface OSXSplitViewController : NSSplitViewController <OSXMapViewControllerDelegate>
+@interface OSXSplitViewController : NSSplitViewController
 
 @property (weak) IBOutlet NSSplitViewItem *listViewItem;
 @property (weak) IBOutlet NSSplitViewItem *tabViewItem;

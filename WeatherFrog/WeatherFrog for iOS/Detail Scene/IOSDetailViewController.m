@@ -160,14 +160,19 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     if ([segue.identifier isEqualToString:@"PresentMap"]) {
         IOSMapViewController* mapViewController = (IOSMapViewController*)segue.destinationViewController;
         mapViewController.delegate = self;
+        mapViewController.closeBlock = ^() {
+            [self dismissViewControllerAnimated:YES completion:^{
+                DDLogVerbose(@"Controller closed");
+            }];
+        };
     }
 }
 
 #pragma mark - MapViewControllerDeleagte
 
-- (void)mapViewControllerDidClose:(IOSMapViewController *)controller
+- (void)mapViewControllerDidSelectLocation:(CLLocation *)location storeLocation:(BOOL)shouldStoreLocation
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    DDLogVerbose(@"location: %@: shouldStoreLocation: %d", location, shouldStoreLocation);
 }
 
 

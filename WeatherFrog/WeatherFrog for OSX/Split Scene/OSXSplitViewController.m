@@ -7,9 +7,12 @@
 //
 
 #import "OSXSplitViewController.h"
+#import "OSXAppDelegate.h"
+#import "OSXMapViewController.h"
+#import "OSXListViewController.h"
+#import "OSXDetailViewController.h"
 
 @interface OSXSplitViewController () <NSSplitViewDelegate>
-
 
 
 @end
@@ -37,13 +40,6 @@
         splitViewShouldHideDividerAtIndex = NO;
     }
     return splitViewShouldHideDividerAtIndex;
-}
-
-#pragma mark - MapVC Delegate
-
-- (void)mapViewControllerDidClose:(OSXMapViewController *)controller
-{
-    [self dismissViewController:controller];
 }
 
 @end

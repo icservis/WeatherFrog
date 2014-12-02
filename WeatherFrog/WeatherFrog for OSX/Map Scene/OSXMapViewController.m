@@ -27,7 +27,9 @@
 
 - (IBAction)closeButtonClicked:(id)sender
 {
-    [self.delegate mapViewControllerDidClose:self];
+    if (self.closeBlock != nil) {
+        self.closeBlock();
+    }
 }
 
 @end

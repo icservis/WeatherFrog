@@ -1005,7 +1005,7 @@ Gw
                                     <rect key="frame" x="1" y="1" width="166" height="79"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" userLabel="contentView" customClass="OSXFlippedView">
+                                        <view misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3lV-YN-YN1" userLabel="contentView" customClass="OSXFlippedView">
                                             <rect key="frame" x="-1236" y="-724" width="3072" height="2048"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="hib-8u-GC5" userLabel="graphView" customClass="OSXGraphView">
@@ -1048,11 +1048,11 @@ Gw
                                     </constraints>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.51618122977346281" horizontal="YES" id="MNu-Ow-Q6Q">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="MNu-Ow-Q6Q">
                                     <rect key="frame" x="1" y="80" width="166" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.50552486187845302" horizontal="NO" id="m5x-Ad-ZYE">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="m5x-Ad-ZYE">
                                     <rect key="frame" x="167" y="1" width="15" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

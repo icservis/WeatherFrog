@@ -38,7 +38,9 @@
 
 - (IBAction)closeButtonTapped:(id)sender
 {
-    [self.delegate mapViewControllerDidClose:self];
+    if (self.closeBlock != nil) {
+        self.closeBlock();
+    }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar

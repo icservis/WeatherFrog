@@ -43,7 +43,13 @@
     if ([segue.identifier isEqualToString:@"PresentMap"]) {
         OSXMapViewController* mapViewController = (OSXMapViewController*)segue.destinationController;
         OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
-        mapViewController.delegate = splitViewController;
+        OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.tabViewItem.viewController;
+        mapViewController.delegate = detailViewController;
+        __weak typeof(mapViewController) weakMapVC = mapViewController;
+        mapViewController.closeBlock = ^() {
+            [self.contentViewController dismissViewController:weakMapVC];
+            DDLogVerbose(@"Controller closed");
+        };
     }
 }
 

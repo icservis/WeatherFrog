@@ -22,4 +22,13 @@
     // Do view setup here.
 }
 
+
+#pragma mark - MapViewControllerDeleagte
+
+- (void)mapViewControllerDidSelectLocation:(CLLocation *)location storeLocation:(BOOL)shouldStoreLocation
+{
+    DDLogVerbose(@"location: %@: shouldStoreLocation: %d", location, shouldStoreLocation);
+}
+
+
 @end

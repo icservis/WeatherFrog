@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "OSXMapViewController.h"
 
-@interface OSXDetailViewController : NSTabViewController
+@interface OSXDetailViewController : NSTabViewController  <OSXMapViewControllerDelegate>
 
 @end
