@@ -7,6 +7,7 @@
 //
 
 #import "OSXAppDelegate.h"
+#import "PositionManager.h"
 
 @interface OSXAppDelegate ()
 
@@ -23,6 +24,8 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
+    
+    [[PositionManager sharedManager] startMonitoringCurrentLocation];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

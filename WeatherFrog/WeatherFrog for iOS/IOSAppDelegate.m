@@ -7,6 +7,7 @@
 //
 
 #import "IOSAppDelegate.h"
+#import "PositionManager.h"
 
 @interface IOSAppDelegate ()
 
@@ -24,6 +25,8 @@
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
+    
+    [[PositionManager sharedManager] startMonitoringCurrentLocation];
     
     return YES;
 }
@@ -51,6 +54,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [[DataService sharedInstance] saveContext];
+    [[PositionManager sharedManager] stopMonitoringCurrentLocation];
 }
 
 @end

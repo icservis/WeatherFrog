@@ -1,18 +1,16 @@
 //
-//  LocationManager.m
+//  ForecastManager.m
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 29.11.14.
+//  Created by Libor Kučera on 02.12.14.
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import "LocationManager.h"
+#import "ForecastManager.h"
 
-@implementation LocationManager
+@implementation ForecastManager
 
-@synthesize currentLocation = _currentLocation;
-
-static LocationManager *SINGLETON = nil;
+static ForecastManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
 
@@ -48,12 +46,12 @@ static bool isFirstAccess = YES;
 
 - (id)copy
 {
-    return [[LocationManager alloc] init];
+    return [[ForecastManager alloc] init];
 }
 
 - (id)mutableCopy
 {
-    return [[LocationManager alloc] init];
+    return [[ForecastManager alloc] init];
 }
 
 - (id) init
@@ -66,21 +64,6 @@ static bool isFirstAccess = YES;
     }
     self = [super init];
     return self;
-}
-
-#pragma mark - Properties
-
-- (void)setCurrentLocation:(CLLocation *)currentLocation
-{
-    _currentLocation = currentLocation;
-}
-
-- (CLLocation*)currentLocation
-{
-    if (_currentLocation == nil) {
-        _currentLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(50.f, 14.f) altitude:300.f horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:[NSDate date]];
-    }
-    return _currentLocation;
 }
 
 

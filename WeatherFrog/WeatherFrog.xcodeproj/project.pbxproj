@@ -27,11 +27,9 @@
 		8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* OSXCollectionView.m */; };
 		847597791A28A3820013824D /* OSXGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* OSXGraphView.m */; };
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
-		8486FE071A29CA7B003AB3EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FE061A29CA7B003AB3EE /* Location.m */; };
-		8486FE081A29CA7B003AB3EE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FE061A29CA7B003AB3EE /* Location.m */; };
 		84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */; };
-		84B808C21A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
-		84B808C31A29F8BC0074DF01 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* LocationManager.m */; };
+		84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
+		84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
 		84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */; };
 		84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808CF1A2A2EDB0074DF01 /* IOSCollectionView.m */; };
 		84B808D31A2A31D00074DF01 /* IOSCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808D21A2A31D00074DF01 /* IOSCollectionHeaderView.m */; };
@@ -121,6 +119,16 @@
 		84E0855B1A1C7F380071D662 /* LumberjackFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E0850D1A1C7F380071D662 /* LumberjackFormatter.m */; };
 		84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E085451A1C7F380071D662 /* NSImageToDataTransformer.m */; };
 		84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E085481A1C7F380071D662 /* UIImageToDataTransformer.m */; };
+		84E4B21A1A2E08930089AB93 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2191A2E08930089AB93 /* ForecastManager.m */; };
+		84E4B21B1A2E08930089AB93 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2191A2E08930089AB93 /* ForecastManager.m */; };
+		84E4B22E1A2E20A90089AB93 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22B1A2E20A90089AB93 /* Position.m */; };
+		84E4B22F1A2E20A90089AB93 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22B1A2E20A90089AB93 /* Position.m */; };
+		84E4B2301A2E20A90089AB93 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
+		84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
+		84E4B2341A2E210E0089AB93 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Position+DataService.m */; };
+		84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Position+DataService.m */; };
+		84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
+		84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,8 +217,6 @@
 		847597781A28A3820013824D /* OSXGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXGraphView.m; path = "Detail Scene/Graph Scene/OSXGraphView.m"; sourceTree = "<group>"; };
 		8486FDFC1A29BDB4003AB3EE /* IOSListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableViewCell.h; path = "List Scene/IOSListTableViewCell.h"; sourceTree = "<group>"; };
 		8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSListTableViewCell.m; path = "List Scene/IOSListTableViewCell.m"; sourceTree = "<group>"; };
-		8486FE051A29CA7B003AB3EE /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = "Shared Resources/Models/Location.h"; sourceTree = "<group>"; };
-		8486FE061A29CA7B003AB3EE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = "Shared Resources/Models/Location.m"; sourceTree = "<group>"; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		848BF9CE1A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848BF9CF1A1D2E2F00A4F000 /* PushNotificationPayload.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushNotificationPayload.json; sourceTree = "<group>"; };
@@ -224,8 +230,8 @@
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXFlippedView.h; path = Subclasses/OSXFlippedView.h; sourceTree = "<group>"; };
 		84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXFlippedView.m; path = Subclasses/OSXFlippedView.m; sourceTree = "<group>"; };
-		84B808C01A29F8BC0074DF01 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = "Shared Resources/LocationManager.h"; sourceTree = "<group>"; };
-		84B808C11A29F8BC0074DF01 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = "Shared Resources/LocationManager.m"; sourceTree = "<group>"; };
+		84B808C01A29F8BC0074DF01 /* PositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionManager.h; path = "Shared Resources/PositionManager.h"; sourceTree = "<group>"; };
+		84B808C11A29F8BC0074DF01 /* PositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PositionManager.m; path = "Shared Resources/PositionManager.m"; sourceTree = "<group>"; };
 		84B808CA1A2A2EA60074DF01 /* IOSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionViewController.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.h"; sourceTree = "<group>"; };
 		84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionViewController.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.m"; sourceTree = "<group>"; };
 		84B808CE1A2A2EDB0074DF01 /* IOSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionView.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionView.h"; sourceTree = "<group>"; };
@@ -355,6 +361,16 @@
 		84E085451A1C7F380071D662 /* NSImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImageToDataTransformer.m; sourceTree = "<group>"; };
 		84E085471A1C7F380071D662 /* UIImageToDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageToDataTransformer.h; sourceTree = "<group>"; };
 		84E085481A1C7F380071D662 /* UIImageToDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageToDataTransformer.m; sourceTree = "<group>"; };
+		84E4B2181A2E08930089AB93 /* ForecastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForecastManager.h; path = "Shared Resources/ForecastManager.h"; sourceTree = "<group>"; };
+		84E4B2191A2E08930089AB93 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForecastManager.m; path = "Shared Resources/ForecastManager.m"; sourceTree = "<group>"; };
+		84E4B22A1A2E20A90089AB93 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Position.h; path = "Shared Resources/Models/Position.h"; sourceTree = "<group>"; };
+		84E4B22B1A2E20A90089AB93 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Position.m; path = "Shared Resources/Models/Position.m"; sourceTree = "<group>"; };
+		84E4B22C1A2E20A90089AB93 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Forecast.h; path = "Shared Resources/Models/Forecast.h"; sourceTree = "<group>"; };
+		84E4B22D1A2E20A90089AB93 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Forecast.m; path = "Shared Resources/Models/Forecast.m"; sourceTree = "<group>"; };
+		84E4B2321A2E210E0089AB93 /* Position+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Position+DataService.h"; path = "Shared Resources/Models/Position+DataService.h"; sourceTree = "<group>"; };
+		84E4B2331A2E210E0089AB93 /* Position+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Position+DataService.m"; path = "Shared Resources/Models/Position+DataService.m"; sourceTree = "<group>"; };
+		84E4B2361A2E21310089AB93 /* Forecast+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Forecast+DataService.h"; path = "Shared Resources/Models/Forecast+DataService.h"; sourceTree = "<group>"; };
+		84E4B2371A2E21310089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Forecast+DataService.m"; path = "Shared Resources/Models/Forecast+DataService.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,8 +510,14 @@
 		8486FE091A29CA83003AB3EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8486FE051A29CA7B003AB3EE /* Location.h */,
-				8486FE061A29CA7B003AB3EE /* Location.m */,
+				84E4B22A1A2E20A90089AB93 /* Position.h */,
+				84E4B22B1A2E20A90089AB93 /* Position.m */,
+				84E4B2321A2E210E0089AB93 /* Position+DataService.h */,
+				84E4B2331A2E210E0089AB93 /* Position+DataService.m */,
+				84E4B22C1A2E20A90089AB93 /* Forecast.h */,
+				84E4B22D1A2E20A90089AB93 /* Forecast.m */,
+				84E4B2361A2E21310089AB93 /* Forecast+DataService.h */,
+				84E4B2371A2E21310089AB93 /* Forecast+DataService.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -854,13 +876,15 @@
 		84E084DF1A1C76CE0071D662 /* Shared Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */,
 				84E084E51A1C7D040071D662 /* DataService.h */,
 				84E084E61A1C7D040071D662 /* DataService.m */,
+				84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */,
 				8486FE091A29CA83003AB3EE /* Models */,
 				84C77E161A1C808300348A8A /* Lumberjack.h */,
-				84B808C01A29F8BC0074DF01 /* LocationManager.h */,
-				84B808C11A29F8BC0074DF01 /* LocationManager.m */,
+				84B808C01A29F8BC0074DF01 /* PositionManager.h */,
+				84B808C11A29F8BC0074DF01 /* PositionManager.m */,
+				84E4B2181A2E08930089AB93 /* ForecastManager.h */,
+				84E4B2191A2E08930089AB93 /* ForecastManager.m */,
 			);
 			name = "Shared Resources";
 			sourceTree = "<group>";
@@ -1242,22 +1266,24 @@
 				84E085521A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084C11A1B9A020071D662 /* DDLog.m in Sources */,
 				84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
+				84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */,
 				84E084141A1B987C0071D662 /* IOSAppDelegate.m in Sources */,
 				84E084791A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
 				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
+				84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */,
 				84E084B91A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
+				84E4B21B1A2E08930089AB93 /* ForecastManager.m in Sources */,
 				84E084731A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84E0847B1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
-				84B808C31A29F8BC0074DF01 /* LocationManager.m in Sources */,
+				84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				84E084991A1B99E40071D662 /* UIImageView+AFNetworking.m in Sources */,
 				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
 				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84E084C91A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
-				8486FE081A29CA7B003AB3EE /* Location.m in Sources */,
 				84E084C71A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
 				84E0854E1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
 				8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */,
@@ -1267,11 +1293,13 @@
 				84E0847D1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084751A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,
 				845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */,
+				84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */,
 				84E084771A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
 				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
 				84E0847F1A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
 				84E084BB1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */,
+				84E4B22F1A2E20A90089AB93 /* Position.m in Sources */,
 				84E0855A1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E0849C1A1B99E40071D662 /* UIWebView+AFNetworking.m in Sources */,
 				84E084811A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
@@ -1293,6 +1321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E084BE1A1B9A020071D662 /* DDASLLogger.m in Sources */,
+				84E4B2341A2E210E0089AB93 /* Position+DataService.m in Sources */,
 				84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */,
 				84CB76361A288E74008D6775 /* OSXGraphViewController.m in Sources */,
@@ -1305,6 +1334,8 @@
 				84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */,
 				84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */,
 				8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */,
+				84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */,
+				84E4B22E1A2E20A90089AB93 /* Position.m in Sources */,
 				84E084741A1B99D20071D662 /* AFHTTPRequestOperationManager.m in Sources */,
 				84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */,
 				84E085891A1C7F380071D662 /* NSImageToDataTransformer.m in Sources */,
@@ -1314,17 +1345,18 @@
 				8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */,
 				84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */,
 				84E084C61A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
-				84B808C21A29F8BC0074DF01 /* LocationManager.m in Sources */,
+				84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				84E084BA1A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084C21A1B9A020071D662 /* DDLog.m in Sources */,
 				84E084801A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
-				8486FE071A29CA7B003AB3EE /* Location.m in Sources */,
 				84E084B81A1B9A020071D662 /* CLIColor.m in Sources */,
 				847597791A28A3820013824D /* OSXGraphView.m in Sources */,
 				84E0847A1A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
+				84E4B2301A2E20A90089AB93 /* Forecast.m in Sources */,
 				84E084BC1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
+				84E4B21A1A2E08930089AB93 /* ForecastManager.m in Sources */,
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,
 				84E085531A1C7F380071D662 /* NSString+validation.m in Sources */,
 				84E084761A1B99D20071D662 /* AFHTTPSessionManager.m in Sources */,

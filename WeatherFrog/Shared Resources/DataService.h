@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
-#import "Location.h"
+#import "PositionManager.h"
+#import "ForecastManager.h"
 
 @interface DataService : NSObject
 
