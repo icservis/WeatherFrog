@@ -25,7 +25,6 @@
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
     
-    [[PositionManager sharedManager] startMonitoringCurrentLocation];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

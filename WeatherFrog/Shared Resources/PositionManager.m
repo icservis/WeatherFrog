@@ -11,12 +11,6 @@
 
 @interface PositionManager () <CLLocationManagerDelegate>
 
-@property (nonatomic, strong, readwrite) CLLocation* currentLocation;
-@property (nonatomic, strong, readwrite) CLPlacemark* currentPlacemark;
-@property (nonatomic, strong, readwrite) Position* currentPosition;
-
-@property (nonatomic, strong) CLLocationManager* locationManager;
-@property (nonatomic, strong) CLGeocoder* geocoder;
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, strong) NSError* error;
 
@@ -24,7 +18,6 @@
 
 @implementation PositionManager
 
-@synthesize currentLocation = _currentLocation;
 
 static PositionManager *SINGLETON = nil;
 
@@ -92,76 +85,10 @@ static bool isFirstAccess = YES;
     return _managedObjectContext;
 }
 
-#pragma mark - Current Location
-
-- (CLLocationManager*)locationManager
-{
-    if (_locationManager == nil) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-    }
-    return _locationManager;
-}
-
-- (void)startMonitoringCurrentLocation
-{
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    #pragma clang diagnostic ignored "-Wundeclared-selector"
-    
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-    if (status == kCLAuthorizationStatusNotDetermined) {
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager performSelector:@selector(requestWhenInUseAuthorization)];
-        }
-    }
-    
-    #pragma clang diagnostic pop
-    
-    [self.locationManager startMonitoringSignificantLocationChanges];
-}
-
-- (void)stopMonitoringCurrentLocation
-{
-    [self.locationManager stopMonitoringSignificantLocationChanges];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    if ([locations count] > 0) {
-        CLLocation* location = [locations firstObject];
-        DDLogVerbose(@"location: %@", location);
-        self.currentLocation = location;
-        
-        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-            if (error == nil) {
-                CLPlacemark* placemark = [placemarks firstObject];
-                DDLogVerbose(@"placemark: %@", placemark);
-                self.currentPlacemark = placemark;
-                self.currentPosition = [self positionForPlacemark:placemark];
-            } else {
-                self.error = error;
-            }
-        }];
-    }
-}
-
-#pragma mark - Geocoder
-
-- (CLGeocoder*)geocoder
-{
-    if (_geocoder == nil) {
-        _geocoder = [[CLGeocoder alloc] init];
-    }
-    return _geocoder;
-}
-
-
 #pragma mark - Position
 
 
-- (Position*)positionForPlacemark:(CLPlacemark*)placemark
+- (Position*)positionForPlacemark:(CLPlacemark*)placemark timezoneId:(NSString*)timezoneId
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Position class]) inManagedObjectContext:self.managedObjectContext];
@@ -170,8 +97,10 @@ static bool isFirstAccess = YES;
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     [fetchRequest setPredicate:predicate];
     // Specify how the fetched objects should be sorted
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:NSStringFromSelector(@selector(timestamp)) ascending:YES];
+    /*
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:NSStringFromSelector(@selector(timestamp)) ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+     */
     
     NSError *error = nil;
     NSArray *positions = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -205,9 +134,12 @@ static bool isFirstAccess = YES;
         position.latitude = @(placemark.location.coordinate.latitude);
         position.longitude = @(placemark.location.coordinate.longitude);
         position.altitude = @(placemark.location.altitude);
+        position.horizontalAccuracy = @(placemark.location.horizontalAccuracy);
+        position.verticalAccuracy = @(placemark.location.verticalAccuracy);
         position.timestamp = placemark.location.timestamp;
         position.name = [placemark title];
         position.address = [placemark subTitle];
+        position.timezoneId = timezoneId;
         position.updatedAt = [NSDate date];
     }
         

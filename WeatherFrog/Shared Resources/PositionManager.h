@@ -14,10 +14,6 @@
 
 @interface PositionManager : NSObject
 
-@property (nonatomic, strong, readonly) CLLocation* currentLocation;
-@property (nonatomic, strong, readonly) CLPlacemark* currentPlacemark;
-@property (nonatomic, strong, readonly) Position* currentPosition;
-
 /**
  * gets singleton object.
  * @return singleton
@@ -25,11 +21,6 @@
 
 + (PositionManager*)sharedManager;
 
-// Current Location
-
-- (void)startMonitoringCurrentLocation;
-- (void)stopMonitoringCurrentLocation;
-
-- (Position*)positionForPlacemark:(CLPlacemark*)placemark;
+- (Position*)positionForPlacemark:(CLPlacemark*)placemark timezoneId:(NSString*)timezoneId;
 
 @end

@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSNumber * altitude;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * horizontalAccuracy;
+@property (nonatomic, retain) NSNumber * verticalAccuracy;
 @property (nonatomic, retain) NSNumber * isBookmark;
 @property (nonatomic, retain) NSNumber * locationId;
 @property (nonatomic, retain) NSString * name;

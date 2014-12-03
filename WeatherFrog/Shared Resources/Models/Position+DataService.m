@@ -12,7 +12,7 @@
 
 - (CLLocation*)location
 {
-    return [[CLLocation alloc] initWithCoordinate:[self coordinate] altitude:[self.altitude floatValue] horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:self.timestamp];
+    return [[CLLocation alloc] initWithCoordinate:[self coordinate] altitude:[self.altitude floatValue] horizontalAccuracy:[self.horizontalAccuracy floatValue] verticalAccuracy:[self.verticalAccuracy floatValue] course:0 speed:0 timestamp:self.timestamp];
 }
 
 - (CLLocationCoordinate2D)coordinate

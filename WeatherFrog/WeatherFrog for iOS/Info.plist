@@ -47,5 +47,7 @@
 	<string>Location Usage Description</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location When In Use Usage Description</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Location Always Usage Desctiption</string>
 </dict>
 </plist>

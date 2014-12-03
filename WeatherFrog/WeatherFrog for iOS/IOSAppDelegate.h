@@ -13,6 +13,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, strong, readonly) CLLocation* currentLocation;
+@property (nonatomic, strong, readonly) CLPlacemark* currentPlacemark;
+@property (nonatomic, strong, readonly) Position* currentPosition;
 
 @end
 

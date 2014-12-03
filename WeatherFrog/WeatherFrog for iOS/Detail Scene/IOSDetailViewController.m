@@ -170,9 +170,9 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
 #pragma mark - MapViewControllerDeleagte
 
-- (void)mapViewControllerDidSelectLocation:(CLLocation *)location storeLocation:(BOOL)shouldStoreLocation
+- (void)mapViewController:(IOSMapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
-    DDLogVerbose(@"location: %@: shouldStoreLocation: %d", location, shouldStoreLocation);
+    DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
 }
 
 

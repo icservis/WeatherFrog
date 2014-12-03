@@ -8,12 +8,24 @@
 
 #import "IOSAppDelegate.h"
 #import "PositionManager.h"
+#import "ForecastManager.h"
 
-@interface IOSAppDelegate ()
+@interface IOSAppDelegate () <CLLocationManagerDelegate>
+
+@property (nonatomic, strong, readwrite) CLLocation* currentLocation;
+@property (nonatomic, strong, readwrite) CLPlacemark* currentPlacemark;
+@property (nonatomic, strong, readwrite) Position* currentPosition;
+
+@property (nonatomic, strong) CLLocationManager* locationManager;
+@property (nonatomic, strong) CLGeocoder* geocoder;
 
 @end
 
 @implementation IOSAppDelegate
+
+@synthesize currentLocation = _currentLocation;
+@synthesize currentPlacemark = _currentPlacemark;
+@synthesize currentPosition = _currentPosition;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -26,7 +38,7 @@
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
     
-    [[PositionManager sharedManager] startMonitoringCurrentLocation];
+    [self startMonitoringCurrentLocation];
     
     return YES;
 }
@@ -54,7 +66,75 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [[DataService sharedInstance] saveContext];
-    [[PositionManager sharedManager] stopMonitoringCurrentLocation];
+    [self stopMonitoringCurrentLocation];
+}
+
+#pragma mark - Current Location
+
+- (CLLocationManager*)locationManager
+{
+    if (_locationManager == nil) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        
+        if (status == kCLAuthorizationStatusNotDetermined) {
+            if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [_locationManager performSelector:@selector(requestAlwaysAuthorization)];
+            }
+        }
+        
+#pragma clang diagnostic pop
+    }
+    return _locationManager;
+}
+
+- (CLGeocoder*)geocoder
+{
+    if (_geocoder == nil) {
+        _geocoder = [[CLGeocoder alloc] init];
+    }
+    return _geocoder;
+}
+
+- (void)startMonitoringCurrentLocation
+{
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)stopMonitoringCurrentLocation
+{
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if ([locations count] > 0) {
+        CLLocation* location = [locations firstObject];
+        DDLogVerbose(@"location: %@", location);
+        self.currentLocation = location;
+        
+        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (error == nil) {
+                CLPlacemark* placemark = [placemarks firstObject];
+                DDLogVerbose(@"placemark: %@", placemark);
+                self.currentPlacemark = placemark;
+                NSString* timezoneId = [[NSTimeZone localTimeZone] name];
+                self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark timezoneId:timezoneId];
+                
+                [[ForecastManager sharedManager] updateForecastForPosition:self.currentPosition withCompletionBlock:^(BOOL success, NSError *error) {
+                    
+                }];
+            }
+        }];
+    }
 }
 
 @end

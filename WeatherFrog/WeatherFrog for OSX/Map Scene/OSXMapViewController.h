@@ -12,7 +12,7 @@
 
 @protocol OSXMapViewControllerDelegate <NSObject>
 
-- (void)mapViewControllerDidSelectLocation:(CLLocation*)location storeLocation:(BOOL)shouldStoreLocation;
+- (void)mapViewController:(OSXMapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark;
 
 @end
 
@@ -20,5 +20,6 @@
 
 @property (nonatomic, weak) id <OSXMapViewControllerDelegate> delegate;
 @property (nonatomic, copy) void (^closeBlock)(void);
+@property (nonatomic, strong) Position* selectedPosition;
 
 @end

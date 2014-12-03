@@ -66,5 +66,10 @@ static bool isFirstAccess = YES;
     return self;
 }
 
+- (void)updateForecastForPosition:(Position *)position withCompletionBlock:(void (^)(BOOL, NSError *))completionBlock
+{
+    
+}
+
 
 @end

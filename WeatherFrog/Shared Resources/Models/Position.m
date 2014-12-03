@@ -16,6 +16,8 @@
 @dynamic altitude;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic horizontalAccuracy;
+@dynamic verticalAccuracy;
 @dynamic isBookmark;
 @dynamic locationId;
 @dynamic name;

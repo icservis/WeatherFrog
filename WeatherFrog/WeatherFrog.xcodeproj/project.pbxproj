@@ -27,6 +27,8 @@
 		8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* OSXCollectionView.m */; };
 		847597791A28A3820013824D /* OSXGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* OSXGraphView.m */; };
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
+		849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
+		849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
 		84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */; };
 		84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
 		84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
@@ -228,6 +230,8 @@
 		848BF9E01A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKMapAnnotation.h; path = "Shared Resources/Models/MKMapAnnotation.h"; sourceTree = "<group>"; };
+		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKMapAnnotation.m; path = "Shared Resources/Models/MKMapAnnotation.m"; sourceTree = "<group>"; };
 		84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXFlippedView.h; path = Subclasses/OSXFlippedView.h; sourceTree = "<group>"; };
 		84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXFlippedView.m; path = Subclasses/OSXFlippedView.m; sourceTree = "<group>"; };
 		84B808C01A29F8BC0074DF01 /* PositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionManager.h; path = "Shared Resources/PositionManager.h"; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 				84E4B22D1A2E20A90089AB93 /* Forecast.m */,
 				84E4B2361A2E21310089AB93 /* Forecast+DataService.h */,
 				84E4B2371A2E21310089AB93 /* Forecast+DataService.m */,
+				849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */,
+				849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1279,6 +1285,7 @@
 				84E0847B1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				84E084991A1B99E40071D662 /* UIImageView+AFNetworking.m in Sources */,
+				849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
 				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
@@ -1348,6 +1355,7 @@
 				84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				84E084BA1A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E084C21A1B9A020071D662 /* DDLog.m in Sources */,
+				849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
 				84E084801A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,

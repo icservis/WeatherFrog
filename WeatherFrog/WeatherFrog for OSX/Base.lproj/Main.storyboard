@@ -786,6 +786,9 @@
                         <subviews>
                             <mapView mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-eJ-6jC">
                                 <rect key="frame" x="8" y="37" width="434" height="286"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UeI-Xw-w7l" id="y7x-Bf-qLx"/>
+                                </connections>
                             </mapView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-RD-Kq0">
                                 <rect key="frame" x="2" y="1" width="76" height="32"/>
@@ -807,6 +810,9 @@ Gw
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </searchFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="UeI-Xw-w7l" id="PUr-vs-Xu3"/>
+                                </connections>
                             </searchField>
                         </subviews>
                         <constraints>
@@ -997,7 +1003,7 @@ Gw
                 <viewController title="Graph" id="UAh-eQ-qIx" customClass="OSXGraphViewController" sceneMemberID="viewController">
                     <view key="view" id="WjD-DH-Mc2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n98-94-9mW" userLabel="scrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

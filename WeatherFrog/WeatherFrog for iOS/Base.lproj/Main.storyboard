@@ -243,10 +243,18 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GKx-pS-NCc"/>
+                                    <barButtonItem title="Tracking Mode" id="RPt-gh-XHC">
+                                        <connections>
+                                            <action selector="trackingButtonTapped:" destination="CSz-5o-UvC" id="AVt-WA-9Ae"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CSz-5o-UvC" id="Vat-W9-cmQ"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,8 +279,10 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Pu4-dA-rog" id="3vR-20-Gm5"/>
+                        <outlet property="mapView" destination="R54-0N-Ydq" id="ian-9j-j1r"/>
                         <outlet property="searchBar" destination="7fq-vM-trH" id="ooN-na-oQF"/>
                         <outlet property="toolBar" destination="7mH-UQ-IsI" id="CSs-o6-NXC"/>
+                        <outlet property="trackingButton" destination="RPt-gh-XHC" id="w0S-t4-jG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goL-XE-E9g" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -25,9 +25,9 @@
 
 #pragma mark - MapViewControllerDeleagte
 
-- (void)mapViewControllerDidSelectLocation:(CLLocation *)location storeLocation:(BOOL)shouldStoreLocation
+- (void)mapViewController:(OSXMapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
-    DDLogVerbose(@"location: %@: shouldStoreLocation: %d", location, shouldStoreLocation);
+    DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
 }
 
 
