@@ -12,8 +12,7 @@
 #import "MapGestureRecogniser.h"
 
 static float const kMapRadiusMultiplier = 1000.0f;
-static double const kPointHysteresis = 10.0;
-static float const kLongTapDuration = 1.2;
+static double const kPointHysteresis = 1.0;
 
 @interface MapViewController () <MapGestureRecogniserDelegate>
 
@@ -24,10 +23,10 @@ static float const kLongTapDuration = 1.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.mapView.delegate = self;
     
     MapGestureRecogniser* longPress = [[MapGestureRecogniser alloc] initWithTarget:self action:@selector(handleLongPress:)];
     longPress.delegate = self;
-    longPress.minimumPressDuration = kLongTapDuration;
     self.longPressGestureRecognizer = longPress;
 }
 
@@ -278,7 +277,7 @@ static float const kLongTapDuration = 1.2;
     
     if (abs(touchPoint.x-lastTouchPoint.x) < kPointHysteresis && abs(touchPoint.y-lastTouchPoint.y) < kPointHysteresis) {
         
-        DDLogInfo(@"Distace under limit");
+        DDLogInfo(@"Distance under limit");
         
     } else {
         

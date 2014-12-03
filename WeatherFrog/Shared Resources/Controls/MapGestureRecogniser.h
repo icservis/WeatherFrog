@@ -12,11 +12,9 @@
 #define GESTURERECOGNISER_CLASS UILongPressGestureRecognizer
 #define GESTURERECOGNISERDELEGATE_CLASS UIGestureRecognizerDelegate
 #elif TARGET_OS_MAC
-#define GESTURERECOGNISER_CLASS NSPressGestureRecognizer
+#define GESTURERECOGNISER_CLASS NSClickGestureRecognizer
 #define GESTURERECOGNISERDELEGATE_CLASS NSGestureRecognizerDelegate
 #endif
-
-
 
 @protocol MapGestureRecogniserDelegate <GESTURERECOGNISERDELEGATE_CLASS>
 

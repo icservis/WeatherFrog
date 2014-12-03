@@ -26,7 +26,7 @@
     
 #elif TARGET_OS_MAC
 
-    NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 44, 44)];
+    MapAnnotationButton *button = [[MapAnnotationButton alloc] initWithFrame:NSMakeRect(0, 0, 44, 44)];
     if (type == MapAnnotationButtonCalloutAccessoryViewTypeLeft) {
         [button setTitle: @"L"];
     }
