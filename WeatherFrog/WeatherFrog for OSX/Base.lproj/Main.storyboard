@@ -787,7 +787,7 @@
                             <mapView mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-eJ-6jC">
                                 <rect key="frame" x="8" y="37" width="434" height="286"/>
                                 <connections>
-                                    <outlet property="delegate" destination="UeI-Xw-w7l" id="y7x-Bf-qLx"/>
+                                    <outlet property="delegate" destination="UeI-Xw-w7l" id="yoM-Da-vbv"/>
                                 </connections>
                             </mapView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mtS-RD-Kq0">
@@ -829,7 +829,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="mtS-RD-Kq0" id="041-fh-PgA"/>
-                        <outlet property="mapView" destination="Nt1-eJ-6jC" id="9Rg-Gf-nBr"/>
+                        <outlet property="mapView" destination="Nt1-eJ-6jC" id="ro8-8B-bPO"/>
                         <outlet property="searchField" destination="DFf-q9-7xp" id="2r5-DA-Z17"/>
                     </connections>
                 </viewController>

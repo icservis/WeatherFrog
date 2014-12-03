@@ -25,7 +25,7 @@
 
 #pragma mark - MapViewControllerDeleagte
 
-- (void)mapViewController:(OSXMapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
+- (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
     DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
 }

@@ -8,18 +8,7 @@
 
 #import "MapViewController.h"
 
-@class IOSMapViewController;
-
-@protocol IOSMapViewControllerDelegate <NSObject>
-
-- (void)mapViewController:(IOSMapViewController*)controller didSelectPosition:(Position*)position bookmark:(BOOL)shouldBookmark;
-
-@end
-
 @interface IOSMapViewController : MapViewController
 
-@property (nonatomic, weak) id <IOSMapViewControllerDelegate> delegate;
-@property (nonatomic, copy) void (^closeBlock)(void);
-@property (nonatomic, strong) Position* selectedPosition;
 
 @end

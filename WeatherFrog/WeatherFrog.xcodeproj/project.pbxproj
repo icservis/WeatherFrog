@@ -31,6 +31,10 @@
 		849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
 		849BA10D1A2F20E60090F99D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA10C1A2F20E60090F99D /* MapViewController.m */; };
 		849BA10E1A2F20E60090F99D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA10C1A2F20E60090F99D /* MapViewController.m */; };
+		849BA1181A2F5B660090F99D /* MapAnnotationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA1171A2F5B660090F99D /* MapAnnotationButton.m */; };
+		849BA1191A2F5B660090F99D /* MapAnnotationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA1171A2F5B660090F99D /* MapAnnotationButton.m */; };
+		849BA11D1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */; };
+		849BA11E1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */; };
 		84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */; };
 		84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
 		84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
@@ -236,6 +240,10 @@
 		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKMapAnnotation.m; path = "Shared Resources/Models/MKMapAnnotation.m"; sourceTree = "<group>"; };
 		849BA10B1A2F20E60090F99D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Shared Resources/Controllers/MapViewController.h"; sourceTree = "<group>"; };
 		849BA10C1A2F20E60090F99D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Shared Resources/Controllers/MapViewController.m"; sourceTree = "<group>"; };
+		849BA1161A2F5B660090F99D /* MapAnnotationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotationButton.h; path = "Shared Resources/Controls/MapAnnotationButton.h"; sourceTree = "<group>"; };
+		849BA1171A2F5B660090F99D /* MapAnnotationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotationButton.m; path = "Shared Resources/Controls/MapAnnotationButton.m"; sourceTree = "<group>"; };
+		849BA11B1A2F64AC0090F99D /* MapGestureRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapGestureRecogniser.h; path = "Shared Resources/Controls/MapGestureRecogniser.h"; sourceTree = "<group>"; };
+		849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapGestureRecogniser.m; path = "Shared Resources/Controls/MapGestureRecogniser.m"; sourceTree = "<group>"; };
 		84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXFlippedView.h; path = Subclasses/OSXFlippedView.h; sourceTree = "<group>"; };
 		84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXFlippedView.m; path = Subclasses/OSXFlippedView.m; sourceTree = "<group>"; };
 		84B808C01A29F8BC0074DF01 /* PositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionManager.h; path = "Shared Resources/Services/PositionManager.h"; sourceTree = "<group>"; };
@@ -608,6 +616,17 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		849BA11A1A2F5B6F0090F99D /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				849BA1161A2F5B660090F99D /* MapAnnotationButton.h */,
+				849BA1171A2F5B660090F99D /* MapAnnotationButton.m */,
+				849BA11B1A2F64AC0090F99D /* MapGestureRecogniser.h */,
+				849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
 		84B5CD0A1A2B48B30084DB55 /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +932,7 @@
 				84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */,
 				8486FE091A29CA83003AB3EE /* Models */,
 				84C77E161A1C808300348A8A /* Lumberjack.h */,
+				849BA11A1A2F5B6F0090F99D /* Controls */,
 			);
 			name = "Shared Resources";
 			sourceTree = "<group>";
@@ -1279,6 +1299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E0849A1A1B99E40071D662 /* UIProgressView+AFNetworking.m in Sources */,
+				849BA1191A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
 				84E084BF1A1B9A020071D662 /* DDFileLogger.m in Sources */,
 				84E084981A1B99E40071D662 /* UIButton+AFNetworking.m in Sources */,
 				84E0854C1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
@@ -1300,6 +1321,7 @@
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
 				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
+				849BA11E1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
 				84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */,
 				84E084B91A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
 				84E4B21B1A2E08930089AB93 /* ForecastManager.m in Sources */,
@@ -1381,12 +1403,14 @@
 				84E084C21A1B9A020071D662 /* DDLog.m in Sources */,
 				849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
 				84E084801A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
+				849BA11D1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
 				84E0847C1A1B99D20071D662 /* AFURLConnectionOperation.m in Sources */,
 				84E0854B1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084B81A1B9A020071D662 /* CLIColor.m in Sources */,
 				847597791A28A3820013824D /* OSXGraphView.m in Sources */,
 				84E0847A1A1B99D20071D662 /* AFSecurityPolicy.m in Sources */,
 				84E4B2301A2E20A90089AB93 /* Forecast.m in Sources */,
+				849BA1181A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
 				84E084BC1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				84E4B21A1A2E08930089AB93 /* ForecastManager.m in Sources */,
 				84E084C01A1B9A020071D662 /* DDFileLogger.m in Sources */,

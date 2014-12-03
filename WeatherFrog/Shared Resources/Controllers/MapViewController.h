@@ -7,19 +7,46 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 #import "PositionManager.h"
 
 #pragma mark - Cross Platform
 
 #if TARGET_OS_IPHONE
     #define VIEWCONTROLLER_CLASS UIViewController
-    #define BUTTON_CLASS UIButton
 #elif TARGET_OS_MAC
     #define VIEWCONTROLLER_CLASS NSViewController
-    #define BUTTON_CLASS NSButton
 #endif
 
 
-@interface MapViewController : VIEWCONTROLLER_CLASS
+@class MapViewController;
+@class MapGestureRecogniser;
+
+@protocol MapViewControllerDelegate <NSObject>
+
+- (void)mapViewController:(MapViewController*)controller didSelectPosition:(Position*)position bookmark:(BOOL)shouldBookmark;
+
+@end
+
+@interface MapViewController : VIEWCONTROLLER_CLASS  <MKMapViewDelegate>
+
+@property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^closeBlock)(void);
+@property (nonatomic, strong) CLGeocoder* geocoder;
+@property (nonatomic, strong) Position* selectedPosition;
+@property (nonatomic, strong) CLPlacemark* selectedPlacemark;
+@property (nonatomic, strong) NSString* selectedTimezoneId;
+
+@property (nonatomic, weak) IBOutlet MKMapView* mapView;
+@property (nonatomic, strong) MapGestureRecogniser* longPressGestureRecognizer;
+
+- (void)closeController;
+- (void)mapView:(MKMapView *)mapView searchText:(NSString*)text completionBlock:(void(^)(BOOL success, NSError* error))completionBlock;
+- (void)mapView:(MKMapView *)mapView searchAnnotationStored:(Position*)position;
+- (void)mapView:(MKMapView *)mapView searchAnnotation:(CLPlacemark*)placemark;
+- (void)mapView:(MKMapView *)mapView searchAnnotationNotDetermined:(CLLocation*)location;
+- (void)activityIndicatorIncrementCount;
+- (void)activityIndicatorDecrementCount;
+- (void)searchBarResignFirstResponder;
 
 @end

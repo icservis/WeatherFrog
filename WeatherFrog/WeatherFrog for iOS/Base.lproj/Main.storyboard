@@ -253,7 +253,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <connections>
-                                    <outlet property="delegate" destination="CSz-5o-UvC" id="Vat-W9-cmQ"/>
+                                    <outlet property="delegate" destination="CSz-5o-UvC" id="aYB-df-cCa"/>
                                 </connections>
                             </mapView>
                         </subviews>
@@ -279,7 +279,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Pu4-dA-rog" id="3vR-20-Gm5"/>
-                        <outlet property="mapView" destination="R54-0N-Ydq" id="ian-9j-j1r"/>
+                        <outlet property="mapView" destination="R54-0N-Ydq" id="oJx-Tu-dTi"/>
                         <outlet property="searchBar" destination="7fq-vM-trH" id="ooN-na-oQF"/>
                         <outlet property="toolBar" destination="7mH-UQ-IsI" id="CSs-o6-NXC"/>
                         <outlet property="trackingButton" destination="RPt-gh-XHC" id="w0S-t4-jG3"/>

@@ -12,7 +12,7 @@
 
 static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
-@interface IOSDetailViewController () <IOSMapViewControllerDelegate>
+@interface IOSDetailViewController () <MapViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *collectionContainerView;
 @property (weak, nonatomic) IBOutlet UIView *graphContainerView;
@@ -170,7 +170,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
 #pragma mark - MapViewControllerDeleagte
 
-- (void)mapViewController:(IOSMapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
+- (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
     DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
 }
