@@ -12,6 +12,8 @@
 		8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F41A2B577B004E1062 /* QuartzCore.framework */; };
 		8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F61A2B5784004E1062 /* CoreLocation.framework */; };
 		8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F81A2B578B004E1062 /* QuartzCore.framework */; };
+		842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
+		842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84297A9C1A21407D0070E151 /* MapKit.framework */; };
 		84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* OSXWindowController.m */; };
 		84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* OSXSplitViewController.m */; };
@@ -197,6 +199,8 @@
 		8414F2F41A2B577B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8414F2F61A2B5784004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		8414F2F81A2B578B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		842438631A2FAA9C00A7F5A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "Shared Resources/Controllers/DetailViewController.h"; sourceTree = "<group>"; };
+		842438641A2FAA9C00A7F5A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "Shared Resources/Controllers/DetailViewController.m"; sourceTree = "<group>"; };
 		84297A9C1A21407D0070E151 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		84297AA41A2142A20070E151 /* OSXWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXWindowController.h; sourceTree = "<group>"; };
 		84297AA51A2142A20070E151 /* OSXWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXWindowController.m; sourceTree = "<group>"; };
@@ -612,6 +616,8 @@
 			children = (
 				849BA10B1A2F20E60090F99D /* MapViewController.h */,
 				849BA10C1A2F20E60090F99D /* MapViewController.m */,
+				842438631A2FAA9C00A7F5A7 /* DetailViewController.h */,
+				842438641A2FAA9C00A7F5A7 /* DetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1333,6 +1339,7 @@
 				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
+				842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */,
 				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84E084C91A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084C71A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
@@ -1419,6 +1426,7 @@
 				84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */,
 				84E0847E1A1B99D20071D662 /* AFURLRequestSerialization.m in Sources */,
 				84E084C41A1B9A020071D662 /* DDTTYLogger.m in Sources */,
+				842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */,
 				84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */,
 				84E084CA1A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				84E084821A1B99D20071D662 /* AFURLSessionManager.m in Sources */,

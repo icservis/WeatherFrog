@@ -12,4 +12,6 @@ static NSString* const ListCellIdentifier = @"ListCellI";
 
 @interface IOSListTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) Position* position;
+
 @end

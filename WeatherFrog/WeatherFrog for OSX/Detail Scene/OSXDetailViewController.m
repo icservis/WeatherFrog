@@ -7,6 +7,7 @@
 //
 
 #import "OSXDetailViewController.h"
+#import "MapViewController.h"
 
 @interface OSXDetailViewController ()
 
@@ -21,14 +22,5 @@
     [super viewDidLoad];
     // Do view setup here.
 }
-
-
-#pragma mark - MapViewControllerDeleagte
-
-- (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
-{
-    DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
-}
-
 
 @end

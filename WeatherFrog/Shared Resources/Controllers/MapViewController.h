@@ -13,9 +13,9 @@
 #pragma mark - Cross Platform
 
 #if TARGET_OS_IPHONE
-    #define VIEWCONTROLLER_CLASS UIViewController
+    #define MAP_VIEWCONTROLLER_CLASS UIViewController
 #elif TARGET_OS_MAC
-    #define VIEWCONTROLLER_CLASS NSViewController
+    #define MAP_VIEWCONTROLLER_CLASS NSViewController
 #endif
 
 
@@ -28,7 +28,7 @@
 
 @end
 
-@interface MapViewController : VIEWCONTROLLER_CLASS  <MKMapViewDelegate>
+@interface MapViewController : MAP_VIEWCONTROLLER_CLASS  <MKMapViewDelegate>
 
 @property (nonatomic, weak) id <MapViewControllerDelegate> delegate;
 @property (nonatomic, copy) void (^closeBlock)(void);

@@ -784,7 +784,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="361"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <mapView mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-eJ-6jC">
+                            <mapView mapType="standard" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-eJ-6jC">
                                 <rect key="frame" x="8" y="37" width="434" height="286"/>
                                 <connections>
                                     <outlet property="delegate" destination="UeI-Xw-w7l" id="yoM-Da-vbv"/>

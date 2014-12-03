@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "OSXMapViewController.h"
+#import "DetailViewController.h"
 
-@interface OSXDetailViewController : NSTabViewController  <MapViewControllerDelegate>
+@interface OSXDetailViewController : DetailViewController
 
 @end

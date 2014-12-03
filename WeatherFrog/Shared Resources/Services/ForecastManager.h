@@ -11,6 +11,8 @@
 #import "Position+DataService.h"
 #import "Forecast+DataService.h"
 
+static NSString* const kForecastManagerDidUpdateCurrentLocationData = @"FORECASTMANAGER_DID_UPDATE_CURRENT_LOCATION_DATA";
+
 @interface ForecastManager : NSObject
 
 /**
@@ -21,6 +23,6 @@
 
 @property (nonatomic, assign) double progress;
 
-- (void)updateForecastForPosition:(Position*)position withCompletionBlock:(void(^)(BOOL success, NSError* error))completionBlock;
+- (void)updateForecastForPosition:(Position*)position withCompletionBlock:(void(^)(BOOL updated, NSError* error))completionBlock;
 
 @end

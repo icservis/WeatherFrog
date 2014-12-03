@@ -129,12 +129,22 @@
                 NSString* timezoneId = [[NSTimeZone localTimeZone] name];
                 self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark timezoneId:timezoneId];
                 
-                [[ForecastManager sharedManager] updateForecastForPosition:self.currentPosition withCompletionBlock:^(BOOL success, NSError *error) {
-                    
+                [[ForecastManager sharedManager] updateForecastForPosition:self.currentPosition withCompletionBlock:^(BOOL updated, NSError *error) {
+                    if (updated) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kForecastManagerDidUpdateCurrentLocationData object:nil];
+                        [self procesCurrentForecastData];
+                    }
                 }];
             }
         }];
     }
+}
+
+#pragma mark - Processing new forecast
+
+- (void)procesCurrentForecastData
+{
+    DDLogVerbose(@"%@", self.currentPosition.forecast);
 }
 
 @end

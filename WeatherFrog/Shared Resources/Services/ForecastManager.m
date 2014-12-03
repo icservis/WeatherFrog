@@ -66,9 +66,11 @@ static bool isFirstAccess = YES;
     return self;
 }
 
-- (void)updateForecastForPosition:(Position *)position withCompletionBlock:(void (^)(BOOL, NSError *))completionBlock
+#pragma mark - Foreast 
+
+- (void)updateForecastForPosition:(Position *)position withCompletionBlock:(void (^)(BOOL updated, NSError * error))completionBlock
 {
-    
+    completionBlock(YES, nil);
 }
 
 

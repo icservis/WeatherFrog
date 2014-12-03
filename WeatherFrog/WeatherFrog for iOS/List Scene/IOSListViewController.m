@@ -8,6 +8,7 @@
 
 #import "IOSListViewController.h"
 #import "IOSListTableViewCell.h"
+#import "IOSAppDelegate.h"
 #import "IOSDetailViewController.h"
 #import "IOSSplitViewController.h"
 
@@ -81,7 +82,14 @@
         
         UINavigationController* navigationVC = segue.destinationViewController;
         IOSDetailViewController* detailVC = (IOSDetailViewController*)[[navigationVC viewControllers] firstObject];
-        detailVC.data = sender;
+        if ([sender isKindOfClass:[IOSListTableViewCell class]]) {
+            IOSListTableViewCell* cell = (IOSListTableViewCell*)sender;
+            detailVC.selectedPosition = cell.position;
+        }
+        if ([sender isKindOfClass:[self.currentPositionButton class]]) {
+            IOSAppDelegate* appDelegate = (IOSAppDelegate*)[UIApplication sharedApplication].delegate;
+            detailVC.selectedPosition = appDelegate.currentPosition;
+        }
     }
 }
 

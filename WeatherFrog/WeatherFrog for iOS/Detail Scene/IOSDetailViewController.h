@@ -6,10 +6,8 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DetailViewController.h"
 
-@interface IOSDetailViewController : UIViewController
-
-@property (nonatomic, weak) id data;
+@interface IOSDetailViewController : DetailViewController
 
 @end

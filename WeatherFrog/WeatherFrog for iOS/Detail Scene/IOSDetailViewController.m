@@ -12,7 +12,7 @@
 
 static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 
-@interface IOSDetailViewController () <MapViewControllerDelegate>
+@interface IOSDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *collectionContainerView;
 @property (weak, nonatomic) IBOutlet UIView *graphContainerView;
@@ -166,13 +166,6 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
             }];
         };
     }
-}
-
-#pragma mark - MapViewControllerDeleagte
-
-- (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
-{
-    DDLogVerbose(@"position: %@: shouldBookmark: %d", position, shouldBookmark);
 }
 
 
