@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "MapViewController.h"
 
 @class OSXMapViewController;
 
@@ -16,7 +16,7 @@
 
 @end
 
-@interface OSXMapViewController : NSViewController
+@interface OSXMapViewController : MapViewController
 
 @property (nonatomic, weak) id <OSXMapViewControllerDelegate> delegate;
 @property (nonatomic, copy) void (^closeBlock)(void);

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MapViewController.h"
 
 @class IOSMapViewController;
 
@@ -16,7 +16,7 @@
 
 @end
 
-@interface IOSMapViewController : UIViewController
+@interface IOSMapViewController : MapViewController
 
 @property (nonatomic, weak) id <IOSMapViewControllerDelegate> delegate;
 @property (nonatomic, copy) void (^closeBlock)(void);
