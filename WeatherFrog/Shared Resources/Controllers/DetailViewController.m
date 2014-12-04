@@ -30,6 +30,7 @@
 
 - (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
+    DDLogVerbose(@"didSelectPosition: %@", position);
     self.selectedPosition = position;
 }
 

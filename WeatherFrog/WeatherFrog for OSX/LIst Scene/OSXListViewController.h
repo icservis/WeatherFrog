@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "ListViewController.h"
 
-@interface OSXListViewController : NSViewController
+@interface OSXListViewController : ListViewController
 
 
 @end

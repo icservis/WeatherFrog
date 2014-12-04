@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TLIndexPathTools.h"
+#import "ListViewController.h"
 
-@interface IOSListViewController : UIViewController
+@interface IOSListViewController : ListViewController
 
 
 @end

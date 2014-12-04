@@ -10,6 +10,7 @@
 #define WeatherFrog_PrefixHeader_pch
 
 #import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>

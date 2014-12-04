@@ -86,15 +86,6 @@ static double const kPointHysteresis = 1.0;
 
 #pragma mark - IBActions
 
-- (IBAction)showForecast:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(mapViewController:didSelectPosition:bookmark:)]) {
-        _selectedPosition = [[PositionManager sharedManager] positionForPlacemark:self.selectedPlacemark timezoneId:self.selectedTimezoneId];
-        [self.delegate mapViewController:self didSelectPosition:self.selectedPosition bookmark:NO];
-        [self closeController];
-    }
-}
-
 - (IBAction)addPosition:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(mapViewController:didSelectPosition:bookmark:)]) {
@@ -232,9 +223,6 @@ static double const kPointHysteresis = 1.0;
             
             MapAnnotationButton* positionButton = [MapAnnotationButton annotationButtonWithTarget:self action:@selector(addPosition:) type:MapAnnotationButtonCalloutAccessoryViewTypeLeft];
             annotationPinView.leftCalloutAccessoryView = positionButton;
-            
-            MapAnnotationButton* forecastButton = [MapAnnotationButton annotationButtonWithTarget:self action:@selector(showForecast:) type:MapAnnotationButtonCalloutAccessoryViewTypeRight];
-            annotationPinView.rightCalloutAccessoryView = forecastButton;
             
         } else {
             annotationPinView.leftCalloutAccessoryView = nil;

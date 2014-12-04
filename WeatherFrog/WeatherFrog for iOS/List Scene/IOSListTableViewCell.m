@@ -8,6 +8,13 @@
 
 #import "IOSListTableViewCell.h"
 
+@interface IOSListTableViewCell ()
+
+@property (nonatomic, weak) IBOutlet UILabel* nameLabel;
+@property (nonatomic, weak) IBOutlet UILabel* addressLabel;
+
+@end
+
 @implementation IOSListTableViewCell
 
 - (void)awakeFromNib {
@@ -18,6 +25,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setPosition:(Position *)position
+{
+    _position = position;
+    
+    self.nameLabel.text = position.name;
+    self.addressLabel.text = position.address;
+    
 }
 
 @end

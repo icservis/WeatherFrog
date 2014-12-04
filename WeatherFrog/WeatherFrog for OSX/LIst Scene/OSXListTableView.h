@@ -10,4 +10,6 @@
 
 @interface OSXListTableView : NSTableView
 
+@property (nonatomic, weak) Position* position;
+
 @end

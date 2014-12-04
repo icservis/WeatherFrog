@@ -1,16 +1,16 @@
 //
-//  IOSListTableViewCell.h
+//  OSXListTableViewCell.h
 //  WeatherFrog
 //
-//  Created by Libor Kučera on 29.11.14.
+//  Created by Libor Kučera on 04.12.14.
 //  Copyright (c) 2014 IC Servis, s.r.o. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 
 static NSString* const ListCellIdentifier = @"ListCell";
 
-@interface IOSListTableViewCell : UITableViewCell
+@interface OSXListTableViewCell : NSTableCellView
 
 @property (nonatomic, weak) Position* position;
 

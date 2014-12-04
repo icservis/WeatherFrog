@@ -7,14 +7,20 @@
 //
 
 #import "IOSListViewController.h"
+#import "IOSListTableView.h"
 #import "IOSListTableViewCell.h"
 #import "IOSAppDelegate.h"
 #import "IOSDetailViewController.h"
 #import "IOSSplitViewController.h"
 
-@interface IOSListViewController () <UITableViewDataSource, UITableViewDelegate>
+#import "PositionManager.h"
+#import "TLIndexPathTools.h"
 
-@property (nonatomic, weak) IBOutlet UITableView* tableView;
+@interface IOSListViewController () <TLIndexPathControllerDelegate>
+
+@property (strong, nonatomic) TLIndexPathController *indexPathController;
+
+@property (nonatomic, weak) IBOutlet IOSListTableView* tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentPositionButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *bookmarkButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *removeAllBookmarksButton;
@@ -41,6 +47,14 @@
     self.splitViewControllerTraitCollection = self.splitViewController.traitCollection;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
+    
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Position class])];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    fetch.sortDescriptors = @[sortDescriptor];
+    
+    self.indexPathController = [[TLIndexPathController alloc] initWithFetchRequest:fetch managedObjectContext:[[DataService sharedInstance] managedObjectContext] sectionNameKeyPath:nil identifierKeyPath:nil cacheName:nil];
+    self.indexPathController.delegate = self;
+    [self.indexPathController performFetch:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,9 +72,10 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidDisappear:animated];
+    [[DataService sharedInstance] saveContext];
 }
 
 #pragma mark - Navigation
@@ -162,7 +177,10 @@
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
-                                   DDLogVerbose(@"");
+                                   [self.indexPathController.dataModel.items enumerateObjectsUsingBlock:^(Position* position, NSUInteger idx, BOOL *stop) {
+                                       [[DataService sharedInstance].managedObjectContext deleteObject:position];;
+                                   }];
+                                   
                                    [self setEditing:NO animated:YES];
                                }];
     UIAlertAction *cancelAction = [UIAlertAction
@@ -181,27 +199,52 @@
     }];
 }
 
-#pragma mark - TableView DataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.indexPathController.dataModel.numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return [self.indexPathController.dataModel numberOfRowsInSection:section];
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (IOSListTableViewCell *)tableView:(IOSListTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IOSListTableViewCell* cell = (IOSListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
-    
-    cell.textLabel.text = @"Row";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    
+    IOSListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
+    Position* position = [self.indexPathController.dataModel itemAtIndexPath:indexPath];
+    cell.position = position;
     return cell;
 }
+
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString* headerTitle = [self.indexPathController.dataModel sectionNameForSection:section];
+    if ([headerTitle isEqualToString:TLIndexPathDataModelNilSectionName]) {
+        return nil;
+    }
+    return headerTitle;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Position* position = [self.indexPathController.dataModel itemAtIndexPath:indexPath];
+        [[DataService sharedInstance].managedObjectContext deleteObject:position];
+    }
+    
+}
+
+#pragma mark - TLIndexPathControllerDelegate
+
+- (void)controller:(TLIndexPathController *)controller didUpdateDataModel:(TLIndexPathUpdates *)updates
+{
+    [updates performBatchUpdatesOnTableView:self.tableView withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - TableView Delegate
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

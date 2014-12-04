@@ -870,7 +870,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="lid-q4-Nkh">
+                                                        <tableCellView identifier="ListCell" id="lid-q4-Nkh" customClass="OSXListTableViewCell">
                                                             <rect key="frame" x="1" y="1" width="197" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
