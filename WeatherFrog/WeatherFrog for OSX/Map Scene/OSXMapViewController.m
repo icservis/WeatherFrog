@@ -42,7 +42,6 @@
     [self mapView:self.mapView searchText:self.searchField.stringValue completionBlock:^(BOOL success, NSError *error) {
         
     }];
-    
 }
 
 - (void)searchBarResignFirstResponder

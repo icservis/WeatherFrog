@@ -25,9 +25,8 @@ static double const kPointHysteresis = 1.0;
     // Do any additional setup after loading the view.
     self.mapView.delegate = self;
     
-    MapGestureRecogniser* longPress = [[MapGestureRecogniser alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPress.delegate = self;
-    self.longPressGestureRecognizer = longPress;
+    self.pinGestureRecognizer = [[MapGestureRecogniser alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    self.pinGestureRecognizer.delegate = self;
 }
 
 #if TARGET_OS_IPHONE
@@ -35,13 +34,13 @@ static double const kPointHysteresis = 1.0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.mapView addGestureRecognizer:self.longPressGestureRecognizer];
+    [self.mapView addGestureRecognizer:self.pinGestureRecognizer];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.mapView removeGestureRecognizer:self.longPressGestureRecognizer];
+    [self.mapView removeGestureRecognizer:self.pinGestureRecognizer];
 }
 
 #elif TARGET_OS_MAC
@@ -49,13 +48,13 @@ static double const kPointHysteresis = 1.0;
 - (void)viewWillAppear
 {
     [super viewWillAppear];
-    [self.mapView addGestureRecognizer:self.longPressGestureRecognizer];
+    [self.mapView addGestureRecognizer:self.pinGestureRecognizer];
 }
 
 - (void)viewDidDisappear
 {
     [super viewDidDisappear];
-    [self.mapView removeGestureRecognizer:self.longPressGestureRecognizer];
+    [self.mapView removeGestureRecognizer:self.pinGestureRecognizer];
 }
 
 #endif
@@ -302,6 +301,16 @@ static double const kPointHysteresis = 1.0;
 {
     // Return YES to prevent this gesture from interfering with, say, a pan on a map or table view, or a tap on a button in the tool bar.
     return YES;
+}
+
+- (BOOL)gestureRecognizer:(MapGestureRecogniser *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(MapGestureRecogniser *)otherGestureRecognizer
+{
+    return NO;
+}
+
+- (BOOL)gestureRecognizer:(MapGestureRecogniser *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(MapGestureRecogniser *)otherGestureRecognizer
+{
+    return NO;
 }
 
 #pragma mark - Activity Indicator

@@ -38,7 +38,7 @@
 @property (nonatomic, strong) NSString* selectedTimezoneId;
 
 @property (nonatomic, weak) IBOutlet MKMapView* mapView;
-@property (nonatomic, strong) MapGestureRecogniser* longPressGestureRecognizer;
+@property (nonatomic, strong) MapGestureRecogniser* pinGestureRecognizer;
 
 - (void)closeController;
 - (void)mapView:(MKMapView *)mapView searchText:(NSString*)text completionBlock:(void(^)(BOOL success, NSError* error))completionBlock;
