@@ -48,11 +48,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
     
-    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Position class])];
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    fetch.sortDescriptors = @[sortDescriptor];
+    DataService* dataService = [DataService sharedInstance];
     
-    self.indexPathController = [[TLIndexPathController alloc] initWithFetchRequest:fetch managedObjectContext:[[DataService sharedInstance] managedObjectContext] sectionNameKeyPath:nil identifierKeyPath:nil cacheName:nil];
+    self.indexPathController = [[TLIndexPathController alloc] initWithFetchRequest:[dataService fetchRequestForAllObjects] managedObjectContext:[dataService managedObjectContext] sectionNameKeyPath:@"isBookmark" identifierKeyPath:nil cacheName:nil];
     self.indexPathController.delegate = self;
     [self.indexPathController performFetch:nil];
 }
@@ -177,10 +175,7 @@
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
-                                   [self.indexPathController.dataModel.items enumerateObjectsUsingBlock:^(Position* position, NSUInteger idx, BOOL *stop) {
-                                       [[DataService sharedInstance].managedObjectContext deleteObject:position];;
-                                   }];
-                                   
+                                   [[DataService sharedInstance] deleteAllObjects];
                                    [self setEditing:NO animated:YES];
                                }];
     UIAlertAction *cancelAction = [UIAlertAction

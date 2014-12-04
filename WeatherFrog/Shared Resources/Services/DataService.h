@@ -25,4 +25,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+- (NSFetchRequest*)fetchRequestForAllObjects;
+- (void)deleteAllObjects;
+
 @end

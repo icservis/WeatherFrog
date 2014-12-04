@@ -147,5 +147,26 @@ static bool isFirstAccess = YES;
     }
 }
 
+#pragma mark - Methods
+
+- (NSFetchRequest*)fetchRequestForAllObjects
+{
+    NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Position class])];
+    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
+    fetch.sortDescriptors = @[sortDescriptor];
+    return fetch;
+}
+
+- (void)deleteAllObjects
+{
+    NSError *error;
+    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequestForAllObjects] error:&error];
+    if (error == nil) {
+        [fetchedObjects enumerateObjectsUsingBlock:^(Position* position, NSUInteger idx, BOOL *stop) {
+            [self.managedObjectContext deleteObject:position];
+        }];
+    }
+}
+
 
 @end
