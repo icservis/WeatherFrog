@@ -48,13 +48,13 @@ static double const kPointHysteresis = 1.0;
 - (void)viewWillAppear
 {
     [super viewWillAppear];
-    [self.mapView addGestureRecognizer:self.pinGestureRecognizer];
+    //[self.view addGestureRecognizer:self.pinGestureRecognizer];
 }
 
 - (void)viewDidDisappear
 {
     [super viewDidDisappear];
-    [self.mapView removeGestureRecognizer:self.pinGestureRecognizer];
+    //[self.view removeGestureRecognizer:self.pinGestureRecognizer];
 }
 
 #endif
