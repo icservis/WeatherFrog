@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) Position* selectedPosition;
 
-- (void)forecastUpdateDidFinish:(BOOL)updated;
+- (void)forecastForPosition:(Position*)position withCompletionBlock:(void(^)(BOOL updated, NSError* error))completionBlock;
 - (void)activityIndicatorIncrementCount;
 - (void)activityIndicatorDecrementCount;
 

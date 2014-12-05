@@ -152,19 +152,31 @@ static bool isFirstAccess = YES;
 - (NSFetchRequest*)fetchRequestForAllObjects
 {
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Position class])];
-    NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO];
-    fetch.sortDescriptors = @[sortDescriptor];
+    NSSortDescriptor* bookmarkDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"isBookmark" ascending:NO];
+    NSSortDescriptor* timeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO];
+    fetch.sortDescriptors = @[bookmarkDescriptor, timeDescriptor];
     return fetch;
 }
 
 - (void)deleteAllObjects
 {
-    NSError *error;
-    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequestForAllObjects] error:&error];
+    NSError* error;
+    NSArray* fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequestForAllObjects] error:&error];
     if (error == nil) {
         [fetchedObjects enumerateObjectsUsingBlock:^(Position* position, NSUInteger idx, BOOL *stop) {
             [self.managedObjectContext deleteObject:position];
         }];
+    }
+}
+
+- (Position*)lastUpdatedBookmarkedObject
+{
+    NSError* error;
+    NSArray* fetchedObjects = [self.managedObjectContext executeFetchRequest:[self fetchRequestForAllObjects] error:&error];
+    if (error == nil) {
+        return [fetchedObjects firstObject];
+    } else {
+        return nil;
     }
 }
 

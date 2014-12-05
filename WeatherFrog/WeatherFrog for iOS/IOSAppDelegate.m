@@ -143,7 +143,7 @@
 
 - (void)procesCurrentForecastData
 {
-    DDLogVerbose(@"%@", self.currentPosition);
+    //DDLogVerbose(@"%@", self.currentPosition);
 }
 
 @end

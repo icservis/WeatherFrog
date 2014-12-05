@@ -27,5 +27,6 @@
 
 - (NSFetchRequest*)fetchRequestForAllObjects;
 - (void)deleteAllObjects;
+- (Position*)lastUpdatedBookmarkedObject;
 
 @end

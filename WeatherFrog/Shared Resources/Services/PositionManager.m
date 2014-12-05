@@ -140,8 +140,9 @@ static bool isFirstAccess = YES;
         position.name = [placemark title];
         position.address = [placemark subTitle];
         position.timezoneId = timezoneId;
-        position.updatedAt = [NSDate date];
     }
+    
+    position.updatedAt = [NSDate date];
         
     return position;
 }

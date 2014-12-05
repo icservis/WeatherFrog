@@ -40,6 +40,13 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     self.splitViewControllerTraitCollection = self.splitViewController.traitCollection;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
+    
+    if (self.selectedPosition == nil) {
+        Position* lastUpdatedBookmarkedPosition = [[DataService sharedInstance] lastUpdatedBookmarkedObject];
+        if (lastUpdatedBookmarkedPosition) {
+            self.selectedPosition = lastUpdatedBookmarkedPosition;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +70,12 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 }
 
 #pragma mark - Setters and Getters
+
+- (void)setSelectedPosition:(Position *)selectedPosition
+{
+    [super setSelectedPosition:selectedPosition];
+    self.navigationItem.title = selectedPosition.name;
+}
 
 - (UIBarButtonItem*)viewModeButtonItem
 {

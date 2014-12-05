@@ -23,8 +23,12 @@
 - (void)setSelectedPosition:(Position *)selectedPosition
 {
     _selectedPosition = selectedPosition;
-    DDLogVerbose(@"%@", selectedPosition);
-    [self forecastForPosition:selectedPosition];
+    DDLogVerbose(@"%@", selectedPosition.name);
+    
+    [self activityIndicatorIncrementCount];
+    [self forecastForPosition:selectedPosition withCompletionBlock:^(BOOL updated, NSError *error) {
+        [self activityIndicatorDecrementCount];
+    }];
 }
 
 #pragma mark - MapViewControllerDeleagte
@@ -36,18 +40,11 @@
 
 #pragma mark - Forecast
 
-- (void)forecastForPosition:(Position*)position
+- (void)forecastForPosition:(Position*)position withCompletionBlock:(void(^)(BOOL updated, NSError* error))completionBlock
 {
-    [self activityIndicatorIncrementCount];
     [[ForecastManager sharedManager] updateForecastForPosition:position withCompletionBlock:^(BOOL updated, NSError *error) {
-        [self activityIndicatorDecrementCount];
-        [self forecastUpdateDidFinish:updated];
+        completionBlock(updated, error);
     }];
-}
-
-- (void)forecastUpdateDidFinish:(BOOL)updated
-{
-    
 }
 
 
@@ -55,7 +52,7 @@
 
 - (void)activityIndicatorIncrementCount
 {
-    
+
 }
 
 - (void)activityIndicatorDecrementCount

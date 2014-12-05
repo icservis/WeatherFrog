@@ -93,12 +93,19 @@ static double const kPointHysteresis = 1.0;
     _selectedPosition = selectedPosition;
 }
 
+- (void)setSelectedPlacemark:(CLPlacemark *)selectedPlacemark
+{
+    _selectedPlacemark = selectedPlacemark;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)addPosition:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(mapViewController:didSelectPosition:bookmark:)]) {
-        _selectedPosition = [[PositionManager sharedManager] positionForPlacemark:self.selectedPlacemark timezoneId:self.selectedTimezoneId];
+        if (self.selectedPlacemark != nil) {
+            _selectedPosition = [[PositionManager sharedManager] positionForPlacemark:self.selectedPlacemark timezoneId:self.selectedTimezoneId];
+        }
         [self.delegate mapViewController:self didSelectPosition:self.selectedPosition bookmark:YES];
         [self closeController];
     }
@@ -204,8 +211,6 @@ static double const kPointHysteresis = 1.0;
         searchAnnotation = [[MKMapAnnotation alloc] initWithLocation:location];
         [mapView addAnnotation:searchAnnotation];
     }
-    
-    self.selectedPlacemark = nil;
 }
 
 #pragma mark - MKMapViewDelegate
