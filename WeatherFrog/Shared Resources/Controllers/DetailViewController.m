@@ -23,6 +23,7 @@
 - (void)setSelectedPosition:(Position *)selectedPosition
 {
     _selectedPosition = selectedPosition;
+    DDLogVerbose(@"%@", selectedPosition);
     [self forecastForPosition:selectedPosition];
 }
 
@@ -30,7 +31,6 @@
 
 - (void)mapViewController:(MapViewController *)controller didSelectPosition:(Position *)position bookmark:(BOOL)shouldBookmark
 {
-    DDLogVerbose(@"didSelectPosition: %@", position);
     self.selectedPosition = position;
 }
 

@@ -14,11 +14,11 @@
 #import "IOSSplitViewController.h"
 
 #import "PositionManager.h"
-#import "TLIndexPathTools.h"
 
-@interface IOSListViewController () <TLIndexPathControllerDelegate>
+@interface IOSListViewController () <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) TLIndexPathController *indexPathController;
+@property (nonatomic, strong) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 
 @property (nonatomic, weak) IBOutlet IOSListTableView* tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *currentPositionButton;
@@ -46,13 +46,13 @@
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.splitViewControllerTraitCollection = self.splitViewController.traitCollection;
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshContent) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
     
-    DataService* dataService = [DataService sharedInstance];
-    
-    self.indexPathController = [[TLIndexPathController alloc] initWithFetchRequest:[dataService fetchRequestForAllObjects] managedObjectContext:[dataService managedObjectContext] sectionNameKeyPath:@"isBookmark" identifierKeyPath:nil cacheName:nil];
-    self.indexPathController.delegate = self;
-    [self.indexPathController performFetch:nil];
+    [self refreshContent];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +74,13 @@
 {
     [super viewDidDisappear:animated];
     [[DataService sharedInstance] saveContext];
+}
+
+- (void)refreshContent
+{
+    NSError* error;
+    [self.fetchedResultsController performFetch:&error];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Navigation
@@ -154,11 +161,6 @@
     [self performSegueWithIdentifier:@"ReplaceDetail" sender:sender];
 }
 
-- (IBAction)bookmarkButtonTapped:(id)sender
-{
-    
-}
-
 - (IBAction)closeButtonTapped:(id)sender
 {
     [self performSegueWithIdentifier:@"ReplaceDetail" sender:nil];
@@ -194,56 +196,162 @@
     }];
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (IBAction)bookmarkButtonTapped:(id)sender
 {
-    return self.indexPathController.dataModel.numberOfSections;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.indexPathController.dataModel numberOfRowsInSection:section];
-}
-
-- (IOSListTableViewCell *)tableView:(IOSListTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    IOSListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ListCellIdentifier];
-    Position* position = [self.indexPathController.dataModel itemAtIndexPath:indexPath];
-    cell.position = position;
-    return cell;
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString* headerTitle = [self.indexPathController.dataModel sectionNameForSection:section];
-    if ([headerTitle isEqualToString:TLIndexPathDataModelNilSectionName]) {
-        return nil;
-    }
-    return headerTitle;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Position* position = [self.indexPathController.dataModel itemAtIndexPath:indexPath];
-        [[DataService sharedInstance].managedObjectContext deleteObject:position];
-    }
     
 }
 
-#pragma mark - TLIndexPathControllerDelegate
+#pragma mark - UITableViewDataSource
 
-- (void)controller:(TLIndexPathController *)controller didUpdateDataModel:(TLIndexPathUpdates *)updates
-{
-    [updates performBatchUpdatesOnTableView:self.tableView withRowAnimation:UITableViewRowAnimationFade];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [[self.fetchedResultsController sections] count];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (IOSListTableViewCell *)tableView:(IOSListTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    IOSListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ListCellIdentifier forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+- (void)configureCell:(IOSListTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Position *position = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.position = position;
+}
+
 
 #pragma mark - TableView Delegate
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    IOSListTableViewCell* cell = (IOSListTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"ReplaceDetail" sender:cell];
 }
+
+#pragma mark - Fetched results controller
+
+- (NSManagedObjectContext*)managedObjectContext
+{
+    if (_managedObjectContext == nil) {
+        _managedObjectContext = [DataService sharedInstance].managedObjectContext;
+    }
+    return _managedObjectContext;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Position class]) inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsController;
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        default:
+            return;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:(IOSListTableViewCell*)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
+}
+
+
 
 @end

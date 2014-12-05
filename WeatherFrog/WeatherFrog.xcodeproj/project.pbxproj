@@ -30,23 +30,6 @@
 		846109DA1A308FD1007623FE /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109D71A308FD1007623FE /* ListViewController.m */; };
 		846109E51A30A1A1007623FE /* OSXListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109E41A30A1A1007623FE /* OSXListTableViewCell.m */; };
 		846109E81A30A281007623FE /* IOSListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109E71A30A281007623FE /* IOSListTableView.m */; };
-		84610A161A30A504007623FE /* TLIndexPathController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109EC1A30A503007623FE /* TLIndexPathController.m */; };
-		84610A171A30A504007623FE /* TLIndexPathDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109EF1A30A503007623FE /* TLIndexPathDataModel.m */; };
-		84610A181A30A504007623FE /* TLIndexPathItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109F11A30A503007623FE /* TLIndexPathItem.m */; };
-		84610A191A30A504007623FE /* TLIndexPathSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109F31A30A503007623FE /* TLIndexPathSectionInfo.m */; };
-		84610A1A1A30A504007623FE /* TLIndexPathUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109F51A30A503007623FE /* TLIndexPathUpdates.m */; };
-		84610A1B1A30A504007623FE /* TLCollapsibleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109F91A30A503007623FE /* TLCollapsibleDataModel.m */; };
-		84610A1C1A30A504007623FE /* TLCollapsibleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109FB1A30A503007623FE /* TLCollapsibleHeaderView.m */; };
-		84610A1D1A30A504007623FE /* TLCollapsibleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109FD1A30A503007623FE /* TLCollapsibleTableViewController.m */; };
-		84610A1E1A30A504007623FE /* TLNoResultsTableDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A001A30A503007623FE /* TLNoResultsTableDataModel.m */; };
-		84610A1F1A30A504007623FE /* TLDynamicHeightLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A021A30A504007623FE /* TLDynamicHeightLabelCell.m */; };
-		84610A201A30A504007623FE /* TLIndexPathTreeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A051A30A504007623FE /* TLIndexPathTreeItem.m */; };
-		84610A211A30A504007623FE /* TLTreeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A071A30A504007623FE /* TLTreeDataModel.m */; };
-		84610A221A30A504007623FE /* TLTreeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A091A30A504007623FE /* TLTreeTableViewController.m */; };
-		84610A231A30A504007623FE /* UITableView+ScrollOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A0B1A30A504007623FE /* UITableView+ScrollOptimizer.m */; };
-		84610A241A30A504007623FE /* UITableViewController+ScrollOptimizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A0D1A30A504007623FE /* UITableViewController+ScrollOptimizer.m */; };
-		84610A251A30A504007623FE /* TLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A121A30A504007623FE /* TLCollectionViewController.m */; };
-		84610A261A30A504007623FE /* TLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84610A151A30A504007623FE /* TLTableViewController.m */; };
 		8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* OSXCollectionView.m */; };
 		847597791A28A3820013824D /* OSXGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* OSXGraphView.m */; };
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
@@ -250,43 +233,6 @@
 		846109E41A30A1A1007623FE /* OSXListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXListTableViewCell.m; path = "LIst Scene/OSXListTableViewCell.m"; sourceTree = "<group>"; };
 		846109E61A30A281007623FE /* IOSListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableView.h; path = "List Scene/IOSListTableView.h"; sourceTree = "<group>"; };
 		846109E71A30A281007623FE /* IOSListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSListTableView.m; path = "List Scene/IOSListTableView.m"; sourceTree = "<group>"; };
-		846109EB1A30A503007623FE /* TLIndexPathController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathController.h; sourceTree = "<group>"; };
-		846109EC1A30A503007623FE /* TLIndexPathController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathController.m; sourceTree = "<group>"; };
-		846109EE1A30A503007623FE /* TLIndexPathDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathDataModel.h; sourceTree = "<group>"; };
-		846109EF1A30A503007623FE /* TLIndexPathDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathDataModel.m; sourceTree = "<group>"; };
-		846109F01A30A503007623FE /* TLIndexPathItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathItem.h; sourceTree = "<group>"; };
-		846109F11A30A503007623FE /* TLIndexPathItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathItem.m; sourceTree = "<group>"; };
-		846109F21A30A503007623FE /* TLIndexPathSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathSectionInfo.h; sourceTree = "<group>"; };
-		846109F31A30A503007623FE /* TLIndexPathSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathSectionInfo.m; sourceTree = "<group>"; };
-		846109F41A30A503007623FE /* TLIndexPathUpdates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathUpdates.h; sourceTree = "<group>"; };
-		846109F51A30A503007623FE /* TLIndexPathUpdates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathUpdates.m; sourceTree = "<group>"; };
-		846109F81A30A503007623FE /* TLCollapsibleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCollapsibleDataModel.h; sourceTree = "<group>"; };
-		846109F91A30A503007623FE /* TLCollapsibleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCollapsibleDataModel.m; sourceTree = "<group>"; };
-		846109FA1A30A503007623FE /* TLCollapsibleHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCollapsibleHeaderView.h; sourceTree = "<group>"; };
-		846109FB1A30A503007623FE /* TLCollapsibleHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCollapsibleHeaderView.m; sourceTree = "<group>"; };
-		846109FC1A30A503007623FE /* TLCollapsibleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCollapsibleTableViewController.h; sourceTree = "<group>"; };
-		846109FD1A30A503007623FE /* TLCollapsibleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCollapsibleTableViewController.m; sourceTree = "<group>"; };
-		846109FF1A30A503007623FE /* TLNoResultsTableDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLNoResultsTableDataModel.h; sourceTree = "<group>"; };
-		84610A001A30A503007623FE /* TLNoResultsTableDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLNoResultsTableDataModel.m; sourceTree = "<group>"; };
-		84610A011A30A503007623FE /* TLDynamicHeightLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDynamicHeightLabelCell.h; sourceTree = "<group>"; };
-		84610A021A30A504007623FE /* TLDynamicHeightLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDynamicHeightLabelCell.m; sourceTree = "<group>"; };
-		84610A041A30A504007623FE /* TLIndexPathTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathTreeItem.h; sourceTree = "<group>"; };
-		84610A051A30A504007623FE /* TLIndexPathTreeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLIndexPathTreeItem.m; sourceTree = "<group>"; };
-		84610A061A30A504007623FE /* TLTreeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTreeDataModel.h; sourceTree = "<group>"; };
-		84610A071A30A504007623FE /* TLTreeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTreeDataModel.m; sourceTree = "<group>"; };
-		84610A081A30A504007623FE /* TLTreeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTreeTableViewController.h; sourceTree = "<group>"; };
-		84610A091A30A504007623FE /* TLTreeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTreeTableViewController.m; sourceTree = "<group>"; };
-		84610A0A1A30A504007623FE /* UITableView+ScrollOptimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ScrollOptimizer.h"; sourceTree = "<group>"; };
-		84610A0B1A30A504007623FE /* UITableView+ScrollOptimizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ScrollOptimizer.m"; sourceTree = "<group>"; };
-		84610A0C1A30A504007623FE /* UITableViewController+ScrollOptimizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+ScrollOptimizer.h"; sourceTree = "<group>"; };
-		84610A0D1A30A504007623FE /* UITableViewController+ScrollOptimizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+ScrollOptimizer.m"; sourceTree = "<group>"; };
-		84610A0E1A30A504007623FE /* TLIndexPathTools-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TLIndexPathTools-Prefix.pch"; sourceTree = "<group>"; };
-		84610A0F1A30A504007623FE /* TLIndexPathTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLIndexPathTools.h; sourceTree = "<group>"; };
-		84610A111A30A504007623FE /* TLCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCollectionViewController.h; sourceTree = "<group>"; };
-		84610A121A30A504007623FE /* TLCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCollectionViewController.m; sourceTree = "<group>"; };
-		84610A131A30A504007623FE /* TLDynamicSizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDynamicSizeView.h; sourceTree = "<group>"; };
-		84610A141A30A504007623FE /* TLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTableViewController.h; sourceTree = "<group>"; };
-		84610A151A30A504007623FE /* TLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTableViewController.m; sourceTree = "<group>"; };
 		8475976B1A28A2490013824D /* OSXCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionView.h; path = "Detail Scene/Collection Scene/OSXCollectionView.h"; sourceTree = "<group>"; };
 		8475976C1A28A2490013824D /* OSXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionView.m; path = "Detail Scene/Collection Scene/OSXCollectionView.m"; sourceTree = "<group>"; };
 		847597771A28A3820013824D /* OSXGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXGraphView.h; path = "Detail Scene/Graph Scene/OSXGraphView.h"; sourceTree = "<group>"; };
@@ -595,107 +541,6 @@
 			name = "Map Scene";
 			sourceTree = "<group>";
 		};
-		846109E91A30A503007623FE /* TLIndexPathTools */ = {
-			isa = PBXGroup;
-			children = (
-				846109EA1A30A503007623FE /* Controllers */,
-				846109ED1A30A503007623FE /* Data Model */,
-				846109F61A30A503007623FE /* Extensions */,
-				84610A0E1A30A504007623FE /* TLIndexPathTools-Prefix.pch */,
-				84610A0F1A30A504007623FE /* TLIndexPathTools.h */,
-				84610A101A30A504007623FE /* View Controllers */,
-			);
-			name = TLIndexPathTools;
-			path = ../Submodules/TLIndexPathTools/TLIndexPathTools;
-			sourceTree = "<group>";
-		};
-		846109EA1A30A503007623FE /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				846109EB1A30A503007623FE /* TLIndexPathController.h */,
-				846109EC1A30A503007623FE /* TLIndexPathController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		846109ED1A30A503007623FE /* Data Model */ = {
-			isa = PBXGroup;
-			children = (
-				846109EE1A30A503007623FE /* TLIndexPathDataModel.h */,
-				846109EF1A30A503007623FE /* TLIndexPathDataModel.m */,
-				846109F01A30A503007623FE /* TLIndexPathItem.h */,
-				846109F11A30A503007623FE /* TLIndexPathItem.m */,
-				846109F21A30A503007623FE /* TLIndexPathSectionInfo.h */,
-				846109F31A30A503007623FE /* TLIndexPathSectionInfo.m */,
-				846109F41A30A503007623FE /* TLIndexPathUpdates.h */,
-				846109F51A30A503007623FE /* TLIndexPathUpdates.m */,
-			);
-			path = "Data Model";
-			sourceTree = "<group>";
-		};
-		846109F61A30A503007623FE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				846109F71A30A503007623FE /* Collapsible */,
-				846109FE1A30A503007623FE /* No Results */,
-				84610A011A30A503007623FE /* TLDynamicHeightLabelCell.h */,
-				84610A021A30A504007623FE /* TLDynamicHeightLabelCell.m */,
-				84610A031A30A504007623FE /* Tree */,
-				84610A0A1A30A504007623FE /* UITableView+ScrollOptimizer.h */,
-				84610A0B1A30A504007623FE /* UITableView+ScrollOptimizer.m */,
-				84610A0C1A30A504007623FE /* UITableViewController+ScrollOptimizer.h */,
-				84610A0D1A30A504007623FE /* UITableViewController+ScrollOptimizer.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		846109F71A30A503007623FE /* Collapsible */ = {
-			isa = PBXGroup;
-			children = (
-				846109F81A30A503007623FE /* TLCollapsibleDataModel.h */,
-				846109F91A30A503007623FE /* TLCollapsibleDataModel.m */,
-				846109FA1A30A503007623FE /* TLCollapsibleHeaderView.h */,
-				846109FB1A30A503007623FE /* TLCollapsibleHeaderView.m */,
-				846109FC1A30A503007623FE /* TLCollapsibleTableViewController.h */,
-				846109FD1A30A503007623FE /* TLCollapsibleTableViewController.m */,
-			);
-			path = Collapsible;
-			sourceTree = "<group>";
-		};
-		846109FE1A30A503007623FE /* No Results */ = {
-			isa = PBXGroup;
-			children = (
-				846109FF1A30A503007623FE /* TLNoResultsTableDataModel.h */,
-				84610A001A30A503007623FE /* TLNoResultsTableDataModel.m */,
-			);
-			path = "No Results";
-			sourceTree = "<group>";
-		};
-		84610A031A30A504007623FE /* Tree */ = {
-			isa = PBXGroup;
-			children = (
-				84610A041A30A504007623FE /* TLIndexPathTreeItem.h */,
-				84610A051A30A504007623FE /* TLIndexPathTreeItem.m */,
-				84610A061A30A504007623FE /* TLTreeDataModel.h */,
-				84610A071A30A504007623FE /* TLTreeDataModel.m */,
-				84610A081A30A504007623FE /* TLTreeTableViewController.h */,
-				84610A091A30A504007623FE /* TLTreeTableViewController.m */,
-			);
-			path = Tree;
-			sourceTree = "<group>";
-		};
-		84610A101A30A504007623FE /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				84610A111A30A504007623FE /* TLCollectionViewController.h */,
-				84610A121A30A504007623FE /* TLCollectionViewController.m */,
-				84610A131A30A504007623FE /* TLDynamicSizeView.h */,
-				84610A141A30A504007623FE /* TLTableViewController.h */,
-				84610A151A30A504007623FE /* TLTableViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
 		8486FE091A29CA83003AB3EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,7 +826,6 @@
 				84E084831A1B99E40071D662 /* UIKit+AFNetworking */,
 				84E0845D1A1B99D20071D662 /* AFNetworking */,
 				84E084EB1A1C7F380071D662 /* Libraries */,
-				846109E91A30A503007623FE /* TLIndexPathTools */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -1476,29 +1320,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84610A201A30A504007623FE /* TLIndexPathTreeItem.m in Sources */,
-				84610A241A30A504007623FE /* UITableViewController+ScrollOptimizer.m in Sources */,
 				84E0849A1A1B99E40071D662 /* UIProgressView+AFNetworking.m in Sources */,
-				84610A171A30A504007623FE /* TLIndexPathDataModel.m in Sources */,
 				849BA1191A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
 				84E084BF1A1B9A020071D662 /* DDFileLogger.m in Sources */,
-				84610A221A30A504007623FE /* TLTreeTableViewController.m in Sources */,
 				84E084981A1B99E40071D662 /* UIButton+AFNetworking.m in Sources */,
 				84E0854C1A1C7F380071D662 /* NSDate+ISO8601Date.m in Sources */,
 				84E0849B1A1B99E40071D662 /* UIRefreshControl+AFNetworking.m in Sources */,
 				84B808D91A2A33A90074DF01 /* IOSGraphViewController.m in Sources */,
-				84610A211A30A504007623FE /* TLTreeDataModel.m in Sources */,
-				84610A1C1A30A504007623FE /* TLCollapsibleHeaderView.m in Sources */,
 				84E085501A1C7F380071D662 /* NSString+URLEncoding.m in Sources */,
 				84E084971A1B99E40071D662 /* UIAlertView+AFNetworking.m in Sources */,
 				84E085581A1C7F380071D662 /* ISO8601DateFormatter.m in Sources */,
-				84610A191A30A504007623FE /* TLIndexPathSectionInfo.m in Sources */,
 				84E084C31A1B9A020071D662 /* DDTTYLogger.m in Sources */,
 				84E084C51A1B9A020071D662 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084BD1A1B9A020071D662 /* DDASLLogger.m in Sources */,
 				84B808D61A2A31EF0074DF01 /* IOSCollectionViewCell.m in Sources */,
 				84E085521A1C7F380071D662 /* NSString+validation.m in Sources */,
-				84610A161A30A504007623FE /* TLIndexPathController.m in Sources */,
 				84E084C11A1B9A020071D662 /* DDLog.m in Sources */,
 				84E0854A1A1C7F380071D662 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */,
@@ -1507,7 +1343,6 @@
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84E0858A1A1C7F380071D662 /* UIImageToDataTransformer.m in Sources */,
 				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
-				84610A1F1A30A504007623FE /* TLDynamicHeightLabelCell.m in Sources */,
 				849BA11E1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
 				84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */,
 				84E084B91A1B9A020071D662 /* DDAbstractDatabaseLogger.m in Sources */,
@@ -1518,7 +1353,6 @@
 				84E084991A1B99E40071D662 /* UIImageView+AFNetworking.m in Sources */,
 				849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
 				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
-				84610A181A30A504007623FE /* TLIndexPathItem.m in Sources */,
 				84E084711A1B99D20071D662 /* AFHTTPRequestOperation.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
 				846109E81A30A281007623FE /* IOSListTableView.m in Sources */,
@@ -1526,7 +1360,6 @@
 				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				84E084C91A1B9A020071D662 /* DDMultiFormatter.m in Sources */,
 				846109DA1A308FD1007623FE /* ListViewController.m in Sources */,
-				84610A1B1A30A504007623FE /* TLCollapsibleDataModel.m in Sources */,
 				84E084C71A1B9A020071D662 /* DDDispatchQueueLogFormatter.m in Sources */,
 				84E0854E1A1C7F380071D662 /* NSString+ISO8601Date.m in Sources */,
 				8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */,
@@ -1540,21 +1373,15 @@
 				84E084771A1B99D20071D662 /* AFNetworkReachabilityManager.m in Sources */,
 				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
 				84E0847F1A1B99D20071D662 /* AFURLResponseSerialization.m in Sources */,
-				84610A1A1A30A504007623FE /* TLIndexPathUpdates.m in Sources */,
 				84E084BB1A1B9A020071D662 /* DDASLLogCapture.m in Sources */,
 				841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */,
 				84E4B22F1A2E20A90089AB93 /* Position.m in Sources */,
 				84E0855A1A1C7F380071D662 /* LumberjackFormatter.m in Sources */,
 				84E0849C1A1B99E40071D662 /* UIWebView+AFNetworking.m in Sources */,
 				84E084811A1B99D20071D662 /* AFURLSessionManager.m in Sources */,
-				84610A231A30A504007623FE /* UITableView+ScrollOptimizer.m in Sources */,
-				84610A251A30A504007623FE /* TLCollectionViewController.m in Sources */,
-				84610A1D1A30A504007623FE /* TLCollapsibleTableViewController.m in Sources */,
 				849BA10E1A2F20E60090F99D /* MapViewController.m in Sources */,
-				84610A1E1A30A504007623FE /* TLNoResultsTableDataModel.m in Sources */,
 				84E084951A1B99E40071D662 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				84B808D31A2A31D00074DF01 /* IOSCollectionHeaderView.m in Sources */,
-				84610A261A30A504007623FE /* TLTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,3 @@
 [submodule "Submodules/CorePlot"]
 	path = Submodules/CorePlot
 	url = https://github.com/core-plot/core-plot.git
-[submodule "Submodules/TLIndexPathTools"]
-	path = Submodules/TLIndexPathTools
-	url = https://github.com/wtmoose/TLIndexPathTools.git

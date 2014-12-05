@@ -118,17 +118,16 @@
 {
     if ([locations count] > 0) {
         CLLocation* location = [locations firstObject];
-        DDLogVerbose(@"location: %@", location);
+        //DDLogVerbose(@"location: %@", location);
         self.currentLocation = location;
         
         [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if (error == nil) {
                 CLPlacemark* placemark = [placemarks firstObject];
-                DDLogVerbose(@"placemark: %@", placemark);
+                //DDLogVerbose(@"placemark: %@", placemark);
                 self.currentPlacemark = placemark;
                 NSString* timezoneId = [[NSTimeZone localTimeZone] name];
-                self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark timezoneId:timezoneId];
-                
+                self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark timezoneId:timezoneId];                
                 [[ForecastManager sharedManager] updateForecastForPosition:self.currentPosition withCompletionBlock:^(BOOL updated, NSError *error) {
                     if (updated) {
                         [[NSNotificationCenter defaultCenter] postNotificationName:kForecastManagerDidUpdateCurrentLocationData object:nil];
@@ -144,7 +143,7 @@
 
 - (void)procesCurrentForecastData
 {
-    DDLogVerbose(@"%@", self.currentPosition.forecast);
+    DDLogVerbose(@"%@", self.currentPosition);
 }
 
 @end
