@@ -160,6 +160,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     if ([segue.identifier isEqualToString:@"PresentMap"]) {
         IOSMapViewController* mapViewController = (IOSMapViewController*)segue.destinationViewController;
         mapViewController.delegate = self;
+        mapViewController.selectedPosition = self.selectedPosition;
         mapViewController.closeBlock = ^() {
             [self dismissViewControllerAnimated:YES completion:^{
                 DDLogVerbose(@"Controller closed");

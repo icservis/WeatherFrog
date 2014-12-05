@@ -43,6 +43,12 @@ static double const kPointHysteresis = 1.0;
     [self.mapView removeGestureRecognizer:self.pinGestureRecognizer];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self showSelectedPosition];
+}
+
 #elif TARGET_OS_MAC
 
 - (void)viewWillAppear
@@ -55,6 +61,12 @@ static double const kPointHysteresis = 1.0;
 {
     [super viewDidDisappear];
     //[self.view removeGestureRecognizer:self.pinGestureRecognizer];
+}
+
+- (void)viewDidAppear
+{
+    [super viewDidAppear];
+    [self showSelectedPosition];
 }
 
 #endif
@@ -79,9 +91,6 @@ static double const kPointHysteresis = 1.0;
 - (void)setSelectedPosition:(Position *)selectedPosition
 {
     _selectedPosition = selectedPosition;
-    
-    [self mapView:self.mapView setRegionWithPosition:selectedPosition];
-    [self mapView:self.mapView searchAnnotationStored:selectedPosition];
 }
 
 #pragma mark - IBActions
@@ -96,6 +105,14 @@ static double const kPointHysteresis = 1.0;
 }
 
 #pragma mark - MKMapView
+
+- (void)showSelectedPosition
+{
+    if (self.selectedPosition != nil) {
+        [self mapView:self.mapView setRegionWithPosition:self.selectedPosition];
+        [self mapView:self.mapView searchAnnotationStored:self.selectedPosition];
+    }
+}
 
 - (void)mapView:(MKMapView *)mapView setRegionWithPosition:(Position*)position
 {
