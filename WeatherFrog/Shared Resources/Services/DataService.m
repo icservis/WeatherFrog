@@ -152,8 +152,8 @@ static bool isFirstAccess = YES;
 - (NSFetchRequest*)fetchRequestForAllObjects
 {
     NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Position class])];
-    NSSortDescriptor* bookmarkDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"isBookmark" ascending:NO];
-    NSSortDescriptor* timeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO];
+    NSSortDescriptor* bookmarkDescriptor = [NSSortDescriptor sortDescriptorWithKey:kPositionPrimarySortKey ascending:NO];
+    NSSortDescriptor* timeDescriptor = [NSSortDescriptor sortDescriptorWithKey:kPositionSecondarySortKey ascending:NO];
     fetch.sortDescriptors = @[bookmarkDescriptor, timeDescriptor];
     return fetch;
 }

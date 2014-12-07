@@ -34,7 +34,19 @@
     
     self.window.titleVisibility = NSWindowTitleHidden;
     [self selectDetailSceneTabViewItemAccordingToViewModeControl];
+    
+    OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
+    OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.detailViewItem.viewController;
+    
+    [detailViewController addObserver:self forKeyPath:kSelectedPositionObserverKeyName options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 };
+
+- (void)dealloc
+{
+    OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
+    OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.detailViewItem.viewController;
+    [detailViewController removeObserver:self forKeyPath:kSelectedPositionObserverKeyName];
+}
 
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender
@@ -42,8 +54,9 @@
     if ([segue.identifier isEqualToString:@"PresentMap"]) {
         OSXMapViewController* mapViewController = (OSXMapViewController*)segue.destinationController;
         OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
-        OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.tabViewItem.viewController;
+        OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.detailViewItem.viewController;
         mapViewController.delegate = detailViewController;
+        mapViewController.selectedPosition = detailViewController.selectedPosition;
         __weak typeof(mapViewController) weakMapVC = mapViewController;
         mapViewController.closeBlock = ^() {
             [self.contentViewController dismissViewController:weakMapVC];
@@ -62,16 +75,22 @@
 - (void)selectDetailSceneTabViewItemAccordingToViewModeControl
 {
     OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
-    OSXDetailViewController* tabViewController = (OSXDetailViewController*)splitViewController.tabViewItem.viewController;
+    OSXDetailViewController* tabViewController = (OSXDetailViewController*)splitViewController.detailViewItem.viewController;
     tabViewController.selectedTabViewItemIndex = self.viewModeControl.selectedSegment;
 }
 
-- (void)setToolBarTitle:(NSString *)toolBarTitle
-{
-    _toolBarTitle = toolBarTitle;
-    self.titleLabel.value = toolBarTitle;
-}
+#pragma mark - Observer
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:kSelectedPositionObserverKeyName]) {
+        static NSString* kNewKey = @"new";
+        if ([change[kNewKey] isKindOfClass:[Position class]]) {
+            Position* position = (Position*)change[kNewKey];
+            self.titleLabel.stringValue = position.name;
+        }
+    }
+}
 
 #pragma mark - NSWindowDelegate
 

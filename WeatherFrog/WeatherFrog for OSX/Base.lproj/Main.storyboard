@@ -693,7 +693,7 @@
                                 <toolbarItem implicitItemIdentifier="09CDDB58-3B4B-4DCB-B36D-A29808288349" label="View Mode" paletteLabel="View Mode" id="1NW-Ea-Wkx">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="71" height="25"/>
-                                    <size key="maxSize" width="71" height="28"/>
+                                    <size key="maxSize" width="75" height="28"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="nBh-W2-svU">
                                         <rect key="frame" x="0.0" y="14" width="71" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -713,11 +713,11 @@
                                 <toolbarItem implicitItemIdentifier="52D3BC63-361C-45E2-BFB4-01AFA9D4BC88" label="Position" paletteLabel="Position" id="ATj-N6-46N">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="17"/>
-                                    <size key="maxSize" width="38" height="17"/>
+                                    <size key="maxSize" width="300" height="17"/>
                                     <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cG9-GD-gbq">
                                         <rect key="frame" x="6" y="15" width="38" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="rhP-nE-9hG">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="rhP-nE-9hG">
                                             <font key="font" metaFont="menuBar"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -769,8 +769,8 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="detailViewItem" destination="GYx-J3-T25" id="sEZ-Wh-RDG"/>
                         <outlet property="listViewItem" destination="7z6-c9-Xco" id="nRc-wA-UNM"/>
-                        <outlet property="tabViewItem" destination="GYx-J3-T25" id="YHc-yu-9dc"/>
                         <outlet property="view" destination="Tiu-rL-JuG" id="aia-o0-ddx"/>
                         <segue destination="nTs-Xn-VIg" kind="relationship" relationship="splitItems" id="8F2-lb-teM"/>
                         <segue destination="GDK-Cp-ZBK" kind="relationship" relationship="splitItems" id="eIy-r6-MMb"/>
@@ -872,7 +872,7 @@ Gw
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="updatedAt"/>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="updatedAt" ascending="NO"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Ck1-Ek-dwx" customClass="OSXListTableViewCell">
@@ -988,12 +988,13 @@ Gw
                     </view>
                     <connections>
                         <outlet property="clipView" destination="Wj5-r6-LGl" id="Znv-ob-qnj"/>
+                        <outlet property="listController" destination="loc-dd-GYT" id="Zz2-G1-mCT"/>
                         <outlet property="listTableView" destination="h2T-II-zCG" id="ewe-fY-jTj"/>
                         <outlet property="scrollView" destination="wOW-G0-G4y" id="Ddn-Ke-Kf9"/>
                     </connections>
                 </viewController>
                 <customObject id="gYq-w2-wp9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController mode="entity" entityName="Position" usesLazyFetching="YES" automaticallyPreparesContent="YES" id="loc-dd-GYT">
+                <arrayController mode="entity" entityName="Position" automaticallyPreparesContent="YES" preservesSelection="NO" id="loc-dd-GYT">
                     <connections>
                         <binding destination="G29-gL-xOR" name="managedObjectContext" keyPath="self.managedObjectContext" id="k2B-CC-rcD"/>
                     </connections>

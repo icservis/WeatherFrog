@@ -23,7 +23,7 @@
 - (void)setSelectedPosition:(Position *)selectedPosition
 {
     _selectedPosition = selectedPosition;
-    DDLogVerbose(@"%@", selectedPosition.name);
+    //DDLogVerbose(@"%@", selectedPosition.name);
     
     [self activityIndicatorIncrementCount];
     [self forecastForPosition:selectedPosition withCompletionBlock:^(BOOL updated, NSError *error) {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class IOSListViewController, IOSDetailViewController;
+
 static NSString* const KViewControllerWillTrasitionToTraitCollection = @"KViewControllerWillTrasitionToTraitCollection";
 
 @interface IOSSplitViewController : UISplitViewController

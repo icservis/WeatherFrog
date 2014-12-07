@@ -38,7 +38,7 @@
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
     
-    [self startMonitoringCurrentLocation];
+    //[self startMonitoringCurrentLocation];
     
     return YES;
 }

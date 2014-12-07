@@ -45,6 +45,7 @@
     self.navigationController.toolbarHidden = YES;
     self.navigationItem.leftItemsSupplementBackButton = YES;
     self.splitViewControllerTraitCollection = self.splitViewController.traitCollection;
+    self.clearsSelectionOnViewWillAppear = YES;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshContent) forControlEvents:UIControlEventValueChanged];

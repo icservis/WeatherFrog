@@ -41,6 +41,8 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
     
+    [self addObserver:self forKeyPath:kSelectedPositionObserverKeyName options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
     if (self.selectedPosition == nil) {
         Position* lastUpdatedBookmarkedPosition = [[DataService sharedInstance] lastUpdatedBookmarkedObject];
         if (lastUpdatedBookmarkedPosition) {
@@ -57,6 +59,7 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:kSelectedPositionObserverKeyName];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,13 +72,20 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     [super viewDidAppear:animated];
 }
 
-#pragma mark - Setters and Getters
+#pragma mark - Observer
 
-- (void)setSelectedPosition:(Position *)selectedPosition
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    [super setSelectedPosition:selectedPosition];
-    self.navigationItem.title = selectedPosition.name;
+    if ([keyPath isEqualToString:kSelectedPositionObserverKeyName]) {
+        static NSString* kNewKey = @"new";
+        if ([change[kNewKey] isKindOfClass:[Position class]]) {
+            Position* position = (Position*)change[kNewKey];
+            self.navigationItem.title = position.name;
+        }
+    }
 }
+
+#pragma mark - Setters and Getters
 
 - (UIBarButtonItem*)viewModeButtonItem
 {

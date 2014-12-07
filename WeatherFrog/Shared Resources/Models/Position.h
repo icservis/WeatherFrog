@@ -10,6 +10,9 @@
 
 @class Forecast;
 
+static NSString* const kPositionPrimarySortKey = @"isBookmark";
+static NSString* const kPositionSecondarySortKey = @"updatedAt";
+
 @interface Position : NSManagedObject
 
 @property (nonatomic, retain) NSString * address;

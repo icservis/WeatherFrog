@@ -7,7 +7,8 @@
 //
 
 #import "OSXDetailViewController.h"
-#import "MapViewController.h"
+#import "OSXWindowController.h"
+#import "OSXSplitViewController.h"
 
 @interface OSXDetailViewController ()
 

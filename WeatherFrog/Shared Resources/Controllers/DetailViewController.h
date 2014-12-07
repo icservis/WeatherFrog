@@ -16,6 +16,8 @@
 #define DETAIL_VIEWCONTROLLER_CLASS NSTabViewController
 #endif
 
+static NSString* const kSelectedPositionObserverKeyName = @"selectedPosition";
+
 @interface DetailViewController : DETAIL_VIEWCONTROLLER_CLASS <MapViewControllerDelegate>
 
 @property (nonatomic, strong) Position* selectedPosition;

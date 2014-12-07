@@ -11,6 +11,6 @@
 @interface OSXSplitViewController : NSSplitViewController
 
 @property (weak) IBOutlet NSSplitViewItem *listViewItem;
-@property (weak) IBOutlet NSSplitViewItem *tabViewItem;
+@property (weak) IBOutlet NSSplitViewItem *detailViewItem;
 
 @end
