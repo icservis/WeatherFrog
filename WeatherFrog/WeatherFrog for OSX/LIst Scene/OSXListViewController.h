@@ -10,6 +10,8 @@
 
 @interface OSXListViewController : ListViewController
 
+- (IBAction)rename:(id)sender;
+- (IBAction)delete:(id)sender;
 
 @end
 

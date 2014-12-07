@@ -887,7 +887,11 @@ Gw
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="Ck1-Ek-dwx" name="value" keyPath="objectValue.name" id="UzL-fo-a9d"/>
+                                                                        <binding destination="Ck1-Ek-dwx" name="value" keyPath="objectValue.name" id="uqu-gl-4tA">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -934,19 +938,32 @@ Gw
                                             <constraint firstAttribute="width" constant="32" id="WJ2-pZ-VUc"/>
                                             <constraint firstAttribute="height" constant="24" id="hCB-AG-38n"/>
                                         </constraints>
-                                        <popUpButtonCell key="cell" type="recessed" title="Bookmark" bezelStyle="recessed" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="V2A-Rv-hh3">
+                                        <popUpButtonCell key="cell" type="recessed" title="Bookmark" bezelStyle="recessed" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="4R4-8v-GrQ" id="V2A-Rv-hh3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="systemBold" size="12"/>
                                             <menu key="menu" title="Edit Menu" id="diu-UM-aC5">
                                                 <items>
                                                     <menuItem title="Bookmark" image="NSActionTemplate" hidden="YES" id="yHf-1n-nue" userLabel="-"/>
-                                                    <menuItem title="Bookmark" id="6dP-jU-Ato"/>
+                                                    <menuItem title="Bookmark" id="6dP-jU-Ato">
+                                                        <connections>
+                                                            <binding destination="loc-dd-GYT" name="enabled" keyPath="selection.@count" id="rse-ne-X0t"/>
+                                                            <binding destination="loc-dd-GYT" name="value" keyPath="selection.isBookmark" id="Xqi-jh-9tB"/>
+                                                        </connections>
+                                                    </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="oqc-QB-PQS"/>
                                                     <menuItem title="Rename" id="PoU-b1-eUR">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="rename:" target="gYq-w2-wp9" id="qaX-zR-XIg"/>
+                                                            <binding destination="loc-dd-GYT" name="enabled" keyPath="selection.@count" id="whn-Nw-Wby"/>
+                                                        </connections>
                                                     </menuItem>
                                                     <menuItem title="Delete" id="4R4-8v-GrQ">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="delete:" target="gYq-w2-wp9" id="qi7-3V-gxo"/>
+                                                            <binding destination="loc-dd-GYT" name="enabled" keyPath="selection.@count" id="1cT-QY-e4H"/>
+                                                        </connections>
                                                     </menuItem>
                                                 </items>
                                             </menu>

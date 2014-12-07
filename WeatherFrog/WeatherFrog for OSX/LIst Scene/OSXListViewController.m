@@ -71,10 +71,28 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     OSXListTableView* listTableView = (OSXListTableView*)notification.object;
-    Position* position = self.listController.arrangedObjects[listTableView.selectedRow];
-    OSXSplitViewController* splitVC = (OSXSplitViewController*)self.parentViewController;
-    OSXDetailViewController* detailVC = (OSXDetailViewController*)splitVC.detailViewItem.viewController;
-    detailVC.selectedPosition = position;
+    
+    if (listTableView.selectedRow > -1) {
+        Position* position = self.listController.arrangedObjects[listTableView.selectedRow];
+        OSXSplitViewController* splitVC = (OSXSplitViewController*)self.parentViewController;
+        OSXDetailViewController* detailVC = (OSXDetailViewController*)splitVC.detailViewItem.viewController;
+        detailVC.selectedPosition = position;
+    }
+}
+
+#pragma mark - menu Actions
+
+- (IBAction)rename:(id)sender
+{
+    DDLogVerbose(@"");
+    
+    [self.listTableView editColumn:self.listTableView.selectedColumn row:self.listTableView.selectedRow withEvent:nil select:YES];
+}
+
+- (IBAction)delete:(id)sender
+{
+    DDLogVerbose(@"");
+    [self.listController removeObjects:self.listController.selectedObjects];
 }
 
 @end
