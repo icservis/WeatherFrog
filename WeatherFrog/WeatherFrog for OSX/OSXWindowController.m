@@ -15,8 +15,7 @@
 @interface OSXWindowController () <NSWindowDelegate>
 
 @property (weak) IBOutlet NSToolbar *toolBar;
-@property (weak) IBOutlet NSToolbarItem *progressToolBarItem;
-@property (weak) IBOutlet NSProgressIndicator* progressIndicator;
+@property (weak) IBOutlet NSTextField* titleLabel;
 @property (weak) IBOutlet NSSegmentedControl *viewModeControl;
 @property (weak) IBOutlet NSButton *addButton;
 
@@ -65,6 +64,12 @@
     OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.contentViewController;
     OSXDetailViewController* tabViewController = (OSXDetailViewController*)splitViewController.tabViewItem.viewController;
     tabViewController.selectedTabViewItemIndex = self.viewModeControl.selectedSegment;
+}
+
+- (void)setToolBarTitle:(NSString *)toolBarTitle
+{
+    _toolBarTitle = toolBarTitle;
+    self.titleLabel.value = toolBarTitle;
 }
 
 

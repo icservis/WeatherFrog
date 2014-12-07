@@ -12,4 +12,6 @@
 
 - (void)selectDetailSceneTabViewItemAccordingToViewModeControl;
 
+@property (nonatomic, strong) NSString* toolBarTitle;
+
 @end
