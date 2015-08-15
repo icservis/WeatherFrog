@@ -12,6 +12,7 @@
 		8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F41A2B577B004E1062 /* QuartzCore.framework */; };
 		8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F61A2B5784004E1062 /* CoreLocation.framework */; };
 		8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F81A2B578B004E1062 /* QuartzCore.framework */; };
+		841A1AF41A6DA0B90070ECFF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841A1AF31A6DA0B90070ECFF /* CloudKit.framework */; };
 		842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84297A9C1A21407D0070E151 /* MapKit.framework */; };
@@ -203,6 +204,8 @@
 		8414F2F41A2B577B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8414F2F61A2B5784004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		8414F2F81A2B578B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		841A1AF21A6DA0B50070ECFF /* WeatherFrog for iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for iOS.entitlements"; sourceTree = "<group>"; };
+		841A1AF31A6DA0B90070ECFF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		842438631A2FAA9C00A7F5A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "Shared Resources/Controllers/DetailViewController.h"; sourceTree = "<group>"; };
 		842438641A2FAA9C00A7F5A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "Shared Resources/Controllers/DetailViewController.m"; sourceTree = "<group>"; };
 		84297A9C1A21407D0070E151 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -409,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */,
+				841A1AF41A6DA0B90070ECFF /* CloudKit.framework in Frameworks */,
 				8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */,
 				8455586E1A291808003127B3 /* MapKit.framework in Frameworks */,
 			);
@@ -561,6 +565,7 @@
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				841A1AF31A6DA0B90070ECFF /* CloudKit.framework */,
 				8414F2F81A2B578B004E1062 /* QuartzCore.framework */,
 				8414F2F61A2B5784004E1062 /* CoreLocation.framework */,
 				8414F2F41A2B577B004E1062 /* QuartzCore.framework */,
@@ -729,6 +734,7 @@
 		84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */ = {
 			isa = PBXGroup;
 			children = (
+				841A1AF21A6DA0B50070ECFF /* WeatherFrog for iOS.entitlements */,
 				84E084121A1B987C0071D662 /* IOSAppDelegate.h */,
 				84E084131A1B987C0071D662 /* IOSAppDelegate.m */,
 				845558681A29103C003127B3 /* Split Scene */,
@@ -1198,8 +1204,15 @@
 				TargetAttributes = {
 					84E0840B1A1B987C0071D662 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = PH3V9JYRDW;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -1594,6 +1607,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1604,6 +1620,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1611,12 +1628,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -1661,7 +1682,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
@@ -1682,7 +1702,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

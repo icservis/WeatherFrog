@@ -42,13 +42,6 @@ static NSTimeInterval const kContainerAnimationDuration = 0.25f;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewControllerWillTrasitionToTraitCollectionNotification:) name:KViewControllerWillTrasitionToTraitCollection object:nil];
     
     [self addObserver:self forKeyPath:kSelectedPositionObserverKeyName options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-    
-    if (self.selectedPosition == nil) {
-        Position* lastUpdatedBookmarkedPosition = [[DataService sharedInstance] lastUpdatedBookmarkedObject];
-        if (lastUpdatedBookmarkedPosition) {
-            self.selectedPosition = lastUpdatedBookmarkedPosition;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {

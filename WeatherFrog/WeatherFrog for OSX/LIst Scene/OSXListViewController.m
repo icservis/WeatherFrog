@@ -28,8 +28,6 @@
 
     // Do any additional setup after loading the view.
     
-    [self.listTableView setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:kPositionPrimarySortKey ascending:NO], [NSSortDescriptor sortDescriptorWithKey:kPositionSecondarySortKey ascending:NO]]];
-    
     OSXSplitViewController* splitViewController = (OSXSplitViewController*)self.parentViewController;
     OSXDetailViewController* detailViewController = (OSXDetailViewController*)splitViewController.detailViewItem.viewController;
     [detailViewController addObserver:self forKeyPath:kSelectedPositionObserverKeyName options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
@@ -48,6 +46,11 @@
     // Update the view, if already loaded.
 }
 
+- (NSArray*)sortDescriptors
+{
+    return @[[NSSortDescriptor sortDescriptorWithKey:kPositionPrimarySortKey ascending:NO], [NSSortDescriptor sortDescriptorWithKey:kPositionSecondarySortKey ascending:NO]];
+}
+
 #pragma mark - Observer
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -56,11 +59,8 @@
         static NSString* kNewKey = @"new";
         if ([change[kNewKey] isKindOfClass:[Position class]]) {
             Position* position = (Position*)change[kNewKey];
-            NSInteger selectedIndex = [self.listController.arrangedObjects indexOfObject:position];
-            if (selectedIndex != NSNotFound) {
-                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectedIndex];
-                [self.listTableView selectRowIndexes:indexSet byExtendingSelection:NO];
-            }
+            DDLogVerbose(@"select: %@", position.name);
+            [self.listController setSelectedObjects:@[position]];
         }
     }
 }
@@ -73,9 +73,10 @@
     OSXListTableView* listTableView = (OSXListTableView*)notification.object;
     
     if (listTableView.selectedRow > -1) {
-        Position* position = self.listController.arrangedObjects[listTableView.selectedRow];
+        Position* position = [self.listController.selectedObjects firstObject];
         OSXSplitViewController* splitVC = (OSXSplitViewController*)self.parentViewController;
         OSXDetailViewController* detailVC = (OSXDetailViewController*)splitVC.detailViewItem.viewController;
+        DDLogVerbose(@"didSelect: %@", position.name);
         detailVC.selectedPosition = position;
     }
 }

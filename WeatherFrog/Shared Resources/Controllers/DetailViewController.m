@@ -18,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    
+    if (self.selectedPosition == nil) {
+        Position* lastUpdatedBookmarkedPosition = [[DataService sharedInstance] lastUpdatedBookmarkedObject];
+        if (lastUpdatedBookmarkedPosition) {
+            self.selectedPosition = lastUpdatedBookmarkedPosition;
+        }
+    }
 }
 
 - (void)setSelectedPosition:(Position *)selectedPosition

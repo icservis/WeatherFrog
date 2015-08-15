@@ -861,7 +861,7 @@ Gw
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="100" minWidth="40" maxWidth="1000" id="gnv-7W-Osn">
+                                                <tableColumn width="219" minWidth="40" maxWidth="1000" id="gnv-7W-Osn">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Updated">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -875,33 +875,48 @@ Gw
                                                     <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="updatedAt" ascending="NO"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="Ck1-Ek-dwx" customClass="OSXListTableViewCell">
-                                                            <rect key="frame" x="1" y="1" width="100" height="17"/>
+                                                        <tableCellView id="r6o-vN-JXm" customClass="OSXListTableViewCell">
+                                                            <rect key="frame" x="1" y="1" width="222" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOC-nf-rso">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="wNS-6L-6Wn">
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mMk-Cq-hFC">
+                                                                    <rect key="frame" x="3" y="2" width="14" height="14"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="1C7-9x-Y5j"/>
+                                                                    <connections>
+                                                                        <binding destination="r6o-vN-JXm" name="hidden" keyPath="objectValue.isBookmark" id="n9P-ve-KOs">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </imageView>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxH-dc-jG2">
+                                                                    <rect key="frame" x="22" y="0.0" width="195" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Fmh-R2-Gl5">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="Ck1-Ek-dwx" name="value" keyPath="objectValue.name" id="uqu-gl-4tA">
-                                                                            <dictionary key="options">
-                                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                                            </dictionary>
-                                                                        </binding>
+                                                                        <binding destination="r6o-vN-JXm" name="value" keyPath="objectValue.name" id="drr-dd-K3X"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="oxH-dc-jG2" secondAttribute="trailing" constant="7" id="Fp0-aQ-zTE"/>
+                                                                <constraint firstItem="mMk-Cq-hFC" firstAttribute="leading" secondItem="r6o-vN-JXm" secondAttribute="leading" constant="3" id="aQI-OK-tHO"/>
+                                                                <constraint firstAttribute="centerY" secondItem="oxH-dc-jG2" secondAttribute="centerY" id="kgl-FH-C3o"/>
+                                                                <constraint firstAttribute="centerY" secondItem="mMk-Cq-hFC" secondAttribute="centerY" id="vZG-Cy-KWS"/>
+                                                                <constraint firstItem="oxH-dc-jG2" firstAttribute="leading" secondItem="mMk-Cq-hFC" secondAttribute="trailing" constant="7" id="xWA-ar-jzM"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="eOC-nf-rso" id="UOn-uJ-gzv"/>
+                                                                <outlet property="imageView" destination="mMk-Cq-hFC" id="bKm-xr-1TH"/>
+                                                                <outlet property="textField" destination="oxH-dc-jG2" id="Pmy-Kx-gV6"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                     <connections>
-                                                        <binding destination="loc-dd-GYT" name="value" keyPath="arrangedObjects" id="UVd-J2-6dy"/>
+                                                        <binding destination="loc-dd-GYT" name="value" keyPath="arrangedObjects" id="rME-8K-u6Z"/>
                                                     </connections>
                                                 </tableColumn>
                                             </tableColumns>
@@ -913,7 +928,7 @@ Gw
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HxS-b6-4bj">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="HxS-b6-4bj">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -925,8 +940,8 @@ Gw
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="OYs-4g-2W8">
                                 <rect key="frame" x="0.0" y="0.0" width="222" height="24"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7U-hU-biu">
-                                        <rect key="frame" x="154" y="2" width="68" height="19"/>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W7U-hU-biu">
+                                        <rect key="frame" x="157" y="2" width="65" height="19"/>
                                         <buttonCell key="cell" type="recessed" title="Erase All" bezelStyle="recessed" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QhT-LA-kSW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="controlContent"/>
@@ -1011,9 +1026,10 @@ Gw
                     </connections>
                 </viewController>
                 <customObject id="gYq-w2-wp9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController mode="entity" entityName="Position" automaticallyPreparesContent="YES" preservesSelection="NO" id="loc-dd-GYT">
+                <arrayController mode="entity" entityName="Position" automaticallyPreparesContent="YES" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" automaticallyRearrangesObjects="YES" id="loc-dd-GYT">
                     <connections>
                         <binding destination="G29-gL-xOR" name="managedObjectContext" keyPath="self.managedObjectContext" id="k2B-CC-rcD"/>
+                        <binding destination="nTs-Xn-VIg" name="sortDescriptors" keyPath="self.sortDescriptors" id="zJU-XQ-qpS"/>
                     </connections>
                 </arrayController>
                 <customObject id="G29-gL-xOR" customClass="DataService"/>

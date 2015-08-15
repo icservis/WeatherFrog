@@ -38,10 +38,12 @@
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification
 {
-    [self.searchField resignFirstResponder];
-    [self mapView:self.mapView searchText:self.searchField.stringValue completionBlock:^(BOOL success, NSError *error) {
-        
-    }];
+    //[self.searchField resignFirstResponder];
+    if ([self.searchField.stringValue length] > 0) {
+        [self mapView:self.mapView searchText:self.searchField.stringValue completionBlock:^(BOOL success, NSError *error) {
+            
+        }];
+    }
 }
 
 - (void)searchBarResignFirstResponder
