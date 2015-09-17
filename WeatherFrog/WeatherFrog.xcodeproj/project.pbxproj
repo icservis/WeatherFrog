@@ -243,16 +243,6 @@
 		8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSListTableViewCell.m; path = "List Scene/IOSListTableViewCell.m"; sourceTree = "<group>"; };
 		84882F961BAB5C20004F65B5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
-		848BF9CE1A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		848BF9CF1A1D2E2F00A4F000 /* PushNotificationPayload.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushNotificationPayload.json; sourceTree = "<group>"; };
-		848BF9D01A1D2E2F00A4F000 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
-		848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
-		848BF9D31A1D2E2F00A4F000 /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
-		848BF9D41A1D2E2F00A4F000 /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
-		848BF9D61A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		848BF9E01A1D2E2F00A4F000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
-		848BF9E31A1D2E2F00A4F000 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKMapAnnotation.h; path = "Shared Resources/Models/MKMapAnnotation.h"; sourceTree = "<group>"; };
 		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKMapAnnotation.m; path = "Shared Resources/Models/MKMapAnnotation.m"; sourceTree = "<group>"; };
 		849BA10B1A2F20E60090F99D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Shared Resources/Controllers/MapViewController.h"; sourceTree = "<group>"; };
@@ -577,46 +567,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		848BF9CC1A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				848BF9D01A1D2E2F00A4F000 /* InterfaceController.h */,
-				848BF9D11A1D2E2F00A4F000 /* InterfaceController.m */,
-				848BF9D31A1D2E2F00A4F000 /* NotificationController.h */,
-				848BF9D41A1D2E2F00A4F000 /* NotificationController.m */,
-				848BF9D61A1D2E2F00A4F000 /* Images.xcassets */,
-				848BF9CD1A1D2E2F00A4F000 /* Supporting Files */,
-			);
-			path = "WeatherFrog for iOS WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		848BF9CD1A1D2E2F00A4F000 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				848BF9CE1A1D2E2F00A4F000 /* Info.plist */,
-				848BF9CF1A1D2E2F00A4F000 /* PushNotificationPayload.json */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		848BF9DE1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */ = {
-			isa = PBXGroup;
-			children = (
-				848BF9E11A1D2E2F00A4F000 /* Interface.storyboard */,
-				848BF9E31A1D2E2F00A4F000 /* Images.xcassets */,
-				848BF9DF1A1D2E2F00A4F000 /* Supporting Files */,
-			);
-			path = "WeatherFrog for iOS Watch App";
-			sourceTree = "<group>";
-		};
-		848BF9DF1A1D2E2F00A4F000 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				848BF9E01A1D2E2F00A4F000 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		849BA1061A2F206B0090F99D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,8 +659,6 @@
 			children = (
 				84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */,
 				84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */,
-				848BF9CC1A1D2E2F00A4F000 /* WeatherFrog for iOS WatchKit Extension */,
-				848BF9DE1A1D2E2F00A4F000 /* WeatherFrog for iOS Watch App */,
 				84E084DF1A1C76CE0071D662 /* Shared Resources */,
 				848BF9C91A1D2E2F00A4F000 /* Frameworks */,
 				84E0845C1A1B99B10071D662 /* Vendor */,
