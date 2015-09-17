@@ -284,7 +284,7 @@ static double const kPointHysteresis = 1.0;
     CGPoint touchPoint = [recognizer locationInView:self.mapView];
     CLLocationCoordinate2D coordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
-    if (abs(touchPoint.x-lastTouchPoint.x) < kPointHysteresis && abs(touchPoint.y-lastTouchPoint.y) < kPointHysteresis) {
+    if (fabs(touchPoint.x-lastTouchPoint.x) < kPointHysteresis && fabs(touchPoint.y-lastTouchPoint.y) < kPointHysteresis) {
         
         DDLogInfo(@"Distance under limit");
         

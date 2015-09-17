@@ -1,0 +1,58 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "236B8910826D78C14B3CA726E593BF967BC25115",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "38D036B6AE9A8D01DE5F9F9D082CDB97928E5ACC" : 0,
+    "35B5C9A93714EC9BEB56BAE809C5551E5C66E52D" : 0,
+    "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5" : 0,
+    "91A0227A2188E7831814D55E00DD3B54EB0BE38B" : 0,
+    "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : 0,
+    "236B8910826D78C14B3CA726E593BF967BC25115" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6CCDCBAF-5365-4A3D-935C-612CA64F6B9A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "38D036B6AE9A8D01DE5F9F9D082CDB97928E5ACC" : "WeatherFrog\/Submodules\/TLIndexPathTools",
+    "35B5C9A93714EC9BEB56BAE809C5551E5C66E52D" : "WeatherFrogSubmodules\/CocoaLumberjack",
+    "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5" : "WeatherFrog\/Submodules\/CorePlot",
+    "91A0227A2188E7831814D55E00DD3B54EB0BE38B" : "WeatherFrog\/Submodules\/Libraries",
+    "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : "WeatherFrogSubmodules\/AFNetworking",
+    "236B8910826D78C14B3CA726E593BF967BC25115" : "WeatherFrog"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WeatherFrog",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WeatherFrog.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/icservis\/WeatherFrog.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "236B8910826D78C14B3CA726E593BF967BC25115"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/robbiehanson\/CocoaLumberjack",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "35B5C9A93714EC9BEB56BAE809C5551E5C66E52D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wtmoose\/TLIndexPathTools.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "38D036B6AE9A8D01DE5F9F9D082CDB97928E5ACC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/core-plot\/core-plot.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8B3D884E5CB77CFCF2CE65E14C999AAC1DC843A5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/icservis\/Libraries.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "91A0227A2188E7831814D55E00DD3B54EB0BE38B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/AFNetworking\/AFNetworking.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8"
+    }
+  ]
+}
