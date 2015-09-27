@@ -37,6 +37,8 @@
 
 @implementation IOSListViewController
 
+@dynamic tableView;
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {

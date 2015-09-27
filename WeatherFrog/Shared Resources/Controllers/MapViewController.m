@@ -223,7 +223,7 @@ static double const kPointHysteresis = 1.0;
         MKPinAnnotationView* annotationPinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationPinView == nil) {
             annotationPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-            annotationPinView.pinColor = MKPinAnnotationColorPurple;
+            annotationPinView.pinTintColor = [MKPinAnnotationView purplePinColor];
             annotationPinView.canShowCallout = YES;
             annotationPinView.animatesDrop = YES;
             annotationPinView.draggable = YES;

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EWa-Q8-2cM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EWa-Q8-2cM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--List View Controller-->
+        <!--iOS List View Controller-->
         <scene sceneID="YJp-H7-cNG">
             <objects>
                 <tableViewController id="W4i-7e-4hg" customClass="IOSListViewController" sceneMemberID="viewController">
@@ -15,12 +16,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" id="R8R-mc-Rtz" customClass="IOSListTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R8R-mc-Rtz" id="yBn-BF-40U">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkd-K6-os5">
-                                            <rect key="frame" x="20" y="0.0" width="82" height="20"/>
+                                            <rect key="frame" x="20" y="0.0" width="83" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -84,7 +87,7 @@
             </objects>
             <point key="canvasLocation" x="1016" y="-388"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--iOS Detail View Controller-->
         <scene sceneID="Inr-SY-lQF">
             <objects>
                 <viewController id="LeK-3e-JpB" customClass="IOSDetailViewController" sceneMemberID="viewController">
@@ -97,19 +100,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOO-j1-fdS" userLabel="graphContainerView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
                                 <connections>
                                     <segue destination="1xI-l0-scL" kind="embed" id="6CI-7t-t1H"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-uH-saK" userLabel="collectionContainerView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="4" y="0.0" width="592" height="600"/>
                                 <connections>
                                     <segue destination="bTQ-zW-uVj" kind="embed" id="CdT-W2-HAk"/>
                                 </connections>
                             </containerView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4JO-wd-bfP">
-                                <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                                <rect key="frame" x="4" y="64" width="592" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="mZp-o0-vGv"/>
                                 </constraints>
@@ -149,12 +152,12 @@
             </objects>
             <point key="canvasLocation" x="1030" y="393"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--iOS Collection View Controller-->
         <scene sceneID="BL1-dw-Ade">
             <objects>
                 <collectionViewController id="bTQ-zW-uVj" customClass="IOSCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" dataMode="prototypes" id="qGf-tb-5hJ" customClass="IOSCollectionView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TWw-2h-gjJ">
                             <size key="itemSize" width="50" height="50"/>
@@ -164,7 +167,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="not-XE-Sir" customClass="IOSCollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -174,7 +177,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionHeader" id="MhL-NL-D2c" customClass="IOSCollectionHeaderView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
                         <connections>
@@ -190,7 +193,7 @@
             </objects>
             <point key="canvasLocation" x="1808" y="-55"/>
         </scene>
-        <!--Map View Controller-->
+        <!--iOS Map View Controller-->
         <scene sceneID="sdS-AN-VpY">
             <objects>
                 <viewController id="CSz-5o-UvC" customClass="IOSMapViewController" sceneMemberID="viewController">
@@ -202,21 +205,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7fq-vM-trH">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CSz-5o-UvC" id="aYB-df-cCa"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fq-vM-trH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ncu-j1-rKH"/>
-                                </constraints>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="CSz-5o-UvC" id="n1o-vZ-b8D"/>
                                 </connections>
                             </searchBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mH-UQ-IsI">
-                                <rect key="frame" x="8" y="556" width="584" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="UO8-aE-bbX"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Close" id="Pu4-dA-rog">
                                         <connections>
@@ -231,30 +238,24 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R54-0N-Ydq">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
-                                <connections>
-                                    <outlet property="delegate" destination="CSz-5o-UvC" id="aYB-df-cCa"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7fq-vM-trH" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-16" id="3I2-8l-TcG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7fq-vM-trH" secondAttribute="trailing" constant="-16" id="57A-Gy-Dp2"/>
-                            <constraint firstItem="7mH-UQ-IsI" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-8" id="9zD-n1-NnT"/>
-                            <constraint firstItem="R54-0N-Ydq" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-16" id="FOR-Ta-E4l"/>
-                            <constraint firstItem="7mH-UQ-IsI" firstAttribute="top" secondItem="R54-0N-Ydq" secondAttribute="bottom" id="Iy7-7Z-EqA"/>
-                            <constraint firstItem="7fq-vM-trH" firstAttribute="top" secondItem="A2H-bg-MZq" secondAttribute="topMargin" id="XqU-AD-LHZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7mH-UQ-IsI" secondAttribute="trailing" constant="-8" id="bPJ-CD-qeO"/>
-                            <constraint firstItem="7fq-vM-trH" firstAttribute="top" secondItem="A2H-bg-MZq" secondAttribute="topMargin" id="iKD-SZ-j3U"/>
-                            <constraint firstItem="A6F-aN-fUH" firstAttribute="top" secondItem="7mH-UQ-IsI" secondAttribute="bottom" id="rkZ-OL-hZh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="R54-0N-Ydq" secondAttribute="trailing" constant="-16" id="t3I-pj-HaL"/>
-                            <constraint firstItem="R54-0N-Ydq" firstAttribute="top" secondItem="7fq-vM-trH" secondAttribute="bottom" id="vSd-lP-7lR"/>
+                            <constraint firstItem="7mH-UQ-IsI" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-20" id="4M7-xc-9iK"/>
+                            <constraint firstItem="A6F-aN-fUH" firstAttribute="top" secondItem="7mH-UQ-IsI" secondAttribute="bottom" id="4RP-Sf-Tkd"/>
+                            <constraint firstItem="7fq-vM-trH" firstAttribute="top" secondItem="A2H-bg-MZq" secondAttribute="topMargin" id="FvQ-cL-O9C"/>
+                            <constraint firstItem="R54-0N-Ydq" firstAttribute="top" secondItem="atv-m1-u6w" secondAttribute="bottom" constant="8" symbolic="YES" id="SCV-dV-2wQ"/>
+                            <constraint firstItem="R54-0N-Ydq" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-20" id="a4p-Gq-UH6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7mH-UQ-IsI" secondAttribute="trailing" constant="-20" id="iPu-he-Nn9"/>
+                            <constraint firstItem="A6F-aN-fUH" firstAttribute="top" secondItem="R54-0N-Ydq" secondAttribute="bottom" id="mDy-wu-lcK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R54-0N-Ydq" secondAttribute="trailing" constant="-20" id="pps-Iw-vFN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7fq-vM-trH" secondAttribute="trailing" constant="-20" id="sNk-es-oNs"/>
+                            <constraint firstItem="R54-0N-Ydq" firstAttribute="top" secondItem="A2H-bg-MZq" secondAttribute="topMargin" id="vI9-1K-bBi"/>
+                            <constraint firstItem="7fq-vM-trH" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-20" id="wHt-AE-bg4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="iKD-SZ-j3U"/>
+                                <exclude reference="vI9-1K-bBi"/>
                             </mask>
                         </variation>
                     </view>
@@ -279,6 +280,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="AYr-o1-qMP">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -289,7 +291,7 @@
             </objects>
             <point key="canvasLocation" x="218" y="-386"/>
         </scene>
-        <!--Split View Controller-->
+        <!--iOS Split View Controller-->
         <scene sceneID="o9v-1V-6ux">
             <objects>
                 <splitViewController id="EWa-Q8-2cM" customClass="IOSSplitViewController" sceneMemberID="viewController">
@@ -320,7 +322,7 @@
             </objects>
             <point key="canvasLocation" x="223" y="393"/>
         </scene>
-        <!--Graph View Controller-->
+        <!--iOS Graph View Controller-->
         <scene sceneID="MAm-Ql-ipb">
             <objects>
                 <viewController id="1xI-l0-scL" customClass="IOSGraphViewController" sceneMemberID="viewController">
@@ -329,11 +331,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jIf-mJ-Bv8"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Xzy-mQ-fCQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" maximumZoomScale="4" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-57-Z9P" userLabel="scrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="4" y="0.0" width="584" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sip-gs-HGQ" userLabel="graphView" customClass="IOSGraphView">
                                         <rect key="frame" x="0.0" y="0.0" width="3072" height="2048"/>
@@ -390,6 +392,6 @@
         <image name="Hopetoun_falls" width="3072" height="2048"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dAY-gD-JdM"/>
+        <segue reference="Gwb-qG-qlb"/>
     </inferredMetricsTieBreakers>
 </document>

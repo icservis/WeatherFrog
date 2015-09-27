@@ -4,9 +4,6 @@
 [submodule "Submodules/CocoaLumberjack"]
 	path = Submodules/CocoaLumberjack
 	url = https://github.com/robbiehanson/CocoaLumberjack
-[submodule "Submodules/Libraries"]
-	path = Submodules/Libraries
-	url = https://icservis@github.com/icservis/Libraries.git
 [submodule "Submodules/CorePlot"]
 	path = Submodules/CorePlot
 	url = https://github.com/core-plot/core-plot.git

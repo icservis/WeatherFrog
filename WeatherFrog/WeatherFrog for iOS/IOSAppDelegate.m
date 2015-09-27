@@ -32,8 +32,6 @@
     // Override point for customization after application launch.
     
     // Logging.
-    LumberjackFormatter *formatter = [[LumberjackFormatter alloc] init];
-    [[DDTTYLogger sharedInstance] setLogFormatter:formatter];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);

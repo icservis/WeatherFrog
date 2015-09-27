@@ -14,6 +14,6 @@
 #import "DDASLLogger.h"
 #import "DDFileLogger.h"
 #import "DDTTYLogger.h"
-#import "LumberjackFormatter.h"
+#import "CocoaLumberjack.h"
 
 #endif

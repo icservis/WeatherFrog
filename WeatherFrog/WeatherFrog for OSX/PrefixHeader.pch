@@ -19,7 +19,8 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
-#import "Lumberjack.h"
+#define DD_LEGACY_MACROS 1
+#import "CocoaLumberjack.h"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #ifdef DEBUG
