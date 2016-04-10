@@ -129,8 +129,8 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-    [self mapView:self.mapView searchText:searchBar.text completionBlock:^(BOOL success, NSError *error) {
-        if (success) {
+    [self mapView:self.mapView searchText:searchBar.text completionBlock:^(MKLocalSearchResponse* response, NSError *error) {
+        if (error == nil) {
             self.trackingMode = MKUserTrackingModeNone;
         }
     }];

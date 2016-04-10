@@ -16,6 +16,7 @@ static double const kPointHysteresis = 1.0;
 
 @interface MapViewController () <MapGestureRecogniserDelegate>
 
+
 @end
 
 @implementation MapViewController
@@ -23,7 +24,18 @@ static double const kPointHysteresis = 1.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.mapView.delegate = self;
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+        self.mapView.showsUserLocation = YES;
+    } else {
+        if ([CLLocationManager locationServicesEnabled]) {
+            [self.locationManager requestAlwaysAuthorization];
+        } else {
+            self.mapView.showsUserLocation = NO;
+        }
+    }
     
     self.pinGestureRecognizer = [[MapGestureRecogniser alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.pinGestureRecognizer.delegate = self;
@@ -80,6 +92,15 @@ static double const kPointHysteresis = 1.0;
 
 #pragma mark - Getter and Setters
 
+- (CLLocationManager*)locationManager
+{
+    if (_locationManager == nil) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+    }
+    return _locationManager;
+}
+
 - (CLGeocoder*)geocoder
 {
     if (_geocoder == nil) {
@@ -104,7 +125,7 @@ static double const kPointHysteresis = 1.0;
 {
     if ([self.delegate respondsToSelector:@selector(mapViewController:didSelectPosition:bookmark:)]) {
         if (self.selectedPlacemark != nil) {
-            _selectedPosition = [[PositionManager sharedManager] positionForPlacemark:self.selectedPlacemark timezoneId:self.selectedTimezoneId];
+            _selectedPosition = [[PositionManager sharedManager] positionForPlacemark:self.selectedPlacemark];
         }
         [self.delegate mapViewController:self didSelectPosition:self.selectedPosition bookmark:YES];
         [self closeController];
@@ -138,24 +159,37 @@ static double const kPointHysteresis = 1.0;
     [self.mapView setRegion:mkRegion animated:YES];
 }
 
-- (void)mapView:(MKMapView *)mapView searchText:(NSString*)text completionBlock:(void (^)(BOOL, NSError *))completionBlock
+- (void)mapView:(MKMapView *)mapView searchText:(NSString*)text completionBlock:(void (^)(MKLocalSearchResponse *, NSError *))completionBlock
 {
-    [self.geocoder geocodeAddressString:text completionHandler:^(NSArray *placemarks, NSError *error) {
+    if (self.localSearch.searching) {
+        [self.localSearch cancel];
+    }
+    
+    // Confine the map search area to the user's current location.
+    CLLocationDistance radius = self.selectedPlacemark.location.horizontalAccuracy * kMapRadiusMultiplier;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, radius, radius);
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    
+    request.naturalLanguageQuery = text;
+    request.region = region;
+    
+    MKLocalSearchCompletionHandler completionHandler = ^(MKLocalSearchResponse *response, NSError *error) {
+        NSArray<MKMapItem *>* places = [response mapItems];
+        MKMapItem* mapItem = [places firstObject];
         
-        if ([placemarks count] > 0) {
-            CLPlacemark* placemark = placemarks[0];
-            [self mapView:self.mapView setRegionWithPlacemark:placemark];
-            [self mapView:self.mapView searchAnnotation:placemark];
-            completionBlock(YES, nil);
-        } else {
-            if (error != nil) {
-                DDLogError(@"error: %@", error);
-                completionBlock(NO, error);
-            } else {
-                completionBlock(NO, nil);
-            }
+        if (mapItem) {
+            [self mapView:self.mapView setRegionWithPlacemark:mapItem.placemark];
+            [self mapView:self.mapView searchAnnotation:mapItem.placemark];
         }
-    }];
+        
+        completionBlock(response, error);
+    };
+    
+    if (self.localSearch != nil) {
+        self.localSearch = nil;
+    }
+    self.localSearch = [[MKLocalSearch alloc] initWithRequest:request];
+    [self.localSearch startWithCompletionHandler:completionHandler];
 }
 
 - (void)mapView:(MKMapView *)mapView searchAnnotationStored:(Position*)position
@@ -340,6 +374,17 @@ static double const kPointHysteresis = 1.0;
 - (void)searchBarResignFirstResponder
 {
     
+}
+
+#pragma mark - CLLLocationManager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+        self.mapView.showsUserLocation = YES;
+    } else {
+        self.mapView.showsUserLocation = NO;
+    }
 }
 
 @end

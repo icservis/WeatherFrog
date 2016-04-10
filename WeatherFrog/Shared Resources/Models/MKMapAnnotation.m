@@ -48,7 +48,7 @@
     if (self = [super init]) {
         self.coordinate = placemark.location.coordinate;
         self.title = [placemark title];
-        self.subtitle = [placemark subTitle];
+        self.subtitle = [placemark subtitle];
         self.hasPlacemark = YES;
     }
     return self;
@@ -58,7 +58,7 @@
 {
     self.coordinate = placemark.location.coordinate;
     self.title = [placemark title];
-    self.subtitle = [placemark subTitle];
+    self.subtitle = [placemark subtitle];
     self.hasPlacemark = YES;
 }
 
@@ -68,8 +68,7 @@
 {
     if (self = [super init]) {
         self.coordinate = location.coordinate;
-        self.title = NSLocalizedString(@"Placemark", nil);
-        self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
+        self.title = location.description;
         self.hasPlacemark = NO;
     }
     return self;
@@ -78,8 +77,7 @@
 - (void)updateWithLocation:(CLLocation *)location
 {
     self.coordinate = location.coordinate;
-    self.title = NSLocalizedString(@"Placemark", nil);
-    self.subtitle = [NSString stringWithFormat:@"@ %.5f, %.5f", location.coordinate.latitude, location.coordinate.longitude];
+    self.title = location.description;
     self.hasPlacemark = NO;
 }
 

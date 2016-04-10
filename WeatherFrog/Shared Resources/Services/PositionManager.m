@@ -88,7 +88,7 @@ static bool isFirstAccess = YES;
 #pragma mark - Position
 
 
-- (Position*)positionForPlacemark:(CLPlacemark*)placemark timezoneId:(NSString*)timezoneId
+- (Position*)positionForPlacemark:(CLPlacemark*)placemark
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Position class]) inManagedObjectContext:self.managedObjectContext];
@@ -138,8 +138,8 @@ static bool isFirstAccess = YES;
         position.verticalAccuracy = @(placemark.location.verticalAccuracy);
         position.timestamp = placemark.location.timestamp;
         position.name = [placemark title];
-        position.address = [placemark subTitle];
-        position.timezoneId = timezoneId;
+        position.address = [placemark subtitle];
+        position.timezoneId = [[placemark timeZone] name];
     }
     
     position.updatedAt = [NSDate date];

@@ -11,6 +11,6 @@
 @interface CLPlacemark (MKAnnotationDelegate)
 
 - (NSString*)title;
-- (NSString*)subTitle;
+- (NSString*)subtitle;
 
 @end

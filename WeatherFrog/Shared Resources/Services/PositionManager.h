@@ -21,6 +21,6 @@
 
 + (PositionManager*)sharedManager;
 
-- (Position*)positionForPlacemark:(CLPlacemark*)placemark timezoneId:(NSString*)timezoneId;
+- (Position*)positionForPlacemark:(CLPlacemark*)placemark;
 
 @end

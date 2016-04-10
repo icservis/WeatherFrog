@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EWa-Q8-2cM">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -25,13 +24,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkd-K6-os5">
                                             <rect key="frame" x="20" y="0.0" width="83" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="addressLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWB-SJ-Txt">
                                             <rect key="frame" x="20" y="26" width="87" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -211,7 +210,7 @@
                                     <outlet property="delegate" destination="CSz-5o-UvC" id="aYB-df-cCa"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fq-vM-trH">
+                            <searchBar contentMode="redraw" searchBarStyle="prominent" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fq-vM-trH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <scopeButtonTitles>
@@ -250,14 +249,8 @@
                             <constraint firstItem="A6F-aN-fUH" firstAttribute="top" secondItem="R54-0N-Ydq" secondAttribute="bottom" id="mDy-wu-lcK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R54-0N-Ydq" secondAttribute="trailing" constant="-20" id="pps-Iw-vFN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7fq-vM-trH" secondAttribute="trailing" constant="-20" id="sNk-es-oNs"/>
-                            <constraint firstItem="R54-0N-Ydq" firstAttribute="top" secondItem="A2H-bg-MZq" secondAttribute="topMargin" id="vI9-1K-bBi"/>
                             <constraint firstItem="7fq-vM-trH" firstAttribute="leading" secondItem="A2H-bg-MZq" secondAttribute="leadingMargin" constant="-20" id="wHt-AE-bg4"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="vI9-1K-bBi"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Pu4-dA-rog" id="3vR-20-Gm5"/>

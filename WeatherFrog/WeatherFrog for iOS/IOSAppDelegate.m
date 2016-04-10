@@ -124,8 +124,7 @@
                 CLPlacemark* placemark = [placemarks firstObject];
                 //DDLogVerbose(@"placemark: %@", placemark);
                 self.currentPlacemark = placemark;
-                NSString* timezoneId = [[NSTimeZone localTimeZone] name];
-                self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark timezoneId:timezoneId];                
+                self.currentPosition = [[PositionManager sharedManager] positionForPlacemark:placemark];                
                 [[ForecastManager sharedManager] updateForecastForPosition:self.currentPosition withCompletionBlock:^(BOOL updated, NSError *error) {
                     if (updated) {
                         [[NSNotificationCenter defaultCenter] postNotificationName:kForecastManagerDidUpdateCurrentLocationData object:nil];
