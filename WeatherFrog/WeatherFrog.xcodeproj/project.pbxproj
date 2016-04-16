@@ -10,12 +10,8 @@
 		841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841381441A2A7F94004EC601 /* IOSGraphView.m */; };
 		8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2EC1A2B571D004E1062 /* CoreLocation.framework */; };
 		8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F41A2B577B004E1062 /* QuartzCore.framework */; };
-		8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F61A2B5784004E1062 /* CoreLocation.framework */; };
-		8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F81A2B578B004E1062 /* QuartzCore.framework */; };
-		841A1AF41A6DA0B90070ECFF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841A1AF31A6DA0B90070ECFF /* CloudKit.framework */; };
 		842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
-		84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84297A9C1A21407D0070E151 /* MapKit.framework */; };
 		84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* OSXWindowController.m */; };
 		84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA81A2143F30070E151 /* OSXSplitViewController.m */; };
 		84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AAE1A21DFEA0070E151 /* OSXListTableView.m */; };
@@ -96,7 +92,6 @@
 		8483CC301CB81A08003A6FF6 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */; };
 		8483CC311CB81A0D003A6FF6 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBD61CB8178E003A6FF6 /* CLIColor.m */; };
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
-		84882F971BAB5C20004F65B5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84882F961BAB5C20004F65B5 /* CloudKit.framework */; };
 		849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
 		849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
 		849BA10D1A2F20E60090F99D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA10C1A2F20E60090F99D /* MapViewController.m */; };
@@ -230,13 +225,9 @@
 		841381441A2A7F94004EC601 /* IOSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSGraphView.m; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.m"; sourceTree = "<group>"; };
 		8414F2EC1A2B571D004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8414F2F41A2B577B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8414F2F61A2B5784004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		8414F2F81A2B578B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		841A1AF21A6DA0B50070ECFF /* WeatherFrog for iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for iOS.entitlements"; sourceTree = "<group>"; };
-		841A1AF31A6DA0B90070ECFF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		842438631A2FAA9C00A7F5A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "Shared Resources/Controllers/DetailViewController.h"; sourceTree = "<group>"; };
 		842438641A2FAA9C00A7F5A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "Shared Resources/Controllers/DetailViewController.m"; sourceTree = "<group>"; };
-		84297A9C1A21407D0070E151 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		84297AA41A2142A20070E151 /* OSXWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXWindowController.h; sourceTree = "<group>"; };
 		84297AA51A2142A20070E151 /* OSXWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXWindowController.m; sourceTree = "<group>"; };
 		84297AA71A2143F30070E151 /* OSXSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXSplitViewController.h; path = "Split Scene/OSXSplitViewController.h"; sourceTree = "<group>"; };
@@ -341,7 +332,6 @@
 		8483CC251CB819D0003A6FF6 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		8486FDFC1A29BDB4003AB3EE /* IOSListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableViewCell.h; path = "List Scene/IOSListTableViewCell.h"; sourceTree = "<group>"; };
 		8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSListTableViewCell.m; path = "List Scene/IOSListTableViewCell.m"; sourceTree = "<group>"; };
-		84882F961BAB5C20004F65B5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKMapAnnotation.h; path = "Shared Resources/Models/MKMapAnnotation.h"; sourceTree = "<group>"; };
 		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKMapAnnotation.m; path = "Shared Resources/Models/MKMapAnnotation.m"; sourceTree = "<group>"; };
@@ -424,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */,
-				841A1AF41A6DA0B90070ECFF /* CloudKit.framework in Frameworks */,
 				8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */,
 				8455586E1A291808003127B3 /* MapKit.framework in Frameworks */,
 			);
@@ -441,10 +430,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8414F2F91A2B578B004E1062 /* QuartzCore.framework in Frameworks */,
-				84882F971BAB5C20004F65B5 /* CloudKit.framework in Frameworks */,
-				8414F2F71A2B5784004E1062 /* CoreLocation.framework in Frameworks */,
-				84297A9D1A21407D0070E151 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,14 +754,9 @@
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84882F961BAB5C20004F65B5 /* CloudKit.framework */,
-				841A1AF31A6DA0B90070ECFF /* CloudKit.framework */,
-				8414F2F81A2B578B004E1062 /* QuartzCore.framework */,
-				8414F2F61A2B5784004E1062 /* CoreLocation.framework */,
 				8414F2F41A2B577B004E1062 /* QuartzCore.framework */,
 				8414F2EC1A2B571D004E1062 /* CoreLocation.framework */,
 				8455586D1A291808003127B3 /* MapKit.framework */,
-				84297A9C1A21407D0070E151 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
 			);
 			name = Frameworks;
@@ -1120,11 +1100,17 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = PH3V9JYRDW;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -1139,6 +1125,9 @@
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = PH3V9JYRDW;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -1511,9 +1500,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1523,7 +1512,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a51b2b9a-8761-4526-b351-8441ccc46a5e";
+				PROVISIONING_PROFILE = "101dfe01-efca-4849-af77-7840387f8ad6";
 				SDKROOT = macosx;
 			};
 			name = AdHoc;
@@ -1553,8 +1542,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
@@ -1562,7 +1551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22de385b-4315-47c3-8aea-17899d11a31e";
+				PROVISIONING_PROFILE = "caea1662-83d8-4ea9-9a54-8de95552ba0e";
 			};
 			name = AdHoc;
 		};
@@ -1671,8 +1660,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1684,7 +1673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3e224e38-4ddd-4ee9-adad-4aae2d8dbf24";
+				PROVISIONING_PROFILE = "2dc3e3f3-a106-46e4-9865-c6beae637474";
 			};
 			name = Debug;
 		};
@@ -1693,8 +1682,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
 				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
@@ -1702,7 +1691,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bcb780fe-8622-4c2b-8eef-c4404cd75108";
+				PROVISIONING_PROFILE = "2768d5eb-6366-4bc0-8a83-02d33a9f62df";
 			};
 			name = Release;
 		};
@@ -1749,9 +1738,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer: Libor Kucera (TFV8F8C22D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Mac Developer: Libor Kucera (TFV8F8C22D)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Libor Kucera (TFV8F8C22D)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
@@ -1764,7 +1753,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f00d9be-2bcd-4d9d-84d1-e8a45d162c0c";
+				PROVISIONING_PROFILE = "0de93b1a-d5b6-4bd1-b7fe-ddfe2b6542d7";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1774,9 +1763,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1786,7 +1775,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a51b2b9a-8761-4526-b351-8441ccc46a5e";
+				PROVISIONING_PROFILE = "fa479859-f758-49a8-aa29-3a4ca84b3d73";
 				SDKROOT = macosx;
 			};
 			name = Release;
