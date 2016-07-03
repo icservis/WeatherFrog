@@ -29,6 +29,11 @@
 		846109E81A30A281007623FE /* IOSListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109E71A30A281007623FE /* IOSListTableView.m */; };
 		8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8475976C1A28A2490013824D /* OSXCollectionView.m */; };
 		847597791A28A3820013824D /* OSXGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847597781A28A3820013824D /* OSXGraphView.m */; };
+		8479B5A11CC2397200D78808 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A01CC2397200D78808 /* MapKit.framework */; };
+		8479B5A81CC239C800D78808 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A71CC239C800D78808 /* NotificationCenter.framework */; };
+		8479B5AC1CC239C800D78808 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B5AB1CC239C800D78808 /* TodayViewController.m */; };
+		8479B5AF1CC239C800D78808 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8479B5AD1CC239C800D78808 /* MainInterface.storyboard */; };
+		8479B5B31CC239C800D78808 /* WeatherToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8479B5A61CC239C800D78808 /* WeatherToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8483CB9A1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB8B1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m */; };
 		8483CB9B1CB815ED003A6FF6 /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB8F1CB815ED003A6FF6 /* NSDate+ISO8601Date.m */; };
 		8483CB9C1CB815ED003A6FF6 /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB931CB815ED003A6FF6 /* NSString+ISO8601Date.m */; };
@@ -142,6 +147,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8479B5B11CC239C800D78808 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84E083D41A1B98380071D662 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8479B5A51CC239C800D78808;
+			remoteInfo = WeatherToday;
+		};
 		8483CBAC1CB815EE003A6FF6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
@@ -214,6 +226,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				8479B5B31CC239C800D78808 /* WeatherToday.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +272,14 @@
 		8475976C1A28A2490013824D /* OSXCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionView.m; path = "Detail Scene/Collection Scene/OSXCollectionView.m"; sourceTree = "<group>"; };
 		847597771A28A3820013824D /* OSXGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXGraphView.h; path = "Detail Scene/Graph Scene/OSXGraphView.h"; sourceTree = "<group>"; };
 		847597781A28A3820013824D /* OSXGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXGraphView.m; path = "Detail Scene/Graph Scene/OSXGraphView.m"; sourceTree = "<group>"; };
+		8479B5A01CC2397200D78808 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		8479B5A61CC239C800D78808 /* WeatherToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WeatherToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8479B5A71CC239C800D78808 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8479B5AA1CC239C800D78808 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		8479B5AB1CC239C800D78808 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		8479B5AE1CC239C800D78808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8479B5B01CC239C800D78808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8479B5B81CC23B2600D78808 /* WeatherToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WeatherToday.entitlements; sourceTree = "<group>"; };
 		8483CB8A1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLPlacemark+MKAnnotationDelegate.h"; sourceTree = "<group>"; };
 		8483CB8B1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLPlacemark+MKAnnotationDelegate.m"; sourceTree = "<group>"; };
 		8483CB8E1CB815ED003A6FF6 /* NSDate+ISO8601Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601Date.h"; sourceTree = "<group>"; };
@@ -409,6 +430,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8479B5A31CC239C800D78808 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8479B5A81CC239C800D78808 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E084091A1B987C0071D662 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -430,6 +459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8479B5A11CC2397200D78808 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +571,18 @@
 				8455586A1A2912A3003127B3 /* IOSMapViewController.m */,
 			);
 			name = "Map Scene";
+			sourceTree = "<group>";
+		};
+		8479B5A91CC239C800D78808 /* WeatherToday */ = {
+			isa = PBXGroup;
+			children = (
+				8479B5B81CC23B2600D78808 /* WeatherToday.entitlements */,
+				8479B5AA1CC239C800D78808 /* TodayViewController.h */,
+				8479B5AB1CC239C800D78808 /* TodayViewController.m */,
+				8479B5AD1CC239C800D78808 /* MainInterface.storyboard */,
+				8479B5B01CC239C800D78808 /* Info.plist */,
+			);
+			path = WeatherToday;
 			sourceTree = "<group>";
 		};
 		8483CB881CB815ED003A6FF6 /* Categories */ = {
@@ -754,10 +796,12 @@
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8479B5A01CC2397200D78808 /* MapKit.framework */,
 				8414F2F41A2B577B004E1062 /* QuartzCore.framework */,
 				8414F2EC1A2B571D004E1062 /* CoreLocation.framework */,
 				8455586D1A291808003127B3 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
+				8479B5A71CC239C800D78808 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -855,6 +899,7 @@
 				84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */,
 				84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */,
 				84E084DF1A1C76CE0071D662 /* Shared Resources */,
+				8479B5A91CC239C800D78808 /* WeatherToday */,
 				848BF9C91A1D2E2F00A4F000 /* Frameworks */,
 				84E0845C1A1B99B10071D662 /* Vendor */,
 				84E0842A1A1B987C0071D662 /* WeatherFrog for iOSTests */,
@@ -870,6 +915,7 @@
 				84E084271A1B987C0071D662 /* WeatherFrog for iOSTests.xctest */,
 				84E084391A1B988D0071D662 /* WeatherFrog for OSX.app */,
 				84E0844E1A1B988E0071D662 /* WeatherFrog for OSXTests.xctest */,
+				8479B5A61CC239C800D78808 /* WeatherToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1016,6 +1062,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8479B5A51CC239C800D78808 /* WeatherToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8479B5B41CC239C800D78808 /* Build configuration list for PBXNativeTarget "WeatherToday" */;
+			buildPhases = (
+				8479B5A21CC239C800D78808 /* Sources */,
+				8479B5A31CC239C800D78808 /* Frameworks */,
+				8479B5A41CC239C800D78808 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeatherToday;
+			productName = WeatherToday;
+			productReference = 8479B5A61CC239C800D78808 /* WeatherToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		84E0840B1A1B987C0071D662 /* WeatherFrog for iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84E0842F1A1B987C0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS" */;
@@ -1028,6 +1091,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8479B5B21CC239C800D78808 /* PBXTargetDependency */,
 			);
 			name = "WeatherFrog for iOS";
 			productName = "WeatherFrog for iOS";
@@ -1096,6 +1160,18 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "IC Servis, s.r.o.";
 				TargetAttributes = {
+					8479B5A51CC239C800D78808 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = PH3V9JYRDW;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
 					84E0840B1A1B987C0071D662 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = PH3V9JYRDW;
@@ -1127,6 +1203,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1169,6 +1248,7 @@
 				84E0844D1A1B988E0071D662 /* WeatherFrog for OSXTests */,
 				84E0840B1A1B987C0071D662 /* WeatherFrog for iOS */,
 				84E084261A1B987C0071D662 /* WeatherFrog for iOSTests */,
+				8479B5A51CC239C800D78808 /* WeatherToday */,
 			);
 		};
 /* End PBXProject section */
@@ -1226,6 +1306,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8479B5A41CC239C800D78808 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8479B5AF1CC239C800D78808 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E0840A1A1B987C0071D662 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1262,6 +1350,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8479B5A21CC239C800D78808 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8479B5AC1CC239C800D78808 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84E084081A1B987C0071D662 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1417,6 +1513,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8479B5B21CC239C800D78808 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8479B5A51CC239C800D78808 /* WeatherToday */;
+			targetProxy = 8479B5B11CC239C800D78808 /* PBXContainerItemProxy */;
+		};
 		84E084291A1B987C0071D662 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 84E0840B1A1B987C0071D662 /* WeatherFrog for iOS */;
@@ -1430,6 +1531,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8479B5AD1CC239C800D78808 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8479B5AE1CC239C800D78808 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		84E0841B1A1B987C0071D662 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1457,6 +1566,65 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8479B5B51CC239C800D78808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WeatherToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "806c6718-818e-4395-b4a6-6b595bbf3ee6";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8479B5B61CC239C800D78808 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WeatherToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "39685563-5aee-491b-bb57-b17aad7e3075";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8479B5B71CC239C800D78808 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WeatherToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "71e6dc6f-ec98-49df-917f-3a79c30e5657";
+				SKIP_INSTALL = YES;
+			};
+			name = AdHoc;
+		};
 		84882F911BAB5AA8004F65B5 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1826,6 +1994,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8479B5B41CC239C800D78808 /* Build configuration list for PBXNativeTarget "WeatherToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8479B5B51CC239C800D78808 /* Debug */,
+				8479B5B61CC239C800D78808 /* Release */,
+				8479B5B71CC239C800D78808 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		84E083D71A1B98380071D662 /* Build configuration list for PBXProject "WeatherFrog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
