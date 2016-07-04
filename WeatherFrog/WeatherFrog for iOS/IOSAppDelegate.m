@@ -31,9 +31,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // CrashLytics
+    [Fabric with:@[[Crashlytics class]]];
+    
     // Logging.
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
     
     //[self startMonitoringCurrentLocation];

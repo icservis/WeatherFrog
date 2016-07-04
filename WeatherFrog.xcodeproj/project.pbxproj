@@ -122,8 +122,6 @@
 		84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
 		84E4B2341A2E210E0089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
 		84E4B2351A2E210E0089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
-		84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
-		84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
 		93F16506E7F37A0812FADB84 /* libPods-WeatherFrog for OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C74B5A32C9DAA11262FFEE /* libPods-WeatherFrog for OSX.a */; };
 /* End PBXBuildFile section */
 
@@ -863,6 +861,7 @@
 				8479B5A41CC239C800D78808 /* Resources */,
 				7DA3333129C2A8C704662B05 /* [CP] Embed Pods Frameworks */,
 				190312D6D3B50015334FA286 /* [CP] Copy Pods Resources */,
+				845226A11D2A4FDD00E3A5C3 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -884,6 +883,7 @@
 				848BF9F41A1D2E2F00A4F000 /* Embed App Extensions */,
 				98BB624E1BD1E32F401DE25D /* [CP] Embed Pods Frameworks */,
 				3A74FD061482EBEE91CED0FC /* [CP] Copy Pods Resources */,
+				845226A01D2A4FBC00E3A5C3 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -923,6 +923,7 @@
 				84E084371A1B988D0071D662 /* Resources */,
 				FDE9342581F1AD7CCB9F9634 /* [CP] Embed Pods Frameworks */,
 				58C79F93A091DE48C53A6B79 /* [CP] Copy Pods Resources */,
+				8452269F1D2A4FB000E3A5C3 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -957,7 +958,7 @@
 		84E083D41A1B98380071D662 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "IC Servis, s.r.o.";
 				TargetAttributes = {
 					8479B5A51CC239C800D78808 = {
@@ -1194,6 +1195,48 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8452269F1D2A4FB000E3A5C3 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ea04fa6e4c6a8f5733afae442d86dd1076be3e59 f3fb395fafc339a16bf1e27d51558e8929cc410bf9fe73b8dad804acf2a94841";
+		};
+		845226A01D2A4FBC00E3A5C3 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ea04fa6e4c6a8f5733afae442d86dd1076be3e59 f3fb395fafc339a16bf1e27d51558e8929cc410bf9fe73b8dad804acf2a94841";
+		};
+		845226A11D2A4FDD00E3A5C3 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ea04fa6e4c6a8f5733afae442d86dd1076be3e59 f3fb395fafc339a16bf1e27d51558e8929cc410bf9fe73b8dad804acf2a94841";
+		};
 		98BB624E1BD1E32F401DE25D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1279,7 +1322,6 @@
 				84E0841A1A1B987C0071D662 /* IOSListViewController.m in Sources */,
 				845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */,
 				8483CBB51CB815FB003A6FF6 /* NSDate+ISO8601Date.m in Sources */,
-				84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */,
 				8483CBB61CB81601003A6FF6 /* NSString+ISO8601Date.m in Sources */,
 				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
 				841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */,
@@ -1314,7 +1356,6 @@
 				84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */,
 				84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */,
 				8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */,
-				84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */,
 				84E4B22E1A2E20A90089AB93 /* Position.m in Sources */,
 				84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */,
 				8483CB9B1CB815ED003A6FF6 /* NSDate+ISO8601Date.m in Sources */,
@@ -1420,7 +1461,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = WeatherFrog/WeatherToday/PrefixHeader.pch;
 				INFOPLIST_FILE = WeatherFrog/WeatherToday/Info.plist;
@@ -1506,8 +1547,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1521,7 +1562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1630,8 +1671,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1668,8 +1709,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1763,10 +1804,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for OSX/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1789,7 +1831,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1811,6 +1853,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",

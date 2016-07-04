@@ -18,6 +18,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     
+    // CrashLytics
+    [Fabric with:@[[Crashlytics class]]];
+    
     // Logging.
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
