@@ -20,6 +20,7 @@ target 'WeatherFrog for iOS' do
     pod 'CocoaLumberjack'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'CrashlyticsLumberjack', '~> 2.0.0'
     
 end
 

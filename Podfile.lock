@@ -25,6 +25,9 @@ PODS:
   - CorePlot (2.1)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
+  - CrashlyticsLumberjack (2.0.5):
+    - CocoaLumberjack/Default (~> 2.2)
+    - Crashlytics
   - Fabric (1.6.7)
 
 DEPENDENCIES:
@@ -33,6 +36,7 @@ DEPENDENCIES:
   - CocoaLumberjack
   - CorePlot
   - Crashlytics
+  - CrashlyticsLumberjack (~> 2.0.0)
   - Fabric
 
 SPEC CHECKSUMS:
@@ -40,8 +44,9 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  CrashlyticsLumberjack: bdcc53dfcf6f05282fb9652cfa242328b4bccf13
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
 
-PODFILE CHECKSUM: bd399b885874b25365ecf1e94be6f4089fe96760
+PODFILE CHECKSUM: 0e783cc9f3ea3dbd84aa9ff32a314f1ad5fef3c6
 
 COCOAPODS: 1.0.1

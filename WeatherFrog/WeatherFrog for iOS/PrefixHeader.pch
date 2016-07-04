@@ -24,6 +24,7 @@
 
 #define DD_LEGACY_MACROS 0
 #import "CocoaLumberjack.h"
+#import <CrashlyticsLumberjack/CrashlyticsLogger.h>
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #ifdef DEBUG

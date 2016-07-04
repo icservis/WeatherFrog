@@ -36,6 +36,7 @@
     
     // Logging.
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[CrashlyticsLogger sharedInstance]];
     DDLogDebug(@"applicationDirectory: %@", [[DataService sharedInstance] applicationDocumentsDirectory]);
     
     //[self startMonitoringCurrentLocation];
