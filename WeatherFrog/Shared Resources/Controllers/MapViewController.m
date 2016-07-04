@@ -26,16 +26,28 @@ static double const kPointHysteresis = 1.0;
     // Do any additional setup after loading the view.
     
     self.mapView.delegate = self;
-    
+
+#if TARGET_OS_IPHONE
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
         self.mapView.showsUserLocation = YES;
     } else {
         if ([CLLocationManager locationServicesEnabled]) {
-            [self.locationManager requestAlwaysAuthorization];
+            [self.locationManager requestWhenInUseAuthorization];
         } else {
             self.mapView.showsUserLocation = NO;
         }
     }
+#elif TARGET_OS_MAC
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+        self.mapView.showsUserLocation = YES;
+    } else {
+        if ([CLLocationManager locationServicesEnabled]) {
+            self.mapView.showsUserLocation = YES;
+        } else {
+            self.mapView.showsUserLocation = NO;
+        }
+    }
+#endif
     
     self.pinGestureRecognizer = [[MapGestureRecogniser alloc] initWithTarget:self action:@selector(handleLongPress:)];
     self.pinGestureRecognizer.delegate = self;
@@ -380,11 +392,19 @@ static double const kPointHysteresis = 1.0;
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
+#if TARGET_OS_IPHONE
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
         self.mapView.showsUserLocation = YES;
     } else {
         self.mapView.showsUserLocation = NO;
     }
+#elif TARGET_OS_MAC
+    if (status == kCLAuthorizationStatusAuthorized) {
+        self.mapView.showsUserLocation = YES;
+    } else {
+        self.mapView.showsUserLocation = NO;
+    }
+#endif
 }
 
 @end

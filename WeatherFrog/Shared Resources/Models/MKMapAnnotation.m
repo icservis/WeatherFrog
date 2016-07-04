@@ -7,6 +7,9 @@
 //
 
 #import "MKMapAnnotation.h"
+#import "Position+DataService.h"
+#import "Forecast+DataService.h"
+#import "CLPlacemark+MKAnnotationDelegate.h"
 
 @interface MKMapAnnotation ()
 

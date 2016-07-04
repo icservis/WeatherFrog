@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
+@class Position, Forecast;
 
 @interface MKMapAnnotation : NSObject <MKAnnotation>
 

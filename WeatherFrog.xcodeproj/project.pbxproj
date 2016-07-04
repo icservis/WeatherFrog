@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841381441A2A7F94004EC601 /* IOSGraphView.m */; };
-		8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2EC1A2B571D004E1062 /* CoreLocation.framework */; };
-		8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8414F2F41A2B577B004E1062 /* QuartzCore.framework */; };
 		842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297AA51A2142A20070E151 /* OSXWindowController.m */; };
@@ -19,9 +17,65 @@
 		84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84297ABB1A21EDB70070E151 /* OSXSplitView.m */; };
 		8432FF091A2B0B0C00414A20 /* OSXCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432FF081A2B0B0C00414A20 /* OSXCollectionViewItem.m */; };
 		8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8432FF111A2B0B6400414A20 /* OSXCollectionCell.m */; };
+		845226451D2A3B7C00E3A5C3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */; };
+		845226461D2A3B8000E3A5C3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */; };
+		845226471D2A3B8100E3A5C3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */; };
+		845226481D2A3B8300E3A5C3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */; };
+		845226491D2A3B8400E3A5C3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */; };
+		8452264C1D2A3BAF00E3A5C3 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452264B1D2A3BAF00E3A5C3 /* Position+DataService.m */; };
+		8452264D1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452264B1D2A3BAF00E3A5C3 /* Position+DataService.m */; };
+		8452264E1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8452264B1D2A3BAF00E3A5C3 /* Position+DataService.m */; };
+		8452264F1D2A3BB800E3A5C3 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22B1A2E20A90089AB93 /* Position.m */; };
+		845226501D2A3BBF00E3A5C3 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
+		845226511D2A3BC200E3A5C3 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
+		845226521D2A3BCA00E3A5C3 /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
+		845226531D2A3BD500E3A5C3 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E61A1C7D040071D662 /* DataService.m */; };
+		845226541D2A3BD700E3A5C3 /* PositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B808C11A29F8BC0074DF01 /* PositionManager.m */; };
+		845226551D2A3BDA00E3A5C3 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2191A2E08930089AB93 /* ForecastManager.m */; };
+		845226561D2A3BE100E3A5C3 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC251CB819D0003A6FF6 /* ISO8601DateFormatter.m */; };
+		845226571D2A3BE400E3A5C3 /* CLPlacemark+MKAnnotationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB8B1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m */; };
+		845226581D2A3BEA00E3A5C3 /* NSDate+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB8F1CB815ED003A6FF6 /* NSDate+ISO8601Date.m */; };
+		845226591D2A3BED00E3A5C3 /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB931CB815ED003A6FF6 /* NSString+ISO8601Date.m */; };
+		8452265A1D2A3BF100E3A5C3 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB961CB815ED003A6FF6 /* NSString+URLEncoding.m */; };
+		8452265B1D2A3BF400E3A5C3 /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB991CB815ED003A6FF6 /* NSString+validation.m */; };
+		8452265F1D2A3D2900E3A5C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */; };
+		8452266E1D2A3D3700E3A5C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */; };
+		845226731D2A3D6500E3A5C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845226721D2A3D6500E3A5C3 /* CoreData.framework */; };
+		845226741D2A3D6C00E3A5C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845226721D2A3D6500E3A5C3 /* CoreData.framework */; };
+		845226771D2A3DBB00E3A5C3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845226721D2A3D6500E3A5C3 /* CoreData.framework */; };
+		845226781D2A3DC000E3A5C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */; };
+		845226791D2A3DC100E3A5C3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */; };
+		8452267A1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */; };
+		8452267B1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */; };
+		8452267C1D2A3DC700E3A5C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A01CC2397200D78808 /* MapKit.framework */; };
+		8452267D1D2A3DC800E3A5C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A01CC2397200D78808 /* MapKit.framework */; };
+		8452267F1D2A428200E3A5C3 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBD61CB8178E003A6FF6 /* CLIColor.m */; };
+		845226801D2A428900E3A5C3 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */; };
+		845226811D2A428C00E3A5C3 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */; };
+		845226821D2A429100E3A5C3 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */; };
+		845226831D2A429500E3A5C3 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */; };
+		845226841D2A429A00E3A5C3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE51CB8178E003A6FF6 /* DDLog.m */; };
+		845226851D2A429D00E3A5C3 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */; };
+		845226861D2A42A200E3A5C3 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */; };
+		845226871D2A42A500E3A5C3 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */; };
+		845226881D2A42A800E3A5C3 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */; };
+		845226891D2A42AD00E3A5C3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */; };
+		8452268A1D2A42B000E3A5C3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */; };
+		8452268B1D2A42B400E3A5C3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */; };
+		8452268C1D2A42B800E3A5C3 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */; };
+		8452268D1D2A42BA00E3A5C3 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */; };
+		8452268E1D2A42BD00E3A5C3 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */; };
+		8452268F1D2A42D200E3A5C3 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */; };
+		845226901D2A42D500E3A5C3 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */; };
+		845226911D2A42D900E3A5C3 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */; };
+		845226921D2A42DD00E3A5C3 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */; };
+		845226931D2A42E000E3A5C3 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */; };
+		845226941D2A42E800E3A5C3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */; };
+		845226951D2A42EC00E3A5C3 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */; };
+		845226961D2A42EF00E3A5C3 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */; };
+		845226971D2A42F300E3A5C3 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */; };
 		845558671A291036003127B3 /* IOSSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558661A291036003127B3 /* IOSSplitViewController.m */; };
 		8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455586A1A2912A3003127B3 /* IOSMapViewController.m */; };
-		8455586E1A291808003127B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8455586D1A291808003127B3 /* MapKit.framework */; };
 		845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558701A291C17003127B3 /* IOSDetailViewController.m */; };
 		846109D91A308FD1007623FE /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109D71A308FD1007623FE /* ListViewController.m */; };
 		846109DA1A308FD1007623FE /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846109D71A308FD1007623FE /* ListViewController.m */; };
@@ -130,8 +184,6 @@
 		84E084461A1B988E0071D662 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E084451A1B988D0071D662 /* Images.xcassets */; };
 		84E084491A1B988E0071D662 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E084471A1B988E0071D662 /* Main.storyboard */; };
 		84E084551A1B988E0071D662 /* WeatherFrog_for_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084541A1B988E0071D662 /* WeatherFrog_for_OSXTests.m */; };
-		84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */; };
-		84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */; };
 		84E084E71A1C7D040071D662 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E61A1C7D040071D662 /* DataService.m */; };
 		84E084E81A1C7D040071D662 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E084E61A1C7D040071D662 /* DataService.m */; };
 		84E4B21A1A2E08930089AB93 /* ForecastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2191A2E08930089AB93 /* ForecastManager.m */; };
@@ -140,8 +192,8 @@
 		84E4B22F1A2E20A90089AB93 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22B1A2E20A90089AB93 /* Position.m */; };
 		84E4B2301A2E20A90089AB93 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
 		84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B22D1A2E20A90089AB93 /* Forecast.m */; };
-		84E4B2341A2E210E0089AB93 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Position+DataService.m */; };
-		84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Position+DataService.m */; };
+		84E4B2341A2E210E0089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
+		84E4B2351A2E210E0089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
 		84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
 		84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
 /* End PBXBuildFile section */
@@ -236,11 +288,9 @@
 /* Begin PBXFileReference section */
 		841381431A2A7F94004EC601 /* IOSGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSGraphView.h; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.h"; sourceTree = "<group>"; };
 		841381441A2A7F94004EC601 /* IOSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSGraphView.m; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.m"; sourceTree = "<group>"; };
-		8414F2EC1A2B571D004E1062 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8414F2F41A2B577B004E1062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		841A1AF21A6DA0B50070ECFF /* WeatherFrog for iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for iOS.entitlements"; sourceTree = "<group>"; };
-		842438631A2FAA9C00A7F5A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = "Shared Resources/Controllers/DetailViewController.h"; sourceTree = "<group>"; };
-		842438641A2FAA9C00A7F5A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = "Shared Resources/Controllers/DetailViewController.m"; sourceTree = "<group>"; };
+		842438631A2FAA9C00A7F5A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		842438641A2FAA9C00A7F5A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		84297AA41A2142A20070E151 /* OSXWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXWindowController.h; sourceTree = "<group>"; };
 		84297AA51A2142A20070E151 /* OSXWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXWindowController.m; sourceTree = "<group>"; };
 		84297AA71A2143F30070E151 /* OSXSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXSplitViewController.h; path = "Split Scene/OSXSplitViewController.h"; sourceTree = "<group>"; };
@@ -255,15 +305,20 @@
 		8432FF081A2B0B0C00414A20 /* OSXCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionViewItem.m; path = "Detail Scene/Collection Scene/OSXCollectionViewItem.m"; sourceTree = "<group>"; };
 		8432FF101A2B0B6400414A20 /* OSXCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXCollectionCell.h; path = "Detail Scene/Collection Scene/OSXCollectionCell.h"; sourceTree = "<group>"; };
 		8432FF111A2B0B6400414A20 /* OSXCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXCollectionCell.m; path = "Detail Scene/Collection Scene/OSXCollectionCell.m"; sourceTree = "<group>"; };
+		845226441D2A3B7C00E3A5C3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8452264A1D2A3BAF00E3A5C3 /* Position+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Position+DataService.h"; sourceTree = "<group>"; };
+		8452264B1D2A3BAF00E3A5C3 /* Position+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Position+DataService.m"; sourceTree = "<group>"; };
+		8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		845226721D2A3D6500E3A5C3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		845558651A291036003127B3 /* IOSSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSSplitViewController.h; path = "Split Scene/IOSSplitViewController.h"; sourceTree = "<group>"; };
 		845558661A291036003127B3 /* IOSSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSSplitViewController.m; path = "Split Scene/IOSSplitViewController.m"; sourceTree = "<group>"; };
 		845558691A2912A3003127B3 /* IOSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSMapViewController.h; path = "Map Scene/IOSMapViewController.h"; sourceTree = "<group>"; };
 		8455586A1A2912A3003127B3 /* IOSMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSMapViewController.m; path = "Map Scene/IOSMapViewController.m"; sourceTree = "<group>"; };
-		8455586D1A291808003127B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8455586F1A291C17003127B3 /* IOSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSDetailViewController.h; path = "WeatherFrog for iOS/Detail Scene/IOSDetailViewController.h"; sourceTree = "<group>"; };
 		845558701A291C17003127B3 /* IOSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSDetailViewController.m; path = "WeatherFrog for iOS/Detail Scene/IOSDetailViewController.m"; sourceTree = "<group>"; };
-		846109D61A308FD1007623FE /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = "Shared Resources/Controllers/ListViewController.h"; sourceTree = "<group>"; };
-		846109D71A308FD1007623FE /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = "Shared Resources/Controllers/ListViewController.m"; sourceTree = "<group>"; };
+		846109D61A308FD1007623FE /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		846109D71A308FD1007623FE /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		846109E31A30A1A1007623FE /* OSXListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXListTableViewCell.h; path = "LIst Scene/OSXListTableViewCell.h"; sourceTree = "<group>"; };
 		846109E41A30A1A1007623FE /* OSXListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXListTableViewCell.m; path = "LIst Scene/OSXListTableViewCell.m"; sourceTree = "<group>"; };
 		846109E61A30A281007623FE /* IOSListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableView.h; path = "List Scene/IOSListTableView.h"; sourceTree = "<group>"; };
@@ -354,18 +409,18 @@
 		8486FDFC1A29BDB4003AB3EE /* IOSListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableViewCell.h; path = "List Scene/IOSListTableViewCell.h"; sourceTree = "<group>"; };
 		8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSListTableViewCell.m; path = "List Scene/IOSListTableViewCell.m"; sourceTree = "<group>"; };
 		848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
-		849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKMapAnnotation.h; path = "Shared Resources/Models/MKMapAnnotation.h"; sourceTree = "<group>"; };
-		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MKMapAnnotation.m; path = "Shared Resources/Models/MKMapAnnotation.m"; sourceTree = "<group>"; };
-		849BA10B1A2F20E60090F99D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Shared Resources/Controllers/MapViewController.h"; sourceTree = "<group>"; };
-		849BA10C1A2F20E60090F99D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Shared Resources/Controllers/MapViewController.m"; sourceTree = "<group>"; };
-		849BA1161A2F5B660090F99D /* MapAnnotationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotationButton.h; path = "Shared Resources/Controls/MapAnnotationButton.h"; sourceTree = "<group>"; };
-		849BA1171A2F5B660090F99D /* MapAnnotationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotationButton.m; path = "Shared Resources/Controls/MapAnnotationButton.m"; sourceTree = "<group>"; };
-		849BA11B1A2F64AC0090F99D /* MapGestureRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapGestureRecogniser.h; path = "Shared Resources/Controls/MapGestureRecogniser.h"; sourceTree = "<group>"; };
-		849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapGestureRecogniser.m; path = "Shared Resources/Controls/MapGestureRecogniser.m"; sourceTree = "<group>"; };
+		849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMapAnnotation.h; sourceTree = "<group>"; };
+		849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMapAnnotation.m; sourceTree = "<group>"; };
+		849BA10B1A2F20E60090F99D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		849BA10C1A2F20E60090F99D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		849BA1161A2F5B660090F99D /* MapAnnotationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationButton.h; sourceTree = "<group>"; };
+		849BA1171A2F5B660090F99D /* MapAnnotationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationButton.m; sourceTree = "<group>"; };
+		849BA11B1A2F64AC0090F99D /* MapGestureRecogniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapGestureRecogniser.h; sourceTree = "<group>"; };
+		849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapGestureRecogniser.m; sourceTree = "<group>"; };
 		84B5CD011A2B48AD0084DB55 /* OSXFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXFlippedView.h; path = Subclasses/OSXFlippedView.h; sourceTree = "<group>"; };
 		84B5CD021A2B48AD0084DB55 /* OSXFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXFlippedView.m; path = Subclasses/OSXFlippedView.m; sourceTree = "<group>"; };
-		84B808C01A29F8BC0074DF01 /* PositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PositionManager.h; path = "Shared Resources/Services/PositionManager.h"; sourceTree = "<group>"; };
-		84B808C11A29F8BC0074DF01 /* PositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PositionManager.m; path = "Shared Resources/Services/PositionManager.m"; sourceTree = "<group>"; };
+		84B808C01A29F8BC0074DF01 /* PositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionManager.h; sourceTree = "<group>"; };
+		84B808C11A29F8BC0074DF01 /* PositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionManager.m; sourceTree = "<group>"; };
 		84B808CA1A2A2EA60074DF01 /* IOSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionViewController.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.h"; sourceTree = "<group>"; };
 		84B808CB1A2A2EA60074DF01 /* IOSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSCollectionViewController.m; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionViewController.m"; sourceTree = "<group>"; };
 		84B808CE1A2A2EDB0074DF01 /* IOSCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSCollectionView.h; path = "WeatherFrog for iOS/Detail Scene/Collection Scene/IOSCollectionView.h"; sourceTree = "<group>"; };
@@ -412,21 +467,20 @@
 		84E084541A1B988E0071D662 /* WeatherFrog_for_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrog_for_OSXTests.m; sourceTree = "<group>"; };
 		84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = ../Submodules/CorePlot/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
 		84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Submodules/CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
-		84E084E21A1C7CD60071D662 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		84E084E51A1C7D040071D662 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataService.h; path = "Shared Resources/Services/DataService.h"; sourceTree = "<group>"; };
-		84E084E61A1C7D040071D662 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataService.m; path = "Shared Resources/Services/DataService.m"; sourceTree = "<group>"; };
+		84E084E51A1C7D040071D662 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
+		84E084E61A1C7D040071D662 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
 		84E084E91A1C7E620071D662 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		84E084EA1A1C7E720071D662 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		84E4B2181A2E08930089AB93 /* ForecastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForecastManager.h; path = "Shared Resources/Services/ForecastManager.h"; sourceTree = "<group>"; };
-		84E4B2191A2E08930089AB93 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForecastManager.m; path = "Shared Resources/Services/ForecastManager.m"; sourceTree = "<group>"; };
-		84E4B22A1A2E20A90089AB93 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Position.h; path = "Shared Resources/Models/Position.h"; sourceTree = "<group>"; };
-		84E4B22B1A2E20A90089AB93 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Position.m; path = "Shared Resources/Models/Position.m"; sourceTree = "<group>"; };
-		84E4B22C1A2E20A90089AB93 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Forecast.h; path = "Shared Resources/Models/Forecast.h"; sourceTree = "<group>"; };
-		84E4B22D1A2E20A90089AB93 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Forecast.m; path = "Shared Resources/Models/Forecast.m"; sourceTree = "<group>"; };
-		84E4B2321A2E210E0089AB93 /* Position+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Position+DataService.h"; path = "Shared Resources/Models/Position+DataService.h"; sourceTree = "<group>"; };
-		84E4B2331A2E210E0089AB93 /* Position+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Position+DataService.m"; path = "Shared Resources/Models/Position+DataService.m"; sourceTree = "<group>"; };
-		84E4B2361A2E21310089AB93 /* Forecast+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Forecast+DataService.h"; path = "Shared Resources/Models/Forecast+DataService.h"; sourceTree = "<group>"; };
-		84E4B2371A2E21310089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Forecast+DataService.m"; path = "Shared Resources/Models/Forecast+DataService.m"; sourceTree = "<group>"; };
+		84E4B2181A2E08930089AB93 /* ForecastManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastManager.h; sourceTree = "<group>"; };
+		84E4B2191A2E08930089AB93 /* ForecastManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastManager.m; sourceTree = "<group>"; };
+		84E4B22A1A2E20A90089AB93 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		84E4B22B1A2E20A90089AB93 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
+		84E4B22C1A2E20A90089AB93 /* Forecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecast.h; sourceTree = "<group>"; };
+		84E4B22D1A2E20A90089AB93 /* Forecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecast.m; sourceTree = "<group>"; };
+		84E4B2321A2E210E0089AB93 /* Forecast+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+DataService.h"; sourceTree = "<group>"; };
+		84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+DataService.m"; sourceTree = "<group>"; };
+		84E4B2361A2E21310089AB93 /* Forecast+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+DataService.h"; sourceTree = "<group>"; };
+		84E4B2371A2E21310089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+DataService.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +488,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845226731D2A3D6500E3A5C3 /* CoreData.framework in Frameworks */,
+				8452267D1D2A3DC800E3A5C3 /* MapKit.framework in Frameworks */,
+				845226791D2A3DC100E3A5C3 /* QuartzCore.framework in Frameworks */,
+				8452267B1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */,
 				8479B5A81CC239C800D78808 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,9 +500,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8414F2F51A2B577B004E1062 /* QuartzCore.framework in Frameworks */,
-				8414F2ED1A2B571D004E1062 /* CoreLocation.framework in Frameworks */,
-				8455586E1A291808003127B3 /* MapKit.framework in Frameworks */,
+				8452267A1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */,
+				845226781D2A3DC000E3A5C3 /* QuartzCore.framework in Frameworks */,
+				845226741D2A3D6C00E3A5C3 /* CoreData.framework in Frameworks */,
+				8452267C1D2A3DC700E3A5C3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +518,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8452266E1D2A3D3700E3A5C3 /* QuartzCore.framework in Frameworks */,
+				845226771D2A3DBB00E3A5C3 /* CoreData.framework in Frameworks */,
+				8452265F1D2A3D2900E3A5C3 /* CoreLocation.framework in Frameworks */,
 				8479B5A11CC2397200D78808 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +644,8 @@
 				8479B5AD1CC239C800D78808 /* MainInterface.storyboard */,
 				8479B5B01CC239C800D78808 /* Info.plist */,
 			);
-			path = WeatherToday;
+			name = WeatherToday;
+			path = WeatherFrog/WeatherToday;
 			sourceTree = "<group>";
 		};
 		8483CB881CB815ED003A6FF6 /* Categories */ = {
@@ -592,8 +655,7 @@
 				8483CB8C1CB815ED003A6FF6 /* NSDate */,
 				8483CB901CB815ED003A6FF6 /* NSString */,
 			);
-			name = Categories;
-			path = "Shared Resources/Categories";
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		8483CB891CB815ED003A6FF6 /* CLPlacemark */ = {
@@ -763,8 +825,7 @@
 			children = (
 				8483CC231CB819D0003A6FF6 /* ISO86001DateFormatter */,
 			);
-			name = Formatters;
-			path = "Shared Resources/Formatters";
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		8483CC231CB819D0003A6FF6 /* ISO86001DateFormatter */ = {
@@ -779,10 +840,12 @@
 		8486FE091A29CA83003AB3EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8452264A1D2A3BAF00E3A5C3 /* Position+DataService.h */,
+				8452264B1D2A3BAF00E3A5C3 /* Position+DataService.m */,
 				84E4B22A1A2E20A90089AB93 /* Position.h */,
 				84E4B22B1A2E20A90089AB93 /* Position.m */,
-				84E4B2321A2E210E0089AB93 /* Position+DataService.h */,
-				84E4B2331A2E210E0089AB93 /* Position+DataService.m */,
+				84E4B2321A2E210E0089AB93 /* Forecast+DataService.h */,
+				84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */,
 				84E4B22C1A2E20A90089AB93 /* Forecast.h */,
 				84E4B22D1A2E20A90089AB93 /* Forecast.m */,
 				84E4B2361A2E21310089AB93 /* Forecast+DataService.h */,
@@ -790,16 +853,16 @@
 				849BA0F21A2E73FA0090F99D /* MKMapAnnotation.h */,
 				849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		848BF9C91A1D2E2F00A4F000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				845226721D2A3D6500E3A5C3 /* CoreData.framework */,
+				8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */,
+				8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */,
 				8479B5A01CC2397200D78808 /* MapKit.framework */,
-				8414F2F41A2B577B004E1062 /* QuartzCore.framework */,
-				8414F2EC1A2B571D004E1062 /* CoreLocation.framework */,
-				8455586D1A291808003127B3 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
 				8479B5A71CC239C800D78808 /* NotificationCenter.framework */,
 			);
@@ -816,7 +879,7 @@
 				84E4B2181A2E08930089AB93 /* ForecastManager.h */,
 				84E4B2191A2E08930089AB93 /* ForecastManager.m */,
 			);
-			name = Services;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		849BA1071A2F20790090F99D /* Controllers */ = {
@@ -829,7 +892,7 @@
 				846109D61A308FD1007623FE /* ListViewController.h */,
 				846109D71A308FD1007623FE /* ListViewController.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		849BA11A1A2F5B6F0090F99D /* Controls */ = {
@@ -840,7 +903,7 @@
 				849BA11B1A2F64AC0090F99D /* MapGestureRecogniser.h */,
 				849BA11C1A2F64AC0090F99D /* MapGestureRecogniser.m */,
 			);
-			name = Controls;
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		84B5CD0A1A2B48B30084DB55 /* Subclasses */ = {
@@ -935,7 +998,8 @@
 				84E084201A1B987C0071D662 /* LaunchScreen.xib */,
 				84E0840E1A1B987C0071D662 /* Supporting Files */,
 			);
-			path = "WeatherFrog for iOS";
+			name = "WeatherFrog for iOS";
+			path = "WeatherFrog/WeatherFrog for iOS";
 			sourceTree = "<group>";
 		};
 		84E0840E1A1B987C0071D662 /* Supporting Files */ = {
@@ -982,7 +1046,8 @@
 				84B5CD0A1A2B48B30084DB55 /* Subclasses */,
 				84E0843B1A1B988D0071D662 /* Supporting Files */,
 			);
-			path = "WeatherFrog for OSX";
+			name = "WeatherFrog for OSX";
+			path = "WeatherFrog/WeatherFrog for OSX";
 			sourceTree = "<group>";
 		};
 		84E0843B1A1B988D0071D662 /* Supporting Files */ = {
@@ -1022,6 +1087,7 @@
 				84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */,
 			);
 			name = Vendor;
+			path = Submodules;
 			sourceTree = "<group>";
 		};
 		84E084CE1A1B9A690071D662 /* Products */ = {
@@ -1048,15 +1114,16 @@
 		84E084DF1A1C76CE0071D662 /* Shared Resources */ = {
 			isa = PBXGroup;
 			children = (
+				845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */,
 				8483CC221CB819D0003A6FF6 /* Formatters */,
 				8483CB881CB815ED003A6FF6 /* Categories */,
 				849BA1071A2F20790090F99D /* Controllers */,
 				849BA1061A2F206B0090F99D /* Services */,
-				84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */,
 				8486FE091A29CA83003AB3EE /* Models */,
 				849BA11A1A2F5B6F0090F99D /* Controls */,
 			);
 			name = "Shared Resources";
+			path = "WeatherFrog/Shared Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1354,7 +1421,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845226811D2A428C00E3A5C3 /* DDASLLogCapture.m in Sources */,
+				8452265A1D2A3BF100E3A5C3 /* NSString+URLEncoding.m in Sources */,
+				845226961D2A42EF00E3A5C3 /* UIRefreshControl+AFNetworking.m in Sources */,
+				845226551D2A3BDA00E3A5C3 /* ForecastManager.m in Sources */,
+				845226901D2A42D500E3A5C3 /* AFImageDownloader.m in Sources */,
+				845226511D2A3BC200E3A5C3 /* Forecast.m in Sources */,
+				845226821D2A429100E3A5C3 /* DDASLLogger.m in Sources */,
+				845226921D2A42DD00E3A5C3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				845226521D2A3BCA00E3A5C3 /* MKMapAnnotation.m in Sources */,
 				8479B5AC1CC239C800D78808 /* TodayViewController.m in Sources */,
+				845226941D2A42E800E3A5C3 /* UIImageView+AFNetworking.m in Sources */,
+				845226561D2A3BE100E3A5C3 /* ISO8601DateFormatter.m in Sources */,
+				845226851D2A429D00E3A5C3 /* DDTTYLogger.m in Sources */,
+				8452268E1D2A42BD00E3A5C3 /* AFURLSessionManager.m in Sources */,
+				845226861D2A42A200E3A5C3 /* DDContextFilterLogFormatter.m in Sources */,
+				8452268A1D2A42B000E3A5C3 /* AFNetworkReachabilityManager.m in Sources */,
+				845226571D2A3BE400E3A5C3 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
+				845226591D2A3BED00E3A5C3 /* NSString+ISO8601Date.m in Sources */,
+				845226971D2A42F300E3A5C3 /* UIWebView+AFNetworking.m in Sources */,
+				845226871D2A42A500E3A5C3 /* DDDispatchQueueLogFormatter.m in Sources */,
+				8452268D1D2A42BA00E3A5C3 /* AFURLResponseSerialization.m in Sources */,
+				845226831D2A429500E3A5C3 /* DDFileLogger.m in Sources */,
+				845226541D2A3BD700E3A5C3 /* PositionManager.m in Sources */,
+				845226911D2A42D900E3A5C3 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8452267F1D2A428200E3A5C3 /* CLIColor.m in Sources */,
+				845226931D2A42E000E3A5C3 /* UIButton+AFNetworking.m in Sources */,
+				845226581D2A3BEA00E3A5C3 /* NSDate+ISO8601Date.m in Sources */,
+				845226951D2A42EC00E3A5C3 /* UIProgressView+AFNetworking.m in Sources */,
+				845226531D2A3BD500E3A5C3 /* DataService.m in Sources */,
+				8452268F1D2A42D200E3A5C3 /* AFAutoPurgingImageCache.m in Sources */,
+				8452264E1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */,
+				845226841D2A429A00E3A5C3 /* DDLog.m in Sources */,
+				8452268B1D2A42B400E3A5C3 /* AFSecurityPolicy.m in Sources */,
+				845226881D2A42A800E3A5C3 /* DDMultiFormatter.m in Sources */,
+				845226891D2A42AD00E3A5C3 /* AFHTTPSessionManager.m in Sources */,
+				8452264F1D2A3BB800E3A5C3 /* Position.m in Sources */,
+				845226801D2A428900E3A5C3 /* DDAbstractDatabaseLogger.m in Sources */,
+				845226501D2A3BBF00E3A5C3 /* Forecast+DataService.m in Sources */,
+				8452268C1D2A42B800E3A5C3 /* AFURLRequestSerialization.m in Sources */,
+				8452265B1D2A3BF400E3A5C3 /* NSString+validation.m in Sources */,
+				845226471D2A3B8100E3A5C3 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,6 +1470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8483CBB71CB81606003A6FF6 /* NSString+URLEncoding.m in Sources */,
+				845226461D2A3B8000E3A5C3 /* Model.xcdatamodeld in Sources */,
 				8483CBCF1CB81768003A6FF6 /* AFSecurityPolicy.m in Sources */,
 				849BA1191A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
 				84B808D91A2A33A90074DF01 /* IOSGraphViewController.m in Sources */,
@@ -1377,7 +1485,7 @@
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
 				849BA11E1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
-				84E4B2351A2E210E0089AB93 /* Position+DataService.m in Sources */,
+				84E4B2351A2E210E0089AB93 /* Forecast+DataService.m in Sources */,
 				84E4B21B1A2E08930089AB93 /* ForecastManager.m in Sources */,
 				8483CC281CB81A00003A6FF6 /* DDAbstractDatabaseLogger.m in Sources */,
 				84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */,
@@ -1393,7 +1501,6 @@
 				846109E81A30A281007623FE /* IOSListTableView.m in Sources */,
 				8483CC2D1CB81A00003A6FF6 /* DDTTYLogger.m in Sources */,
 				842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */,
-				84E084E31A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
 				846109DA1A308FD1007623FE /* ListViewController.m in Sources */,
 				8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */,
 				845558671A291036003127B3 /* IOSSplitViewController.m in Sources */,
@@ -1414,6 +1521,7 @@
 				8483CBB41CB815F5003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				8483CC271CB819D4003A6FF6 /* ISO8601DateFormatter.m in Sources */,
 				8483CBCD1CB81768003A6FF6 /* AFHTTPSessionManager.m in Sources */,
+				8452264D1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */,
 				8483CC1D1CB8192E003A6FF6 /* UIButton+AFNetworking.m in Sources */,
 				849BA10E1A2F20E60090F99D /* MapViewController.m in Sources */,
 				8483CBD01CB81768003A6FF6 /* AFURLRequestSerialization.m in Sources */,
@@ -1429,6 +1537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E0842E1A1B987C0071D662 /* WeatherFrog_for_iOSTests.m in Sources */,
+				845226491D2A3B8400E3A5C3 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1437,8 +1546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8483CBCC1CB81755003A6FF6 /* AFURLSessionManager.m in Sources */,
-				84E4B2341A2E210E0089AB93 /* Position+DataService.m in Sources */,
-				84E084E41A1C7CD70071D662 /* Model.xcdatamodeld in Sources */,
+				84E4B2341A2E210E0089AB93 /* Forecast+DataService.m in Sources */,
 				84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */,
 				84CB76361A288E74008D6775 /* OSXGraphViewController.m in Sources */,
 				84E084E81A1C7D040071D662 /* DataService.m in Sources */,
@@ -1496,6 +1604,8 @@
 				8483CB9D1CB815ED003A6FF6 /* NSString+URLEncoding.m in Sources */,
 				8483CB9A1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084411A1B988D0071D662 /* main.m in Sources */,
+				845226451D2A3B7C00E3A5C3 /* Model.xcdatamodeld in Sources */,
+				8452264C1D2A3BAF00E3A5C3 /* Position+DataService.m in Sources */,
 				84CB762E1A288D83008D6775 /* OSXTabView.m in Sources */,
 				8432FF091A2B0B0C00414A20 /* OSXCollectionViewItem.m in Sources */,
 				84E0843F1A1B988D0071D662 /* OSXAppDelegate.m in Sources */,
@@ -1507,6 +1617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E084551A1B988E0071D662 /* WeatherFrog_for_OSXTests.m in Sources */,
+				845226481D2A3B8300E3A5C3 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1570,12 +1681,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = WeatherToday/Info.plist;
+				GCC_PREFIX_HEADER = WeatherFrog/WeatherToday/PrefixHeader.pch;
+				INFOPLIST_FILE = WeatherFrog/WeatherToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
@@ -1589,13 +1701,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = WeatherToday/Info.plist;
+				GCC_PREFIX_HEADER = WeatherFrog/WeatherToday/PrefixHeader.pch;
+				INFOPLIST_FILE = WeatherFrog/WeatherToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
@@ -1609,13 +1722,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				CODE_SIGN_ENTITLEMENTS = WeatherToday/WeatherToday.entitlements;
+				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = WeatherToday/Info.plist;
+				GCC_PREFIX_HEADER = WeatherFrog/WeatherToday/PrefixHeader.pch;
+				INFOPLIST_FILE = WeatherFrog/WeatherToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.WeatherFrog-for-iOS.WeatherToday";
@@ -1667,15 +1781,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
-				INFOPLIST_FILE = "WeatherFrog for OSX/Info.plist";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for OSX/PrefixHeader.pch";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1709,12 +1823,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
-				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for iOS/PrefixHeader.pch";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1827,16 +1941,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Libor Kucera (TFV8F8C22D)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for iOS/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1849,12 +1963,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: IC Servis, s.r.o. (PH3V9JYRDW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for iOS/PrefixHeader.pch";
-				INFOPLIST_FILE = "WeatherFrog for iOS/Info.plist";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for iOS/PrefixHeader.pch";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1905,18 +2019,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer: Libor Kucera (TFV8F8C22D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Mac Developer: Libor Kucera (TFV8F8C22D)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer: Libor Kucera (TFV8F8C22D)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for OSX/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "WeatherFrog for OSX/Info.plist";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1930,15 +2044,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application: IC Servis, s.r.o. (PH3V9JYRDW)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WeatherFrog for OSX/PrefixHeader.pch";
-				INFOPLIST_FILE = "WeatherFrog for OSX/Info.plist";
+				GCC_PREFIX_HEADER = "WeatherFrog/WeatherFrog for OSX/PrefixHeader.pch";
+				INFOPLIST_FILE = "WeatherFrog/WeatherFrog for OSX/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ic-servis.$(PRODUCT_NAME:rfc1034identifier)";
@@ -2057,14 +2171,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		84E084E11A1C7CD60071D662 /* Model.xcdatamodeld */ = {
+		845226431D2A3B7C00E3A5C3 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84E084E21A1C7CD60071D662 /* Model.xcdatamodel */,
+				845226441D2A3B7C00E3A5C3 /* Model.xcdatamodel */,
 			);
-			currentVersion = 84E084E21A1C7CD60071D662 /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = "Shared Resources/Model.xcdatamodeld";
+			currentVersion = 845226441D2A3B7C00E3A5C3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
