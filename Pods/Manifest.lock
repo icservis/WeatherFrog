@@ -1,0 +1,47 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - CorePlot (2.1)
+  - Crashlytics (3.7.1):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
+
+DEPENDENCIES:
+  - AFNetworking
+  - AFNetworking/UIKit
+  - CocoaLumberjack
+  - CorePlot
+  - Crashlytics
+  - Fabric
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
+  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+
+PODFILE CHECKSUM: bd399b885874b25365ecf1e94be6f4089fe96760
+
+COCOAPODS: 1.0.1

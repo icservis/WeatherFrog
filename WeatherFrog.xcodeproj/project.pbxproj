@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18BC1077792E776E1B2AD9E4 /* libPods-WeatherToday.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3949EC773C4968FF86C1CDD /* libPods-WeatherToday.a */; };
+		26127EA433591C1A656F7998 /* libPods-WeatherFrog for iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4455DDA2020914FC9DA45A82 /* libPods-WeatherFrog for iOS.a */; };
 		841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841381441A2A7F94004EC601 /* IOSGraphView.m */; };
 		842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
 		842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842438641A2FAA9C00A7F5A7 /* DetailViewController.m */; };
@@ -49,31 +51,7 @@
 		8452267B1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */; };
 		8452267C1D2A3DC700E3A5C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A01CC2397200D78808 /* MapKit.framework */; };
 		8452267D1D2A3DC800E3A5C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8479B5A01CC2397200D78808 /* MapKit.framework */; };
-		8452267F1D2A428200E3A5C3 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBD61CB8178E003A6FF6 /* CLIColor.m */; };
-		845226801D2A428900E3A5C3 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */; };
-		845226811D2A428C00E3A5C3 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */; };
-		845226821D2A429100E3A5C3 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */; };
-		845226831D2A429500E3A5C3 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */; };
-		845226841D2A429A00E3A5C3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE51CB8178E003A6FF6 /* DDLog.m */; };
-		845226851D2A429D00E3A5C3 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */; };
-		845226861D2A42A200E3A5C3 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */; };
-		845226871D2A42A500E3A5C3 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */; };
-		845226881D2A42A800E3A5C3 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */; };
-		845226891D2A42AD00E3A5C3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */; };
-		8452268A1D2A42B000E3A5C3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */; };
-		8452268B1D2A42B400E3A5C3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */; };
-		8452268C1D2A42B800E3A5C3 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */; };
-		8452268D1D2A42BA00E3A5C3 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */; };
-		8452268E1D2A42BD00E3A5C3 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */; };
-		8452268F1D2A42D200E3A5C3 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */; };
-		845226901D2A42D500E3A5C3 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */; };
-		845226911D2A42D900E3A5C3 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */; };
-		845226921D2A42DD00E3A5C3 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */; };
-		845226931D2A42E000E3A5C3 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */; };
-		845226941D2A42E800E3A5C3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */; };
-		845226951D2A42EC00E3A5C3 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */; };
-		845226961D2A42EF00E3A5C3 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */; };
-		845226971D2A42F300E3A5C3 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */; };
+		845226991D2A477A00E3A5C3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 845226981D2A477A00E3A5C3 /* Podfile */; };
 		845558671A291036003127B3 /* IOSSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558661A291036003127B3 /* IOSSplitViewController.m */; };
 		8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455586A1A2912A3003127B3 /* IOSMapViewController.m */; };
 		845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845558701A291C17003127B3 /* IOSDetailViewController.m */; };
@@ -98,58 +76,8 @@
 		8483CBB61CB81601003A6FF6 /* NSString+ISO8601Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB931CB815ED003A6FF6 /* NSString+ISO8601Date.m */; };
 		8483CBB71CB81606003A6FF6 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB961CB815ED003A6FF6 /* NSString+URLEncoding.m */; };
 		8483CBB81CB8160E003A6FF6 /* NSString+validation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CB991CB815ED003A6FF6 /* NSString+validation.m */; };
-		8483CBC71CB81755003A6FF6 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */; };
-		8483CBC81CB81755003A6FF6 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */; };
-		8483CBC91CB81755003A6FF6 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */; };
-		8483CBCA1CB81755003A6FF6 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */; };
-		8483CBCB1CB81755003A6FF6 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */; };
-		8483CBCC1CB81755003A6FF6 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */; };
-		8483CBCD1CB81768003A6FF6 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */; };
-		8483CBCE1CB81768003A6FF6 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */; };
-		8483CBCF1CB81768003A6FF6 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */; };
-		8483CBD01CB81768003A6FF6 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */; };
-		8483CBD11CB81768003A6FF6 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */; };
-		8483CBD21CB81768003A6FF6 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */; };
-		8483CBF01CB8178E003A6FF6 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBD61CB8178E003A6FF6 /* CLIColor.m */; };
-		8483CBF21CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */; };
-		8483CBF31CB8178E003A6FF6 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */; };
-		8483CBF41CB8178E003A6FF6 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */; };
-		8483CBF51CB8178E003A6FF6 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */; };
-		8483CBF61CB8178E003A6FF6 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE51CB8178E003A6FF6 /* DDLog.m */; };
-		8483CBF71CB8178E003A6FF6 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */; };
-		8483CBF81CB8178E003A6FF6 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */; };
-		8483CBF91CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */; };
-		8483CBFA1CB8178E003A6FF6 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */; };
-		8483CC101CB8191F003A6FF6 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */; };
-		8483CC111CB8191F003A6FF6 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */; };
-		8483CC121CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */; };
-		8483CC131CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */; };
-		8483CC141CB8191F003A6FF6 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */; };
-		8483CC151CB8191F003A6FF6 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */; };
-		8483CC161CB8191F003A6FF6 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */; };
-		8483CC171CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */; };
-		8483CC181CB8191F003A6FF6 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */; };
-		8483CC191CB8192E003A6FF6 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */; };
-		8483CC1A1CB8192E003A6FF6 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */; };
-		8483CC1B1CB8192E003A6FF6 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */; };
-		8483CC1C1CB8192E003A6FF6 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */; };
-		8483CC1D1CB8192E003A6FF6 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */; };
-		8483CC1E1CB8192E003A6FF6 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */; };
-		8483CC1F1CB8192E003A6FF6 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */; };
-		8483CC201CB8192E003A6FF6 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */; };
-		8483CC211CB8192E003A6FF6 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */; };
 		8483CC261CB819D0003A6FF6 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC251CB819D0003A6FF6 /* ISO8601DateFormatter.m */; };
 		8483CC271CB819D4003A6FF6 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CC251CB819D0003A6FF6 /* ISO8601DateFormatter.m */; };
-		8483CC281CB81A00003A6FF6 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */; };
-		8483CC291CB81A00003A6FF6 /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */; };
-		8483CC2A1CB81A00003A6FF6 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */; };
-		8483CC2B1CB81A00003A6FF6 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */; };
-		8483CC2C1CB81A00003A6FF6 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE51CB8178E003A6FF6 /* DDLog.m */; };
-		8483CC2D1CB81A00003A6FF6 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */; };
-		8483CC2E1CB81A08003A6FF6 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */; };
-		8483CC2F1CB81A08003A6FF6 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */; };
-		8483CC301CB81A08003A6FF6 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */; };
-		8483CC311CB81A0D003A6FF6 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483CBD61CB8178E003A6FF6 /* CLIColor.m */; };
 		8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8486FDFD1A29BDB4003AB3EE /* IOSListTableViewCell.m */; };
 		849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
 		849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 849BA0F31A2E73FA0090F99D /* MKMapAnnotation.m */; };
@@ -196,6 +124,7 @@
 		84E4B2351A2E210E0089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */; };
 		84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
 		84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4B2371A2E21310089AB93 /* Forecast+DataService.m */; };
+		93F16506E7F37A0812FADB84 /* libPods-WeatherFrog for OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C74B5A32C9DAA11262FFEE /* libPods-WeatherFrog for OSX.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,34 +134,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8479B5A51CC239C800D78808;
 			remoteInfo = WeatherToday;
-		};
-		8483CBAC1CB815EE003A6FF6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C38A09781A46185200D45436;
-			remoteInfo = "CorePlot iOS";
-		};
-		8483CBAE1CB815EE003A6FF6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C38A09821A46185300D45436;
-			remoteInfo = "UnitTests iOS";
-		};
-		8483CBB01CB815EE003A6FF6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C38A09BA1A4619A900D45436;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
-		8483CBB21CB815EE003A6FF6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C38A09C41A4619A900D45436;
-			remoteInfo = "CorePlot-CocoaTouchTests";
 		};
 		84E084281A1B987C0071D662 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -247,27 +148,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 84E084381A1B988D0071D662;
 			remoteInfo = "WeatherFrog for OSX";
-		};
-		84E084D31A1B9A6A0071D662 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = CorePlot;
-		};
-		84E084D51A1B9A6A0071D662 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0730F600109492D800E95162;
-			remoteInfo = UnitTests;
-		};
-		84E084DD1A1B9A7D0071D662 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -286,6 +166,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1836B3F9145AAD72C9D389A6 /* Pods-WeatherFrog for OSX.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for OSX.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for OSX/Pods-WeatherFrog for OSX.adhoc.xcconfig"; sourceTree = "<group>"; };
+		31C74B5A32C9DAA11262FFEE /* libPods-WeatherFrog for OSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherFrog for OSX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38604A4BAF46025E12328672 /* Pods-WeatherFrog for OSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for OSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for OSX/Pods-WeatherFrog for OSX.release.xcconfig"; sourceTree = "<group>"; };
+		4455DDA2020914FC9DA45A82 /* libPods-WeatherFrog for iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherFrog for iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CB67F2B414D175EE8E414F /* Pods-WeatherFrog for OSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for OSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for OSX/Pods-WeatherFrog for OSX.debug.xcconfig"; sourceTree = "<group>"; };
 		841381431A2A7F94004EC601 /* IOSGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSGraphView.h; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.h"; sourceTree = "<group>"; };
 		841381441A2A7F94004EC601 /* IOSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSGraphView.m; path = "WeatherFrog for iOS/Detail Scene/Graph Scene/IOSGraphView.m"; sourceTree = "<group>"; };
 		841A1AF21A6DA0B50070ECFF /* WeatherFrog for iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WeatherFrog for iOS.entitlements"; sourceTree = "<group>"; };
@@ -311,6 +196,8 @@
 		8452265E1D2A3D2900E3A5C3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		8452266D1D2A3D3700E3A5C3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		845226721D2A3D6500E3A5C3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		845226981D2A477A00E3A5C3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8452269E1D2A49D900E3A5C3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		845558651A291036003127B3 /* IOSSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSSplitViewController.h; path = "Split Scene/IOSSplitViewController.h"; sourceTree = "<group>"; };
 		845558661A291036003127B3 /* IOSSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSSplitViewController.m; path = "Split Scene/IOSSplitViewController.m"; sourceTree = "<group>"; };
 		845558691A2912A3003127B3 /* IOSMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSMapViewController.h; path = "Map Scene/IOSMapViewController.h"; sourceTree = "<group>"; };
@@ -345,65 +232,6 @@
 		8483CB961CB815ED003A6FF6 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		8483CB981CB815ED003A6FF6 /* NSString+validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+validation.h"; sourceTree = "<group>"; };
 		8483CB991CB815ED003A6FF6 /* NSString+validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+validation.m"; sourceTree = "<group>"; };
-		8483CBBA1CB81755003A6FF6 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		8483CBBC1CB81755003A6FF6 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		8483CBBD1CB81755003A6FF6 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		8483CBBF1CB81755003A6FF6 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
-		8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
-		8483CBC11CB81755003A6FF6 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
-		8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		8483CBC31CB81755003A6FF6 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		8483CBC51CB81755003A6FF6 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		8483CBD51CB8178E003A6FF6 /* CLIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIColor.h; sourceTree = "<group>"; };
-		8483CBD61CB8178E003A6FF6 /* CLIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIColor.m; sourceTree = "<group>"; };
-		8483CBD71CB8178E003A6FF6 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
-		8483CBD81CB8178E003A6FF6 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaLumberjack.swift; sourceTree = "<group>"; };
-		8483CBD91CB8178E003A6FF6 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		8483CBDB1CB8178E003A6FF6 /* DDASLLogCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogCapture.h; sourceTree = "<group>"; };
-		8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogCapture.m; sourceTree = "<group>"; };
-		8483CBDD1CB8178E003A6FF6 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		8483CBDF1CB8178E003A6FF6 /* DDAssertMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAssertMacros.h; sourceTree = "<group>"; };
-		8483CBE01CB8178E003A6FF6 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		8483CBE21CB8178E003A6FF6 /* DDLegacyMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLegacyMacros.h; sourceTree = "<group>"; };
-		8483CBE31CB8178E003A6FF6 /* DDLog+LOGV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDLog+LOGV.h"; sourceTree = "<group>"; };
-		8483CBE41CB8178E003A6FF6 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		8483CBE51CB8178E003A6FF6 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		8483CBE61CB8178E003A6FF6 /* DDLogMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogMacros.h; sourceTree = "<group>"; };
-		8483CBE71CB8178E003A6FF6 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		8483CBEA1CB8178E003A6FF6 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		8483CBEC1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		8483CBEE1CB8178E003A6FF6 /* DDMultiFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMultiFormatter.h; sourceTree = "<group>"; };
-		8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
-		8483CBFC1CB8191F003A6FF6 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAutoPurgingImageCache.h; sourceTree = "<group>"; };
-		8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAutoPurgingImageCache.m; sourceTree = "<group>"; };
-		8483CBFE1CB8191F003A6FF6 /* AFImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageDownloader.h; sourceTree = "<group>"; };
-		8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageDownloader.m; sourceTree = "<group>"; };
-		8483CC001CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		8483CC021CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
-		8483CC041CB8191F003A6FF6 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
-		8483CC061CB8191F003A6FF6 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC071CB8191F003A6FF6 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		8483CC091CB8191F003A6FF6 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC0A1CB8191F003A6FF6 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
-		8483CC0C1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
-		8483CC0E1CB8191F003A6FF6 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
-		8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		8483CC241CB819D0003A6FF6 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
 		8483CC251CB819D0003A6FF6 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		8486FDFC1A29BDB4003AB3EE /* IOSListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSListTableViewCell.h; path = "List Scene/IOSListTableViewCell.h"; sourceTree = "<group>"; };
@@ -465,8 +293,6 @@
 		84E0844E1A1B988E0071D662 /* WeatherFrog for OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherFrog for OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E084531A1B988E0071D662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E084541A1B988E0071D662 /* WeatherFrog_for_OSXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherFrog_for_OSXTests.m; sourceTree = "<group>"; };
-		84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = ../Submodules/CorePlot/framework/CorePlot.xcodeproj; sourceTree = "<group>"; };
-		84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../Submodules/CorePlot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		84E084E51A1C7D040071D662 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
 		84E084E61A1C7D040071D662 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
 		84E084E91A1C7E620071D662 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -481,6 +307,13 @@
 		84E4B2331A2E210E0089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+DataService.m"; sourceTree = "<group>"; };
 		84E4B2361A2E21310089AB93 /* Forecast+DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecast+DataService.h"; sourceTree = "<group>"; };
 		84E4B2371A2E21310089AB93 /* Forecast+DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecast+DataService.m"; sourceTree = "<group>"; };
+		B26D95CD713E374B58CDC3A6 /* Pods-WeatherToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday.debug.xcconfig"; sourceTree = "<group>"; };
+		BE12A6CE90A58312CCBF332D /* Pods-WeatherFrog for iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for iOS/Pods-WeatherFrog for iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BFB1165BFF92C1FB40BDCE0A /* Pods-WeatherToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherToday.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday.release.xcconfig"; sourceTree = "<group>"; };
+		EC208CE15B3CFAB3A3458045 /* Pods-WeatherFrog for iOS.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for iOS.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for iOS/Pods-WeatherFrog for iOS.adhoc.xcconfig"; sourceTree = "<group>"; };
+		F3949EC773C4968FF86C1CDD /* libPods-WeatherToday.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherToday.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCEFEA9E06461512F09FE809 /* Pods-WeatherFrog for iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherFrog for iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherFrog for iOS/Pods-WeatherFrog for iOS.release.xcconfig"; sourceTree = "<group>"; };
+		FFAF747EBFE2BA2EB198EF8D /* Pods-WeatherToday.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherToday.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday.adhoc.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +326,7 @@
 				845226791D2A3DC100E3A5C3 /* QuartzCore.framework in Frameworks */,
 				8452267B1D2A3DC400E3A5C3 /* CoreLocation.framework in Frameworks */,
 				8479B5A81CC239C800D78808 /* NotificationCenter.framework in Frameworks */,
+				18BC1077792E776E1B2AD9E4 /* libPods-WeatherToday.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +338,7 @@
 				845226781D2A3DC000E3A5C3 /* QuartzCore.framework in Frameworks */,
 				845226741D2A3D6C00E3A5C3 /* CoreData.framework in Frameworks */,
 				8452267C1D2A3DC700E3A5C3 /* MapKit.framework in Frameworks */,
+				26127EA433591C1A656F7998 /* libPods-WeatherFrog for iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +357,7 @@
 				845226771D2A3DBB00E3A5C3 /* CoreData.framework in Frameworks */,
 				8452265F1D2A3D2900E3A5C3 /* CoreLocation.framework in Frameworks */,
 				8479B5A11CC2397200D78808 /* MapKit.framework in Frameworks */,
+				93F16506E7F37A0812FADB84 /* libPods-WeatherFrog for OSX.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +474,7 @@
 		8479B5A91CC239C800D78808 /* WeatherToday */ = {
 			isa = PBXGroup;
 			children = (
+				8452269E1D2A49D900E3A5C3 /* PrefixHeader.pch */,
 				8479B5B81CC23B2600D78808 /* WeatherToday.entitlements */,
 				8479B5AA1CC239C800D78808 /* TodayViewController.h */,
 				8479B5AB1CC239C800D78808 /* TodayViewController.m */,
@@ -721,105 +558,6 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
-		8483CBB91CB81755003A6FF6 /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBBA1CB81755003A6FF6 /* AFHTTPSessionManager.h */,
-				8483CBBB1CB81755003A6FF6 /* AFHTTPSessionManager.m */,
-				8483CBBC1CB81755003A6FF6 /* AFNetworking.h */,
-				8483CBBD1CB81755003A6FF6 /* AFNetworkReachabilityManager.h */,
-				8483CBBE1CB81755003A6FF6 /* AFNetworkReachabilityManager.m */,
-				8483CBBF1CB81755003A6FF6 /* AFSecurityPolicy.h */,
-				8483CBC01CB81755003A6FF6 /* AFSecurityPolicy.m */,
-				8483CBC11CB81755003A6FF6 /* AFURLRequestSerialization.h */,
-				8483CBC21CB81755003A6FF6 /* AFURLRequestSerialization.m */,
-				8483CBC31CB81755003A6FF6 /* AFURLResponseSerialization.h */,
-				8483CBC41CB81755003A6FF6 /* AFURLResponseSerialization.m */,
-				8483CBC51CB81755003A6FF6 /* AFURLSessionManager.h */,
-				8483CBC61CB81755003A6FF6 /* AFURLSessionManager.m */,
-			);
-			name = AFNetworking;
-			path = ../Submodules/AFNetworking/AFNetworking;
-			sourceTree = "<group>";
-		};
-		8483CBD31CB8178E003A6FF6 /* Lumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBD41CB8178E003A6FF6 /* CLI */,
-				8483CBD71CB8178E003A6FF6 /* CocoaLumberjack.h */,
-				8483CBD81CB8178E003A6FF6 /* CocoaLumberjack.swift */,
-				8483CBD91CB8178E003A6FF6 /* DDAbstractDatabaseLogger.h */,
-				8483CBDA1CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m */,
-				8483CBDB1CB8178E003A6FF6 /* DDASLLogCapture.h */,
-				8483CBDC1CB8178E003A6FF6 /* DDASLLogCapture.m */,
-				8483CBDD1CB8178E003A6FF6 /* DDASLLogger.h */,
-				8483CBDE1CB8178E003A6FF6 /* DDASLLogger.m */,
-				8483CBDF1CB8178E003A6FF6 /* DDAssertMacros.h */,
-				8483CBE01CB8178E003A6FF6 /* DDFileLogger.h */,
-				8483CBE11CB8178E003A6FF6 /* DDFileLogger.m */,
-				8483CBE21CB8178E003A6FF6 /* DDLegacyMacros.h */,
-				8483CBE31CB8178E003A6FF6 /* DDLog+LOGV.h */,
-				8483CBE41CB8178E003A6FF6 /* DDLog.h */,
-				8483CBE51CB8178E003A6FF6 /* DDLog.m */,
-				8483CBE61CB8178E003A6FF6 /* DDLogMacros.h */,
-				8483CBE71CB8178E003A6FF6 /* DDTTYLogger.h */,
-				8483CBE81CB8178E003A6FF6 /* DDTTYLogger.m */,
-				8483CBE91CB8178E003A6FF6 /* Extensions */,
-			);
-			name = Lumberjack;
-			path = ../Submodules/CocoaLumberjack/Classes;
-			sourceTree = "<group>";
-		};
-		8483CBD41CB8178E003A6FF6 /* CLI */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBD51CB8178E003A6FF6 /* CLIColor.h */,
-				8483CBD61CB8178E003A6FF6 /* CLIColor.m */,
-			);
-			path = CLI;
-			sourceTree = "<group>";
-		};
-		8483CBE91CB8178E003A6FF6 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBEA1CB8178E003A6FF6 /* DDContextFilterLogFormatter.h */,
-				8483CBEB1CB8178E003A6FF6 /* DDContextFilterLogFormatter.m */,
-				8483CBEC1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.h */,
-				8483CBED1CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m */,
-				8483CBEE1CB8178E003A6FF6 /* DDMultiFormatter.h */,
-				8483CBEF1CB8178E003A6FF6 /* DDMultiFormatter.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		8483CBFB1CB8191F003A6FF6 /* UIKit+AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBFC1CB8191F003A6FF6 /* AFAutoPurgingImageCache.h */,
-				8483CBFD1CB8191F003A6FF6 /* AFAutoPurgingImageCache.m */,
-				8483CBFE1CB8191F003A6FF6 /* AFImageDownloader.h */,
-				8483CBFF1CB8191F003A6FF6 /* AFImageDownloader.m */,
-				8483CC001CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.h */,
-				8483CC011CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m */,
-				8483CC021CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.h */,
-				8483CC031CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m */,
-				8483CC041CB8191F003A6FF6 /* UIButton+AFNetworking.h */,
-				8483CC051CB8191F003A6FF6 /* UIButton+AFNetworking.m */,
-				8483CC061CB8191F003A6FF6 /* UIImage+AFNetworking.h */,
-				8483CC071CB8191F003A6FF6 /* UIImageView+AFNetworking.h */,
-				8483CC081CB8191F003A6FF6 /* UIImageView+AFNetworking.m */,
-				8483CC091CB8191F003A6FF6 /* UIKit+AFNetworking.h */,
-				8483CC0A1CB8191F003A6FF6 /* UIProgressView+AFNetworking.h */,
-				8483CC0B1CB8191F003A6FF6 /* UIProgressView+AFNetworking.m */,
-				8483CC0C1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.h */,
-				8483CC0D1CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m */,
-				8483CC0E1CB8191F003A6FF6 /* UIWebView+AFNetworking.h */,
-				8483CC0F1CB8191F003A6FF6 /* UIWebView+AFNetworking.m */,
-			);
-			name = "UIKit+AFNetworking";
-			path = "../Submodules/AFNetworking/UIKit+AFNetworking";
-			sourceTree = "<group>";
-		};
 		8483CC221CB819D0003A6FF6 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +603,9 @@
 				8479B5A01CC2397200D78808 /* MapKit.framework */,
 				848BF9CA1A1D2E2F00A4F000 /* WatchKit.framework */,
 				8479B5A71CC239C800D78808 /* NotificationCenter.framework */,
+				31C74B5A32C9DAA11262FFEE /* libPods-WeatherFrog for OSX.a */,
+				4455DDA2020914FC9DA45A82 /* libPods-WeatherFrog for iOS.a */,
+				F3949EC773C4968FF86C1CDD /* libPods-WeatherToday.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -959,15 +700,16 @@
 		84E083D31A1B98380071D662 = {
 			isa = PBXGroup;
 			children = (
+				845226981D2A477A00E3A5C3 /* Podfile */,
 				84E0843A1A1B988D0071D662 /* WeatherFrog for OSX */,
 				84E0840D1A1B987C0071D662 /* WeatherFrog for iOS */,
 				84E084DF1A1C76CE0071D662 /* Shared Resources */,
 				8479B5A91CC239C800D78808 /* WeatherToday */,
 				848BF9C91A1D2E2F00A4F000 /* Frameworks */,
-				84E0845C1A1B99B10071D662 /* Vendor */,
 				84E0842A1A1B987C0071D662 /* WeatherFrog for iOSTests */,
 				84E084511A1B988E0071D662 /* WeatherFrog for OSXTests */,
 				84E083DD1A1B98380071D662 /* Products */,
+				8610C2B86AC3580802B6AE64 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1077,40 +819,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		84E0845C1A1B99B10071D662 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				8483CBFB1CB8191F003A6FF6 /* UIKit+AFNetworking */,
-				8483CBD31CB8178E003A6FF6 /* Lumberjack */,
-				8483CBB91CB81755003A6FF6 /* AFNetworking */,
-				84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */,
-				84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */,
-			);
-			name = Vendor;
-			path = Submodules;
-			sourceTree = "<group>";
-		};
-		84E084CE1A1B9A690071D662 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				84E084D41A1B9A6A0071D662 /* CorePlot.framework */,
-				84E084D61A1B9A6A0071D662 /* UnitTests.xctest */,
-				8483CBAD1CB815EE003A6FF6 /* CorePlot.framework */,
-				8483CBAF1CB815EE003A6FF6 /* UnitTests iOS.xctest */,
-				8483CBB11CB815EE003A6FF6 /* libCorePlot-CocoaTouch.a */,
-				8483CBB31CB815EE003A6FF6 /* CorePlot-CocoaTouchTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		84E084D81A1B9A7D0071D662 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				84E084DE1A1B9A7D0071D662 /* libCorePlot-CocoaTouch.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		84E084DF1A1C76CE0071D662 /* Shared Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,6 +834,22 @@
 			path = "WeatherFrog/Shared Resources";
 			sourceTree = "<group>";
 		};
+		8610C2B86AC3580802B6AE64 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83CB67F2B414D175EE8E414F /* Pods-WeatherFrog for OSX.debug.xcconfig */,
+				38604A4BAF46025E12328672 /* Pods-WeatherFrog for OSX.release.xcconfig */,
+				1836B3F9145AAD72C9D389A6 /* Pods-WeatherFrog for OSX.adhoc.xcconfig */,
+				BE12A6CE90A58312CCBF332D /* Pods-WeatherFrog for iOS.debug.xcconfig */,
+				FCEFEA9E06461512F09FE809 /* Pods-WeatherFrog for iOS.release.xcconfig */,
+				EC208CE15B3CFAB3A3458045 /* Pods-WeatherFrog for iOS.adhoc.xcconfig */,
+				B26D95CD713E374B58CDC3A6 /* Pods-WeatherToday.debug.xcconfig */,
+				BFB1165BFF92C1FB40BDCE0A /* Pods-WeatherToday.release.xcconfig */,
+				FFAF747EBFE2BA2EB198EF8D /* Pods-WeatherToday.adhoc.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1133,9 +857,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8479B5B41CC239C800D78808 /* Build configuration list for PBXNativeTarget "WeatherToday" */;
 			buildPhases = (
+				552B9A561EFC7A7E156D2D71 /* [CP] Check Pods Manifest.lock */,
 				8479B5A21CC239C800D78808 /* Sources */,
 				8479B5A31CC239C800D78808 /* Frameworks */,
 				8479B5A41CC239C800D78808 /* Resources */,
+				7DA3333129C2A8C704662B05 /* [CP] Embed Pods Frameworks */,
+				190312D6D3B50015334FA286 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1150,10 +877,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84E0842F1A1B987C0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for iOS" */;
 			buildPhases = (
+				0BCF1B107C1DAE18C7C63C40 /* [CP] Check Pods Manifest.lock */,
 				84E084081A1B987C0071D662 /* Sources */,
 				84E084091A1B987C0071D662 /* Frameworks */,
 				84E0840A1A1B987C0071D662 /* Resources */,
 				848BF9F41A1D2E2F00A4F000 /* Embed App Extensions */,
+				98BB624E1BD1E32F401DE25D /* [CP] Embed Pods Frameworks */,
+				3A74FD061482EBEE91CED0FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1187,9 +917,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84E084561A1B988E0071D662 /* Build configuration list for PBXNativeTarget "WeatherFrog for OSX" */;
 			buildPhases = (
+				09C217BA663483875F0F890D /* [CP] Check Pods Manifest.lock */,
 				84E084351A1B988D0071D662 /* Sources */,
 				84E084361A1B988D0071D662 /* Frameworks */,
 				84E084371A1B988D0071D662 /* Resources */,
+				FDE9342581F1AD7CCB9F9634 /* [CP] Embed Pods Frameworks */,
+				58C79F93A091DE48C53A6B79 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1299,16 +1032,6 @@
 			mainGroup = 84E083D31A1B98380071D662;
 			productRefGroup = 84E083DD1A1B98380071D662 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 84E084D81A1B9A7D0071D662 /* Products */;
-					ProjectRef = 84E084D71A1B9A7D0071D662 /* CorePlot-CocoaTouch.xcodeproj */;
-				},
-				{
-					ProductGroup = 84E084CE1A1B9A690071D662 /* Products */;
-					ProjectRef = 84E084CD1A1B9A690071D662 /* CorePlot.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				84E084381A1B988D0071D662 /* WeatherFrog for OSX */,
@@ -1319,58 +1042,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8483CBAD1CB815EE003A6FF6 /* CorePlot.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CorePlot.framework;
-			remoteRef = 8483CBAC1CB815EE003A6FF6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8483CBAF1CB815EE003A6FF6 /* UnitTests iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UnitTests iOS.xctest";
-			remoteRef = 8483CBAE1CB815EE003A6FF6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8483CBB11CB815EE003A6FF6 /* libCorePlot-CocoaTouch.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 8483CBB01CB815EE003A6FF6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8483CBB31CB815EE003A6FF6 /* CorePlot-CocoaTouchTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "CorePlot-CocoaTouchTests.xctest";
-			remoteRef = 8483CBB21CB815EE003A6FF6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84E084D41A1B9A6A0071D662 /* CorePlot.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CorePlot.framework;
-			remoteRef = 84E084D31A1B9A6A0071D662 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84E084D61A1B9A6A0071D662 /* UnitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTests.xctest;
-			remoteRef = 84E084D51A1B9A6A0071D662 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84E084DE1A1B9A7D0071D662 /* libCorePlot-CocoaTouch.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 84E084DD1A1B9A7D0071D662 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8479B5A41CC239C800D78808 /* Resources */ = {
@@ -1402,6 +1073,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845226991D2A477A00E3A5C3 /* Podfile in Resources */,
 				84E084461A1B988E0071D662 /* Images.xcassets in Resources */,
 				84E084491A1B988E0071D662 /* Main.storyboard in Resources */,
 			);
@@ -1416,50 +1088,163 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09C217BA663483875F0F890D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BCF1B107C1DAE18C7C63C40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		190312D6D3B50015334FA286 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A74FD061482EBEE91CED0FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherFrog for iOS/Pods-WeatherFrog for iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		552B9A561EFC7A7E156D2D71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		58C79F93A091DE48C53A6B79 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherFrog for OSX/Pods-WeatherFrog for OSX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DA3333129C2A8C704662B05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherToday/Pods-WeatherToday-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98BB624E1BD1E32F401DE25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherFrog for iOS/Pods-WeatherFrog for iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDE9342581F1AD7CCB9F9634 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeatherFrog for OSX/Pods-WeatherFrog for OSX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8479B5A21CC239C800D78808 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845226811D2A428C00E3A5C3 /* DDASLLogCapture.m in Sources */,
 				8452265A1D2A3BF100E3A5C3 /* NSString+URLEncoding.m in Sources */,
-				845226961D2A42EF00E3A5C3 /* UIRefreshControl+AFNetworking.m in Sources */,
 				845226551D2A3BDA00E3A5C3 /* ForecastManager.m in Sources */,
-				845226901D2A42D500E3A5C3 /* AFImageDownloader.m in Sources */,
 				845226511D2A3BC200E3A5C3 /* Forecast.m in Sources */,
-				845226821D2A429100E3A5C3 /* DDASLLogger.m in Sources */,
-				845226921D2A42DD00E3A5C3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				845226521D2A3BCA00E3A5C3 /* MKMapAnnotation.m in Sources */,
 				8479B5AC1CC239C800D78808 /* TodayViewController.m in Sources */,
-				845226941D2A42E800E3A5C3 /* UIImageView+AFNetworking.m in Sources */,
 				845226561D2A3BE100E3A5C3 /* ISO8601DateFormatter.m in Sources */,
-				845226851D2A429D00E3A5C3 /* DDTTYLogger.m in Sources */,
-				8452268E1D2A42BD00E3A5C3 /* AFURLSessionManager.m in Sources */,
-				845226861D2A42A200E3A5C3 /* DDContextFilterLogFormatter.m in Sources */,
-				8452268A1D2A42B000E3A5C3 /* AFNetworkReachabilityManager.m in Sources */,
 				845226571D2A3BE400E3A5C3 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				845226591D2A3BED00E3A5C3 /* NSString+ISO8601Date.m in Sources */,
-				845226971D2A42F300E3A5C3 /* UIWebView+AFNetworking.m in Sources */,
-				845226871D2A42A500E3A5C3 /* DDDispatchQueueLogFormatter.m in Sources */,
-				8452268D1D2A42BA00E3A5C3 /* AFURLResponseSerialization.m in Sources */,
-				845226831D2A429500E3A5C3 /* DDFileLogger.m in Sources */,
 				845226541D2A3BD700E3A5C3 /* PositionManager.m in Sources */,
-				845226911D2A42D900E3A5C3 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				8452267F1D2A428200E3A5C3 /* CLIColor.m in Sources */,
-				845226931D2A42E000E3A5C3 /* UIButton+AFNetworking.m in Sources */,
 				845226581D2A3BEA00E3A5C3 /* NSDate+ISO8601Date.m in Sources */,
-				845226951D2A42EC00E3A5C3 /* UIProgressView+AFNetworking.m in Sources */,
 				845226531D2A3BD500E3A5C3 /* DataService.m in Sources */,
-				8452268F1D2A42D200E3A5C3 /* AFAutoPurgingImageCache.m in Sources */,
 				8452264E1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */,
-				845226841D2A429A00E3A5C3 /* DDLog.m in Sources */,
-				8452268B1D2A42B400E3A5C3 /* AFSecurityPolicy.m in Sources */,
-				845226881D2A42A800E3A5C3 /* DDMultiFormatter.m in Sources */,
-				845226891D2A42AD00E3A5C3 /* AFHTTPSessionManager.m in Sources */,
 				8452264F1D2A3BB800E3A5C3 /* Position.m in Sources */,
-				845226801D2A428900E3A5C3 /* DDAbstractDatabaseLogger.m in Sources */,
 				845226501D2A3BBF00E3A5C3 /* Forecast+DataService.m in Sources */,
-				8452268C1D2A42B800E3A5C3 /* AFURLRequestSerialization.m in Sources */,
 				8452265B1D2A3BF400E3A5C3 /* NSString+validation.m in Sources */,
 				845226471D2A3B8100E3A5C3 /* Model.xcdatamodeld in Sources */,
 			);
@@ -1471,64 +1256,39 @@
 			files = (
 				8483CBB71CB81606003A6FF6 /* NSString+URLEncoding.m in Sources */,
 				845226461D2A3B8000E3A5C3 /* Model.xcdatamodeld in Sources */,
-				8483CBCF1CB81768003A6FF6 /* AFSecurityPolicy.m in Sources */,
 				849BA1191A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
 				84B808D91A2A33A90074DF01 /* IOSGraphViewController.m in Sources */,
-				8483CC301CB81A08003A6FF6 /* DDMultiFormatter.m in Sources */,
 				84B808D61A2A31EF0074DF01 /* IOSCollectionViewCell.m in Sources */,
-				8483CBD21CB81768003A6FF6 /* AFURLSessionManager.m in Sources */,
-				8483CC2C1CB81A00003A6FF6 /* DDLog.m in Sources */,
-				8483CC1A1CB8192E003A6FF6 /* AFImageDownloader.m in Sources */,
 				84E4B2311A2E20A90089AB93 /* Forecast.m in Sources */,
-				8483CC2E1CB81A08003A6FF6 /* DDContextFilterLogFormatter.m in Sources */,
 				84E084141A1B987C0071D662 /* IOSAppDelegate.m in Sources */,
 				84E084111A1B987C0071D662 /* main.m in Sources */,
 				84B808CC1A2A2EA60074DF01 /* IOSCollectionViewController.m in Sources */,
 				849BA11E1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
 				84E4B2351A2E210E0089AB93 /* Forecast+DataService.m in Sources */,
 				84E4B21B1A2E08930089AB93 /* ForecastManager.m in Sources */,
-				8483CC281CB81A00003A6FF6 /* DDAbstractDatabaseLogger.m in Sources */,
 				84B808C31A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				849BA0F51A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
-				8483CC1E1CB8192E003A6FF6 /* UIImageView+AFNetworking.m in Sources */,
-				8483CC291CB81A00003A6FF6 /* DDASLLogCapture.m in Sources */,
-				8483CC191CB8192E003A6FF6 /* AFAutoPurgingImageCache.m in Sources */,
 				84B808D01A2A2EDB0074DF01 /* IOSCollectionView.m in Sources */,
 				8486FDFE1A29BDB4003AB3EE /* IOSListTableViewCell.m in Sources */,
-				8483CC211CB8192E003A6FF6 /* UIWebView+AFNetworking.m in Sources */,
-				8483CC201CB8192E003A6FF6 /* UIRefreshControl+AFNetworking.m in Sources */,
-				8483CC2F1CB81A08003A6FF6 /* DDDispatchQueueLogFormatter.m in Sources */,
 				846109E81A30A281007623FE /* IOSListTableView.m in Sources */,
-				8483CC2D1CB81A00003A6FF6 /* DDTTYLogger.m in Sources */,
 				842438661A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */,
 				846109DA1A308FD1007623FE /* ListViewController.m in Sources */,
 				8455586B1A2912A3003127B3 /* IOSMapViewController.m in Sources */,
 				845558671A291036003127B3 /* IOSSplitViewController.m in Sources */,
-				8483CC1F1CB8192E003A6FF6 /* UIProgressView+AFNetworking.m in Sources */,
 				8483CBB81CB8160E003A6FF6 /* NSString+validation.m in Sources */,
-				8483CC1B1CB8192E003A6FF6 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				84E0841A1A1B987C0071D662 /* IOSListViewController.m in Sources */,
 				845558711A291C17003127B3 /* IOSDetailViewController.m in Sources */,
 				8483CBB51CB815FB003A6FF6 /* NSDate+ISO8601Date.m in Sources */,
-				8483CC2A1CB81A00003A6FF6 /* DDASLLogger.m in Sources */,
 				84E4B2391A2E21310089AB93 /* Forecast+DataService.m in Sources */,
 				8483CBB61CB81601003A6FF6 /* NSString+ISO8601Date.m in Sources */,
-				8483CC2B1CB81A00003A6FF6 /* DDFileLogger.m in Sources */,
 				84E084E71A1C7D040071D662 /* DataService.m in Sources */,
-				8483CC1C1CB8192E003A6FF6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				841381451A2A7F94004EC601 /* IOSGraphView.m in Sources */,
 				84E4B22F1A2E20A90089AB93 /* Position.m in Sources */,
 				8483CBB41CB815F5003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				8483CC271CB819D4003A6FF6 /* ISO8601DateFormatter.m in Sources */,
-				8483CBCD1CB81768003A6FF6 /* AFHTTPSessionManager.m in Sources */,
 				8452264D1D2A3BB300E3A5C3 /* Position+DataService.m in Sources */,
-				8483CC1D1CB8192E003A6FF6 /* UIButton+AFNetworking.m in Sources */,
 				849BA10E1A2F20E60090F99D /* MapViewController.m in Sources */,
-				8483CBD01CB81768003A6FF6 /* AFURLRequestSerialization.m in Sources */,
-				8483CBCE1CB81768003A6FF6 /* AFNetworkReachabilityManager.m in Sources */,
-				8483CBD11CB81768003A6FF6 /* AFURLResponseSerialization.m in Sources */,
 				84B808D31A2A31D00074DF01 /* IOSCollectionHeaderView.m in Sources */,
-				8483CC311CB81A0D003A6FF6 /* CLIColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1545,62 +1305,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8483CBCC1CB81755003A6FF6 /* AFURLSessionManager.m in Sources */,
 				84E4B2341A2E210E0089AB93 /* Forecast+DataService.m in Sources */,
 				84297AB81A21EAA10070E151 /* OSXMapViewController.m in Sources */,
 				84CB76361A288E74008D6775 /* OSXGraphViewController.m in Sources */,
 				84E084E81A1C7D040071D662 /* DataService.m in Sources */,
-				8483CBC91CB81755003A6FF6 /* AFSecurityPolicy.m in Sources */,
 				84E084441A1B988D0071D662 /* OSXListViewController.m in Sources */,
 				84CB76311A288E19008D6775 /* OSXCollectionViewController.m in Sources */,
 				84297AA61A2142A20070E151 /* OSXWindowController.m in Sources */,
-				8483CC101CB8191F003A6FF6 /* AFAutoPurgingImageCache.m in Sources */,
-				8483CBF61CB8178E003A6FF6 /* DDLog.m in Sources */,
 				84297AAF1A21DFEA0070E151 /* OSXListTableView.m in Sources */,
-				8483CBCA1CB81755003A6FF6 /* AFURLRequestSerialization.m in Sources */,
 				8432FF121A2B0B6400414A20 /* OSXCollectionCell.m in Sources */,
 				84E4B2381A2E21310089AB93 /* Forecast+DataService.m in Sources */,
-				8483CC141CB8191F003A6FF6 /* UIButton+AFNetworking.m in Sources */,
 				84E4B22E1A2E20A90089AB93 /* Position.m in Sources */,
 				84297AA91A2143F30070E151 /* OSXSplitViewController.m in Sources */,
 				8483CB9B1CB815ED003A6FF6 /* NSDate+ISO8601Date.m in Sources */,
-				8483CBCB1CB81755003A6FF6 /* AFURLResponseSerialization.m in Sources */,
 				849BA10D1A2F20E60090F99D /* MapViewController.m in Sources */,
 				8475976D1A28A2490013824D /* OSXCollectionView.m in Sources */,
-				8483CC131CB8191F003A6FF6 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				8483CC171CB8191F003A6FF6 /* UIRefreshControl+AFNetworking.m in Sources */,
-				8483CBF91CB8178E003A6FF6 /* DDDispatchQueueLogFormatter.m in Sources */,
-				8483CC121CB8191F003A6FF6 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				8483CBF71CB8178E003A6FF6 /* DDTTYLogger.m in Sources */,
-				8483CBF01CB8178E003A6FF6 /* CLIColor.m in Sources */,
 				8483CC261CB819D0003A6FF6 /* ISO8601DateFormatter.m in Sources */,
 				84297ABC1A21EDB70070E151 /* OSXSplitView.m in Sources */,
 				84B808C21A29F8BC0074DF01 /* PositionManager.m in Sources */,
 				8483CB9E1CB815ED003A6FF6 /* NSString+validation.m in Sources */,
-				8483CC151CB8191F003A6FF6 /* UIImageView+AFNetworking.m in Sources */,
 				849BA0F41A2E73FA0090F99D /* MKMapAnnotation.m in Sources */,
 				849BA11D1A2F64AC0090F99D /* MapGestureRecogniser.m in Sources */,
 				847597791A28A3820013824D /* OSXGraphView.m in Sources */,
 				84E4B2301A2E20A90089AB93 /* Forecast.m in Sources */,
 				849BA1181A2F5B660090F99D /* MapAnnotationButton.m in Sources */,
-				8483CC181CB8191F003A6FF6 /* UIWebView+AFNetworking.m in Sources */,
-				8483CBC81CB81755003A6FF6 /* AFNetworkReachabilityManager.m in Sources */,
-				8483CBF21CB8178E003A6FF6 /* DDAbstractDatabaseLogger.m in Sources */,
-				8483CBF51CB8178E003A6FF6 /* DDFileLogger.m in Sources */,
 				846109D91A308FD1007623FE /* ListViewController.m in Sources */,
-				8483CBF41CB8178E003A6FF6 /* DDASLLogger.m in Sources */,
 				8483CB9C1CB815ED003A6FF6 /* NSString+ISO8601Date.m in Sources */,
-				8483CC111CB8191F003A6FF6 /* AFImageDownloader.m in Sources */,
-				8483CBF31CB8178E003A6FF6 /* DDASLLogCapture.m in Sources */,
 				84E4B21A1A2E08930089AB93 /* ForecastManager.m in Sources */,
 				84B5CD031A2B48AD0084DB55 /* OSXFlippedView.m in Sources */,
 				846109E51A30A1A1007623FE /* OSXListTableViewCell.m in Sources */,
-				8483CBFA1CB8178E003A6FF6 /* DDMultiFormatter.m in Sources */,
 				842438651A2FAA9C00A7F5A7 /* DetailViewController.m in Sources */,
-				8483CBC71CB81755003A6FF6 /* AFHTTPSessionManager.m in Sources */,
 				84CB76241A288D47008D6775 /* OSXDetailViewController.m in Sources */,
-				8483CBF81CB8178E003A6FF6 /* DDContextFilterLogFormatter.m in Sources */,
-				8483CC161CB8191F003A6FF6 /* UIProgressView+AFNetworking.m in Sources */,
 				8483CB9D1CB815ED003A6FF6 /* NSString+URLEncoding.m in Sources */,
 				8483CB9A1CB815ED003A6FF6 /* CLPlacemark+MKAnnotationDelegate.m in Sources */,
 				84E084411A1B988D0071D662 /* main.m in Sources */,
@@ -1679,6 +1414,7 @@
 /* Begin XCBuildConfiguration section */
 		8479B5B51CC239C800D78808 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B26D95CD713E374B58CDC3A6 /* Pods-WeatherToday.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
@@ -1699,6 +1435,7 @@
 		};
 		8479B5B61CC239C800D78808 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFB1165BFF92C1FB40BDCE0A /* Pods-WeatherToday.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
@@ -1720,6 +1457,7 @@
 		};
 		8479B5B71CC239C800D78808 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFAF747EBFE2BA2EB198EF8D /* Pods-WeatherToday.adhoc.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = WeatherFrog/WeatherToday/WeatherToday.entitlements;
@@ -1779,6 +1517,7 @@
 		};
 		84882F921BAB5AA8004F65B5 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1836B3F9145AAD72C9D389A6 /* Pods-WeatherFrog for OSX.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
@@ -1821,6 +1560,7 @@
 		};
 		84882F941BAB5AA8004F65B5 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC208CE15B3CFAB3A3458045 /* Pods-WeatherFrog for iOS.adhoc.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
@@ -1939,6 +1679,7 @@
 		};
 		84E084301A1B987C0071D662 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE12A6CE90A58312CCBF332D /* Pods-WeatherFrog for iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
@@ -1961,6 +1702,7 @@
 		};
 		84E084311A1B987C0071D662 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCEFEA9E06461512F09FE809 /* Pods-WeatherFrog for iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for iOS/WeatherFrog for iOS.entitlements";
@@ -2017,6 +1759,7 @@
 		};
 		84E084571A1B988E0071D662 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CB67F2B414D175EE8E414F /* Pods-WeatherFrog for OSX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
@@ -2042,6 +1785,7 @@
 		};
 		84E084581A1B988E0071D662 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38604A4BAF46025E12328672 /* Pods-WeatherFrog for OSX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "WeatherFrog/WeatherFrog for OSX/WeatherFrog for OSX.entitlements";
