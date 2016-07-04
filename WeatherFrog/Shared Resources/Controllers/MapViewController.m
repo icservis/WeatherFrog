@@ -239,7 +239,17 @@ static double const kPointHysteresis = 1.0;
     }
     [mapView selectAnnotation:searchAnnotation animated:YES];
     
-    self.selectedPlacemark = placemark;
+    if ([placemark isKindOfClass:[MKPlacemark class]]) {
+        [self.geocoder reverseGeocodeLocation:placemark.location completionHandler:^(NSArray *placemarks, NSError *error) {
+            [self activityIndicatorDecrementCount];
+            if ([placemarks count] > 0) {
+                CLPlacemark* placemark = placemarks[0];
+                self.selectedPlacemark = placemark;
+            };
+        }];
+    } else {
+        self.selectedPlacemark = placemark;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView searchAnnotationNotDetermined:(CLLocation*)location

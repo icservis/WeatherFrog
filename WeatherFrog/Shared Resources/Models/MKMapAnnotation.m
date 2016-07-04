@@ -61,7 +61,7 @@
 {
     self.coordinate = placemark.location.coordinate;
     self.title = [placemark title];
-    self.subtitle = [placemark subtitle];
+    self.subtitle = ([placemark subtitle]) ?: @"";
     self.hasPlacemark = YES;
 }
 

@@ -41,7 +41,7 @@
     //[self.searchField resignFirstResponder];
     if ([self.searchField.stringValue length] > 0) {
         [self mapView:self.mapView searchText:self.searchField.stringValue completionBlock:^(MKLocalSearchResponse* response, NSError *error) {
-            
+            DDLogVerbose(@"%@", response);
         }];
     }
 }
